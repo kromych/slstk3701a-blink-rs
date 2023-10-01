@@ -2,6 +2,7 @@
 resolver = "2"
 
 members = [
+    "demos/blink",
     "support/efm32gg11b-pac",
 ]
 

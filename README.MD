@@ -26,13 +26,9 @@ https://www.keil.arm.com/packs/
 
 ## Thank you
 
-It is specualted that if one wants to build something from scratch, they ought to start from creating the Universe itself :)
+It is speculated that if one wants to build something from scratch, they ought to start from creating the Universe itself :)
 That said, this project would not have been possible without many great folks on whose efforts this repo has relied.
 
-1. The infrastructure parts of `support/efm32hg322_hal` borrow heavily from [`efm32hg-hal`](https://github.com/fudanchii/efm32hg-hal).
-   Despite its name, it supports just one MCU of the EFM32HG family (EFM32HG309F64), and the means of extending weren't obvious to me.
-   As the cleanest approach, I copied as much code as needed, compiled with the licensing terms, and added support for EFM32322F64's GPIO.
-
-2. The idea of generating the register description comes from [`efm32hg-pac`](https://github.com/em32-rs/efm32hg-pac). Again,
-   the project supports just one MCU (EFM32HG309F64) so I procured the SVD file, patched it, and generated the definitions for
-   EFM32HG322F64 myself.
+1. The idea of generating the register description comes from [`efm32hg-pac`](https://github.com/em32-rs/efm32hg-pac).
+   The project supports just one MCU (EFM32HG309F64) so I procured the SVD file, patched it, and generated the definitions for
+   EFM32GG11B820F2048GL192 myself.

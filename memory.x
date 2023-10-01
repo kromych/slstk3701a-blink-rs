@@ -1,8 +1,8 @@
 MEMORY
 {
-  FLASH : ORIGIN = 0x00000000, LENGTH = ...
-  RAM : ORIGIN = ..., LENGTH = ...
+  FLASH : ORIGIN = 0x00000000, LENGTH = 2M
+  RAM : ORIGIN = 0x20000000, LENGTH = 512K
 }
 
-_heap_size = ...;
+_heap_size = 500K;
 _stack_start = ORIGIN(RAM) + LENGTH(RAM);

@@ -9,13 +9,7 @@ One-time tool installation:
 
 ```sh
 cargo install flip-link
-# Wait for the updated version with support for EFM32 Happy Gecko to be released
-# or use the main branch of https://github.com/probe-rs/probe-rs.
-cargo install cargo-embed
-cargo install cargo-flash
-cargo install probe-rs-cli
-cargo install probe-rs-debugger
-cargo install probe-run
+cargo install probe-rs --features="cli"
 ```
 
 ## SVD packs

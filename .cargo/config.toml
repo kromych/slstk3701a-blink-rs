@@ -1,5 +1,5 @@
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = "probe-run --chip EFM32GG11B820F2048GL192"
+runner = "probe-rs run --chip EFM32GG11B820F2048GL192"
 
 rustflags = [
   "-C",

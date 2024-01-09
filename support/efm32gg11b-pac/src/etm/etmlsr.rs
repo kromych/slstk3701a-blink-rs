@@ -25,5 +25,5 @@ impl crate::RegisterSpec for ETMLSR_SPEC {
 impl crate::Readable for ETMLSR_SPEC {}
 #[doc = "`reset()` method sets ETMLSR to value 0x03"]
 impl crate::Resettable for ETMLSR_SPEC {
-    const RESET_VALUE: Self::Ux = 0x03;
+    const RESET_VALUE: u32 = 0x03;
 }

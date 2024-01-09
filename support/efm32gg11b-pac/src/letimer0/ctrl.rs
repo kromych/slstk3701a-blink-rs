@@ -29,7 +29,7 @@ impl crate::FieldSpec for REPMODE_A {
 impl REPMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> REPMODE_A {
+    pub const fn variant(&self) -> REPMODE_A {
         match self.bits {
             0 => REPMODE_A::FREE,
             1 => REPMODE_A::ONESHOT,
@@ -60,8 +60,8 @@ impl REPMODE_R {
     }
 }
 #[doc = "Field `REPMODE` writer - Repeat Mode"]
-pub type REPMODE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, REPMODE_A>;
-impl<'a, REG, const O: u8> REPMODE_W<'a, REG, O>
+pub type REPMODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, REPMODE_A>;
+impl<'a, REG> REPMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -114,7 +114,7 @@ impl crate::FieldSpec for UFOA0_A {
 impl UFOA0_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> UFOA0_A {
+    pub const fn variant(&self) -> UFOA0_A {
         match self.bits {
             0 => UFOA0_A::NONE,
             1 => UFOA0_A::TOGGLE,
@@ -145,8 +145,8 @@ impl UFOA0_R {
     }
 }
 #[doc = "Field `UFOA0` writer - Underflow Output Action 0"]
-pub type UFOA0_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, UFOA0_A>;
-impl<'a, REG, const O: u8> UFOA0_W<'a, REG, O>
+pub type UFOA0_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, UFOA0_A>;
+impl<'a, REG> UFOA0_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -199,7 +199,7 @@ impl crate::FieldSpec for UFOA1_A {
 impl UFOA1_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> UFOA1_A {
+    pub const fn variant(&self) -> UFOA1_A {
         match self.bits {
             0 => UFOA1_A::NONE,
             1 => UFOA1_A::TOGGLE,
@@ -230,8 +230,8 @@ impl UFOA1_R {
     }
 }
 #[doc = "Field `UFOA1` writer - Underflow Output Action 1"]
-pub type UFOA1_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, UFOA1_A>;
-impl<'a, REG, const O: u8> UFOA1_W<'a, REG, O>
+pub type UFOA1_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, UFOA1_A>;
+impl<'a, REG> UFOA1_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -260,23 +260,23 @@ where
 #[doc = "Field `OPOL0` reader - Output 0 Polarity"]
 pub type OPOL0_R = crate::BitReader;
 #[doc = "Field `OPOL0` writer - Output 0 Polarity"]
-pub type OPOL0_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type OPOL0_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OPOL1` reader - Output 1 Polarity"]
 pub type OPOL1_R = crate::BitReader;
 #[doc = "Field `OPOL1` writer - Output 1 Polarity"]
-pub type OPOL1_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type OPOL1_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BUFTOP` reader - Buffered Top"]
 pub type BUFTOP_R = crate::BitReader;
 #[doc = "Field `BUFTOP` writer - Buffered Top"]
-pub type BUFTOP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BUFTOP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `COMP0TOP` reader - Compare Value 0 is Top Value"]
 pub type COMP0TOP_R = crate::BitReader;
 #[doc = "Field `COMP0TOP` writer - Compare Value 0 is Top Value"]
-pub type COMP0TOP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type COMP0TOP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DEBUGRUN` reader - Debug Mode Run Enable"]
 pub type DEBUGRUN_R = crate::BitReader;
 #[doc = "Field `DEBUGRUN` writer - Debug Mode Run Enable"]
-pub type DEBUGRUN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DEBUGRUN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:1 - Repeat Mode"]
     #[inline(always)]
@@ -323,52 +323,56 @@ impl W {
     #[doc = "Bits 0:1 - Repeat Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn repmode(&mut self) -> REPMODE_W<CTRL_SPEC, 0> {
-        REPMODE_W::new(self)
+    pub fn repmode(&mut self) -> REPMODE_W<CTRL_SPEC> {
+        REPMODE_W::new(self, 0)
     }
     #[doc = "Bits 2:3 - Underflow Output Action 0"]
     #[inline(always)]
     #[must_use]
-    pub fn ufoa0(&mut self) -> UFOA0_W<CTRL_SPEC, 2> {
-        UFOA0_W::new(self)
+    pub fn ufoa0(&mut self) -> UFOA0_W<CTRL_SPEC> {
+        UFOA0_W::new(self, 2)
     }
     #[doc = "Bits 4:5 - Underflow Output Action 1"]
     #[inline(always)]
     #[must_use]
-    pub fn ufoa1(&mut self) -> UFOA1_W<CTRL_SPEC, 4> {
-        UFOA1_W::new(self)
+    pub fn ufoa1(&mut self) -> UFOA1_W<CTRL_SPEC> {
+        UFOA1_W::new(self, 4)
     }
     #[doc = "Bit 6 - Output 0 Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn opol0(&mut self) -> OPOL0_W<CTRL_SPEC, 6> {
-        OPOL0_W::new(self)
+    pub fn opol0(&mut self) -> OPOL0_W<CTRL_SPEC> {
+        OPOL0_W::new(self, 6)
     }
     #[doc = "Bit 7 - Output 1 Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn opol1(&mut self) -> OPOL1_W<CTRL_SPEC, 7> {
-        OPOL1_W::new(self)
+    pub fn opol1(&mut self) -> OPOL1_W<CTRL_SPEC> {
+        OPOL1_W::new(self, 7)
     }
     #[doc = "Bit 8 - Buffered Top"]
     #[inline(always)]
     #[must_use]
-    pub fn buftop(&mut self) -> BUFTOP_W<CTRL_SPEC, 8> {
-        BUFTOP_W::new(self)
+    pub fn buftop(&mut self) -> BUFTOP_W<CTRL_SPEC> {
+        BUFTOP_W::new(self, 8)
     }
     #[doc = "Bit 9 - Compare Value 0 is Top Value"]
     #[inline(always)]
     #[must_use]
-    pub fn comp0top(&mut self) -> COMP0TOP_W<CTRL_SPEC, 9> {
-        COMP0TOP_W::new(self)
+    pub fn comp0top(&mut self) -> COMP0TOP_W<CTRL_SPEC> {
+        COMP0TOP_W::new(self, 9)
     }
     #[doc = "Bit 12 - Debug Mode Run Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn debugrun(&mut self) -> DEBUGRUN_W<CTRL_SPEC, 12> {
-        DEBUGRUN_W::new(self)
+    pub fn debugrun(&mut self) -> DEBUGRUN_W<CTRL_SPEC> {
+        DEBUGRUN_W::new(self, 12)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -384,10 +388,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

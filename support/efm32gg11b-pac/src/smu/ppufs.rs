@@ -147,7 +147,7 @@ impl crate::FieldSpec for PERIPHID_A {
 impl PERIPHID_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PERIPHID_A> {
+    pub const fn variant(&self) -> Option<PERIPHID_A> {
         match self.bits {
             0 => Some(PERIPHID_A::ACMP0),
             1 => Some(PERIPHID_A::ACMP1),
@@ -553,5 +553,5 @@ impl crate::RegisterSpec for PPUFS_SPEC {
 impl crate::Readable for PPUFS_SPEC {}
 #[doc = "`reset()` method sets PPUFS to value 0"]
 impl crate::Resettable for PPUFS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

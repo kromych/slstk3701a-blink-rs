@@ -5,7 +5,7 @@ pub type W = crate::W<NANDCTRL_SPEC>;
 #[doc = "Field `EN` reader - NAND Flash Control Enable"]
 pub type EN_R = crate::BitReader;
 #[doc = "Field `EN` writer - NAND Flash Control Enable"]
-pub type EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BANKSEL` reader - NAND Flash Bank"]
 pub type BANKSEL_R = crate::FieldReader<BANKSEL_A>;
 #[doc = "NAND Flash Bank\n\nValue on reset: 0"]
@@ -33,7 +33,7 @@ impl crate::FieldSpec for BANKSEL_A {
 impl BANKSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> BANKSEL_A {
+    pub const fn variant(&self) -> BANKSEL_A {
         match self.bits {
             0 => BANKSEL_A::BANK0,
             1 => BANKSEL_A::BANK1,
@@ -64,8 +64,8 @@ impl BANKSEL_R {
     }
 }
 #[doc = "Field `BANKSEL` writer - NAND Flash Bank"]
-pub type BANKSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, BANKSEL_A>;
-impl<'a, REG, const O: u8> BANKSEL_W<'a, REG, O>
+pub type BANKSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, BANKSEL_A>;
+impl<'a, REG> BANKSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -107,16 +107,20 @@ impl W {
     #[doc = "Bit 0 - NAND Flash Control Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn en(&mut self) -> EN_W<NANDCTRL_SPEC, 0> {
-        EN_W::new(self)
+    pub fn en(&mut self) -> EN_W<NANDCTRL_SPEC> {
+        EN_W::new(self, 0)
     }
     #[doc = "Bits 4:5 - NAND Flash Bank"]
     #[inline(always)]
     #[must_use]
-    pub fn banksel(&mut self) -> BANKSEL_W<NANDCTRL_SPEC, 4> {
-        BANKSEL_W::new(self)
+    pub fn banksel(&mut self) -> BANKSEL_W<NANDCTRL_SPEC> {
+        BANKSEL_W::new(self, 4)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -132,10 +136,10 @@ impl crate::RegisterSpec for NANDCTRL_SPEC {
 impl crate::Readable for NANDCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`nandctrl::W`](W) writer structure"]
 impl crate::Writable for NANDCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets NANDCTRL to value 0"]
 impl crate::Resettable for NANDCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

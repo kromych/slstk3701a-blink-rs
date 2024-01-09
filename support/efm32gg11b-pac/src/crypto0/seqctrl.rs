@@ -5,7 +5,7 @@ pub type W = crate::W<SEQCTRL_SPEC>;
 #[doc = "Field `LENGTHA` reader - Buffer Length a in Bytes"]
 pub type LENGTHA_R = crate::FieldReader<u16>;
 #[doc = "Field `LENGTHA` writer - Buffer Length a in Bytes"]
-pub type LENGTHA_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 14, O, u16>;
+pub type LENGTHA_W<'a, REG> = crate::FieldWriter<'a, REG, 14, u16>;
 #[doc = "Field `BLOCKSIZE` reader - Size of Data Blocks"]
 pub type BLOCKSIZE_R = crate::FieldReader<BLOCKSIZE_A>;
 #[doc = "Size of Data Blocks\n\nValue on reset: 0"]
@@ -31,7 +31,7 @@ impl crate::FieldSpec for BLOCKSIZE_A {
 impl BLOCKSIZE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<BLOCKSIZE_A> {
+    pub const fn variant(&self) -> Option<BLOCKSIZE_A> {
         match self.bits {
             0 => Some(BLOCKSIZE_A::_16BYTES),
             1 => Some(BLOCKSIZE_A::_32BYTES),
@@ -56,8 +56,8 @@ impl BLOCKSIZE_R {
     }
 }
 #[doc = "Field `BLOCKSIZE` writer - Size of Data Blocks"]
-pub type BLOCKSIZE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, BLOCKSIZE_A>;
-impl<'a, REG, const O: u8> BLOCKSIZE_W<'a, REG, O>
+pub type BLOCKSIZE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, BLOCKSIZE_A>;
+impl<'a, REG> BLOCKSIZE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -81,23 +81,23 @@ where
 #[doc = "Field `DMA0SKIP` reader - DMA0 Skip"]
 pub type DMA0SKIP_R = crate::FieldReader;
 #[doc = "Field `DMA0SKIP` writer - DMA0 Skip"]
-pub type DMA0SKIP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type DMA0SKIP_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `DMA1SKIP` reader - DMA1 Skip"]
 pub type DMA1SKIP_R = crate::FieldReader;
 #[doc = "Field `DMA1SKIP` writer - DMA1 Skip"]
-pub type DMA1SKIP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type DMA1SKIP_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `DMA0PRESA` reader - DMA0 Preserve a"]
 pub type DMA0PRESA_R = crate::BitReader;
 #[doc = "Field `DMA0PRESA` writer - DMA0 Preserve a"]
-pub type DMA0PRESA_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DMA0PRESA_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DMA1PRESA` reader - DMA1 Preserve a"]
 pub type DMA1PRESA_R = crate::BitReader;
 #[doc = "Field `DMA1PRESA` writer - DMA1 Preserve a"]
-pub type DMA1PRESA_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DMA1PRESA_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HALT` reader - Halt Sequence"]
 pub type HALT_R = crate::BitReader;
 #[doc = "Field `HALT` writer - Halt Sequence"]
-pub type HALT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HALT_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:13 - Buffer Length a in Bytes"]
     #[inline(always)]
@@ -139,46 +139,50 @@ impl W {
     #[doc = "Bits 0:13 - Buffer Length a in Bytes"]
     #[inline(always)]
     #[must_use]
-    pub fn lengtha(&mut self) -> LENGTHA_W<SEQCTRL_SPEC, 0> {
-        LENGTHA_W::new(self)
+    pub fn lengtha(&mut self) -> LENGTHA_W<SEQCTRL_SPEC> {
+        LENGTHA_W::new(self, 0)
     }
     #[doc = "Bits 20:21 - Size of Data Blocks"]
     #[inline(always)]
     #[must_use]
-    pub fn blocksize(&mut self) -> BLOCKSIZE_W<SEQCTRL_SPEC, 20> {
-        BLOCKSIZE_W::new(self)
+    pub fn blocksize(&mut self) -> BLOCKSIZE_W<SEQCTRL_SPEC> {
+        BLOCKSIZE_W::new(self, 20)
     }
     #[doc = "Bits 24:25 - DMA0 Skip"]
     #[inline(always)]
     #[must_use]
-    pub fn dma0skip(&mut self) -> DMA0SKIP_W<SEQCTRL_SPEC, 24> {
-        DMA0SKIP_W::new(self)
+    pub fn dma0skip(&mut self) -> DMA0SKIP_W<SEQCTRL_SPEC> {
+        DMA0SKIP_W::new(self, 24)
     }
     #[doc = "Bits 26:27 - DMA1 Skip"]
     #[inline(always)]
     #[must_use]
-    pub fn dma1skip(&mut self) -> DMA1SKIP_W<SEQCTRL_SPEC, 26> {
-        DMA1SKIP_W::new(self)
+    pub fn dma1skip(&mut self) -> DMA1SKIP_W<SEQCTRL_SPEC> {
+        DMA1SKIP_W::new(self, 26)
     }
     #[doc = "Bit 28 - DMA0 Preserve a"]
     #[inline(always)]
     #[must_use]
-    pub fn dma0presa(&mut self) -> DMA0PRESA_W<SEQCTRL_SPEC, 28> {
-        DMA0PRESA_W::new(self)
+    pub fn dma0presa(&mut self) -> DMA0PRESA_W<SEQCTRL_SPEC> {
+        DMA0PRESA_W::new(self, 28)
     }
     #[doc = "Bit 29 - DMA1 Preserve a"]
     #[inline(always)]
     #[must_use]
-    pub fn dma1presa(&mut self) -> DMA1PRESA_W<SEQCTRL_SPEC, 29> {
-        DMA1PRESA_W::new(self)
+    pub fn dma1presa(&mut self) -> DMA1PRESA_W<SEQCTRL_SPEC> {
+        DMA1PRESA_W::new(self, 29)
     }
     #[doc = "Bit 31 - Halt Sequence"]
     #[inline(always)]
     #[must_use]
-    pub fn halt(&mut self) -> HALT_W<SEQCTRL_SPEC, 31> {
-        HALT_W::new(self)
+    pub fn halt(&mut self) -> HALT_W<SEQCTRL_SPEC> {
+        HALT_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -194,10 +198,10 @@ impl crate::RegisterSpec for SEQCTRL_SPEC {
 impl crate::Readable for SEQCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`seqctrl::W`](W) writer structure"]
 impl crate::Writable for SEQCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEQCTRL to value 0"]
 impl crate::Resettable for SEQCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -5,7 +5,7 @@ pub type W = crate::W<CDCONF_SPEC>;
 #[doc = "Field `DCDTOCONF` reader - DCD Timeout (TDCD_TIMEOUT) Configuration"]
 pub type DCDTOCONF_R = crate::FieldReader<u16>;
 #[doc = "Field `DCDTOCONF` writer - DCD Timeout (TDCD_TIMEOUT) Configuration"]
-pub type DCDTOCONF_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 10, O, u16>;
+pub type DCDTOCONF_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 impl R {
     #[doc = "Bits 0:9 - DCD Timeout (TDCD_TIMEOUT) Configuration"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:9 - DCD Timeout (TDCD_TIMEOUT) Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn dcdtoconf(&mut self) -> DCDTOCONF_W<CDCONF_SPEC, 0> {
-        DCDTOCONF_W::new(self)
+    pub fn dcdtoconf(&mut self) -> DCDTOCONF_W<CDCONF_SPEC> {
+        DCDTOCONF_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for CDCONF_SPEC {
 impl crate::Readable for CDCONF_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`cdconf::W`](W) writer structure"]
 impl crate::Writable for CDCONF_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CDCONF to value 0"]
 impl crate::Resettable for CDCONF_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

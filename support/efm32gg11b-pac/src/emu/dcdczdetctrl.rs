@@ -5,11 +5,11 @@ pub type W = crate::W<DCDCZDETCTRL_SPEC>;
 #[doc = "Field `ZDETILIMSEL` reader - Reverse Current Limit Level Selection for Zero Detector"]
 pub type ZDETILIMSEL_R = crate::FieldReader;
 #[doc = "Field `ZDETILIMSEL` writer - Reverse Current Limit Level Selection for Zero Detector"]
-pub type ZDETILIMSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type ZDETILIMSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `ZDETBLANKDLY` reader - Reserved for internal use. Do not change."]
 pub type ZDETBLANKDLY_R = crate::FieldReader;
 #[doc = "Field `ZDETBLANKDLY` writer - Reserved for internal use. Do not change."]
-pub type ZDETBLANKDLY_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type ZDETBLANKDLY_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bits 4:6 - Reverse Current Limit Level Selection for Zero Detector"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 4:6 - Reverse Current Limit Level Selection for Zero Detector"]
     #[inline(always)]
     #[must_use]
-    pub fn zdetilimsel(&mut self) -> ZDETILIMSEL_W<DCDCZDETCTRL_SPEC, 4> {
-        ZDETILIMSEL_W::new(self)
+    pub fn zdetilimsel(&mut self) -> ZDETILIMSEL_W<DCDCZDETCTRL_SPEC> {
+        ZDETILIMSEL_W::new(self, 4)
     }
     #[doc = "Bits 8:9 - Reserved for internal use. Do not change."]
     #[inline(always)]
     #[must_use]
-    pub fn zdetblankdly(&mut self) -> ZDETBLANKDLY_W<DCDCZDETCTRL_SPEC, 8> {
-        ZDETBLANKDLY_W::new(self)
+    pub fn zdetblankdly(&mut self) -> ZDETBLANKDLY_W<DCDCZDETCTRL_SPEC> {
+        ZDETBLANKDLY_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for DCDCZDETCTRL_SPEC {
 impl crate::Readable for DCDCZDETCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dcdczdetctrl::W`](W) writer structure"]
 impl crate::Writable for DCDCZDETCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DCDCZDETCTRL to value 0x0150"]
 impl crate::Resettable for DCDCZDETCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0150;
+    const RESET_VALUE: u32 = 0x0150;
 }

@@ -5,15 +5,15 @@ pub type W = crate::W<ETMTSEVR_SPEC>;
 #[doc = "Field `RESAEVT` reader - ETM Resource A Event"]
 pub type RESAEVT_R = crate::FieldReader;
 #[doc = "Field `RESAEVT` writer - ETM Resource A Event"]
-pub type RESAEVT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type RESAEVT_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `RESBEVT` reader - ETM Resource B Event"]
 pub type RESBEVT_R = crate::FieldReader;
 #[doc = "Field `RESBEVT` writer - ETM Resource B Event"]
-pub type RESBEVT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type RESBEVT_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `ETMFCNEVT` reader - ETM Function Event"]
 pub type ETMFCNEVT_R = crate::FieldReader;
 #[doc = "Field `ETMFCNEVT` writer - ETM Function Event"]
-pub type ETMFCNEVT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type ETMFCNEVT_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 impl R {
     #[doc = "Bits 0:6 - ETM Resource A Event"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:6 - ETM Resource A Event"]
     #[inline(always)]
     #[must_use]
-    pub fn resaevt(&mut self) -> RESAEVT_W<ETMTSEVR_SPEC, 0> {
-        RESAEVT_W::new(self)
+    pub fn resaevt(&mut self) -> RESAEVT_W<ETMTSEVR_SPEC> {
+        RESAEVT_W::new(self, 0)
     }
     #[doc = "Bits 7:13 - ETM Resource B Event"]
     #[inline(always)]
     #[must_use]
-    pub fn resbevt(&mut self) -> RESBEVT_W<ETMTSEVR_SPEC, 7> {
-        RESBEVT_W::new(self)
+    pub fn resbevt(&mut self) -> RESBEVT_W<ETMTSEVR_SPEC> {
+        RESBEVT_W::new(self, 7)
     }
     #[doc = "Bits 14:16 - ETM Function Event"]
     #[inline(always)]
     #[must_use]
-    pub fn etmfcnevt(&mut self) -> ETMFCNEVT_W<ETMTSEVR_SPEC, 14> {
-        ETMFCNEVT_W::new(self)
+    pub fn etmfcnevt(&mut self) -> ETMFCNEVT_W<ETMTSEVR_SPEC> {
+        ETMFCNEVT_W::new(self, 14)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for ETMTSEVR_SPEC {
 impl crate::Readable for ETMTSEVR_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`etmtsevr::W`](W) writer structure"]
 impl crate::Writable for ETMTSEVR_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ETMTSEVR to value 0"]
 impl crate::Resettable for ETMTSEVR_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

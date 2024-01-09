@@ -3,9 +3,9 @@ pub type R = crate::R<INDIRECTWRITEXFERCTRL_SPEC>;
 #[doc = "Register `INDIRECTWRITEXFERCTRL` writer"]
 pub type W = crate::W<INDIRECTWRITEXFERCTRL_SPEC>;
 #[doc = "Field `START` writer - Start Indirect Write"]
-pub type START_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type START_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CANCEL` writer - Cancel Indirect Write"]
-pub type CANCEL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CANCEL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WRSTATUS` reader - Indirect Write Status"]
 pub type WRSTATUS_R = crate::BitReader;
 #[doc = "Field `WRQUEUED` reader - Two Indirect Write Operations Have Been Queued"]
@@ -13,7 +13,7 @@ pub type WRQUEUED_R = crate::BitReader;
 #[doc = "Field `INDOPSDONESTATUS` reader - Indirect Completion Status"]
 pub type INDOPSDONESTATUS_R = crate::BitReader;
 #[doc = "Field `INDOPSDONESTATUS` writer - Indirect Completion Status"]
-pub type INDOPSDONESTATUS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INDOPSDONESTATUS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NUMINDOPSDONE` reader - Indirect Operations Done"]
 pub type NUMINDOPSDONE_R = crate::FieldReader;
 impl R {
@@ -42,22 +42,26 @@ impl W {
     #[doc = "Bit 0 - Start Indirect Write"]
     #[inline(always)]
     #[must_use]
-    pub fn start(&mut self) -> START_W<INDIRECTWRITEXFERCTRL_SPEC, 0> {
-        START_W::new(self)
+    pub fn start(&mut self) -> START_W<INDIRECTWRITEXFERCTRL_SPEC> {
+        START_W::new(self, 0)
     }
     #[doc = "Bit 1 - Cancel Indirect Write"]
     #[inline(always)]
     #[must_use]
-    pub fn cancel(&mut self) -> CANCEL_W<INDIRECTWRITEXFERCTRL_SPEC, 1> {
-        CANCEL_W::new(self)
+    pub fn cancel(&mut self) -> CANCEL_W<INDIRECTWRITEXFERCTRL_SPEC> {
+        CANCEL_W::new(self, 1)
     }
     #[doc = "Bit 5 - Indirect Completion Status"]
     #[inline(always)]
     #[must_use]
-    pub fn indopsdonestatus(&mut self) -> INDOPSDONESTATUS_W<INDIRECTWRITEXFERCTRL_SPEC, 5> {
-        INDOPSDONESTATUS_W::new(self)
+    pub fn indopsdonestatus(&mut self) -> INDOPSDONESTATUS_W<INDIRECTWRITEXFERCTRL_SPEC> {
+        INDOPSDONESTATUS_W::new(self, 5)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -73,10 +77,10 @@ impl crate::RegisterSpec for INDIRECTWRITEXFERCTRL_SPEC {
 impl crate::Readable for INDIRECTWRITEXFERCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`indirectwritexferctrl::W`](W) writer structure"]
 impl crate::Writable for INDIRECTWRITEXFERCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets INDIRECTWRITEXFERCTRL to value 0"]
 impl crate::Resettable for INDIRECTWRITEXFERCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

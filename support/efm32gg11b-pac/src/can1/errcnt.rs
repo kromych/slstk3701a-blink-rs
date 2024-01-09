@@ -32,5 +32,5 @@ impl crate::RegisterSpec for ERRCNT_SPEC {
 impl crate::Readable for ERRCNT_SPEC {}
 #[doc = "`reset()` method sets ERRCNT to value 0"]
 impl crate::Resettable for ERRCNT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,15 +1,19 @@
 #[doc = "Register `IF1IFC` writer"]
 pub type W = crate::W<IF1IFC_SPEC>;
 #[doc = "Field `STATUS` writer - Clear STATUS Interrupt Flag"]
-pub type STATUS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STATUS_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl W {
     #[doc = "Bit 0 - Clear STATUS Interrupt Flag"]
     #[inline(always)]
     #[must_use]
-    pub fn status(&mut self) -> STATUS_W<IF1IFC_SPEC, 0> {
-        STATUS_W::new(self)
+    pub fn status(&mut self) -> STATUS_W<IF1IFC_SPEC> {
+        STATUS_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -23,10 +27,10 @@ impl crate::RegisterSpec for IF1IFC_SPEC {
 }
 #[doc = "`write(|w| ..)` method takes [`if1ifc::W`](W) writer structure"]
 impl crate::Writable for IF1IFC_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IF1IFC to value 0"]
 impl crate::Resettable for IF1IFC_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

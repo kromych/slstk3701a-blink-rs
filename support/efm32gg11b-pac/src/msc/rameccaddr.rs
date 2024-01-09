@@ -18,5 +18,5 @@ impl crate::RegisterSpec for RAMECCADDR_SPEC {
 impl crate::Readable for RAMECCADDR_SPEC {}
 #[doc = "`reset()` method sets RAMECCADDR to value 0x2000_0000"]
 impl crate::Resettable for RAMECCADDR_SPEC {
-    const RESET_VALUE: Self::Ux = 0x2000_0000;
+    const RESET_VALUE: u32 = 0x2000_0000;
 }

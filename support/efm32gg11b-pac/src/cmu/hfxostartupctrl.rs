@@ -5,11 +5,11 @@ pub type W = crate::W<HFXOSTARTUPCTRL_SPEC>;
 #[doc = "Field `IBTRIMXOCORE` reader - Sets the Startup Oscillator Core Bias Current"]
 pub type IBTRIMXOCORE_R = crate::FieldReader<u16>;
 #[doc = "Field `IBTRIMXOCORE` writer - Sets the Startup Oscillator Core Bias Current"]
-pub type IBTRIMXOCORE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 11, O, u16>;
+pub type IBTRIMXOCORE_W<'a, REG> = crate::FieldWriter<'a, REG, 11, u16>;
 #[doc = "Field `CTUNE` reader - Sets Oscillator Tuning Capacitance"]
 pub type CTUNE_R = crate::FieldReader<u16>;
 #[doc = "Field `CTUNE` writer - Sets Oscillator Tuning Capacitance"]
-pub type CTUNE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 9, O, u16>;
+pub type CTUNE_W<'a, REG> = crate::FieldWriter<'a, REG, 9, u16>;
 impl R {
     #[doc = "Bits 0:10 - Sets the Startup Oscillator Core Bias Current"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:10 - Sets the Startup Oscillator Core Bias Current"]
     #[inline(always)]
     #[must_use]
-    pub fn ibtrimxocore(&mut self) -> IBTRIMXOCORE_W<HFXOSTARTUPCTRL_SPEC, 0> {
-        IBTRIMXOCORE_W::new(self)
+    pub fn ibtrimxocore(&mut self) -> IBTRIMXOCORE_W<HFXOSTARTUPCTRL_SPEC> {
+        IBTRIMXOCORE_W::new(self, 0)
     }
     #[doc = "Bits 11:19 - Sets Oscillator Tuning Capacitance"]
     #[inline(always)]
     #[must_use]
-    pub fn ctune(&mut self) -> CTUNE_W<HFXOSTARTUPCTRL_SPEC, 11> {
-        CTUNE_W::new(self)
+    pub fn ctune(&mut self) -> CTUNE_W<HFXOSTARTUPCTRL_SPEC> {
+        CTUNE_W::new(self, 11)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for HFXOSTARTUPCTRL_SPEC {
 impl crate::Readable for HFXOSTARTUPCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hfxostartupctrl::W`](W) writer structure"]
 impl crate::Writable for HFXOSTARTUPCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFXOSTARTUPCTRL to value 0x0600"]
 impl crate::Resettable for HFXOSTARTUPCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0600;
+    const RESET_VALUE: u32 = 0x0600;
 }

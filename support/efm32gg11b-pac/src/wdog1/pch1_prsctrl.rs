@@ -69,7 +69,7 @@ impl crate::FieldSpec for PRSSEL_A {
 impl PRSSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL_A> {
+    pub const fn variant(&self) -> Option<PRSSEL_A> {
         match self.bits {
             0 => Some(PRSSEL_A::PRSCH0),
             1 => Some(PRSSEL_A::PRSCH1),
@@ -220,8 +220,8 @@ impl PRSSEL_R {
     }
 }
 #[doc = "Field `PRSSEL` writer - PRS Channel PRS Select"]
-pub type PRSSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL_A>;
-impl<'a, REG, const O: u8> PRSSEL_W<'a, REG, O>
+pub type PRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL_A>;
+impl<'a, REG> PRSSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -350,7 +350,7 @@ where
 #[doc = "Field `PRSMISSRSTEN` reader - PRS Missing Event Will Trigger a Watchdog Reset"]
 pub type PRSMISSRSTEN_R = crate::BitReader;
 #[doc = "Field `PRSMISSRSTEN` writer - PRS Missing Event Will Trigger a Watchdog Reset"]
-pub type PRSMISSRSTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PRSMISSRSTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:4 - PRS Channel PRS Select"]
     #[inline(always)]
@@ -367,16 +367,20 @@ impl W {
     #[doc = "Bits 0:4 - PRS Channel PRS Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel(&mut self) -> PRSSEL_W<PCH1_PRSCTRL_SPEC, 0> {
-        PRSSEL_W::new(self)
+    pub fn prssel(&mut self) -> PRSSEL_W<PCH1_PRSCTRL_SPEC> {
+        PRSSEL_W::new(self, 0)
     }
     #[doc = "Bit 8 - PRS Missing Event Will Trigger a Watchdog Reset"]
     #[inline(always)]
     #[must_use]
-    pub fn prsmissrsten(&mut self) -> PRSMISSRSTEN_W<PCH1_PRSCTRL_SPEC, 8> {
-        PRSMISSRSTEN_W::new(self)
+    pub fn prsmissrsten(&mut self) -> PRSMISSRSTEN_W<PCH1_PRSCTRL_SPEC> {
+        PRSMISSRSTEN_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -392,10 +396,10 @@ impl crate::RegisterSpec for PCH1_PRSCTRL_SPEC {
 impl crate::Readable for PCH1_PRSCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`pch1_prsctrl::W`](W) writer structure"]
 impl crate::Writable for PCH1_PRSCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PCH1_PRSCTRL to value 0"]
 impl crate::Resettable for PCH1_PRSCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

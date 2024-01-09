@@ -29,7 +29,7 @@ impl crate::FieldSpec for WDOGRMODE_A {
 impl WDOGRMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<WDOGRMODE_A> {
+    pub const fn variant(&self) -> Option<WDOGRMODE_A> {
         match self.bits {
             0 => Some(WDOGRMODE_A::DISABLED),
             1 => Some(WDOGRMODE_A::LIMITED),
@@ -60,8 +60,8 @@ impl WDOGRMODE_R {
     }
 }
 #[doc = "Field `WDOGRMODE` writer - WDOG Reset Mode"]
-pub type WDOGRMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, WDOGRMODE_A>;
-impl<'a, REG, const O: u8> WDOGRMODE_W<'a, REG, O>
+pub type WDOGRMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 3, WDOGRMODE_A>;
+impl<'a, REG> WDOGRMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -114,7 +114,7 @@ impl crate::FieldSpec for LOCKUPRMODE_A {
 impl LOCKUPRMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<LOCKUPRMODE_A> {
+    pub const fn variant(&self) -> Option<LOCKUPRMODE_A> {
         match self.bits {
             0 => Some(LOCKUPRMODE_A::DISABLED),
             1 => Some(LOCKUPRMODE_A::LIMITED),
@@ -145,8 +145,8 @@ impl LOCKUPRMODE_R {
     }
 }
 #[doc = "Field `LOCKUPRMODE` writer - Core LOCKUP Reset Mode"]
-pub type LOCKUPRMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, LOCKUPRMODE_A>;
-impl<'a, REG, const O: u8> LOCKUPRMODE_W<'a, REG, O>
+pub type LOCKUPRMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 3, LOCKUPRMODE_A>;
+impl<'a, REG> LOCKUPRMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -199,7 +199,7 @@ impl crate::FieldSpec for SYSRMODE_A {
 impl SYSRMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<SYSRMODE_A> {
+    pub const fn variant(&self) -> Option<SYSRMODE_A> {
         match self.bits {
             0 => Some(SYSRMODE_A::DISABLED),
             1 => Some(SYSRMODE_A::LIMITED),
@@ -230,8 +230,8 @@ impl SYSRMODE_R {
     }
 }
 #[doc = "Field `SYSRMODE` writer - Core Sysreset Reset Mode"]
-pub type SYSRMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, SYSRMODE_A>;
-impl<'a, REG, const O: u8> SYSRMODE_W<'a, REG, O>
+pub type SYSRMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 3, SYSRMODE_A>;
+impl<'a, REG> SYSRMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -284,7 +284,7 @@ impl crate::FieldSpec for PINRMODE_A {
 impl PINRMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PINRMODE_A> {
+    pub const fn variant(&self) -> Option<PINRMODE_A> {
         match self.bits {
             0 => Some(PINRMODE_A::DISABLED),
             1 => Some(PINRMODE_A::LIMITED),
@@ -315,8 +315,8 @@ impl PINRMODE_R {
     }
 }
 #[doc = "Field `PINRMODE` writer - PIN Reset Mode"]
-pub type PINRMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, PINRMODE_A>;
-impl<'a, REG, const O: u8> PINRMODE_W<'a, REG, O>
+pub type PINRMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 3, PINRMODE_A>;
+impl<'a, REG> PINRMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -345,7 +345,7 @@ where
 #[doc = "Field `RESETSTATE` reader - System Software Reset State"]
 pub type RESETSTATE_R = crate::FieldReader;
 #[doc = "Field `RESETSTATE` writer - System Software Reset State"]
-pub type RESETSTATE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type RESETSTATE_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bits 0:2 - WDOG Reset Mode"]
     #[inline(always)]
@@ -377,34 +377,38 @@ impl W {
     #[doc = "Bits 0:2 - WDOG Reset Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn wdogrmode(&mut self) -> WDOGRMODE_W<CTRL_SPEC, 0> {
-        WDOGRMODE_W::new(self)
+    pub fn wdogrmode(&mut self) -> WDOGRMODE_W<CTRL_SPEC> {
+        WDOGRMODE_W::new(self, 0)
     }
     #[doc = "Bits 4:6 - Core LOCKUP Reset Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn lockuprmode(&mut self) -> LOCKUPRMODE_W<CTRL_SPEC, 4> {
-        LOCKUPRMODE_W::new(self)
+    pub fn lockuprmode(&mut self) -> LOCKUPRMODE_W<CTRL_SPEC> {
+        LOCKUPRMODE_W::new(self, 4)
     }
     #[doc = "Bits 8:10 - Core Sysreset Reset Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn sysrmode(&mut self) -> SYSRMODE_W<CTRL_SPEC, 8> {
-        SYSRMODE_W::new(self)
+    pub fn sysrmode(&mut self) -> SYSRMODE_W<CTRL_SPEC> {
+        SYSRMODE_W::new(self, 8)
     }
     #[doc = "Bits 12:14 - PIN Reset Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn pinrmode(&mut self) -> PINRMODE_W<CTRL_SPEC, 12> {
-        PINRMODE_W::new(self)
+    pub fn pinrmode(&mut self) -> PINRMODE_W<CTRL_SPEC> {
+        PINRMODE_W::new(self, 12)
     }
     #[doc = "Bits 24:25 - System Software Reset State"]
     #[inline(always)]
     #[must_use]
-    pub fn resetstate(&mut self) -> RESETSTATE_W<CTRL_SPEC, 24> {
-        RESETSTATE_W::new(self)
+    pub fn resetstate(&mut self) -> RESETSTATE_W<CTRL_SPEC> {
+        RESETSTATE_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -420,10 +424,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0x4204"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x4204;
+    const RESET_VALUE: u32 = 0x4204;
 }

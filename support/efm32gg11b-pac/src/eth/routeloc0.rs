@@ -25,7 +25,7 @@ impl crate::FieldSpec for MIITXLOC_A {
 impl MIITXLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MIITXLOC_A> {
+    pub const fn variant(&self) -> Option<MIITXLOC_A> {
         match self.bits {
             0 => Some(MIITXLOC_A::LOC0),
             1 => Some(MIITXLOC_A::LOC1),
@@ -44,8 +44,8 @@ impl MIITXLOC_R {
     }
 }
 #[doc = "Field `MIITXLOC` writer - I/O Location"]
-pub type MIITXLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, MIITXLOC_A>;
-impl<'a, REG, const O: u8> MIITXLOC_W<'a, REG, O>
+pub type MIITXLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, MIITXLOC_A>;
+impl<'a, REG> MIITXLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -86,7 +86,7 @@ impl crate::FieldSpec for MIIRXLOC_A {
 impl MIIRXLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MIIRXLOC_A> {
+    pub const fn variant(&self) -> Option<MIIRXLOC_A> {
         match self.bits {
             0 => Some(MIIRXLOC_A::LOC0),
             1 => Some(MIIRXLOC_A::LOC1),
@@ -111,8 +111,8 @@ impl MIIRXLOC_R {
     }
 }
 #[doc = "Field `MIIRXLOC` writer - I/O Location"]
-pub type MIIRXLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, MIIRXLOC_A>;
-impl<'a, REG, const O: u8> MIIRXLOC_W<'a, REG, O>
+pub type MIIRXLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, MIIRXLOC_A>;
+impl<'a, REG> MIIRXLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -158,7 +158,7 @@ impl crate::FieldSpec for MIICRSLOC_A {
 impl MIICRSLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MIICRSLOC_A> {
+    pub const fn variant(&self) -> Option<MIICRSLOC_A> {
         match self.bits {
             0 => Some(MIICRSLOC_A::LOC0),
             1 => Some(MIICRSLOC_A::LOC1),
@@ -183,8 +183,8 @@ impl MIICRSLOC_R {
     }
 }
 #[doc = "Field `MIICRSLOC` writer - I/O Location"]
-pub type MIICRSLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, MIICRSLOC_A>;
-impl<'a, REG, const O: u8> MIICRSLOC_W<'a, REG, O>
+pub type MIICRSLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, MIICRSLOC_A>;
+impl<'a, REG> MIICRSLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -230,7 +230,7 @@ impl crate::FieldSpec for MIICOLLOC_A {
 impl MIICOLLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MIICOLLOC_A> {
+    pub const fn variant(&self) -> Option<MIICOLLOC_A> {
         match self.bits {
             0 => Some(MIICOLLOC_A::LOC0),
             1 => Some(MIICOLLOC_A::LOC1),
@@ -255,8 +255,8 @@ impl MIICOLLOC_R {
     }
 }
 #[doc = "Field `MIICOLLOC` writer - I/O Location"]
-pub type MIICOLLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, MIICOLLOC_A>;
-impl<'a, REG, const O: u8> MIICOLLOC_W<'a, REG, O>
+pub type MIICOLLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, MIICOLLOC_A>;
+impl<'a, REG> MIICOLLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -303,28 +303,32 @@ impl W {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn miitxloc(&mut self) -> MIITXLOC_W<ROUTELOC0_SPEC, 0> {
-        MIITXLOC_W::new(self)
+    pub fn miitxloc(&mut self) -> MIITXLOC_W<ROUTELOC0_SPEC> {
+        MIITXLOC_W::new(self, 0)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn miirxloc(&mut self) -> MIIRXLOC_W<ROUTELOC0_SPEC, 8> {
-        MIIRXLOC_W::new(self)
+    pub fn miirxloc(&mut self) -> MIIRXLOC_W<ROUTELOC0_SPEC> {
+        MIIRXLOC_W::new(self, 8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn miicrsloc(&mut self) -> MIICRSLOC_W<ROUTELOC0_SPEC, 16> {
-        MIICRSLOC_W::new(self)
+    pub fn miicrsloc(&mut self) -> MIICRSLOC_W<ROUTELOC0_SPEC> {
+        MIICRSLOC_W::new(self, 16)
     }
     #[doc = "Bits 24:29 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn miicolloc(&mut self) -> MIICOLLOC_W<ROUTELOC0_SPEC, 24> {
-        MIICOLLOC_W::new(self)
+    pub fn miicolloc(&mut self) -> MIICOLLOC_W<ROUTELOC0_SPEC> {
+        MIICOLLOC_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -340,10 +344,10 @@ impl crate::RegisterSpec for ROUTELOC0_SPEC {
 impl crate::Readable for ROUTELOC0_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routeloc0::W`](W) writer structure"]
 impl crate::Writable for ROUTELOC0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTELOC0 to value 0"]
 impl crate::Resettable for ROUTELOC0_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

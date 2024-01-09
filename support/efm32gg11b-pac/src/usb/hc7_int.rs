@@ -5,43 +5,43 @@ pub type W = crate::W<HC7_INT_SPEC>;
 #[doc = "Field `XFERCOMPL` reader - Transfer Completed"]
 pub type XFERCOMPL_R = crate::BitReader;
 #[doc = "Field `XFERCOMPL` writer - Transfer Completed"]
-pub type XFERCOMPL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type XFERCOMPL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CHHLTD` reader - Channel Halted"]
 pub type CHHLTD_R = crate::BitReader;
 #[doc = "Field `CHHLTD` writer - Channel Halted"]
-pub type CHHLTD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CHHLTD_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AHBERR` reader - AHB Error"]
 pub type AHBERR_R = crate::BitReader;
 #[doc = "Field `AHBERR` writer - AHB Error"]
-pub type AHBERR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AHBERR_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STALL` reader - STALL Response Received Interrupt"]
 pub type STALL_R = crate::BitReader;
 #[doc = "Field `STALL` writer - STALL Response Received Interrupt"]
-pub type STALL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STALL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NAK` reader - NAK Response Received Interrupt"]
 pub type NAK_R = crate::BitReader;
 #[doc = "Field `NAK` writer - NAK Response Received Interrupt"]
-pub type NAK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type NAK_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ACK` reader - ACK Response Received/Transmitted Interrupt"]
 pub type ACK_R = crate::BitReader;
 #[doc = "Field `ACK` writer - ACK Response Received/Transmitted Interrupt"]
-pub type ACK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ACK_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `XACTERR` reader - Transaction Error"]
 pub type XACTERR_R = crate::BitReader;
 #[doc = "Field `XACTERR` writer - Transaction Error"]
-pub type XACTERR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type XACTERR_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BBLERR` reader - Babble Error"]
 pub type BBLERR_R = crate::BitReader;
 #[doc = "Field `BBLERR` writer - Babble Error"]
-pub type BBLERR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BBLERR_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FRMOVRUN` reader - Frame Overrun"]
 pub type FRMOVRUN_R = crate::BitReader;
 #[doc = "Field `FRMOVRUN` writer - Frame Overrun"]
-pub type FRMOVRUN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FRMOVRUN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DATATGLERR` reader - Data Toggle Error"]
 pub type DATATGLERR_R = crate::BitReader;
 #[doc = "Field `DATATGLERR` writer - Data Toggle Error"]
-pub type DATATGLERR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DATATGLERR_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Transfer Completed"]
     #[inline(always)]
@@ -98,64 +98,68 @@ impl W {
     #[doc = "Bit 0 - Transfer Completed"]
     #[inline(always)]
     #[must_use]
-    pub fn xfercompl(&mut self) -> XFERCOMPL_W<HC7_INT_SPEC, 0> {
-        XFERCOMPL_W::new(self)
+    pub fn xfercompl(&mut self) -> XFERCOMPL_W<HC7_INT_SPEC> {
+        XFERCOMPL_W::new(self, 0)
     }
     #[doc = "Bit 1 - Channel Halted"]
     #[inline(always)]
     #[must_use]
-    pub fn chhltd(&mut self) -> CHHLTD_W<HC7_INT_SPEC, 1> {
-        CHHLTD_W::new(self)
+    pub fn chhltd(&mut self) -> CHHLTD_W<HC7_INT_SPEC> {
+        CHHLTD_W::new(self, 1)
     }
     #[doc = "Bit 2 - AHB Error"]
     #[inline(always)]
     #[must_use]
-    pub fn ahberr(&mut self) -> AHBERR_W<HC7_INT_SPEC, 2> {
-        AHBERR_W::new(self)
+    pub fn ahberr(&mut self) -> AHBERR_W<HC7_INT_SPEC> {
+        AHBERR_W::new(self, 2)
     }
     #[doc = "Bit 3 - STALL Response Received Interrupt"]
     #[inline(always)]
     #[must_use]
-    pub fn stall(&mut self) -> STALL_W<HC7_INT_SPEC, 3> {
-        STALL_W::new(self)
+    pub fn stall(&mut self) -> STALL_W<HC7_INT_SPEC> {
+        STALL_W::new(self, 3)
     }
     #[doc = "Bit 4 - NAK Response Received Interrupt"]
     #[inline(always)]
     #[must_use]
-    pub fn nak(&mut self) -> NAK_W<HC7_INT_SPEC, 4> {
-        NAK_W::new(self)
+    pub fn nak(&mut self) -> NAK_W<HC7_INT_SPEC> {
+        NAK_W::new(self, 4)
     }
     #[doc = "Bit 5 - ACK Response Received/Transmitted Interrupt"]
     #[inline(always)]
     #[must_use]
-    pub fn ack(&mut self) -> ACK_W<HC7_INT_SPEC, 5> {
-        ACK_W::new(self)
+    pub fn ack(&mut self) -> ACK_W<HC7_INT_SPEC> {
+        ACK_W::new(self, 5)
     }
     #[doc = "Bit 7 - Transaction Error"]
     #[inline(always)]
     #[must_use]
-    pub fn xacterr(&mut self) -> XACTERR_W<HC7_INT_SPEC, 7> {
-        XACTERR_W::new(self)
+    pub fn xacterr(&mut self) -> XACTERR_W<HC7_INT_SPEC> {
+        XACTERR_W::new(self, 7)
     }
     #[doc = "Bit 8 - Babble Error"]
     #[inline(always)]
     #[must_use]
-    pub fn bblerr(&mut self) -> BBLERR_W<HC7_INT_SPEC, 8> {
-        BBLERR_W::new(self)
+    pub fn bblerr(&mut self) -> BBLERR_W<HC7_INT_SPEC> {
+        BBLERR_W::new(self, 8)
     }
     #[doc = "Bit 9 - Frame Overrun"]
     #[inline(always)]
     #[must_use]
-    pub fn frmovrun(&mut self) -> FRMOVRUN_W<HC7_INT_SPEC, 9> {
-        FRMOVRUN_W::new(self)
+    pub fn frmovrun(&mut self) -> FRMOVRUN_W<HC7_INT_SPEC> {
+        FRMOVRUN_W::new(self, 9)
     }
     #[doc = "Bit 10 - Data Toggle Error"]
     #[inline(always)]
     #[must_use]
-    pub fn datatglerr(&mut self) -> DATATGLERR_W<HC7_INT_SPEC, 10> {
-        DATATGLERR_W::new(self)
+    pub fn datatglerr(&mut self) -> DATATGLERR_W<HC7_INT_SPEC> {
+        DATATGLERR_W::new(self, 10)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -171,10 +175,10 @@ impl crate::RegisterSpec for HC7_INT_SPEC {
 impl crate::Readable for HC7_INT_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hc7_int::W`](W) writer structure"]
 impl crate::Writable for HC7_INT_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HC7_INT to value 0"]
 impl crate::Resettable for HC7_INT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

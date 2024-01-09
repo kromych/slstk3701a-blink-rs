@@ -51,7 +51,7 @@ impl crate::FieldSpec for STARTUPTIMEOUT_A {
 impl STARTUPTIMEOUT_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<STARTUPTIMEOUT_A> {
+    pub const fn variant(&self) -> Option<STARTUPTIMEOUT_A> {
         match self.bits {
             0 => Some(STARTUPTIMEOUT_A::_2CYCLES),
             1 => Some(STARTUPTIMEOUT_A::_4CYCLES),
@@ -148,9 +148,8 @@ impl STARTUPTIMEOUT_R {
     }
 }
 #[doc = "Field `STARTUPTIMEOUT` writer - Wait Duration in HFXO Startup Enable Wait State"]
-pub type STARTUPTIMEOUT_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 4, O, STARTUPTIMEOUT_A>;
-impl<'a, REG, const O: u8> STARTUPTIMEOUT_W<'a, REG, O>
+pub type STARTUPTIMEOUT_W<'a, REG> = crate::FieldWriter<'a, REG, 4, STARTUPTIMEOUT_A>;
+impl<'a, REG> STARTUPTIMEOUT_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -280,7 +279,7 @@ impl crate::FieldSpec for STEADYTIMEOUT_A {
 impl STEADYTIMEOUT_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<STEADYTIMEOUT_A> {
+    pub const fn variant(&self) -> Option<STEADYTIMEOUT_A> {
         match self.bits {
             0 => Some(STEADYTIMEOUT_A::_2CYCLES),
             1 => Some(STEADYTIMEOUT_A::_4CYCLES),
@@ -377,8 +376,8 @@ impl STEADYTIMEOUT_R {
     }
 }
 #[doc = "Field `STEADYTIMEOUT` writer - Wait Duration in HFXO Startup Steady Wait State"]
-pub type STEADYTIMEOUT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O, STEADYTIMEOUT_A>;
-impl<'a, REG, const O: u8> STEADYTIMEOUT_W<'a, REG, O>
+pub type STEADYTIMEOUT_W<'a, REG> = crate::FieldWriter<'a, REG, 4, STEADYTIMEOUT_A>;
+impl<'a, REG> STEADYTIMEOUT_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -508,7 +507,7 @@ impl crate::FieldSpec for PEAKDETTIMEOUT_A {
 impl PEAKDETTIMEOUT_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PEAKDETTIMEOUT_A> {
+    pub const fn variant(&self) -> Option<PEAKDETTIMEOUT_A> {
         match self.bits {
             0 => Some(PEAKDETTIMEOUT_A::_2CYCLES),
             1 => Some(PEAKDETTIMEOUT_A::_4CYCLES),
@@ -605,9 +604,8 @@ impl PEAKDETTIMEOUT_R {
     }
 }
 #[doc = "Field `PEAKDETTIMEOUT` writer - Wait Duration in HFXO Peak Detection Wait State"]
-pub type PEAKDETTIMEOUT_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 4, O, PEAKDETTIMEOUT_A>;
-impl<'a, REG, const O: u8> PEAKDETTIMEOUT_W<'a, REG, O>
+pub type PEAKDETTIMEOUT_W<'a, REG> = crate::FieldWriter<'a, REG, 4, PEAKDETTIMEOUT_A>;
+impl<'a, REG> PEAKDETTIMEOUT_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -709,22 +707,26 @@ impl W {
     #[doc = "Bits 0:3 - Wait Duration in HFXO Startup Enable Wait State"]
     #[inline(always)]
     #[must_use]
-    pub fn startuptimeout(&mut self) -> STARTUPTIMEOUT_W<HFXOTIMEOUTCTRL_SPEC, 0> {
-        STARTUPTIMEOUT_W::new(self)
+    pub fn startuptimeout(&mut self) -> STARTUPTIMEOUT_W<HFXOTIMEOUTCTRL_SPEC> {
+        STARTUPTIMEOUT_W::new(self, 0)
     }
     #[doc = "Bits 4:7 - Wait Duration in HFXO Startup Steady Wait State"]
     #[inline(always)]
     #[must_use]
-    pub fn steadytimeout(&mut self) -> STEADYTIMEOUT_W<HFXOTIMEOUTCTRL_SPEC, 4> {
-        STEADYTIMEOUT_W::new(self)
+    pub fn steadytimeout(&mut self) -> STEADYTIMEOUT_W<HFXOTIMEOUTCTRL_SPEC> {
+        STEADYTIMEOUT_W::new(self, 4)
     }
     #[doc = "Bits 12:15 - Wait Duration in HFXO Peak Detection Wait State"]
     #[inline(always)]
     #[must_use]
-    pub fn peakdettimeout(&mut self) -> PEAKDETTIMEOUT_W<HFXOTIMEOUTCTRL_SPEC, 12> {
-        PEAKDETTIMEOUT_W::new(self)
+    pub fn peakdettimeout(&mut self) -> PEAKDETTIMEOUT_W<HFXOTIMEOUTCTRL_SPEC> {
+        PEAKDETTIMEOUT_W::new(self, 12)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -740,10 +742,10 @@ impl crate::RegisterSpec for HFXOTIMEOUTCTRL_SPEC {
 impl crate::Readable for HFXOTIMEOUTCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hfxotimeoutctrl::W`](W) writer structure"]
 impl crate::Writable for HFXOTIMEOUTCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFXOTIMEOUTCTRL to value 0xd08e"]
 impl crate::Resettable for HFXOTIMEOUTCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0xd08e;
+    const RESET_VALUE: u32 = 0xd08e;
 }

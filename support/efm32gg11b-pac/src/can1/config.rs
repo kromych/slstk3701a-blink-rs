@@ -5,7 +5,7 @@ pub type W = crate::W<CONFIG_SPEC>;
 #[doc = "Field `DBGHALT` reader - Debug Halt"]
 pub type DBGHALT_R = crate::BitReader;
 #[doc = "Field `DBGHALT` writer - Debug Halt"]
-pub type DBGHALT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DBGHALT_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 15 - Debug Halt"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bit 15 - Debug Halt"]
     #[inline(always)]
     #[must_use]
-    pub fn dbghalt(&mut self) -> DBGHALT_W<CONFIG_SPEC, 15> {
-        DBGHALT_W::new(self)
+    pub fn dbghalt(&mut self) -> DBGHALT_W<CONFIG_SPEC> {
+        DBGHALT_W::new(self, 15)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for CONFIG_SPEC {
 impl crate::Readable for CONFIG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`config::W`](W) writer structure"]
 impl crate::Writable for CONFIG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CONFIG to value 0"]
 impl crate::Resettable for CONFIG_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -5,11 +5,11 @@ pub type W = crate::W<DCDCLPVCTRL_SPEC>;
 #[doc = "Field `LPATT` reader - Low Power Feedback Attenuation"]
 pub type LPATT_R = crate::BitReader;
 #[doc = "Field `LPATT` writer - Low Power Feedback Attenuation"]
-pub type LPATT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type LPATT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LPVREF` reader - LP Mode Reference Selection for EM23 and EM4H"]
 pub type LPVREF_R = crate::FieldReader;
 #[doc = "Field `LPVREF` writer - LP Mode Reference Selection for EM23 and EM4H"]
-pub type LPVREF_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type LPVREF_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bit 0 - Low Power Feedback Attenuation"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bit 0 - Low Power Feedback Attenuation"]
     #[inline(always)]
     #[must_use]
-    pub fn lpatt(&mut self) -> LPATT_W<DCDCLPVCTRL_SPEC, 0> {
-        LPATT_W::new(self)
+    pub fn lpatt(&mut self) -> LPATT_W<DCDCLPVCTRL_SPEC> {
+        LPATT_W::new(self, 0)
     }
     #[doc = "Bits 1:8 - LP Mode Reference Selection for EM23 and EM4H"]
     #[inline(always)]
     #[must_use]
-    pub fn lpvref(&mut self) -> LPVREF_W<DCDCLPVCTRL_SPEC, 1> {
-        LPVREF_W::new(self)
+    pub fn lpvref(&mut self) -> LPVREF_W<DCDCLPVCTRL_SPEC> {
+        LPVREF_W::new(self, 1)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for DCDCLPVCTRL_SPEC {
 impl crate::Readable for DCDCLPVCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dcdclpvctrl::W`](W) writer structure"]
 impl crate::Writable for DCDCLPVCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DCDCLPVCTRL to value 0x0168"]
 impl crate::Resettable for DCDCLPVCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0168;
+    const RESET_VALUE: u32 = 0x0168;
 }

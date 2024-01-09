@@ -179,5 +179,5 @@ impl crate::RegisterSpec for PEEK_SPEC {
 impl crate::Readable for PEEK_SPEC {}
 #[doc = "`reset()` method sets PEEK to value 0"]
 impl crate::Resettable for PEEK_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

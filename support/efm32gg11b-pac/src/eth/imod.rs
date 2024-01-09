@@ -5,11 +5,11 @@ pub type W = crate::W<IMOD_SPEC>;
 #[doc = "Field `RXINTMOD` reader - Count of 800ns periods before bit 1 is set in the interrupt status register after a frame is received"]
 pub type RXINTMOD_R = crate::FieldReader;
 #[doc = "Field `RXINTMOD` writer - Count of 800ns periods before bit 1 is set in the interrupt status register after a frame is received"]
-pub type RXINTMOD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type RXINTMOD_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `TXINTMOD` reader - Count of 800ns periods before bit 7 is set in the interrupt status register after a frame is transmitted"]
 pub type TXINTMOD_R = crate::FieldReader;
 #[doc = "Field `TXINTMOD` writer - Count of 800ns periods before bit 7 is set in the interrupt status register after a frame is transmitted"]
-pub type TXINTMOD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type TXINTMOD_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Count of 800ns periods before bit 1 is set in the interrupt status register after a frame is received"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:7 - Count of 800ns periods before bit 1 is set in the interrupt status register after a frame is received"]
     #[inline(always)]
     #[must_use]
-    pub fn rxintmod(&mut self) -> RXINTMOD_W<IMOD_SPEC, 0> {
-        RXINTMOD_W::new(self)
+    pub fn rxintmod(&mut self) -> RXINTMOD_W<IMOD_SPEC> {
+        RXINTMOD_W::new(self, 0)
     }
     #[doc = "Bits 16:23 - Count of 800ns periods before bit 7 is set in the interrupt status register after a frame is transmitted"]
     #[inline(always)]
     #[must_use]
-    pub fn txintmod(&mut self) -> TXINTMOD_W<IMOD_SPEC, 16> {
-        TXINTMOD_W::new(self)
+    pub fn txintmod(&mut self) -> TXINTMOD_W<IMOD_SPEC> {
+        TXINTMOD_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for IMOD_SPEC {
 impl crate::Readable for IMOD_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`imod::W`](W) writer structure"]
 impl crate::Writable for IMOD_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IMOD to value 0"]
 impl crate::Resettable for IMOD_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

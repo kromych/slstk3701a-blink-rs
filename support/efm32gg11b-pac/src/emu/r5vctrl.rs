@@ -5,15 +5,15 @@ pub type W = crate::W<R5VCTRL_SPEC>;
 #[doc = "Field `BYPASS` reader - 5V Regulator Bypass"]
 pub type BYPASS_R = crate::BitReader;
 #[doc = "Field `BYPASS` writer - 5V Regulator Bypass"]
-pub type BYPASS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BYPASS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EM4WUEN` reader - Enable EM4 Wakeup Due to VBUS Detection"]
 pub type EM4WUEN_R = crate::BitReader;
 #[doc = "Field `EM4WUEN` writer - Enable EM4 Wakeup Due to VBUS Detection"]
-pub type EM4WUEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EM4WUEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `IMONEN` reader - Enable the Regulator Current Monitor for Selected Current Path to Either VREGI or VBUS"]
 pub type IMONEN_R = crate::BitReader;
 #[doc = "Field `IMONEN` writer - Enable the Regulator Current Monitor for Selected Current Path to Either VREGI or VBUS"]
-pub type IMONEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type IMONEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INPUTMODE` reader - 5V Input Mode"]
 pub type INPUTMODE_R = crate::FieldReader<INPUTMODE_A>;
 #[doc = "5V Input Mode\n\nValue on reset: 0"]
@@ -39,7 +39,7 @@ impl crate::FieldSpec for INPUTMODE_A {
 impl INPUTMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUTMODE_A> {
+    pub const fn variant(&self) -> Option<INPUTMODE_A> {
         match self.bits {
             0 => Some(INPUTMODE_A::AUTO),
             1 => Some(INPUTMODE_A::VBUS),
@@ -64,8 +64,8 @@ impl INPUTMODE_R {
     }
 }
 #[doc = "Field `INPUTMODE` writer - 5V Input Mode"]
-pub type INPUTMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, INPUTMODE_A>;
-impl<'a, REG, const O: u8> INPUTMODE_W<'a, REG, O>
+pub type INPUTMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, INPUTMODE_A>;
+impl<'a, REG> INPUTMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -112,28 +112,32 @@ impl W {
     #[doc = "Bit 0 - 5V Regulator Bypass"]
     #[inline(always)]
     #[must_use]
-    pub fn bypass(&mut self) -> BYPASS_W<R5VCTRL_SPEC, 0> {
-        BYPASS_W::new(self)
+    pub fn bypass(&mut self) -> BYPASS_W<R5VCTRL_SPEC> {
+        BYPASS_W::new(self, 0)
     }
     #[doc = "Bit 1 - Enable EM4 Wakeup Due to VBUS Detection"]
     #[inline(always)]
     #[must_use]
-    pub fn em4wuen(&mut self) -> EM4WUEN_W<R5VCTRL_SPEC, 1> {
-        EM4WUEN_W::new(self)
+    pub fn em4wuen(&mut self) -> EM4WUEN_W<R5VCTRL_SPEC> {
+        EM4WUEN_W::new(self, 1)
     }
     #[doc = "Bit 2 - Enable the Regulator Current Monitor for Selected Current Path to Either VREGI or VBUS"]
     #[inline(always)]
     #[must_use]
-    pub fn imonen(&mut self) -> IMONEN_W<R5VCTRL_SPEC, 2> {
-        IMONEN_W::new(self)
+    pub fn imonen(&mut self) -> IMONEN_W<R5VCTRL_SPEC> {
+        IMONEN_W::new(self, 2)
     }
     #[doc = "Bits 8:9 - 5V Input Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn inputmode(&mut self) -> INPUTMODE_W<R5VCTRL_SPEC, 8> {
-        INPUTMODE_W::new(self)
+    pub fn inputmode(&mut self) -> INPUTMODE_W<R5VCTRL_SPEC> {
+        INPUTMODE_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -149,10 +153,10 @@ impl crate::RegisterSpec for R5VCTRL_SPEC {
 impl crate::Readable for R5VCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`r5vctrl::W`](W) writer structure"]
 impl crate::Writable for R5VCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets R5VCTRL to value 0"]
 impl crate::Resettable for R5VCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

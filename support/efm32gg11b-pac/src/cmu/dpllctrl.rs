@@ -5,15 +5,15 @@ pub type W = crate::W<DPLLCTRL_SPEC>;
 #[doc = "Field `MODE` reader - Operating Mode Control"]
 pub type MODE_R = crate::BitReader;
 #[doc = "Field `MODE` writer - Operating Mode Control"]
-pub type MODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EDGESEL` reader - Reference Edge Select"]
 pub type EDGESEL_R = crate::BitReader;
 #[doc = "Field `EDGESEL` writer - Reference Edge Select"]
-pub type EDGESEL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EDGESEL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AUTORECOVER` reader - Automatic Recovery Ctrl"]
 pub type AUTORECOVER_R = crate::BitReader;
 #[doc = "Field `AUTORECOVER` writer - Automatic Recovery Ctrl"]
-pub type AUTORECOVER_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AUTORECOVER_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `REFSEL` reader - Reference Clock Selection Control"]
 pub type REFSEL_R = crate::FieldReader<REFSEL_A>;
 #[doc = "Reference Clock Selection Control\n\nValue on reset: 0"]
@@ -41,7 +41,7 @@ impl crate::FieldSpec for REFSEL_A {
 impl REFSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> REFSEL_A {
+    pub const fn variant(&self) -> REFSEL_A {
         match self.bits {
             0 => REFSEL_A::HFXO,
             1 => REFSEL_A::LFXO,
@@ -72,8 +72,8 @@ impl REFSEL_R {
     }
 }
 #[doc = "Field `REFSEL` writer - Reference Clock Selection Control"]
-pub type REFSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, REFSEL_A>;
-impl<'a, REG, const O: u8> REFSEL_W<'a, REG, O>
+pub type REFSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, REFSEL_A>;
+impl<'a, REG> REFSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -102,7 +102,7 @@ where
 #[doc = "Field `DITHEN` reader - Dither Enable Control"]
 pub type DITHEN_R = crate::BitReader;
 #[doc = "Field `DITHEN` writer - Dither Enable Control"]
-pub type DITHEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DITHEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Operating Mode Control"]
     #[inline(always)]
@@ -134,34 +134,38 @@ impl W {
     #[doc = "Bit 0 - Operating Mode Control"]
     #[inline(always)]
     #[must_use]
-    pub fn mode(&mut self) -> MODE_W<DPLLCTRL_SPEC, 0> {
-        MODE_W::new(self)
+    pub fn mode(&mut self) -> MODE_W<DPLLCTRL_SPEC> {
+        MODE_W::new(self, 0)
     }
     #[doc = "Bit 1 - Reference Edge Select"]
     #[inline(always)]
     #[must_use]
-    pub fn edgesel(&mut self) -> EDGESEL_W<DPLLCTRL_SPEC, 1> {
-        EDGESEL_W::new(self)
+    pub fn edgesel(&mut self) -> EDGESEL_W<DPLLCTRL_SPEC> {
+        EDGESEL_W::new(self, 1)
     }
     #[doc = "Bit 2 - Automatic Recovery Ctrl"]
     #[inline(always)]
     #[must_use]
-    pub fn autorecover(&mut self) -> AUTORECOVER_W<DPLLCTRL_SPEC, 2> {
-        AUTORECOVER_W::new(self)
+    pub fn autorecover(&mut self) -> AUTORECOVER_W<DPLLCTRL_SPEC> {
+        AUTORECOVER_W::new(self, 2)
     }
     #[doc = "Bits 3:4 - Reference Clock Selection Control"]
     #[inline(always)]
     #[must_use]
-    pub fn refsel(&mut self) -> REFSEL_W<DPLLCTRL_SPEC, 3> {
-        REFSEL_W::new(self)
+    pub fn refsel(&mut self) -> REFSEL_W<DPLLCTRL_SPEC> {
+        REFSEL_W::new(self, 3)
     }
     #[doc = "Bit 6 - Dither Enable Control"]
     #[inline(always)]
     #[must_use]
-    pub fn dithen(&mut self) -> DITHEN_W<DPLLCTRL_SPEC, 6> {
-        DITHEN_W::new(self)
+    pub fn dithen(&mut self) -> DITHEN_W<DPLLCTRL_SPEC> {
+        DITHEN_W::new(self, 6)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -177,10 +181,10 @@ impl crate::RegisterSpec for DPLLCTRL_SPEC {
 impl crate::Readable for DPLLCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dpllctrl::W`](W) writer structure"]
 impl crate::Writable for DPLLCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DPLLCTRL to value 0"]
 impl crate::Resettable for DPLLCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

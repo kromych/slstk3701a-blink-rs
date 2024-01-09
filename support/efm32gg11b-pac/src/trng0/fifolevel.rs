@@ -18,5 +18,5 @@ impl crate::RegisterSpec for FIFOLEVEL_SPEC {
 impl crate::Readable for FIFOLEVEL_SPEC {}
 #[doc = "`reset()` method sets FIFOLEVEL to value 0"]
 impl crate::Resettable for FIFOLEVEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

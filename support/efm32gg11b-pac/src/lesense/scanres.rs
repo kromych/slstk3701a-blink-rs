@@ -5,11 +5,11 @@ pub type W = crate::W<SCANRES_SPEC>;
 #[doc = "Field `SCANRES` reader - Scan Results"]
 pub type SCANRES_R = crate::FieldReader<u16>;
 #[doc = "Field `SCANRES` writer - Scan Results"]
-pub type SCANRES_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
+pub type SCANRES_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 #[doc = "Field `STEPDIR` reader - Direction of Previous Step Detection"]
 pub type STEPDIR_R = crate::FieldReader<u16>;
 #[doc = "Field `STEPDIR` writer - Direction of Previous Step Detection"]
-pub type STEPDIR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
+pub type STEPDIR_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
     #[doc = "Bits 0:15 - Scan Results"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:15 - Scan Results"]
     #[inline(always)]
     #[must_use]
-    pub fn scanres(&mut self) -> SCANRES_W<SCANRES_SPEC, 0> {
-        SCANRES_W::new(self)
+    pub fn scanres(&mut self) -> SCANRES_W<SCANRES_SPEC> {
+        SCANRES_W::new(self, 0)
     }
     #[doc = "Bits 16:31 - Direction of Previous Step Detection"]
     #[inline(always)]
     #[must_use]
-    pub fn stepdir(&mut self) -> STEPDIR_W<SCANRES_SPEC, 16> {
-        STEPDIR_W::new(self)
+    pub fn stepdir(&mut self) -> STEPDIR_W<SCANRES_SPEC> {
+        STEPDIR_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for SCANRES_SPEC {
 impl crate::Readable for SCANRES_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`scanres::W`](W) writer structure"]
 impl crate::Writable for SCANRES_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SCANRES to value 0"]
 impl crate::Resettable for SCANRES_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

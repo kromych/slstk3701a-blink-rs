@@ -37,7 +37,7 @@ impl crate::FieldSpec for INPUT32TO39SEL_A {
 impl INPUT32TO39SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT32TO39SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT32TO39SEL_A> {
         match self.bits {
             4 => Some(INPUT32TO39SEL_A::APORT1CH0TO7),
             5 => Some(INPUT32TO39SEL_A::APORT1CH8TO15),
@@ -92,9 +92,8 @@ impl INPUT32TO39SEL_R {
     }
 }
 #[doc = "Field `INPUT32TO39SEL` writer - CSEN_INPUT32-39 Select"]
-pub type INPUT32TO39SEL_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 4, O, INPUT32TO39SEL_A>;
-impl<'a, REG, const O: u8> INPUT32TO39SEL_W<'a, REG, O>
+pub type INPUT32TO39SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4, INPUT32TO39SEL_A>;
+impl<'a, REG> INPUT32TO39SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -175,7 +174,7 @@ impl crate::FieldSpec for INPUT40TO47SEL_A {
 impl INPUT40TO47SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT40TO47SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT40TO47SEL_A> {
         match self.bits {
             4 => Some(INPUT40TO47SEL_A::APORT1CH0TO7),
             5 => Some(INPUT40TO47SEL_A::APORT1CH8TO15),
@@ -230,9 +229,8 @@ impl INPUT40TO47SEL_R {
     }
 }
 #[doc = "Field `INPUT40TO47SEL` writer - CSEN_INPUT40-47 Select"]
-pub type INPUT40TO47SEL_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 4, O, INPUT40TO47SEL_A>;
-impl<'a, REG, const O: u8> INPUT40TO47SEL_W<'a, REG, O>
+pub type INPUT40TO47SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4, INPUT40TO47SEL_A>;
+impl<'a, REG> INPUT40TO47SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -313,7 +311,7 @@ impl crate::FieldSpec for INPUT48TO55SEL_A {
 impl INPUT48TO55SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT48TO55SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT48TO55SEL_A> {
         match self.bits {
             4 => Some(INPUT48TO55SEL_A::APORT1CH0TO7),
             5 => Some(INPUT48TO55SEL_A::APORT1CH8TO15),
@@ -368,9 +366,8 @@ impl INPUT48TO55SEL_R {
     }
 }
 #[doc = "Field `INPUT48TO55SEL` writer - CSEN_INPUT48-55 Select"]
-pub type INPUT48TO55SEL_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 4, O, INPUT48TO55SEL_A>;
-impl<'a, REG, const O: u8> INPUT48TO55SEL_W<'a, REG, O>
+pub type INPUT48TO55SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4, INPUT48TO55SEL_A>;
+impl<'a, REG> INPUT48TO55SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -451,7 +448,7 @@ impl crate::FieldSpec for INPUT56TO63SEL_A {
 impl INPUT56TO63SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT56TO63SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT56TO63SEL_A> {
         match self.bits {
             4 => Some(INPUT56TO63SEL_A::APORT1CH0TO7),
             5 => Some(INPUT56TO63SEL_A::APORT1CH8TO15),
@@ -506,9 +503,8 @@ impl INPUT56TO63SEL_R {
     }
 }
 #[doc = "Field `INPUT56TO63SEL` writer - CSEN_INPUT56-63 Select"]
-pub type INPUT56TO63SEL_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 4, O, INPUT56TO63SEL_A>;
-impl<'a, REG, const O: u8> INPUT56TO63SEL_W<'a, REG, O>
+pub type INPUT56TO63SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4, INPUT56TO63SEL_A>;
+impl<'a, REG> INPUT56TO63SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -580,28 +576,32 @@ impl W {
     #[doc = "Bits 0:3 - CSEN_INPUT32-39 Select"]
     #[inline(always)]
     #[must_use]
-    pub fn input32to39sel(&mut self) -> INPUT32TO39SEL_W<SCANINPUTSEL1_SPEC, 0> {
-        INPUT32TO39SEL_W::new(self)
+    pub fn input32to39sel(&mut self) -> INPUT32TO39SEL_W<SCANINPUTSEL1_SPEC> {
+        INPUT32TO39SEL_W::new(self, 0)
     }
     #[doc = "Bits 8:11 - CSEN_INPUT40-47 Select"]
     #[inline(always)]
     #[must_use]
-    pub fn input40to47sel(&mut self) -> INPUT40TO47SEL_W<SCANINPUTSEL1_SPEC, 8> {
-        INPUT40TO47SEL_W::new(self)
+    pub fn input40to47sel(&mut self) -> INPUT40TO47SEL_W<SCANINPUTSEL1_SPEC> {
+        INPUT40TO47SEL_W::new(self, 8)
     }
     #[doc = "Bits 16:19 - CSEN_INPUT48-55 Select"]
     #[inline(always)]
     #[must_use]
-    pub fn input48to55sel(&mut self) -> INPUT48TO55SEL_W<SCANINPUTSEL1_SPEC, 16> {
-        INPUT48TO55SEL_W::new(self)
+    pub fn input48to55sel(&mut self) -> INPUT48TO55SEL_W<SCANINPUTSEL1_SPEC> {
+        INPUT48TO55SEL_W::new(self, 16)
     }
     #[doc = "Bits 24:27 - CSEN_INPUT56-63 Select"]
     #[inline(always)]
     #[must_use]
-    pub fn input56to63sel(&mut self) -> INPUT56TO63SEL_W<SCANINPUTSEL1_SPEC, 24> {
-        INPUT56TO63SEL_W::new(self)
+    pub fn input56to63sel(&mut self) -> INPUT56TO63SEL_W<SCANINPUTSEL1_SPEC> {
+        INPUT56TO63SEL_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -617,10 +617,10 @@ impl crate::RegisterSpec for SCANINPUTSEL1_SPEC {
 impl crate::Readable for SCANINPUTSEL1_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`scaninputsel1::W`](W) writer structure"]
 impl crate::Writable for SCANINPUTSEL1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SCANINPUTSEL1 to value 0"]
 impl crate::Resettable for SCANINPUTSEL1_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

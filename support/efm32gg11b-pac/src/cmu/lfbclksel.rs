@@ -31,7 +31,7 @@ impl crate::FieldSpec for LFB_A {
 impl LFB_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<LFB_A> {
+    pub const fn variant(&self) -> Option<LFB_A> {
         match self.bits {
             0 => Some(LFB_A::DISABLED),
             1 => Some(LFB_A::LFRCO),
@@ -68,8 +68,8 @@ impl LFB_R {
     }
 }
 #[doc = "Field `LFB` writer - Clock Select for LFB"]
-pub type LFB_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, LFB_A>;
-impl<'a, REG, const O: u8> LFB_W<'a, REG, O>
+pub type LFB_W<'a, REG> = crate::FieldWriter<'a, REG, 3, LFB_A>;
+impl<'a, REG> LFB_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -111,10 +111,14 @@ impl W {
     #[doc = "Bits 0:2 - Clock Select for LFB"]
     #[inline(always)]
     #[must_use]
-    pub fn lfb(&mut self) -> LFB_W<LFBCLKSEL_SPEC, 0> {
-        LFB_W::new(self)
+    pub fn lfb(&mut self) -> LFB_W<LFBCLKSEL_SPEC> {
+        LFB_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -130,10 +134,10 @@ impl crate::RegisterSpec for LFBCLKSEL_SPEC {
 impl crate::Readable for LFBCLKSEL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`lfbclksel::W`](W) writer structure"]
 impl crate::Writable for LFBCLKSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets LFBCLKSEL to value 0"]
 impl crate::Resettable for LFBCLKSEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

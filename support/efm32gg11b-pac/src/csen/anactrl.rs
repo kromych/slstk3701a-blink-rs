@@ -5,15 +5,15 @@ pub type W = crate::W<ANACTRL_SPEC>;
 #[doc = "Field `IREFPROG` reader - Reference Current Control."]
 pub type IREFPROG_R = crate::FieldReader;
 #[doc = "Field `IREFPROG` writer - Reference Current Control."]
-pub type IREFPROG_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type IREFPROG_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `IDACIREFS` reader - Current DAC and Reference Current Scale"]
 pub type IDACIREFS_R = crate::FieldReader;
 #[doc = "Field `IDACIREFS` writer - Current DAC and Reference Current Scale"]
-pub type IDACIREFS_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type IDACIREFS_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `TRSTPROG` reader - Reset Timing"]
 pub type TRSTPROG_R = crate::FieldReader;
 #[doc = "Field `TRSTPROG` writer - Reset Timing"]
-pub type TRSTPROG_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type TRSTPROG_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 impl R {
     #[doc = "Bits 4:6 - Reference Current Control."]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 4:6 - Reference Current Control."]
     #[inline(always)]
     #[must_use]
-    pub fn irefprog(&mut self) -> IREFPROG_W<ANACTRL_SPEC, 4> {
-        IREFPROG_W::new(self)
+    pub fn irefprog(&mut self) -> IREFPROG_W<ANACTRL_SPEC> {
+        IREFPROG_W::new(self, 4)
     }
     #[doc = "Bits 8:10 - Current DAC and Reference Current Scale"]
     #[inline(always)]
     #[must_use]
-    pub fn idacirefs(&mut self) -> IDACIREFS_W<ANACTRL_SPEC, 8> {
-        IDACIREFS_W::new(self)
+    pub fn idacirefs(&mut self) -> IDACIREFS_W<ANACTRL_SPEC> {
+        IDACIREFS_W::new(self, 8)
     }
     #[doc = "Bits 20:22 - Reset Timing"]
     #[inline(always)]
     #[must_use]
-    pub fn trstprog(&mut self) -> TRSTPROG_W<ANACTRL_SPEC, 20> {
-        TRSTPROG_W::new(self)
+    pub fn trstprog(&mut self) -> TRSTPROG_W<ANACTRL_SPEC> {
+        TRSTPROG_W::new(self, 20)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for ANACTRL_SPEC {
 impl crate::Readable for ANACTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`anactrl::W`](W) writer structure"]
 impl crate::Writable for ANACTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ANACTRL to value 0x70"]
 impl crate::Resettable for ANACTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x70;
+    const RESET_VALUE: u32 = 0x70;
 }

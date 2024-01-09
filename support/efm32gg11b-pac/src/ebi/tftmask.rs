@@ -5,7 +5,7 @@ pub type W = crate::W<TFTMASK_SPEC>;
 #[doc = "Field `TFTMASK` reader - TFT Mask Value"]
 pub type TFTMASK_R = crate::FieldReader<u32>;
 #[doc = "Field `TFTMASK` writer - TFT Mask Value"]
-pub type TFTMASK_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 24, O, u32>;
+pub type TFTMASK_W<'a, REG> = crate::FieldWriter<'a, REG, 24, u32>;
 impl R {
     #[doc = "Bits 0:23 - TFT Mask Value"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:23 - TFT Mask Value"]
     #[inline(always)]
     #[must_use]
-    pub fn tftmask(&mut self) -> TFTMASK_W<TFTMASK_SPEC, 0> {
-        TFTMASK_W::new(self)
+    pub fn tftmask(&mut self) -> TFTMASK_W<TFTMASK_SPEC> {
+        TFTMASK_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for TFTMASK_SPEC {
 impl crate::Readable for TFTMASK_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`tftmask::W`](W) writer structure"]
 impl crate::Writable for TFTMASK_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TFTMASK to value 0"]
 impl crate::Resettable for TFTMASK_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -5,7 +5,7 @@ pub type W = crate::W<REP0_SPEC>;
 #[doc = "Field `REP0` reader - Repeat Counter 0"]
 pub type REP0_R = crate::FieldReader;
 #[doc = "Field `REP0` writer - Repeat Counter 0"]
-pub type REP0_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type REP0_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Repeat Counter 0"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:7 - Repeat Counter 0"]
     #[inline(always)]
     #[must_use]
-    pub fn rep0(&mut self) -> REP0_W<REP0_SPEC, 0> {
-        REP0_W::new(self)
+    pub fn rep0(&mut self) -> REP0_W<REP0_SPEC> {
+        REP0_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for REP0_SPEC {
 impl crate::Readable for REP0_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`rep0::W`](W) writer structure"]
 impl crate::Writable for REP0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets REP0 to value 0"]
 impl crate::Resettable for REP0_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

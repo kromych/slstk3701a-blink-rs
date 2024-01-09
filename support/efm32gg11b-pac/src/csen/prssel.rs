@@ -69,7 +69,7 @@ impl crate::FieldSpec for PRSSEL_A {
 impl PRSSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL_A> {
+    pub const fn variant(&self) -> Option<PRSSEL_A> {
         match self.bits {
             0 => Some(PRSSEL_A::PRSCH0),
             1 => Some(PRSSEL_A::PRSCH1),
@@ -220,8 +220,8 @@ impl PRSSEL_R {
     }
 }
 #[doc = "Field `PRSSEL` writer - PRS Channel Select"]
-pub type PRSSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL_A>;
-impl<'a, REG, const O: u8> PRSSEL_W<'a, REG, O>
+pub type PRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL_A>;
+impl<'a, REG> PRSSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -358,10 +358,14 @@ impl W {
     #[doc = "Bits 0:4 - PRS Channel Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel(&mut self) -> PRSSEL_W<PRSSEL_SPEC, 0> {
-        PRSSEL_W::new(self)
+    pub fn prssel(&mut self) -> PRSSEL_W<PRSSEL_SPEC> {
+        PRSSEL_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -377,10 +381,10 @@ impl crate::RegisterSpec for PRSSEL_SPEC {
 impl crate::Readable for PRSSEL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`prssel::W`](W) writer structure"]
 impl crate::Writable for PRSSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PRSSEL to value 0"]
 impl crate::Resettable for PRSSEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -31,7 +31,7 @@ impl crate::FieldSpec for SDR104DRVSTVAL_A {
 impl SDR104DRVSTVAL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> SDR104DRVSTVAL_A {
+    pub const fn variant(&self) -> SDR104DRVSTVAL_A {
         match self.bits {
             0 => SDR104DRVSTVAL_A::TYPEB,
             1 => SDR104DRVSTVAL_A::TYPEA,
@@ -92,7 +92,7 @@ impl crate::FieldSpec for DDR50DRVSTVAL_A {
 impl DDR50DRVSTVAL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DDR50DRVSTVAL_A {
+    pub const fn variant(&self) -> DDR50DRVSTVAL_A {
         match self.bits {
             0 => DDR50DRVSTVAL_A::TYPEB,
             1 => DDR50DRVSTVAL_A::TYPEA,
@@ -163,5 +163,5 @@ impl crate::RegisterSpec for PRSTVAL6_SPEC {
 impl crate::Readable for PRSTVAL6_SPEC {}
 #[doc = "`reset()` method sets PRSTVAL6 to value 0"]
 impl crate::Resettable for PRSTVAL6_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

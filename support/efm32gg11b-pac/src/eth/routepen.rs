@@ -5,27 +5,27 @@ pub type W = crate::W<ROUTEPEN_SPEC>;
 #[doc = "Field `MDIOPEN` reader - MDIO I/O Enable"]
 pub type MDIOPEN_R = crate::BitReader;
 #[doc = "Field `MDIOPEN` writer - MDIO I/O Enable"]
-pub type MDIOPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MDIOPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MIITXERPEN` reader - MII TX ER I/O Enable"]
 pub type MIITXERPEN_R = crate::BitReader;
 #[doc = "Field `MIITXERPEN` writer - MII TX ER I/O Enable"]
-pub type MIITXERPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MIITXERPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MIIRXERPEN` reader - MII TX ER I/O Enable"]
 pub type MIIRXERPEN_R = crate::BitReader;
 #[doc = "Field `MIIRXERPEN` writer - MII TX ER I/O Enable"]
-pub type MIIRXERPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MIIRXERPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MIIPEN` reader - MII I/O Enable"]
 pub type MIIPEN_R = crate::BitReader;
 #[doc = "Field `MIIPEN` writer - MII I/O Enable"]
-pub type MIIPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MIIPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RMIIPEN` reader - RMII I/O Enable"]
 pub type RMIIPEN_R = crate::BitReader;
 #[doc = "Field `RMIIPEN` writer - RMII I/O Enable"]
-pub type RMIIPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RMIIPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TSUTMRTOGPEN` reader - TSU_TMR_CNT_SEC Output Enable"]
 pub type TSUTMRTOGPEN_R = crate::BitReader;
 #[doc = "Field `TSUTMRTOGPEN` writer - TSU_TMR_CNT_SEC Output Enable"]
-pub type TSUTMRTOGPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TSUTMRTOGPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - MDIO I/O Enable"]
     #[inline(always)]
@@ -62,40 +62,44 @@ impl W {
     #[doc = "Bit 0 - MDIO I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn mdiopen(&mut self) -> MDIOPEN_W<ROUTEPEN_SPEC, 0> {
-        MDIOPEN_W::new(self)
+    pub fn mdiopen(&mut self) -> MDIOPEN_W<ROUTEPEN_SPEC> {
+        MDIOPEN_W::new(self, 0)
     }
     #[doc = "Bit 1 - MII TX ER I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn miitxerpen(&mut self) -> MIITXERPEN_W<ROUTEPEN_SPEC, 1> {
-        MIITXERPEN_W::new(self)
+    pub fn miitxerpen(&mut self) -> MIITXERPEN_W<ROUTEPEN_SPEC> {
+        MIITXERPEN_W::new(self, 1)
     }
     #[doc = "Bit 2 - MII TX ER I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn miirxerpen(&mut self) -> MIIRXERPEN_W<ROUTEPEN_SPEC, 2> {
-        MIIRXERPEN_W::new(self)
+    pub fn miirxerpen(&mut self) -> MIIRXERPEN_W<ROUTEPEN_SPEC> {
+        MIIRXERPEN_W::new(self, 2)
     }
     #[doc = "Bit 3 - MII I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn miipen(&mut self) -> MIIPEN_W<ROUTEPEN_SPEC, 3> {
-        MIIPEN_W::new(self)
+    pub fn miipen(&mut self) -> MIIPEN_W<ROUTEPEN_SPEC> {
+        MIIPEN_W::new(self, 3)
     }
     #[doc = "Bit 4 - RMII I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn rmiipen(&mut self) -> RMIIPEN_W<ROUTEPEN_SPEC, 4> {
-        RMIIPEN_W::new(self)
+    pub fn rmiipen(&mut self) -> RMIIPEN_W<ROUTEPEN_SPEC> {
+        RMIIPEN_W::new(self, 4)
     }
     #[doc = "Bit 5 - TSU_TMR_CNT_SEC Output Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn tsutmrtogpen(&mut self) -> TSUTMRTOGPEN_W<ROUTEPEN_SPEC, 5> {
-        TSUTMRTOGPEN_W::new(self)
+    pub fn tsutmrtogpen(&mut self) -> TSUTMRTOGPEN_W<ROUTEPEN_SPEC> {
+        TSUTMRTOGPEN_W::new(self, 5)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -111,10 +115,10 @@ impl crate::RegisterSpec for ROUTEPEN_SPEC {
 impl crate::Readable for ROUTEPEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routepen::W`](W) writer structure"]
 impl crate::Writable for ROUTEPEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTEPEN to value 0"]
 impl crate::Resettable for ROUTEPEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

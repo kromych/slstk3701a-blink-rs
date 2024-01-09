@@ -5,19 +5,19 @@ pub type W = crate::W<OPA1_OUT_SPEC>;
 #[doc = "Field `MAINOUTEN` reader - OPAx Main Output Enable"]
 pub type MAINOUTEN_R = crate::BitReader;
 #[doc = "Field `MAINOUTEN` writer - OPAx Main Output Enable"]
-pub type MAINOUTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MAINOUTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ALTOUTEN` reader - OPAx Alternative Output Enable"]
 pub type ALTOUTEN_R = crate::BitReader;
 #[doc = "Field `ALTOUTEN` writer - OPAx Alternative Output Enable"]
-pub type ALTOUTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ALTOUTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `APORTOUTEN` reader - OPAx Aport Output Enable"]
 pub type APORTOUTEN_R = crate::BitReader;
 #[doc = "Field `APORTOUTEN` writer - OPAx Aport Output Enable"]
-pub type APORTOUTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type APORTOUTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SHORT` reader - OPAx Main and Alternative Output Short"]
 pub type SHORT_R = crate::BitReader;
 #[doc = "Field `SHORT` writer - OPAx Main and Alternative Output Short"]
-pub type SHORT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SHORT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ALTOUTPADEN` reader - OPAx Output Enable Value"]
 pub type ALTOUTPADEN_R = crate::FieldReader<ALTOUTPADEN_A>;
 #[doc = "OPAx Output Enable Value\n\nValue on reset: 0"]
@@ -47,7 +47,7 @@ impl crate::FieldSpec for ALTOUTPADEN_A {
 impl ALTOUTPADEN_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<ALTOUTPADEN_A> {
+    pub const fn variant(&self) -> Option<ALTOUTPADEN_A> {
         match self.bits {
             1 => Some(ALTOUTPADEN_A::OUT0),
             2 => Some(ALTOUTPADEN_A::OUT1),
@@ -84,8 +84,8 @@ impl ALTOUTPADEN_R {
     }
 }
 #[doc = "Field `ALTOUTPADEN` writer - OPAx Output Enable Value"]
-pub type ALTOUTPADEN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, ALTOUTPADEN_A>;
-impl<'a, REG, const O: u8> ALTOUTPADEN_W<'a, REG, O>
+pub type ALTOUTPADEN_W<'a, REG> = crate::FieldWriter<'a, REG, 5, ALTOUTPADEN_A>;
+impl<'a, REG> ALTOUTPADEN_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -119,7 +119,7 @@ where
 #[doc = "Field `APORTOUTSEL` reader - OPAx APORT Output"]
 pub type APORTOUTSEL_R = crate::FieldReader;
 #[doc = "Field `APORTOUTSEL` writer - OPAx APORT Output"]
-pub type APORTOUTSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type APORTOUTSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bit 0 - OPAx Main Output Enable"]
     #[inline(always)]
@@ -156,40 +156,44 @@ impl W {
     #[doc = "Bit 0 - OPAx Main Output Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn mainouten(&mut self) -> MAINOUTEN_W<OPA1_OUT_SPEC, 0> {
-        MAINOUTEN_W::new(self)
+    pub fn mainouten(&mut self) -> MAINOUTEN_W<OPA1_OUT_SPEC> {
+        MAINOUTEN_W::new(self, 0)
     }
     #[doc = "Bit 1 - OPAx Alternative Output Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn altouten(&mut self) -> ALTOUTEN_W<OPA1_OUT_SPEC, 1> {
-        ALTOUTEN_W::new(self)
+    pub fn altouten(&mut self) -> ALTOUTEN_W<OPA1_OUT_SPEC> {
+        ALTOUTEN_W::new(self, 1)
     }
     #[doc = "Bit 2 - OPAx Aport Output Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn aportouten(&mut self) -> APORTOUTEN_W<OPA1_OUT_SPEC, 2> {
-        APORTOUTEN_W::new(self)
+    pub fn aportouten(&mut self) -> APORTOUTEN_W<OPA1_OUT_SPEC> {
+        APORTOUTEN_W::new(self, 2)
     }
     #[doc = "Bit 3 - OPAx Main and Alternative Output Short"]
     #[inline(always)]
     #[must_use]
-    pub fn short(&mut self) -> SHORT_W<OPA1_OUT_SPEC, 3> {
-        SHORT_W::new(self)
+    pub fn short(&mut self) -> SHORT_W<OPA1_OUT_SPEC> {
+        SHORT_W::new(self, 3)
     }
     #[doc = "Bits 4:8 - OPAx Output Enable Value"]
     #[inline(always)]
     #[must_use]
-    pub fn altoutpaden(&mut self) -> ALTOUTPADEN_W<OPA1_OUT_SPEC, 4> {
-        ALTOUTPADEN_W::new(self)
+    pub fn altoutpaden(&mut self) -> ALTOUTPADEN_W<OPA1_OUT_SPEC> {
+        ALTOUTPADEN_W::new(self, 4)
     }
     #[doc = "Bits 16:23 - OPAx APORT Output"]
     #[inline(always)]
     #[must_use]
-    pub fn aportoutsel(&mut self) -> APORTOUTSEL_W<OPA1_OUT_SPEC, 16> {
-        APORTOUTSEL_W::new(self)
+    pub fn aportoutsel(&mut self) -> APORTOUTSEL_W<OPA1_OUT_SPEC> {
+        APORTOUTSEL_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -205,10 +209,10 @@ impl crate::RegisterSpec for OPA1_OUT_SPEC {
 impl crate::Readable for OPA1_OUT_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`opa1_out::W`](W) writer structure"]
 impl crate::Writable for OPA1_OUT_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OPA1_OUT to value 0x01"]
 impl crate::Resettable for OPA1_OUT_SPEC {
-    const RESET_VALUE: Self::Ux = 0x01;
+    const RESET_VALUE: u32 = 0x01;
 }

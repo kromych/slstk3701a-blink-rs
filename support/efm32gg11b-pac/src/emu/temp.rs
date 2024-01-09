@@ -18,5 +18,5 @@ impl crate::RegisterSpec for TEMP_SPEC {
 impl crate::Readable for TEMP_SPEC {}
 #[doc = "`reset()` method sets TEMP to value 0"]
 impl crate::Resettable for TEMP_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

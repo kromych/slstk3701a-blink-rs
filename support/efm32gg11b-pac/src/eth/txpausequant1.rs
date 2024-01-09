@@ -5,11 +5,11 @@ pub type W = crate::W<TXPAUSEQUANT1_SPEC>;
 #[doc = "Field `QUANTP2` reader - Transmit pause quantum - written with the pause quantum value for pause frame transmission of priority 2."]
 pub type QUANTP2_R = crate::FieldReader<u16>;
 #[doc = "Field `QUANTP2` writer - Transmit pause quantum - written with the pause quantum value for pause frame transmission of priority 2."]
-pub type QUANTP2_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
+pub type QUANTP2_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 #[doc = "Field `QUANTP3` reader - Transmit pause quantum - written with the pause quantum value for pause frame transmission of priority 3."]
 pub type QUANTP3_R = crate::FieldReader<u16>;
 #[doc = "Field `QUANTP3` writer - Transmit pause quantum - written with the pause quantum value for pause frame transmission of priority 3."]
-pub type QUANTP3_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
+pub type QUANTP3_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
     #[doc = "Bits 0:15 - Transmit pause quantum - written with the pause quantum value for pause frame transmission of priority 2."]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:15 - Transmit pause quantum - written with the pause quantum value for pause frame transmission of priority 2."]
     #[inline(always)]
     #[must_use]
-    pub fn quantp2(&mut self) -> QUANTP2_W<TXPAUSEQUANT1_SPEC, 0> {
-        QUANTP2_W::new(self)
+    pub fn quantp2(&mut self) -> QUANTP2_W<TXPAUSEQUANT1_SPEC> {
+        QUANTP2_W::new(self, 0)
     }
     #[doc = "Bits 16:31 - Transmit pause quantum - written with the pause quantum value for pause frame transmission of priority 3."]
     #[inline(always)]
     #[must_use]
-    pub fn quantp3(&mut self) -> QUANTP3_W<TXPAUSEQUANT1_SPEC, 16> {
-        QUANTP3_W::new(self)
+    pub fn quantp3(&mut self) -> QUANTP3_W<TXPAUSEQUANT1_SPEC> {
+        QUANTP3_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for TXPAUSEQUANT1_SPEC {
 impl crate::Readable for TXPAUSEQUANT1_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`txpausequant1::W`](W) writer structure"]
 impl crate::Writable for TXPAUSEQUANT1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TXPAUSEQUANT1 to value 0xffff_ffff"]
 impl crate::Resettable for TXPAUSEQUANT1_SPEC {
-    const RESET_VALUE: Self::Ux = 0xffff_ffff;
+    const RESET_VALUE: u32 = 0xffff_ffff;
 }

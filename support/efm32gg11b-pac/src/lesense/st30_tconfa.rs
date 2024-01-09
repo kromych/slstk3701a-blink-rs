@@ -5,27 +5,27 @@ pub type W = crate::W<ST30_TCONFA_SPEC>;
 #[doc = "Field `COMP` reader - Sensor Compare Value"]
 pub type COMP_R = crate::FieldReader;
 #[doc = "Field `COMP` writer - Sensor Compare Value"]
-pub type COMP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type COMP_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `MASK` reader - Sensor Mask"]
 pub type MASK_R = crate::FieldReader;
 #[doc = "Field `MASK` writer - Sensor Mask"]
-pub type MASK_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type MASK_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `NEXTSTATE` reader - Next State Index"]
 pub type NEXTSTATE_R = crate::FieldReader;
 #[doc = "Field `NEXTSTATE` writer - Next State Index"]
-pub type NEXTSTATE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O>;
+pub type NEXTSTATE_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `CHAIN` reader - Enable State Descriptor Chaining"]
 pub type CHAIN_R = crate::BitReader;
 #[doc = "Field `CHAIN` writer - Enable State Descriptor Chaining"]
-pub type CHAIN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CHAIN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SETIF` reader - Set Interrupt Flag Enable"]
 pub type SETIF_R = crate::BitReader;
 #[doc = "Field `SETIF` writer - Set Interrupt Flag Enable"]
-pub type SETIF_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SETIF_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRSACT` reader - Configure Transition Action"]
 pub type PRSACT_R = crate::FieldReader;
 #[doc = "Field `PRSACT` writer - Configure Transition Action"]
-pub type PRSACT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type PRSACT_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 impl R {
     #[doc = "Bits 0:3 - Sensor Compare Value"]
     #[inline(always)]
@@ -62,40 +62,44 @@ impl W {
     #[doc = "Bits 0:3 - Sensor Compare Value"]
     #[inline(always)]
     #[must_use]
-    pub fn comp(&mut self) -> COMP_W<ST30_TCONFA_SPEC, 0> {
-        COMP_W::new(self)
+    pub fn comp(&mut self) -> COMP_W<ST30_TCONFA_SPEC> {
+        COMP_W::new(self, 0)
     }
     #[doc = "Bits 4:7 - Sensor Mask"]
     #[inline(always)]
     #[must_use]
-    pub fn mask(&mut self) -> MASK_W<ST30_TCONFA_SPEC, 4> {
-        MASK_W::new(self)
+    pub fn mask(&mut self) -> MASK_W<ST30_TCONFA_SPEC> {
+        MASK_W::new(self, 4)
     }
     #[doc = "Bits 8:12 - Next State Index"]
     #[inline(always)]
     #[must_use]
-    pub fn nextstate(&mut self) -> NEXTSTATE_W<ST30_TCONFA_SPEC, 8> {
-        NEXTSTATE_W::new(self)
+    pub fn nextstate(&mut self) -> NEXTSTATE_W<ST30_TCONFA_SPEC> {
+        NEXTSTATE_W::new(self, 8)
     }
     #[doc = "Bit 14 - Enable State Descriptor Chaining"]
     #[inline(always)]
     #[must_use]
-    pub fn chain(&mut self) -> CHAIN_W<ST30_TCONFA_SPEC, 14> {
-        CHAIN_W::new(self)
+    pub fn chain(&mut self) -> CHAIN_W<ST30_TCONFA_SPEC> {
+        CHAIN_W::new(self, 14)
     }
     #[doc = "Bit 15 - Set Interrupt Flag Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn setif(&mut self) -> SETIF_W<ST30_TCONFA_SPEC, 15> {
-        SETIF_W::new(self)
+    pub fn setif(&mut self) -> SETIF_W<ST30_TCONFA_SPEC> {
+        SETIF_W::new(self, 15)
     }
     #[doc = "Bits 16:18 - Configure Transition Action"]
     #[inline(always)]
     #[must_use]
-    pub fn prsact(&mut self) -> PRSACT_W<ST30_TCONFA_SPEC, 16> {
-        PRSACT_W::new(self)
+    pub fn prsact(&mut self) -> PRSACT_W<ST30_TCONFA_SPEC> {
+        PRSACT_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -111,10 +115,10 @@ impl crate::RegisterSpec for ST30_TCONFA_SPEC {
 impl crate::Readable for ST30_TCONFA_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`st30_tconfa::W`](W) writer structure"]
 impl crate::Writable for ST30_TCONFA_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ST30_TCONFA to value 0"]
 impl crate::Resettable for ST30_TCONFA_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

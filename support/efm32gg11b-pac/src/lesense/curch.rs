@@ -18,5 +18,5 @@ impl crate::RegisterSpec for CURCH_SPEC {
 impl crate::Readable for CURCH_SPEC {}
 #[doc = "`reset()` method sets CURCH to value 0"]
 impl crate::Resettable for CURCH_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

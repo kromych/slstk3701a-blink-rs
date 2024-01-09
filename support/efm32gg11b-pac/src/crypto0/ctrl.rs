@@ -5,19 +5,19 @@ pub type W = crate::W<CTRL_SPEC>;
 #[doc = "Field `AES` reader - AES Mode"]
 pub type AES_R = crate::BitReader;
 #[doc = "Field `AES` writer - AES Mode"]
-pub type AES_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AES_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `KEYBUFDIS` reader - Key Buffer Disable"]
 pub type KEYBUFDIS_R = crate::BitReader;
 #[doc = "Field `KEYBUFDIS` writer - Key Buffer Disable"]
-pub type KEYBUFDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type KEYBUFDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SHA` reader - SHA Mode"]
 pub type SHA_R = crate::BitReader;
 #[doc = "Field `SHA` writer - SHA Mode"]
-pub type SHA_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SHA_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NOBUSYSTALL` reader - No Stalling of Bus When Busy"]
 pub type NOBUSYSTALL_R = crate::BitReader;
 #[doc = "Field `NOBUSYSTALL` writer - No Stalling of Bus When Busy"]
-pub type NOBUSYSTALL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type NOBUSYSTALL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INCWIDTH` reader - Increment Width"]
 pub type INCWIDTH_R = crate::FieldReader<INCWIDTH_A>;
 #[doc = "Increment Width\n\nValue on reset: 0"]
@@ -45,7 +45,7 @@ impl crate::FieldSpec for INCWIDTH_A {
 impl INCWIDTH_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INCWIDTH_A {
+    pub const fn variant(&self) -> INCWIDTH_A {
         match self.bits {
             0 => INCWIDTH_A::INCWIDTH1,
             1 => INCWIDTH_A::INCWIDTH2,
@@ -76,8 +76,8 @@ impl INCWIDTH_R {
     }
 }
 #[doc = "Field `INCWIDTH` writer - Increment Width"]
-pub type INCWIDTH_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, INCWIDTH_A>;
-impl<'a, REG, const O: u8> INCWIDTH_W<'a, REG, O>
+pub type INCWIDTH_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INCWIDTH_A>;
+impl<'a, REG> INCWIDTH_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -130,7 +130,7 @@ impl crate::FieldSpec for DMA0MODE_A {
 impl DMA0MODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DMA0MODE_A {
+    pub const fn variant(&self) -> DMA0MODE_A {
         match self.bits {
             0 => DMA0MODE_A::FULL,
             1 => DMA0MODE_A::LENLIMIT,
@@ -161,8 +161,8 @@ impl DMA0MODE_R {
     }
 }
 #[doc = "Field `DMA0MODE` writer - DMA0 Read Mode"]
-pub type DMA0MODE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, DMA0MODE_A>;
-impl<'a, REG, const O: u8> DMA0MODE_W<'a, REG, O>
+pub type DMA0MODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, DMA0MODE_A>;
+impl<'a, REG> DMA0MODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -215,7 +215,7 @@ impl crate::FieldSpec for DMA0RSEL_A {
 impl DMA0RSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DMA0RSEL_A {
+    pub const fn variant(&self) -> DMA0RSEL_A {
         match self.bits {
             0 => DMA0RSEL_A::DATA0,
             1 => DMA0RSEL_A::DDATA0,
@@ -246,8 +246,8 @@ impl DMA0RSEL_R {
     }
 }
 #[doc = "Field `DMA0RSEL` writer - DMA0 Read Register Select"]
-pub type DMA0RSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, DMA0RSEL_A>;
-impl<'a, REG, const O: u8> DMA0RSEL_W<'a, REG, O>
+pub type DMA0RSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, DMA0RSEL_A>;
+impl<'a, REG> DMA0RSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -300,7 +300,7 @@ impl crate::FieldSpec for DMA1MODE_A {
 impl DMA1MODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DMA1MODE_A {
+    pub const fn variant(&self) -> DMA1MODE_A {
         match self.bits {
             0 => DMA1MODE_A::FULL,
             1 => DMA1MODE_A::LENLIMIT,
@@ -331,8 +331,8 @@ impl DMA1MODE_R {
     }
 }
 #[doc = "Field `DMA1MODE` writer - DMA1 Read Mode"]
-pub type DMA1MODE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, DMA1MODE_A>;
-impl<'a, REG, const O: u8> DMA1MODE_W<'a, REG, O>
+pub type DMA1MODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, DMA1MODE_A>;
+impl<'a, REG> DMA1MODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -385,7 +385,7 @@ impl crate::FieldSpec for DMA1RSEL_A {
 impl DMA1RSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DMA1RSEL_A {
+    pub const fn variant(&self) -> DMA1RSEL_A {
         match self.bits {
             0 => DMA1RSEL_A::DATA1,
             1 => DMA1RSEL_A::DDATA1,
@@ -416,8 +416,8 @@ impl DMA1RSEL_R {
     }
 }
 #[doc = "Field `DMA1RSEL` writer - DATA0 DMA Unaligned Read Register Select"]
-pub type DMA1RSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, DMA1RSEL_A>;
-impl<'a, REG, const O: u8> DMA1RSEL_W<'a, REG, O>
+pub type DMA1RSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, DMA1RSEL_A>;
+impl<'a, REG> DMA1RSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -446,7 +446,7 @@ where
 #[doc = "Field `COMBDMA0WEREQ` reader - Combined Data0 Write DMA Request"]
 pub type COMBDMA0WEREQ_R = crate::BitReader;
 #[doc = "Field `COMBDMA0WEREQ` writer - Combined Data0 Write DMA Request"]
-pub type COMBDMA0WEREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type COMBDMA0WEREQ_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - AES Mode"]
     #[inline(always)]
@@ -503,64 +503,68 @@ impl W {
     #[doc = "Bit 0 - AES Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn aes(&mut self) -> AES_W<CTRL_SPEC, 0> {
-        AES_W::new(self)
+    pub fn aes(&mut self) -> AES_W<CTRL_SPEC> {
+        AES_W::new(self, 0)
     }
     #[doc = "Bit 1 - Key Buffer Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn keybufdis(&mut self) -> KEYBUFDIS_W<CTRL_SPEC, 1> {
-        KEYBUFDIS_W::new(self)
+    pub fn keybufdis(&mut self) -> KEYBUFDIS_W<CTRL_SPEC> {
+        KEYBUFDIS_W::new(self, 1)
     }
     #[doc = "Bit 2 - SHA Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn sha(&mut self) -> SHA_W<CTRL_SPEC, 2> {
-        SHA_W::new(self)
+    pub fn sha(&mut self) -> SHA_W<CTRL_SPEC> {
+        SHA_W::new(self, 2)
     }
     #[doc = "Bit 10 - No Stalling of Bus When Busy"]
     #[inline(always)]
     #[must_use]
-    pub fn nobusystall(&mut self) -> NOBUSYSTALL_W<CTRL_SPEC, 10> {
-        NOBUSYSTALL_W::new(self)
+    pub fn nobusystall(&mut self) -> NOBUSYSTALL_W<CTRL_SPEC> {
+        NOBUSYSTALL_W::new(self, 10)
     }
     #[doc = "Bits 14:15 - Increment Width"]
     #[inline(always)]
     #[must_use]
-    pub fn incwidth(&mut self) -> INCWIDTH_W<CTRL_SPEC, 14> {
-        INCWIDTH_W::new(self)
+    pub fn incwidth(&mut self) -> INCWIDTH_W<CTRL_SPEC> {
+        INCWIDTH_W::new(self, 14)
     }
     #[doc = "Bits 16:17 - DMA0 Read Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn dma0mode(&mut self) -> DMA0MODE_W<CTRL_SPEC, 16> {
-        DMA0MODE_W::new(self)
+    pub fn dma0mode(&mut self) -> DMA0MODE_W<CTRL_SPEC> {
+        DMA0MODE_W::new(self, 16)
     }
     #[doc = "Bits 20:21 - DMA0 Read Register Select"]
     #[inline(always)]
     #[must_use]
-    pub fn dma0rsel(&mut self) -> DMA0RSEL_W<CTRL_SPEC, 20> {
-        DMA0RSEL_W::new(self)
+    pub fn dma0rsel(&mut self) -> DMA0RSEL_W<CTRL_SPEC> {
+        DMA0RSEL_W::new(self, 20)
     }
     #[doc = "Bits 24:25 - DMA1 Read Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn dma1mode(&mut self) -> DMA1MODE_W<CTRL_SPEC, 24> {
-        DMA1MODE_W::new(self)
+    pub fn dma1mode(&mut self) -> DMA1MODE_W<CTRL_SPEC> {
+        DMA1MODE_W::new(self, 24)
     }
     #[doc = "Bits 28:29 - DATA0 DMA Unaligned Read Register Select"]
     #[inline(always)]
     #[must_use]
-    pub fn dma1rsel(&mut self) -> DMA1RSEL_W<CTRL_SPEC, 28> {
-        DMA1RSEL_W::new(self)
+    pub fn dma1rsel(&mut self) -> DMA1RSEL_W<CTRL_SPEC> {
+        DMA1RSEL_W::new(self, 28)
     }
     #[doc = "Bit 31 - Combined Data0 Write DMA Request"]
     #[inline(always)]
     #[must_use]
-    pub fn combdma0wereq(&mut self) -> COMBDMA0WEREQ_W<CTRL_SPEC, 31> {
-        COMBDMA0WEREQ_W::new(self)
+    pub fn combdma0wereq(&mut self) -> COMBDMA0WEREQ_W<CTRL_SPEC> {
+        COMBDMA0WEREQ_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -576,10 +580,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

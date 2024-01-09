@@ -53,7 +53,7 @@ impl crate::FieldSpec for LETIMER0_A {
 impl LETIMER0_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> LETIMER0_A {
+    pub const fn variant(&self) -> LETIMER0_A {
         match self.bits {
             0 => LETIMER0_A::DIV1,
             1 => LETIMER0_A::DIV2,
@@ -156,8 +156,8 @@ impl LETIMER0_R {
     }
 }
 #[doc = "Field `LETIMER0` writer - Low Energy Timer 0 Prescaler"]
-pub type LETIMER0_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 4, O, LETIMER0_A>;
-impl<'a, REG, const O: u8> LETIMER0_W<'a, REG, O>
+pub type LETIMER0_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 4, LETIMER0_A>;
+impl<'a, REG> LETIMER0_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -294,7 +294,7 @@ impl crate::FieldSpec for LETIMER1_A {
 impl LETIMER1_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> LETIMER1_A {
+    pub const fn variant(&self) -> LETIMER1_A {
         match self.bits {
             0 => LETIMER1_A::DIV1,
             1 => LETIMER1_A::DIV2,
@@ -397,8 +397,8 @@ impl LETIMER1_R {
     }
 }
 #[doc = "Field `LETIMER1` writer - Low Energy Timer 1 Prescaler"]
-pub type LETIMER1_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 4, O, LETIMER1_A>;
-impl<'a, REG, const O: u8> LETIMER1_W<'a, REG, O>
+pub type LETIMER1_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 4, LETIMER1_A>;
+impl<'a, REG> LETIMER1_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -511,7 +511,7 @@ impl crate::FieldSpec for LESENSE_A {
 impl LESENSE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> LESENSE_A {
+    pub const fn variant(&self) -> LESENSE_A {
         match self.bits {
             0 => LESENSE_A::DIV1,
             1 => LESENSE_A::DIV2,
@@ -542,8 +542,8 @@ impl LESENSE_R {
     }
 }
 #[doc = "Field `LESENSE` writer - Low Energy Sensor Interface Prescaler"]
-pub type LESENSE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, LESENSE_A>;
-impl<'a, REG, const O: u8> LESENSE_W<'a, REG, O>
+pub type LESENSE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, LESENSE_A>;
+impl<'a, REG> LESENSE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -604,7 +604,7 @@ impl crate::FieldSpec for LCD_A {
 impl LCD_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> LCD_A {
+    pub const fn variant(&self) -> LCD_A {
         match self.bits {
             0 => LCD_A::DIV1,
             1 => LCD_A::DIV2,
@@ -659,8 +659,8 @@ impl LCD_R {
     }
 }
 #[doc = "Field `LCD` writer - Liquid Crystal Display Controller Prescaler"]
-pub type LCD_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, LCD_A>;
-impl<'a, REG, const O: u8> LCD_W<'a, REG, O>
+pub type LCD_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, LCD_A>;
+impl<'a, REG> LCD_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -757,7 +757,7 @@ impl crate::FieldSpec for RTC_A {
 impl RTC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> RTC_A {
+    pub const fn variant(&self) -> RTC_A {
         match self.bits {
             0 => RTC_A::DIV1,
             1 => RTC_A::DIV2,
@@ -860,8 +860,8 @@ impl RTC_R {
     }
 }
 #[doc = "Field `RTC` writer - Real-Time Counter Prescaler"]
-pub type RTC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 4, O, RTC_A>;
-impl<'a, REG, const O: u8> RTC_W<'a, REG, O>
+pub type RTC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 4, RTC_A>;
+impl<'a, REG> RTC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -978,34 +978,38 @@ impl W {
     #[doc = "Bits 0:3 - Low Energy Timer 0 Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn letimer0(&mut self) -> LETIMER0_W<LFAPRESC0_SPEC, 0> {
-        LETIMER0_W::new(self)
+    pub fn letimer0(&mut self) -> LETIMER0_W<LFAPRESC0_SPEC> {
+        LETIMER0_W::new(self, 0)
     }
     #[doc = "Bits 4:7 - Low Energy Timer 1 Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn letimer1(&mut self) -> LETIMER1_W<LFAPRESC0_SPEC, 4> {
-        LETIMER1_W::new(self)
+    pub fn letimer1(&mut self) -> LETIMER1_W<LFAPRESC0_SPEC> {
+        LETIMER1_W::new(self, 4)
     }
     #[doc = "Bits 8:9 - Low Energy Sensor Interface Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn lesense(&mut self) -> LESENSE_W<LFAPRESC0_SPEC, 8> {
-        LESENSE_W::new(self)
+    pub fn lesense(&mut self) -> LESENSE_W<LFAPRESC0_SPEC> {
+        LESENSE_W::new(self, 8)
     }
     #[doc = "Bits 12:14 - Liquid Crystal Display Controller Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn lcd(&mut self) -> LCD_W<LFAPRESC0_SPEC, 12> {
-        LCD_W::new(self)
+    pub fn lcd(&mut self) -> LCD_W<LFAPRESC0_SPEC> {
+        LCD_W::new(self, 12)
     }
     #[doc = "Bits 16:19 - Real-Time Counter Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn rtc(&mut self) -> RTC_W<LFAPRESC0_SPEC, 16> {
-        RTC_W::new(self)
+    pub fn rtc(&mut self) -> RTC_W<LFAPRESC0_SPEC> {
+        RTC_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -1021,10 +1025,10 @@ impl crate::RegisterSpec for LFAPRESC0_SPEC {
 impl crate::Readable for LFAPRESC0_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`lfapresc0::W`](W) writer structure"]
 impl crate::Writable for LFAPRESC0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets LFAPRESC0 to value 0"]
 impl crate::Resettable for LFAPRESC0_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

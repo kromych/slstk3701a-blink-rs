@@ -5,7 +5,7 @@ pub type W = crate::W<TIMECMP2_SPEC>;
 #[doc = "Field `TCMPVAL` reader - Timer Comparator 2"]
 pub type TCMPVAL_R = crate::FieldReader;
 #[doc = "Field `TCMPVAL` writer - Timer Comparator 2"]
-pub type TCMPVAL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type TCMPVAL_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `TSTART` reader - Timer Start Source"]
 pub type TSTART_R = crate::FieldReader<TSTART_A>;
 #[doc = "Timer Start Source\n\nValue on reset: 0"]
@@ -35,7 +35,7 @@ impl crate::FieldSpec for TSTART_A {
 impl TSTART_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TSTART_A> {
+    pub const fn variant(&self) -> Option<TSTART_A> {
         match self.bits {
             0 => Some(TSTART_A::DISABLE),
             1 => Some(TSTART_A::TXEOF),
@@ -72,8 +72,8 @@ impl TSTART_R {
     }
 }
 #[doc = "Field `TSTART` writer - Timer Start Source"]
-pub type TSTART_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, TSTART_A>;
-impl<'a, REG, const O: u8> TSTART_W<'a, REG, O>
+pub type TSTART_W<'a, REG> = crate::FieldWriter<'a, REG, 3, TSTART_A>;
+impl<'a, REG> TSTART_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -131,7 +131,7 @@ impl crate::FieldSpec for TSTOP_A {
 impl TSTOP_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TSTOP_A> {
+    pub const fn variant(&self) -> Option<TSTOP_A> {
         match self.bits {
             0 => Some(TSTOP_A::TCMP2),
             1 => Some(TSTOP_A::TXST),
@@ -162,8 +162,8 @@ impl TSTOP_R {
     }
 }
 #[doc = "Field `TSTOP` writer - Source Used to Disable Comparator 2"]
-pub type TSTOP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, TSTOP_A>;
-impl<'a, REG, const O: u8> TSTOP_W<'a, REG, O>
+pub type TSTOP_W<'a, REG> = crate::FieldWriter<'a, REG, 3, TSTOP_A>;
+impl<'a, REG> TSTOP_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -192,7 +192,7 @@ where
 #[doc = "Field `RESTARTEN` reader - Restart Timer on TCMP2"]
 pub type RESTARTEN_R = crate::BitReader;
 #[doc = "Field `RESTARTEN` writer - Restart Timer on TCMP2"]
-pub type RESTARTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RESTARTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:7 - Timer Comparator 2"]
     #[inline(always)]
@@ -219,28 +219,32 @@ impl W {
     #[doc = "Bits 0:7 - Timer Comparator 2"]
     #[inline(always)]
     #[must_use]
-    pub fn tcmpval(&mut self) -> TCMPVAL_W<TIMECMP2_SPEC, 0> {
-        TCMPVAL_W::new(self)
+    pub fn tcmpval(&mut self) -> TCMPVAL_W<TIMECMP2_SPEC> {
+        TCMPVAL_W::new(self, 0)
     }
     #[doc = "Bits 16:18 - Timer Start Source"]
     #[inline(always)]
     #[must_use]
-    pub fn tstart(&mut self) -> TSTART_W<TIMECMP2_SPEC, 16> {
-        TSTART_W::new(self)
+    pub fn tstart(&mut self) -> TSTART_W<TIMECMP2_SPEC> {
+        TSTART_W::new(self, 16)
     }
     #[doc = "Bits 20:22 - Source Used to Disable Comparator 2"]
     #[inline(always)]
     #[must_use]
-    pub fn tstop(&mut self) -> TSTOP_W<TIMECMP2_SPEC, 20> {
-        TSTOP_W::new(self)
+    pub fn tstop(&mut self) -> TSTOP_W<TIMECMP2_SPEC> {
+        TSTOP_W::new(self, 20)
     }
     #[doc = "Bit 24 - Restart Timer on TCMP2"]
     #[inline(always)]
     #[must_use]
-    pub fn restarten(&mut self) -> RESTARTEN_W<TIMECMP2_SPEC, 24> {
-        RESTARTEN_W::new(self)
+    pub fn restarten(&mut self) -> RESTARTEN_W<TIMECMP2_SPEC> {
+        RESTARTEN_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -256,10 +260,10 @@ impl crate::RegisterSpec for TIMECMP2_SPEC {
 impl crate::Readable for TIMECMP2_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`timecmp2::W`](W) writer structure"]
 impl crate::Writable for TIMECMP2_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TIMECMP2 to value 0"]
 impl crate::Resettable for TIMECMP2_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

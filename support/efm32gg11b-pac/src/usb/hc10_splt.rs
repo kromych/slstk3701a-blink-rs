@@ -5,23 +5,23 @@ pub type W = crate::W<HC10_SPLT_SPEC>;
 #[doc = "Field `PRTADDR` reader - Port Address"]
 pub type PRTADDR_R = crate::FieldReader;
 #[doc = "Field `PRTADDR` writer - Port Address"]
-pub type PRTADDR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type PRTADDR_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `HUBADDR` reader - Hub Address"]
 pub type HUBADDR_R = crate::FieldReader;
 #[doc = "Field `HUBADDR` writer - Hub Address"]
-pub type HUBADDR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type HUBADDR_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `XACTPOS` reader - Transaction Position"]
 pub type XACTPOS_R = crate::FieldReader;
 #[doc = "Field `XACTPOS` writer - Transaction Position"]
-pub type XACTPOS_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type XACTPOS_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `COMPSPLT` reader - Do Complete Split"]
 pub type COMPSPLT_R = crate::BitReader;
 #[doc = "Field `COMPSPLT` writer - Do Complete Split"]
-pub type COMPSPLT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type COMPSPLT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SPLTENA` reader - Split Enable"]
 pub type SPLTENA_R = crate::BitReader;
 #[doc = "Field `SPLTENA` writer - Split Enable"]
-pub type SPLTENA_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SPLTENA_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:6 - Port Address"]
     #[inline(always)]
@@ -53,34 +53,38 @@ impl W {
     #[doc = "Bits 0:6 - Port Address"]
     #[inline(always)]
     #[must_use]
-    pub fn prtaddr(&mut self) -> PRTADDR_W<HC10_SPLT_SPEC, 0> {
-        PRTADDR_W::new(self)
+    pub fn prtaddr(&mut self) -> PRTADDR_W<HC10_SPLT_SPEC> {
+        PRTADDR_W::new(self, 0)
     }
     #[doc = "Bits 7:13 - Hub Address"]
     #[inline(always)]
     #[must_use]
-    pub fn hubaddr(&mut self) -> HUBADDR_W<HC10_SPLT_SPEC, 7> {
-        HUBADDR_W::new(self)
+    pub fn hubaddr(&mut self) -> HUBADDR_W<HC10_SPLT_SPEC> {
+        HUBADDR_W::new(self, 7)
     }
     #[doc = "Bits 14:15 - Transaction Position"]
     #[inline(always)]
     #[must_use]
-    pub fn xactpos(&mut self) -> XACTPOS_W<HC10_SPLT_SPEC, 14> {
-        XACTPOS_W::new(self)
+    pub fn xactpos(&mut self) -> XACTPOS_W<HC10_SPLT_SPEC> {
+        XACTPOS_W::new(self, 14)
     }
     #[doc = "Bit 16 - Do Complete Split"]
     #[inline(always)]
     #[must_use]
-    pub fn compsplt(&mut self) -> COMPSPLT_W<HC10_SPLT_SPEC, 16> {
-        COMPSPLT_W::new(self)
+    pub fn compsplt(&mut self) -> COMPSPLT_W<HC10_SPLT_SPEC> {
+        COMPSPLT_W::new(self, 16)
     }
     #[doc = "Bit 31 - Split Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn spltena(&mut self) -> SPLTENA_W<HC10_SPLT_SPEC, 31> {
-        SPLTENA_W::new(self)
+    pub fn spltena(&mut self) -> SPLTENA_W<HC10_SPLT_SPEC> {
+        SPLTENA_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -96,10 +100,10 @@ impl crate::RegisterSpec for HC10_SPLT_SPEC {
 impl crate::Readable for HC10_SPLT_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hc10_splt::W`](W) writer structure"]
 impl crate::Writable for HC10_SPLT_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HC10_SPLT to value 0"]
 impl crate::Resettable for HC10_SPLT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

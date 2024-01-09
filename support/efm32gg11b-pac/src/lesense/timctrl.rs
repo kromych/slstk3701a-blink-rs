@@ -29,7 +29,7 @@ impl crate::FieldSpec for AUXPRESC_A {
 impl AUXPRESC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> AUXPRESC_A {
+    pub const fn variant(&self) -> AUXPRESC_A {
         match self.bits {
             0 => AUXPRESC_A::DIV1,
             1 => AUXPRESC_A::DIV2,
@@ -60,8 +60,8 @@ impl AUXPRESC_R {
     }
 }
 #[doc = "Field `AUXPRESC` writer - Prescaling Factor for High Frequency Timer"]
-pub type AUXPRESC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, AUXPRESC_A>;
-impl<'a, REG, const O: u8> AUXPRESC_W<'a, REG, O>
+pub type AUXPRESC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, AUXPRESC_A>;
+impl<'a, REG> AUXPRESC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -122,7 +122,7 @@ impl crate::FieldSpec for LFPRESC_A {
 impl LFPRESC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> LFPRESC_A {
+    pub const fn variant(&self) -> LFPRESC_A {
         match self.bits {
             0 => LFPRESC_A::DIV1,
             1 => LFPRESC_A::DIV2,
@@ -177,8 +177,8 @@ impl LFPRESC_R {
     }
 }
 #[doc = "Field `LFPRESC` writer - Prescaling Factor for Low Frequency Timer"]
-pub type LFPRESC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, LFPRESC_A>;
-impl<'a, REG, const O: u8> LFPRESC_W<'a, REG, O>
+pub type LFPRESC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, LFPRESC_A>;
+impl<'a, REG> LFPRESC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -259,7 +259,7 @@ impl crate::FieldSpec for PCPRESC_A {
 impl PCPRESC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PCPRESC_A {
+    pub const fn variant(&self) -> PCPRESC_A {
         match self.bits {
             0 => PCPRESC_A::DIV1,
             1 => PCPRESC_A::DIV2,
@@ -314,8 +314,8 @@ impl PCPRESC_R {
     }
 }
 #[doc = "Field `PCPRESC` writer - Period Counter Prescaling"]
-pub type PCPRESC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, PCPRESC_A>;
-impl<'a, REG, const O: u8> PCPRESC_W<'a, REG, O>
+pub type PCPRESC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, PCPRESC_A>;
+impl<'a, REG> PCPRESC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -364,15 +364,15 @@ where
 #[doc = "Field `PCTOP` reader - Period Counter Top Value"]
 pub type PCTOP_R = crate::FieldReader;
 #[doc = "Field `PCTOP` writer - Period Counter Top Value"]
-pub type PCTOP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type PCTOP_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `STARTDLY` reader - Start Delay Configuration"]
 pub type STARTDLY_R = crate::FieldReader;
 #[doc = "Field `STARTDLY` writer - Start Delay Configuration"]
-pub type STARTDLY_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type STARTDLY_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `AUXSTARTUP` reader - AUXHFRCO Startup Configuration"]
 pub type AUXSTARTUP_R = crate::BitReader;
 #[doc = "Field `AUXSTARTUP` writer - AUXHFRCO Startup Configuration"]
-pub type AUXSTARTUP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AUXSTARTUP_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:1 - Prescaling Factor for High Frequency Timer"]
     #[inline(always)]
@@ -409,40 +409,44 @@ impl W {
     #[doc = "Bits 0:1 - Prescaling Factor for High Frequency Timer"]
     #[inline(always)]
     #[must_use]
-    pub fn auxpresc(&mut self) -> AUXPRESC_W<TIMCTRL_SPEC, 0> {
-        AUXPRESC_W::new(self)
+    pub fn auxpresc(&mut self) -> AUXPRESC_W<TIMCTRL_SPEC> {
+        AUXPRESC_W::new(self, 0)
     }
     #[doc = "Bits 4:6 - Prescaling Factor for Low Frequency Timer"]
     #[inline(always)]
     #[must_use]
-    pub fn lfpresc(&mut self) -> LFPRESC_W<TIMCTRL_SPEC, 4> {
-        LFPRESC_W::new(self)
+    pub fn lfpresc(&mut self) -> LFPRESC_W<TIMCTRL_SPEC> {
+        LFPRESC_W::new(self, 4)
     }
     #[doc = "Bits 8:10 - Period Counter Prescaling"]
     #[inline(always)]
     #[must_use]
-    pub fn pcpresc(&mut self) -> PCPRESC_W<TIMCTRL_SPEC, 8> {
-        PCPRESC_W::new(self)
+    pub fn pcpresc(&mut self) -> PCPRESC_W<TIMCTRL_SPEC> {
+        PCPRESC_W::new(self, 8)
     }
     #[doc = "Bits 12:19 - Period Counter Top Value"]
     #[inline(always)]
     #[must_use]
-    pub fn pctop(&mut self) -> PCTOP_W<TIMCTRL_SPEC, 12> {
-        PCTOP_W::new(self)
+    pub fn pctop(&mut self) -> PCTOP_W<TIMCTRL_SPEC> {
+        PCTOP_W::new(self, 12)
     }
     #[doc = "Bits 22:23 - Start Delay Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn startdly(&mut self) -> STARTDLY_W<TIMCTRL_SPEC, 22> {
-        STARTDLY_W::new(self)
+    pub fn startdly(&mut self) -> STARTDLY_W<TIMCTRL_SPEC> {
+        STARTDLY_W::new(self, 22)
     }
     #[doc = "Bit 28 - AUXHFRCO Startup Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn auxstartup(&mut self) -> AUXSTARTUP_W<TIMCTRL_SPEC, 28> {
-        AUXSTARTUP_W::new(self)
+    pub fn auxstartup(&mut self) -> AUXSTARTUP_W<TIMCTRL_SPEC> {
+        AUXSTARTUP_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -458,10 +462,10 @@ impl crate::RegisterSpec for TIMCTRL_SPEC {
 impl crate::Readable for TIMCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`timctrl::W`](W) writer structure"]
 impl crate::Writable for TIMCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TIMCTRL to value 0"]
 impl crate::Resettable for TIMCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -49,7 +49,7 @@ impl crate::FieldSpec for CLKOUTSEL0_A {
 impl CLKOUTSEL0_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CLKOUTSEL0_A> {
+    pub const fn variant(&self) -> Option<CLKOUTSEL0_A> {
         match self.bits {
             0 => Some(CLKOUTSEL0_A::DISABLED),
             1 => Some(CLKOUTSEL0_A::ULFRCO),
@@ -140,8 +140,8 @@ impl CLKOUTSEL0_R {
     }
 }
 #[doc = "Field `CLKOUTSEL0` writer - Clock Output Select 0"]
-pub type CLKOUTSEL0_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, CLKOUTSEL0_A>;
-impl<'a, REG, const O: u8> CLKOUTSEL0_W<'a, REG, O>
+pub type CLKOUTSEL0_W<'a, REG> = crate::FieldWriter<'a, REG, 5, CLKOUTSEL0_A>;
+impl<'a, REG> CLKOUTSEL0_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -264,7 +264,7 @@ impl crate::FieldSpec for CLKOUTSEL1_A {
 impl CLKOUTSEL1_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CLKOUTSEL1_A> {
+    pub const fn variant(&self) -> Option<CLKOUTSEL1_A> {
         match self.bits {
             0 => Some(CLKOUTSEL1_A::DISABLED),
             1 => Some(CLKOUTSEL1_A::ULFRCO),
@@ -355,8 +355,8 @@ impl CLKOUTSEL1_R {
     }
 }
 #[doc = "Field `CLKOUTSEL1` writer - Clock Output Select 1"]
-pub type CLKOUTSEL1_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, CLKOUTSEL1_A>;
-impl<'a, REG, const O: u8> CLKOUTSEL1_W<'a, REG, O>
+pub type CLKOUTSEL1_W<'a, REG> = crate::FieldWriter<'a, REG, 5, CLKOUTSEL1_A>;
+impl<'a, REG> CLKOUTSEL1_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -483,7 +483,7 @@ impl crate::FieldSpec for CLKOUTSEL2_A {
 impl CLKOUTSEL2_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CLKOUTSEL2_A> {
+    pub const fn variant(&self) -> Option<CLKOUTSEL2_A> {
         match self.bits {
             0 => Some(CLKOUTSEL2_A::DISABLED),
             1 => Some(CLKOUTSEL2_A::ULFRCO),
@@ -586,8 +586,8 @@ impl CLKOUTSEL2_R {
     }
 }
 #[doc = "Field `CLKOUTSEL2` writer - Clock Output Select 2"]
-pub type CLKOUTSEL2_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, CLKOUTSEL2_A>;
-impl<'a, REG, const O: u8> CLKOUTSEL2_W<'a, REG, O>
+pub type CLKOUTSEL2_W<'a, REG> = crate::FieldWriter<'a, REG, 5, CLKOUTSEL2_A>;
+impl<'a, REG> CLKOUTSEL2_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -676,11 +676,11 @@ where
 #[doc = "Field `WSHFLE` reader - Wait State for High-Frequency LE Interface"]
 pub type WSHFLE_R = crate::BitReader;
 #[doc = "Field `WSHFLE` writer - Wait State for High-Frequency LE Interface"]
-pub type WSHFLE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type WSHFLE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HFPERCLKEN` reader - HFPERCLK Enable"]
 pub type HFPERCLKEN_R = crate::BitReader;
 #[doc = "Field `HFPERCLKEN` writer - HFPERCLK Enable"]
-pub type HFPERCLKEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HFPERCLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:4 - Clock Output Select 0"]
     #[inline(always)]
@@ -712,34 +712,38 @@ impl W {
     #[doc = "Bits 0:4 - Clock Output Select 0"]
     #[inline(always)]
     #[must_use]
-    pub fn clkoutsel0(&mut self) -> CLKOUTSEL0_W<CTRL_SPEC, 0> {
-        CLKOUTSEL0_W::new(self)
+    pub fn clkoutsel0(&mut self) -> CLKOUTSEL0_W<CTRL_SPEC> {
+        CLKOUTSEL0_W::new(self, 0)
     }
     #[doc = "Bits 5:9 - Clock Output Select 1"]
     #[inline(always)]
     #[must_use]
-    pub fn clkoutsel1(&mut self) -> CLKOUTSEL1_W<CTRL_SPEC, 5> {
-        CLKOUTSEL1_W::new(self)
+    pub fn clkoutsel1(&mut self) -> CLKOUTSEL1_W<CTRL_SPEC> {
+        CLKOUTSEL1_W::new(self, 5)
     }
     #[doc = "Bits 10:14 - Clock Output Select 2"]
     #[inline(always)]
     #[must_use]
-    pub fn clkoutsel2(&mut self) -> CLKOUTSEL2_W<CTRL_SPEC, 10> {
-        CLKOUTSEL2_W::new(self)
+    pub fn clkoutsel2(&mut self) -> CLKOUTSEL2_W<CTRL_SPEC> {
+        CLKOUTSEL2_W::new(self, 10)
     }
     #[doc = "Bit 16 - Wait State for High-Frequency LE Interface"]
     #[inline(always)]
     #[must_use]
-    pub fn wshfle(&mut self) -> WSHFLE_W<CTRL_SPEC, 16> {
-        WSHFLE_W::new(self)
+    pub fn wshfle(&mut self) -> WSHFLE_W<CTRL_SPEC> {
+        WSHFLE_W::new(self, 16)
     }
     #[doc = "Bit 20 - HFPERCLK Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn hfperclken(&mut self) -> HFPERCLKEN_W<CTRL_SPEC, 20> {
-        HFPERCLKEN_W::new(self)
+    pub fn hfperclken(&mut self) -> HFPERCLKEN_W<CTRL_SPEC> {
+        HFPERCLKEN_W::new(self, 20)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -755,10 +759,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0x0010_0000"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0010_0000;
+    const RESET_VALUE: u32 = 0x0010_0000;
 }

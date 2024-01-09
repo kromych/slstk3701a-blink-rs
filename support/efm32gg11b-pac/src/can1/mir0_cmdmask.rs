@@ -5,35 +5,35 @@ pub type W = crate::W<MIR0_CMDMASK_SPEC>;
 #[doc = "Field `DATAB` reader - CC Channel Mode"]
 pub type DATAB_R = crate::BitReader;
 #[doc = "Field `DATAB` writer - CC Channel Mode"]
-pub type DATAB_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DATAB_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DATAA` reader - Access Data Bytes 0-3"]
 pub type DATAA_R = crate::BitReader;
 #[doc = "Field `DATAA` writer - Access Data Bytes 0-3"]
-pub type DATAA_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DATAA_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXRQSTNEWDAT` reader - Transmission Request Bit/ New Data Bit"]
 pub type TXRQSTNEWDAT_R = crate::BitReader;
 #[doc = "Field `TXRQSTNEWDAT` writer - Transmission Request Bit/ New Data Bit"]
-pub type TXRQSTNEWDAT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXRQSTNEWDAT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CLRINTPND` reader - Clear Interrupt Pending Bit"]
 pub type CLRINTPND_R = crate::BitReader;
 #[doc = "Field `CLRINTPND` writer - Clear Interrupt Pending Bit"]
-pub type CLRINTPND_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLRINTPND_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CONTROL` reader - Access Control Bits"]
 pub type CONTROL_R = crate::BitReader;
 #[doc = "Field `CONTROL` writer - Access Control Bits"]
-pub type CONTROL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CONTROL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ARBACC` reader - Access Arbitration Bits"]
 pub type ARBACC_R = crate::BitReader;
 #[doc = "Field `ARBACC` writer - Access Arbitration Bits"]
-pub type ARBACC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ARBACC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MASKACC` reader - Access Mask Bits"]
 pub type MASKACC_R = crate::BitReader;
 #[doc = "Field `MASKACC` writer - Access Mask Bits"]
-pub type MASKACC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MASKACC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WRRD` reader - Write/Read RAM"]
 pub type WRRD_R = crate::BitReader;
 #[doc = "Field `WRRD` writer - Write/Read RAM"]
-pub type WRRD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type WRRD_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - CC Channel Mode"]
     #[inline(always)]
@@ -80,52 +80,56 @@ impl W {
     #[doc = "Bit 0 - CC Channel Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn datab(&mut self) -> DATAB_W<MIR0_CMDMASK_SPEC, 0> {
-        DATAB_W::new(self)
+    pub fn datab(&mut self) -> DATAB_W<MIR0_CMDMASK_SPEC> {
+        DATAB_W::new(self, 0)
     }
     #[doc = "Bit 1 - Access Data Bytes 0-3"]
     #[inline(always)]
     #[must_use]
-    pub fn dataa(&mut self) -> DATAA_W<MIR0_CMDMASK_SPEC, 1> {
-        DATAA_W::new(self)
+    pub fn dataa(&mut self) -> DATAA_W<MIR0_CMDMASK_SPEC> {
+        DATAA_W::new(self, 1)
     }
     #[doc = "Bit 2 - Transmission Request Bit/ New Data Bit"]
     #[inline(always)]
     #[must_use]
-    pub fn txrqstnewdat(&mut self) -> TXRQSTNEWDAT_W<MIR0_CMDMASK_SPEC, 2> {
-        TXRQSTNEWDAT_W::new(self)
+    pub fn txrqstnewdat(&mut self) -> TXRQSTNEWDAT_W<MIR0_CMDMASK_SPEC> {
+        TXRQSTNEWDAT_W::new(self, 2)
     }
     #[doc = "Bit 3 - Clear Interrupt Pending Bit"]
     #[inline(always)]
     #[must_use]
-    pub fn clrintpnd(&mut self) -> CLRINTPND_W<MIR0_CMDMASK_SPEC, 3> {
-        CLRINTPND_W::new(self)
+    pub fn clrintpnd(&mut self) -> CLRINTPND_W<MIR0_CMDMASK_SPEC> {
+        CLRINTPND_W::new(self, 3)
     }
     #[doc = "Bit 4 - Access Control Bits"]
     #[inline(always)]
     #[must_use]
-    pub fn control(&mut self) -> CONTROL_W<MIR0_CMDMASK_SPEC, 4> {
-        CONTROL_W::new(self)
+    pub fn control(&mut self) -> CONTROL_W<MIR0_CMDMASK_SPEC> {
+        CONTROL_W::new(self, 4)
     }
     #[doc = "Bit 5 - Access Arbitration Bits"]
     #[inline(always)]
     #[must_use]
-    pub fn arbacc(&mut self) -> ARBACC_W<MIR0_CMDMASK_SPEC, 5> {
-        ARBACC_W::new(self)
+    pub fn arbacc(&mut self) -> ARBACC_W<MIR0_CMDMASK_SPEC> {
+        ARBACC_W::new(self, 5)
     }
     #[doc = "Bit 6 - Access Mask Bits"]
     #[inline(always)]
     #[must_use]
-    pub fn maskacc(&mut self) -> MASKACC_W<MIR0_CMDMASK_SPEC, 6> {
-        MASKACC_W::new(self)
+    pub fn maskacc(&mut self) -> MASKACC_W<MIR0_CMDMASK_SPEC> {
+        MASKACC_W::new(self, 6)
     }
     #[doc = "Bit 7 - Write/Read RAM"]
     #[inline(always)]
     #[must_use]
-    pub fn wrrd(&mut self) -> WRRD_W<MIR0_CMDMASK_SPEC, 7> {
-        WRRD_W::new(self)
+    pub fn wrrd(&mut self) -> WRRD_W<MIR0_CMDMASK_SPEC> {
+        WRRD_W::new(self, 7)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -141,10 +145,10 @@ impl crate::RegisterSpec for MIR0_CMDMASK_SPEC {
 impl crate::Readable for MIR0_CMDMASK_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`mir0_cmdmask::W`](W) writer structure"]
 impl crate::Writable for MIR0_CMDMASK_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MIR0_CMDMASK to value 0"]
 impl crate::Resettable for MIR0_CMDMASK_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

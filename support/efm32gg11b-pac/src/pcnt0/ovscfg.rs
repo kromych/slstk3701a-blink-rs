@@ -5,11 +5,11 @@ pub type W = crate::W<OVSCFG_SPEC>;
 #[doc = "Field `FILTLEN` reader - Configure Filter Length for Inputs S0IN and S1IN"]
 pub type FILTLEN_R = crate::FieldReader;
 #[doc = "Field `FILTLEN` writer - Configure Filter Length for Inputs S0IN and S1IN"]
-pub type FILTLEN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type FILTLEN_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `FLUTTERRM` reader - Flutter Remove"]
 pub type FLUTTERRM_R = crate::BitReader;
 #[doc = "Field `FLUTTERRM` writer - Flutter Remove"]
-pub type FLUTTERRM_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FLUTTERRM_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:7 - Configure Filter Length for Inputs S0IN and S1IN"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:7 - Configure Filter Length for Inputs S0IN and S1IN"]
     #[inline(always)]
     #[must_use]
-    pub fn filtlen(&mut self) -> FILTLEN_W<OVSCFG_SPEC, 0> {
-        FILTLEN_W::new(self)
+    pub fn filtlen(&mut self) -> FILTLEN_W<OVSCFG_SPEC> {
+        FILTLEN_W::new(self, 0)
     }
     #[doc = "Bit 12 - Flutter Remove"]
     #[inline(always)]
     #[must_use]
-    pub fn flutterrm(&mut self) -> FLUTTERRM_W<OVSCFG_SPEC, 12> {
-        FLUTTERRM_W::new(self)
+    pub fn flutterrm(&mut self) -> FLUTTERRM_W<OVSCFG_SPEC> {
+        FLUTTERRM_W::new(self, 12)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for OVSCFG_SPEC {
 impl crate::Readable for OVSCFG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ovscfg::W`](W) writer structure"]
 impl crate::Writable for OVSCFG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OVSCFG to value 0"]
 impl crate::Resettable for OVSCFG_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

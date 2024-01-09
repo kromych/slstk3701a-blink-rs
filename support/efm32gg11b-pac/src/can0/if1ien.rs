@@ -5,7 +5,7 @@ pub type W = crate::W<IF1IEN_SPEC>;
 #[doc = "Field `STATUS` reader - STATUS Interrupt Enable"]
 pub type STATUS_R = crate::BitReader;
 #[doc = "Field `STATUS` writer - STATUS Interrupt Enable"]
-pub type STATUS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STATUS_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - STATUS Interrupt Enable"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bit 0 - STATUS Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn status(&mut self) -> STATUS_W<IF1IEN_SPEC, 0> {
-        STATUS_W::new(self)
+    pub fn status(&mut self) -> STATUS_W<IF1IEN_SPEC> {
+        STATUS_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for IF1IEN_SPEC {
 impl crate::Readable for IF1IEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`if1ien::W`](W) writer structure"]
 impl crate::Writable for IF1IEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IF1IEN to value 0x01"]
 impl crate::Resettable for IF1IEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0x01;
+    const RESET_VALUE: u32 = 0x01;
 }

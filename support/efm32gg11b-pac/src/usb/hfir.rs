@@ -5,11 +5,11 @@ pub type W = crate::W<HFIR_SPEC>;
 #[doc = "Field `FRINT` reader - Frame Interval"]
 pub type FRINT_R = crate::FieldReader<u16>;
 #[doc = "Field `FRINT` writer - Frame Interval"]
-pub type FRINT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
+pub type FRINT_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 #[doc = "Field `HFIRRLDCTRL` reader - Reload Control"]
 pub type HFIRRLDCTRL_R = crate::BitReader;
 #[doc = "Field `HFIRRLDCTRL` writer - Reload Control"]
-pub type HFIRRLDCTRL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HFIRRLDCTRL_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:15 - Frame Interval"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:15 - Frame Interval"]
     #[inline(always)]
     #[must_use]
-    pub fn frint(&mut self) -> FRINT_W<HFIR_SPEC, 0> {
-        FRINT_W::new(self)
+    pub fn frint(&mut self) -> FRINT_W<HFIR_SPEC> {
+        FRINT_W::new(self, 0)
     }
     #[doc = "Bit 16 - Reload Control"]
     #[inline(always)]
     #[must_use]
-    pub fn hfirrldctrl(&mut self) -> HFIRRLDCTRL_W<HFIR_SPEC, 16> {
-        HFIRRLDCTRL_W::new(self)
+    pub fn hfirrldctrl(&mut self) -> HFIRRLDCTRL_W<HFIR_SPEC> {
+        HFIRRLDCTRL_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for HFIR_SPEC {
 impl crate::Readable for HFIR_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hfir::W`](W) writer structure"]
 impl crate::Writable for HFIR_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFIR to value 0xea60"]
 impl crate::Resettable for HFIR_SPEC {
-    const RESET_VALUE: Self::Ux = 0xea60;
+    const RESET_VALUE: u32 = 0xea60;
 }

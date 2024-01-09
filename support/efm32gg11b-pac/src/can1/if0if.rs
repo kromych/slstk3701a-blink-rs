@@ -18,5 +18,5 @@ impl crate::RegisterSpec for IF0IF_SPEC {
 impl crate::Readable for IF0IF_SPEC {}
 #[doc = "`reset()` method sets IF0IF to value 0"]
 impl crate::Resettable for IF0IF_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

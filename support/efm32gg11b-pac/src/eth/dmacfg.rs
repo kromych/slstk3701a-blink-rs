@@ -5,11 +5,11 @@ pub type W = crate::W<DMACFG_SPEC>;
 #[doc = "Field `AMBABRSTLEN` reader - Selects the burst length to use on the AMBA (AHB) when transferring frame data."]
 pub type AMBABRSTLEN_R = crate::FieldReader;
 #[doc = "Field `AMBABRSTLEN` writer - Selects the burst length to use on the AMBA (AHB) when transferring frame data."]
-pub type AMBABRSTLEN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O>;
+pub type AMBABRSTLEN_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `HDRDATASPLITEN` reader - Enable header data Splitting."]
 pub type HDRDATASPLITEN_R = crate::BitReader;
 #[doc = "Field `HDRDATASPLITEN` writer - Enable header data Splitting."]
-pub type HDRDATASPLITEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HDRDATASPLITEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXPBUFSIZE` reader - Receiver packet buffer memory size select."]
 pub type RXPBUFSIZE_R = crate::FieldReader<RXPBUFSIZE_A>;
 #[doc = "Receiver packet buffer memory size select.\n\nValue on reset: 3"]
@@ -37,7 +37,7 @@ impl crate::FieldSpec for RXPBUFSIZE_A {
 impl RXPBUFSIZE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> RXPBUFSIZE_A {
+    pub const fn variant(&self) -> RXPBUFSIZE_A {
         match self.bits {
             0 => RXPBUFSIZE_A::SIZE0,
             1 => RXPBUFSIZE_A::SIZE1,
@@ -68,8 +68,8 @@ impl RXPBUFSIZE_R {
     }
 }
 #[doc = "Field `RXPBUFSIZE` writer - Receiver packet buffer memory size select."]
-pub type RXPBUFSIZE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, RXPBUFSIZE_A>;
-impl<'a, REG, const O: u8> RXPBUFSIZE_W<'a, REG, O>
+pub type RXPBUFSIZE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, RXPBUFSIZE_A>;
+impl<'a, REG> RXPBUFSIZE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -98,39 +98,39 @@ where
 #[doc = "Field `TXPBUFSIZE` reader - Transmitter packet buffer memory size select."]
 pub type TXPBUFSIZE_R = crate::BitReader;
 #[doc = "Field `TXPBUFSIZE` writer - Transmitter packet buffer memory size select."]
-pub type TXPBUFSIZE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXPBUFSIZE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXPBUFTCPEN` reader - Transmitter IP, TCP and UDP checksum generation offload enable"]
 pub type TXPBUFTCPEN_R = crate::BitReader;
 #[doc = "Field `TXPBUFTCPEN` writer - Transmitter IP, TCP and UDP checksum generation offload enable"]
-pub type TXPBUFTCPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXPBUFTCPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INFLASTDBUFSIZEEN` reader - Forces the DMA"]
 pub type INFLASTDBUFSIZEEN_R = crate::BitReader;
 #[doc = "Field `INFLASTDBUFSIZEEN` writer - Forces the DMA"]
-pub type INFLASTDBUFSIZEEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INFLASTDBUFSIZEEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXBUFSIZE` reader - DMA receive buffer size in external AMBA (AHB) system memory."]
 pub type RXBUFSIZE_R = crate::FieldReader;
 #[doc = "Field `RXBUFSIZE` writer - DMA receive buffer size in external AMBA (AHB) system memory."]
-pub type RXBUFSIZE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type RXBUFSIZE_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `FRCDISCARDONERR` reader - Auto Discard RX pkts during lack of resource."]
 pub type FRCDISCARDONERR_R = crate::BitReader;
 #[doc = "Field `FRCDISCARDONERR` writer - Auto Discard RX pkts during lack of resource."]
-pub type FRCDISCARDONERR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FRCDISCARDONERR_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FRCMAXAMBABRSTRX` reader - Force max length bursts on RX."]
 pub type FRCMAXAMBABRSTRX_R = crate::BitReader;
 #[doc = "Field `FRCMAXAMBABRSTRX` writer - Force max length bursts on RX."]
-pub type FRCMAXAMBABRSTRX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FRCMAXAMBABRSTRX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FRCMAXAMBABRSTTX` reader - Force max length bursts on TX."]
 pub type FRCMAXAMBABRSTTX_R = crate::BitReader;
 #[doc = "Field `FRCMAXAMBABRSTTX` writer - Force max length bursts on TX."]
-pub type FRCMAXAMBABRSTTX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FRCMAXAMBABRSTTX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXBDEXTNDMODEEN` reader - Enable RX extended BD mode."]
 pub type RXBDEXTNDMODEEN_R = crate::BitReader;
 #[doc = "Field `RXBDEXTNDMODEEN` writer - Enable RX extended BD mode."]
-pub type RXBDEXTNDMODEEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXBDEXTNDMODEEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXBDEXTENDMODEEN` reader - Enable TX extended BD mode."]
 pub type TXBDEXTENDMODEEN_R = crate::BitReader;
 #[doc = "Field `TXBDEXTENDMODEEN` writer - Enable TX extended BD mode."]
-pub type TXBDEXTENDMODEEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXBDEXTENDMODEEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:4 - Selects the burst length to use on the AMBA (AHB) when transferring frame data."]
     #[inline(always)]
@@ -197,76 +197,80 @@ impl W {
     #[doc = "Bits 0:4 - Selects the burst length to use on the AMBA (AHB) when transferring frame data."]
     #[inline(always)]
     #[must_use]
-    pub fn ambabrstlen(&mut self) -> AMBABRSTLEN_W<DMACFG_SPEC, 0> {
-        AMBABRSTLEN_W::new(self)
+    pub fn ambabrstlen(&mut self) -> AMBABRSTLEN_W<DMACFG_SPEC> {
+        AMBABRSTLEN_W::new(self, 0)
     }
     #[doc = "Bit 5 - Enable header data Splitting."]
     #[inline(always)]
     #[must_use]
-    pub fn hdrdataspliten(&mut self) -> HDRDATASPLITEN_W<DMACFG_SPEC, 5> {
-        HDRDATASPLITEN_W::new(self)
+    pub fn hdrdataspliten(&mut self) -> HDRDATASPLITEN_W<DMACFG_SPEC> {
+        HDRDATASPLITEN_W::new(self, 5)
     }
     #[doc = "Bits 8:9 - Receiver packet buffer memory size select."]
     #[inline(always)]
     #[must_use]
-    pub fn rxpbufsize(&mut self) -> RXPBUFSIZE_W<DMACFG_SPEC, 8> {
-        RXPBUFSIZE_W::new(self)
+    pub fn rxpbufsize(&mut self) -> RXPBUFSIZE_W<DMACFG_SPEC> {
+        RXPBUFSIZE_W::new(self, 8)
     }
     #[doc = "Bit 10 - Transmitter packet buffer memory size select."]
     #[inline(always)]
     #[must_use]
-    pub fn txpbufsize(&mut self) -> TXPBUFSIZE_W<DMACFG_SPEC, 10> {
-        TXPBUFSIZE_W::new(self)
+    pub fn txpbufsize(&mut self) -> TXPBUFSIZE_W<DMACFG_SPEC> {
+        TXPBUFSIZE_W::new(self, 10)
     }
     #[doc = "Bit 11 - Transmitter IP, TCP and UDP checksum generation offload enable"]
     #[inline(always)]
     #[must_use]
-    pub fn txpbuftcpen(&mut self) -> TXPBUFTCPEN_W<DMACFG_SPEC, 11> {
-        TXPBUFTCPEN_W::new(self)
+    pub fn txpbuftcpen(&mut self) -> TXPBUFTCPEN_W<DMACFG_SPEC> {
+        TXPBUFTCPEN_W::new(self, 11)
     }
     #[doc = "Bit 12 - Forces the DMA"]
     #[inline(always)]
     #[must_use]
-    pub fn inflastdbufsizeen(&mut self) -> INFLASTDBUFSIZEEN_W<DMACFG_SPEC, 12> {
-        INFLASTDBUFSIZEEN_W::new(self)
+    pub fn inflastdbufsizeen(&mut self) -> INFLASTDBUFSIZEEN_W<DMACFG_SPEC> {
+        INFLASTDBUFSIZEEN_W::new(self, 12)
     }
     #[doc = "Bits 16:23 - DMA receive buffer size in external AMBA (AHB) system memory."]
     #[inline(always)]
     #[must_use]
-    pub fn rxbufsize(&mut self) -> RXBUFSIZE_W<DMACFG_SPEC, 16> {
-        RXBUFSIZE_W::new(self)
+    pub fn rxbufsize(&mut self) -> RXBUFSIZE_W<DMACFG_SPEC> {
+        RXBUFSIZE_W::new(self, 16)
     }
     #[doc = "Bit 24 - Auto Discard RX pkts during lack of resource."]
     #[inline(always)]
     #[must_use]
-    pub fn frcdiscardonerr(&mut self) -> FRCDISCARDONERR_W<DMACFG_SPEC, 24> {
-        FRCDISCARDONERR_W::new(self)
+    pub fn frcdiscardonerr(&mut self) -> FRCDISCARDONERR_W<DMACFG_SPEC> {
+        FRCDISCARDONERR_W::new(self, 24)
     }
     #[doc = "Bit 25 - Force max length bursts on RX."]
     #[inline(always)]
     #[must_use]
-    pub fn frcmaxambabrstrx(&mut self) -> FRCMAXAMBABRSTRX_W<DMACFG_SPEC, 25> {
-        FRCMAXAMBABRSTRX_W::new(self)
+    pub fn frcmaxambabrstrx(&mut self) -> FRCMAXAMBABRSTRX_W<DMACFG_SPEC> {
+        FRCMAXAMBABRSTRX_W::new(self, 25)
     }
     #[doc = "Bit 26 - Force max length bursts on TX."]
     #[inline(always)]
     #[must_use]
-    pub fn frcmaxambabrsttx(&mut self) -> FRCMAXAMBABRSTTX_W<DMACFG_SPEC, 26> {
-        FRCMAXAMBABRSTTX_W::new(self)
+    pub fn frcmaxambabrsttx(&mut self) -> FRCMAXAMBABRSTTX_W<DMACFG_SPEC> {
+        FRCMAXAMBABRSTTX_W::new(self, 26)
     }
     #[doc = "Bit 28 - Enable RX extended BD mode."]
     #[inline(always)]
     #[must_use]
-    pub fn rxbdextndmodeen(&mut self) -> RXBDEXTNDMODEEN_W<DMACFG_SPEC, 28> {
-        RXBDEXTNDMODEEN_W::new(self)
+    pub fn rxbdextndmodeen(&mut self) -> RXBDEXTNDMODEEN_W<DMACFG_SPEC> {
+        RXBDEXTNDMODEEN_W::new(self, 28)
     }
     #[doc = "Bit 29 - Enable TX extended BD mode."]
     #[inline(always)]
     #[must_use]
-    pub fn txbdextendmodeen(&mut self) -> TXBDEXTENDMODEEN_W<DMACFG_SPEC, 29> {
-        TXBDEXTENDMODEEN_W::new(self)
+    pub fn txbdextendmodeen(&mut self) -> TXBDEXTENDMODEEN_W<DMACFG_SPEC> {
+        TXBDEXTENDMODEEN_W::new(self, 29)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -282,10 +286,10 @@ impl crate::RegisterSpec for DMACFG_SPEC {
 impl crate::Readable for DMACFG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dmacfg::W`](W) writer structure"]
 impl crate::Writable for DMACFG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DMACFG to value 0x0002_0704"]
 impl crate::Resettable for DMACFG_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0002_0704;
+    const RESET_VALUE: u32 = 0x0002_0704;
 }

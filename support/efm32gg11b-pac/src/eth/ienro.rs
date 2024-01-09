@@ -5,107 +5,107 @@ pub type W = crate::W<IENRO_SPEC>;
 #[doc = "Field `MNGMNTDONE` reader - management done interrupt mask"]
 pub type MNGMNTDONE_R = crate::BitReader;
 #[doc = "Field `MNGMNTDONE` writer - management done interrupt mask"]
-pub type MNGMNTDONE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MNGMNTDONE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXCMPLT` reader - receive complete interrupt mask"]
 pub type RXCMPLT_R = crate::BitReader;
 #[doc = "Field `RXCMPLT` writer - receive complete interrupt mask"]
-pub type RXCMPLT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXCMPLT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXUSEDBITREAD` reader - receive used bit read interrupt mask"]
 pub type RXUSEDBITREAD_R = crate::BitReader;
 #[doc = "Field `RXUSEDBITREAD` writer - receive used bit read interrupt mask"]
-pub type RXUSEDBITREAD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXUSEDBITREAD_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXUSEDBITREAD` reader - transmit used bit read interrupt mask"]
 pub type TXUSEDBITREAD_R = crate::BitReader;
 #[doc = "Field `TXUSEDBITREAD` writer - transmit used bit read interrupt mask"]
-pub type TXUSEDBITREAD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXUSEDBITREAD_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXUNDERRUN` reader - transmit buffer under run interrupt mask"]
 pub type TXUNDERRUN_R = crate::BitReader;
 #[doc = "Field `TXUNDERRUN` writer - transmit buffer under run interrupt mask"]
-pub type TXUNDERRUN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXUNDERRUN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RTRYLMTORLATECOL` reader - Retry limit exceeded or late collision (gigabit mode only) interrupt mask"]
 pub type RTRYLMTORLATECOL_R = crate::BitReader;
 #[doc = "Field `RTRYLMTORLATECOL` writer - Retry limit exceeded or late collision (gigabit mode only) interrupt mask"]
-pub type RTRYLMTORLATECOL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RTRYLMTORLATECOL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AMBAERR` reader - Transmit frame corruption due to AMBA (AHB) error interrupt mask"]
 pub type AMBAERR_R = crate::BitReader;
 #[doc = "Field `AMBAERR` writer - Transmit frame corruption due to AMBA (AHB) error interrupt mask"]
-pub type AMBAERR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AMBAERR_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXCMPLT` reader - Transmit complete interrupt mask"]
 pub type TXCMPLT_R = crate::BitReader;
 #[doc = "Field `TXCMPLT` writer - Transmit complete interrupt mask"]
-pub type TXCMPLT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXCMPLT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `UNUSED` reader - Unused"]
 pub type UNUSED_R = crate::BitReader;
 #[doc = "Field `UNUSED` writer - Unused"]
-pub type UNUSED_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type UNUSED_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXOVERRUN` reader - Receive overrun interrupt mask"]
 pub type RXOVERRUN_R = crate::BitReader;
 #[doc = "Field `RXOVERRUN` writer - Receive overrun interrupt mask"]
-pub type RXOVERRUN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXOVERRUN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RESPNOTOK` reader - bresp/hresp not OK interrupt mask"]
 pub type RESPNOTOK_R = crate::BitReader;
 #[doc = "Field `RESPNOTOK` writer - bresp/hresp not OK interrupt mask"]
-pub type RESPNOTOK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RESPNOTOK_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NONZEROPFRMQUANT` reader - Pause frame with non-zero pause quantum interrupt mask"]
 pub type NONZEROPFRMQUANT_R = crate::BitReader;
 #[doc = "Field `NONZEROPFRMQUANT` writer - Pause frame with non-zero pause quantum interrupt mask"]
-pub type NONZEROPFRMQUANT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type NONZEROPFRMQUANT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PAUSETIMEZERO` reader - pause time zero interrupt mask"]
 pub type PAUSETIMEZERO_R = crate::BitReader;
 #[doc = "Field `PAUSETIMEZERO` writer - pause time zero interrupt mask"]
-pub type PAUSETIMEZERO_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PAUSETIMEZERO_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PFRMTX` reader - pause frame transmitted interrupt mask"]
 pub type PFRMTX_R = crate::BitReader;
 #[doc = "Field `PFRMTX` writer - pause frame transmitted interrupt mask"]
-pub type PFRMTX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PFRMTX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPDLYREQFRMRX` reader - PTP delay_req frame received mask"]
 pub type PTPDLYREQFRMRX_R = crate::BitReader;
 #[doc = "Field `PTPDLYREQFRMRX` writer - PTP delay_req frame received mask"]
-pub type PTPDLYREQFRMRX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPDLYREQFRMRX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPSYNCFRMRX` reader - PTP sync frame received mask"]
 pub type PTPSYNCFRMRX_R = crate::BitReader;
 #[doc = "Field `PTPSYNCFRMRX` writer - PTP sync frame received mask"]
-pub type PTPSYNCFRMRX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPSYNCFRMRX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPDLYREQFRMTX` reader - PTP delay_req frame transmitted mask"]
 pub type PTPDLYREQFRMTX_R = crate::BitReader;
 #[doc = "Field `PTPDLYREQFRMTX` writer - PTP delay_req frame transmitted mask"]
-pub type PTPDLYREQFRMTX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPDLYREQFRMTX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPSYNCFRMTX` reader - PTP sync frame transmitted mask"]
 pub type PTPSYNCFRMTX_R = crate::BitReader;
 #[doc = "Field `PTPSYNCFRMTX` writer - PTP sync frame transmitted mask"]
-pub type PTPSYNCFRMTX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPSYNCFRMTX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPPDLYREQFRMRX` reader - PTP pdelay_req frame received mask"]
 pub type PTPPDLYREQFRMRX_R = crate::BitReader;
 #[doc = "Field `PTPPDLYREQFRMRX` writer - PTP pdelay_req frame received mask"]
-pub type PTPPDLYREQFRMRX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPPDLYREQFRMRX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPPDLYRESPFRMRX` reader - PTP pdelay_resp frame received mask"]
 pub type PTPPDLYRESPFRMRX_R = crate::BitReader;
 #[doc = "Field `PTPPDLYRESPFRMRX` writer - PTP pdelay_resp frame received mask"]
-pub type PTPPDLYRESPFRMRX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPPDLYRESPFRMRX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPPDLYREQFRMTX` reader - PTP pdelay_req frame transmitted mask"]
 pub type PTPPDLYREQFRMTX_R = crate::BitReader;
 #[doc = "Field `PTPPDLYREQFRMTX` writer - PTP pdelay_req frame transmitted mask"]
-pub type PTPPDLYREQFRMTX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPPDLYREQFRMTX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPPDLYRESPFRMTX` reader - PTP pdelay_resp frame transmitted mask"]
 pub type PTPPDLYRESPFRMTX_R = crate::BitReader;
 #[doc = "Field `PTPPDLYRESPFRMTX` writer - PTP pdelay_resp frame transmitted mask"]
-pub type PTPPDLYRESPFRMTX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPPDLYRESPFRMTX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TSUSECREGINCR` reader - TSU seconds register increment mask"]
 pub type TSUSECREGINCR_R = crate::BitReader;
 #[doc = "Field `TSUSECREGINCR` writer - TSU seconds register increment mask"]
-pub type TSUSECREGINCR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TSUSECREGINCR_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXLPIINDC` reader - RX LPI indication mask"]
 pub type RXLPIINDC_R = crate::BitReader;
 #[doc = "Field `RXLPIINDC` writer - RX LPI indication mask"]
-pub type RXLPIINDC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXLPIINDC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WOLEVNTRX` reader - WOL event received mask"]
 pub type WOLEVNTRX_R = crate::BitReader;
 #[doc = "Field `WOLEVNTRX` writer - WOL event received mask"]
-pub type WOLEVNTRX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type WOLEVNTRX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TSUTIMERCOMP` reader - TSU timer comparison interrupt mask."]
 pub type TSUTIMERCOMP_R = crate::BitReader;
 #[doc = "Field `TSUTIMERCOMP` writer - TSU timer comparison interrupt mask."]
-pub type TSUTIMERCOMP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TSUTIMERCOMP_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - management done interrupt mask"]
     #[inline(always)]
@@ -242,160 +242,164 @@ impl W {
     #[doc = "Bit 0 - management done interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn mngmntdone(&mut self) -> MNGMNTDONE_W<IENRO_SPEC, 0> {
-        MNGMNTDONE_W::new(self)
+    pub fn mngmntdone(&mut self) -> MNGMNTDONE_W<IENRO_SPEC> {
+        MNGMNTDONE_W::new(self, 0)
     }
     #[doc = "Bit 1 - receive complete interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn rxcmplt(&mut self) -> RXCMPLT_W<IENRO_SPEC, 1> {
-        RXCMPLT_W::new(self)
+    pub fn rxcmplt(&mut self) -> RXCMPLT_W<IENRO_SPEC> {
+        RXCMPLT_W::new(self, 1)
     }
     #[doc = "Bit 2 - receive used bit read interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn rxusedbitread(&mut self) -> RXUSEDBITREAD_W<IENRO_SPEC, 2> {
-        RXUSEDBITREAD_W::new(self)
+    pub fn rxusedbitread(&mut self) -> RXUSEDBITREAD_W<IENRO_SPEC> {
+        RXUSEDBITREAD_W::new(self, 2)
     }
     #[doc = "Bit 3 - transmit used bit read interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn txusedbitread(&mut self) -> TXUSEDBITREAD_W<IENRO_SPEC, 3> {
-        TXUSEDBITREAD_W::new(self)
+    pub fn txusedbitread(&mut self) -> TXUSEDBITREAD_W<IENRO_SPEC> {
+        TXUSEDBITREAD_W::new(self, 3)
     }
     #[doc = "Bit 4 - transmit buffer under run interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn txunderrun(&mut self) -> TXUNDERRUN_W<IENRO_SPEC, 4> {
-        TXUNDERRUN_W::new(self)
+    pub fn txunderrun(&mut self) -> TXUNDERRUN_W<IENRO_SPEC> {
+        TXUNDERRUN_W::new(self, 4)
     }
     #[doc = "Bit 5 - Retry limit exceeded or late collision (gigabit mode only) interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn rtrylmtorlatecol(&mut self) -> RTRYLMTORLATECOL_W<IENRO_SPEC, 5> {
-        RTRYLMTORLATECOL_W::new(self)
+    pub fn rtrylmtorlatecol(&mut self) -> RTRYLMTORLATECOL_W<IENRO_SPEC> {
+        RTRYLMTORLATECOL_W::new(self, 5)
     }
     #[doc = "Bit 6 - Transmit frame corruption due to AMBA (AHB) error interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ambaerr(&mut self) -> AMBAERR_W<IENRO_SPEC, 6> {
-        AMBAERR_W::new(self)
+    pub fn ambaerr(&mut self) -> AMBAERR_W<IENRO_SPEC> {
+        AMBAERR_W::new(self, 6)
     }
     #[doc = "Bit 7 - Transmit complete interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn txcmplt(&mut self) -> TXCMPLT_W<IENRO_SPEC, 7> {
-        TXCMPLT_W::new(self)
+    pub fn txcmplt(&mut self) -> TXCMPLT_W<IENRO_SPEC> {
+        TXCMPLT_W::new(self, 7)
     }
     #[doc = "Bit 8 - Unused"]
     #[inline(always)]
     #[must_use]
-    pub fn unused(&mut self) -> UNUSED_W<IENRO_SPEC, 8> {
-        UNUSED_W::new(self)
+    pub fn unused(&mut self) -> UNUSED_W<IENRO_SPEC> {
+        UNUSED_W::new(self, 8)
     }
     #[doc = "Bit 10 - Receive overrun interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn rxoverrun(&mut self) -> RXOVERRUN_W<IENRO_SPEC, 10> {
-        RXOVERRUN_W::new(self)
+    pub fn rxoverrun(&mut self) -> RXOVERRUN_W<IENRO_SPEC> {
+        RXOVERRUN_W::new(self, 10)
     }
     #[doc = "Bit 11 - bresp/hresp not OK interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn respnotok(&mut self) -> RESPNOTOK_W<IENRO_SPEC, 11> {
-        RESPNOTOK_W::new(self)
+    pub fn respnotok(&mut self) -> RESPNOTOK_W<IENRO_SPEC> {
+        RESPNOTOK_W::new(self, 11)
     }
     #[doc = "Bit 12 - Pause frame with non-zero pause quantum interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn nonzeropfrmquant(&mut self) -> NONZEROPFRMQUANT_W<IENRO_SPEC, 12> {
-        NONZEROPFRMQUANT_W::new(self)
+    pub fn nonzeropfrmquant(&mut self) -> NONZEROPFRMQUANT_W<IENRO_SPEC> {
+        NONZEROPFRMQUANT_W::new(self, 12)
     }
     #[doc = "Bit 13 - pause time zero interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn pausetimezero(&mut self) -> PAUSETIMEZERO_W<IENRO_SPEC, 13> {
-        PAUSETIMEZERO_W::new(self)
+    pub fn pausetimezero(&mut self) -> PAUSETIMEZERO_W<IENRO_SPEC> {
+        PAUSETIMEZERO_W::new(self, 13)
     }
     #[doc = "Bit 14 - pause frame transmitted interrupt mask"]
     #[inline(always)]
     #[must_use]
-    pub fn pfrmtx(&mut self) -> PFRMTX_W<IENRO_SPEC, 14> {
-        PFRMTX_W::new(self)
+    pub fn pfrmtx(&mut self) -> PFRMTX_W<IENRO_SPEC> {
+        PFRMTX_W::new(self, 14)
     }
     #[doc = "Bit 18 - PTP delay_req frame received mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptpdlyreqfrmrx(&mut self) -> PTPDLYREQFRMRX_W<IENRO_SPEC, 18> {
-        PTPDLYREQFRMRX_W::new(self)
+    pub fn ptpdlyreqfrmrx(&mut self) -> PTPDLYREQFRMRX_W<IENRO_SPEC> {
+        PTPDLYREQFRMRX_W::new(self, 18)
     }
     #[doc = "Bit 19 - PTP sync frame received mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptpsyncfrmrx(&mut self) -> PTPSYNCFRMRX_W<IENRO_SPEC, 19> {
-        PTPSYNCFRMRX_W::new(self)
+    pub fn ptpsyncfrmrx(&mut self) -> PTPSYNCFRMRX_W<IENRO_SPEC> {
+        PTPSYNCFRMRX_W::new(self, 19)
     }
     #[doc = "Bit 20 - PTP delay_req frame transmitted mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptpdlyreqfrmtx(&mut self) -> PTPDLYREQFRMTX_W<IENRO_SPEC, 20> {
-        PTPDLYREQFRMTX_W::new(self)
+    pub fn ptpdlyreqfrmtx(&mut self) -> PTPDLYREQFRMTX_W<IENRO_SPEC> {
+        PTPDLYREQFRMTX_W::new(self, 20)
     }
     #[doc = "Bit 21 - PTP sync frame transmitted mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptpsyncfrmtx(&mut self) -> PTPSYNCFRMTX_W<IENRO_SPEC, 21> {
-        PTPSYNCFRMTX_W::new(self)
+    pub fn ptpsyncfrmtx(&mut self) -> PTPSYNCFRMTX_W<IENRO_SPEC> {
+        PTPSYNCFRMTX_W::new(self, 21)
     }
     #[doc = "Bit 22 - PTP pdelay_req frame received mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptppdlyreqfrmrx(&mut self) -> PTPPDLYREQFRMRX_W<IENRO_SPEC, 22> {
-        PTPPDLYREQFRMRX_W::new(self)
+    pub fn ptppdlyreqfrmrx(&mut self) -> PTPPDLYREQFRMRX_W<IENRO_SPEC> {
+        PTPPDLYREQFRMRX_W::new(self, 22)
     }
     #[doc = "Bit 23 - PTP pdelay_resp frame received mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptppdlyrespfrmrx(&mut self) -> PTPPDLYRESPFRMRX_W<IENRO_SPEC, 23> {
-        PTPPDLYRESPFRMRX_W::new(self)
+    pub fn ptppdlyrespfrmrx(&mut self) -> PTPPDLYRESPFRMRX_W<IENRO_SPEC> {
+        PTPPDLYRESPFRMRX_W::new(self, 23)
     }
     #[doc = "Bit 24 - PTP pdelay_req frame transmitted mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptppdlyreqfrmtx(&mut self) -> PTPPDLYREQFRMTX_W<IENRO_SPEC, 24> {
-        PTPPDLYREQFRMTX_W::new(self)
+    pub fn ptppdlyreqfrmtx(&mut self) -> PTPPDLYREQFRMTX_W<IENRO_SPEC> {
+        PTPPDLYREQFRMTX_W::new(self, 24)
     }
     #[doc = "Bit 25 - PTP pdelay_resp frame transmitted mask"]
     #[inline(always)]
     #[must_use]
-    pub fn ptppdlyrespfrmtx(&mut self) -> PTPPDLYRESPFRMTX_W<IENRO_SPEC, 25> {
-        PTPPDLYRESPFRMTX_W::new(self)
+    pub fn ptppdlyrespfrmtx(&mut self) -> PTPPDLYRESPFRMTX_W<IENRO_SPEC> {
+        PTPPDLYRESPFRMTX_W::new(self, 25)
     }
     #[doc = "Bit 26 - TSU seconds register increment mask"]
     #[inline(always)]
     #[must_use]
-    pub fn tsusecregincr(&mut self) -> TSUSECREGINCR_W<IENRO_SPEC, 26> {
-        TSUSECREGINCR_W::new(self)
+    pub fn tsusecregincr(&mut self) -> TSUSECREGINCR_W<IENRO_SPEC> {
+        TSUSECREGINCR_W::new(self, 26)
     }
     #[doc = "Bit 27 - RX LPI indication mask"]
     #[inline(always)]
     #[must_use]
-    pub fn rxlpiindc(&mut self) -> RXLPIINDC_W<IENRO_SPEC, 27> {
-        RXLPIINDC_W::new(self)
+    pub fn rxlpiindc(&mut self) -> RXLPIINDC_W<IENRO_SPEC> {
+        RXLPIINDC_W::new(self, 27)
     }
     #[doc = "Bit 28 - WOL event received mask"]
     #[inline(always)]
     #[must_use]
-    pub fn wolevntrx(&mut self) -> WOLEVNTRX_W<IENRO_SPEC, 28> {
-        WOLEVNTRX_W::new(self)
+    pub fn wolevntrx(&mut self) -> WOLEVNTRX_W<IENRO_SPEC> {
+        WOLEVNTRX_W::new(self, 28)
     }
     #[doc = "Bit 29 - TSU timer comparison interrupt mask."]
     #[inline(always)]
     #[must_use]
-    pub fn tsutimercomp(&mut self) -> TSUTIMERCOMP_W<IENRO_SPEC, 29> {
-        TSUTIMERCOMP_W::new(self)
+    pub fn tsutimercomp(&mut self) -> TSUTIMERCOMP_W<IENRO_SPEC> {
+        TSUTIMERCOMP_W::new(self, 29)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -411,10 +415,10 @@ impl crate::RegisterSpec for IENRO_SPEC {
 impl crate::Readable for IENRO_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ienro::W`](W) writer structure"]
 impl crate::Writable for IENRO_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IENRO to value 0x3ffc_7dff"]
 impl crate::Resettable for IENRO_SPEC {
-    const RESET_VALUE: Self::Ux = 0x3ffc_7dff;
+    const RESET_VALUE: u32 = 0x3ffc_7dff;
 }

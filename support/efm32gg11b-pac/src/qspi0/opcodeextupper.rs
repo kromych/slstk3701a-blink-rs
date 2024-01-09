@@ -5,11 +5,11 @@ pub type W = crate::W<OPCODEEXTUPPER_SPEC>;
 #[doc = "Field `EXTWELOPCODE` reader - WEL Opcode Extension"]
 pub type EXTWELOPCODE_R = crate::FieldReader;
 #[doc = "Field `EXTWELOPCODE` writer - WEL Opcode Extension"]
-pub type EXTWELOPCODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type EXTWELOPCODE_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `WELOPCODE` reader - WEL Opcode"]
 pub type WELOPCODE_R = crate::FieldReader;
 #[doc = "Field `WELOPCODE` writer - WEL Opcode"]
-pub type WELOPCODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type WELOPCODE_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 16:23 - WEL Opcode Extension"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 16:23 - WEL Opcode Extension"]
     #[inline(always)]
     #[must_use]
-    pub fn extwelopcode(&mut self) -> EXTWELOPCODE_W<OPCODEEXTUPPER_SPEC, 16> {
-        EXTWELOPCODE_W::new(self)
+    pub fn extwelopcode(&mut self) -> EXTWELOPCODE_W<OPCODEEXTUPPER_SPEC> {
+        EXTWELOPCODE_W::new(self, 16)
     }
     #[doc = "Bits 24:31 - WEL Opcode"]
     #[inline(always)]
     #[must_use]
-    pub fn welopcode(&mut self) -> WELOPCODE_W<OPCODEEXTUPPER_SPEC, 24> {
-        WELOPCODE_W::new(self)
+    pub fn welopcode(&mut self) -> WELOPCODE_W<OPCODEEXTUPPER_SPEC> {
+        WELOPCODE_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for OPCODEEXTUPPER_SPEC {
 impl crate::Readable for OPCODEEXTUPPER_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`opcodeextupper::W`](W) writer structure"]
 impl crate::Writable for OPCODEEXTUPPER_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OPCODEEXTUPPER to value 0x06f9_0000"]
 impl crate::Resettable for OPCODEEXTUPPER_SPEC {
-    const RESET_VALUE: Self::Ux = 0x06f9_0000;
+    const RESET_VALUE: u32 = 0x06f9_0000;
 }

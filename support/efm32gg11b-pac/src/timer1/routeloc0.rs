@@ -37,7 +37,7 @@ impl crate::FieldSpec for CC0LOC_A {
 impl CC0LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CC0LOC_A> {
+    pub const fn variant(&self) -> Option<CC0LOC_A> {
         match self.bits {
             0 => Some(CC0LOC_A::LOC0),
             1 => Some(CC0LOC_A::LOC1),
@@ -92,8 +92,8 @@ impl CC0LOC_R {
     }
 }
 #[doc = "Field `CC0LOC` writer - I/O Location"]
-pub type CC0LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CC0LOC_A>;
-impl<'a, REG, const O: u8> CC0LOC_W<'a, REG, O>
+pub type CC0LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CC0LOC_A>;
+impl<'a, REG> CC0LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -174,7 +174,7 @@ impl crate::FieldSpec for CC1LOC_A {
 impl CC1LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CC1LOC_A> {
+    pub const fn variant(&self) -> Option<CC1LOC_A> {
         match self.bits {
             0 => Some(CC1LOC_A::LOC0),
             1 => Some(CC1LOC_A::LOC1),
@@ -229,8 +229,8 @@ impl CC1LOC_R {
     }
 }
 #[doc = "Field `CC1LOC` writer - I/O Location"]
-pub type CC1LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CC1LOC_A>;
-impl<'a, REG, const O: u8> CC1LOC_W<'a, REG, O>
+pub type CC1LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CC1LOC_A>;
+impl<'a, REG> CC1LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -311,7 +311,7 @@ impl crate::FieldSpec for CC2LOC_A {
 impl CC2LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CC2LOC_A> {
+    pub const fn variant(&self) -> Option<CC2LOC_A> {
         match self.bits {
             0 => Some(CC2LOC_A::LOC0),
             1 => Some(CC2LOC_A::LOC1),
@@ -366,8 +366,8 @@ impl CC2LOC_R {
     }
 }
 #[doc = "Field `CC2LOC` writer - I/O Location"]
-pub type CC2LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CC2LOC_A>;
-impl<'a, REG, const O: u8> CC2LOC_W<'a, REG, O>
+pub type CC2LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CC2LOC_A>;
+impl<'a, REG> CC2LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -448,7 +448,7 @@ impl crate::FieldSpec for CC3LOC_A {
 impl CC3LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CC3LOC_A> {
+    pub const fn variant(&self) -> Option<CC3LOC_A> {
         match self.bits {
             0 => Some(CC3LOC_A::LOC0),
             1 => Some(CC3LOC_A::LOC1),
@@ -503,8 +503,8 @@ impl CC3LOC_R {
     }
 }
 #[doc = "Field `CC3LOC` writer - I/O Location"]
-pub type CC3LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CC3LOC_A>;
-impl<'a, REG, const O: u8> CC3LOC_W<'a, REG, O>
+pub type CC3LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CC3LOC_A>;
+impl<'a, REG> CC3LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -576,28 +576,32 @@ impl W {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn cc0loc(&mut self) -> CC0LOC_W<ROUTELOC0_SPEC, 0> {
-        CC0LOC_W::new(self)
+    pub fn cc0loc(&mut self) -> CC0LOC_W<ROUTELOC0_SPEC> {
+        CC0LOC_W::new(self, 0)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn cc1loc(&mut self) -> CC1LOC_W<ROUTELOC0_SPEC, 8> {
-        CC1LOC_W::new(self)
+    pub fn cc1loc(&mut self) -> CC1LOC_W<ROUTELOC0_SPEC> {
+        CC1LOC_W::new(self, 8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn cc2loc(&mut self) -> CC2LOC_W<ROUTELOC0_SPEC, 16> {
-        CC2LOC_W::new(self)
+    pub fn cc2loc(&mut self) -> CC2LOC_W<ROUTELOC0_SPEC> {
+        CC2LOC_W::new(self, 16)
     }
     #[doc = "Bits 24:29 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn cc3loc(&mut self) -> CC3LOC_W<ROUTELOC0_SPEC, 24> {
-        CC3LOC_W::new(self)
+    pub fn cc3loc(&mut self) -> CC3LOC_W<ROUTELOC0_SPEC> {
+        CC3LOC_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -613,10 +617,10 @@ impl crate::RegisterSpec for ROUTELOC0_SPEC {
 impl crate::Readable for ROUTELOC0_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routeloc0::W`](W) writer structure"]
 impl crate::Writable for ROUTELOC0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTELOC0 to value 0"]
 impl crate::Resettable for ROUTELOC0_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -25,5 +25,5 @@ impl crate::RegisterSpec for INTID_SPEC {
 impl crate::Readable for INTID_SPEC {}
 #[doc = "`reset()` method sets INTID to value 0"]
 impl crate::Resettable for INTID_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

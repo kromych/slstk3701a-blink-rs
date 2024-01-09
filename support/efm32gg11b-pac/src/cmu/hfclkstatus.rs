@@ -33,7 +33,7 @@ impl crate::FieldSpec for SELECTED_A {
 impl SELECTED_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<SELECTED_A> {
+    pub const fn variant(&self) -> Option<SELECTED_A> {
         match self.bits {
             1 => Some(SELECTED_A::HFRCO),
             2 => Some(SELECTED_A::HFXO),
@@ -97,5 +97,5 @@ impl crate::RegisterSpec for HFCLKSTATUS_SPEC {
 impl crate::Readable for HFCLKSTATUS_SPEC {}
 #[doc = "`reset()` method sets HFCLKSTATUS to value 0x01"]
 impl crate::Resettable for HFCLKSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0x01;
+    const RESET_VALUE: u32 = 0x01;
 }

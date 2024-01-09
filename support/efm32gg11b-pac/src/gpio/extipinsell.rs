@@ -29,7 +29,7 @@ impl crate::FieldSpec for EXTIPINSEL0_A {
 impl EXTIPINSEL0_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL0_A {
+    pub const fn variant(&self) -> EXTIPINSEL0_A {
         match self.bits {
             0 => EXTIPINSEL0_A::PIN0,
             1 => EXTIPINSEL0_A::PIN1,
@@ -60,8 +60,8 @@ impl EXTIPINSEL0_R {
     }
 }
 #[doc = "Field `EXTIPINSEL0` writer - External Interrupt 0 Pin Select"]
-pub type EXTIPINSEL0_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL0_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL0_W<'a, REG, O>
+pub type EXTIPINSEL0_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL0_A>;
+impl<'a, REG> EXTIPINSEL0_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -114,7 +114,7 @@ impl crate::FieldSpec for EXTIPINSEL1_A {
 impl EXTIPINSEL1_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL1_A {
+    pub const fn variant(&self) -> EXTIPINSEL1_A {
         match self.bits {
             0 => EXTIPINSEL1_A::PIN0,
             1 => EXTIPINSEL1_A::PIN1,
@@ -145,8 +145,8 @@ impl EXTIPINSEL1_R {
     }
 }
 #[doc = "Field `EXTIPINSEL1` writer - External Interrupt 1 Pin Select"]
-pub type EXTIPINSEL1_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL1_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL1_W<'a, REG, O>
+pub type EXTIPINSEL1_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL1_A>;
+impl<'a, REG> EXTIPINSEL1_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -199,7 +199,7 @@ impl crate::FieldSpec for EXTIPINSEL2_A {
 impl EXTIPINSEL2_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL2_A {
+    pub const fn variant(&self) -> EXTIPINSEL2_A {
         match self.bits {
             0 => EXTIPINSEL2_A::PIN0,
             1 => EXTIPINSEL2_A::PIN1,
@@ -230,8 +230,8 @@ impl EXTIPINSEL2_R {
     }
 }
 #[doc = "Field `EXTIPINSEL2` writer - External Interrupt 2 Pin Select"]
-pub type EXTIPINSEL2_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL2_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL2_W<'a, REG, O>
+pub type EXTIPINSEL2_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL2_A>;
+impl<'a, REG> EXTIPINSEL2_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -284,7 +284,7 @@ impl crate::FieldSpec for EXTIPINSEL3_A {
 impl EXTIPINSEL3_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL3_A {
+    pub const fn variant(&self) -> EXTIPINSEL3_A {
         match self.bits {
             0 => EXTIPINSEL3_A::PIN0,
             1 => EXTIPINSEL3_A::PIN1,
@@ -315,8 +315,8 @@ impl EXTIPINSEL3_R {
     }
 }
 #[doc = "Field `EXTIPINSEL3` writer - External Interrupt 3 Pin Select"]
-pub type EXTIPINSEL3_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL3_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL3_W<'a, REG, O>
+pub type EXTIPINSEL3_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL3_A>;
+impl<'a, REG> EXTIPINSEL3_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -369,7 +369,7 @@ impl crate::FieldSpec for EXTIPINSEL4_A {
 impl EXTIPINSEL4_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL4_A {
+    pub const fn variant(&self) -> EXTIPINSEL4_A {
         match self.bits {
             0 => EXTIPINSEL4_A::PIN4,
             1 => EXTIPINSEL4_A::PIN5,
@@ -400,8 +400,8 @@ impl EXTIPINSEL4_R {
     }
 }
 #[doc = "Field `EXTIPINSEL4` writer - External Interrupt 4 Pin Select"]
-pub type EXTIPINSEL4_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL4_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL4_W<'a, REG, O>
+pub type EXTIPINSEL4_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL4_A>;
+impl<'a, REG> EXTIPINSEL4_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -454,7 +454,7 @@ impl crate::FieldSpec for EXTIPINSEL5_A {
 impl EXTIPINSEL5_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL5_A {
+    pub const fn variant(&self) -> EXTIPINSEL5_A {
         match self.bits {
             0 => EXTIPINSEL5_A::PIN4,
             1 => EXTIPINSEL5_A::PIN5,
@@ -485,8 +485,8 @@ impl EXTIPINSEL5_R {
     }
 }
 #[doc = "Field `EXTIPINSEL5` writer - External Interrupt 5 Pin Select"]
-pub type EXTIPINSEL5_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL5_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL5_W<'a, REG, O>
+pub type EXTIPINSEL5_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL5_A>;
+impl<'a, REG> EXTIPINSEL5_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -539,7 +539,7 @@ impl crate::FieldSpec for EXTIPINSEL6_A {
 impl EXTIPINSEL6_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL6_A {
+    pub const fn variant(&self) -> EXTIPINSEL6_A {
         match self.bits {
             0 => EXTIPINSEL6_A::PIN4,
             1 => EXTIPINSEL6_A::PIN5,
@@ -570,8 +570,8 @@ impl EXTIPINSEL6_R {
     }
 }
 #[doc = "Field `EXTIPINSEL6` writer - External Interrupt 6 Pin Select"]
-pub type EXTIPINSEL6_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL6_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL6_W<'a, REG, O>
+pub type EXTIPINSEL6_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL6_A>;
+impl<'a, REG> EXTIPINSEL6_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -624,7 +624,7 @@ impl crate::FieldSpec for EXTIPINSEL7_A {
 impl EXTIPINSEL7_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EXTIPINSEL7_A {
+    pub const fn variant(&self) -> EXTIPINSEL7_A {
         match self.bits {
             0 => EXTIPINSEL7_A::PIN4,
             1 => EXTIPINSEL7_A::PIN5,
@@ -655,8 +655,8 @@ impl EXTIPINSEL7_R {
     }
 }
 #[doc = "Field `EXTIPINSEL7` writer - External Interrupt 7 Pin Select"]
-pub type EXTIPINSEL7_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EXTIPINSEL7_A>;
-impl<'a, REG, const O: u8> EXTIPINSEL7_W<'a, REG, O>
+pub type EXTIPINSEL7_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EXTIPINSEL7_A>;
+impl<'a, REG> EXTIPINSEL7_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -728,52 +728,56 @@ impl W {
     #[doc = "Bits 0:1 - External Interrupt 0 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel0(&mut self) -> EXTIPINSEL0_W<EXTIPINSELL_SPEC, 0> {
-        EXTIPINSEL0_W::new(self)
+    pub fn extipinsel0(&mut self) -> EXTIPINSEL0_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL0_W::new(self, 0)
     }
     #[doc = "Bits 4:5 - External Interrupt 1 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel1(&mut self) -> EXTIPINSEL1_W<EXTIPINSELL_SPEC, 4> {
-        EXTIPINSEL1_W::new(self)
+    pub fn extipinsel1(&mut self) -> EXTIPINSEL1_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL1_W::new(self, 4)
     }
     #[doc = "Bits 8:9 - External Interrupt 2 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel2(&mut self) -> EXTIPINSEL2_W<EXTIPINSELL_SPEC, 8> {
-        EXTIPINSEL2_W::new(self)
+    pub fn extipinsel2(&mut self) -> EXTIPINSEL2_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL2_W::new(self, 8)
     }
     #[doc = "Bits 12:13 - External Interrupt 3 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel3(&mut self) -> EXTIPINSEL3_W<EXTIPINSELL_SPEC, 12> {
-        EXTIPINSEL3_W::new(self)
+    pub fn extipinsel3(&mut self) -> EXTIPINSEL3_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL3_W::new(self, 12)
     }
     #[doc = "Bits 16:17 - External Interrupt 4 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel4(&mut self) -> EXTIPINSEL4_W<EXTIPINSELL_SPEC, 16> {
-        EXTIPINSEL4_W::new(self)
+    pub fn extipinsel4(&mut self) -> EXTIPINSEL4_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL4_W::new(self, 16)
     }
     #[doc = "Bits 20:21 - External Interrupt 5 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel5(&mut self) -> EXTIPINSEL5_W<EXTIPINSELL_SPEC, 20> {
-        EXTIPINSEL5_W::new(self)
+    pub fn extipinsel5(&mut self) -> EXTIPINSEL5_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL5_W::new(self, 20)
     }
     #[doc = "Bits 24:25 - External Interrupt 6 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel6(&mut self) -> EXTIPINSEL6_W<EXTIPINSELL_SPEC, 24> {
-        EXTIPINSEL6_W::new(self)
+    pub fn extipinsel6(&mut self) -> EXTIPINSEL6_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL6_W::new(self, 24)
     }
     #[doc = "Bits 28:29 - External Interrupt 7 Pin Select"]
     #[inline(always)]
     #[must_use]
-    pub fn extipinsel7(&mut self) -> EXTIPINSEL7_W<EXTIPINSELL_SPEC, 28> {
-        EXTIPINSEL7_W::new(self)
+    pub fn extipinsel7(&mut self) -> EXTIPINSEL7_W<EXTIPINSELL_SPEC> {
+        EXTIPINSEL7_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -789,10 +793,10 @@ impl crate::RegisterSpec for EXTIPINSELL_SPEC {
 impl crate::Readable for EXTIPINSELL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`extipinsell::W`](W) writer structure"]
 impl crate::Writable for EXTIPINSELL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets EXTIPINSELL to value 0x3210_3210"]
 impl crate::Resettable for EXTIPINSELL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x3210_3210;
+    const RESET_VALUE: u32 = 0x3210_3210;
 }

@@ -5,7 +5,7 @@ pub type W = crate::W<CH4_SRC_SPEC>;
 #[doc = "Field `SRCADDR` reader - Source Data Address"]
 pub type SRCADDR_R = crate::FieldReader<u32>;
 #[doc = "Field `SRCADDR` writer - Source Data Address"]
-pub type SRCADDR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 32, O, u32>;
+pub type SRCADDR_W<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Source Data Address"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:31 - Source Data Address"]
     #[inline(always)]
     #[must_use]
-    pub fn srcaddr(&mut self) -> SRCADDR_W<CH4_SRC_SPEC, 0> {
-        SRCADDR_W::new(self)
+    pub fn srcaddr(&mut self) -> SRCADDR_W<CH4_SRC_SPEC> {
+        SRCADDR_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for CH4_SRC_SPEC {
 impl crate::Readable for CH4_SRC_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ch4_src::W`](W) writer structure"]
 impl crate::Writable for CH4_SRC_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CH4_SRC to value 0"]
 impl crate::Resettable for CH4_SRC_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

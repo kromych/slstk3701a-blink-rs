@@ -18,5 +18,5 @@ impl crate::RegisterSpec for PJ_DIN_SPEC {
 impl crate::Readable for PJ_DIN_SPEC {}
 #[doc = "`reset()` method sets PJ_DIN to value 0"]
 impl crate::Resettable for PJ_DIN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

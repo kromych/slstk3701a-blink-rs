@@ -35,7 +35,7 @@ impl crate::FieldSpec for V0_A {
 impl V0_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> V0_A {
+    pub const fn variant(&self) -> V0_A {
         match self.bits {
             0 => V0_A::DDATA0,
             1 => V0_A::DDATA1,
@@ -124,7 +124,7 @@ impl crate::FieldSpec for V1_A {
 impl V1_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> V1_A {
+    pub const fn variant(&self) -> V1_A {
         match self.bits {
             0 => V1_A::DDATA0,
             1 => V1_A::DDATA1,
@@ -220,5 +220,5 @@ impl crate::RegisterSpec for CSTATUS_SPEC {
 impl crate::Readable for CSTATUS_SPEC {}
 #[doc = "`reset()` method sets CSTATUS to value 0x0201"]
 impl crate::Resettable for CSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0201;
+    const RESET_VALUE: u32 = 0x0201;
 }

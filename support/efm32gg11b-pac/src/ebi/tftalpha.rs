@@ -5,7 +5,7 @@ pub type W = crate::W<TFTALPHA_SPEC>;
 #[doc = "Field `ALPHA` reader - TFT Alpha Blending Factor"]
 pub type ALPHA_R = crate::FieldReader<u16>;
 #[doc = "Field `ALPHA` writer - TFT Alpha Blending Factor"]
-pub type ALPHA_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 9, O, u16>;
+pub type ALPHA_W<'a, REG> = crate::FieldWriter<'a, REG, 9, u16>;
 impl R {
     #[doc = "Bits 0:8 - TFT Alpha Blending Factor"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:8 - TFT Alpha Blending Factor"]
     #[inline(always)]
     #[must_use]
-    pub fn alpha(&mut self) -> ALPHA_W<TFTALPHA_SPEC, 0> {
-        ALPHA_W::new(self)
+    pub fn alpha(&mut self) -> ALPHA_W<TFTALPHA_SPEC> {
+        ALPHA_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for TFTALPHA_SPEC {
 impl crate::Readable for TFTALPHA_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`tftalpha::W`](W) writer structure"]
 impl crate::Writable for TFTALPHA_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TFTALPHA to value 0"]
 impl crate::Resettable for TFTALPHA_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -29,8 +29,8 @@ impl crate::FieldSpec for HF_AW {
     type Ux = u8;
 }
 #[doc = "Field `HF` writer - HFCLK Select"]
-pub type HF_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, HF_AW>;
-impl<'a, REG, const O: u8> HF_W<'a, REG, O>
+pub type HF_W<'a, REG> = crate::FieldWriter<'a, REG, 3, HF_AW>;
+impl<'a, REG> HF_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -75,10 +75,14 @@ impl W {
     #[doc = "Bits 0:2 - HFCLK Select"]
     #[inline(always)]
     #[must_use]
-    pub fn hf(&mut self) -> HF_W<HFCLKSEL_SPEC, 0> {
-        HF_W::new(self)
+    pub fn hf(&mut self) -> HF_W<HFCLKSEL_SPEC> {
+        HF_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -92,10 +96,10 @@ impl crate::RegisterSpec for HFCLKSEL_SPEC {
 }
 #[doc = "`write(|w| ..)` method takes [`hfclksel::W`](W) writer structure"]
 impl crate::Writable for HFCLKSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFCLKSEL to value 0"]
 impl crate::Resettable for HFCLKSEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

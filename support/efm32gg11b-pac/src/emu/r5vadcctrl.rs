@@ -5,7 +5,7 @@ pub type W = crate::W<R5VADCCTRL_SPEC>;
 #[doc = "Field `ENAMUX` reader - Enable the 5V Subsystem ADC MUX"]
 pub type ENAMUX_R = crate::BitReader;
 #[doc = "Field `ENAMUX` writer - Enable the 5V Subsystem ADC MUX"]
-pub type ENAMUX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ENAMUX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AMUXSEL` reader - ADC Mux Selection"]
 pub type AMUXSEL_R = crate::FieldReader<AMUXSEL_A>;
 #[doc = "ADC Mux Selection\n\nValue on reset: 0"]
@@ -35,7 +35,7 @@ impl crate::FieldSpec for AMUXSEL_A {
 impl AMUXSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<AMUXSEL_A> {
+    pub const fn variant(&self) -> Option<AMUXSEL_A> {
         match self.bits {
             0 => Some(AMUXSEL_A::VBUSDIV10),
             1 => Some(AMUXSEL_A::VREGIDIV10),
@@ -72,8 +72,8 @@ impl AMUXSEL_R {
     }
 }
 #[doc = "Field `AMUXSEL` writer - ADC Mux Selection"]
-pub type AMUXSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O, AMUXSEL_A>;
-impl<'a, REG, const O: u8> AMUXSEL_W<'a, REG, O>
+pub type AMUXSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4, AMUXSEL_A>;
+impl<'a, REG> AMUXSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -120,16 +120,20 @@ impl W {
     #[doc = "Bit 0 - Enable the 5V Subsystem ADC MUX"]
     #[inline(always)]
     #[must_use]
-    pub fn enamux(&mut self) -> ENAMUX_W<R5VADCCTRL_SPEC, 0> {
-        ENAMUX_W::new(self)
+    pub fn enamux(&mut self) -> ENAMUX_W<R5VADCCTRL_SPEC> {
+        ENAMUX_W::new(self, 0)
     }
     #[doc = "Bits 12:15 - ADC Mux Selection"]
     #[inline(always)]
     #[must_use]
-    pub fn amuxsel(&mut self) -> AMUXSEL_W<R5VADCCTRL_SPEC, 12> {
-        AMUXSEL_W::new(self)
+    pub fn amuxsel(&mut self) -> AMUXSEL_W<R5VADCCTRL_SPEC> {
+        AMUXSEL_W::new(self, 12)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -145,10 +149,10 @@ impl crate::RegisterSpec for R5VADCCTRL_SPEC {
 impl crate::Readable for R5VADCCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`r5vadcctrl::W`](W) writer structure"]
 impl crate::Writable for R5VADCCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets R5VADCCTRL to value 0"]
 impl crate::Resettable for R5VADCCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -5,15 +5,15 @@ pub type W = crate::W<SEQCTRLB_SPEC>;
 #[doc = "Field `LENGTHB` reader - Buffer Length B in Bytes"]
 pub type LENGTHB_R = crate::FieldReader<u16>;
 #[doc = "Field `LENGTHB` writer - Buffer Length B in Bytes"]
-pub type LENGTHB_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 14, O, u16>;
+pub type LENGTHB_W<'a, REG> = crate::FieldWriter<'a, REG, 14, u16>;
 #[doc = "Field `DMA0PRESB` reader - DMA0 Preserve B"]
 pub type DMA0PRESB_R = crate::BitReader;
 #[doc = "Field `DMA0PRESB` writer - DMA0 Preserve B"]
-pub type DMA0PRESB_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DMA0PRESB_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DMA1PRESB` reader - DMA1 Preserve B"]
 pub type DMA1PRESB_R = crate::BitReader;
 #[doc = "Field `DMA1PRESB` writer - DMA1 Preserve B"]
-pub type DMA1PRESB_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DMA1PRESB_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:13 - Buffer Length B in Bytes"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:13 - Buffer Length B in Bytes"]
     #[inline(always)]
     #[must_use]
-    pub fn lengthb(&mut self) -> LENGTHB_W<SEQCTRLB_SPEC, 0> {
-        LENGTHB_W::new(self)
+    pub fn lengthb(&mut self) -> LENGTHB_W<SEQCTRLB_SPEC> {
+        LENGTHB_W::new(self, 0)
     }
     #[doc = "Bit 28 - DMA0 Preserve B"]
     #[inline(always)]
     #[must_use]
-    pub fn dma0presb(&mut self) -> DMA0PRESB_W<SEQCTRLB_SPEC, 28> {
-        DMA0PRESB_W::new(self)
+    pub fn dma0presb(&mut self) -> DMA0PRESB_W<SEQCTRLB_SPEC> {
+        DMA0PRESB_W::new(self, 28)
     }
     #[doc = "Bit 29 - DMA1 Preserve B"]
     #[inline(always)]
     #[must_use]
-    pub fn dma1presb(&mut self) -> DMA1PRESB_W<SEQCTRLB_SPEC, 29> {
-        DMA1PRESB_W::new(self)
+    pub fn dma1presb(&mut self) -> DMA1PRESB_W<SEQCTRLB_SPEC> {
+        DMA1PRESB_W::new(self, 29)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for SEQCTRLB_SPEC {
 impl crate::Readable for SEQCTRLB_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`seqctrlb::W`](W) writer structure"]
 impl crate::Writable for SEQCTRLB_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEQCTRLB to value 0"]
 impl crate::Resettable for SEQCTRLB_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

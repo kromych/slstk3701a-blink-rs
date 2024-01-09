@@ -27,7 +27,7 @@ impl crate::FieldSpec for DD_A {
 impl DD_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<DD_A> {
+    pub const fn variant(&self) -> Option<DD_A> {
         match self.bits {
             0 => Some(DD_A::DISABLED),
             1 => Some(DD_A::INTERNAL),
@@ -52,8 +52,8 @@ impl DD_R {
     }
 }
 #[doc = "Field `DD` writer - TFT Direct Drive Mode"]
-pub type DD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, DD_A>;
-impl<'a, REG, const O: u8> DD_W<'a, REG, O>
+pub type DD_W<'a, REG> = crate::FieldWriter<'a, REG, 2, DD_A>;
+impl<'a, REG> DD_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -113,7 +113,7 @@ impl crate::FieldSpec for MASKBLEND_A {
 impl MASKBLEND_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MASKBLEND_A> {
+    pub const fn variant(&self) -> Option<MASKBLEND_A> {
         match self.bits {
             0 => Some(MASKBLEND_A::DISABLED),
             1 => Some(MASKBLEND_A::IMASK),
@@ -180,8 +180,8 @@ impl MASKBLEND_R {
     }
 }
 #[doc = "Field `MASKBLEND` writer - TFT Mask and Blend Mode"]
-pub type MASKBLEND_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O, MASKBLEND_A>;
-impl<'a, REG, const O: u8> MASKBLEND_W<'a, REG, O>
+pub type MASKBLEND_W<'a, REG> = crate::FieldWriter<'a, REG, 4, MASKBLEND_A>;
+impl<'a, REG> MASKBLEND_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -240,11 +240,11 @@ where
 #[doc = "Field `SHIFTDCLKEN` reader - TFT EBI_DCLK Shift Enable"]
 pub type SHIFTDCLKEN_R = crate::BitReader;
 #[doc = "Field `SHIFTDCLKEN` writer - TFT EBI_DCLK Shift Enable"]
-pub type SHIFTDCLKEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SHIFTDCLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FBCTRIG` reader - TFT Frame Base Copy Trigger"]
 pub type FBCTRIG_R = crate::BitReader;
 #[doc = "Field `FBCTRIG` writer - TFT Frame Base Copy Trigger"]
-pub type FBCTRIG_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FBCTRIG_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INTERLEAVE` reader - Interleave Mode"]
 pub type INTERLEAVE_R = crate::FieldReader<INTERLEAVE_A>;
 #[doc = "Interleave Mode\n\nValue on reset: 0"]
@@ -270,7 +270,7 @@ impl crate::FieldSpec for INTERLEAVE_A {
 impl INTERLEAVE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INTERLEAVE_A> {
+    pub const fn variant(&self) -> Option<INTERLEAVE_A> {
         match self.bits {
             0 => Some(INTERLEAVE_A::UNLIMITED),
             1 => Some(INTERLEAVE_A::ONEPERDCLK),
@@ -295,8 +295,8 @@ impl INTERLEAVE_R {
     }
 }
 #[doc = "Field `INTERLEAVE` writer - Interleave Mode"]
-pub type INTERLEAVE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, INTERLEAVE_A>;
-impl<'a, REG, const O: u8> INTERLEAVE_W<'a, REG, O>
+pub type INTERLEAVE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, INTERLEAVE_A>;
+impl<'a, REG> INTERLEAVE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -320,7 +320,7 @@ where
 #[doc = "Field `COLOR1SRC` reader - Masking/Alpha Blending Color1 Source"]
 pub type COLOR1SRC_R = crate::BitReader;
 #[doc = "Field `COLOR1SRC` writer - Masking/Alpha Blending Color1 Source"]
-pub type COLOR1SRC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type COLOR1SRC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WIDTH` reader - TFT Transaction Width"]
 pub type WIDTH_R = crate::FieldReader<WIDTH_A>;
 #[doc = "TFT Transaction Width\n\nValue on reset: 0"]
@@ -344,7 +344,7 @@ impl crate::FieldSpec for WIDTH_A {
 impl WIDTH_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<WIDTH_A> {
+    pub const fn variant(&self) -> Option<WIDTH_A> {
         match self.bits {
             0 => Some(WIDTH_A::BYTE),
             1 => Some(WIDTH_A::HALFWORD),
@@ -363,8 +363,8 @@ impl WIDTH_R {
     }
 }
 #[doc = "Field `WIDTH` writer - TFT Transaction Width"]
-pub type WIDTH_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, WIDTH_A>;
-impl<'a, REG, const O: u8> WIDTH_W<'a, REG, O>
+pub type WIDTH_W<'a, REG> = crate::FieldWriter<'a, REG, 2, WIDTH_A>;
+impl<'a, REG> WIDTH_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -383,7 +383,7 @@ where
 #[doc = "Field `ALIASBANKEN` reader - Alias to Graphics Bank Enable"]
 pub type ALIASBANKEN_R = crate::BitReader;
 #[doc = "Field `ALIASBANKEN` writer - Alias to Graphics Bank Enable"]
-pub type ALIASBANKEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ALIASBANKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BANKSEL` reader - Graphics Bank"]
 pub type BANKSEL_R = crate::FieldReader<BANKSEL_A>;
 #[doc = "Graphics Bank\n\nValue on reset: 0"]
@@ -411,7 +411,7 @@ impl crate::FieldSpec for BANKSEL_A {
 impl BANKSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> BANKSEL_A {
+    pub const fn variant(&self) -> BANKSEL_A {
         match self.bits {
             0 => BANKSEL_A::BANK0,
             1 => BANKSEL_A::BANK1,
@@ -442,8 +442,8 @@ impl BANKSEL_R {
     }
 }
 #[doc = "Field `BANKSEL` writer - Graphics Bank"]
-pub type BANKSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, BANKSEL_A>;
-impl<'a, REG, const O: u8> BANKSEL_W<'a, REG, O>
+pub type BANKSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, BANKSEL_A>;
+impl<'a, REG> BANKSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -496,7 +496,7 @@ impl crate::FieldSpec for ALIASBANK_A {
 impl ALIASBANK_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> ALIASBANK_A {
+    pub const fn variant(&self) -> ALIASBANK_A {
         match self.bits {
             0 => ALIASBANK_A::ALIASBANK0,
             1 => ALIASBANK_A::ALIASBANK1,
@@ -527,8 +527,8 @@ impl ALIASBANK_R {
     }
 }
 #[doc = "Field `ALIASBANK` writer - Graphic Bank Select Aliasing"]
-pub type ALIASBANK_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, ALIASBANK_A>;
-impl<'a, REG, const O: u8> ALIASBANK_W<'a, REG, O>
+pub type ALIASBANK_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, ALIASBANK_A>;
+impl<'a, REG> ALIASBANK_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -610,64 +610,68 @@ impl W {
     #[doc = "Bits 0:1 - TFT Direct Drive Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn dd(&mut self) -> DD_W<TFTCTRL_SPEC, 0> {
-        DD_W::new(self)
+    pub fn dd(&mut self) -> DD_W<TFTCTRL_SPEC> {
+        DD_W::new(self, 0)
     }
     #[doc = "Bits 2:5 - TFT Mask and Blend Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn maskblend(&mut self) -> MASKBLEND_W<TFTCTRL_SPEC, 2> {
-        MASKBLEND_W::new(self)
+    pub fn maskblend(&mut self) -> MASKBLEND_W<TFTCTRL_SPEC> {
+        MASKBLEND_W::new(self, 2)
     }
     #[doc = "Bit 8 - TFT EBI_DCLK Shift Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn shiftdclken(&mut self) -> SHIFTDCLKEN_W<TFTCTRL_SPEC, 8> {
-        SHIFTDCLKEN_W::new(self)
+    pub fn shiftdclken(&mut self) -> SHIFTDCLKEN_W<TFTCTRL_SPEC> {
+        SHIFTDCLKEN_W::new(self, 8)
     }
     #[doc = "Bit 9 - TFT Frame Base Copy Trigger"]
     #[inline(always)]
     #[must_use]
-    pub fn fbctrig(&mut self) -> FBCTRIG_W<TFTCTRL_SPEC, 9> {
-        FBCTRIG_W::new(self)
+    pub fn fbctrig(&mut self) -> FBCTRIG_W<TFTCTRL_SPEC> {
+        FBCTRIG_W::new(self, 9)
     }
     #[doc = "Bits 10:11 - Interleave Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn interleave(&mut self) -> INTERLEAVE_W<TFTCTRL_SPEC, 10> {
-        INTERLEAVE_W::new(self)
+    pub fn interleave(&mut self) -> INTERLEAVE_W<TFTCTRL_SPEC> {
+        INTERLEAVE_W::new(self, 10)
     }
     #[doc = "Bit 12 - Masking/Alpha Blending Color1 Source"]
     #[inline(always)]
     #[must_use]
-    pub fn color1src(&mut self) -> COLOR1SRC_W<TFTCTRL_SPEC, 12> {
-        COLOR1SRC_W::new(self)
+    pub fn color1src(&mut self) -> COLOR1SRC_W<TFTCTRL_SPEC> {
+        COLOR1SRC_W::new(self, 12)
     }
     #[doc = "Bits 16:17 - TFT Transaction Width"]
     #[inline(always)]
     #[must_use]
-    pub fn width(&mut self) -> WIDTH_W<TFTCTRL_SPEC, 16> {
-        WIDTH_W::new(self)
+    pub fn width(&mut self) -> WIDTH_W<TFTCTRL_SPEC> {
+        WIDTH_W::new(self, 16)
     }
     #[doc = "Bit 19 - Alias to Graphics Bank Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn aliasbanken(&mut self) -> ALIASBANKEN_W<TFTCTRL_SPEC, 19> {
-        ALIASBANKEN_W::new(self)
+    pub fn aliasbanken(&mut self) -> ALIASBANKEN_W<TFTCTRL_SPEC> {
+        ALIASBANKEN_W::new(self, 19)
     }
     #[doc = "Bits 20:21 - Graphics Bank"]
     #[inline(always)]
     #[must_use]
-    pub fn banksel(&mut self) -> BANKSEL_W<TFTCTRL_SPEC, 20> {
-        BANKSEL_W::new(self)
+    pub fn banksel(&mut self) -> BANKSEL_W<TFTCTRL_SPEC> {
+        BANKSEL_W::new(self, 20)
     }
     #[doc = "Bits 22:23 - Graphic Bank Select Aliasing"]
     #[inline(always)]
     #[must_use]
-    pub fn aliasbank(&mut self) -> ALIASBANK_W<TFTCTRL_SPEC, 22> {
-        ALIASBANK_W::new(self)
+    pub fn aliasbank(&mut self) -> ALIASBANK_W<TFTCTRL_SPEC> {
+        ALIASBANK_W::new(self, 22)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -683,10 +687,10 @@ impl crate::RegisterSpec for TFTCTRL_SPEC {
 impl crate::Readable for TFTCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`tftctrl::W`](W) writer structure"]
 impl crate::Writable for TFTCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TFTCTRL to value 0"]
 impl crate::Resettable for TFTCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

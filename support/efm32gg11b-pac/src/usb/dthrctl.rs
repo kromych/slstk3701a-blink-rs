@@ -5,15 +5,15 @@ pub type W = crate::W<DTHRCTL_SPEC>;
 #[doc = "Field `NONISOTHREN` reader - Non-ISO IN Endpoints Threshold Enable"]
 pub type NONISOTHREN_R = crate::BitReader;
 #[doc = "Field `NONISOTHREN` writer - Non-ISO IN Endpoints Threshold Enable"]
-pub type NONISOTHREN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type NONISOTHREN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ISOTHREN` reader - ISO IN Endpoints Threshold Enable"]
 pub type ISOTHREN_R = crate::BitReader;
 #[doc = "Field `ISOTHREN` writer - ISO IN Endpoints Threshold Enable"]
-pub type ISOTHREN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ISOTHREN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXTHRLEN` reader - Transmit Threshold Length"]
 pub type TXTHRLEN_R = crate::FieldReader<u16>;
 #[doc = "Field `TXTHRLEN` writer - Transmit Threshold Length"]
-pub type TXTHRLEN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 9, O, u16>;
+pub type TXTHRLEN_W<'a, REG> = crate::FieldWriter<'a, REG, 9, u16>;
 #[doc = "Field `AHBTHRRATIO` reader - AHB Threshold Ratio"]
 pub type AHBTHRRATIO_R = crate::FieldReader<AHBTHRRATIO_A>;
 #[doc = "AHB Threshold Ratio\n\nValue on reset: 0"]
@@ -41,7 +41,7 @@ impl crate::FieldSpec for AHBTHRRATIO_A {
 impl AHBTHRRATIO_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> AHBTHRRATIO_A {
+    pub const fn variant(&self) -> AHBTHRRATIO_A {
         match self.bits {
             0 => AHBTHRRATIO_A::DIV1,
             1 => AHBTHRRATIO_A::DIV2,
@@ -72,8 +72,8 @@ impl AHBTHRRATIO_R {
     }
 }
 #[doc = "Field `AHBTHRRATIO` writer - AHB Threshold Ratio"]
-pub type AHBTHRRATIO_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, AHBTHRRATIO_A>;
-impl<'a, REG, const O: u8> AHBTHRRATIO_W<'a, REG, O>
+pub type AHBTHRRATIO_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, AHBTHRRATIO_A>;
+impl<'a, REG> AHBTHRRATIO_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -102,15 +102,15 @@ where
 #[doc = "Field `RXTHREN` reader - Receive Threshold Enable"]
 pub type RXTHREN_R = crate::BitReader;
 #[doc = "Field `RXTHREN` writer - Receive Threshold Enable"]
-pub type RXTHREN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXTHREN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXTHRLEN` reader - Receive Threshold Length"]
 pub type RXTHRLEN_R = crate::FieldReader<u16>;
 #[doc = "Field `RXTHRLEN` writer - Receive Threshold Length"]
-pub type RXTHRLEN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 9, O, u16>;
+pub type RXTHRLEN_W<'a, REG> = crate::FieldWriter<'a, REG, 9, u16>;
 #[doc = "Field `ARBPRKEN` reader - Arbiter Parking Enable"]
 pub type ARBPRKEN_R = crate::BitReader;
 #[doc = "Field `ARBPRKEN` writer - Arbiter Parking Enable"]
-pub type ARBPRKEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ARBPRKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Non-ISO IN Endpoints Threshold Enable"]
     #[inline(always)]
@@ -152,46 +152,50 @@ impl W {
     #[doc = "Bit 0 - Non-ISO IN Endpoints Threshold Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn nonisothren(&mut self) -> NONISOTHREN_W<DTHRCTL_SPEC, 0> {
-        NONISOTHREN_W::new(self)
+    pub fn nonisothren(&mut self) -> NONISOTHREN_W<DTHRCTL_SPEC> {
+        NONISOTHREN_W::new(self, 0)
     }
     #[doc = "Bit 1 - ISO IN Endpoints Threshold Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn isothren(&mut self) -> ISOTHREN_W<DTHRCTL_SPEC, 1> {
-        ISOTHREN_W::new(self)
+    pub fn isothren(&mut self) -> ISOTHREN_W<DTHRCTL_SPEC> {
+        ISOTHREN_W::new(self, 1)
     }
     #[doc = "Bits 2:10 - Transmit Threshold Length"]
     #[inline(always)]
     #[must_use]
-    pub fn txthrlen(&mut self) -> TXTHRLEN_W<DTHRCTL_SPEC, 2> {
-        TXTHRLEN_W::new(self)
+    pub fn txthrlen(&mut self) -> TXTHRLEN_W<DTHRCTL_SPEC> {
+        TXTHRLEN_W::new(self, 2)
     }
     #[doc = "Bits 11:12 - AHB Threshold Ratio"]
     #[inline(always)]
     #[must_use]
-    pub fn ahbthrratio(&mut self) -> AHBTHRRATIO_W<DTHRCTL_SPEC, 11> {
-        AHBTHRRATIO_W::new(self)
+    pub fn ahbthrratio(&mut self) -> AHBTHRRATIO_W<DTHRCTL_SPEC> {
+        AHBTHRRATIO_W::new(self, 11)
     }
     #[doc = "Bit 16 - Receive Threshold Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn rxthren(&mut self) -> RXTHREN_W<DTHRCTL_SPEC, 16> {
-        RXTHREN_W::new(self)
+    pub fn rxthren(&mut self) -> RXTHREN_W<DTHRCTL_SPEC> {
+        RXTHREN_W::new(self, 16)
     }
     #[doc = "Bits 17:25 - Receive Threshold Length"]
     #[inline(always)]
     #[must_use]
-    pub fn rxthrlen(&mut self) -> RXTHRLEN_W<DTHRCTL_SPEC, 17> {
-        RXTHRLEN_W::new(self)
+    pub fn rxthrlen(&mut self) -> RXTHRLEN_W<DTHRCTL_SPEC> {
+        RXTHRLEN_W::new(self, 17)
     }
     #[doc = "Bit 27 - Arbiter Parking Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn arbprken(&mut self) -> ARBPRKEN_W<DTHRCTL_SPEC, 27> {
-        ARBPRKEN_W::new(self)
+    pub fn arbprken(&mut self) -> ARBPRKEN_W<DTHRCTL_SPEC> {
+        ARBPRKEN_W::new(self, 27)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -207,10 +211,10 @@ impl crate::RegisterSpec for DTHRCTL_SPEC {
 impl crate::Readable for DTHRCTL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dthrctl::W`](W) writer structure"]
 impl crate::Writable for DTHRCTL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DTHRCTL to value 0x0810_0020"]
 impl crate::Resettable for DTHRCTL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0810_0020;
+    const RESET_VALUE: u32 = 0x0810_0020;
 }

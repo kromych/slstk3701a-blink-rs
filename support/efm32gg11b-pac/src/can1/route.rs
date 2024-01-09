@@ -5,7 +5,7 @@ pub type W = crate::W<ROUTE_SPEC>;
 #[doc = "Field `TXPEN` reader - TX Pin Enable"]
 pub type TXPEN_R = crate::BitReader;
 #[doc = "Field `TXPEN` writer - TX Pin Enable"]
-pub type TXPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXLOC` reader - RX Pin Location"]
 pub type RXLOC_R = crate::FieldReader<RXLOC_A>;
 #[doc = "RX Pin Location\n\nValue on reset: 0"]
@@ -41,7 +41,7 @@ impl crate::FieldSpec for RXLOC_A {
 impl RXLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<RXLOC_A> {
+    pub const fn variant(&self) -> Option<RXLOC_A> {
         match self.bits {
             0 => Some(RXLOC_A::LOC0),
             1 => Some(RXLOC_A::LOC1),
@@ -96,8 +96,8 @@ impl RXLOC_R {
     }
 }
 #[doc = "Field `RXLOC` writer - RX Pin Location"]
-pub type RXLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, RXLOC_A>;
-impl<'a, REG, const O: u8> RXLOC_W<'a, REG, O>
+pub type RXLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, RXLOC_A>;
+impl<'a, REG> RXLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -178,7 +178,7 @@ impl crate::FieldSpec for TXLOC_A {
 impl TXLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TXLOC_A> {
+    pub const fn variant(&self) -> Option<TXLOC_A> {
         match self.bits {
             0 => Some(TXLOC_A::LOC0),
             1 => Some(TXLOC_A::LOC1),
@@ -233,8 +233,8 @@ impl TXLOC_R {
     }
 }
 #[doc = "Field `TXLOC` writer - TX Pin Location"]
-pub type TXLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, TXLOC_A>;
-impl<'a, REG, const O: u8> TXLOC_W<'a, REG, O>
+pub type TXLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, TXLOC_A>;
+impl<'a, REG> TXLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -301,22 +301,26 @@ impl W {
     #[doc = "Bit 0 - TX Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn txpen(&mut self) -> TXPEN_W<ROUTE_SPEC, 0> {
-        TXPEN_W::new(self)
+    pub fn txpen(&mut self) -> TXPEN_W<ROUTE_SPEC> {
+        TXPEN_W::new(self, 0)
     }
     #[doc = "Bits 2:7 - RX Pin Location"]
     #[inline(always)]
     #[must_use]
-    pub fn rxloc(&mut self) -> RXLOC_W<ROUTE_SPEC, 2> {
-        RXLOC_W::new(self)
+    pub fn rxloc(&mut self) -> RXLOC_W<ROUTE_SPEC> {
+        RXLOC_W::new(self, 2)
     }
     #[doc = "Bits 8:13 - TX Pin Location"]
     #[inline(always)]
     #[must_use]
-    pub fn txloc(&mut self) -> TXLOC_W<ROUTE_SPEC, 8> {
-        TXLOC_W::new(self)
+    pub fn txloc(&mut self) -> TXLOC_W<ROUTE_SPEC> {
+        TXLOC_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -332,10 +336,10 @@ impl crate::RegisterSpec for ROUTE_SPEC {
 impl crate::Readable for ROUTE_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`route::W`](W) writer structure"]
 impl crate::Writable for ROUTE_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTE to value 0"]
 impl crate::Resettable for ROUTE_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

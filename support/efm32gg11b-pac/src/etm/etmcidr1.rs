@@ -18,5 +18,5 @@ impl crate::RegisterSpec for ETMCIDR1_SPEC {
 impl crate::Readable for ETMCIDR1_SPEC {}
 #[doc = "`reset()` method sets ETMCIDR1 to value 0x90"]
 impl crate::Resettable for ETMCIDR1_SPEC {
-    const RESET_VALUE: Self::Ux = 0x90;
+    const RESET_VALUE: u32 = 0x90;
 }

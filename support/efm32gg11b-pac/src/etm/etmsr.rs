@@ -9,11 +9,11 @@ pub type ETMPROGBIT_R = crate::BitReader;
 #[doc = "Field `TRACESTAT` reader - Trace Start/Stop Status"]
 pub type TRACESTAT_R = crate::BitReader;
 #[doc = "Field `TRACESTAT` writer - Trace Start/Stop Status"]
-pub type TRACESTAT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TRACESTAT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TRIGBIT` reader - Trigger Bit"]
 pub type TRIGBIT_R = crate::BitReader;
 #[doc = "Field `TRIGBIT` writer - Trigger Bit"]
-pub type TRIGBIT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TRIGBIT_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - ETM Overflow"]
     #[inline(always)]
@@ -40,16 +40,20 @@ impl W {
     #[doc = "Bit 2 - Trace Start/Stop Status"]
     #[inline(always)]
     #[must_use]
-    pub fn tracestat(&mut self) -> TRACESTAT_W<ETMSR_SPEC, 2> {
-        TRACESTAT_W::new(self)
+    pub fn tracestat(&mut self) -> TRACESTAT_W<ETMSR_SPEC> {
+        TRACESTAT_W::new(self, 2)
     }
     #[doc = "Bit 3 - Trigger Bit"]
     #[inline(always)]
     #[must_use]
-    pub fn trigbit(&mut self) -> TRIGBIT_W<ETMSR_SPEC, 3> {
-        TRIGBIT_W::new(self)
+    pub fn trigbit(&mut self) -> TRIGBIT_W<ETMSR_SPEC> {
+        TRIGBIT_W::new(self, 3)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -65,10 +69,10 @@ impl crate::RegisterSpec for ETMSR_SPEC {
 impl crate::Readable for ETMSR_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`etmsr::W`](W) writer structure"]
 impl crate::Writable for ETMSR_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ETMSR to value 0x02"]
 impl crate::Resettable for ETMSR_SPEC {
-    const RESET_VALUE: Self::Ux = 0x02;
+    const RESET_VALUE: u32 = 0x02;
 }

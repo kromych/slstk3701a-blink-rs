@@ -29,7 +29,7 @@ impl crate::FieldSpec for INPUT0NEGSEL_A {
 impl INPUT0NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT0NEGSEL_A {
+    pub const fn variant(&self) -> INPUT0NEGSEL_A {
         match self.bits {
             0 => INPUT0NEGSEL_A::INPUT1,
             1 => INPUT0NEGSEL_A::INPUT3,
@@ -60,9 +60,8 @@ impl INPUT0NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT0NEGSEL` writer - Negative Input Select Register for ADCn_INPUT0 in Differential Scan Mode"]
-pub type INPUT0NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT0NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT0NEGSEL_W<'a, REG, O>
+pub type INPUT0NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT0NEGSEL_A>;
+impl<'a, REG> INPUT0NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -115,7 +114,7 @@ impl crate::FieldSpec for INPUT2NEGSEL_A {
 impl INPUT2NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT2NEGSEL_A {
+    pub const fn variant(&self) -> INPUT2NEGSEL_A {
         match self.bits {
             0 => INPUT2NEGSEL_A::INPUT1,
             1 => INPUT2NEGSEL_A::INPUT3,
@@ -146,9 +145,8 @@ impl INPUT2NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT2NEGSEL` writer - Negative Input Select Register for ADCn_INPUT2 in Differential Scan Mode"]
-pub type INPUT2NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT2NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT2NEGSEL_W<'a, REG, O>
+pub type INPUT2NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT2NEGSEL_A>;
+impl<'a, REG> INPUT2NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -201,7 +199,7 @@ impl crate::FieldSpec for INPUT4NEGSEL_A {
 impl INPUT4NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT4NEGSEL_A {
+    pub const fn variant(&self) -> INPUT4NEGSEL_A {
         match self.bits {
             0 => INPUT4NEGSEL_A::INPUT1,
             1 => INPUT4NEGSEL_A::INPUT3,
@@ -232,9 +230,8 @@ impl INPUT4NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT4NEGSEL` writer - Negative Input Select Register for ADCn_INPUT4 in Differential Scan Mode"]
-pub type INPUT4NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT4NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT4NEGSEL_W<'a, REG, O>
+pub type INPUT4NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT4NEGSEL_A>;
+impl<'a, REG> INPUT4NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -287,7 +284,7 @@ impl crate::FieldSpec for INPUT6NEGSEL_A {
 impl INPUT6NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT6NEGSEL_A {
+    pub const fn variant(&self) -> INPUT6NEGSEL_A {
         match self.bits {
             0 => INPUT6NEGSEL_A::INPUT1,
             1 => INPUT6NEGSEL_A::INPUT3,
@@ -318,9 +315,8 @@ impl INPUT6NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT6NEGSEL` writer - Negative Input Select Register for ADCn_INPUT1 in Differential Scan Mode"]
-pub type INPUT6NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT6NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT6NEGSEL_W<'a, REG, O>
+pub type INPUT6NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT6NEGSEL_A>;
+impl<'a, REG> INPUT6NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -373,7 +369,7 @@ impl crate::FieldSpec for INPUT9NEGSEL_A {
 impl INPUT9NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT9NEGSEL_A {
+    pub const fn variant(&self) -> INPUT9NEGSEL_A {
         match self.bits {
             0 => INPUT9NEGSEL_A::INPUT8,
             1 => INPUT9NEGSEL_A::INPUT10,
@@ -404,9 +400,8 @@ impl INPUT9NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT9NEGSEL` writer - Negative Input Select Register for ADCn_INPUT9 in Differential Scan Mode"]
-pub type INPUT9NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT9NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT9NEGSEL_W<'a, REG, O>
+pub type INPUT9NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT9NEGSEL_A>;
+impl<'a, REG> INPUT9NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -459,7 +454,7 @@ impl crate::FieldSpec for INPUT11NEGSEL_A {
 impl INPUT11NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT11NEGSEL_A {
+    pub const fn variant(&self) -> INPUT11NEGSEL_A {
         match self.bits {
             0 => INPUT11NEGSEL_A::INPUT8,
             1 => INPUT11NEGSEL_A::INPUT10,
@@ -490,9 +485,8 @@ impl INPUT11NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT11NEGSEL` writer - Negative Input Select Register for ADCn_INPUT11 in Differential Scan Mode"]
-pub type INPUT11NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT11NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT11NEGSEL_W<'a, REG, O>
+pub type INPUT11NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT11NEGSEL_A>;
+impl<'a, REG> INPUT11NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -545,7 +539,7 @@ impl crate::FieldSpec for INPUT13NEGSEL_A {
 impl INPUT13NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT13NEGSEL_A {
+    pub const fn variant(&self) -> INPUT13NEGSEL_A {
         match self.bits {
             0 => INPUT13NEGSEL_A::INPUT8,
             1 => INPUT13NEGSEL_A::INPUT10,
@@ -576,9 +570,8 @@ impl INPUT13NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT13NEGSEL` writer - Negative Input Select Register for ADCn_INPUT13 in Differential Scan Mode"]
-pub type INPUT13NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT13NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT13NEGSEL_W<'a, REG, O>
+pub type INPUT13NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT13NEGSEL_A>;
+impl<'a, REG> INPUT13NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -631,7 +624,7 @@ impl crate::FieldSpec for INPUT15NEGSEL_A {
 impl INPUT15NEGSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INPUT15NEGSEL_A {
+    pub const fn variant(&self) -> INPUT15NEGSEL_A {
         match self.bits {
             0 => INPUT15NEGSEL_A::INPUT8,
             1 => INPUT15NEGSEL_A::INPUT10,
@@ -662,9 +655,8 @@ impl INPUT15NEGSEL_R {
     }
 }
 #[doc = "Field `INPUT15NEGSEL` writer - Negative Input Select Register for ADCn_INPUT15 in Differential Scan Mode"]
-pub type INPUT15NEGSEL_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, INPUT15NEGSEL_A>;
-impl<'a, REG, const O: u8> INPUT15NEGSEL_W<'a, REG, O>
+pub type INPUT15NEGSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, INPUT15NEGSEL_A>;
+impl<'a, REG> INPUT15NEGSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -736,52 +728,56 @@ impl W {
     #[doc = "Bits 0:1 - Negative Input Select Register for ADCn_INPUT0 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input0negsel(&mut self) -> INPUT0NEGSEL_W<SCANNEGSEL_SPEC, 0> {
-        INPUT0NEGSEL_W::new(self)
+    pub fn input0negsel(&mut self) -> INPUT0NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT0NEGSEL_W::new(self, 0)
     }
     #[doc = "Bits 2:3 - Negative Input Select Register for ADCn_INPUT2 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input2negsel(&mut self) -> INPUT2NEGSEL_W<SCANNEGSEL_SPEC, 2> {
-        INPUT2NEGSEL_W::new(self)
+    pub fn input2negsel(&mut self) -> INPUT2NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT2NEGSEL_W::new(self, 2)
     }
     #[doc = "Bits 4:5 - Negative Input Select Register for ADCn_INPUT4 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input4negsel(&mut self) -> INPUT4NEGSEL_W<SCANNEGSEL_SPEC, 4> {
-        INPUT4NEGSEL_W::new(self)
+    pub fn input4negsel(&mut self) -> INPUT4NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT4NEGSEL_W::new(self, 4)
     }
     #[doc = "Bits 6:7 - Negative Input Select Register for ADCn_INPUT1 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input6negsel(&mut self) -> INPUT6NEGSEL_W<SCANNEGSEL_SPEC, 6> {
-        INPUT6NEGSEL_W::new(self)
+    pub fn input6negsel(&mut self) -> INPUT6NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT6NEGSEL_W::new(self, 6)
     }
     #[doc = "Bits 8:9 - Negative Input Select Register for ADCn_INPUT9 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input9negsel(&mut self) -> INPUT9NEGSEL_W<SCANNEGSEL_SPEC, 8> {
-        INPUT9NEGSEL_W::new(self)
+    pub fn input9negsel(&mut self) -> INPUT9NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT9NEGSEL_W::new(self, 8)
     }
     #[doc = "Bits 10:11 - Negative Input Select Register for ADCn_INPUT11 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input11negsel(&mut self) -> INPUT11NEGSEL_W<SCANNEGSEL_SPEC, 10> {
-        INPUT11NEGSEL_W::new(self)
+    pub fn input11negsel(&mut self) -> INPUT11NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT11NEGSEL_W::new(self, 10)
     }
     #[doc = "Bits 12:13 - Negative Input Select Register for ADCn_INPUT13 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input13negsel(&mut self) -> INPUT13NEGSEL_W<SCANNEGSEL_SPEC, 12> {
-        INPUT13NEGSEL_W::new(self)
+    pub fn input13negsel(&mut self) -> INPUT13NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT13NEGSEL_W::new(self, 12)
     }
     #[doc = "Bits 14:15 - Negative Input Select Register for ADCn_INPUT15 in Differential Scan Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn input15negsel(&mut self) -> INPUT15NEGSEL_W<SCANNEGSEL_SPEC, 14> {
-        INPUT15NEGSEL_W::new(self)
+    pub fn input15negsel(&mut self) -> INPUT15NEGSEL_W<SCANNEGSEL_SPEC> {
+        INPUT15NEGSEL_W::new(self, 14)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -797,10 +793,10 @@ impl crate::RegisterSpec for SCANNEGSEL_SPEC {
 impl crate::Readable for SCANNEGSEL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`scannegsel::W`](W) writer structure"]
 impl crate::Writable for SCANNEGSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SCANNEGSEL to value 0x39e4"]
 impl crate::Resettable for SCANNEGSEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x39e4;
+    const RESET_VALUE: u32 = 0x39e4;
 }

@@ -5,15 +5,15 @@ pub type W = crate::W<ETMTRIGGER_SPEC>;
 #[doc = "Field `RESA` reader - ETM Resource A"]
 pub type RESA_R = crate::FieldReader;
 #[doc = "Field `RESA` writer - ETM Resource A"]
-pub type RESA_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type RESA_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `RESB` reader - ETM Resource B"]
 pub type RESB_R = crate::FieldReader;
 #[doc = "Field `RESB` writer - ETM Resource B"]
-pub type RESB_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type RESB_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `ETMFCN` reader - ETM Function"]
 pub type ETMFCN_R = crate::FieldReader;
 #[doc = "Field `ETMFCN` writer - ETM Function"]
-pub type ETMFCN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type ETMFCN_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 impl R {
     #[doc = "Bits 0:6 - ETM Resource A"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:6 - ETM Resource A"]
     #[inline(always)]
     #[must_use]
-    pub fn resa(&mut self) -> RESA_W<ETMTRIGGER_SPEC, 0> {
-        RESA_W::new(self)
+    pub fn resa(&mut self) -> RESA_W<ETMTRIGGER_SPEC> {
+        RESA_W::new(self, 0)
     }
     #[doc = "Bits 7:13 - ETM Resource B"]
     #[inline(always)]
     #[must_use]
-    pub fn resb(&mut self) -> RESB_W<ETMTRIGGER_SPEC, 7> {
-        RESB_W::new(self)
+    pub fn resb(&mut self) -> RESB_W<ETMTRIGGER_SPEC> {
+        RESB_W::new(self, 7)
     }
     #[doc = "Bits 14:16 - ETM Function"]
     #[inline(always)]
     #[must_use]
-    pub fn etmfcn(&mut self) -> ETMFCN_W<ETMTRIGGER_SPEC, 14> {
-        ETMFCN_W::new(self)
+    pub fn etmfcn(&mut self) -> ETMFCN_W<ETMTRIGGER_SPEC> {
+        ETMFCN_W::new(self, 14)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for ETMTRIGGER_SPEC {
 impl crate::Readable for ETMTRIGGER_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`etmtrigger::W`](W) writer structure"]
 impl crate::Writable for ETMTRIGGER_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ETMTRIGGER to value 0"]
 impl crate::Resettable for ETMTRIGGER_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -32,5 +32,5 @@ impl crate::RegisterSpec for HPTXSTS_SPEC {
 impl crate::Readable for HPTXSTS_SPEC {}
 #[doc = "`reset()` method sets HPTXSTS to value 0x0008_0200"]
 impl crate::Resettable for HPTXSTS_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0008_0200;
+    const RESET_VALUE: u32 = 0x0008_0200;
 }

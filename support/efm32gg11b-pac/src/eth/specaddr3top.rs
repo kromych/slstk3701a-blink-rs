@@ -5,15 +5,15 @@ pub type W = crate::W<SPECADDR3TOP_SPEC>;
 #[doc = "Field `ADDR` reader - Specific address 3 MSB"]
 pub type ADDR_R = crate::FieldReader<u16>;
 #[doc = "Field `ADDR` writer - Specific address 3 MSB"]
-pub type ADDR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
+pub type ADDR_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 #[doc = "Field `FILTERTYPE` reader - MAC SA or DA selection"]
 pub type FILTERTYPE_R = crate::BitReader;
 #[doc = "Field `FILTERTYPE` writer - MAC SA or DA selection"]
-pub type FILTERTYPE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FILTERTYPE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FILTERBYTEMASK` reader - Filter byte Mask"]
 pub type FILTERBYTEMASK_R = crate::FieldReader;
 #[doc = "Field `FILTERBYTEMASK` writer - Filter byte Mask"]
-pub type FILTERBYTEMASK_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O>;
+pub type FILTERBYTEMASK_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 impl R {
     #[doc = "Bits 0:15 - Specific address 3 MSB"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:15 - Specific address 3 MSB"]
     #[inline(always)]
     #[must_use]
-    pub fn addr(&mut self) -> ADDR_W<SPECADDR3TOP_SPEC, 0> {
-        ADDR_W::new(self)
+    pub fn addr(&mut self) -> ADDR_W<SPECADDR3TOP_SPEC> {
+        ADDR_W::new(self, 0)
     }
     #[doc = "Bit 16 - MAC SA or DA selection"]
     #[inline(always)]
     #[must_use]
-    pub fn filtertype(&mut self) -> FILTERTYPE_W<SPECADDR3TOP_SPEC, 16> {
-        FILTERTYPE_W::new(self)
+    pub fn filtertype(&mut self) -> FILTERTYPE_W<SPECADDR3TOP_SPEC> {
+        FILTERTYPE_W::new(self, 16)
     }
     #[doc = "Bits 24:29 - Filter byte Mask"]
     #[inline(always)]
     #[must_use]
-    pub fn filterbytemask(&mut self) -> FILTERBYTEMASK_W<SPECADDR3TOP_SPEC, 24> {
-        FILTERBYTEMASK_W::new(self)
+    pub fn filterbytemask(&mut self) -> FILTERBYTEMASK_W<SPECADDR3TOP_SPEC> {
+        FILTERBYTEMASK_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for SPECADDR3TOP_SPEC {
 impl crate::Readable for SPECADDR3TOP_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`specaddr3top::W`](W) writer structure"]
 impl crate::Writable for SPECADDR3TOP_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SPECADDR3TOP to value 0"]
 impl crate::Resettable for SPECADDR3TOP_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -5,19 +5,19 @@ pub type W = crate::W<MIR0_DATAH_SPEC>;
 #[doc = "Field `DATA4` reader - Fifth Byte of CAN Data Frame"]
 pub type DATA4_R = crate::FieldReader;
 #[doc = "Field `DATA4` writer - Fifth Byte of CAN Data Frame"]
-pub type DATA4_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DATA4_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `DATA5` reader - Sixth Byte of CAN Data Frame"]
 pub type DATA5_R = crate::FieldReader;
 #[doc = "Field `DATA5` writer - Sixth Byte of CAN Data Frame"]
-pub type DATA5_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DATA5_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `DATA6` reader - Seventh Byte of CAN Data Frame"]
 pub type DATA6_R = crate::FieldReader;
 #[doc = "Field `DATA6` writer - Seventh Byte of CAN Data Frame"]
-pub type DATA6_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DATA6_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `DATA7` reader - Eight Byte of CAN Data Frame"]
 pub type DATA7_R = crate::FieldReader;
 #[doc = "Field `DATA7` writer - Eight Byte of CAN Data Frame"]
-pub type DATA7_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DATA7_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Fifth Byte of CAN Data Frame"]
     #[inline(always)]
@@ -44,28 +44,32 @@ impl W {
     #[doc = "Bits 0:7 - Fifth Byte of CAN Data Frame"]
     #[inline(always)]
     #[must_use]
-    pub fn data4(&mut self) -> DATA4_W<MIR0_DATAH_SPEC, 0> {
-        DATA4_W::new(self)
+    pub fn data4(&mut self) -> DATA4_W<MIR0_DATAH_SPEC> {
+        DATA4_W::new(self, 0)
     }
     #[doc = "Bits 8:15 - Sixth Byte of CAN Data Frame"]
     #[inline(always)]
     #[must_use]
-    pub fn data5(&mut self) -> DATA5_W<MIR0_DATAH_SPEC, 8> {
-        DATA5_W::new(self)
+    pub fn data5(&mut self) -> DATA5_W<MIR0_DATAH_SPEC> {
+        DATA5_W::new(self, 8)
     }
     #[doc = "Bits 16:23 - Seventh Byte of CAN Data Frame"]
     #[inline(always)]
     #[must_use]
-    pub fn data6(&mut self) -> DATA6_W<MIR0_DATAH_SPEC, 16> {
-        DATA6_W::new(self)
+    pub fn data6(&mut self) -> DATA6_W<MIR0_DATAH_SPEC> {
+        DATA6_W::new(self, 16)
     }
     #[doc = "Bits 24:31 - Eight Byte of CAN Data Frame"]
     #[inline(always)]
     #[must_use]
-    pub fn data7(&mut self) -> DATA7_W<MIR0_DATAH_SPEC, 24> {
-        DATA7_W::new(self)
+    pub fn data7(&mut self) -> DATA7_W<MIR0_DATAH_SPEC> {
+        DATA7_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -81,10 +85,10 @@ impl crate::RegisterSpec for MIR0_DATAH_SPEC {
 impl crate::Readable for MIR0_DATAH_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`mir0_datah::W`](W) writer structure"]
 impl crate::Writable for MIR0_DATAH_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MIR0_DATAH to value 0"]
 impl crate::Resettable for MIR0_DATAH_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -18,5 +18,5 @@ impl crate::RegisterSpec for TSUPTPTXNSEC_SPEC {
 impl crate::Readable for TSUPTPTXNSEC_SPEC {}
 #[doc = "`reset()` method sets TSUPTPTXNSEC to value 0"]
 impl crate::Resettable for TSUPTPTXNSEC_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

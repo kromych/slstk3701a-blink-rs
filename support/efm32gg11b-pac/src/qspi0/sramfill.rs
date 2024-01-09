@@ -25,5 +25,5 @@ impl crate::RegisterSpec for SRAMFILL_SPEC {
 impl crate::Readable for SRAMFILL_SPEC {}
 #[doc = "`reset()` method sets SRAMFILL to value 0"]
 impl crate::Resettable for SRAMFILL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

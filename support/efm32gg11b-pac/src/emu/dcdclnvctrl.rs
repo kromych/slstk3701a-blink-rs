@@ -5,11 +5,11 @@ pub type W = crate::W<DCDCLNVCTRL_SPEC>;
 #[doc = "Field `LNATT` reader - Low Noise Mode Feedback Attenuation"]
 pub type LNATT_R = crate::BitReader;
 #[doc = "Field `LNATT` writer - Low Noise Mode Feedback Attenuation"]
-pub type LNATT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type LNATT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LNVREF` reader - Low Noise Mode VREF Trim"]
 pub type LNVREF_R = crate::FieldReader;
 #[doc = "Field `LNVREF` writer - Low Noise Mode VREF Trim"]
-pub type LNVREF_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type LNVREF_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 impl R {
     #[doc = "Bit 1 - Low Noise Mode Feedback Attenuation"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bit 1 - Low Noise Mode Feedback Attenuation"]
     #[inline(always)]
     #[must_use]
-    pub fn lnatt(&mut self) -> LNATT_W<DCDCLNVCTRL_SPEC, 1> {
-        LNATT_W::new(self)
+    pub fn lnatt(&mut self) -> LNATT_W<DCDCLNVCTRL_SPEC> {
+        LNATT_W::new(self, 1)
     }
     #[doc = "Bits 8:14 - Low Noise Mode VREF Trim"]
     #[inline(always)]
     #[must_use]
-    pub fn lnvref(&mut self) -> LNVREF_W<DCDCLNVCTRL_SPEC, 8> {
-        LNVREF_W::new(self)
+    pub fn lnvref(&mut self) -> LNVREF_W<DCDCLNVCTRL_SPEC> {
+        LNVREF_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for DCDCLNVCTRL_SPEC {
 impl crate::Readable for DCDCLNVCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dcdclnvctrl::W`](W) writer structure"]
 impl crate::Writable for DCDCLNVCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DCDCLNVCTRL to value 0x7100"]
 impl crate::Resettable for DCDCLNVCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x7100;
+    const RESET_VALUE: u32 = 0x7100;
 }

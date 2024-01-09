@@ -25,5 +25,5 @@ impl crate::RegisterSpec for COMBCNT_SPEC {
 impl crate::Readable for COMBCNT_SPEC {}
 #[doc = "`reset()` method sets COMBCNT to value 0"]
 impl crate::Resettable for COMBCNT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

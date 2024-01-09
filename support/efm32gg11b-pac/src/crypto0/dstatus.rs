@@ -27,7 +27,7 @@ impl crate::FieldSpec for DATA0ZERO_A {
 impl DATA0ZERO_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<DATA0ZERO_A> {
+    pub const fn variant(&self) -> Option<DATA0ZERO_A> {
         match self.bits {
             1 => Some(DATA0ZERO_A::ZERO0TO31),
             2 => Some(DATA0ZERO_A::ZERO32TO63),
@@ -101,5 +101,5 @@ impl crate::RegisterSpec for DSTATUS_SPEC {
 impl crate::Readable for DSTATUS_SPEC {}
 #[doc = "`reset()` method sets DSTATUS to value 0"]
 impl crate::Resettable for DSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

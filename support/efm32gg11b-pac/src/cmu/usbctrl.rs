@@ -33,7 +33,7 @@ impl crate::FieldSpec for USBCLKSEL_A {
 impl USBCLKSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<USBCLKSEL_A> {
+    pub const fn variant(&self) -> Option<USBCLKSEL_A> {
         match self.bits {
             0 => Some(USBCLKSEL_A::USHFRCO),
             1 => Some(USBCLKSEL_A::HFXO),
@@ -76,8 +76,8 @@ impl USBCLKSEL_R {
     }
 }
 #[doc = "Field `USBCLKSEL` writer - USB Rate Clock Select"]
-pub type USBCLKSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, USBCLKSEL_A>;
-impl<'a, REG, const O: u8> USBCLKSEL_W<'a, REG, O>
+pub type USBCLKSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 3, USBCLKSEL_A>;
+impl<'a, REG> USBCLKSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -116,7 +116,7 @@ where
 #[doc = "Field `USBCLKEN` reader - USB Rate Clock Enable"]
 pub type USBCLKEN_R = crate::BitReader;
 #[doc = "Field `USBCLKEN` writer - USB Rate Clock Enable"]
-pub type USBCLKEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type USBCLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:2 - USB Rate Clock Select"]
     #[inline(always)]
@@ -133,16 +133,20 @@ impl W {
     #[doc = "Bits 0:2 - USB Rate Clock Select"]
     #[inline(always)]
     #[must_use]
-    pub fn usbclksel(&mut self) -> USBCLKSEL_W<USBCTRL_SPEC, 0> {
-        USBCLKSEL_W::new(self)
+    pub fn usbclksel(&mut self) -> USBCLKSEL_W<USBCTRL_SPEC> {
+        USBCLKSEL_W::new(self, 0)
     }
     #[doc = "Bit 7 - USB Rate Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn usbclken(&mut self) -> USBCLKEN_W<USBCTRL_SPEC, 7> {
-        USBCLKEN_W::new(self)
+    pub fn usbclken(&mut self) -> USBCLKEN_W<USBCTRL_SPEC> {
+        USBCLKEN_W::new(self, 7)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -158,10 +162,10 @@ impl crate::RegisterSpec for USBCTRL_SPEC {
 impl crate::Readable for USBCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`usbctrl::W`](W) writer structure"]
 impl crate::Writable for USBCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets USBCTRL to value 0"]
 impl crate::Resettable for USBCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

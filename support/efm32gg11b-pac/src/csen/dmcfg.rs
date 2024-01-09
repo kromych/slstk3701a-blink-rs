@@ -5,15 +5,15 @@ pub type W = crate::W<DMCFG_SPEC>;
 #[doc = "Field `DMG` reader - Delta Modulator Gain Step"]
 pub type DMG_R = crate::FieldReader;
 #[doc = "Field `DMG` writer - Delta Modulator Gain Step"]
-pub type DMG_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DMG_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `DMR` reader - Delta Modulator Gain Reduction Interval"]
 pub type DMR_R = crate::FieldReader;
 #[doc = "Field `DMR` writer - Delta Modulator Gain Reduction Interval"]
-pub type DMR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type DMR_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `DMCR` reader - Delta Modulator Conversion Rate"]
 pub type DMCR_R = crate::FieldReader;
 #[doc = "Field `DMCR` writer - Delta Modulator Conversion Rate"]
-pub type DMCR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type DMCR_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `CRMODE` reader - Delta Modulator Conversion Resolution."]
 pub type CRMODE_R = crate::FieldReader<CRMODE_A>;
 #[doc = "Delta Modulator Conversion Resolution.\n\nValue on reset: 0"]
@@ -41,7 +41,7 @@ impl crate::FieldSpec for CRMODE_A {
 impl CRMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CRMODE_A {
+    pub const fn variant(&self) -> CRMODE_A {
         match self.bits {
             0 => CRMODE_A::DM10,
             1 => CRMODE_A::DM12,
@@ -72,8 +72,8 @@ impl CRMODE_R {
     }
 }
 #[doc = "Field `CRMODE` writer - Delta Modulator Conversion Resolution."]
-pub type CRMODE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CRMODE_A>;
-impl<'a, REG, const O: u8> CRMODE_W<'a, REG, O>
+pub type CRMODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CRMODE_A>;
+impl<'a, REG> CRMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -102,7 +102,7 @@ where
 #[doc = "Field `DMGRDIS` reader - Delta Modulation Gain Step Reduction Disable"]
 pub type DMGRDIS_R = crate::BitReader;
 #[doc = "Field `DMGRDIS` writer - Delta Modulation Gain Step Reduction Disable"]
-pub type DMGRDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DMGRDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:7 - Delta Modulator Gain Step"]
     #[inline(always)]
@@ -134,34 +134,38 @@ impl W {
     #[doc = "Bits 0:7 - Delta Modulator Gain Step"]
     #[inline(always)]
     #[must_use]
-    pub fn dmg(&mut self) -> DMG_W<DMCFG_SPEC, 0> {
-        DMG_W::new(self)
+    pub fn dmg(&mut self) -> DMG_W<DMCFG_SPEC> {
+        DMG_W::new(self, 0)
     }
     #[doc = "Bits 8:11 - Delta Modulator Gain Reduction Interval"]
     #[inline(always)]
     #[must_use]
-    pub fn dmr(&mut self) -> DMR_W<DMCFG_SPEC, 8> {
-        DMR_W::new(self)
+    pub fn dmr(&mut self) -> DMR_W<DMCFG_SPEC> {
+        DMR_W::new(self, 8)
     }
     #[doc = "Bits 16:19 - Delta Modulator Conversion Rate"]
     #[inline(always)]
     #[must_use]
-    pub fn dmcr(&mut self) -> DMCR_W<DMCFG_SPEC, 16> {
-        DMCR_W::new(self)
+    pub fn dmcr(&mut self) -> DMCR_W<DMCFG_SPEC> {
+        DMCR_W::new(self, 16)
     }
     #[doc = "Bits 20:21 - Delta Modulator Conversion Resolution."]
     #[inline(always)]
     #[must_use]
-    pub fn crmode(&mut self) -> CRMODE_W<DMCFG_SPEC, 20> {
-        CRMODE_W::new(self)
+    pub fn crmode(&mut self) -> CRMODE_W<DMCFG_SPEC> {
+        CRMODE_W::new(self, 20)
     }
     #[doc = "Bit 28 - Delta Modulation Gain Step Reduction Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn dmgrdis(&mut self) -> DMGRDIS_W<DMCFG_SPEC, 28> {
-        DMGRDIS_W::new(self)
+    pub fn dmgrdis(&mut self) -> DMGRDIS_W<DMCFG_SPEC> {
+        DMGRDIS_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -177,10 +181,10 @@ impl crate::RegisterSpec for DMCFG_SPEC {
 impl crate::Readable for DMCFG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dmcfg::W`](W) writer structure"]
 impl crate::Writable for DMCFG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DMCFG to value 0"]
 impl crate::Resettable for DMCFG_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

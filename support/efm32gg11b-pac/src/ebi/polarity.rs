@@ -5,27 +5,27 @@ pub type W = crate::W<POLARITY_SPEC>;
 #[doc = "Field `CSPOL` reader - Chip Select Polarity"]
 pub type CSPOL_R = crate::BitReader;
 #[doc = "Field `CSPOL` writer - Chip Select Polarity"]
-pub type CSPOL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CSPOL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `REPOL` reader - Read Enable Polarity"]
 pub type REPOL_R = crate::BitReader;
 #[doc = "Field `REPOL` writer - Read Enable Polarity"]
-pub type REPOL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type REPOL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WEPOL` reader - Write Enable Polarity"]
 pub type WEPOL_R = crate::BitReader;
 #[doc = "Field `WEPOL` writer - Write Enable Polarity"]
-pub type WEPOL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type WEPOL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ALEPOL` reader - Address Latch Polarity"]
 pub type ALEPOL_R = crate::BitReader;
 #[doc = "Field `ALEPOL` writer - Address Latch Polarity"]
-pub type ALEPOL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ALEPOL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ARDYPOL` reader - ARDY Polarity"]
 pub type ARDYPOL_R = crate::BitReader;
 #[doc = "Field `ARDYPOL` writer - ARDY Polarity"]
-pub type ARDYPOL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ARDYPOL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BLPOL` reader - BL Polarity"]
 pub type BLPOL_R = crate::BitReader;
 #[doc = "Field `BLPOL` writer - BL Polarity"]
-pub type BLPOL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BLPOL_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Chip Select Polarity"]
     #[inline(always)]
@@ -62,40 +62,44 @@ impl W {
     #[doc = "Bit 0 - Chip Select Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn cspol(&mut self) -> CSPOL_W<POLARITY_SPEC, 0> {
-        CSPOL_W::new(self)
+    pub fn cspol(&mut self) -> CSPOL_W<POLARITY_SPEC> {
+        CSPOL_W::new(self, 0)
     }
     #[doc = "Bit 1 - Read Enable Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn repol(&mut self) -> REPOL_W<POLARITY_SPEC, 1> {
-        REPOL_W::new(self)
+    pub fn repol(&mut self) -> REPOL_W<POLARITY_SPEC> {
+        REPOL_W::new(self, 1)
     }
     #[doc = "Bit 2 - Write Enable Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn wepol(&mut self) -> WEPOL_W<POLARITY_SPEC, 2> {
-        WEPOL_W::new(self)
+    pub fn wepol(&mut self) -> WEPOL_W<POLARITY_SPEC> {
+        WEPOL_W::new(self, 2)
     }
     #[doc = "Bit 3 - Address Latch Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn alepol(&mut self) -> ALEPOL_W<POLARITY_SPEC, 3> {
-        ALEPOL_W::new(self)
+    pub fn alepol(&mut self) -> ALEPOL_W<POLARITY_SPEC> {
+        ALEPOL_W::new(self, 3)
     }
     #[doc = "Bit 4 - ARDY Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn ardypol(&mut self) -> ARDYPOL_W<POLARITY_SPEC, 4> {
-        ARDYPOL_W::new(self)
+    pub fn ardypol(&mut self) -> ARDYPOL_W<POLARITY_SPEC> {
+        ARDYPOL_W::new(self, 4)
     }
     #[doc = "Bit 5 - BL Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn blpol(&mut self) -> BLPOL_W<POLARITY_SPEC, 5> {
-        BLPOL_W::new(self)
+    pub fn blpol(&mut self) -> BLPOL_W<POLARITY_SPEC> {
+        BLPOL_W::new(self, 5)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -111,10 +115,10 @@ impl crate::RegisterSpec for POLARITY_SPEC {
 impl crate::Readable for POLARITY_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`polarity::W`](W) writer structure"]
 impl crate::Writable for POLARITY_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets POLARITY to value 0"]
 impl crate::Resettable for POLARITY_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

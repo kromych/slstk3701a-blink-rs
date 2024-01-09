@@ -57,7 +57,7 @@ impl crate::FieldSpec for INPUT0TO7SEL_A {
 impl INPUT0TO7SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT0TO7SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT0TO7SEL_A> {
         match self.bits {
             0 => Some(INPUT0TO7SEL_A::APORT0CH0TO7),
             1 => Some(INPUT0TO7SEL_A::APORT0CH8TO15),
@@ -172,8 +172,8 @@ impl INPUT0TO7SEL_R {
     }
 }
 #[doc = "Field `INPUT0TO7SEL` writer - Inputs Chosen for ADCn_INPUT7-ADCn_INPUT0 as Referred in SCANMASK"]
-pub type INPUT0TO7SEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, INPUT0TO7SEL_A>;
-impl<'a, REG, const O: u8> INPUT0TO7SEL_W<'a, REG, O>
+pub type INPUT0TO7SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, INPUT0TO7SEL_A>;
+impl<'a, REG> INPUT0TO7SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -324,7 +324,7 @@ impl crate::FieldSpec for INPUT8TO15SEL_A {
 impl INPUT8TO15SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT8TO15SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT8TO15SEL_A> {
         match self.bits {
             0 => Some(INPUT8TO15SEL_A::APORT0CH0TO7),
             1 => Some(INPUT8TO15SEL_A::APORT0CH8TO15),
@@ -439,8 +439,8 @@ impl INPUT8TO15SEL_R {
     }
 }
 #[doc = "Field `INPUT8TO15SEL` writer - Inputs Chosen for ADCn_INPUT8-ADCn_INPUT15 as Referred in SCANMASK"]
-pub type INPUT8TO15SEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, INPUT8TO15SEL_A>;
-impl<'a, REG, const O: u8> INPUT8TO15SEL_W<'a, REG, O>
+pub type INPUT8TO15SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, INPUT8TO15SEL_A>;
+impl<'a, REG> INPUT8TO15SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -591,7 +591,7 @@ impl crate::FieldSpec for INPUT16TO23SEL_A {
 impl INPUT16TO23SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT16TO23SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT16TO23SEL_A> {
         match self.bits {
             0 => Some(INPUT16TO23SEL_A::APORT0CH0TO7),
             1 => Some(INPUT16TO23SEL_A::APORT0CH8TO15),
@@ -706,9 +706,8 @@ impl INPUT16TO23SEL_R {
     }
 }
 #[doc = "Field `INPUT16TO23SEL` writer - Inputs Chosen for ADCn_INPUT16-ADCn_INPUT23 as Referred in SCANMASK"]
-pub type INPUT16TO23SEL_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 5, O, INPUT16TO23SEL_A>;
-impl<'a, REG, const O: u8> INPUT16TO23SEL_W<'a, REG, O>
+pub type INPUT16TO23SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, INPUT16TO23SEL_A>;
+impl<'a, REG> INPUT16TO23SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -859,7 +858,7 @@ impl crate::FieldSpec for INPUT24TO31SEL_A {
 impl INPUT24TO31SEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<INPUT24TO31SEL_A> {
+    pub const fn variant(&self) -> Option<INPUT24TO31SEL_A> {
         match self.bits {
             0 => Some(INPUT24TO31SEL_A::APORT0CH0TO7),
             1 => Some(INPUT24TO31SEL_A::APORT0CH8TO15),
@@ -974,9 +973,8 @@ impl INPUT24TO31SEL_R {
     }
 }
 #[doc = "Field `INPUT24TO31SEL` writer - Inputs Chosen for ADCn_INPUT24-ADCn_INPUT31 as Referred in SCANMASK"]
-pub type INPUT24TO31SEL_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 5, O, INPUT24TO31SEL_A>;
-impl<'a, REG, const O: u8> INPUT24TO31SEL_W<'a, REG, O>
+pub type INPUT24TO31SEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, INPUT24TO31SEL_A>;
+impl<'a, REG> INPUT24TO31SEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1098,28 +1096,32 @@ impl W {
     #[doc = "Bits 0:4 - Inputs Chosen for ADCn_INPUT7-ADCn_INPUT0 as Referred in SCANMASK"]
     #[inline(always)]
     #[must_use]
-    pub fn input0to7sel(&mut self) -> INPUT0TO7SEL_W<SCANINPUTSEL_SPEC, 0> {
-        INPUT0TO7SEL_W::new(self)
+    pub fn input0to7sel(&mut self) -> INPUT0TO7SEL_W<SCANINPUTSEL_SPEC> {
+        INPUT0TO7SEL_W::new(self, 0)
     }
     #[doc = "Bits 8:12 - Inputs Chosen for ADCn_INPUT8-ADCn_INPUT15 as Referred in SCANMASK"]
     #[inline(always)]
     #[must_use]
-    pub fn input8to15sel(&mut self) -> INPUT8TO15SEL_W<SCANINPUTSEL_SPEC, 8> {
-        INPUT8TO15SEL_W::new(self)
+    pub fn input8to15sel(&mut self) -> INPUT8TO15SEL_W<SCANINPUTSEL_SPEC> {
+        INPUT8TO15SEL_W::new(self, 8)
     }
     #[doc = "Bits 16:20 - Inputs Chosen for ADCn_INPUT16-ADCn_INPUT23 as Referred in SCANMASK"]
     #[inline(always)]
     #[must_use]
-    pub fn input16to23sel(&mut self) -> INPUT16TO23SEL_W<SCANINPUTSEL_SPEC, 16> {
-        INPUT16TO23SEL_W::new(self)
+    pub fn input16to23sel(&mut self) -> INPUT16TO23SEL_W<SCANINPUTSEL_SPEC> {
+        INPUT16TO23SEL_W::new(self, 16)
     }
     #[doc = "Bits 24:28 - Inputs Chosen for ADCn_INPUT24-ADCn_INPUT31 as Referred in SCANMASK"]
     #[inline(always)]
     #[must_use]
-    pub fn input24to31sel(&mut self) -> INPUT24TO31SEL_W<SCANINPUTSEL_SPEC, 24> {
-        INPUT24TO31SEL_W::new(self)
+    pub fn input24to31sel(&mut self) -> INPUT24TO31SEL_W<SCANINPUTSEL_SPEC> {
+        INPUT24TO31SEL_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -1135,10 +1137,10 @@ impl crate::RegisterSpec for SCANINPUTSEL_SPEC {
 impl crate::Readable for SCANINPUTSEL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`scaninputsel::W`](W) writer structure"]
 impl crate::Writable for SCANINPUTSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SCANINPUTSEL to value 0"]
 impl crate::Resettable for SCANINPUTSEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

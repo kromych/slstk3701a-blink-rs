@@ -27,7 +27,7 @@ impl crate::FieldSpec for BIASMODE_A {
 impl BIASMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<BIASMODE_A> {
+    pub const fn variant(&self) -> Option<BIASMODE_A> {
         match self.bits {
             0 => Some(BIASMODE_A::DONTTOUCH),
             1 => Some(BIASMODE_A::DUTYCYCLE),
@@ -52,8 +52,8 @@ impl BIASMODE_R {
     }
 }
 #[doc = "Field `BIASMODE` writer - Select Bias Mode"]
-pub type BIASMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, BIASMODE_A>;
-impl<'a, REG, const O: u8> BIASMODE_W<'a, REG, O>
+pub type BIASMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, BIASMODE_A>;
+impl<'a, REG> BIASMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -85,10 +85,14 @@ impl W {
     #[doc = "Bits 0:1 - Select Bias Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn biasmode(&mut self) -> BIASMODE_W<BIASCTRL_SPEC, 0> {
-        BIASMODE_W::new(self)
+    pub fn biasmode(&mut self) -> BIASMODE_W<BIASCTRL_SPEC> {
+        BIASMODE_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -104,10 +108,10 @@ impl crate::RegisterSpec for BIASCTRL_SPEC {
 impl crate::Readable for BIASCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`biasctrl::W`](W) writer structure"]
 impl crate::Writable for BIASCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets BIASCTRL to value 0"]
 impl crate::Resettable for BIASCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

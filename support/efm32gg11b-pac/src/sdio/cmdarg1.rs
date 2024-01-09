@@ -5,7 +5,7 @@ pub type W = crate::W<CMDARG1_SPEC>;
 #[doc = "Field `CMDARG1` reader - Command Argument 1"]
 pub type CMDARG1_R = crate::FieldReader<u32>;
 #[doc = "Field `CMDARG1` writer - Command Argument 1"]
-pub type CMDARG1_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 32, O, u32>;
+pub type CMDARG1_W<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Command Argument 1"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:31 - Command Argument 1"]
     #[inline(always)]
     #[must_use]
-    pub fn cmdarg1(&mut self) -> CMDARG1_W<CMDARG1_SPEC, 0> {
-        CMDARG1_W::new(self)
+    pub fn cmdarg1(&mut self) -> CMDARG1_W<CMDARG1_SPEC> {
+        CMDARG1_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for CMDARG1_SPEC {
 impl crate::Readable for CMDARG1_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`cmdarg1::W`](W) writer structure"]
 impl crate::Writable for CMDARG1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CMDARG1 to value 0"]
 impl crate::Resettable for CMDARG1_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

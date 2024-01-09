@@ -74,5 +74,5 @@ impl crate::RegisterSpec for ETMIDR_SPEC {
 impl crate::Readable for ETMIDR_SPEC {}
 #[doc = "`reset()` method sets ETMIDR to value 0x4114_f253"]
 impl crate::Resettable for ETMIDR_SPEC {
-    const RESET_VALUE: Self::Ux = 0x4114_f253;
+    const RESET_VALUE: u32 = 0x4114_f253;
 }

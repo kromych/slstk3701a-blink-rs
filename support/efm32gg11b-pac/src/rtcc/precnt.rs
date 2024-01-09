@@ -5,7 +5,7 @@ pub type W = crate::W<PRECNT_SPEC>;
 #[doc = "Field `PRECNT` reader - Pre-Counter Value"]
 pub type PRECNT_R = crate::FieldReader<u16>;
 #[doc = "Field `PRECNT` writer - Pre-Counter Value"]
-pub type PRECNT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 15, O, u16>;
+pub type PRECNT_W<'a, REG> = crate::FieldWriter<'a, REG, 15, u16>;
 impl R {
     #[doc = "Bits 0:14 - Pre-Counter Value"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:14 - Pre-Counter Value"]
     #[inline(always)]
     #[must_use]
-    pub fn precnt(&mut self) -> PRECNT_W<PRECNT_SPEC, 0> {
-        PRECNT_W::new(self)
+    pub fn precnt(&mut self) -> PRECNT_W<PRECNT_SPEC> {
+        PRECNT_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for PRECNT_SPEC {
 impl crate::Readable for PRECNT_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`precnt::W`](W) writer structure"]
 impl crate::Writable for PRECNT_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PRECNT to value 0"]
 impl crate::Resettable for PRECNT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

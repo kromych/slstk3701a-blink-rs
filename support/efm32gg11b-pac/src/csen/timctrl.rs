@@ -37,7 +37,7 @@ impl crate::FieldSpec for PCPRESC_A {
 impl PCPRESC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PCPRESC_A {
+    pub const fn variant(&self) -> PCPRESC_A {
         match self.bits {
             0 => PCPRESC_A::DIV1,
             1 => PCPRESC_A::DIV2,
@@ -92,8 +92,8 @@ impl PCPRESC_R {
     }
 }
 #[doc = "Field `PCPRESC` writer - Period Counter Prescaler"]
-pub type PCPRESC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, PCPRESC_A>;
-impl<'a, REG, const O: u8> PCPRESC_W<'a, REG, O>
+pub type PCPRESC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, PCPRESC_A>;
+impl<'a, REG> PCPRESC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -142,11 +142,11 @@ where
 #[doc = "Field `PCTOP` reader - Period Counter Top Value"]
 pub type PCTOP_R = crate::FieldReader;
 #[doc = "Field `PCTOP` writer - Period Counter Top Value"]
-pub type PCTOP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type PCTOP_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `WARMUPCNT` reader - Warmup Period Counter"]
 pub type WARMUPCNT_R = crate::FieldReader;
 #[doc = "Field `WARMUPCNT` writer - Warmup Period Counter"]
-pub type WARMUPCNT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type WARMUPCNT_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bits 0:2 - Period Counter Prescaler"]
     #[inline(always)]
@@ -168,22 +168,26 @@ impl W {
     #[doc = "Bits 0:2 - Period Counter Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn pcpresc(&mut self) -> PCPRESC_W<TIMCTRL_SPEC, 0> {
-        PCPRESC_W::new(self)
+    pub fn pcpresc(&mut self) -> PCPRESC_W<TIMCTRL_SPEC> {
+        PCPRESC_W::new(self, 0)
     }
     #[doc = "Bits 8:15 - Period Counter Top Value"]
     #[inline(always)]
     #[must_use]
-    pub fn pctop(&mut self) -> PCTOP_W<TIMCTRL_SPEC, 8> {
-        PCTOP_W::new(self)
+    pub fn pctop(&mut self) -> PCTOP_W<TIMCTRL_SPEC> {
+        PCTOP_W::new(self, 8)
     }
     #[doc = "Bits 16:17 - Warmup Period Counter"]
     #[inline(always)]
     #[must_use]
-    pub fn warmupcnt(&mut self) -> WARMUPCNT_W<TIMCTRL_SPEC, 16> {
-        WARMUPCNT_W::new(self)
+    pub fn warmupcnt(&mut self) -> WARMUPCNT_W<TIMCTRL_SPEC> {
+        WARMUPCNT_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -199,10 +203,10 @@ impl crate::RegisterSpec for TIMCTRL_SPEC {
 impl crate::Readable for TIMCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`timctrl::W`](W) writer structure"]
 impl crate::Writable for TIMCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TIMCTRL to value 0"]
 impl crate::Resettable for TIMCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

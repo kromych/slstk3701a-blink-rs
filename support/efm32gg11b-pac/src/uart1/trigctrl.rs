@@ -5,39 +5,39 @@ pub type W = crate::W<TRIGCTRL_SPEC>;
 #[doc = "Field `RXTEN` reader - Receive Trigger Enable"]
 pub type RXTEN_R = crate::BitReader;
 #[doc = "Field `RXTEN` writer - Receive Trigger Enable"]
-pub type RXTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXTEN` reader - Transmit Trigger Enable"]
 pub type TXTEN_R = crate::BitReader;
 #[doc = "Field `TXTEN` writer - Transmit Trigger Enable"]
-pub type TXTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AUTOTXTEN` reader - AUTOTX Trigger Enable"]
 pub type AUTOTXTEN_R = crate::BitReader;
 #[doc = "Field `AUTOTXTEN` writer - AUTOTX Trigger Enable"]
-pub type AUTOTXTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AUTOTXTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXARX0EN` reader - Enable Transmit Trigger After RX End of Frame Plus TCMP0VAL"]
 pub type TXARX0EN_R = crate::BitReader;
 #[doc = "Field `TXARX0EN` writer - Enable Transmit Trigger After RX End of Frame Plus TCMP0VAL"]
-pub type TXARX0EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXARX0EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXARX1EN` reader - Enable Transmit Trigger After RX End of Frame Plus TCMP1VAL"]
 pub type TXARX1EN_R = crate::BitReader;
 #[doc = "Field `TXARX1EN` writer - Enable Transmit Trigger After RX End of Frame Plus TCMP1VAL"]
-pub type TXARX1EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXARX1EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXARX2EN` reader - Enable Transmit Trigger After RX End of Frame Plus TCMP2VAL"]
 pub type TXARX2EN_R = crate::BitReader;
 #[doc = "Field `TXARX2EN` writer - Enable Transmit Trigger After RX End of Frame Plus TCMP2VAL"]
-pub type TXARX2EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXARX2EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXATX0EN` reader - Enable Receive Trigger After TX End of Frame Plus TCMPVAL0 Baud-times"]
 pub type RXATX0EN_R = crate::BitReader;
 #[doc = "Field `RXATX0EN` writer - Enable Receive Trigger After TX End of Frame Plus TCMPVAL0 Baud-times"]
-pub type RXATX0EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXATX0EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXATX1EN` reader - Enable Receive Trigger After TX End of Frame Plus TCMPVAL1 Baud-times"]
 pub type RXATX1EN_R = crate::BitReader;
 #[doc = "Field `RXATX1EN` writer - Enable Receive Trigger After TX End of Frame Plus TCMPVAL1 Baud-times"]
-pub type RXATX1EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXATX1EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXATX2EN` reader - Enable Receive Trigger After TX End of Frame Plus TCMPVAL2 Baud-times"]
 pub type RXATX2EN_R = crate::BitReader;
 #[doc = "Field `RXATX2EN` writer - Enable Receive Trigger After TX End of Frame Plus TCMPVAL2 Baud-times"]
-pub type RXATX2EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXATX2EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TSEL` reader - Trigger PRS Channel Select"]
 pub type TSEL_R = crate::FieldReader<TSEL_A>;
 #[doc = "Trigger PRS Channel Select\n\nValue on reset: 0"]
@@ -105,7 +105,7 @@ impl crate::FieldSpec for TSEL_A {
 impl TSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TSEL_A> {
+    pub const fn variant(&self) -> Option<TSEL_A> {
         match self.bits {
             0 => Some(TSEL_A::PRSCH0),
             1 => Some(TSEL_A::PRSCH1),
@@ -256,8 +256,8 @@ impl TSEL_R {
     }
 }
 #[doc = "Field `TSEL` writer - Trigger PRS Channel Select"]
-pub type TSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, TSEL_A>;
-impl<'a, REG, const O: u8> TSEL_W<'a, REG, O>
+pub type TSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, TSEL_A>;
+impl<'a, REG> TSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -439,64 +439,68 @@ impl W {
     #[doc = "Bit 4 - Receive Trigger Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn rxten(&mut self) -> RXTEN_W<TRIGCTRL_SPEC, 4> {
-        RXTEN_W::new(self)
+    pub fn rxten(&mut self) -> RXTEN_W<TRIGCTRL_SPEC> {
+        RXTEN_W::new(self, 4)
     }
     #[doc = "Bit 5 - Transmit Trigger Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn txten(&mut self) -> TXTEN_W<TRIGCTRL_SPEC, 5> {
-        TXTEN_W::new(self)
+    pub fn txten(&mut self) -> TXTEN_W<TRIGCTRL_SPEC> {
+        TXTEN_W::new(self, 5)
     }
     #[doc = "Bit 6 - AUTOTX Trigger Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn autotxten(&mut self) -> AUTOTXTEN_W<TRIGCTRL_SPEC, 6> {
-        AUTOTXTEN_W::new(self)
+    pub fn autotxten(&mut self) -> AUTOTXTEN_W<TRIGCTRL_SPEC> {
+        AUTOTXTEN_W::new(self, 6)
     }
     #[doc = "Bit 7 - Enable Transmit Trigger After RX End of Frame Plus TCMP0VAL"]
     #[inline(always)]
     #[must_use]
-    pub fn txarx0en(&mut self) -> TXARX0EN_W<TRIGCTRL_SPEC, 7> {
-        TXARX0EN_W::new(self)
+    pub fn txarx0en(&mut self) -> TXARX0EN_W<TRIGCTRL_SPEC> {
+        TXARX0EN_W::new(self, 7)
     }
     #[doc = "Bit 8 - Enable Transmit Trigger After RX End of Frame Plus TCMP1VAL"]
     #[inline(always)]
     #[must_use]
-    pub fn txarx1en(&mut self) -> TXARX1EN_W<TRIGCTRL_SPEC, 8> {
-        TXARX1EN_W::new(self)
+    pub fn txarx1en(&mut self) -> TXARX1EN_W<TRIGCTRL_SPEC> {
+        TXARX1EN_W::new(self, 8)
     }
     #[doc = "Bit 9 - Enable Transmit Trigger After RX End of Frame Plus TCMP2VAL"]
     #[inline(always)]
     #[must_use]
-    pub fn txarx2en(&mut self) -> TXARX2EN_W<TRIGCTRL_SPEC, 9> {
-        TXARX2EN_W::new(self)
+    pub fn txarx2en(&mut self) -> TXARX2EN_W<TRIGCTRL_SPEC> {
+        TXARX2EN_W::new(self, 9)
     }
     #[doc = "Bit 10 - Enable Receive Trigger After TX End of Frame Plus TCMPVAL0 Baud-times"]
     #[inline(always)]
     #[must_use]
-    pub fn rxatx0en(&mut self) -> RXATX0EN_W<TRIGCTRL_SPEC, 10> {
-        RXATX0EN_W::new(self)
+    pub fn rxatx0en(&mut self) -> RXATX0EN_W<TRIGCTRL_SPEC> {
+        RXATX0EN_W::new(self, 10)
     }
     #[doc = "Bit 11 - Enable Receive Trigger After TX End of Frame Plus TCMPVAL1 Baud-times"]
     #[inline(always)]
     #[must_use]
-    pub fn rxatx1en(&mut self) -> RXATX1EN_W<TRIGCTRL_SPEC, 11> {
-        RXATX1EN_W::new(self)
+    pub fn rxatx1en(&mut self) -> RXATX1EN_W<TRIGCTRL_SPEC> {
+        RXATX1EN_W::new(self, 11)
     }
     #[doc = "Bit 12 - Enable Receive Trigger After TX End of Frame Plus TCMPVAL2 Baud-times"]
     #[inline(always)]
     #[must_use]
-    pub fn rxatx2en(&mut self) -> RXATX2EN_W<TRIGCTRL_SPEC, 12> {
-        RXATX2EN_W::new(self)
+    pub fn rxatx2en(&mut self) -> RXATX2EN_W<TRIGCTRL_SPEC> {
+        RXATX2EN_W::new(self, 12)
     }
     #[doc = "Bits 16:20 - Trigger PRS Channel Select"]
     #[inline(always)]
     #[must_use]
-    pub fn tsel(&mut self) -> TSEL_W<TRIGCTRL_SPEC, 16> {
-        TSEL_W::new(self)
+    pub fn tsel(&mut self) -> TSEL_W<TRIGCTRL_SPEC> {
+        TSEL_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -512,10 +516,10 @@ impl crate::RegisterSpec for TRIGCTRL_SPEC {
 impl crate::Readable for TRIGCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`trigctrl::W`](W) writer structure"]
 impl crate::Writable for TRIGCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TRIGCTRL to value 0"]
 impl crate::Resettable for TRIGCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

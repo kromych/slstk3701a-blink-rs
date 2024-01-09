@@ -25,7 +25,7 @@ impl crate::FieldSpec for BANKSWITCHLOCKKEY_A {
 impl BANKSWITCHLOCKKEY_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<BANKSWITCHLOCKKEY_A> {
+    pub const fn variant(&self) -> Option<BANKSWITCHLOCKKEY_A> {
         match self.bits {
             0 => Some(BANKSWITCHLOCKKEY_A::UNLOCKED),
             1 => Some(BANKSWITCHLOCKKEY_A::LOCKED),
@@ -44,9 +44,8 @@ impl BANKSWITCHLOCKKEY_R {
     }
 }
 #[doc = "Field `BANKSWITCHLOCKKEY` writer - Bank Switching Lock"]
-pub type BANKSWITCHLOCKKEY_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 16, O, BANKSWITCHLOCKKEY_A>;
-impl<'a, REG, const O: u8> BANKSWITCHLOCKKEY_W<'a, REG, O>
+pub type BANKSWITCHLOCKKEY_W<'a, REG> = crate::FieldWriter<'a, REG, 16, BANKSWITCHLOCKKEY_A>;
+impl<'a, REG> BANKSWITCHLOCKKEY_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u16>,
@@ -73,10 +72,14 @@ impl W {
     #[doc = "Bits 0:15 - Bank Switching Lock"]
     #[inline(always)]
     #[must_use]
-    pub fn bankswitchlockkey(&mut self) -> BANKSWITCHLOCKKEY_W<BANKSWITCHLOCK_SPEC, 0> {
-        BANKSWITCHLOCKKEY_W::new(self)
+    pub fn bankswitchlockkey(&mut self) -> BANKSWITCHLOCKKEY_W<BANKSWITCHLOCK_SPEC> {
+        BANKSWITCHLOCKKEY_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -92,10 +95,10 @@ impl crate::RegisterSpec for BANKSWITCHLOCK_SPEC {
 impl crate::Readable for BANKSWITCHLOCK_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`bankswitchlock::W`](W) writer structure"]
 impl crate::Writable for BANKSWITCHLOCK_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets BANKSWITCHLOCK to value 0x01"]
 impl crate::Resettable for BANKSWITCHLOCK_SPEC {
-    const RESET_VALUE: Self::Ux = 0x01;
+    const RESET_VALUE: u32 = 0x01;
 }

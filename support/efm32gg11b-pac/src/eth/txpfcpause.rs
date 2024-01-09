@@ -5,11 +5,11 @@ pub type W = crate::W<TXPFCPAUSE_SPEC>;
 #[doc = "Field `VECTORENB` reader - Priority Vector Enable. If bit 17 of the network control register is written with a one then the priority enable vector of the PFC priority based pause frame will be set equal to the value stored in this register \\[7:0\\]."]
 pub type VECTORENB_R = crate::FieldReader;
 #[doc = "Field `VECTORENB` writer - Priority Vector Enable. If bit 17 of the network control register is written with a one then the priority enable vector of the PFC priority based pause frame will be set equal to the value stored in this register \\[7:0\\]."]
-pub type VECTORENB_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type VECTORENB_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `VECTOR` reader - Priority Vector Pause Size. If bit 17 of the network control register is written with a one then for each entry equal to zero in the Transmit PFC Pause Register\\[15:8\\], the PFC pause frame's pause quantum field associated with that entry will be taken from the transmit pause quantum register. For each entry equal to one in the Transmit PFC Pause Register \\[15:8\\], the pause quantum associated with that entry will be zero."]
 pub type VECTOR_R = crate::FieldReader;
 #[doc = "Field `VECTOR` writer - Priority Vector Pause Size. If bit 17 of the network control register is written with a one then for each entry equal to zero in the Transmit PFC Pause Register\\[15:8\\], the PFC pause frame's pause quantum field associated with that entry will be taken from the transmit pause quantum register. For each entry equal to one in the Transmit PFC Pause Register \\[15:8\\], the pause quantum associated with that entry will be zero."]
-pub type VECTOR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type VECTOR_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Priority Vector Enable. If bit 17 of the network control register is written with a one then the priority enable vector of the PFC priority based pause frame will be set equal to the value stored in this register \\[7:0\\]."]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:7 - Priority Vector Enable. If bit 17 of the network control register is written with a one then the priority enable vector of the PFC priority based pause frame will be set equal to the value stored in this register \\[7:0\\]."]
     #[inline(always)]
     #[must_use]
-    pub fn vectorenb(&mut self) -> VECTORENB_W<TXPFCPAUSE_SPEC, 0> {
-        VECTORENB_W::new(self)
+    pub fn vectorenb(&mut self) -> VECTORENB_W<TXPFCPAUSE_SPEC> {
+        VECTORENB_W::new(self, 0)
     }
     #[doc = "Bits 8:15 - Priority Vector Pause Size. If bit 17 of the network control register is written with a one then for each entry equal to zero in the Transmit PFC Pause Register\\[15:8\\], the PFC pause frame's pause quantum field associated with that entry will be taken from the transmit pause quantum register. For each entry equal to one in the Transmit PFC Pause Register \\[15:8\\], the pause quantum associated with that entry will be zero."]
     #[inline(always)]
     #[must_use]
-    pub fn vector(&mut self) -> VECTOR_W<TXPFCPAUSE_SPEC, 8> {
-        VECTOR_W::new(self)
+    pub fn vector(&mut self) -> VECTOR_W<TXPFCPAUSE_SPEC> {
+        VECTOR_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for TXPFCPAUSE_SPEC {
 impl crate::Readable for TXPFCPAUSE_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`txpfcpause::W`](W) writer structure"]
 impl crate::Writable for TXPFCPAUSE_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TXPFCPAUSE to value 0"]
 impl crate::Resettable for TXPFCPAUSE_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

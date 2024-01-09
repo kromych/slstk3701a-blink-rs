@@ -35,7 +35,7 @@ impl crate::FieldSpec for EMASAMPLE_A {
 impl EMASAMPLE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<EMASAMPLE_A> {
+    pub const fn variant(&self) -> Option<EMASAMPLE_A> {
         match self.bits {
             0 => Some(EMASAMPLE_A::W1),
             1 => Some(EMASAMPLE_A::W2),
@@ -84,8 +84,8 @@ impl EMASAMPLE_R {
     }
 }
 #[doc = "Field `EMASAMPLE` writer - EMA Sample Weight"]
-pub type EMASAMPLE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, EMASAMPLE_A>;
-impl<'a, REG, const O: u8> EMASAMPLE_W<'a, REG, O>
+pub type EMASAMPLE_W<'a, REG> = crate::FieldWriter<'a, REG, 3, EMASAMPLE_A>;
+impl<'a, REG> EMASAMPLE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -137,10 +137,14 @@ impl W {
     #[doc = "Bits 0:2 - EMA Sample Weight"]
     #[inline(always)]
     #[must_use]
-    pub fn emasample(&mut self) -> EMASAMPLE_W<EMACTRL_SPEC, 0> {
-        EMASAMPLE_W::new(self)
+    pub fn emasample(&mut self) -> EMASAMPLE_W<EMACTRL_SPEC> {
+        EMASAMPLE_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -156,10 +160,10 @@ impl crate::RegisterSpec for EMACTRL_SPEC {
 impl crate::Readable for EMACTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`emactrl::W`](W) writer structure"]
 impl crate::Writable for EMACTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets EMACTRL to value 0"]
 impl crate::Resettable for EMACTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

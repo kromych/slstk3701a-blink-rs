@@ -5,11 +5,11 @@ pub type W = crate::W<SPECADDR1TOP_SPEC>;
 #[doc = "Field `ADDR` reader - Specific address 1 MSB"]
 pub type ADDR_R = crate::FieldReader<u16>;
 #[doc = "Field `ADDR` writer - Specific address 1 MSB"]
-pub type ADDR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
+pub type ADDR_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 #[doc = "Field `FILTERTYPE` reader - MAC SA or DA selection"]
 pub type FILTERTYPE_R = crate::BitReader;
 #[doc = "Field `FILTERTYPE` writer - MAC SA or DA selection"]
-pub type FILTERTYPE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FILTERTYPE_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:15 - Specific address 1 MSB"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:15 - Specific address 1 MSB"]
     #[inline(always)]
     #[must_use]
-    pub fn addr(&mut self) -> ADDR_W<SPECADDR1TOP_SPEC, 0> {
-        ADDR_W::new(self)
+    pub fn addr(&mut self) -> ADDR_W<SPECADDR1TOP_SPEC> {
+        ADDR_W::new(self, 0)
     }
     #[doc = "Bit 16 - MAC SA or DA selection"]
     #[inline(always)]
     #[must_use]
-    pub fn filtertype(&mut self) -> FILTERTYPE_W<SPECADDR1TOP_SPEC, 16> {
-        FILTERTYPE_W::new(self)
+    pub fn filtertype(&mut self) -> FILTERTYPE_W<SPECADDR1TOP_SPEC> {
+        FILTERTYPE_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for SPECADDR1TOP_SPEC {
 impl crate::Readable for SPECADDR1TOP_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`specaddr1top::W`](W) writer structure"]
 impl crate::Writable for SPECADDR1TOP_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SPECADDR1TOP to value 0"]
 impl crate::Resettable for SPECADDR1TOP_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

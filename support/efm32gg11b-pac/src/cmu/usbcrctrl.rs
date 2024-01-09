@@ -5,11 +5,11 @@ pub type W = crate::W<USBCRCTRL_SPEC>;
 #[doc = "Field `USBCREN` reader - Clock Recovery Enable"]
 pub type USBCREN_R = crate::BitReader;
 #[doc = "Field `USBCREN` writer - Clock Recovery Enable"]
-pub type USBCREN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type USBCREN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USBLSCRMD` reader - Low Speed Clock Recovery Mode"]
 pub type USBLSCRMD_R = crate::BitReader;
 #[doc = "Field `USBLSCRMD` writer - Low Speed Clock Recovery Mode"]
-pub type USBLSCRMD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type USBLSCRMD_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Clock Recovery Enable"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bit 0 - Clock Recovery Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn usbcren(&mut self) -> USBCREN_W<USBCRCTRL_SPEC, 0> {
-        USBCREN_W::new(self)
+    pub fn usbcren(&mut self) -> USBCREN_W<USBCRCTRL_SPEC> {
+        USBCREN_W::new(self, 0)
     }
     #[doc = "Bit 1 - Low Speed Clock Recovery Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn usblscrmd(&mut self) -> USBLSCRMD_W<USBCRCTRL_SPEC, 1> {
-        USBLSCRMD_W::new(self)
+    pub fn usblscrmd(&mut self) -> USBLSCRMD_W<USBCRCTRL_SPEC> {
+        USBLSCRMD_W::new(self, 1)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for USBCRCTRL_SPEC {
 impl crate::Readable for USBCRCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`usbcrctrl::W`](W) writer structure"]
 impl crate::Writable for USBCRCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets USBCRCTRL to value 0"]
 impl crate::Resettable for USBCRCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

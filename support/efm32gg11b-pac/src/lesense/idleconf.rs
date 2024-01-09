@@ -29,7 +29,7 @@ impl crate::FieldSpec for CH0_A {
 impl CH0_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH0_A {
+    pub const fn variant(&self) -> CH0_A {
         match self.bits {
             0 => CH0_A::DISABLE,
             1 => CH0_A::HIGH,
@@ -60,8 +60,8 @@ impl CH0_R {
     }
 }
 #[doc = "Field `CH0` writer - Channel 0 Idle Phase Configuration"]
-pub type CH0_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH0_A>;
-impl<'a, REG, const O: u8> CH0_W<'a, REG, O>
+pub type CH0_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH0_A>;
+impl<'a, REG> CH0_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -114,7 +114,7 @@ impl crate::FieldSpec for CH1_A {
 impl CH1_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH1_A {
+    pub const fn variant(&self) -> CH1_A {
         match self.bits {
             0 => CH1_A::DISABLE,
             1 => CH1_A::HIGH,
@@ -145,8 +145,8 @@ impl CH1_R {
     }
 }
 #[doc = "Field `CH1` writer - Channel 1 Idle Phase Configuration"]
-pub type CH1_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH1_A>;
-impl<'a, REG, const O: u8> CH1_W<'a, REG, O>
+pub type CH1_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH1_A>;
+impl<'a, REG> CH1_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -199,7 +199,7 @@ impl crate::FieldSpec for CH2_A {
 impl CH2_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH2_A {
+    pub const fn variant(&self) -> CH2_A {
         match self.bits {
             0 => CH2_A::DISABLE,
             1 => CH2_A::HIGH,
@@ -230,8 +230,8 @@ impl CH2_R {
     }
 }
 #[doc = "Field `CH2` writer - Channel 2 Idle Phase Configuration"]
-pub type CH2_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH2_A>;
-impl<'a, REG, const O: u8> CH2_W<'a, REG, O>
+pub type CH2_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH2_A>;
+impl<'a, REG> CH2_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -284,7 +284,7 @@ impl crate::FieldSpec for CH3_A {
 impl CH3_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH3_A {
+    pub const fn variant(&self) -> CH3_A {
         match self.bits {
             0 => CH3_A::DISABLE,
             1 => CH3_A::HIGH,
@@ -315,8 +315,8 @@ impl CH3_R {
     }
 }
 #[doc = "Field `CH3` writer - Channel 3 Idle Phase Configuration"]
-pub type CH3_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH3_A>;
-impl<'a, REG, const O: u8> CH3_W<'a, REG, O>
+pub type CH3_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH3_A>;
+impl<'a, REG> CH3_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -369,7 +369,7 @@ impl crate::FieldSpec for CH4_A {
 impl CH4_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH4_A {
+    pub const fn variant(&self) -> CH4_A {
         match self.bits {
             0 => CH4_A::DISABLE,
             1 => CH4_A::HIGH,
@@ -400,8 +400,8 @@ impl CH4_R {
     }
 }
 #[doc = "Field `CH4` writer - Channel 4 Idle Phase Configuration"]
-pub type CH4_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH4_A>;
-impl<'a, REG, const O: u8> CH4_W<'a, REG, O>
+pub type CH4_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH4_A>;
+impl<'a, REG> CH4_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -454,7 +454,7 @@ impl crate::FieldSpec for CH5_A {
 impl CH5_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH5_A {
+    pub const fn variant(&self) -> CH5_A {
         match self.bits {
             0 => CH5_A::DISABLE,
             1 => CH5_A::HIGH,
@@ -485,8 +485,8 @@ impl CH5_R {
     }
 }
 #[doc = "Field `CH5` writer - Channel 5 Idle Phase Configuration"]
-pub type CH5_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH5_A>;
-impl<'a, REG, const O: u8> CH5_W<'a, REG, O>
+pub type CH5_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH5_A>;
+impl<'a, REG> CH5_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -539,7 +539,7 @@ impl crate::FieldSpec for CH6_A {
 impl CH6_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH6_A {
+    pub const fn variant(&self) -> CH6_A {
         match self.bits {
             0 => CH6_A::DISABLE,
             1 => CH6_A::HIGH,
@@ -570,8 +570,8 @@ impl CH6_R {
     }
 }
 #[doc = "Field `CH6` writer - Channel 6 Idle Phase Configuration"]
-pub type CH6_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH6_A>;
-impl<'a, REG, const O: u8> CH6_W<'a, REG, O>
+pub type CH6_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH6_A>;
+impl<'a, REG> CH6_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -624,7 +624,7 @@ impl crate::FieldSpec for CH7_A {
 impl CH7_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH7_A {
+    pub const fn variant(&self) -> CH7_A {
         match self.bits {
             0 => CH7_A::DISABLE,
             1 => CH7_A::HIGH,
@@ -655,8 +655,8 @@ impl CH7_R {
     }
 }
 #[doc = "Field `CH7` writer - Channel 7 Idle Phase Configuration"]
-pub type CH7_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH7_A>;
-impl<'a, REG, const O: u8> CH7_W<'a, REG, O>
+pub type CH7_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH7_A>;
+impl<'a, REG> CH7_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -709,7 +709,7 @@ impl crate::FieldSpec for CH8_A {
 impl CH8_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH8_A {
+    pub const fn variant(&self) -> CH8_A {
         match self.bits {
             0 => CH8_A::DISABLE,
             1 => CH8_A::HIGH,
@@ -740,8 +740,8 @@ impl CH8_R {
     }
 }
 #[doc = "Field `CH8` writer - Channel 8 Idle Phase Configuration"]
-pub type CH8_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH8_A>;
-impl<'a, REG, const O: u8> CH8_W<'a, REG, O>
+pub type CH8_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH8_A>;
+impl<'a, REG> CH8_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -794,7 +794,7 @@ impl crate::FieldSpec for CH9_A {
 impl CH9_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH9_A {
+    pub const fn variant(&self) -> CH9_A {
         match self.bits {
             0 => CH9_A::DISABLE,
             1 => CH9_A::HIGH,
@@ -825,8 +825,8 @@ impl CH9_R {
     }
 }
 #[doc = "Field `CH9` writer - Channel 9 Idle Phase Configuration"]
-pub type CH9_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH9_A>;
-impl<'a, REG, const O: u8> CH9_W<'a, REG, O>
+pub type CH9_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH9_A>;
+impl<'a, REG> CH9_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -879,7 +879,7 @@ impl crate::FieldSpec for CH10_A {
 impl CH10_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH10_A {
+    pub const fn variant(&self) -> CH10_A {
         match self.bits {
             0 => CH10_A::DISABLE,
             1 => CH10_A::HIGH,
@@ -910,8 +910,8 @@ impl CH10_R {
     }
 }
 #[doc = "Field `CH10` writer - Channel 10 Idle Phase Configuration"]
-pub type CH10_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH10_A>;
-impl<'a, REG, const O: u8> CH10_W<'a, REG, O>
+pub type CH10_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH10_A>;
+impl<'a, REG> CH10_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -964,7 +964,7 @@ impl crate::FieldSpec for CH11_A {
 impl CH11_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH11_A {
+    pub const fn variant(&self) -> CH11_A {
         match self.bits {
             0 => CH11_A::DISABLE,
             1 => CH11_A::HIGH,
@@ -995,8 +995,8 @@ impl CH11_R {
     }
 }
 #[doc = "Field `CH11` writer - Channel 11 Idle Phase Configuration"]
-pub type CH11_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH11_A>;
-impl<'a, REG, const O: u8> CH11_W<'a, REG, O>
+pub type CH11_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH11_A>;
+impl<'a, REG> CH11_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1049,7 +1049,7 @@ impl crate::FieldSpec for CH12_A {
 impl CH12_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH12_A {
+    pub const fn variant(&self) -> CH12_A {
         match self.bits {
             0 => CH12_A::DISABLE,
             1 => CH12_A::HIGH,
@@ -1080,8 +1080,8 @@ impl CH12_R {
     }
 }
 #[doc = "Field `CH12` writer - Channel 12 Idle Phase Configuration"]
-pub type CH12_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH12_A>;
-impl<'a, REG, const O: u8> CH12_W<'a, REG, O>
+pub type CH12_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH12_A>;
+impl<'a, REG> CH12_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1134,7 +1134,7 @@ impl crate::FieldSpec for CH13_A {
 impl CH13_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH13_A {
+    pub const fn variant(&self) -> CH13_A {
         match self.bits {
             0 => CH13_A::DISABLE,
             1 => CH13_A::HIGH,
@@ -1165,8 +1165,8 @@ impl CH13_R {
     }
 }
 #[doc = "Field `CH13` writer - Channel 13 Idle Phase Configuration"]
-pub type CH13_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH13_A>;
-impl<'a, REG, const O: u8> CH13_W<'a, REG, O>
+pub type CH13_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH13_A>;
+impl<'a, REG> CH13_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1219,7 +1219,7 @@ impl crate::FieldSpec for CH14_A {
 impl CH14_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH14_A {
+    pub const fn variant(&self) -> CH14_A {
         match self.bits {
             0 => CH14_A::DISABLE,
             1 => CH14_A::HIGH,
@@ -1250,8 +1250,8 @@ impl CH14_R {
     }
 }
 #[doc = "Field `CH14` writer - Channel 14 Idle Phase Configuration"]
-pub type CH14_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH14_A>;
-impl<'a, REG, const O: u8> CH14_W<'a, REG, O>
+pub type CH14_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH14_A>;
+impl<'a, REG> CH14_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1304,7 +1304,7 @@ impl crate::FieldSpec for CH15_A {
 impl CH15_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CH15_A {
+    pub const fn variant(&self) -> CH15_A {
         match self.bits {
             0 => CH15_A::DISABLE,
             1 => CH15_A::HIGH,
@@ -1335,8 +1335,8 @@ impl CH15_R {
     }
 }
 #[doc = "Field `CH15` writer - Channel 15 Idle Phase Configuration"]
-pub type CH15_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CH15_A>;
-impl<'a, REG, const O: u8> CH15_W<'a, REG, O>
+pub type CH15_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CH15_A>;
+impl<'a, REG> CH15_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1448,100 +1448,104 @@ impl W {
     #[doc = "Bits 0:1 - Channel 0 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch0(&mut self) -> CH0_W<IDLECONF_SPEC, 0> {
-        CH0_W::new(self)
+    pub fn ch0(&mut self) -> CH0_W<IDLECONF_SPEC> {
+        CH0_W::new(self, 0)
     }
     #[doc = "Bits 2:3 - Channel 1 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch1(&mut self) -> CH1_W<IDLECONF_SPEC, 2> {
-        CH1_W::new(self)
+    pub fn ch1(&mut self) -> CH1_W<IDLECONF_SPEC> {
+        CH1_W::new(self, 2)
     }
     #[doc = "Bits 4:5 - Channel 2 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch2(&mut self) -> CH2_W<IDLECONF_SPEC, 4> {
-        CH2_W::new(self)
+    pub fn ch2(&mut self) -> CH2_W<IDLECONF_SPEC> {
+        CH2_W::new(self, 4)
     }
     #[doc = "Bits 6:7 - Channel 3 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch3(&mut self) -> CH3_W<IDLECONF_SPEC, 6> {
-        CH3_W::new(self)
+    pub fn ch3(&mut self) -> CH3_W<IDLECONF_SPEC> {
+        CH3_W::new(self, 6)
     }
     #[doc = "Bits 8:9 - Channel 4 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch4(&mut self) -> CH4_W<IDLECONF_SPEC, 8> {
-        CH4_W::new(self)
+    pub fn ch4(&mut self) -> CH4_W<IDLECONF_SPEC> {
+        CH4_W::new(self, 8)
     }
     #[doc = "Bits 10:11 - Channel 5 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch5(&mut self) -> CH5_W<IDLECONF_SPEC, 10> {
-        CH5_W::new(self)
+    pub fn ch5(&mut self) -> CH5_W<IDLECONF_SPEC> {
+        CH5_W::new(self, 10)
     }
     #[doc = "Bits 12:13 - Channel 6 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch6(&mut self) -> CH6_W<IDLECONF_SPEC, 12> {
-        CH6_W::new(self)
+    pub fn ch6(&mut self) -> CH6_W<IDLECONF_SPEC> {
+        CH6_W::new(self, 12)
     }
     #[doc = "Bits 14:15 - Channel 7 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch7(&mut self) -> CH7_W<IDLECONF_SPEC, 14> {
-        CH7_W::new(self)
+    pub fn ch7(&mut self) -> CH7_W<IDLECONF_SPEC> {
+        CH7_W::new(self, 14)
     }
     #[doc = "Bits 16:17 - Channel 8 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch8(&mut self) -> CH8_W<IDLECONF_SPEC, 16> {
-        CH8_W::new(self)
+    pub fn ch8(&mut self) -> CH8_W<IDLECONF_SPEC> {
+        CH8_W::new(self, 16)
     }
     #[doc = "Bits 18:19 - Channel 9 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch9(&mut self) -> CH9_W<IDLECONF_SPEC, 18> {
-        CH9_W::new(self)
+    pub fn ch9(&mut self) -> CH9_W<IDLECONF_SPEC> {
+        CH9_W::new(self, 18)
     }
     #[doc = "Bits 20:21 - Channel 10 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch10(&mut self) -> CH10_W<IDLECONF_SPEC, 20> {
-        CH10_W::new(self)
+    pub fn ch10(&mut self) -> CH10_W<IDLECONF_SPEC> {
+        CH10_W::new(self, 20)
     }
     #[doc = "Bits 22:23 - Channel 11 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch11(&mut self) -> CH11_W<IDLECONF_SPEC, 22> {
-        CH11_W::new(self)
+    pub fn ch11(&mut self) -> CH11_W<IDLECONF_SPEC> {
+        CH11_W::new(self, 22)
     }
     #[doc = "Bits 24:25 - Channel 12 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch12(&mut self) -> CH12_W<IDLECONF_SPEC, 24> {
-        CH12_W::new(self)
+    pub fn ch12(&mut self) -> CH12_W<IDLECONF_SPEC> {
+        CH12_W::new(self, 24)
     }
     #[doc = "Bits 26:27 - Channel 13 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch13(&mut self) -> CH13_W<IDLECONF_SPEC, 26> {
-        CH13_W::new(self)
+    pub fn ch13(&mut self) -> CH13_W<IDLECONF_SPEC> {
+        CH13_W::new(self, 26)
     }
     #[doc = "Bits 28:29 - Channel 14 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch14(&mut self) -> CH14_W<IDLECONF_SPEC, 28> {
-        CH14_W::new(self)
+    pub fn ch14(&mut self) -> CH14_W<IDLECONF_SPEC> {
+        CH14_W::new(self, 28)
     }
     #[doc = "Bits 30:31 - Channel 15 Idle Phase Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn ch15(&mut self) -> CH15_W<IDLECONF_SPEC, 30> {
-        CH15_W::new(self)
+    pub fn ch15(&mut self) -> CH15_W<IDLECONF_SPEC> {
+        CH15_W::new(self, 30)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -1557,10 +1561,10 @@ impl crate::RegisterSpec for IDLECONF_SPEC {
 impl crate::Readable for IDLECONF_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`idleconf::W`](W) writer structure"]
 impl crate::Writable for IDLECONF_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IDLECONF to value 0"]
 impl crate::Resettable for IDLECONF_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

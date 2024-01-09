@@ -5,19 +5,19 @@ pub type W = crate::W<ROUTEPEN_SPEC>;
 #[doc = "Field `CLKOUT0PEN` reader - CLKOUT0 Pin Enable"]
 pub type CLKOUT0PEN_R = crate::BitReader;
 #[doc = "Field `CLKOUT0PEN` writer - CLKOUT0 Pin Enable"]
-pub type CLKOUT0PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLKOUT0PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CLKOUT1PEN` reader - CLKOUT1 Pin Enable"]
 pub type CLKOUT1PEN_R = crate::BitReader;
 #[doc = "Field `CLKOUT1PEN` writer - CLKOUT1 Pin Enable"]
-pub type CLKOUT1PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLKOUT1PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CLKOUT2PEN` reader - CLKOUT2 Pin Enable"]
 pub type CLKOUT2PEN_R = crate::BitReader;
 #[doc = "Field `CLKOUT2PEN` writer - CLKOUT2 Pin Enable"]
-pub type CLKOUT2PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLKOUT2PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CLKIN0PEN` reader - CLKIN0 Pin Enable"]
 pub type CLKIN0PEN_R = crate::BitReader;
 #[doc = "Field `CLKIN0PEN` writer - CLKIN0 Pin Enable"]
-pub type CLKIN0PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLKIN0PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - CLKOUT0 Pin Enable"]
     #[inline(always)]
@@ -44,28 +44,32 @@ impl W {
     #[doc = "Bit 0 - CLKOUT0 Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn clkout0pen(&mut self) -> CLKOUT0PEN_W<ROUTEPEN_SPEC, 0> {
-        CLKOUT0PEN_W::new(self)
+    pub fn clkout0pen(&mut self) -> CLKOUT0PEN_W<ROUTEPEN_SPEC> {
+        CLKOUT0PEN_W::new(self, 0)
     }
     #[doc = "Bit 1 - CLKOUT1 Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn clkout1pen(&mut self) -> CLKOUT1PEN_W<ROUTEPEN_SPEC, 1> {
-        CLKOUT1PEN_W::new(self)
+    pub fn clkout1pen(&mut self) -> CLKOUT1PEN_W<ROUTEPEN_SPEC> {
+        CLKOUT1PEN_W::new(self, 1)
     }
     #[doc = "Bit 2 - CLKOUT2 Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn clkout2pen(&mut self) -> CLKOUT2PEN_W<ROUTEPEN_SPEC, 2> {
-        CLKOUT2PEN_W::new(self)
+    pub fn clkout2pen(&mut self) -> CLKOUT2PEN_W<ROUTEPEN_SPEC> {
+        CLKOUT2PEN_W::new(self, 2)
     }
     #[doc = "Bit 28 - CLKIN0 Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn clkin0pen(&mut self) -> CLKIN0PEN_W<ROUTEPEN_SPEC, 28> {
-        CLKIN0PEN_W::new(self)
+    pub fn clkin0pen(&mut self) -> CLKIN0PEN_W<ROUTEPEN_SPEC> {
+        CLKIN0PEN_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -81,10 +85,10 @@ impl crate::RegisterSpec for ROUTEPEN_SPEC {
 impl crate::Readable for ROUTEPEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routepen::W`](W) writer structure"]
 impl crate::Writable for ROUTEPEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTEPEN to value 0"]
 impl crate::Resettable for ROUTEPEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

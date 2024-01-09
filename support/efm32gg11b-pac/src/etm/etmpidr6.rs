@@ -6,7 +6,11 @@ impl core::fmt::Debug for crate::generic::Reg<ETMPIDR6_SPEC> {
     }
 }
 impl W {
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -20,10 +24,10 @@ impl crate::RegisterSpec for ETMPIDR6_SPEC {
 }
 #[doc = "`write(|w| ..)` method takes [`etmpidr6::W`](W) writer structure"]
 impl crate::Writable for ETMPIDR6_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ETMPIDR6 to value 0"]
 impl crate::Resettable for ETMPIDR6_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

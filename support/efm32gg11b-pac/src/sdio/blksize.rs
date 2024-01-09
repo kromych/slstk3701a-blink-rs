@@ -23,7 +23,7 @@ impl crate::FieldSpec for TFRBLKSIZE_A {
 impl TFRBLKSIZE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TFRBLKSIZE_A> {
+    pub const fn variant(&self) -> Option<TFRBLKSIZE_A> {
         match self.bits {
             0 => Some(TFRBLKSIZE_A::NOXFER),
             _ => None,
@@ -36,8 +36,8 @@ impl TFRBLKSIZE_R {
     }
 }
 #[doc = "Field `TFRBLKSIZE` writer - Transfer Block Size, Specifies the Block Size for Block Data Transfers for CMD17, CMD18, CMD24, CMD25, and CMD53"]
-pub type TFRBLKSIZE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 12, O, TFRBLKSIZE_A>;
-impl<'a, REG, const O: u8> TFRBLKSIZE_W<'a, REG, O>
+pub type TFRBLKSIZE_W<'a, REG> = crate::FieldWriter<'a, REG, 12, TFRBLKSIZE_A>;
+impl<'a, REG> TFRBLKSIZE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u16>,
@@ -83,7 +83,7 @@ impl crate::FieldSpec for HSTSDMABUFSIZE_A {
 impl HSTSDMABUFSIZE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> HSTSDMABUFSIZE_A {
+    pub const fn variant(&self) -> HSTSDMABUFSIZE_A {
         match self.bits {
             0 => HSTSDMABUFSIZE_A::SIZE4,
             1 => HSTSDMABUFSIZE_A::SIZE8,
@@ -138,9 +138,8 @@ impl HSTSDMABUFSIZE_R {
     }
 }
 #[doc = "Field `HSTSDMABUFSIZE` writer - Host SDMA Buffer Size"]
-pub type HSTSDMABUFSIZE_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 3, O, HSTSDMABUFSIZE_A>;
-impl<'a, REG, const O: u8> HSTSDMABUFSIZE_W<'a, REG, O>
+pub type HSTSDMABUFSIZE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, HSTSDMABUFSIZE_A>;
+impl<'a, REG> HSTSDMABUFSIZE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -207,7 +206,7 @@ impl crate::FieldSpec for BLKSCNTFORCURRTFR_A {
 impl BLKSCNTFORCURRTFR_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<BLKSCNTFORCURRTFR_A> {
+    pub const fn variant(&self) -> Option<BLKSCNTFORCURRTFR_A> {
         match self.bits {
             0 => Some(BLKSCNTFORCURRTFR_A::STOPCNT),
             _ => None,
@@ -220,9 +219,8 @@ impl BLKSCNTFORCURRTFR_R {
     }
 }
 #[doc = "Field `BLKSCNTFORCURRTFR` writer - Blocks Count for Current Transfer"]
-pub type BLKSCNTFORCURRTFR_W<'a, REG, const O: u8> =
-    crate::FieldWriter<'a, REG, 16, O, BLKSCNTFORCURRTFR_A>;
-impl<'a, REG, const O: u8> BLKSCNTFORCURRTFR_W<'a, REG, O>
+pub type BLKSCNTFORCURRTFR_W<'a, REG> = crate::FieldWriter<'a, REG, 16, BLKSCNTFORCURRTFR_A>;
+impl<'a, REG> BLKSCNTFORCURRTFR_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u16>,
@@ -254,22 +252,26 @@ impl W {
     #[doc = "Bits 0:11 - Transfer Block Size, Specifies the Block Size for Block Data Transfers for CMD17, CMD18, CMD24, CMD25, and CMD53"]
     #[inline(always)]
     #[must_use]
-    pub fn tfrblksize(&mut self) -> TFRBLKSIZE_W<BLKSIZE_SPEC, 0> {
-        TFRBLKSIZE_W::new(self)
+    pub fn tfrblksize(&mut self) -> TFRBLKSIZE_W<BLKSIZE_SPEC> {
+        TFRBLKSIZE_W::new(self, 0)
     }
     #[doc = "Bits 12:14 - Host SDMA Buffer Size"]
     #[inline(always)]
     #[must_use]
-    pub fn hstsdmabufsize(&mut self) -> HSTSDMABUFSIZE_W<BLKSIZE_SPEC, 12> {
-        HSTSDMABUFSIZE_W::new(self)
+    pub fn hstsdmabufsize(&mut self) -> HSTSDMABUFSIZE_W<BLKSIZE_SPEC> {
+        HSTSDMABUFSIZE_W::new(self, 12)
     }
     #[doc = "Bits 16:31 - Blocks Count for Current Transfer"]
     #[inline(always)]
     #[must_use]
-    pub fn blkscntforcurrtfr(&mut self) -> BLKSCNTFORCURRTFR_W<BLKSIZE_SPEC, 16> {
-        BLKSCNTFORCURRTFR_W::new(self)
+    pub fn blkscntforcurrtfr(&mut self) -> BLKSCNTFORCURRTFR_W<BLKSIZE_SPEC> {
+        BLKSCNTFORCURRTFR_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -285,10 +287,10 @@ impl crate::RegisterSpec for BLKSIZE_SPEC {
 impl crate::Readable for BLKSIZE_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`blksize::W`](W) writer structure"]
 impl crate::Writable for BLKSIZE_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets BLKSIZE to value 0"]
 impl crate::Resettable for BLKSIZE_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

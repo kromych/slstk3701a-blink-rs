@@ -5,15 +5,15 @@ pub type W = crate::W<MODEBITCONFIG_SPEC>;
 #[doc = "Field `MODE` reader - Mode Bits"]
 pub type MODE_R = crate::FieldReader;
 #[doc = "Field `MODE` writer - Mode Bits"]
-pub type MODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type MODE_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `CHUNKSIZE` reader - Chunk Size"]
 pub type CHUNKSIZE_R = crate::FieldReader;
 #[doc = "Field `CHUNKSIZE` writer - Chunk Size"]
-pub type CHUNKSIZE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type CHUNKSIZE_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `CRCOUTENABLE` reader - CRC# Output Enable Bit"]
 pub type CRCOUTENABLE_R = crate::BitReader;
 #[doc = "Field `CRCOUTENABLE` writer - CRC# Output Enable Bit"]
-pub type CRCOUTENABLE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CRCOUTENABLE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXCRCDATAUP` reader - RX CRC Data (upper)"]
 pub type RXCRCDATAUP_R = crate::FieldReader;
 #[doc = "Field `RXCRCDATALOW` reader - RX CRC Data (lower)"]
@@ -49,22 +49,26 @@ impl W {
     #[doc = "Bits 0:7 - Mode Bits"]
     #[inline(always)]
     #[must_use]
-    pub fn mode(&mut self) -> MODE_W<MODEBITCONFIG_SPEC, 0> {
-        MODE_W::new(self)
+    pub fn mode(&mut self) -> MODE_W<MODEBITCONFIG_SPEC> {
+        MODE_W::new(self, 0)
     }
     #[doc = "Bits 8:10 - Chunk Size"]
     #[inline(always)]
     #[must_use]
-    pub fn chunksize(&mut self) -> CHUNKSIZE_W<MODEBITCONFIG_SPEC, 8> {
-        CHUNKSIZE_W::new(self)
+    pub fn chunksize(&mut self) -> CHUNKSIZE_W<MODEBITCONFIG_SPEC> {
+        CHUNKSIZE_W::new(self, 8)
     }
     #[doc = "Bit 15 - CRC# Output Enable Bit"]
     #[inline(always)]
     #[must_use]
-    pub fn crcoutenable(&mut self) -> CRCOUTENABLE_W<MODEBITCONFIG_SPEC, 15> {
-        CRCOUTENABLE_W::new(self)
+    pub fn crcoutenable(&mut self) -> CRCOUTENABLE_W<MODEBITCONFIG_SPEC> {
+        CRCOUTENABLE_W::new(self, 15)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -80,10 +84,10 @@ impl crate::RegisterSpec for MODEBITCONFIG_SPEC {
 impl crate::Readable for MODEBITCONFIG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`modebitconfig::W`](W) writer structure"]
 impl crate::Writable for MODEBITCONFIG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MODEBITCONFIG to value 0x0200"]
 impl crate::Resettable for MODEBITCONFIG_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0200;
+    const RESET_VALUE: u32 = 0x0200;
 }

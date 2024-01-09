@@ -33,7 +33,7 @@ impl crate::FieldSpec for MUX_A {
 impl MUX_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MUX_A> {
+    pub const fn variant(&self) -> Option<MUX_A> {
         match self.bits {
             0 => Some(MUX_A::STATIC),
             1 => Some(MUX_A::DUPLEX),
@@ -76,8 +76,8 @@ impl MUX_R {
     }
 }
 #[doc = "Field `MUX` writer - Mux Configuration"]
-pub type MUX_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, MUX_A>;
-impl<'a, REG, const O: u8> MUX_W<'a, REG, O>
+pub type MUX_W<'a, REG> = crate::FieldWriter<'a, REG, 3, MUX_A>;
+impl<'a, REG> MUX_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -116,11 +116,11 @@ where
 #[doc = "Field `WAVE` reader - Waveform Selection"]
 pub type WAVE_R = crate::BitReader;
 #[doc = "Field `WAVE` writer - Waveform Selection"]
-pub type WAVE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type WAVE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CONTRAST` reader - Contrast Control"]
 pub type CONTRAST_R = crate::FieldReader;
 #[doc = "Field `CONTRAST` writer - Contrast Control"]
-pub type CONTRAST_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O>;
+pub type CONTRAST_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 #[doc = "Field `CHGRDST` reader - Charge Redistribution Cycles"]
 pub type CHGRDST_R = crate::FieldReader<CHGRDST_A>;
 #[doc = "Charge Redistribution Cycles\n\nValue on reset: 1"]
@@ -150,7 +150,7 @@ impl crate::FieldSpec for CHGRDST_A {
 impl CHGRDST_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CHGRDST_A> {
+    pub const fn variant(&self) -> Option<CHGRDST_A> {
         match self.bits {
             0 => Some(CHGRDST_A::DISABLE),
             1 => Some(CHGRDST_A::ONE),
@@ -187,8 +187,8 @@ impl CHGRDST_R {
     }
 }
 #[doc = "Field `CHGRDST` writer - Charge Redistribution Cycles"]
-pub type CHGRDST_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, CHGRDST_A>;
-impl<'a, REG, const O: u8> CHGRDST_W<'a, REG, O>
+pub type CHGRDST_W<'a, REG> = crate::FieldWriter<'a, REG, 3, CHGRDST_A>;
+impl<'a, REG> CHGRDST_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -246,7 +246,7 @@ impl crate::FieldSpec for BIAS_A {
 impl BIAS_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> BIAS_A {
+    pub const fn variant(&self) -> BIAS_A {
         match self.bits {
             0 => BIAS_A::STATIC,
             1 => BIAS_A::ONEHALF,
@@ -277,8 +277,8 @@ impl BIAS_R {
     }
 }
 #[doc = "Field `BIAS` writer - Bias Configuration"]
-pub type BIAS_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, BIAS_A>;
-impl<'a, REG, const O: u8> BIAS_W<'a, REG, O>
+pub type BIAS_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, BIAS_A>;
+impl<'a, REG> BIAS_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -310,11 +310,14 @@ pub type MODE_R = crate::FieldReader<MODE_A>;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum MODE_A {
-    #[doc = "0: No External Cap. Uses an internal current source to generate VLCD. Use CONTRAST\\[4:0\\] to control VLCD."]
+    #[doc = "0: No External Cap. Uses an internal current source to generate VLCD. Use CONTRAST\\[4:0\\]
+to control VLCD."]
     NOEXTCAP = 0,
-    #[doc = "1: Use step down control with VLCD less than VDD. Use CONTRAST\\[5:0\\] to control VLCD level, and use SPEED to adjust VLCD drive strength."]
+    #[doc = "1: Use step down control with VLCD less than VDD. Use CONTRAST\\[5:0\\]
+to control VLCD level, and use SPEED to adjust VLCD drive strength."]
     STEPDOWN = 1,
-    #[doc = "2: Charge pump used with internal oscillator. Use CONTRAST\\[5:0\\] to control VLCD level, and use SPEED to adjust oscillator frequency."]
+    #[doc = "2: Charge pump used with internal oscillator. Use CONTRAST\\[5:0\\]
+to control VLCD level, and use SPEED to adjust oscillator frequency."]
     CPINTOSC = 2,
 }
 impl From<MODE_A> for u8 {
@@ -329,7 +332,7 @@ impl crate::FieldSpec for MODE_A {
 impl MODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MODE_A> {
+    pub const fn variant(&self) -> Option<MODE_A> {
         match self.bits {
             0 => Some(MODE_A::NOEXTCAP),
             1 => Some(MODE_A::STEPDOWN),
@@ -337,40 +340,46 @@ impl MODE_R {
             _ => None,
         }
     }
-    #[doc = "No External Cap. Uses an internal current source to generate VLCD. Use CONTRAST\\[4:0\\] to control VLCD."]
+    #[doc = "No External Cap. Uses an internal current source to generate VLCD. Use CONTRAST\\[4:0\\]
+to control VLCD."]
     #[inline(always)]
     pub fn is_noextcap(&self) -> bool {
         *self == MODE_A::NOEXTCAP
     }
-    #[doc = "Use step down control with VLCD less than VDD. Use CONTRAST\\[5:0\\] to control VLCD level, and use SPEED to adjust VLCD drive strength."]
+    #[doc = "Use step down control with VLCD less than VDD. Use CONTRAST\\[5:0\\]
+to control VLCD level, and use SPEED to adjust VLCD drive strength."]
     #[inline(always)]
     pub fn is_stepdown(&self) -> bool {
         *self == MODE_A::STEPDOWN
     }
-    #[doc = "Charge pump used with internal oscillator. Use CONTRAST\\[5:0\\] to control VLCD level, and use SPEED to adjust oscillator frequency."]
+    #[doc = "Charge pump used with internal oscillator. Use CONTRAST\\[5:0\\]
+to control VLCD level, and use SPEED to adjust oscillator frequency."]
     #[inline(always)]
     pub fn is_cpintosc(&self) -> bool {
         *self == MODE_A::CPINTOSC
     }
 }
 #[doc = "Field `MODE` writer - Mode Setting"]
-pub type MODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, MODE_A>;
-impl<'a, REG, const O: u8> MODE_W<'a, REG, O>
+pub type MODE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, MODE_A>;
+impl<'a, REG> MODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
 {
-    #[doc = "No External Cap. Uses an internal current source to generate VLCD. Use CONTRAST\\[4:0\\] to control VLCD."]
+    #[doc = "No External Cap. Uses an internal current source to generate VLCD. Use CONTRAST\\[4:0\\]
+to control VLCD."]
     #[inline(always)]
     pub fn noextcap(self) -> &'a mut crate::W<REG> {
         self.variant(MODE_A::NOEXTCAP)
     }
-    #[doc = "Use step down control with VLCD less than VDD. Use CONTRAST\\[5:0\\] to control VLCD level, and use SPEED to adjust VLCD drive strength."]
+    #[doc = "Use step down control with VLCD less than VDD. Use CONTRAST\\[5:0\\]
+to control VLCD level, and use SPEED to adjust VLCD drive strength."]
     #[inline(always)]
     pub fn stepdown(self) -> &'a mut crate::W<REG> {
         self.variant(MODE_A::STEPDOWN)
     }
-    #[doc = "Charge pump used with internal oscillator. Use CONTRAST\\[5:0\\] to control VLCD level, and use SPEED to adjust oscillator frequency."]
+    #[doc = "Charge pump used with internal oscillator. Use CONTRAST\\[5:0\\]
+to control VLCD level, and use SPEED to adjust oscillator frequency."]
     #[inline(always)]
     pub fn cpintosc(self) -> &'a mut crate::W<REG> {
         self.variant(MODE_A::CPINTOSC)
@@ -412,40 +421,44 @@ impl W {
     #[doc = "Bits 0:2 - Mux Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn mux(&mut self) -> MUX_W<DISPCTRL_SPEC, 0> {
-        MUX_W::new(self)
+    pub fn mux(&mut self) -> MUX_W<DISPCTRL_SPEC> {
+        MUX_W::new(self, 0)
     }
     #[doc = "Bit 4 - Waveform Selection"]
     #[inline(always)]
     #[must_use]
-    pub fn wave(&mut self) -> WAVE_W<DISPCTRL_SPEC, 4> {
-        WAVE_W::new(self)
+    pub fn wave(&mut self) -> WAVE_W<DISPCTRL_SPEC> {
+        WAVE_W::new(self, 4)
     }
     #[doc = "Bits 8:13 - Contrast Control"]
     #[inline(always)]
     #[must_use]
-    pub fn contrast(&mut self) -> CONTRAST_W<DISPCTRL_SPEC, 8> {
-        CONTRAST_W::new(self)
+    pub fn contrast(&mut self) -> CONTRAST_W<DISPCTRL_SPEC> {
+        CONTRAST_W::new(self, 8)
     }
     #[doc = "Bits 20:22 - Charge Redistribution Cycles"]
     #[inline(always)]
     #[must_use]
-    pub fn chgrdst(&mut self) -> CHGRDST_W<DISPCTRL_SPEC, 20> {
-        CHGRDST_W::new(self)
+    pub fn chgrdst(&mut self) -> CHGRDST_W<DISPCTRL_SPEC> {
+        CHGRDST_W::new(self, 20)
     }
     #[doc = "Bits 24:25 - Bias Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn bias(&mut self) -> BIAS_W<DISPCTRL_SPEC, 24> {
-        BIAS_W::new(self)
+    pub fn bias(&mut self) -> BIAS_W<DISPCTRL_SPEC> {
+        BIAS_W::new(self, 24)
     }
     #[doc = "Bits 28:29 - Mode Setting"]
     #[inline(always)]
     #[must_use]
-    pub fn mode(&mut self) -> MODE_W<DISPCTRL_SPEC, 28> {
-        MODE_W::new(self)
+    pub fn mode(&mut self) -> MODE_W<DISPCTRL_SPEC> {
+        MODE_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -461,10 +474,10 @@ impl crate::RegisterSpec for DISPCTRL_SPEC {
 impl crate::Readable for DISPCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dispctrl::W`](W) writer structure"]
 impl crate::Writable for DISPCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DISPCTRL to value 0x0010_3f00"]
 impl crate::Resettable for DISPCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0010_3f00;
+    const RESET_VALUE: u32 = 0x0010_3f00;
 }

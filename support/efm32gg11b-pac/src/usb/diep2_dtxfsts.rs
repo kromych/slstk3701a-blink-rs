@@ -18,5 +18,5 @@ impl crate::RegisterSpec for DIEP2_DTXFSTS_SPEC {
 impl crate::Readable for DIEP2_DTXFSTS_SPEC {}
 #[doc = "`reset()` method sets DIEP2_DTXFSTS to value 0x0200"]
 impl crate::Resettable for DIEP2_DTXFSTS_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0200;
+    const RESET_VALUE: u32 = 0x0200;
 }

@@ -37,7 +37,7 @@ impl crate::FieldSpec for PIXEL0FORMAT_A {
 impl PIXEL0FORMAT_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PIXEL0FORMAT_A {
+    pub const fn variant(&self) -> PIXEL0FORMAT_A {
         match self.bits {
             0 => PIXEL0FORMAT_A::ARGB0555,
             1 => PIXEL0FORMAT_A::ARGB0565,
@@ -92,9 +92,8 @@ impl PIXEL0FORMAT_R {
     }
 }
 #[doc = "Field `PIXEL0FORMAT` writer - Sprite Pixel Color Format"]
-pub type PIXEL0FORMAT_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 3, O, PIXEL0FORMAT_A>;
-impl<'a, REG, const O: u8> PIXEL0FORMAT_W<'a, REG, O>
+pub type PIXEL0FORMAT_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, PIXEL0FORMAT_A>;
+impl<'a, REG> PIXEL0FORMAT_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -167,7 +166,7 @@ impl crate::FieldSpec for PIXEL1FORMAT_A {
 impl PIXEL1FORMAT_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PIXEL1FORMAT_A {
+    pub const fn variant(&self) -> PIXEL1FORMAT_A {
         match self.bits {
             0 => PIXEL1FORMAT_A::RGB555,
             1 => PIXEL1FORMAT_A::RGB565,
@@ -198,9 +197,8 @@ impl PIXEL1FORMAT_R {
     }
 }
 #[doc = "Field `PIXEL1FORMAT` writer - Source and Destination Pixel Color Format"]
-pub type PIXEL1FORMAT_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, PIXEL1FORMAT_A>;
-impl<'a, REG, const O: u8> PIXEL1FORMAT_W<'a, REG, O>
+pub type PIXEL1FORMAT_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PIXEL1FORMAT_A>;
+impl<'a, REG> PIXEL1FORMAT_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -242,16 +240,20 @@ impl W {
     #[doc = "Bits 0:2 - Sprite Pixel Color Format"]
     #[inline(always)]
     #[must_use]
-    pub fn pixel0format(&mut self) -> PIXEL0FORMAT_W<TFTCOLORFORMAT_SPEC, 0> {
-        PIXEL0FORMAT_W::new(self)
+    pub fn pixel0format(&mut self) -> PIXEL0FORMAT_W<TFTCOLORFORMAT_SPEC> {
+        PIXEL0FORMAT_W::new(self, 0)
     }
     #[doc = "Bits 8:9 - Source and Destination Pixel Color Format"]
     #[inline(always)]
     #[must_use]
-    pub fn pixel1format(&mut self) -> PIXEL1FORMAT_W<TFTCOLORFORMAT_SPEC, 8> {
-        PIXEL1FORMAT_W::new(self)
+    pub fn pixel1format(&mut self) -> PIXEL1FORMAT_W<TFTCOLORFORMAT_SPEC> {
+        PIXEL1FORMAT_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -267,10 +269,10 @@ impl crate::RegisterSpec for TFTCOLORFORMAT_SPEC {
 impl crate::Readable for TFTCOLORFORMAT_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`tftcolorformat::W`](W) writer structure"]
 impl crate::Writable for TFTCOLORFORMAT_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TFTCOLORFORMAT to value 0"]
 impl crate::Resettable for TFTCOLORFORMAT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

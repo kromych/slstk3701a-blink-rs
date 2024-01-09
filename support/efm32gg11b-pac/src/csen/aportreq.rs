@@ -67,5 +67,5 @@ impl crate::RegisterSpec for APORTREQ_SPEC {
 impl crate::Readable for APORTREQ_SPEC {}
 #[doc = "`reset()` method sets APORTREQ to value 0"]
 impl crate::Resettable for APORTREQ_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

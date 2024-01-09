@@ -5,7 +5,7 @@ pub type W = crate::W<EXTIFCTRL_SPEC>;
 #[doc = "Field `EN` reader - Enable External Interface"]
 pub type EN_R = crate::BitReader;
 #[doc = "Field `EN` writer - Enable External Interface"]
-pub type EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `APORTSEL` reader - APORT Selection for External Interface"]
 pub type APORTSEL_R = crate::FieldReader<APORTSEL_A>;
 #[doc = "APORT Selection for External Interface\n\nValue on reset: 0"]
@@ -53,7 +53,7 @@ impl crate::FieldSpec for APORTSEL_A {
 impl APORTSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<APORTSEL_A> {
+    pub const fn variant(&self) -> Option<APORTSEL_A> {
         match self.bits {
             0 => Some(APORTSEL_A::APORT0X),
             1 => Some(APORTSEL_A::APORT0Y),
@@ -144,8 +144,8 @@ impl APORTSEL_R {
     }
 }
 #[doc = "Field `APORTSEL` writer - APORT Selection for External Interface"]
-pub type APORTSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O, APORTSEL_A>;
-impl<'a, REG, const O: u8> APORTSEL_W<'a, REG, O>
+pub type APORTSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4, APORTSEL_A>;
+impl<'a, REG> APORTSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -237,16 +237,20 @@ impl W {
     #[doc = "Bit 0 - Enable External Interface"]
     #[inline(always)]
     #[must_use]
-    pub fn en(&mut self) -> EN_W<EXTIFCTRL_SPEC, 0> {
-        EN_W::new(self)
+    pub fn en(&mut self) -> EN_W<EXTIFCTRL_SPEC> {
+        EN_W::new(self, 0)
     }
     #[doc = "Bits 4:7 - APORT Selection for External Interface"]
     #[inline(always)]
     #[must_use]
-    pub fn aportsel(&mut self) -> APORTSEL_W<EXTIFCTRL_SPEC, 4> {
-        APORTSEL_W::new(self)
+    pub fn aportsel(&mut self) -> APORTSEL_W<EXTIFCTRL_SPEC> {
+        APORTSEL_W::new(self, 4)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -262,10 +266,10 @@ impl crate::RegisterSpec for EXTIFCTRL_SPEC {
 impl crate::Readable for EXTIFCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`extifctrl::W`](W) writer structure"]
 impl crate::Writable for EXTIFCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets EXTIFCTRL to value 0"]
 impl crate::Resettable for EXTIFCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -69,7 +69,7 @@ impl crate::FieldSpec for RXPRSSEL_A {
 impl RXPRSSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<RXPRSSEL_A> {
+    pub const fn variant(&self) -> Option<RXPRSSEL_A> {
         match self.bits {
             0 => Some(RXPRSSEL_A::PRSCH0),
             1 => Some(RXPRSSEL_A::PRSCH1),
@@ -220,8 +220,8 @@ impl RXPRSSEL_R {
     }
 }
 #[doc = "Field `RXPRSSEL` writer - RX PRS Channel Select"]
-pub type RXPRSSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, RXPRSSEL_A>;
-impl<'a, REG, const O: u8> RXPRSSEL_W<'a, REG, O>
+pub type RXPRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, RXPRSSEL_A>;
+impl<'a, REG> RXPRSSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -350,7 +350,7 @@ where
 #[doc = "Field `RXPRS` reader - PRS RX Enable"]
 pub type RXPRS_R = crate::BitReader;
 #[doc = "Field `RXPRS` writer - PRS RX Enable"]
-pub type RXPRS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXPRS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CLKPRSSEL` reader - CLK PRS Channel Select"]
 pub type CLKPRSSEL_R = crate::FieldReader<CLKPRSSEL_A>;
 #[doc = "CLK PRS Channel Select\n\nValue on reset: 0"]
@@ -418,7 +418,7 @@ impl crate::FieldSpec for CLKPRSSEL_A {
 impl CLKPRSSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CLKPRSSEL_A> {
+    pub const fn variant(&self) -> Option<CLKPRSSEL_A> {
         match self.bits {
             0 => Some(CLKPRSSEL_A::PRSCH0),
             1 => Some(CLKPRSSEL_A::PRSCH1),
@@ -569,8 +569,8 @@ impl CLKPRSSEL_R {
     }
 }
 #[doc = "Field `CLKPRSSEL` writer - CLK PRS Channel Select"]
-pub type CLKPRSSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, CLKPRSSEL_A>;
-impl<'a, REG, const O: u8> CLKPRSSEL_W<'a, REG, O>
+pub type CLKPRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, CLKPRSSEL_A>;
+impl<'a, REG> CLKPRSSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -699,7 +699,7 @@ where
 #[doc = "Field `CLKPRS` reader - PRS CLK Enable"]
 pub type CLKPRS_R = crate::BitReader;
 #[doc = "Field `CLKPRS` writer - PRS CLK Enable"]
-pub type CLKPRS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLKPRS_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:4 - RX PRS Channel Select"]
     #[inline(always)]
@@ -726,28 +726,32 @@ impl W {
     #[doc = "Bits 0:4 - RX PRS Channel Select"]
     #[inline(always)]
     #[must_use]
-    pub fn rxprssel(&mut self) -> RXPRSSEL_W<INPUT_SPEC, 0> {
-        RXPRSSEL_W::new(self)
+    pub fn rxprssel(&mut self) -> RXPRSSEL_W<INPUT_SPEC> {
+        RXPRSSEL_W::new(self, 0)
     }
     #[doc = "Bit 7 - PRS RX Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn rxprs(&mut self) -> RXPRS_W<INPUT_SPEC, 7> {
-        RXPRS_W::new(self)
+    pub fn rxprs(&mut self) -> RXPRS_W<INPUT_SPEC> {
+        RXPRS_W::new(self, 7)
     }
     #[doc = "Bits 8:12 - CLK PRS Channel Select"]
     #[inline(always)]
     #[must_use]
-    pub fn clkprssel(&mut self) -> CLKPRSSEL_W<INPUT_SPEC, 8> {
-        CLKPRSSEL_W::new(self)
+    pub fn clkprssel(&mut self) -> CLKPRSSEL_W<INPUT_SPEC> {
+        CLKPRSSEL_W::new(self, 8)
     }
     #[doc = "Bit 15 - PRS CLK Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn clkprs(&mut self) -> CLKPRS_W<INPUT_SPEC, 15> {
-        CLKPRS_W::new(self)
+    pub fn clkprs(&mut self) -> CLKPRS_W<INPUT_SPEC> {
+        CLKPRS_W::new(self, 15)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -763,10 +767,10 @@ impl crate::RegisterSpec for INPUT_SPEC {
 impl crate::Readable for INPUT_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`input::W`](W) writer structure"]
 impl crate::Writable for INPUT_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets INPUT to value 0"]
 impl crate::Resettable for INPUT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

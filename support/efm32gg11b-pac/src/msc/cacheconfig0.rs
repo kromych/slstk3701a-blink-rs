@@ -27,7 +27,7 @@ impl crate::FieldSpec for CACHELPLEVEL_A {
 impl CACHELPLEVEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CACHELPLEVEL_A> {
+    pub const fn variant(&self) -> Option<CACHELPLEVEL_A> {
         match self.bits {
             0 => Some(CACHELPLEVEL_A::BASE),
             1 => Some(CACHELPLEVEL_A::ADVANCED),
@@ -52,8 +52,8 @@ impl CACHELPLEVEL_R {
     }
 }
 #[doc = "Field `CACHELPLEVEL` writer - Instruction Cache Low-Power Level"]
-pub type CACHELPLEVEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, CACHELPLEVEL_A>;
-impl<'a, REG, const O: u8> CACHELPLEVEL_W<'a, REG, O>
+pub type CACHELPLEVEL_W<'a, REG> = crate::FieldWriter<'a, REG, 2, CACHELPLEVEL_A>;
+impl<'a, REG> CACHELPLEVEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -85,10 +85,14 @@ impl W {
     #[doc = "Bits 0:1 - Instruction Cache Low-Power Level"]
     #[inline(always)]
     #[must_use]
-    pub fn cachelplevel(&mut self) -> CACHELPLEVEL_W<CACHECONFIG0_SPEC, 0> {
-        CACHELPLEVEL_W::new(self)
+    pub fn cachelplevel(&mut self) -> CACHELPLEVEL_W<CACHECONFIG0_SPEC> {
+        CACHELPLEVEL_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -104,10 +108,10 @@ impl crate::RegisterSpec for CACHECONFIG0_SPEC {
 impl crate::Readable for CACHECONFIG0_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`cacheconfig0::W`](W) writer structure"]
 impl crate::Writable for CACHECONFIG0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CACHECONFIG0 to value 0x03"]
 impl crate::Resettable for CACHECONFIG0_SPEC {
-    const RESET_VALUE: Self::Ux = 0x03;
+    const RESET_VALUE: u32 = 0x03;
 }

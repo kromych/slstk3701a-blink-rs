@@ -5,7 +5,7 @@ pub type W = crate::W<ETMSYNCFR_SPEC>;
 #[doc = "Field `FREQ` reader - Synchronisation Frequency Value"]
 pub type FREQ_R = crate::FieldReader<u16>;
 #[doc = "Field `FREQ` writer - Synchronisation Frequency Value"]
-pub type FREQ_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 12, O, u16>;
+pub type FREQ_W<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
 impl R {
     #[doc = "Bits 0:11 - Synchronisation Frequency Value"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:11 - Synchronisation Frequency Value"]
     #[inline(always)]
     #[must_use]
-    pub fn freq(&mut self) -> FREQ_W<ETMSYNCFR_SPEC, 0> {
-        FREQ_W::new(self)
+    pub fn freq(&mut self) -> FREQ_W<ETMSYNCFR_SPEC> {
+        FREQ_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for ETMSYNCFR_SPEC {
 impl crate::Readable for ETMSYNCFR_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`etmsyncfr::W`](W) writer structure"]
 impl crate::Writable for ETMSYNCFR_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ETMSYNCFR to value 0x0400"]
 impl crate::Resettable for ETMSYNCFR_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0400;
+    const RESET_VALUE: u32 = 0x0400;
 }

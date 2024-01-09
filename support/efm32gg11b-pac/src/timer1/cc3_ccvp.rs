@@ -18,5 +18,5 @@ impl crate::RegisterSpec for CC3_CCVP_SPEC {
 impl crate::Readable for CC3_CCVP_SPEC {}
 #[doc = "`reset()` method sets CC3_CCVP to value 0"]
 impl crate::Resettable for CC3_CCVP_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

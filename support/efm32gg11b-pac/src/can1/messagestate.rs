@@ -18,5 +18,5 @@ impl crate::RegisterSpec for MESSAGESTATE_SPEC {
 impl crate::Readable for MESSAGESTATE_SPEC {}
 #[doc = "`reset()` method sets MESSAGESTATE to value 0"]
 impl crate::Resettable for MESSAGESTATE_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

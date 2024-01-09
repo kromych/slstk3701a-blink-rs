@@ -5,43 +5,43 @@ pub type W = crate::W<ROUTEPEN_SPEC>;
 #[doc = "Field `CLKPEN` reader - CLK I/O Enable"]
 pub type CLKPEN_R = crate::BitReader;
 #[doc = "Field `CLKPEN` writer - CLK I/O Enable"]
-pub type CLKPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLKPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CMDPEN` reader - CMD I/O Enable"]
 pub type CMDPEN_R = crate::BitReader;
 #[doc = "Field `CMDPEN` writer - CMD I/O Enable"]
-pub type CMDPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CMDPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D0PEN` reader - Dat0 I/O Enable"]
 pub type D0PEN_R = crate::BitReader;
 #[doc = "Field `D0PEN` writer - Dat0 I/O Enable"]
-pub type D0PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D0PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D1PEN` reader - Dat1 I/O Enable"]
 pub type D1PEN_R = crate::BitReader;
 #[doc = "Field `D1PEN` writer - Dat1 I/O Enable"]
-pub type D1PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D1PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D2PEN` reader - Dat2 I/O Enable"]
 pub type D2PEN_R = crate::BitReader;
 #[doc = "Field `D2PEN` writer - Dat2 I/O Enable"]
-pub type D2PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D2PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D3PEN` reader - Dat3 I/O Enable"]
 pub type D3PEN_R = crate::BitReader;
 #[doc = "Field `D3PEN` writer - Dat3 I/O Enable"]
-pub type D3PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D3PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D4PEN` reader - Dat4 I/O Enable"]
 pub type D4PEN_R = crate::BitReader;
 #[doc = "Field `D4PEN` writer - Dat4 I/O Enable"]
-pub type D4PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D4PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D5PEN` reader - Dat5 Enable"]
 pub type D5PEN_R = crate::BitReader;
 #[doc = "Field `D5PEN` writer - Dat5 Enable"]
-pub type D5PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D5PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D6PEN` reader - Dat6 Enable"]
 pub type D6PEN_R = crate::BitReader;
 #[doc = "Field `D6PEN` writer - Dat6 Enable"]
-pub type D6PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D6PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `D7PEN` reader - Data7 I/O Enable"]
 pub type D7PEN_R = crate::BitReader;
 #[doc = "Field `D7PEN` writer - Data7 I/O Enable"]
-pub type D7PEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type D7PEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - CLK I/O Enable"]
     #[inline(always)]
@@ -98,64 +98,68 @@ impl W {
     #[doc = "Bit 0 - CLK I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn clkpen(&mut self) -> CLKPEN_W<ROUTEPEN_SPEC, 0> {
-        CLKPEN_W::new(self)
+    pub fn clkpen(&mut self) -> CLKPEN_W<ROUTEPEN_SPEC> {
+        CLKPEN_W::new(self, 0)
     }
     #[doc = "Bit 1 - CMD I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn cmdpen(&mut self) -> CMDPEN_W<ROUTEPEN_SPEC, 1> {
-        CMDPEN_W::new(self)
+    pub fn cmdpen(&mut self) -> CMDPEN_W<ROUTEPEN_SPEC> {
+        CMDPEN_W::new(self, 1)
     }
     #[doc = "Bit 2 - Dat0 I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d0pen(&mut self) -> D0PEN_W<ROUTEPEN_SPEC, 2> {
-        D0PEN_W::new(self)
+    pub fn d0pen(&mut self) -> D0PEN_W<ROUTEPEN_SPEC> {
+        D0PEN_W::new(self, 2)
     }
     #[doc = "Bit 3 - Dat1 I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d1pen(&mut self) -> D1PEN_W<ROUTEPEN_SPEC, 3> {
-        D1PEN_W::new(self)
+    pub fn d1pen(&mut self) -> D1PEN_W<ROUTEPEN_SPEC> {
+        D1PEN_W::new(self, 3)
     }
     #[doc = "Bit 4 - Dat2 I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d2pen(&mut self) -> D2PEN_W<ROUTEPEN_SPEC, 4> {
-        D2PEN_W::new(self)
+    pub fn d2pen(&mut self) -> D2PEN_W<ROUTEPEN_SPEC> {
+        D2PEN_W::new(self, 4)
     }
     #[doc = "Bit 5 - Dat3 I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d3pen(&mut self) -> D3PEN_W<ROUTEPEN_SPEC, 5> {
-        D3PEN_W::new(self)
+    pub fn d3pen(&mut self) -> D3PEN_W<ROUTEPEN_SPEC> {
+        D3PEN_W::new(self, 5)
     }
     #[doc = "Bit 6 - Dat4 I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d4pen(&mut self) -> D4PEN_W<ROUTEPEN_SPEC, 6> {
-        D4PEN_W::new(self)
+    pub fn d4pen(&mut self) -> D4PEN_W<ROUTEPEN_SPEC> {
+        D4PEN_W::new(self, 6)
     }
     #[doc = "Bit 7 - Dat5 Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d5pen(&mut self) -> D5PEN_W<ROUTEPEN_SPEC, 7> {
-        D5PEN_W::new(self)
+    pub fn d5pen(&mut self) -> D5PEN_W<ROUTEPEN_SPEC> {
+        D5PEN_W::new(self, 7)
     }
     #[doc = "Bit 8 - Dat6 Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d6pen(&mut self) -> D6PEN_W<ROUTEPEN_SPEC, 8> {
-        D6PEN_W::new(self)
+    pub fn d6pen(&mut self) -> D6PEN_W<ROUTEPEN_SPEC> {
+        D6PEN_W::new(self, 8)
     }
     #[doc = "Bit 9 - Data7 I/O Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn d7pen(&mut self) -> D7PEN_W<ROUTEPEN_SPEC, 9> {
-        D7PEN_W::new(self)
+    pub fn d7pen(&mut self) -> D7PEN_W<ROUTEPEN_SPEC> {
+        D7PEN_W::new(self, 9)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -171,10 +175,10 @@ impl crate::RegisterSpec for ROUTEPEN_SPEC {
 impl crate::Readable for ROUTEPEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routepen::W`](W) writer structure"]
 impl crate::Writable for ROUTEPEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTEPEN to value 0"]
 impl crate::Resettable for ROUTEPEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

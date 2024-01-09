@@ -5,47 +5,47 @@ pub type W = crate::W<HFBUSCLKEN0_SPEC>;
 #[doc = "Field `LE` reader - Low Energy Peripheral Interface Clock Enable"]
 pub type LE_R = crate::BitReader;
 #[doc = "Field `LE` writer - Low Energy Peripheral Interface Clock Enable"]
-pub type LE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type LE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CRYPTO0` reader - Advanced Encryption Standard Accelerator Clock Enable"]
 pub type CRYPTO0_R = crate::BitReader;
 #[doc = "Field `CRYPTO0` writer - Advanced Encryption Standard Accelerator Clock Enable"]
-pub type CRYPTO0_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CRYPTO0_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EBI` reader - External Bus Interface Clock Enable"]
 pub type EBI_R = crate::BitReader;
 #[doc = "Field `EBI` writer - External Bus Interface Clock Enable"]
-pub type EBI_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EBI_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ETH` reader - Ethernet Controller Clock Enable"]
 pub type ETH_R = crate::BitReader;
 #[doc = "Field `ETH` writer - Ethernet Controller Clock Enable"]
-pub type ETH_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ETH_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SDIO` reader - SDIO Controller Clock Enable"]
 pub type SDIO_R = crate::BitReader;
 #[doc = "Field `SDIO` writer - SDIO Controller Clock Enable"]
-pub type SDIO_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SDIO_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `GPIO` reader - General purpose Input/Output Clock Enable"]
 pub type GPIO_R = crate::BitReader;
 #[doc = "Field `GPIO` writer - General purpose Input/Output Clock Enable"]
-pub type GPIO_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type GPIO_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRS` reader - Peripheral Reflex System Clock Enable"]
 pub type PRS_R = crate::BitReader;
 #[doc = "Field `PRS` writer - Peripheral Reflex System Clock Enable"]
-pub type PRS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PRS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LDMA` reader - Linked Direct Memory Access Controller Clock Enable"]
 pub type LDMA_R = crate::BitReader;
 #[doc = "Field `LDMA` writer - Linked Direct Memory Access Controller Clock Enable"]
-pub type LDMA_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type LDMA_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `GPCRC` reader - General Purpose CRC Clock Enable"]
 pub type GPCRC_R = crate::BitReader;
 #[doc = "Field `GPCRC` writer - General Purpose CRC Clock Enable"]
-pub type GPCRC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type GPCRC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `QSPI0` reader - Quad-SPI Clock Enable"]
 pub type QSPI0_R = crate::BitReader;
 #[doc = "Field `QSPI0` writer - Quad-SPI Clock Enable"]
-pub type QSPI0_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type QSPI0_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USB` reader - Universal Serial Bus Interface Clock Enable"]
 pub type USB_R = crate::BitReader;
 #[doc = "Field `USB` writer - Universal Serial Bus Interface Clock Enable"]
-pub type USB_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type USB_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Low Energy Peripheral Interface Clock Enable"]
     #[inline(always)]
@@ -107,70 +107,74 @@ impl W {
     #[doc = "Bit 0 - Low Energy Peripheral Interface Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn le(&mut self) -> LE_W<HFBUSCLKEN0_SPEC, 0> {
-        LE_W::new(self)
+    pub fn le(&mut self) -> LE_W<HFBUSCLKEN0_SPEC> {
+        LE_W::new(self, 0)
     }
     #[doc = "Bit 1 - Advanced Encryption Standard Accelerator Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn crypto0(&mut self) -> CRYPTO0_W<HFBUSCLKEN0_SPEC, 1> {
-        CRYPTO0_W::new(self)
+    pub fn crypto0(&mut self) -> CRYPTO0_W<HFBUSCLKEN0_SPEC> {
+        CRYPTO0_W::new(self, 1)
     }
     #[doc = "Bit 2 - External Bus Interface Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn ebi(&mut self) -> EBI_W<HFBUSCLKEN0_SPEC, 2> {
-        EBI_W::new(self)
+    pub fn ebi(&mut self) -> EBI_W<HFBUSCLKEN0_SPEC> {
+        EBI_W::new(self, 2)
     }
     #[doc = "Bit 3 - Ethernet Controller Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn eth(&mut self) -> ETH_W<HFBUSCLKEN0_SPEC, 3> {
-        ETH_W::new(self)
+    pub fn eth(&mut self) -> ETH_W<HFBUSCLKEN0_SPEC> {
+        ETH_W::new(self, 3)
     }
     #[doc = "Bit 4 - SDIO Controller Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn sdio(&mut self) -> SDIO_W<HFBUSCLKEN0_SPEC, 4> {
-        SDIO_W::new(self)
+    pub fn sdio(&mut self) -> SDIO_W<HFBUSCLKEN0_SPEC> {
+        SDIO_W::new(self, 4)
     }
     #[doc = "Bit 5 - General purpose Input/Output Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn gpio(&mut self) -> GPIO_W<HFBUSCLKEN0_SPEC, 5> {
-        GPIO_W::new(self)
+    pub fn gpio(&mut self) -> GPIO_W<HFBUSCLKEN0_SPEC> {
+        GPIO_W::new(self, 5)
     }
     #[doc = "Bit 6 - Peripheral Reflex System Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn prs(&mut self) -> PRS_W<HFBUSCLKEN0_SPEC, 6> {
-        PRS_W::new(self)
+    pub fn prs(&mut self) -> PRS_W<HFBUSCLKEN0_SPEC> {
+        PRS_W::new(self, 6)
     }
     #[doc = "Bit 7 - Linked Direct Memory Access Controller Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn ldma(&mut self) -> LDMA_W<HFBUSCLKEN0_SPEC, 7> {
-        LDMA_W::new(self)
+    pub fn ldma(&mut self) -> LDMA_W<HFBUSCLKEN0_SPEC> {
+        LDMA_W::new(self, 7)
     }
     #[doc = "Bit 8 - General Purpose CRC Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn gpcrc(&mut self) -> GPCRC_W<HFBUSCLKEN0_SPEC, 8> {
-        GPCRC_W::new(self)
+    pub fn gpcrc(&mut self) -> GPCRC_W<HFBUSCLKEN0_SPEC> {
+        GPCRC_W::new(self, 8)
     }
     #[doc = "Bit 9 - Quad-SPI Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn qspi0(&mut self) -> QSPI0_W<HFBUSCLKEN0_SPEC, 9> {
-        QSPI0_W::new(self)
+    pub fn qspi0(&mut self) -> QSPI0_W<HFBUSCLKEN0_SPEC> {
+        QSPI0_W::new(self, 9)
     }
     #[doc = "Bit 10 - Universal Serial Bus Interface Clock Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn usb(&mut self) -> USB_W<HFBUSCLKEN0_SPEC, 10> {
-        USB_W::new(self)
+    pub fn usb(&mut self) -> USB_W<HFBUSCLKEN0_SPEC> {
+        USB_W::new(self, 10)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -186,10 +190,10 @@ impl crate::RegisterSpec for HFBUSCLKEN0_SPEC {
 impl crate::Readable for HFBUSCLKEN0_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hfbusclken0::W`](W) writer structure"]
 impl crate::Writable for HFBUSCLKEN0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFBUSCLKEN0 to value 0"]
 impl crate::Resettable for HFBUSCLKEN0_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

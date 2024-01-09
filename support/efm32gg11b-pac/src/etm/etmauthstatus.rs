@@ -25,7 +25,7 @@ impl crate::FieldSpec for NONSECNONINVDBG_A {
 impl NONSECNONINVDBG_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<NONSECNONINVDBG_A> {
+    pub const fn variant(&self) -> Option<NONSECNONINVDBG_A> {
         match self.bits {
             2 => Some(NONSECNONINVDBG_A::DISABLE),
             3 => Some(NONSECNONINVDBG_A::ENABLE),
@@ -78,5 +78,5 @@ impl crate::RegisterSpec for ETMAUTHSTATUS_SPEC {
 impl crate::Readable for ETMAUTHSTATUS_SPEC {}
 #[doc = "`reset()` method sets ETMAUTHSTATUS to value 0xc0"]
 impl crate::Resettable for ETMAUTHSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0xc0;
+    const RESET_VALUE: u32 = 0xc0;
 }

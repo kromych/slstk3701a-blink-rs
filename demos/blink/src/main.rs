@@ -15,8 +15,8 @@ fn main() -> ! {
     let p = pac::Peripherals::take().unwrap();
 
     // If the Watchdog is not reset/disabled, the board will reboot.
-    p.WDOG0.ctrl.modify(|_, w| w.en().clear_bit());
-    p.WDOG1.ctrl.modify(|_, w| w.en().clear_bit());
+    p.WDOG0.ctrl().modify(|_, w| w.en().clear_bit());
+    p.WDOG1.ctrl().modify(|_, w| w.en().clear_bit());
 
     defmt::info!("Alive");
 

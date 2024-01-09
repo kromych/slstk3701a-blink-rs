@@ -37,7 +37,7 @@ impl crate::FieldSpec for RAMPOWERDOWN_A {
 impl RAMPOWERDOWN_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<RAMPOWERDOWN_A> {
+    pub const fn variant(&self) -> Option<RAMPOWERDOWN_A> {
         match self.bits {
             0 => Some(RAMPOWERDOWN_A::NONE),
             64 => Some(RAMPOWERDOWN_A::BLK7),
@@ -92,8 +92,8 @@ impl RAMPOWERDOWN_R {
     }
 }
 #[doc = "Field `RAMPOWERDOWN` writer - RAM0 Blockset Power-down"]
-pub type RAMPOWERDOWN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O, RAMPOWERDOWN_A>;
-impl<'a, REG, const O: u8> RAMPOWERDOWN_W<'a, REG, O>
+pub type RAMPOWERDOWN_W<'a, REG> = crate::FieldWriter<'a, REG, 7, RAMPOWERDOWN_A>;
+impl<'a, REG> RAMPOWERDOWN_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -150,10 +150,14 @@ impl W {
     #[doc = "Bits 0:6 - RAM0 Blockset Power-down"]
     #[inline(always)]
     #[must_use]
-    pub fn rampowerdown(&mut self) -> RAMPOWERDOWN_W<RAM0CTRL_SPEC, 0> {
-        RAMPOWERDOWN_W::new(self)
+    pub fn rampowerdown(&mut self) -> RAMPOWERDOWN_W<RAM0CTRL_SPEC> {
+        RAMPOWERDOWN_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -169,10 +173,10 @@ impl crate::RegisterSpec for RAM0CTRL_SPEC {
 impl crate::Readable for RAM0CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ram0ctrl::W`](W) writer structure"]
 impl crate::Writable for RAM0CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets RAM0CTRL to value 0"]
 impl crate::Resettable for RAM0CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

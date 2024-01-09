@@ -5,11 +5,11 @@ pub type W = crate::W<TFTSIZE_SPEC>;
 #[doc = "Field `HSZ` reader - Horizontal Size (excluding Porches)"]
 pub type HSZ_R = crate::FieldReader<u16>;
 #[doc = "Field `HSZ` writer - Horizontal Size (excluding Porches)"]
-pub type HSZ_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 10, O, u16>;
+pub type HSZ_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 #[doc = "Field `VSZ` reader - Vertical Size (excluding Porches)"]
 pub type VSZ_R = crate::FieldReader<u16>;
 #[doc = "Field `VSZ` writer - Vertical Size (excluding Porches)"]
-pub type VSZ_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 10, O, u16>;
+pub type VSZ_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 impl R {
     #[doc = "Bits 0:9 - Horizontal Size (excluding Porches)"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:9 - Horizontal Size (excluding Porches)"]
     #[inline(always)]
     #[must_use]
-    pub fn hsz(&mut self) -> HSZ_W<TFTSIZE_SPEC, 0> {
-        HSZ_W::new(self)
+    pub fn hsz(&mut self) -> HSZ_W<TFTSIZE_SPEC> {
+        HSZ_W::new(self, 0)
     }
     #[doc = "Bits 16:25 - Vertical Size (excluding Porches)"]
     #[inline(always)]
     #[must_use]
-    pub fn vsz(&mut self) -> VSZ_W<TFTSIZE_SPEC, 16> {
-        VSZ_W::new(self)
+    pub fn vsz(&mut self) -> VSZ_W<TFTSIZE_SPEC> {
+        VSZ_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for TFTSIZE_SPEC {
 impl crate::Readable for TFTSIZE_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`tftsize::W`](W) writer structure"]
 impl crate::Writable for TFTSIZE_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TFTSIZE to value 0"]
 impl crate::Resettable for TFTSIZE_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

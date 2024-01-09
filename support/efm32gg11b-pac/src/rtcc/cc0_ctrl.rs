@@ -27,7 +27,7 @@ impl crate::FieldSpec for MODE_A {
 impl MODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MODE_A> {
+    pub const fn variant(&self) -> Option<MODE_A> {
         match self.bits {
             0 => Some(MODE_A::OFF),
             1 => Some(MODE_A::INPUTCAPTURE),
@@ -52,8 +52,8 @@ impl MODE_R {
     }
 }
 #[doc = "Field `MODE` writer - CC Channel Mode"]
-pub type MODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, MODE_A>;
-impl<'a, REG, const O: u8> MODE_W<'a, REG, O>
+pub type MODE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, MODE_A>;
+impl<'a, REG> MODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -101,7 +101,7 @@ impl crate::FieldSpec for CMOA_A {
 impl CMOA_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CMOA_A {
+    pub const fn variant(&self) -> CMOA_A {
         match self.bits {
             0 => CMOA_A::PULSE,
             1 => CMOA_A::TOGGLE,
@@ -132,8 +132,8 @@ impl CMOA_R {
     }
 }
 #[doc = "Field `CMOA` writer - Compare Match Output Action"]
-pub type CMOA_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, CMOA_A>;
-impl<'a, REG, const O: u8> CMOA_W<'a, REG, O>
+pub type CMOA_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CMOA_A>;
+impl<'a, REG> CMOA_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -186,7 +186,7 @@ impl crate::FieldSpec for ICEDGE_A {
 impl ICEDGE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> ICEDGE_A {
+    pub const fn variant(&self) -> ICEDGE_A {
         match self.bits {
             0 => ICEDGE_A::RISING,
             1 => ICEDGE_A::FALLING,
@@ -217,8 +217,8 @@ impl ICEDGE_R {
     }
 }
 #[doc = "Field `ICEDGE` writer - Input Capture Edge Select"]
-pub type ICEDGE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, ICEDGE_A>;
-impl<'a, REG, const O: u8> ICEDGE_W<'a, REG, O>
+pub type ICEDGE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, ICEDGE_A>;
+impl<'a, REG> ICEDGE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -311,7 +311,7 @@ impl crate::FieldSpec for PRSSEL_A {
 impl PRSSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL_A> {
+    pub const fn variant(&self) -> Option<PRSSEL_A> {
         match self.bits {
             0 => Some(PRSSEL_A::PRSCH0),
             1 => Some(PRSSEL_A::PRSCH1),
@@ -462,8 +462,8 @@ impl PRSSEL_R {
     }
 }
 #[doc = "Field `PRSSEL` writer - Compare/Capture Channel PRS Input Channel Selection"]
-pub type PRSSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL_A>;
-impl<'a, REG, const O: u8> PRSSEL_W<'a, REG, O>
+pub type PRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL_A>;
+impl<'a, REG> PRSSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -592,15 +592,15 @@ where
 #[doc = "Field `COMPBASE` reader - Capture Compare Channel Comparison Base"]
 pub type COMPBASE_R = crate::BitReader;
 #[doc = "Field `COMPBASE` writer - Capture Compare Channel Comparison Base"]
-pub type COMPBASE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type COMPBASE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `COMPMASK` reader - Capture Compare Channel Comparison Mask"]
 pub type COMPMASK_R = crate::FieldReader;
 #[doc = "Field `COMPMASK` writer - Capture Compare Channel Comparison Mask"]
-pub type COMPMASK_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O>;
+pub type COMPMASK_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `DAYCC` reader - Day Capture/Compare Selection"]
 pub type DAYCC_R = crate::BitReader;
 #[doc = "Field `DAYCC` writer - Day Capture/Compare Selection"]
-pub type DAYCC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DAYCC_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:1 - CC Channel Mode"]
     #[inline(always)]
@@ -642,46 +642,50 @@ impl W {
     #[doc = "Bits 0:1 - CC Channel Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn mode(&mut self) -> MODE_W<CC0_CTRL_SPEC, 0> {
-        MODE_W::new(self)
+    pub fn mode(&mut self) -> MODE_W<CC0_CTRL_SPEC> {
+        MODE_W::new(self, 0)
     }
     #[doc = "Bits 2:3 - Compare Match Output Action"]
     #[inline(always)]
     #[must_use]
-    pub fn cmoa(&mut self) -> CMOA_W<CC0_CTRL_SPEC, 2> {
-        CMOA_W::new(self)
+    pub fn cmoa(&mut self) -> CMOA_W<CC0_CTRL_SPEC> {
+        CMOA_W::new(self, 2)
     }
     #[doc = "Bits 4:5 - Input Capture Edge Select"]
     #[inline(always)]
     #[must_use]
-    pub fn icedge(&mut self) -> ICEDGE_W<CC0_CTRL_SPEC, 4> {
-        ICEDGE_W::new(self)
+    pub fn icedge(&mut self) -> ICEDGE_W<CC0_CTRL_SPEC> {
+        ICEDGE_W::new(self, 4)
     }
     #[doc = "Bits 6:10 - Compare/Capture Channel PRS Input Channel Selection"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel(&mut self) -> PRSSEL_W<CC0_CTRL_SPEC, 6> {
-        PRSSEL_W::new(self)
+    pub fn prssel(&mut self) -> PRSSEL_W<CC0_CTRL_SPEC> {
+        PRSSEL_W::new(self, 6)
     }
     #[doc = "Bit 11 - Capture Compare Channel Comparison Base"]
     #[inline(always)]
     #[must_use]
-    pub fn compbase(&mut self) -> COMPBASE_W<CC0_CTRL_SPEC, 11> {
-        COMPBASE_W::new(self)
+    pub fn compbase(&mut self) -> COMPBASE_W<CC0_CTRL_SPEC> {
+        COMPBASE_W::new(self, 11)
     }
     #[doc = "Bits 12:16 - Capture Compare Channel Comparison Mask"]
     #[inline(always)]
     #[must_use]
-    pub fn compmask(&mut self) -> COMPMASK_W<CC0_CTRL_SPEC, 12> {
-        COMPMASK_W::new(self)
+    pub fn compmask(&mut self) -> COMPMASK_W<CC0_CTRL_SPEC> {
+        COMPMASK_W::new(self, 12)
     }
     #[doc = "Bit 17 - Day Capture/Compare Selection"]
     #[inline(always)]
     #[must_use]
-    pub fn daycc(&mut self) -> DAYCC_W<CC0_CTRL_SPEC, 17> {
-        DAYCC_W::new(self)
+    pub fn daycc(&mut self) -> DAYCC_W<CC0_CTRL_SPEC> {
+        DAYCC_W::new(self, 17)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -697,10 +701,10 @@ impl crate::RegisterSpec for CC0_CTRL_SPEC {
 impl crate::Readable for CC0_CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`cc0_ctrl::W`](W) writer structure"]
 impl crate::Writable for CC0_CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CC0_CTRL to value 0"]
 impl crate::Resettable for CC0_CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

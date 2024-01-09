@@ -37,7 +37,7 @@ impl crate::FieldSpec for LEC_A {
 impl LEC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> LEC_A {
+    pub const fn variant(&self) -> LEC_A {
         match self.bits {
             0 => LEC_A::NONE,
             1 => LEC_A::STUFF,
@@ -92,8 +92,8 @@ impl LEC_R {
     }
 }
 #[doc = "Field `LEC` writer - Last Error Code"]
-pub type LEC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, LEC_A>;
-impl<'a, REG, const O: u8> LEC_W<'a, REG, O>
+pub type LEC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, LEC_A>;
+impl<'a, REG> LEC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -142,11 +142,11 @@ where
 #[doc = "Field `TXOK` reader - Transmitted a Message Successfully"]
 pub type TXOK_R = crate::BitReader;
 #[doc = "Field `TXOK` writer - Transmitted a Message Successfully"]
-pub type TXOK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXOK_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXOK` reader - Received a Message Successfully"]
 pub type RXOK_R = crate::BitReader;
 #[doc = "Field `RXOK` writer - Received a Message Successfully"]
-pub type RXOK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RXOK_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EPASS` reader - Error Passive"]
 pub type EPASS_R = crate::BitReader;
 #[doc = "Field `EWARN` reader - Warning Status"]
@@ -189,22 +189,26 @@ impl W {
     #[doc = "Bits 0:2 - Last Error Code"]
     #[inline(always)]
     #[must_use]
-    pub fn lec(&mut self) -> LEC_W<STATUS_SPEC, 0> {
-        LEC_W::new(self)
+    pub fn lec(&mut self) -> LEC_W<STATUS_SPEC> {
+        LEC_W::new(self, 0)
     }
     #[doc = "Bit 3 - Transmitted a Message Successfully"]
     #[inline(always)]
     #[must_use]
-    pub fn txok(&mut self) -> TXOK_W<STATUS_SPEC, 3> {
-        TXOK_W::new(self)
+    pub fn txok(&mut self) -> TXOK_W<STATUS_SPEC> {
+        TXOK_W::new(self, 3)
     }
     #[doc = "Bit 4 - Received a Message Successfully"]
     #[inline(always)]
     #[must_use]
-    pub fn rxok(&mut self) -> RXOK_W<STATUS_SPEC, 4> {
-        RXOK_W::new(self)
+    pub fn rxok(&mut self) -> RXOK_W<STATUS_SPEC> {
+        RXOK_W::new(self, 4)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -220,10 +224,10 @@ impl crate::RegisterSpec for STATUS_SPEC {
 impl crate::Readable for STATUS_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`status::W`](W) writer structure"]
 impl crate::Writable for STATUS_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets STATUS to value 0"]
 impl crate::Resettable for STATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

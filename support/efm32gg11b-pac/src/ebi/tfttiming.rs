@@ -5,19 +5,19 @@ pub type W = crate::W<TFTTIMING_SPEC>;
 #[doc = "Field `DCLKPERIOD` reader - TFT Direct Drive Transaction (EBI_DCLK) Period"]
 pub type DCLKPERIOD_R = crate::FieldReader<u16>;
 #[doc = "Field `DCLKPERIOD` writer - TFT Direct Drive Transaction (EBI_DCLK) Period"]
-pub type DCLKPERIOD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 12, O, u16>;
+pub type DCLKPERIOD_W<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
 #[doc = "Field `TFTSTART` reader - TFT Direct Drive Transaction Start"]
 pub type TFTSTART_R = crate::FieldReader<u16>;
 #[doc = "Field `TFTSTART` writer - TFT Direct Drive Transaction Start"]
-pub type TFTSTART_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 12, O, u16>;
+pub type TFTSTART_W<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
 #[doc = "Field `TFTSETUP` reader - TFT Setup Time"]
 pub type TFTSETUP_R = crate::FieldReader;
 #[doc = "Field `TFTSETUP` writer - TFT Setup Time"]
-pub type TFTSETUP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type TFTSETUP_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `TFTHOLD` reader - TFT Hold Time"]
 pub type TFTHOLD_R = crate::FieldReader;
 #[doc = "Field `TFTHOLD` writer - TFT Hold Time"]
-pub type TFTHOLD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type TFTHOLD_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 impl R {
     #[doc = "Bits 0:11 - TFT Direct Drive Transaction (EBI_DCLK) Period"]
     #[inline(always)]
@@ -44,28 +44,32 @@ impl W {
     #[doc = "Bits 0:11 - TFT Direct Drive Transaction (EBI_DCLK) Period"]
     #[inline(always)]
     #[must_use]
-    pub fn dclkperiod(&mut self) -> DCLKPERIOD_W<TFTTIMING_SPEC, 0> {
-        DCLKPERIOD_W::new(self)
+    pub fn dclkperiod(&mut self) -> DCLKPERIOD_W<TFTTIMING_SPEC> {
+        DCLKPERIOD_W::new(self, 0)
     }
     #[doc = "Bits 12:23 - TFT Direct Drive Transaction Start"]
     #[inline(always)]
     #[must_use]
-    pub fn tftstart(&mut self) -> TFTSTART_W<TFTTIMING_SPEC, 12> {
-        TFTSTART_W::new(self)
+    pub fn tftstart(&mut self) -> TFTSTART_W<TFTTIMING_SPEC> {
+        TFTSTART_W::new(self, 12)
     }
     #[doc = "Bits 24:26 - TFT Setup Time"]
     #[inline(always)]
     #[must_use]
-    pub fn tftsetup(&mut self) -> TFTSETUP_W<TFTTIMING_SPEC, 24> {
-        TFTSETUP_W::new(self)
+    pub fn tftsetup(&mut self) -> TFTSETUP_W<TFTTIMING_SPEC> {
+        TFTSETUP_W::new(self, 24)
     }
     #[doc = "Bits 28:30 - TFT Hold Time"]
     #[inline(always)]
     #[must_use]
-    pub fn tfthold(&mut self) -> TFTHOLD_W<TFTTIMING_SPEC, 28> {
-        TFTHOLD_W::new(self)
+    pub fn tfthold(&mut self) -> TFTHOLD_W<TFTTIMING_SPEC> {
+        TFTHOLD_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -81,10 +85,10 @@ impl crate::RegisterSpec for TFTTIMING_SPEC {
 impl crate::Readable for TFTTIMING_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`tfttiming::W`](W) writer structure"]
 impl crate::Writable for TFTTIMING_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TFTTIMING to value 0"]
 impl crate::Resettable for TFTTIMING_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

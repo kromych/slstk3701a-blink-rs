@@ -35,7 +35,7 @@ impl crate::FieldSpec for CTSLOC_A {
 impl CTSLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CTSLOC_A> {
+    pub const fn variant(&self) -> Option<CTSLOC_A> {
         match self.bits {
             0 => Some(CTSLOC_A::LOC0),
             1 => Some(CTSLOC_A::LOC1),
@@ -84,8 +84,8 @@ impl CTSLOC_R {
     }
 }
 #[doc = "Field `CTSLOC` writer - I/O Location"]
-pub type CTSLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CTSLOC_A>;
-impl<'a, REG, const O: u8> CTSLOC_W<'a, REG, O>
+pub type CTSLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CTSLOC_A>;
+impl<'a, REG> CTSLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -159,7 +159,7 @@ impl crate::FieldSpec for RTSLOC_A {
 impl RTSLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<RTSLOC_A> {
+    pub const fn variant(&self) -> Option<RTSLOC_A> {
         match self.bits {
             0 => Some(RTSLOC_A::LOC0),
             1 => Some(RTSLOC_A::LOC1),
@@ -208,8 +208,8 @@ impl RTSLOC_R {
     }
 }
 #[doc = "Field `RTSLOC` writer - I/O Location"]
-pub type RTSLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, RTSLOC_A>;
-impl<'a, REG, const O: u8> RTSLOC_W<'a, REG, O>
+pub type RTSLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, RTSLOC_A>;
+impl<'a, REG> RTSLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -266,16 +266,20 @@ impl W {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn ctsloc(&mut self) -> CTSLOC_W<ROUTELOC1_SPEC, 0> {
-        CTSLOC_W::new(self)
+    pub fn ctsloc(&mut self) -> CTSLOC_W<ROUTELOC1_SPEC> {
+        CTSLOC_W::new(self, 0)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn rtsloc(&mut self) -> RTSLOC_W<ROUTELOC1_SPEC, 8> {
-        RTSLOC_W::new(self)
+    pub fn rtsloc(&mut self) -> RTSLOC_W<ROUTELOC1_SPEC> {
+        RTSLOC_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -291,10 +295,10 @@ impl crate::RegisterSpec for ROUTELOC1_SPEC {
 impl crate::Readable for ROUTELOC1_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routeloc1::W`](W) writer structure"]
 impl crate::Writable for ROUTELOC1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTELOC1 to value 0"]
 impl crate::Resettable for ROUTELOC1_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

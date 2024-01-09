@@ -5,27 +5,27 @@ pub type W = crate::W<PJ_CTRL_SPEC>;
 #[doc = "Field `DRIVESTRENGTH` reader - Drive Strength for Port"]
 pub type DRIVESTRENGTH_R = crate::BitReader;
 #[doc = "Field `DRIVESTRENGTH` writer - Drive Strength for Port"]
-pub type DRIVESTRENGTH_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DRIVESTRENGTH_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SLEWRATE` reader - Slewrate Limit for Port"]
 pub type SLEWRATE_R = crate::FieldReader;
 #[doc = "Field `SLEWRATE` writer - Slewrate Limit for Port"]
-pub type SLEWRATE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type SLEWRATE_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `DINDIS` reader - Data in Disable"]
 pub type DINDIS_R = crate::BitReader;
 #[doc = "Field `DINDIS` writer - Data in Disable"]
-pub type DINDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DINDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DRIVESTRENGTHALT` reader - Alternate Drive Strength for Port"]
 pub type DRIVESTRENGTHALT_R = crate::BitReader;
 #[doc = "Field `DRIVESTRENGTHALT` writer - Alternate Drive Strength for Port"]
-pub type DRIVESTRENGTHALT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DRIVESTRENGTHALT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SLEWRATEALT` reader - Alternate Slewrate Limit for Port"]
 pub type SLEWRATEALT_R = crate::FieldReader;
 #[doc = "Field `SLEWRATEALT` writer - Alternate Slewrate Limit for Port"]
-pub type SLEWRATEALT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type SLEWRATEALT_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `DINDISALT` reader - Alternate Data in Disable"]
 pub type DINDISALT_R = crate::BitReader;
 #[doc = "Field `DINDISALT` writer - Alternate Data in Disable"]
-pub type DINDISALT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DINDISALT_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Drive Strength for Port"]
     #[inline(always)]
@@ -62,40 +62,44 @@ impl W {
     #[doc = "Bit 0 - Drive Strength for Port"]
     #[inline(always)]
     #[must_use]
-    pub fn drivestrength(&mut self) -> DRIVESTRENGTH_W<PJ_CTRL_SPEC, 0> {
-        DRIVESTRENGTH_W::new(self)
+    pub fn drivestrength(&mut self) -> DRIVESTRENGTH_W<PJ_CTRL_SPEC> {
+        DRIVESTRENGTH_W::new(self, 0)
     }
     #[doc = "Bits 4:6 - Slewrate Limit for Port"]
     #[inline(always)]
     #[must_use]
-    pub fn slewrate(&mut self) -> SLEWRATE_W<PJ_CTRL_SPEC, 4> {
-        SLEWRATE_W::new(self)
+    pub fn slewrate(&mut self) -> SLEWRATE_W<PJ_CTRL_SPEC> {
+        SLEWRATE_W::new(self, 4)
     }
     #[doc = "Bit 12 - Data in Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn dindis(&mut self) -> DINDIS_W<PJ_CTRL_SPEC, 12> {
-        DINDIS_W::new(self)
+    pub fn dindis(&mut self) -> DINDIS_W<PJ_CTRL_SPEC> {
+        DINDIS_W::new(self, 12)
     }
     #[doc = "Bit 16 - Alternate Drive Strength for Port"]
     #[inline(always)]
     #[must_use]
-    pub fn drivestrengthalt(&mut self) -> DRIVESTRENGTHALT_W<PJ_CTRL_SPEC, 16> {
-        DRIVESTRENGTHALT_W::new(self)
+    pub fn drivestrengthalt(&mut self) -> DRIVESTRENGTHALT_W<PJ_CTRL_SPEC> {
+        DRIVESTRENGTHALT_W::new(self, 16)
     }
     #[doc = "Bits 20:22 - Alternate Slewrate Limit for Port"]
     #[inline(always)]
     #[must_use]
-    pub fn slewratealt(&mut self) -> SLEWRATEALT_W<PJ_CTRL_SPEC, 20> {
-        SLEWRATEALT_W::new(self)
+    pub fn slewratealt(&mut self) -> SLEWRATEALT_W<PJ_CTRL_SPEC> {
+        SLEWRATEALT_W::new(self, 20)
     }
     #[doc = "Bit 28 - Alternate Data in Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn dindisalt(&mut self) -> DINDISALT_W<PJ_CTRL_SPEC, 28> {
-        DINDISALT_W::new(self)
+    pub fn dindisalt(&mut self) -> DINDISALT_W<PJ_CTRL_SPEC> {
+        DINDISALT_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -111,10 +115,10 @@ impl crate::RegisterSpec for PJ_CTRL_SPEC {
 impl crate::Readable for PJ_CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`pj_ctrl::W`](W) writer structure"]
 impl crate::Writable for PJ_CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PJ_CTRL to value 0x0050_0050"]
 impl crate::Resettable for PJ_CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0050_0050;
+    const RESET_VALUE: u32 = 0x0050_0050;
 }

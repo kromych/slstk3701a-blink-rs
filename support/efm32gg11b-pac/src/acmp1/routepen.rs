@@ -5,7 +5,7 @@ pub type W = crate::W<ROUTEPEN_SPEC>;
 #[doc = "Field `OUTPEN` reader - ACMP Output Pin Enable"]
 pub type OUTPEN_R = crate::BitReader;
 #[doc = "Field `OUTPEN` writer - ACMP Output Pin Enable"]
-pub type OUTPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type OUTPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - ACMP Output Pin Enable"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bit 0 - ACMP Output Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn outpen(&mut self) -> OUTPEN_W<ROUTEPEN_SPEC, 0> {
-        OUTPEN_W::new(self)
+    pub fn outpen(&mut self) -> OUTPEN_W<ROUTEPEN_SPEC> {
+        OUTPEN_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for ROUTEPEN_SPEC {
 impl crate::Readable for ROUTEPEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routepen::W`](W) writer structure"]
 impl crate::Writable for ROUTEPEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTEPEN to value 0"]
 impl crate::Resettable for ROUTEPEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

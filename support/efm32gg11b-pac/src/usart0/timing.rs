@@ -37,7 +37,7 @@ impl crate::FieldSpec for TXDELAY_A {
 impl TXDELAY_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> TXDELAY_A {
+    pub const fn variant(&self) -> TXDELAY_A {
         match self.bits {
             0 => TXDELAY_A::DISABLE,
             1 => TXDELAY_A::ONE,
@@ -92,8 +92,8 @@ impl TXDELAY_R {
     }
 }
 #[doc = "Field `TXDELAY` writer - TX Frame Start Delay"]
-pub type TXDELAY_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, TXDELAY_A>;
-impl<'a, REG, const O: u8> TXDELAY_W<'a, REG, O>
+pub type TXDELAY_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, TXDELAY_A>;
+impl<'a, REG> TXDELAY_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -174,7 +174,7 @@ impl crate::FieldSpec for CSSETUP_A {
 impl CSSETUP_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CSSETUP_A {
+    pub const fn variant(&self) -> CSSETUP_A {
         match self.bits {
             0 => CSSETUP_A::ZERO,
             1 => CSSETUP_A::ONE,
@@ -229,8 +229,8 @@ impl CSSETUP_R {
     }
 }
 #[doc = "Field `CSSETUP` writer - Chip Select Setup"]
-pub type CSSETUP_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, CSSETUP_A>;
-impl<'a, REG, const O: u8> CSSETUP_W<'a, REG, O>
+pub type CSSETUP_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, CSSETUP_A>;
+impl<'a, REG> CSSETUP_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -311,7 +311,7 @@ impl crate::FieldSpec for ICS_A {
 impl ICS_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> ICS_A {
+    pub const fn variant(&self) -> ICS_A {
         match self.bits {
             0 => ICS_A::ZERO,
             1 => ICS_A::ONE,
@@ -366,8 +366,8 @@ impl ICS_R {
     }
 }
 #[doc = "Field `ICS` writer - Inter-character Spacing"]
-pub type ICS_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, ICS_A>;
-impl<'a, REG, const O: u8> ICS_W<'a, REG, O>
+pub type ICS_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, ICS_A>;
+impl<'a, REG> ICS_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -448,7 +448,7 @@ impl crate::FieldSpec for CSHOLD_A {
 impl CSHOLD_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> CSHOLD_A {
+    pub const fn variant(&self) -> CSHOLD_A {
         match self.bits {
             0 => CSHOLD_A::ZERO,
             1 => CSHOLD_A::ONE,
@@ -503,8 +503,8 @@ impl CSHOLD_R {
     }
 }
 #[doc = "Field `CSHOLD` writer - Chip Select Hold"]
-pub type CSHOLD_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, CSHOLD_A>;
-impl<'a, REG, const O: u8> CSHOLD_W<'a, REG, O>
+pub type CSHOLD_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, CSHOLD_A>;
+impl<'a, REG> CSHOLD_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -576,28 +576,32 @@ impl W {
     #[doc = "Bits 16:18 - TX Frame Start Delay"]
     #[inline(always)]
     #[must_use]
-    pub fn txdelay(&mut self) -> TXDELAY_W<TIMING_SPEC, 16> {
-        TXDELAY_W::new(self)
+    pub fn txdelay(&mut self) -> TXDELAY_W<TIMING_SPEC> {
+        TXDELAY_W::new(self, 16)
     }
     #[doc = "Bits 20:22 - Chip Select Setup"]
     #[inline(always)]
     #[must_use]
-    pub fn cssetup(&mut self) -> CSSETUP_W<TIMING_SPEC, 20> {
-        CSSETUP_W::new(self)
+    pub fn cssetup(&mut self) -> CSSETUP_W<TIMING_SPEC> {
+        CSSETUP_W::new(self, 20)
     }
     #[doc = "Bits 24:26 - Inter-character Spacing"]
     #[inline(always)]
     #[must_use]
-    pub fn ics(&mut self) -> ICS_W<TIMING_SPEC, 24> {
-        ICS_W::new(self)
+    pub fn ics(&mut self) -> ICS_W<TIMING_SPEC> {
+        ICS_W::new(self, 24)
     }
     #[doc = "Bits 28:30 - Chip Select Hold"]
     #[inline(always)]
     #[must_use]
-    pub fn cshold(&mut self) -> CSHOLD_W<TIMING_SPEC, 28> {
-        CSHOLD_W::new(self)
+    pub fn cshold(&mut self) -> CSHOLD_W<TIMING_SPEC> {
+        CSHOLD_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -613,10 +617,10 @@ impl crate::RegisterSpec for TIMING_SPEC {
 impl crate::Readable for TIMING_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`timing::W`](W) writer structure"]
 impl crate::Writable for TIMING_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TIMING to value 0"]
 impl crate::Resettable for TIMING_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

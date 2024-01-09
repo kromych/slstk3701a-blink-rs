@@ -5,11 +5,11 @@ pub type W = crate::W<TSUTIMERADJUST_SPEC>;
 #[doc = "Field `INCREMENTVAL` reader - Timer increment value"]
 pub type INCREMENTVAL_R = crate::FieldReader<u32>;
 #[doc = "Field `INCREMENTVAL` writer - Timer increment value"]
-pub type INCREMENTVAL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 30, O, u32>;
+pub type INCREMENTVAL_W<'a, REG> = crate::FieldWriter<'a, REG, 30, u32>;
 #[doc = "Field `ADDSUBTRACT` reader - Write as one to subtract from the 1588 timer"]
 pub type ADDSUBTRACT_R = crate::BitReader;
 #[doc = "Field `ADDSUBTRACT` writer - Write as one to subtract from the 1588 timer"]
-pub type ADDSUBTRACT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ADDSUBTRACT_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:29 - Timer increment value"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:29 - Timer increment value"]
     #[inline(always)]
     #[must_use]
-    pub fn incrementval(&mut self) -> INCREMENTVAL_W<TSUTIMERADJUST_SPEC, 0> {
-        INCREMENTVAL_W::new(self)
+    pub fn incrementval(&mut self) -> INCREMENTVAL_W<TSUTIMERADJUST_SPEC> {
+        INCREMENTVAL_W::new(self, 0)
     }
     #[doc = "Bit 31 - Write as one to subtract from the 1588 timer"]
     #[inline(always)]
     #[must_use]
-    pub fn addsubtract(&mut self) -> ADDSUBTRACT_W<TSUTIMERADJUST_SPEC, 31> {
-        ADDSUBTRACT_W::new(self)
+    pub fn addsubtract(&mut self) -> ADDSUBTRACT_W<TSUTIMERADJUST_SPEC> {
+        ADDSUBTRACT_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for TSUTIMERADJUST_SPEC {
 impl crate::Readable for TSUTIMERADJUST_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`tsutimeradjust::W`](W) writer structure"]
 impl crate::Writable for TSUTIMERADJUST_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TSUTIMERADJUST to value 0"]
 impl crate::Resettable for TSUTIMERADJUST_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

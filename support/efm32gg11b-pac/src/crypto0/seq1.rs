@@ -5,19 +5,19 @@ pub type W = crate::W<SEQ1_SPEC>;
 #[doc = "Field `INSTR4` reader - Sequence Instruction 4"]
 pub type INSTR4_R = crate::FieldReader;
 #[doc = "Field `INSTR4` writer - Sequence Instruction 4"]
-pub type INSTR4_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type INSTR4_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `INSTR5` reader - Sequence Instruction 5"]
 pub type INSTR5_R = crate::FieldReader;
 #[doc = "Field `INSTR5` writer - Sequence Instruction 5"]
-pub type INSTR5_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type INSTR5_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `INSTR6` reader - Sequence Instruction 6"]
 pub type INSTR6_R = crate::FieldReader;
 #[doc = "Field `INSTR6` writer - Sequence Instruction 6"]
-pub type INSTR6_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type INSTR6_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `INSTR7` reader - Sequence Instruction 7"]
 pub type INSTR7_R = crate::FieldReader;
 #[doc = "Field `INSTR7` writer - Sequence Instruction 7"]
-pub type INSTR7_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type INSTR7_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Sequence Instruction 4"]
     #[inline(always)]
@@ -44,28 +44,32 @@ impl W {
     #[doc = "Bits 0:7 - Sequence Instruction 4"]
     #[inline(always)]
     #[must_use]
-    pub fn instr4(&mut self) -> INSTR4_W<SEQ1_SPEC, 0> {
-        INSTR4_W::new(self)
+    pub fn instr4(&mut self) -> INSTR4_W<SEQ1_SPEC> {
+        INSTR4_W::new(self, 0)
     }
     #[doc = "Bits 8:15 - Sequence Instruction 5"]
     #[inline(always)]
     #[must_use]
-    pub fn instr5(&mut self) -> INSTR5_W<SEQ1_SPEC, 8> {
-        INSTR5_W::new(self)
+    pub fn instr5(&mut self) -> INSTR5_W<SEQ1_SPEC> {
+        INSTR5_W::new(self, 8)
     }
     #[doc = "Bits 16:23 - Sequence Instruction 6"]
     #[inline(always)]
     #[must_use]
-    pub fn instr6(&mut self) -> INSTR6_W<SEQ1_SPEC, 16> {
-        INSTR6_W::new(self)
+    pub fn instr6(&mut self) -> INSTR6_W<SEQ1_SPEC> {
+        INSTR6_W::new(self, 16)
     }
     #[doc = "Bits 24:31 - Sequence Instruction 7"]
     #[inline(always)]
     #[must_use]
-    pub fn instr7(&mut self) -> INSTR7_W<SEQ1_SPEC, 24> {
-        INSTR7_W::new(self)
+    pub fn instr7(&mut self) -> INSTR7_W<SEQ1_SPEC> {
+        INSTR7_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -81,10 +85,10 @@ impl crate::RegisterSpec for SEQ1_SPEC {
 impl crate::Readable for SEQ1_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`seq1::W`](W) writer structure"]
 impl crate::Writable for SEQ1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEQ1 to value 0"]
 impl crate::Resettable for SEQ1_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -29,7 +29,7 @@ impl crate::FieldSpec for DRIVESTRENGTH_A {
 impl DRIVESTRENGTH_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DRIVESTRENGTH_A {
+    pub const fn variant(&self) -> DRIVESTRENGTH_A {
         match self.bits {
             0 => DRIVESTRENGTH_A::_0,
             1 => DRIVESTRENGTH_A::_1,
@@ -60,9 +60,8 @@ impl DRIVESTRENGTH_R {
     }
 }
 #[doc = "Field `DRIVESTRENGTH` writer - OPAx Operation Mode"]
-pub type DRIVESTRENGTH_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, DRIVESTRENGTH_A>;
-impl<'a, REG, const O: u8> DRIVESTRENGTH_W<'a, REG, O>
+pub type DRIVESTRENGTH_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, DRIVESTRENGTH_A>;
+impl<'a, REG> DRIVESTRENGTH_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -91,23 +90,23 @@ where
 #[doc = "Field `INCBW` reader - OPAx Unity Gain Bandwidth Scale"]
 pub type INCBW_R = crate::BitReader;
 #[doc = "Field `INCBW` writer - OPAx Unity Gain Bandwidth Scale"]
-pub type INCBW_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INCBW_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HCMDIS` reader - High Common Mode Disable"]
 pub type HCMDIS_R = crate::BitReader;
 #[doc = "Field `HCMDIS` writer - High Common Mode Disable"]
-pub type HCMDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HCMDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OUTSCALE` reader - Scale OPAx Output Driving Strength"]
 pub type OUTSCALE_R = crate::BitReader;
 #[doc = "Field `OUTSCALE` writer - Scale OPAx Output Driving Strength"]
-pub type OUTSCALE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type OUTSCALE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRSEN` reader - OPAx PRS Trigger Enable"]
 pub type PRSEN_R = crate::BitReader;
 #[doc = "Field `PRSEN` writer - OPAx PRS Trigger Enable"]
-pub type PRSEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PRSEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRSMODE` reader - OPAx PRS Trigger Mode"]
 pub type PRSMODE_R = crate::BitReader;
 #[doc = "Field `PRSMODE` writer - OPAx PRS Trigger Mode"]
-pub type PRSMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PRSMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRSSEL` reader - OPAx PRS Trigger Select"]
 pub type PRSSEL_R = crate::FieldReader<PRSSEL_A>;
 #[doc = "OPAx PRS Trigger Select\n\nValue on reset: 0"]
@@ -175,7 +174,7 @@ impl crate::FieldSpec for PRSSEL_A {
 impl PRSSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL_A> {
+    pub const fn variant(&self) -> Option<PRSSEL_A> {
         match self.bits {
             0 => Some(PRSSEL_A::PRSCH0),
             1 => Some(PRSSEL_A::PRSCH1),
@@ -326,8 +325,8 @@ impl PRSSEL_R {
     }
 }
 #[doc = "Field `PRSSEL` writer - OPAx PRS Trigger Select"]
-pub type PRSSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL_A>;
-impl<'a, REG, const O: u8> PRSSEL_W<'a, REG, O>
+pub type PRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL_A>;
+impl<'a, REG> PRSSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -456,15 +455,15 @@ where
 #[doc = "Field `PRSOUTMODE` reader - OPAx PRS Output Select"]
 pub type PRSOUTMODE_R = crate::BitReader;
 #[doc = "Field `PRSOUTMODE` writer - OPAx PRS Output Select"]
-pub type PRSOUTMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PRSOUTMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `APORTXMASTERDIS` reader - APORT Bus Master Disable"]
 pub type APORTXMASTERDIS_R = crate::BitReader;
 #[doc = "Field `APORTXMASTERDIS` writer - APORT Bus Master Disable"]
-pub type APORTXMASTERDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type APORTXMASTERDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `APORTYMASTERDIS` reader - APORT Bus Master Disable"]
 pub type APORTYMASTERDIS_R = crate::BitReader;
 #[doc = "Field `APORTYMASTERDIS` writer - APORT Bus Master Disable"]
-pub type APORTYMASTERDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type APORTYMASTERDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:1 - OPAx Operation Mode"]
     #[inline(always)]
@@ -521,64 +520,68 @@ impl W {
     #[doc = "Bits 0:1 - OPAx Operation Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn drivestrength(&mut self) -> DRIVESTRENGTH_W<OPA2_CTRL_SPEC, 0> {
-        DRIVESTRENGTH_W::new(self)
+    pub fn drivestrength(&mut self) -> DRIVESTRENGTH_W<OPA2_CTRL_SPEC> {
+        DRIVESTRENGTH_W::new(self, 0)
     }
     #[doc = "Bit 2 - OPAx Unity Gain Bandwidth Scale"]
     #[inline(always)]
     #[must_use]
-    pub fn incbw(&mut self) -> INCBW_W<OPA2_CTRL_SPEC, 2> {
-        INCBW_W::new(self)
+    pub fn incbw(&mut self) -> INCBW_W<OPA2_CTRL_SPEC> {
+        INCBW_W::new(self, 2)
     }
     #[doc = "Bit 3 - High Common Mode Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn hcmdis(&mut self) -> HCMDIS_W<OPA2_CTRL_SPEC, 3> {
-        HCMDIS_W::new(self)
+    pub fn hcmdis(&mut self) -> HCMDIS_W<OPA2_CTRL_SPEC> {
+        HCMDIS_W::new(self, 3)
     }
     #[doc = "Bit 4 - Scale OPAx Output Driving Strength"]
     #[inline(always)]
     #[must_use]
-    pub fn outscale(&mut self) -> OUTSCALE_W<OPA2_CTRL_SPEC, 4> {
-        OUTSCALE_W::new(self)
+    pub fn outscale(&mut self) -> OUTSCALE_W<OPA2_CTRL_SPEC> {
+        OUTSCALE_W::new(self, 4)
     }
     #[doc = "Bit 8 - OPAx PRS Trigger Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn prsen(&mut self) -> PRSEN_W<OPA2_CTRL_SPEC, 8> {
-        PRSEN_W::new(self)
+    pub fn prsen(&mut self) -> PRSEN_W<OPA2_CTRL_SPEC> {
+        PRSEN_W::new(self, 8)
     }
     #[doc = "Bit 9 - OPAx PRS Trigger Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn prsmode(&mut self) -> PRSMODE_W<OPA2_CTRL_SPEC, 9> {
-        PRSMODE_W::new(self)
+    pub fn prsmode(&mut self) -> PRSMODE_W<OPA2_CTRL_SPEC> {
+        PRSMODE_W::new(self, 9)
     }
     #[doc = "Bits 10:14 - OPAx PRS Trigger Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel(&mut self) -> PRSSEL_W<OPA2_CTRL_SPEC, 10> {
-        PRSSEL_W::new(self)
+    pub fn prssel(&mut self) -> PRSSEL_W<OPA2_CTRL_SPEC> {
+        PRSSEL_W::new(self, 10)
     }
     #[doc = "Bit 16 - OPAx PRS Output Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prsoutmode(&mut self) -> PRSOUTMODE_W<OPA2_CTRL_SPEC, 16> {
-        PRSOUTMODE_W::new(self)
+    pub fn prsoutmode(&mut self) -> PRSOUTMODE_W<OPA2_CTRL_SPEC> {
+        PRSOUTMODE_W::new(self, 16)
     }
     #[doc = "Bit 20 - APORT Bus Master Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn aportxmasterdis(&mut self) -> APORTXMASTERDIS_W<OPA2_CTRL_SPEC, 20> {
-        APORTXMASTERDIS_W::new(self)
+    pub fn aportxmasterdis(&mut self) -> APORTXMASTERDIS_W<OPA2_CTRL_SPEC> {
+        APORTXMASTERDIS_W::new(self, 20)
     }
     #[doc = "Bit 21 - APORT Bus Master Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn aportymasterdis(&mut self) -> APORTYMASTERDIS_W<OPA2_CTRL_SPEC, 21> {
-        APORTYMASTERDIS_W::new(self)
+    pub fn aportymasterdis(&mut self) -> APORTYMASTERDIS_W<OPA2_CTRL_SPEC> {
+        APORTYMASTERDIS_W::new(self, 21)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -594,10 +597,10 @@ impl crate::RegisterSpec for OPA2_CTRL_SPEC {
 impl crate::Readable for OPA2_CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`opa2_ctrl::W`](W) writer structure"]
 impl crate::Writable for OPA2_CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OPA2_CTRL to value 0x0e"]
 impl crate::Resettable for OPA2_CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0e;
+    const RESET_VALUE: u32 = 0x0e;
 }

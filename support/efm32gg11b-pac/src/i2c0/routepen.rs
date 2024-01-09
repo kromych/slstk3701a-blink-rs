@@ -5,11 +5,11 @@ pub type W = crate::W<ROUTEPEN_SPEC>;
 #[doc = "Field `SDAPEN` reader - SDA Pin Enable"]
 pub type SDAPEN_R = crate::BitReader;
 #[doc = "Field `SDAPEN` writer - SDA Pin Enable"]
-pub type SDAPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SDAPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SCLPEN` reader - SCL Pin Enable"]
 pub type SCLPEN_R = crate::BitReader;
 #[doc = "Field `SCLPEN` writer - SCL Pin Enable"]
-pub type SCLPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SCLPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - SDA Pin Enable"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bit 0 - SDA Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn sdapen(&mut self) -> SDAPEN_W<ROUTEPEN_SPEC, 0> {
-        SDAPEN_W::new(self)
+    pub fn sdapen(&mut self) -> SDAPEN_W<ROUTEPEN_SPEC> {
+        SDAPEN_W::new(self, 0)
     }
     #[doc = "Bit 1 - SCL Pin Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn sclpen(&mut self) -> SCLPEN_W<ROUTEPEN_SPEC, 1> {
-        SCLPEN_W::new(self)
+    pub fn sclpen(&mut self) -> SCLPEN_W<ROUTEPEN_SPEC> {
+        SCLPEN_W::new(self, 1)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for ROUTEPEN_SPEC {
 impl crate::Readable for ROUTEPEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routepen::W`](W) writer structure"]
 impl crate::Writable for ROUTEPEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTEPEN to value 0"]
 impl crate::Resettable for ROUTEPEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -18,5 +18,5 @@ impl crate::RegisterSpec for DATABYTEREV_SPEC {
 impl crate::Readable for DATABYTEREV_SPEC {}
 #[doc = "`reset()` method sets DATABYTEREV to value 0"]
 impl crate::Resettable for DATABYTEREV_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

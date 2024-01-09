@@ -5,7 +5,7 @@ pub type W = crate::W<ITTRIGOUT_SPEC>;
 #[doc = "Field `TRIGGEROUT` reader - Trigger output value"]
 pub type TRIGGEROUT_R = crate::BitReader;
 #[doc = "Field `TRIGGEROUT` writer - Trigger output value"]
-pub type TRIGGEROUT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TRIGGEROUT_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Trigger output value"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bit 0 - Trigger output value"]
     #[inline(always)]
     #[must_use]
-    pub fn triggerout(&mut self) -> TRIGGEROUT_W<ITTRIGOUT_SPEC, 0> {
-        TRIGGEROUT_W::new(self)
+    pub fn triggerout(&mut self) -> TRIGGEROUT_W<ITTRIGOUT_SPEC> {
+        TRIGGEROUT_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for ITTRIGOUT_SPEC {
 impl crate::Readable for ITTRIGOUT_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ittrigout::W`](W) writer structure"]
 impl crate::Writable for ITTRIGOUT_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ITTRIGOUT to value 0"]
 impl crate::Resettable for ITTRIGOUT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

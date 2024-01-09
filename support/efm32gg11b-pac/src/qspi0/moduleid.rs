@@ -32,5 +32,5 @@ impl crate::RegisterSpec for MODULEID_SPEC {
 impl crate::Readable for MODULEID_SPEC {}
 #[doc = "`reset()` method sets MODULEID to value 0x0200"]
 impl crate::Resettable for MODULEID_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0200;
+    const RESET_VALUE: u32 = 0x0200;
 }

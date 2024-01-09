@@ -25,5 +25,5 @@ impl crate::RegisterSpec for ETMPIDR4_SPEC {
 impl crate::Readable for ETMPIDR4_SPEC {}
 #[doc = "`reset()` method sets ETMPIDR4 to value 0x04"]
 impl crate::Resettable for ETMPIDR4_SPEC {
-    const RESET_VALUE: Self::Ux = 0x04;
+    const RESET_VALUE: u32 = 0x04;
 }

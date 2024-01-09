@@ -5,7 +5,7 @@ pub type W = crate::W<CH9_CTRL_SPEC>;
 #[doc = "Field `SIGSEL` reader - Signal Select"]
 pub type SIGSEL_R = crate::FieldReader;
 #[doc = "Field `SIGSEL` writer - Signal Select"]
-pub type SIGSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type SIGSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `SOURCESEL` reader - Source Select"]
 pub type SOURCESEL_R = crate::FieldReader<SOURCESEL_A>;
 #[doc = "Source Select\n\nValue on reset: 0"]
@@ -119,7 +119,7 @@ impl crate::FieldSpec for SOURCESEL_A {
 impl SOURCESEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<SOURCESEL_A> {
+    pub const fn variant(&self) -> Option<SOURCESEL_A> {
         match self.bits {
             0 => Some(SOURCESEL_A::NONE),
             1 => Some(SOURCESEL_A::PRSL),
@@ -408,8 +408,8 @@ impl SOURCESEL_R {
     }
 }
 #[doc = "Field `SOURCESEL` writer - Source Select"]
-pub type SOURCESEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O, SOURCESEL_A>;
-impl<'a, REG, const O: u8> SOURCESEL_W<'a, REG, O>
+pub type SOURCESEL_W<'a, REG> = crate::FieldWriter<'a, REG, 7, SOURCESEL_A>;
+impl<'a, REG> SOURCESEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -677,7 +677,7 @@ impl crate::FieldSpec for EDSEL_A {
 impl EDSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> EDSEL_A {
+    pub const fn variant(&self) -> EDSEL_A {
         match self.bits {
             0 => EDSEL_A::OFF,
             1 => EDSEL_A::POSEDGE,
@@ -708,8 +708,8 @@ impl EDSEL_R {
     }
 }
 #[doc = "Field `EDSEL` writer - Edge Detect Select"]
-pub type EDSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, EDSEL_A>;
-impl<'a, REG, const O: u8> EDSEL_W<'a, REG, O>
+pub type EDSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, EDSEL_A>;
+impl<'a, REG> EDSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -738,23 +738,23 @@ where
 #[doc = "Field `STRETCH` reader - Stretch Channel Output"]
 pub type STRETCH_R = crate::BitReader;
 #[doc = "Field `STRETCH` writer - Stretch Channel Output"]
-pub type STRETCH_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STRETCH_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INV` reader - Invert Channel"]
 pub type INV_R = crate::BitReader;
 #[doc = "Field `INV` writer - Invert Channel"]
-pub type INV_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INV_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ORPREV` reader - Or Previous"]
 pub type ORPREV_R = crate::BitReader;
 #[doc = "Field `ORPREV` writer - Or Previous"]
-pub type ORPREV_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ORPREV_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ANDNEXT` reader - And Next"]
 pub type ANDNEXT_R = crate::BitReader;
 #[doc = "Field `ANDNEXT` writer - And Next"]
-pub type ANDNEXT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ANDNEXT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ASYNC` reader - Asynchronous Reflex"]
 pub type ASYNC_R = crate::BitReader;
 #[doc = "Field `ASYNC` writer - Asynchronous Reflex"]
-pub type ASYNC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ASYNC_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:2 - Signal Select"]
     #[inline(always)]
@@ -801,52 +801,56 @@ impl W {
     #[doc = "Bits 0:2 - Signal Select"]
     #[inline(always)]
     #[must_use]
-    pub fn sigsel(&mut self) -> SIGSEL_W<CH9_CTRL_SPEC, 0> {
-        SIGSEL_W::new(self)
+    pub fn sigsel(&mut self) -> SIGSEL_W<CH9_CTRL_SPEC> {
+        SIGSEL_W::new(self, 0)
     }
     #[doc = "Bits 8:14 - Source Select"]
     #[inline(always)]
     #[must_use]
-    pub fn sourcesel(&mut self) -> SOURCESEL_W<CH9_CTRL_SPEC, 8> {
-        SOURCESEL_W::new(self)
+    pub fn sourcesel(&mut self) -> SOURCESEL_W<CH9_CTRL_SPEC> {
+        SOURCESEL_W::new(self, 8)
     }
     #[doc = "Bits 20:21 - Edge Detect Select"]
     #[inline(always)]
     #[must_use]
-    pub fn edsel(&mut self) -> EDSEL_W<CH9_CTRL_SPEC, 20> {
-        EDSEL_W::new(self)
+    pub fn edsel(&mut self) -> EDSEL_W<CH9_CTRL_SPEC> {
+        EDSEL_W::new(self, 20)
     }
     #[doc = "Bit 25 - Stretch Channel Output"]
     #[inline(always)]
     #[must_use]
-    pub fn stretch(&mut self) -> STRETCH_W<CH9_CTRL_SPEC, 25> {
-        STRETCH_W::new(self)
+    pub fn stretch(&mut self) -> STRETCH_W<CH9_CTRL_SPEC> {
+        STRETCH_W::new(self, 25)
     }
     #[doc = "Bit 26 - Invert Channel"]
     #[inline(always)]
     #[must_use]
-    pub fn inv(&mut self) -> INV_W<CH9_CTRL_SPEC, 26> {
-        INV_W::new(self)
+    pub fn inv(&mut self) -> INV_W<CH9_CTRL_SPEC> {
+        INV_W::new(self, 26)
     }
     #[doc = "Bit 27 - Or Previous"]
     #[inline(always)]
     #[must_use]
-    pub fn orprev(&mut self) -> ORPREV_W<CH9_CTRL_SPEC, 27> {
-        ORPREV_W::new(self)
+    pub fn orprev(&mut self) -> ORPREV_W<CH9_CTRL_SPEC> {
+        ORPREV_W::new(self, 27)
     }
     #[doc = "Bit 28 - And Next"]
     #[inline(always)]
     #[must_use]
-    pub fn andnext(&mut self) -> ANDNEXT_W<CH9_CTRL_SPEC, 28> {
-        ANDNEXT_W::new(self)
+    pub fn andnext(&mut self) -> ANDNEXT_W<CH9_CTRL_SPEC> {
+        ANDNEXT_W::new(self, 28)
     }
     #[doc = "Bit 30 - Asynchronous Reflex"]
     #[inline(always)]
     #[must_use]
-    pub fn async_(&mut self) -> ASYNC_W<CH9_CTRL_SPEC, 30> {
-        ASYNC_W::new(self)
+    pub fn async_(&mut self) -> ASYNC_W<CH9_CTRL_SPEC> {
+        ASYNC_W::new(self, 30)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -862,10 +866,10 @@ impl crate::RegisterSpec for CH9_CTRL_SPEC {
 impl crate::Readable for CH9_CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ch9_ctrl::W`](W) writer structure"]
 impl crate::Writable for CH9_CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CH9_CTRL to value 0"]
 impl crate::Resettable for CH9_CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

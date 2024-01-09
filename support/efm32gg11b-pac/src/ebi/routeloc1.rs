@@ -27,7 +27,7 @@ impl crate::FieldSpec for ADLOC_A {
 impl ADLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<ADLOC_A> {
+    pub const fn variant(&self) -> Option<ADLOC_A> {
         match self.bits {
             0 => Some(ADLOC_A::LOC0),
             1 => Some(ADLOC_A::LOC1),
@@ -52,8 +52,8 @@ impl ADLOC_R {
     }
 }
 #[doc = "Field `ADLOC` writer - I/O Location"]
-pub type ADLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, ADLOC_A>;
-impl<'a, REG, const O: u8> ADLOC_W<'a, REG, O>
+pub type ADLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, ADLOC_A>;
+impl<'a, REG> ADLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -101,7 +101,7 @@ impl crate::FieldSpec for ALOC_A {
 impl ALOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<ALOC_A> {
+    pub const fn variant(&self) -> Option<ALOC_A> {
         match self.bits {
             0 => Some(ALOC_A::LOC0),
             1 => Some(ALOC_A::LOC1),
@@ -132,8 +132,8 @@ impl ALOC_R {
     }
 }
 #[doc = "Field `ALOC` writer - I/O Location"]
-pub type ALOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, ALOC_A>;
-impl<'a, REG, const O: u8> ALOC_W<'a, REG, O>
+pub type ALOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, ALOC_A>;
+impl<'a, REG> ALOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -190,7 +190,7 @@ impl crate::FieldSpec for RDYLOC_A {
 impl RDYLOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<RDYLOC_A> {
+    pub const fn variant(&self) -> Option<RDYLOC_A> {
         match self.bits {
             0 => Some(RDYLOC_A::LOC0),
             1 => Some(RDYLOC_A::LOC1),
@@ -233,8 +233,8 @@ impl RDYLOC_R {
     }
 }
 #[doc = "Field `RDYLOC` writer - I/O Location"]
-pub type RDYLOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, RDYLOC_A>;
-impl<'a, REG, const O: u8> RDYLOC_W<'a, REG, O>
+pub type RDYLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, RDYLOC_A>;
+impl<'a, REG> RDYLOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -291,22 +291,26 @@ impl W {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn adloc(&mut self) -> ADLOC_W<ROUTELOC1_SPEC, 0> {
-        ADLOC_W::new(self)
+    pub fn adloc(&mut self) -> ADLOC_W<ROUTELOC1_SPEC> {
+        ADLOC_W::new(self, 0)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn aloc(&mut self) -> ALOC_W<ROUTELOC1_SPEC, 8> {
-        ALOC_W::new(self)
+    pub fn aloc(&mut self) -> ALOC_W<ROUTELOC1_SPEC> {
+        ALOC_W::new(self, 8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn rdyloc(&mut self) -> RDYLOC_W<ROUTELOC1_SPEC, 16> {
-        RDYLOC_W::new(self)
+    pub fn rdyloc(&mut self) -> RDYLOC_W<ROUTELOC1_SPEC> {
+        RDYLOC_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -322,10 +326,10 @@ impl crate::RegisterSpec for ROUTELOC1_SPEC {
 impl crate::Readable for ROUTELOC1_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routeloc1::W`](W) writer structure"]
 impl crate::Writable for ROUTELOC1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTELOC1 to value 0"]
 impl crate::Resettable for ROUTELOC1_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -39,5 +39,5 @@ impl crate::RegisterSpec for NETWORKSTATUS_SPEC {
 impl crate::Readable for NETWORKSTATUS_SPEC {}
 #[doc = "`reset()` method sets NETWORKSTATUS to value 0x04"]
 impl crate::Resettable for NETWORKSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0x04;
+    const RESET_VALUE: u32 = 0x04;
 }

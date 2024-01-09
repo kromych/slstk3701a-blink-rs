@@ -5,11 +5,11 @@ pub type W = crate::W<PBUFRXCUTTHRU_SPEC>;
 #[doc = "Field `DMARXCUTTHRUTHR` reader - Watermark value"]
 pub type DMARXCUTTHRUTHR_R = crate::FieldReader<u16>;
 #[doc = "Field `DMARXCUTTHRUTHR` writer - Watermark value"]
-pub type DMARXCUTTHRUTHR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 10, O, u16>;
+pub type DMARXCUTTHRUTHR_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 #[doc = "Field `DMARXCUTTHRU` reader - Enable RX partial store and forward operation"]
 pub type DMARXCUTTHRU_R = crate::BitReader;
 #[doc = "Field `DMARXCUTTHRU` writer - Enable RX partial store and forward operation"]
-pub type DMARXCUTTHRU_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DMARXCUTTHRU_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:9 - Watermark value"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:9 - Watermark value"]
     #[inline(always)]
     #[must_use]
-    pub fn dmarxcutthruthr(&mut self) -> DMARXCUTTHRUTHR_W<PBUFRXCUTTHRU_SPEC, 0> {
-        DMARXCUTTHRUTHR_W::new(self)
+    pub fn dmarxcutthruthr(&mut self) -> DMARXCUTTHRUTHR_W<PBUFRXCUTTHRU_SPEC> {
+        DMARXCUTTHRUTHR_W::new(self, 0)
     }
     #[doc = "Bit 31 - Enable RX partial store and forward operation"]
     #[inline(always)]
     #[must_use]
-    pub fn dmarxcutthru(&mut self) -> DMARXCUTTHRU_W<PBUFRXCUTTHRU_SPEC, 31> {
-        DMARXCUTTHRU_W::new(self)
+    pub fn dmarxcutthru(&mut self) -> DMARXCUTTHRU_W<PBUFRXCUTTHRU_SPEC> {
+        DMARXCUTTHRU_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for PBUFRXCUTTHRU_SPEC {
 impl crate::Readable for PBUFRXCUTTHRU_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`pbufrxcutthru::W`](W) writer structure"]
 impl crate::Writable for PBUFRXCUTTHRU_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PBUFRXCUTTHRU to value 0x03ff"]
 impl crate::Resettable for PBUFRXCUTTHRU_SPEC {
-    const RESET_VALUE: Self::Ux = 0x03ff;
+    const RESET_VALUE: u32 = 0x03ff;
 }

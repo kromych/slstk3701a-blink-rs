@@ -5,7 +5,7 @@ pub type W = crate::W<QDATA0BYTE_SPEC>;
 #[doc = "Field `QDATA0BYTE` reader - Qdata 0 Byte Access"]
 pub type QDATA0BYTE_R = crate::FieldReader;
 #[doc = "Field `QDATA0BYTE` writer - Qdata 0 Byte Access"]
-pub type QDATA0BYTE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type QDATA0BYTE_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Qdata 0 Byte Access"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:7 - Qdata 0 Byte Access"]
     #[inline(always)]
     #[must_use]
-    pub fn qdata0byte(&mut self) -> QDATA0BYTE_W<QDATA0BYTE_SPEC, 0> {
-        QDATA0BYTE_W::new(self)
+    pub fn qdata0byte(&mut self) -> QDATA0BYTE_W<QDATA0BYTE_SPEC> {
+        QDATA0BYTE_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for QDATA0BYTE_SPEC {
 impl crate::Readable for QDATA0BYTE_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`qdata0byte::W`](W) writer structure"]
 impl crate::Writable for QDATA0BYTE_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets QDATA0BYTE to value 0"]
 impl crate::Resettable for QDATA0BYTE_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

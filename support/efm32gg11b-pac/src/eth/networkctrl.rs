@@ -5,87 +5,87 @@ pub type W = crate::W<NETWORKCTRL_SPEC>;
 #[doc = "Field `LOOPBACKLOCAL` reader - Loopback local"]
 pub type LOOPBACKLOCAL_R = crate::BitReader;
 #[doc = "Field `LOOPBACKLOCAL` writer - Loopback local"]
-pub type LOOPBACKLOCAL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type LOOPBACKLOCAL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ENBRX` reader - Receive enable"]
 pub type ENBRX_R = crate::BitReader;
 #[doc = "Field `ENBRX` writer - Receive enable"]
-pub type ENBRX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ENBRX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ENBTX` reader - Transmit enable"]
 pub type ENBTX_R = crate::BitReader;
 #[doc = "Field `ENBTX` writer - Transmit enable"]
-pub type ENBTX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ENBTX_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MANPORTEN` reader - Management port enable"]
 pub type MANPORTEN_R = crate::BitReader;
 #[doc = "Field `MANPORTEN` writer - Management port enable"]
-pub type MANPORTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MANPORTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CLRALLSTATSREGS` reader - Clear statistics registers"]
 pub type CLRALLSTATSREGS_R = crate::BitReader;
 #[doc = "Field `CLRALLSTATSREGS` writer - Clear statistics registers"]
-pub type CLRALLSTATSREGS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CLRALLSTATSREGS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INCALLSTATSREGS` reader - Incremental statistics registers"]
 pub type INCALLSTATSREGS_R = crate::BitReader;
 #[doc = "Field `INCALLSTATSREGS` writer - Incremental statistics registers"]
-pub type INCALLSTATSREGS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INCALLSTATSREGS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STATSWREN` reader - Write enable for statistics registers"]
 pub type STATSWREN_R = crate::BitReader;
 #[doc = "Field `STATSWREN` writer - Write enable for statistics registers"]
-pub type STATSWREN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STATSWREN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BACKPRESSURE` reader - Back pressure will force collisions on all received frames"]
 pub type BACKPRESSURE_R = crate::BitReader;
 #[doc = "Field `BACKPRESSURE` writer - Back pressure will force collisions on all received frames"]
-pub type BACKPRESSURE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BACKPRESSURE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXSTRT` reader - Start transmission"]
 pub type TXSTRT_R = crate::BitReader;
 #[doc = "Field `TXSTRT` writer - Start transmission"]
-pub type TXSTRT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXSTRT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXHALT` reader - Transmit halt"]
 pub type TXHALT_R = crate::BitReader;
 #[doc = "Field `TXHALT` writer - Transmit halt"]
-pub type TXHALT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXHALT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXPFRMREQ` reader - Transmit pause frame"]
 pub type TXPFRMREQ_R = crate::BitReader;
 #[doc = "Field `TXPFRMREQ` writer - Transmit pause frame"]
-pub type TXPFRMREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXPFRMREQ_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXPFRMZERO` reader - Transmit zero quantum pause frame"]
 pub type TXPFRMZERO_R = crate::BitReader;
 #[doc = "Field `TXPFRMZERO` writer - Transmit zero quantum pause frame"]
-pub type TXPFRMZERO_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXPFRMZERO_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STORERXTS` reader - Store receive time stamp to memory."]
 pub type STORERXTS_R = crate::BitReader;
 #[doc = "Field `STORERXTS` writer - Store receive time stamp to memory."]
-pub type STORERXTS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STORERXTS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PFCENB` reader - Enable PFC Priority Based Pause Reception capabilities."]
 pub type PFCENB_R = crate::BitReader;
 #[doc = "Field `PFCENB` writer - Enable PFC Priority Based Pause Reception capabilities."]
-pub type PFCENB_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PFCENB_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXPFCPRIORPFRM` reader - Write a one to transmit PFC priority based pause frame."]
 pub type TXPFCPRIORPFRM_R = crate::BitReader;
 #[doc = "Field `TXPFCPRIORPFRM` writer - Write a one to transmit PFC priority based pause frame."]
-pub type TXPFCPRIORPFRM_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXPFCPRIORPFRM_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FLUSHRXPKT` reader - Flush the next packet from the external RX DPRAM."]
 pub type FLUSHRXPKT_R = crate::BitReader;
 #[doc = "Field `FLUSHRXPKT` writer - Flush the next packet from the external RX DPRAM."]
-pub type FLUSHRXPKT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FLUSHRXPKT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXLPIEN` reader - Enable LPI transmission when set LPI (low power idle) is immediately transmitted."]
 pub type TXLPIEN_R = crate::BitReader;
 #[doc = "Field `TXLPIEN` writer - Enable LPI transmission when set LPI (low power idle) is immediately transmitted."]
-pub type TXLPIEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXLPIEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PTPUNICASTEN` reader - Enable detection of unicast PTP unicast frames."]
 pub type PTPUNICASTEN_R = crate::BitReader;
 #[doc = "Field `PTPUNICASTEN` writer - Enable detection of unicast PTP unicast frames."]
-pub type PTPUNICASTEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PTPUNICASTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STOREUDPOFFSET` reader - Store UDP / TCP offset to memory."]
 pub type STOREUDPOFFSET_R = crate::BitReader;
 #[doc = "Field `STOREUDPOFFSET` writer - Store UDP / TCP offset to memory."]
-pub type STOREUDPOFFSET_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STOREUDPOFFSET_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ONESTEPSYNCMODE` reader - 1588 One Step Sync Mode."]
 pub type ONESTEPSYNCMODE_R = crate::BitReader;
 #[doc = "Field `ONESTEPSYNCMODE` writer - 1588 One Step Sync Mode."]
-pub type ONESTEPSYNCMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ONESTEPSYNCMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PFCCTRL` reader - Enable multiple PFC pause quantums, one per pause priority"]
 pub type PFCCTRL_R = crate::BitReader;
 #[doc = "Field `PFCCTRL` writer - Enable multiple PFC pause quantums, one per pause priority"]
-pub type PFCCTRL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PFCCTRL_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 1 - Loopback local"]
     #[inline(always)]
@@ -197,130 +197,134 @@ impl W {
     #[doc = "Bit 1 - Loopback local"]
     #[inline(always)]
     #[must_use]
-    pub fn loopbacklocal(&mut self) -> LOOPBACKLOCAL_W<NETWORKCTRL_SPEC, 1> {
-        LOOPBACKLOCAL_W::new(self)
+    pub fn loopbacklocal(&mut self) -> LOOPBACKLOCAL_W<NETWORKCTRL_SPEC> {
+        LOOPBACKLOCAL_W::new(self, 1)
     }
     #[doc = "Bit 2 - Receive enable"]
     #[inline(always)]
     #[must_use]
-    pub fn enbrx(&mut self) -> ENBRX_W<NETWORKCTRL_SPEC, 2> {
-        ENBRX_W::new(self)
+    pub fn enbrx(&mut self) -> ENBRX_W<NETWORKCTRL_SPEC> {
+        ENBRX_W::new(self, 2)
     }
     #[doc = "Bit 3 - Transmit enable"]
     #[inline(always)]
     #[must_use]
-    pub fn enbtx(&mut self) -> ENBTX_W<NETWORKCTRL_SPEC, 3> {
-        ENBTX_W::new(self)
+    pub fn enbtx(&mut self) -> ENBTX_W<NETWORKCTRL_SPEC> {
+        ENBTX_W::new(self, 3)
     }
     #[doc = "Bit 4 - Management port enable"]
     #[inline(always)]
     #[must_use]
-    pub fn manporten(&mut self) -> MANPORTEN_W<NETWORKCTRL_SPEC, 4> {
-        MANPORTEN_W::new(self)
+    pub fn manporten(&mut self) -> MANPORTEN_W<NETWORKCTRL_SPEC> {
+        MANPORTEN_W::new(self, 4)
     }
     #[doc = "Bit 5 - Clear statistics registers"]
     #[inline(always)]
     #[must_use]
-    pub fn clrallstatsregs(&mut self) -> CLRALLSTATSREGS_W<NETWORKCTRL_SPEC, 5> {
-        CLRALLSTATSREGS_W::new(self)
+    pub fn clrallstatsregs(&mut self) -> CLRALLSTATSREGS_W<NETWORKCTRL_SPEC> {
+        CLRALLSTATSREGS_W::new(self, 5)
     }
     #[doc = "Bit 6 - Incremental statistics registers"]
     #[inline(always)]
     #[must_use]
-    pub fn incallstatsregs(&mut self) -> INCALLSTATSREGS_W<NETWORKCTRL_SPEC, 6> {
-        INCALLSTATSREGS_W::new(self)
+    pub fn incallstatsregs(&mut self) -> INCALLSTATSREGS_W<NETWORKCTRL_SPEC> {
+        INCALLSTATSREGS_W::new(self, 6)
     }
     #[doc = "Bit 7 - Write enable for statistics registers"]
     #[inline(always)]
     #[must_use]
-    pub fn statswren(&mut self) -> STATSWREN_W<NETWORKCTRL_SPEC, 7> {
-        STATSWREN_W::new(self)
+    pub fn statswren(&mut self) -> STATSWREN_W<NETWORKCTRL_SPEC> {
+        STATSWREN_W::new(self, 7)
     }
     #[doc = "Bit 8 - Back pressure will force collisions on all received frames"]
     #[inline(always)]
     #[must_use]
-    pub fn backpressure(&mut self) -> BACKPRESSURE_W<NETWORKCTRL_SPEC, 8> {
-        BACKPRESSURE_W::new(self)
+    pub fn backpressure(&mut self) -> BACKPRESSURE_W<NETWORKCTRL_SPEC> {
+        BACKPRESSURE_W::new(self, 8)
     }
     #[doc = "Bit 9 - Start transmission"]
     #[inline(always)]
     #[must_use]
-    pub fn txstrt(&mut self) -> TXSTRT_W<NETWORKCTRL_SPEC, 9> {
-        TXSTRT_W::new(self)
+    pub fn txstrt(&mut self) -> TXSTRT_W<NETWORKCTRL_SPEC> {
+        TXSTRT_W::new(self, 9)
     }
     #[doc = "Bit 10 - Transmit halt"]
     #[inline(always)]
     #[must_use]
-    pub fn txhalt(&mut self) -> TXHALT_W<NETWORKCTRL_SPEC, 10> {
-        TXHALT_W::new(self)
+    pub fn txhalt(&mut self) -> TXHALT_W<NETWORKCTRL_SPEC> {
+        TXHALT_W::new(self, 10)
     }
     #[doc = "Bit 11 - Transmit pause frame"]
     #[inline(always)]
     #[must_use]
-    pub fn txpfrmreq(&mut self) -> TXPFRMREQ_W<NETWORKCTRL_SPEC, 11> {
-        TXPFRMREQ_W::new(self)
+    pub fn txpfrmreq(&mut self) -> TXPFRMREQ_W<NETWORKCTRL_SPEC> {
+        TXPFRMREQ_W::new(self, 11)
     }
     #[doc = "Bit 12 - Transmit zero quantum pause frame"]
     #[inline(always)]
     #[must_use]
-    pub fn txpfrmzero(&mut self) -> TXPFRMZERO_W<NETWORKCTRL_SPEC, 12> {
-        TXPFRMZERO_W::new(self)
+    pub fn txpfrmzero(&mut self) -> TXPFRMZERO_W<NETWORKCTRL_SPEC> {
+        TXPFRMZERO_W::new(self, 12)
     }
     #[doc = "Bit 15 - Store receive time stamp to memory."]
     #[inline(always)]
     #[must_use]
-    pub fn storerxts(&mut self) -> STORERXTS_W<NETWORKCTRL_SPEC, 15> {
-        STORERXTS_W::new(self)
+    pub fn storerxts(&mut self) -> STORERXTS_W<NETWORKCTRL_SPEC> {
+        STORERXTS_W::new(self, 15)
     }
     #[doc = "Bit 16 - Enable PFC Priority Based Pause Reception capabilities."]
     #[inline(always)]
     #[must_use]
-    pub fn pfcenb(&mut self) -> PFCENB_W<NETWORKCTRL_SPEC, 16> {
-        PFCENB_W::new(self)
+    pub fn pfcenb(&mut self) -> PFCENB_W<NETWORKCTRL_SPEC> {
+        PFCENB_W::new(self, 16)
     }
     #[doc = "Bit 17 - Write a one to transmit PFC priority based pause frame."]
     #[inline(always)]
     #[must_use]
-    pub fn txpfcpriorpfrm(&mut self) -> TXPFCPRIORPFRM_W<NETWORKCTRL_SPEC, 17> {
-        TXPFCPRIORPFRM_W::new(self)
+    pub fn txpfcpriorpfrm(&mut self) -> TXPFCPRIORPFRM_W<NETWORKCTRL_SPEC> {
+        TXPFCPRIORPFRM_W::new(self, 17)
     }
     #[doc = "Bit 18 - Flush the next packet from the external RX DPRAM."]
     #[inline(always)]
     #[must_use]
-    pub fn flushrxpkt(&mut self) -> FLUSHRXPKT_W<NETWORKCTRL_SPEC, 18> {
-        FLUSHRXPKT_W::new(self)
+    pub fn flushrxpkt(&mut self) -> FLUSHRXPKT_W<NETWORKCTRL_SPEC> {
+        FLUSHRXPKT_W::new(self, 18)
     }
     #[doc = "Bit 19 - Enable LPI transmission when set LPI (low power idle) is immediately transmitted."]
     #[inline(always)]
     #[must_use]
-    pub fn txlpien(&mut self) -> TXLPIEN_W<NETWORKCTRL_SPEC, 19> {
-        TXLPIEN_W::new(self)
+    pub fn txlpien(&mut self) -> TXLPIEN_W<NETWORKCTRL_SPEC> {
+        TXLPIEN_W::new(self, 19)
     }
     #[doc = "Bit 20 - Enable detection of unicast PTP unicast frames."]
     #[inline(always)]
     #[must_use]
-    pub fn ptpunicasten(&mut self) -> PTPUNICASTEN_W<NETWORKCTRL_SPEC, 20> {
-        PTPUNICASTEN_W::new(self)
+    pub fn ptpunicasten(&mut self) -> PTPUNICASTEN_W<NETWORKCTRL_SPEC> {
+        PTPUNICASTEN_W::new(self, 20)
     }
     #[doc = "Bit 22 - Store UDP / TCP offset to memory."]
     #[inline(always)]
     #[must_use]
-    pub fn storeudpoffset(&mut self) -> STOREUDPOFFSET_W<NETWORKCTRL_SPEC, 22> {
-        STOREUDPOFFSET_W::new(self)
+    pub fn storeudpoffset(&mut self) -> STOREUDPOFFSET_W<NETWORKCTRL_SPEC> {
+        STOREUDPOFFSET_W::new(self, 22)
     }
     #[doc = "Bit 24 - 1588 One Step Sync Mode."]
     #[inline(always)]
     #[must_use]
-    pub fn onestepsyncmode(&mut self) -> ONESTEPSYNCMODE_W<NETWORKCTRL_SPEC, 24> {
-        ONESTEPSYNCMODE_W::new(self)
+    pub fn onestepsyncmode(&mut self) -> ONESTEPSYNCMODE_W<NETWORKCTRL_SPEC> {
+        ONESTEPSYNCMODE_W::new(self, 24)
     }
     #[doc = "Bit 25 - Enable multiple PFC pause quantums, one per pause priority"]
     #[inline(always)]
     #[must_use]
-    pub fn pfcctrl(&mut self) -> PFCCTRL_W<NETWORKCTRL_SPEC, 25> {
-        PFCCTRL_W::new(self)
+    pub fn pfcctrl(&mut self) -> PFCCTRL_W<NETWORKCTRL_SPEC> {
+        PFCCTRL_W::new(self, 25)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -336,10 +340,10 @@ impl crate::RegisterSpec for NETWORKCTRL_SPEC {
 impl crate::Readable for NETWORKCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`networkctrl::W`](W) writer structure"]
 impl crate::Writable for NETWORKCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets NETWORKCTRL to value 0"]
 impl crate::Resettable for NETWORKCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

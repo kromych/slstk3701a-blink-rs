@@ -5,7 +5,7 @@ pub type W = crate::W<CH1CTRL_SPEC>;
 #[doc = "Field `CONVMODE` reader - Conversion Mode"]
 pub type CONVMODE_R = crate::BitReader;
 #[doc = "Field `CONVMODE` writer - Conversion Mode"]
-pub type CONVMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CONVMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TRIGMODE` reader - Channel 1 Trigger Mode"]
 pub type TRIGMODE_R = crate::FieldReader<TRIGMODE_A>;
 #[doc = "Channel 1 Trigger Mode\n\nValue on reset: 0"]
@@ -37,7 +37,7 @@ impl crate::FieldSpec for TRIGMODE_A {
 impl TRIGMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TRIGMODE_A> {
+    pub const fn variant(&self) -> Option<TRIGMODE_A> {
         match self.bits {
             0 => Some(TRIGMODE_A::SW),
             1 => Some(TRIGMODE_A::PRS),
@@ -80,8 +80,8 @@ impl TRIGMODE_R {
     }
 }
 #[doc = "Field `TRIGMODE` writer - Channel 1 Trigger Mode"]
-pub type TRIGMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, TRIGMODE_A>;
-impl<'a, REG, const O: u8> TRIGMODE_W<'a, REG, O>
+pub type TRIGMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 3, TRIGMODE_A>;
+impl<'a, REG> TRIGMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -120,7 +120,7 @@ where
 #[doc = "Field `PRSASYNC` reader - Channel 1 PRS Asynchronous Enable"]
 pub type PRSASYNC_R = crate::BitReader;
 #[doc = "Field `PRSASYNC` writer - Channel 1 PRS Asynchronous Enable"]
-pub type PRSASYNC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PRSASYNC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRSSEL` reader - Channel 1 PRS Trigger Select"]
 pub type PRSSEL_R = crate::FieldReader<PRSSEL_A>;
 #[doc = "Channel 1 PRS Trigger Select\n\nValue on reset: 0"]
@@ -188,7 +188,7 @@ impl crate::FieldSpec for PRSSEL_A {
 impl PRSSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL_A> {
+    pub const fn variant(&self) -> Option<PRSSEL_A> {
         match self.bits {
             0 => Some(PRSSEL_A::PRSCH0),
             1 => Some(PRSSEL_A::PRSCH1),
@@ -339,8 +339,8 @@ impl PRSSEL_R {
     }
 }
 #[doc = "Field `PRSSEL` writer - Channel 1 PRS Trigger Select"]
-pub type PRSSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL_A>;
-impl<'a, REG, const O: u8> PRSSEL_W<'a, REG, O>
+pub type PRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL_A>;
+impl<'a, REG> PRSSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -492,28 +492,32 @@ impl W {
     #[doc = "Bit 0 - Conversion Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn convmode(&mut self) -> CONVMODE_W<CH1CTRL_SPEC, 0> {
-        CONVMODE_W::new(self)
+    pub fn convmode(&mut self) -> CONVMODE_W<CH1CTRL_SPEC> {
+        CONVMODE_W::new(self, 0)
     }
     #[doc = "Bits 4:6 - Channel 1 Trigger Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn trigmode(&mut self) -> TRIGMODE_W<CH1CTRL_SPEC, 4> {
-        TRIGMODE_W::new(self)
+    pub fn trigmode(&mut self) -> TRIGMODE_W<CH1CTRL_SPEC> {
+        TRIGMODE_W::new(self, 4)
     }
     #[doc = "Bit 8 - Channel 1 PRS Asynchronous Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn prsasync(&mut self) -> PRSASYNC_W<CH1CTRL_SPEC, 8> {
-        PRSASYNC_W::new(self)
+    pub fn prsasync(&mut self) -> PRSASYNC_W<CH1CTRL_SPEC> {
+        PRSASYNC_W::new(self, 8)
     }
     #[doc = "Bits 12:16 - Channel 1 PRS Trigger Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel(&mut self) -> PRSSEL_W<CH1CTRL_SPEC, 12> {
-        PRSSEL_W::new(self)
+    pub fn prssel(&mut self) -> PRSSEL_W<CH1CTRL_SPEC> {
+        PRSSEL_W::new(self, 12)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -529,10 +533,10 @@ impl crate::RegisterSpec for CH1CTRL_SPEC {
 impl crate::Readable for CH1CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ch1ctrl::W`](W) writer structure"]
 impl crate::Writable for CH1CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CH1CTRL to value 0"]
 impl crate::Resettable for CH1CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

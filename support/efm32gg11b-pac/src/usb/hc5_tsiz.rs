@@ -5,11 +5,11 @@ pub type W = crate::W<HC5_TSIZ_SPEC>;
 #[doc = "Field `XFERSIZE` reader - Transfer Size"]
 pub type XFERSIZE_R = crate::FieldReader<u32>;
 #[doc = "Field `XFERSIZE` writer - Transfer Size"]
-pub type XFERSIZE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 19, O, u32>;
+pub type XFERSIZE_W<'a, REG> = crate::FieldWriter<'a, REG, 19, u32>;
 #[doc = "Field `PKTCNT` reader - Packet Count"]
 pub type PKTCNT_R = crate::FieldReader<u16>;
 #[doc = "Field `PKTCNT` writer - Packet Count"]
-pub type PKTCNT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 10, O, u16>;
+pub type PKTCNT_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 #[doc = "Field `PID` reader - The Application Programs This Field With the Type of"]
 pub type PID_R = crate::FieldReader<PID_A>;
 #[doc = "The Application Programs This Field With the Type of\n\nValue on reset: 0"]
@@ -37,7 +37,7 @@ impl crate::FieldSpec for PID_A {
 impl PID_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PID_A {
+    pub const fn variant(&self) -> PID_A {
         match self.bits {
             0 => PID_A::DATA0,
             1 => PID_A::DATA2,
@@ -68,8 +68,8 @@ impl PID_R {
     }
 }
 #[doc = "Field `PID` writer - The Application Programs This Field With the Type of"]
-pub type PID_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, PID_A>;
-impl<'a, REG, const O: u8> PID_W<'a, REG, O>
+pub type PID_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PID_A>;
+impl<'a, REG> PID_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -116,22 +116,26 @@ impl W {
     #[doc = "Bits 0:18 - Transfer Size"]
     #[inline(always)]
     #[must_use]
-    pub fn xfersize(&mut self) -> XFERSIZE_W<HC5_TSIZ_SPEC, 0> {
-        XFERSIZE_W::new(self)
+    pub fn xfersize(&mut self) -> XFERSIZE_W<HC5_TSIZ_SPEC> {
+        XFERSIZE_W::new(self, 0)
     }
     #[doc = "Bits 19:28 - Packet Count"]
     #[inline(always)]
     #[must_use]
-    pub fn pktcnt(&mut self) -> PKTCNT_W<HC5_TSIZ_SPEC, 19> {
-        PKTCNT_W::new(self)
+    pub fn pktcnt(&mut self) -> PKTCNT_W<HC5_TSIZ_SPEC> {
+        PKTCNT_W::new(self, 19)
     }
     #[doc = "Bits 29:30 - The Application Programs This Field With the Type of"]
     #[inline(always)]
     #[must_use]
-    pub fn pid(&mut self) -> PID_W<HC5_TSIZ_SPEC, 29> {
-        PID_W::new(self)
+    pub fn pid(&mut self) -> PID_W<HC5_TSIZ_SPEC> {
+        PID_W::new(self, 29)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -147,10 +151,10 @@ impl crate::RegisterSpec for HC5_TSIZ_SPEC {
 impl crate::Readable for HC5_TSIZ_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hc5_tsiz::W`](W) writer structure"]
 impl crate::Writable for HC5_TSIZ_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HC5_TSIZ to value 0"]
 impl crate::Resettable for HC5_TSIZ_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

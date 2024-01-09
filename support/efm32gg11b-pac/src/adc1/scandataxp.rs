@@ -25,5 +25,5 @@ impl crate::RegisterSpec for SCANDATAXP_SPEC {
 impl crate::Readable for SCANDATAXP_SPEC {}
 #[doc = "`reset()` method sets SCANDATAXP to value 0"]
 impl crate::Resettable for SCANDATAXP_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -5,7 +5,7 @@ pub type W = crate::W<CTRL_SPEC>;
 #[doc = "Field `EN` reader - LCD Enable"]
 pub type EN_R = crate::BitReader;
 #[doc = "Field `EN` writer - LCD Enable"]
-pub type EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `UDCTRL` reader - Update Data Control"]
 pub type UDCTRL_R = crate::FieldReader<UDCTRL_A>;
 #[doc = "Update Data Control\n\nValue on reset: 0"]
@@ -31,7 +31,7 @@ impl crate::FieldSpec for UDCTRL_A {
 impl UDCTRL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<UDCTRL_A> {
+    pub const fn variant(&self) -> Option<UDCTRL_A> {
         match self.bits {
             0 => Some(UDCTRL_A::REGULAR),
             1 => Some(UDCTRL_A::FCEVENT),
@@ -56,8 +56,8 @@ impl UDCTRL_R {
     }
 }
 #[doc = "Field `UDCTRL` writer - Update Data Control"]
-pub type UDCTRL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, UDCTRL_A>;
-impl<'a, REG, const O: u8> UDCTRL_W<'a, REG, O>
+pub type UDCTRL_W<'a, REG> = crate::FieldWriter<'a, REG, 2, UDCTRL_A>;
+impl<'a, REG> UDCTRL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -81,7 +81,7 @@ where
 #[doc = "Field `DSC` reader - Direct Segment Control"]
 pub type DSC_R = crate::BitReader;
 #[doc = "Field `DSC` writer - Direct Segment Control"]
-pub type DSC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DSC_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - LCD Enable"]
     #[inline(always)]
@@ -103,22 +103,26 @@ impl W {
     #[doc = "Bit 0 - LCD Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn en(&mut self) -> EN_W<CTRL_SPEC, 0> {
-        EN_W::new(self)
+    pub fn en(&mut self) -> EN_W<CTRL_SPEC> {
+        EN_W::new(self, 0)
     }
     #[doc = "Bits 1:2 - Update Data Control"]
     #[inline(always)]
     #[must_use]
-    pub fn udctrl(&mut self) -> UDCTRL_W<CTRL_SPEC, 1> {
-        UDCTRL_W::new(self)
+    pub fn udctrl(&mut self) -> UDCTRL_W<CTRL_SPEC> {
+        UDCTRL_W::new(self, 1)
     }
     #[doc = "Bit 23 - Direct Segment Control"]
     #[inline(always)]
     #[must_use]
-    pub fn dsc(&mut self) -> DSC_W<CTRL_SPEC, 23> {
-        DSC_W::new(self)
+    pub fn dsc(&mut self) -> DSC_W<CTRL_SPEC> {
+        DSC_W::new(self, 23)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -134,10 +138,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -29,7 +29,7 @@ impl crate::FieldSpec for PAGELEN_A {
 impl PAGELEN_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PAGELEN_A {
+    pub const fn variant(&self) -> PAGELEN_A {
         match self.bits {
             0 => PAGELEN_A::MEMBER4,
             1 => PAGELEN_A::MEMBER8,
@@ -60,8 +60,8 @@ impl PAGELEN_R {
     }
 }
 #[doc = "Field `PAGELEN` writer - Page Length"]
-pub type PAGELEN_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, PAGELEN_A>;
-impl<'a, REG, const O: u8> PAGELEN_W<'a, REG, O>
+pub type PAGELEN_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PAGELEN_A>;
+impl<'a, REG> PAGELEN_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -90,15 +90,15 @@ where
 #[doc = "Field `INCHIT` reader - Intrapage Hit Only on Incremental Addresses"]
 pub type INCHIT_R = crate::BitReader;
 #[doc = "Field `INCHIT` writer - Intrapage Hit Only on Incremental Addresses"]
-pub type INCHIT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INCHIT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RDPA` reader - Page Read Access Time"]
 pub type RDPA_R = crate::FieldReader;
 #[doc = "Field `RDPA` writer - Page Read Access Time"]
-pub type RDPA_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type RDPA_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `KEEPOPEN` reader - Maximum Page Open Time"]
 pub type KEEPOPEN_R = crate::FieldReader;
 #[doc = "Field `KEEPOPEN` writer - Maximum Page Open Time"]
-pub type KEEPOPEN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type KEEPOPEN_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 impl R {
     #[doc = "Bits 0:1 - Page Length"]
     #[inline(always)]
@@ -125,28 +125,32 @@ impl W {
     #[doc = "Bits 0:1 - Page Length"]
     #[inline(always)]
     #[must_use]
-    pub fn pagelen(&mut self) -> PAGELEN_W<PAGECTRL_SPEC, 0> {
-        PAGELEN_W::new(self)
+    pub fn pagelen(&mut self) -> PAGELEN_W<PAGECTRL_SPEC> {
+        PAGELEN_W::new(self, 0)
     }
     #[doc = "Bit 4 - Intrapage Hit Only on Incremental Addresses"]
     #[inline(always)]
     #[must_use]
-    pub fn inchit(&mut self) -> INCHIT_W<PAGECTRL_SPEC, 4> {
-        INCHIT_W::new(self)
+    pub fn inchit(&mut self) -> INCHIT_W<PAGECTRL_SPEC> {
+        INCHIT_W::new(self, 4)
     }
     #[doc = "Bits 8:11 - Page Read Access Time"]
     #[inline(always)]
     #[must_use]
-    pub fn rdpa(&mut self) -> RDPA_W<PAGECTRL_SPEC, 8> {
-        RDPA_W::new(self)
+    pub fn rdpa(&mut self) -> RDPA_W<PAGECTRL_SPEC> {
+        RDPA_W::new(self, 8)
     }
     #[doc = "Bits 20:26 - Maximum Page Open Time"]
     #[inline(always)]
     #[must_use]
-    pub fn keepopen(&mut self) -> KEEPOPEN_W<PAGECTRL_SPEC, 20> {
-        KEEPOPEN_W::new(self)
+    pub fn keepopen(&mut self) -> KEEPOPEN_W<PAGECTRL_SPEC> {
+        KEEPOPEN_W::new(self, 20)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -162,10 +166,10 @@ impl crate::RegisterSpec for PAGECTRL_SPEC {
 impl crate::Readable for PAGECTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`pagectrl::W`](W) writer structure"]
 impl crate::Writable for PAGECTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PAGECTRL to value 0x0f00"]
 impl crate::Resettable for PAGECTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0f00;
+    const RESET_VALUE: u32 = 0x0f00;
 }

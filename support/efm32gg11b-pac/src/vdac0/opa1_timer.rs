@@ -5,15 +5,15 @@ pub type W = crate::W<OPA1_TIMER_SPEC>;
 #[doc = "Field `STARTUPDLY` reader - OPAx Startup Delay Count Value"]
 pub type STARTUPDLY_R = crate::FieldReader;
 #[doc = "Field `STARTUPDLY` writer - OPAx Startup Delay Count Value"]
-pub type STARTUPDLY_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O>;
+pub type STARTUPDLY_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 #[doc = "Field `WARMUPTIME` reader - OPAx Warmup Time Count Value"]
 pub type WARMUPTIME_R = crate::FieldReader;
 #[doc = "Field `WARMUPTIME` writer - OPAx Warmup Time Count Value"]
-pub type WARMUPTIME_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type WARMUPTIME_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `SETTLETIME` reader - OPAx Output Settling Timeout Value"]
 pub type SETTLETIME_R = crate::FieldReader<u16>;
 #[doc = "Field `SETTLETIME` writer - OPAx Output Settling Timeout Value"]
-pub type SETTLETIME_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 10, O, u16>;
+pub type SETTLETIME_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 impl R {
     #[doc = "Bits 0:5 - OPAx Startup Delay Count Value"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:5 - OPAx Startup Delay Count Value"]
     #[inline(always)]
     #[must_use]
-    pub fn startupdly(&mut self) -> STARTUPDLY_W<OPA1_TIMER_SPEC, 0> {
-        STARTUPDLY_W::new(self)
+    pub fn startupdly(&mut self) -> STARTUPDLY_W<OPA1_TIMER_SPEC> {
+        STARTUPDLY_W::new(self, 0)
     }
     #[doc = "Bits 8:14 - OPAx Warmup Time Count Value"]
     #[inline(always)]
     #[must_use]
-    pub fn warmuptime(&mut self) -> WARMUPTIME_W<OPA1_TIMER_SPEC, 8> {
-        WARMUPTIME_W::new(self)
+    pub fn warmuptime(&mut self) -> WARMUPTIME_W<OPA1_TIMER_SPEC> {
+        WARMUPTIME_W::new(self, 8)
     }
     #[doc = "Bits 16:25 - OPAx Output Settling Timeout Value"]
     #[inline(always)]
     #[must_use]
-    pub fn settletime(&mut self) -> SETTLETIME_W<OPA1_TIMER_SPEC, 16> {
-        SETTLETIME_W::new(self)
+    pub fn settletime(&mut self) -> SETTLETIME_W<OPA1_TIMER_SPEC> {
+        SETTLETIME_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for OPA1_TIMER_SPEC {
 impl crate::Readable for OPA1_TIMER_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`opa1_timer::W`](W) writer structure"]
 impl crate::Writable for OPA1_TIMER_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OPA1_TIMER to value 0x0001_0700"]
 impl crate::Resettable for OPA1_TIMER_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0001_0700;
+    const RESET_VALUE: u32 = 0x0001_0700;
 }

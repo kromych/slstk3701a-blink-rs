@@ -5,7 +5,7 @@ pub type W = crate::W<SEGEN2_SPEC>;
 #[doc = "Field `SEGEN2` reader - Segment Enable (second Group)"]
 pub type SEGEN2_R = crate::FieldReader;
 #[doc = "Field `SEGEN2` writer - Segment Enable (second Group)"]
-pub type SEGEN2_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type SEGEN2_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Segment Enable (second Group)"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:7 - Segment Enable (second Group)"]
     #[inline(always)]
     #[must_use]
-    pub fn segen2(&mut self) -> SEGEN2_W<SEGEN2_SPEC, 0> {
-        SEGEN2_W::new(self)
+    pub fn segen2(&mut self) -> SEGEN2_W<SEGEN2_SPEC> {
+        SEGEN2_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for SEGEN2_SPEC {
 impl crate::Readable for SEGEN2_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`segen2::W`](W) writer structure"]
 impl crate::Writable for SEGEN2_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEGEN2 to value 0"]
 impl crate::Resettable for SEGEN2_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

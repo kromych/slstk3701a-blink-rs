@@ -5,31 +5,31 @@ pub type W = crate::W<WRITECOMPLETIONCTRL_SPEC>;
 #[doc = "Field `OPCODE` reader - Opcode"]
 pub type OPCODE_R = crate::FieldReader;
 #[doc = "Field `OPCODE` writer - Opcode"]
-pub type OPCODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type OPCODE_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `POLLINGBITINDEX` reader - Polling Bit Index"]
 pub type POLLINGBITINDEX_R = crate::FieldReader;
 #[doc = "Field `POLLINGBITINDEX` writer - Polling Bit Index"]
-pub type POLLINGBITINDEX_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type POLLINGBITINDEX_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `POLLINGPOLARITY` reader - Polling Polarity"]
 pub type POLLINGPOLARITY_R = crate::BitReader;
 #[doc = "Field `POLLINGPOLARITY` writer - Polling Polarity"]
-pub type POLLINGPOLARITY_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type POLLINGPOLARITY_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DISABLEPOLLING` reader - Disable Polling"]
 pub type DISABLEPOLLING_R = crate::BitReader;
 #[doc = "Field `DISABLEPOLLING` writer - Disable Polling"]
-pub type DISABLEPOLLING_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DISABLEPOLLING_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ENABLEPOLLINGEXP` reader - Enable Polling Expiration"]
 pub type ENABLEPOLLINGEXP_R = crate::BitReader;
 #[doc = "Field `ENABLEPOLLINGEXP` writer - Enable Polling Expiration"]
-pub type ENABLEPOLLINGEXP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ENABLEPOLLINGEXP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `POLLCOUNT` reader - Poll Count"]
 pub type POLLCOUNT_R = crate::FieldReader;
 #[doc = "Field `POLLCOUNT` writer - Poll Count"]
-pub type POLLCOUNT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type POLLCOUNT_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `POLLREPDELAY` reader - Poll Repetition Delay"]
 pub type POLLREPDELAY_R = crate::FieldReader;
 #[doc = "Field `POLLREPDELAY` writer - Poll Repetition Delay"]
-pub type POLLREPDELAY_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type POLLREPDELAY_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Opcode"]
     #[inline(always)]
@@ -71,46 +71,50 @@ impl W {
     #[doc = "Bits 0:7 - Opcode"]
     #[inline(always)]
     #[must_use]
-    pub fn opcode(&mut self) -> OPCODE_W<WRITECOMPLETIONCTRL_SPEC, 0> {
-        OPCODE_W::new(self)
+    pub fn opcode(&mut self) -> OPCODE_W<WRITECOMPLETIONCTRL_SPEC> {
+        OPCODE_W::new(self, 0)
     }
     #[doc = "Bits 8:10 - Polling Bit Index"]
     #[inline(always)]
     #[must_use]
-    pub fn pollingbitindex(&mut self) -> POLLINGBITINDEX_W<WRITECOMPLETIONCTRL_SPEC, 8> {
-        POLLINGBITINDEX_W::new(self)
+    pub fn pollingbitindex(&mut self) -> POLLINGBITINDEX_W<WRITECOMPLETIONCTRL_SPEC> {
+        POLLINGBITINDEX_W::new(self, 8)
     }
     #[doc = "Bit 13 - Polling Polarity"]
     #[inline(always)]
     #[must_use]
-    pub fn pollingpolarity(&mut self) -> POLLINGPOLARITY_W<WRITECOMPLETIONCTRL_SPEC, 13> {
-        POLLINGPOLARITY_W::new(self)
+    pub fn pollingpolarity(&mut self) -> POLLINGPOLARITY_W<WRITECOMPLETIONCTRL_SPEC> {
+        POLLINGPOLARITY_W::new(self, 13)
     }
     #[doc = "Bit 14 - Disable Polling"]
     #[inline(always)]
     #[must_use]
-    pub fn disablepolling(&mut self) -> DISABLEPOLLING_W<WRITECOMPLETIONCTRL_SPEC, 14> {
-        DISABLEPOLLING_W::new(self)
+    pub fn disablepolling(&mut self) -> DISABLEPOLLING_W<WRITECOMPLETIONCTRL_SPEC> {
+        DISABLEPOLLING_W::new(self, 14)
     }
     #[doc = "Bit 15 - Enable Polling Expiration"]
     #[inline(always)]
     #[must_use]
-    pub fn enablepollingexp(&mut self) -> ENABLEPOLLINGEXP_W<WRITECOMPLETIONCTRL_SPEC, 15> {
-        ENABLEPOLLINGEXP_W::new(self)
+    pub fn enablepollingexp(&mut self) -> ENABLEPOLLINGEXP_W<WRITECOMPLETIONCTRL_SPEC> {
+        ENABLEPOLLINGEXP_W::new(self, 15)
     }
     #[doc = "Bits 16:23 - Poll Count"]
     #[inline(always)]
     #[must_use]
-    pub fn pollcount(&mut self) -> POLLCOUNT_W<WRITECOMPLETIONCTRL_SPEC, 16> {
-        POLLCOUNT_W::new(self)
+    pub fn pollcount(&mut self) -> POLLCOUNT_W<WRITECOMPLETIONCTRL_SPEC> {
+        POLLCOUNT_W::new(self, 16)
     }
     #[doc = "Bits 24:31 - Poll Repetition Delay"]
     #[inline(always)]
     #[must_use]
-    pub fn pollrepdelay(&mut self) -> POLLREPDELAY_W<WRITECOMPLETIONCTRL_SPEC, 24> {
-        POLLREPDELAY_W::new(self)
+    pub fn pollrepdelay(&mut self) -> POLLREPDELAY_W<WRITECOMPLETIONCTRL_SPEC> {
+        POLLREPDELAY_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -126,10 +130,10 @@ impl crate::RegisterSpec for WRITECOMPLETIONCTRL_SPEC {
 impl crate::Readable for WRITECOMPLETIONCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`writecompletionctrl::W`](W) writer structure"]
 impl crate::Writable for WRITECOMPLETIONCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets WRITECOMPLETIONCTRL to value 0x0001_0005"]
 impl crate::Resettable for WRITECOMPLETIONCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0001_0005;
+    const RESET_VALUE: u32 = 0x0001_0005;
 }

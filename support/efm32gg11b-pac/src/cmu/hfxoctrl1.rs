@@ -37,7 +37,7 @@ impl crate::FieldSpec for PEAKDETTHR_A {
 impl PEAKDETTHR_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PEAKDETTHR_A {
+    pub const fn variant(&self) -> PEAKDETTHR_A {
         match self.bits {
             0 => PEAKDETTHR_A::THR0,
             1 => PEAKDETTHR_A::THR1,
@@ -92,8 +92,8 @@ impl PEAKDETTHR_R {
     }
 }
 #[doc = "Field `PEAKDETTHR` writer - Sets the Amplitude Detection Level (mV)"]
-pub type PEAKDETTHR_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, PEAKDETTHR_A>;
-impl<'a, REG, const O: u8> PEAKDETTHR_W<'a, REG, O>
+pub type PEAKDETTHR_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, PEAKDETTHR_A>;
+impl<'a, REG> PEAKDETTHR_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -150,10 +150,14 @@ impl W {
     #[doc = "Bits 12:14 - Sets the Amplitude Detection Level (mV)"]
     #[inline(always)]
     #[must_use]
-    pub fn peakdetthr(&mut self) -> PEAKDETTHR_W<HFXOCTRL1_SPEC, 12> {
-        PEAKDETTHR_W::new(self)
+    pub fn peakdetthr(&mut self) -> PEAKDETTHR_W<HFXOCTRL1_SPEC> {
+        PEAKDETTHR_W::new(self, 12)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -169,10 +173,10 @@ impl crate::RegisterSpec for HFXOCTRL1_SPEC {
 impl crate::Readable for HFXOCTRL1_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hfxoctrl1::W`](W) writer structure"]
 impl crate::Writable for HFXOCTRL1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFXOCTRL1 to value 0x2000"]
 impl crate::Resettable for HFXOCTRL1_SPEC {
-    const RESET_VALUE: Self::Ux = 0x2000;
+    const RESET_VALUE: u32 = 0x2000;
 }

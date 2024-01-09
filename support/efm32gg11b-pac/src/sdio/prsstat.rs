@@ -24,11 +24,13 @@ pub type CARDSTATESTABLE_R = crate::BitReader;
 pub type CARDDETPINLVL_R = crate::BitReader;
 #[doc = "Field `WRPROTSWPINLVL` reader - Write Protect Switch Pin Level"]
 pub type WRPROTSWPINLVL_R = crate::BitReader;
-#[doc = "Field `DAT3TO0SIGLVL` reader - DAT\\[3:0\\] Line Signal Level"]
+#[doc = "Field `DAT3TO0SIGLVL` reader - DAT\\[3:0\\]
+Line Signal Level"]
 pub type DAT3TO0SIGLVL_R = crate::FieldReader;
 #[doc = "Field `CMDSIGLVL` reader - Command Line Signal Level"]
 pub type CMDSIGLVL_R = crate::BitReader;
-#[doc = "Field `DAT7TO4SIGLVL` reader - DAT\\[7:4\\] Line Signal Level"]
+#[doc = "Field `DAT7TO4SIGLVL` reader - DAT\\[7:4\\]
+Line Signal Level"]
 pub type DAT7TO4SIGLVL_R = crate::FieldReader;
 impl R {
     #[doc = "Bit 0 - Command Inhibit (CMD)"]
@@ -91,7 +93,8 @@ impl R {
     pub fn wrprotswpinlvl(&self) -> WRPROTSWPINLVL_R {
         WRPROTSWPINLVL_R::new(((self.bits >> 19) & 1) != 0)
     }
-    #[doc = "Bits 20:23 - DAT\\[3:0\\] Line Signal Level"]
+    #[doc = "Bits 20:23 - DAT\\[3:0\\]
+Line Signal Level"]
     #[inline(always)]
     pub fn dat3to0siglvl(&self) -> DAT3TO0SIGLVL_R {
         DAT3TO0SIGLVL_R::new(((self.bits >> 20) & 0x0f) as u8)
@@ -101,7 +104,8 @@ impl R {
     pub fn cmdsiglvl(&self) -> CMDSIGLVL_R {
         CMDSIGLVL_R::new(((self.bits >> 24) & 1) != 0)
     }
-    #[doc = "Bits 25:28 - DAT\\[7:4\\] Line Signal Level"]
+    #[doc = "Bits 25:28 - DAT\\[7:4\\]
+Line Signal Level"]
     #[inline(always)]
     pub fn dat7to4siglvl(&self) -> DAT7TO4SIGLVL_R {
         DAT7TO4SIGLVL_R::new(((self.bits >> 25) & 0x0f) as u8)
@@ -116,5 +120,5 @@ impl crate::RegisterSpec for PRSSTAT_SPEC {
 impl crate::Readable for PRSSTAT_SPEC {}
 #[doc = "`reset()` method sets PRSSTAT to value 0"]
 impl crate::Resettable for PRSSTAT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

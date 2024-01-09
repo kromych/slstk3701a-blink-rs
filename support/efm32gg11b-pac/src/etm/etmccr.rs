@@ -35,7 +35,7 @@ impl crate::FieldSpec for EXTINPNUM_A {
 impl EXTINPNUM_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<EXTINPNUM_A> {
+    pub const fn variant(&self) -> Option<EXTINPNUM_A> {
         match self.bits {
             0 => Some(EXTINPNUM_A::ZERO),
             1 => Some(EXTINPNUM_A::ONE),
@@ -142,5 +142,5 @@ impl crate::RegisterSpec for ETMCCR_SPEC {
 impl crate::Readable for ETMCCR_SPEC {}
 #[doc = "`reset()` method sets ETMCCR to value 0x8c80_2000"]
 impl crate::Resettable for ETMCCR_SPEC {
-    const RESET_VALUE: Self::Ux = 0x8c80_2000;
+    const RESET_VALUE: u32 = 0x8c80_2000;
 }

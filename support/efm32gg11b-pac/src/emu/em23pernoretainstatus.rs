@@ -186,5 +186,5 @@ impl crate::RegisterSpec for EM23PERNORETAINSTATUS_SPEC {
 impl crate::Readable for EM23PERNORETAINSTATUS_SPEC {}
 #[doc = "`reset()` method sets EM23PERNORETAINSTATUS to value 0"]
 impl crate::Resettable for EM23PERNORETAINSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

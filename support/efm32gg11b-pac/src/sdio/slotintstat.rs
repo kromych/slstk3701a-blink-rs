@@ -32,5 +32,5 @@ impl crate::RegisterSpec for SLOTINTSTAT_SPEC {
 impl crate::Readable for SLOTINTSTAT_SPEC {}
 #[doc = "`reset()` method sets SLOTINTSTAT to value 0x1002_0000"]
 impl crate::Resettable for SLOTINTSTAT_SPEC {
-    const RESET_VALUE: Self::Ux = 0x1002_0000;
+    const RESET_VALUE: u32 = 0x1002_0000;
 }

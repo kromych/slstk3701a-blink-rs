@@ -5,27 +5,27 @@ pub type W = crate::W<RDTIMING_SPEC>;
 #[doc = "Field `RDSETUP` reader - Read Setup Time"]
 pub type RDSETUP_R = crate::FieldReader;
 #[doc = "Field `RDSETUP` writer - Read Setup Time"]
-pub type RDSETUP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type RDSETUP_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `RDSTRB` reader - Read Strobe Time"]
 pub type RDSTRB_R = crate::FieldReader;
 #[doc = "Field `RDSTRB` writer - Read Strobe Time"]
-pub type RDSTRB_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O>;
+pub type RDSTRB_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `RDHOLD` reader - Read Hold Time"]
 pub type RDHOLD_R = crate::FieldReader;
 #[doc = "Field `RDHOLD` writer - Read Hold Time"]
-pub type RDHOLD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type RDHOLD_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `HALFRE` reader - Half Cycle REn Strobe Duration Enable"]
 pub type HALFRE_R = crate::BitReader;
 #[doc = "Field `HALFRE` writer - Half Cycle REn Strobe Duration Enable"]
-pub type HALFRE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HALFRE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PREFETCH` reader - Prefetch Enable"]
 pub type PREFETCH_R = crate::BitReader;
 #[doc = "Field `PREFETCH` writer - Prefetch Enable"]
-pub type PREFETCH_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PREFETCH_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PAGEMODE` reader - Page Mode Access Enable"]
 pub type PAGEMODE_R = crate::BitReader;
 #[doc = "Field `PAGEMODE` writer - Page Mode Access Enable"]
-pub type PAGEMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PAGEMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:2 - Read Setup Time"]
     #[inline(always)]
@@ -62,40 +62,44 @@ impl W {
     #[doc = "Bits 0:2 - Read Setup Time"]
     #[inline(always)]
     #[must_use]
-    pub fn rdsetup(&mut self) -> RDSETUP_W<RDTIMING_SPEC, 0> {
-        RDSETUP_W::new(self)
+    pub fn rdsetup(&mut self) -> RDSETUP_W<RDTIMING_SPEC> {
+        RDSETUP_W::new(self, 0)
     }
     #[doc = "Bits 8:14 - Read Strobe Time"]
     #[inline(always)]
     #[must_use]
-    pub fn rdstrb(&mut self) -> RDSTRB_W<RDTIMING_SPEC, 8> {
-        RDSTRB_W::new(self)
+    pub fn rdstrb(&mut self) -> RDSTRB_W<RDTIMING_SPEC> {
+        RDSTRB_W::new(self, 8)
     }
     #[doc = "Bits 16:18 - Read Hold Time"]
     #[inline(always)]
     #[must_use]
-    pub fn rdhold(&mut self) -> RDHOLD_W<RDTIMING_SPEC, 16> {
-        RDHOLD_W::new(self)
+    pub fn rdhold(&mut self) -> RDHOLD_W<RDTIMING_SPEC> {
+        RDHOLD_W::new(self, 16)
     }
     #[doc = "Bit 28 - Half Cycle REn Strobe Duration Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn halfre(&mut self) -> HALFRE_W<RDTIMING_SPEC, 28> {
-        HALFRE_W::new(self)
+    pub fn halfre(&mut self) -> HALFRE_W<RDTIMING_SPEC> {
+        HALFRE_W::new(self, 28)
     }
     #[doc = "Bit 29 - Prefetch Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn prefetch(&mut self) -> PREFETCH_W<RDTIMING_SPEC, 29> {
-        PREFETCH_W::new(self)
+    pub fn prefetch(&mut self) -> PREFETCH_W<RDTIMING_SPEC> {
+        PREFETCH_W::new(self, 29)
     }
     #[doc = "Bit 30 - Page Mode Access Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn pagemode(&mut self) -> PAGEMODE_W<RDTIMING_SPEC, 30> {
-        PAGEMODE_W::new(self)
+    pub fn pagemode(&mut self) -> PAGEMODE_W<RDTIMING_SPEC> {
+        PAGEMODE_W::new(self, 30)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -111,10 +115,10 @@ impl crate::RegisterSpec for RDTIMING_SPEC {
 impl crate::Readable for RDTIMING_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`rdtiming::W`](W) writer structure"]
 impl crate::Writable for RDTIMING_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets RDTIMING to value 0x0007_7f07"]
 impl crate::Resettable for RDTIMING_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0007_7f07;
+    const RESET_VALUE: u32 = 0x0007_7f07;
 }

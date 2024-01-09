@@ -32,5 +32,5 @@ impl crate::RegisterSpec for ETMPIDR2_SPEC {
 impl crate::Readable for ETMPIDR2_SPEC {}
 #[doc = "`reset()` method sets ETMPIDR2 to value 0x0b"]
 impl crate::Resettable for ETMPIDR2_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0b;
+    const RESET_VALUE: u32 = 0x0b;
 }

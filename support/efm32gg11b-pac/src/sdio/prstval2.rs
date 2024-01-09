@@ -31,7 +31,7 @@ impl crate::FieldSpec for HSPDRVSTVAL_A {
 impl HSPDRVSTVAL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> HSPDRVSTVAL_A {
+    pub const fn variant(&self) -> HSPDRVSTVAL_A {
         match self.bits {
             0 => HSPDRVSTVAL_A::TYPEB,
             1 => HSPDRVSTVAL_A::TYPEA,
@@ -92,7 +92,7 @@ impl crate::FieldSpec for SDR12DRVSTVAL_A {
 impl SDR12DRVSTVAL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> SDR12DRVSTVAL_A {
+    pub const fn variant(&self) -> SDR12DRVSTVAL_A {
         match self.bits {
             0 => SDR12DRVSTVAL_A::TYPEB,
             1 => SDR12DRVSTVAL_A::TYPEA,
@@ -163,5 +163,5 @@ impl crate::RegisterSpec for PRSTVAL2_SPEC {
 impl crate::Readable for PRSTVAL2_SPEC {}
 #[doc = "`reset()` method sets PRSTVAL2 to value 0"]
 impl crate::Resettable for PRSTVAL2_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

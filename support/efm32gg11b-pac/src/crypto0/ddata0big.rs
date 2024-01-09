@@ -5,7 +5,7 @@ pub type W = crate::W<DDATA0BIG_SPEC>;
 #[doc = "Field `DDATA0BIG` reader - Double Data 0 Big Endian Access"]
 pub type DDATA0BIG_R = crate::FieldReader<u32>;
 #[doc = "Field `DDATA0BIG` writer - Double Data 0 Big Endian Access"]
-pub type DDATA0BIG_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 32, O, u32>;
+pub type DDATA0BIG_W<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Double Data 0 Big Endian Access"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:31 - Double Data 0 Big Endian Access"]
     #[inline(always)]
     #[must_use]
-    pub fn ddata0big(&mut self) -> DDATA0BIG_W<DDATA0BIG_SPEC, 0> {
-        DDATA0BIG_W::new(self)
+    pub fn ddata0big(&mut self) -> DDATA0BIG_W<DDATA0BIG_SPEC> {
+        DDATA0BIG_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for DDATA0BIG_SPEC {
 impl crate::Readable for DDATA0BIG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ddata0big::W`](W) writer structure"]
 impl crate::Writable for DDATA0BIG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DDATA0BIG to value 0"]
 impl crate::Resettable for DDATA0BIG_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

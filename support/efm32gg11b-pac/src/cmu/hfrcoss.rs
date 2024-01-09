@@ -5,11 +5,11 @@ pub type W = crate::W<HFRCOSS_SPEC>;
 #[doc = "Field `SSAMP` reader - Spread Spectrum Amplitude"]
 pub type SSAMP_R = crate::FieldReader;
 #[doc = "Field `SSAMP` writer - Spread Spectrum Amplitude"]
-pub type SSAMP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type SSAMP_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `SSINV` reader - Spread Spectrum Update Interval"]
 pub type SSINV_R = crate::FieldReader;
 #[doc = "Field `SSINV` writer - Spread Spectrum Update Interval"]
-pub type SSINV_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O>;
+pub type SSINV_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
     #[doc = "Bits 0:2 - Spread Spectrum Amplitude"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:2 - Spread Spectrum Amplitude"]
     #[inline(always)]
     #[must_use]
-    pub fn ssamp(&mut self) -> SSAMP_W<HFRCOSS_SPEC, 0> {
-        SSAMP_W::new(self)
+    pub fn ssamp(&mut self) -> SSAMP_W<HFRCOSS_SPEC> {
+        SSAMP_W::new(self, 0)
     }
     #[doc = "Bits 8:12 - Spread Spectrum Update Interval"]
     #[inline(always)]
     #[must_use]
-    pub fn ssinv(&mut self) -> SSINV_W<HFRCOSS_SPEC, 8> {
-        SSINV_W::new(self)
+    pub fn ssinv(&mut self) -> SSINV_W<HFRCOSS_SPEC> {
+        SSINV_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for HFRCOSS_SPEC {
 impl crate::Readable for HFRCOSS_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hfrcoss::W`](W) writer structure"]
 impl crate::Writable for HFRCOSS_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFRCOSS to value 0"]
 impl crate::Resettable for HFRCOSS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

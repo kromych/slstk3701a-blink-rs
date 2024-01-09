@@ -5,15 +5,15 @@ pub type W = crate::W<BIASCTRL_SPEC>;
 #[doc = "Field `SPEED` reader - SPEED Adjustment"]
 pub type SPEED_R = crate::FieldReader;
 #[doc = "Field `SPEED` writer - SPEED Adjustment"]
-pub type SPEED_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type SPEED_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `BUFDRV` reader - Buffer Drive Strength"]
 pub type BUFDRV_R = crate::FieldReader;
 #[doc = "Field `BUFDRV` writer - Buffer Drive Strength"]
-pub type BUFDRV_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type BUFDRV_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `BUFBIAS` reader - Buffer Bias Setting"]
 pub type BUFBIAS_R = crate::FieldReader;
 #[doc = "Field `BUFBIAS` writer - Buffer Bias Setting"]
-pub type BUFBIAS_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type BUFBIAS_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 impl R {
     #[doc = "Bits 0:2 - SPEED Adjustment"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:2 - SPEED Adjustment"]
     #[inline(always)]
     #[must_use]
-    pub fn speed(&mut self) -> SPEED_W<BIASCTRL_SPEC, 0> {
-        SPEED_W::new(self)
+    pub fn speed(&mut self) -> SPEED_W<BIASCTRL_SPEC> {
+        SPEED_W::new(self, 0)
     }
     #[doc = "Bits 4:7 - Buffer Drive Strength"]
     #[inline(always)]
     #[must_use]
-    pub fn bufdrv(&mut self) -> BUFDRV_W<BIASCTRL_SPEC, 4> {
-        BUFDRV_W::new(self)
+    pub fn bufdrv(&mut self) -> BUFDRV_W<BIASCTRL_SPEC> {
+        BUFDRV_W::new(self, 4)
     }
     #[doc = "Bits 10:12 - Buffer Bias Setting"]
     #[inline(always)]
     #[must_use]
-    pub fn bufbias(&mut self) -> BUFBIAS_W<BIASCTRL_SPEC, 10> {
-        BUFBIAS_W::new(self)
+    pub fn bufbias(&mut self) -> BUFBIAS_W<BIASCTRL_SPEC> {
+        BUFBIAS_W::new(self, 10)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for BIASCTRL_SPEC {
 impl crate::Readable for BIASCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`biasctrl::W`](W) writer structure"]
 impl crate::Writable for BIASCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets BIASCTRL to value 0"]
 impl crate::Resettable for BIASCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

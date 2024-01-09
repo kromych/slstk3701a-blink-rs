@@ -23,7 +23,7 @@ impl crate::FieldSpec for TXRQSTOUT_A {
 impl TXRQSTOUT_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TXRQSTOUT_A> {
+    pub const fn variant(&self) -> Option<TXRQSTOUT_A> {
         match self.bits {
             0 => Some(TXRQSTOUT_A::FALSE),
             1 => Some(TXRQSTOUT_A::TRUE),
@@ -57,5 +57,5 @@ impl crate::RegisterSpec for TRANSREQ_SPEC {
 impl crate::Readable for TRANSREQ_SPEC {}
 #[doc = "`reset()` method sets TRANSREQ to value 0"]
 impl crate::Resettable for TRANSREQ_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

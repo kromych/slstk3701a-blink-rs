@@ -69,7 +69,7 @@ impl crate::FieldSpec for PRSSTARTSEL_A {
 impl PRSSTARTSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSTARTSEL_A> {
+    pub const fn variant(&self) -> Option<PRSSTARTSEL_A> {
         match self.bits {
             0 => Some(PRSSTARTSEL_A::PRSCH0),
             1 => Some(PRSSTARTSEL_A::PRSCH1),
@@ -220,8 +220,8 @@ impl PRSSTARTSEL_R {
     }
 }
 #[doc = "Field `PRSSTARTSEL` writer - PRS Start Select"]
-pub type PRSSTARTSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSTARTSEL_A>;
-impl<'a, REG, const O: u8> PRSSTARTSEL_W<'a, REG, O>
+pub type PRSSTARTSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSTARTSEL_A>;
+impl<'a, REG> PRSSTARTSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -414,7 +414,7 @@ impl crate::FieldSpec for PRSSTOPSEL_A {
 impl PRSSTOPSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSTOPSEL_A> {
+    pub const fn variant(&self) -> Option<PRSSTOPSEL_A> {
         match self.bits {
             0 => Some(PRSSTOPSEL_A::PRSCH0),
             1 => Some(PRSSTOPSEL_A::PRSCH1),
@@ -565,8 +565,8 @@ impl PRSSTOPSEL_R {
     }
 }
 #[doc = "Field `PRSSTOPSEL` writer - PRS Stop Select"]
-pub type PRSSTOPSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSTOPSEL_A>;
-impl<'a, REG, const O: u8> PRSSTOPSEL_W<'a, REG, O>
+pub type PRSSTOPSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSTOPSEL_A>;
+impl<'a, REG> PRSSTOPSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -759,7 +759,7 @@ impl crate::FieldSpec for PRSCLEARSEL_A {
 impl PRSCLEARSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSCLEARSEL_A> {
+    pub const fn variant(&self) -> Option<PRSCLEARSEL_A> {
         match self.bits {
             0 => Some(PRSCLEARSEL_A::PRSCH0),
             1 => Some(PRSCLEARSEL_A::PRSCH1),
@@ -910,8 +910,8 @@ impl PRSCLEARSEL_R {
     }
 }
 #[doc = "Field `PRSCLEARSEL` writer - PRS Clear Select"]
-pub type PRSCLEARSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSCLEARSEL_A>;
-impl<'a, REG, const O: u8> PRSCLEARSEL_W<'a, REG, O>
+pub type PRSCLEARSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSCLEARSEL_A>;
+impl<'a, REG> PRSCLEARSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1064,7 +1064,7 @@ impl crate::FieldSpec for PRSSTARTMODE_A {
 impl PRSSTARTMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PRSSTARTMODE_A {
+    pub const fn variant(&self) -> PRSSTARTMODE_A {
         match self.bits {
             0 => PRSSTARTMODE_A::NONE,
             1 => PRSSTARTMODE_A::RISING,
@@ -1095,9 +1095,8 @@ impl PRSSTARTMODE_R {
     }
 }
 #[doc = "Field `PRSSTARTMODE` writer - PRS Start Mode"]
-pub type PRSSTARTMODE_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, PRSSTARTMODE_A>;
-impl<'a, REG, const O: u8> PRSSTARTMODE_W<'a, REG, O>
+pub type PRSSTARTMODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PRSSTARTMODE_A>;
+impl<'a, REG> PRSSTARTMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1150,7 +1149,7 @@ impl crate::FieldSpec for PRSSTOPMODE_A {
 impl PRSSTOPMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PRSSTOPMODE_A {
+    pub const fn variant(&self) -> PRSSTOPMODE_A {
         match self.bits {
             0 => PRSSTOPMODE_A::NONE,
             1 => PRSSTOPMODE_A::RISING,
@@ -1181,8 +1180,8 @@ impl PRSSTOPMODE_R {
     }
 }
 #[doc = "Field `PRSSTOPMODE` writer - PRS Stop Mode"]
-pub type PRSSTOPMODE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, PRSSTOPMODE_A>;
-impl<'a, REG, const O: u8> PRSSTOPMODE_W<'a, REG, O>
+pub type PRSSTOPMODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PRSSTOPMODE_A>;
+impl<'a, REG> PRSSTOPMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1235,7 +1234,7 @@ impl crate::FieldSpec for PRSCLEARMODE_A {
 impl PRSCLEARMODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PRSCLEARMODE_A {
+    pub const fn variant(&self) -> PRSCLEARMODE_A {
         match self.bits {
             0 => PRSCLEARMODE_A::NONE,
             1 => PRSCLEARMODE_A::RISING,
@@ -1266,9 +1265,8 @@ impl PRSCLEARMODE_R {
     }
 }
 #[doc = "Field `PRSCLEARMODE` writer - PRS Clear Mode"]
-pub type PRSCLEARMODE_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, PRSCLEARMODE_A>;
-impl<'a, REG, const O: u8> PRSCLEARMODE_W<'a, REG, O>
+pub type PRSCLEARMODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PRSCLEARMODE_A>;
+impl<'a, REG> PRSCLEARMODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1330,40 +1328,44 @@ impl W {
     #[doc = "Bits 0:4 - PRS Start Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prsstartsel(&mut self) -> PRSSTARTSEL_W<PRSSEL_SPEC, 0> {
-        PRSSTARTSEL_W::new(self)
+    pub fn prsstartsel(&mut self) -> PRSSTARTSEL_W<PRSSEL_SPEC> {
+        PRSSTARTSEL_W::new(self, 0)
     }
     #[doc = "Bits 6:10 - PRS Stop Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prsstopsel(&mut self) -> PRSSTOPSEL_W<PRSSEL_SPEC, 6> {
-        PRSSTOPSEL_W::new(self)
+    pub fn prsstopsel(&mut self) -> PRSSTOPSEL_W<PRSSEL_SPEC> {
+        PRSSTOPSEL_W::new(self, 6)
     }
     #[doc = "Bits 12:16 - PRS Clear Select"]
     #[inline(always)]
     #[must_use]
-    pub fn prsclearsel(&mut self) -> PRSCLEARSEL_W<PRSSEL_SPEC, 12> {
-        PRSCLEARSEL_W::new(self)
+    pub fn prsclearsel(&mut self) -> PRSCLEARSEL_W<PRSSEL_SPEC> {
+        PRSCLEARSEL_W::new(self, 12)
     }
     #[doc = "Bits 18:19 - PRS Start Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn prsstartmode(&mut self) -> PRSSTARTMODE_W<PRSSEL_SPEC, 18> {
-        PRSSTARTMODE_W::new(self)
+    pub fn prsstartmode(&mut self) -> PRSSTARTMODE_W<PRSSEL_SPEC> {
+        PRSSTARTMODE_W::new(self, 18)
     }
     #[doc = "Bits 22:23 - PRS Stop Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn prsstopmode(&mut self) -> PRSSTOPMODE_W<PRSSEL_SPEC, 22> {
-        PRSSTOPMODE_W::new(self)
+    pub fn prsstopmode(&mut self) -> PRSSTOPMODE_W<PRSSEL_SPEC> {
+        PRSSTOPMODE_W::new(self, 22)
     }
     #[doc = "Bits 26:27 - PRS Clear Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn prsclearmode(&mut self) -> PRSCLEARMODE_W<PRSSEL_SPEC, 26> {
-        PRSCLEARMODE_W::new(self)
+    pub fn prsclearmode(&mut self) -> PRSCLEARMODE_W<PRSSEL_SPEC> {
+        PRSCLEARMODE_W::new(self, 26)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -1379,10 +1381,10 @@ impl crate::RegisterSpec for PRSSEL_SPEC {
 impl crate::Readable for PRSSEL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`prssel::W`](W) writer structure"]
 impl crate::Writable for PRSSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PRSSEL to value 0"]
 impl crate::Resettable for PRSSEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

@@ -5,19 +5,19 @@ pub type W = crate::W<CTRL_SPEC>;
 #[doc = "Field `DIFF` reader - Differential Mode"]
 pub type DIFF_R = crate::BitReader;
 #[doc = "Field `DIFF` writer - Differential Mode"]
-pub type DIFF_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DIFF_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SINEMODE` reader - Sine Mode"]
 pub type SINEMODE_R = crate::BitReader;
 #[doc = "Field `SINEMODE` writer - Sine Mode"]
-pub type SINEMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SINEMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OUTENPRS` reader - PRS Controlled Output Enable"]
 pub type OUTENPRS_R = crate::BitReader;
 #[doc = "Field `OUTENPRS` writer - PRS Controlled Output Enable"]
-pub type OUTENPRS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type OUTENPRS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CH0PRESCRST` reader - Channel 0 Start Reset Prescaler"]
 pub type CH0PRESCRST_R = crate::BitReader;
 #[doc = "Field `CH0PRESCRST` writer - Channel 0 Start Reset Prescaler"]
-pub type CH0PRESCRST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CH0PRESCRST_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `REFSEL` reader - Reference Selection"]
 pub type REFSEL_R = crate::FieldReader<REFSEL_A>;
 #[doc = "Reference Selection\n\nValue on reset: 0"]
@@ -49,7 +49,7 @@ impl crate::FieldSpec for REFSEL_A {
 impl REFSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<REFSEL_A> {
+    pub const fn variant(&self) -> Option<REFSEL_A> {
         match self.bits {
             0 => Some(REFSEL_A::_1V25LN),
             1 => Some(REFSEL_A::_2V5LN),
@@ -92,8 +92,8 @@ impl REFSEL_R {
     }
 }
 #[doc = "Field `REFSEL` writer - Reference Selection"]
-pub type REFSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, REFSEL_A>;
-impl<'a, REG, const O: u8> REFSEL_W<'a, REG, O>
+pub type REFSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 3, REFSEL_A>;
+impl<'a, REG> REFSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -150,7 +150,7 @@ impl crate::FieldSpec for PRESC_A {
 impl PRESC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRESC_A> {
+    pub const fn variant(&self) -> Option<PRESC_A> {
         match self.bits {
             0 => Some(PRESC_A::NODIVISION),
             _ => None,
@@ -163,8 +163,8 @@ impl PRESC_R {
     }
 }
 #[doc = "Field `PRESC` writer - Prescaler Setting for DAC Clock"]
-pub type PRESC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O, PRESC_A>;
-impl<'a, REG, const O: u8> PRESC_W<'a, REG, O>
+pub type PRESC_W<'a, REG> = crate::FieldWriter<'a, REG, 7, PRESC_A>;
+impl<'a, REG> PRESC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -202,7 +202,7 @@ impl crate::FieldSpec for REFRESHPERIOD_A {
 impl REFRESHPERIOD_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> REFRESHPERIOD_A {
+    pub const fn variant(&self) -> REFRESHPERIOD_A {
         match self.bits {
             0 => REFRESHPERIOD_A::_8CYCLES,
             1 => REFRESHPERIOD_A::_16CYCLES,
@@ -233,9 +233,8 @@ impl REFRESHPERIOD_R {
     }
 }
 #[doc = "Field `REFRESHPERIOD` writer - Refresh Period"]
-pub type REFRESHPERIOD_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, REFRESHPERIOD_A>;
-impl<'a, REG, const O: u8> REFRESHPERIOD_W<'a, REG, O>
+pub type REFRESHPERIOD_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, REFRESHPERIOD_A>;
+impl<'a, REG> REFRESHPERIOD_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -264,11 +263,11 @@ where
 #[doc = "Field `WARMUPMODE` reader - Warm-up Mode"]
 pub type WARMUPMODE_R = crate::BitReader;
 #[doc = "Field `WARMUPMODE` writer - Warm-up Mode"]
-pub type WARMUPMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type WARMUPMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DACCLKMODE` reader - Clock Mode"]
 pub type DACCLKMODE_R = crate::BitReader;
 #[doc = "Field `DACCLKMODE` writer - Clock Mode"]
-pub type DACCLKMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DACCLKMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Differential Mode"]
     #[inline(always)]
@@ -320,58 +319,62 @@ impl W {
     #[doc = "Bit 0 - Differential Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn diff(&mut self) -> DIFF_W<CTRL_SPEC, 0> {
-        DIFF_W::new(self)
+    pub fn diff(&mut self) -> DIFF_W<CTRL_SPEC> {
+        DIFF_W::new(self, 0)
     }
     #[doc = "Bit 4 - Sine Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn sinemode(&mut self) -> SINEMODE_W<CTRL_SPEC, 4> {
-        SINEMODE_W::new(self)
+    pub fn sinemode(&mut self) -> SINEMODE_W<CTRL_SPEC> {
+        SINEMODE_W::new(self, 4)
     }
     #[doc = "Bit 5 - PRS Controlled Output Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn outenprs(&mut self) -> OUTENPRS_W<CTRL_SPEC, 5> {
-        OUTENPRS_W::new(self)
+    pub fn outenprs(&mut self) -> OUTENPRS_W<CTRL_SPEC> {
+        OUTENPRS_W::new(self, 5)
     }
     #[doc = "Bit 6 - Channel 0 Start Reset Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn ch0prescrst(&mut self) -> CH0PRESCRST_W<CTRL_SPEC, 6> {
-        CH0PRESCRST_W::new(self)
+    pub fn ch0prescrst(&mut self) -> CH0PRESCRST_W<CTRL_SPEC> {
+        CH0PRESCRST_W::new(self, 6)
     }
     #[doc = "Bits 8:10 - Reference Selection"]
     #[inline(always)]
     #[must_use]
-    pub fn refsel(&mut self) -> REFSEL_W<CTRL_SPEC, 8> {
-        REFSEL_W::new(self)
+    pub fn refsel(&mut self) -> REFSEL_W<CTRL_SPEC> {
+        REFSEL_W::new(self, 8)
     }
     #[doc = "Bits 16:22 - Prescaler Setting for DAC Clock"]
     #[inline(always)]
     #[must_use]
-    pub fn presc(&mut self) -> PRESC_W<CTRL_SPEC, 16> {
-        PRESC_W::new(self)
+    pub fn presc(&mut self) -> PRESC_W<CTRL_SPEC> {
+        PRESC_W::new(self, 16)
     }
     #[doc = "Bits 24:25 - Refresh Period"]
     #[inline(always)]
     #[must_use]
-    pub fn refreshperiod(&mut self) -> REFRESHPERIOD_W<CTRL_SPEC, 24> {
-        REFRESHPERIOD_W::new(self)
+    pub fn refreshperiod(&mut self) -> REFRESHPERIOD_W<CTRL_SPEC> {
+        REFRESHPERIOD_W::new(self, 24)
     }
     #[doc = "Bit 28 - Warm-up Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn warmupmode(&mut self) -> WARMUPMODE_W<CTRL_SPEC, 28> {
-        WARMUPMODE_W::new(self)
+    pub fn warmupmode(&mut self) -> WARMUPMODE_W<CTRL_SPEC> {
+        WARMUPMODE_W::new(self, 28)
     }
     #[doc = "Bit 31 - Clock Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn dacclkmode(&mut self) -> DACCLKMODE_W<CTRL_SPEC, 31> {
-        DACCLKMODE_W::new(self)
+    pub fn dacclkmode(&mut self) -> DACCLKMODE_W<CTRL_SPEC> {
+        DACCLKMODE_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -387,10 +390,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

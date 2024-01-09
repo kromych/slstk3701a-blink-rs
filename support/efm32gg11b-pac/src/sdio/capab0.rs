@@ -53,7 +53,7 @@ impl crate::FieldSpec for IFSLOTTYPE_A {
 impl IFSLOTTYPE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<IFSLOTTYPE_A> {
+    pub const fn variant(&self) -> Option<IFSLOTTYPE_A> {
         match self.bits {
             0 => Some(IFSLOTTYPE_A::REMOVABLE),
             1 => Some(IFSLOTTYPE_A::EMBEDDED),
@@ -163,5 +163,5 @@ impl crate::RegisterSpec for CAPAB0_SPEC {
 impl crate::Readable for CAPAB0_SPEC {}
 #[doc = "`reset()` method sets CAPAB0 to value 0"]
 impl crate::Resettable for CAPAB0_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

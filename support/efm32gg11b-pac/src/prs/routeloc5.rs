@@ -27,7 +27,7 @@ impl crate::FieldSpec for CH20LOC_A {
 impl CH20LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CH20LOC_A> {
+    pub const fn variant(&self) -> Option<CH20LOC_A> {
         match self.bits {
             0 => Some(CH20LOC_A::LOC0),
             1 => Some(CH20LOC_A::LOC1),
@@ -52,8 +52,8 @@ impl CH20LOC_R {
     }
 }
 #[doc = "Field `CH20LOC` writer - I/O Location"]
-pub type CH20LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CH20LOC_A>;
-impl<'a, REG, const O: u8> CH20LOC_W<'a, REG, O>
+pub type CH20LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CH20LOC_A>;
+impl<'a, REG> CH20LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -99,7 +99,7 @@ impl crate::FieldSpec for CH21LOC_A {
 impl CH21LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CH21LOC_A> {
+    pub const fn variant(&self) -> Option<CH21LOC_A> {
         match self.bits {
             0 => Some(CH21LOC_A::LOC0),
             1 => Some(CH21LOC_A::LOC1),
@@ -124,8 +124,8 @@ impl CH21LOC_R {
     }
 }
 #[doc = "Field `CH21LOC` writer - I/O Location"]
-pub type CH21LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CH21LOC_A>;
-impl<'a, REG, const O: u8> CH21LOC_W<'a, REG, O>
+pub type CH21LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CH21LOC_A>;
+impl<'a, REG> CH21LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -171,7 +171,7 @@ impl crate::FieldSpec for CH22LOC_A {
 impl CH22LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CH22LOC_A> {
+    pub const fn variant(&self) -> Option<CH22LOC_A> {
         match self.bits {
             0 => Some(CH22LOC_A::LOC0),
             1 => Some(CH22LOC_A::LOC1),
@@ -196,8 +196,8 @@ impl CH22LOC_R {
     }
 }
 #[doc = "Field `CH22LOC` writer - I/O Location"]
-pub type CH22LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CH22LOC_A>;
-impl<'a, REG, const O: u8> CH22LOC_W<'a, REG, O>
+pub type CH22LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CH22LOC_A>;
+impl<'a, REG> CH22LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -243,7 +243,7 @@ impl crate::FieldSpec for CH23LOC_A {
 impl CH23LOC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CH23LOC_A> {
+    pub const fn variant(&self) -> Option<CH23LOC_A> {
         match self.bits {
             0 => Some(CH23LOC_A::LOC0),
             1 => Some(CH23LOC_A::LOC1),
@@ -268,8 +268,8 @@ impl CH23LOC_R {
     }
 }
 #[doc = "Field `CH23LOC` writer - I/O Location"]
-pub type CH23LOC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O, CH23LOC_A>;
-impl<'a, REG, const O: u8> CH23LOC_W<'a, REG, O>
+pub type CH23LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CH23LOC_A>;
+impl<'a, REG> CH23LOC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -316,28 +316,32 @@ impl W {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn ch20loc(&mut self) -> CH20LOC_W<ROUTELOC5_SPEC, 0> {
-        CH20LOC_W::new(self)
+    pub fn ch20loc(&mut self) -> CH20LOC_W<ROUTELOC5_SPEC> {
+        CH20LOC_W::new(self, 0)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn ch21loc(&mut self) -> CH21LOC_W<ROUTELOC5_SPEC, 8> {
-        CH21LOC_W::new(self)
+    pub fn ch21loc(&mut self) -> CH21LOC_W<ROUTELOC5_SPEC> {
+        CH21LOC_W::new(self, 8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn ch22loc(&mut self) -> CH22LOC_W<ROUTELOC5_SPEC, 16> {
-        CH22LOC_W::new(self)
+    pub fn ch22loc(&mut self) -> CH22LOC_W<ROUTELOC5_SPEC> {
+        CH22LOC_W::new(self, 16)
     }
     #[doc = "Bits 24:29 - I/O Location"]
     #[inline(always)]
     #[must_use]
-    pub fn ch23loc(&mut self) -> CH23LOC_W<ROUTELOC5_SPEC, 24> {
-        CH23LOC_W::new(self)
+    pub fn ch23loc(&mut self) -> CH23LOC_W<ROUTELOC5_SPEC> {
+        CH23LOC_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -353,10 +357,10 @@ impl crate::RegisterSpec for ROUTELOC5_SPEC {
 impl crate::Readable for ROUTELOC5_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`routeloc5::W`](W) writer structure"]
 impl crate::Writable for ROUTELOC5_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ROUTELOC5 to value 0"]
 impl crate::Resettable for ROUTELOC5_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

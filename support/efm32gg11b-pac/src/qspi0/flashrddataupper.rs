@@ -18,5 +18,5 @@ impl crate::RegisterSpec for FLASHRDDATAUPPER_SPEC {
 impl crate::Readable for FLASHRDDATAUPPER_SPEC {}
 #[doc = "`reset()` method sets FLASHRDDATAUPPER to value 0"]
 impl crate::Resettable for FLASHRDDATAUPPER_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

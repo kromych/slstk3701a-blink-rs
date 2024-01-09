@@ -29,7 +29,7 @@ impl crate::FieldSpec for QSPI0CLKSEL_A {
 impl QSPI0CLKSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> QSPI0CLKSEL_A {
+    pub const fn variant(&self) -> QSPI0CLKSEL_A {
         match self.bits {
             0 => QSPI0CLKSEL_A::HFRCO,
             1 => QSPI0CLKSEL_A::HFXO,
@@ -60,8 +60,8 @@ impl QSPI0CLKSEL_R {
     }
 }
 #[doc = "Field `QSPI0CLKSEL` writer - QSPI0 Reference Clock Select"]
-pub type QSPI0CLKSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, QSPI0CLKSEL_A>;
-impl<'a, REG, const O: u8> QSPI0CLKSEL_W<'a, REG, O>
+pub type QSPI0CLKSEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, QSPI0CLKSEL_A>;
+impl<'a, REG> QSPI0CLKSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -90,7 +90,7 @@ where
 #[doc = "Field `QSPI0CLKDIS` reader - QSPI0 Reference Clock Disable"]
 pub type QSPI0CLKDIS_R = crate::BitReader;
 #[doc = "Field `QSPI0CLKDIS` writer - QSPI0 Reference Clock Disable"]
-pub type QSPI0CLKDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type QSPI0CLKDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:1 - QSPI0 Reference Clock Select"]
     #[inline(always)]
@@ -107,16 +107,20 @@ impl W {
     #[doc = "Bits 0:1 - QSPI0 Reference Clock Select"]
     #[inline(always)]
     #[must_use]
-    pub fn qspi0clksel(&mut self) -> QSPI0CLKSEL_W<QSPICTRL_SPEC, 0> {
-        QSPI0CLKSEL_W::new(self)
+    pub fn qspi0clksel(&mut self) -> QSPI0CLKSEL_W<QSPICTRL_SPEC> {
+        QSPI0CLKSEL_W::new(self, 0)
     }
     #[doc = "Bit 7 - QSPI0 Reference Clock Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn qspi0clkdis(&mut self) -> QSPI0CLKDIS_W<QSPICTRL_SPEC, 7> {
-        QSPI0CLKDIS_W::new(self)
+    pub fn qspi0clkdis(&mut self) -> QSPI0CLKDIS_W<QSPICTRL_SPEC> {
+        QSPI0CLKDIS_W::new(self, 7)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -132,10 +136,10 @@ impl crate::RegisterSpec for QSPICTRL_SPEC {
 impl crate::Readable for QSPICTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`qspictrl::W`](W) writer structure"]
 impl crate::Writable for QSPICTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets QSPICTRL to value 0"]
 impl crate::Resettable for QSPICTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

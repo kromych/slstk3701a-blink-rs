@@ -29,7 +29,7 @@ impl crate::FieldSpec for LPCMPBIASEM01_A {
 impl LPCMPBIASEM01_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> LPCMPBIASEM01_A {
+    pub const fn variant(&self) -> LPCMPBIASEM01_A {
         match self.bits {
             0 => LPCMPBIASEM01_A::BIAS0,
             1 => LPCMPBIASEM01_A::BIAS1,
@@ -60,9 +60,8 @@ impl LPCMPBIASEM01_R {
     }
 }
 #[doc = "Field `LPCMPBIASEM01` writer - LP Mode Comparator Bias Selection for EM01"]
-pub type LPCMPBIASEM01_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, LPCMPBIASEM01_A>;
-impl<'a, REG, const O: u8> LPCMPBIASEM01_W<'a, REG, O>
+pub type LPCMPBIASEM01_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, LPCMPBIASEM01_A>;
+impl<'a, REG> LPCMPBIASEM01_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -91,7 +90,7 @@ where
 #[doc = "Field `LPCMPHYSSELEM01` reader - LP Mode Hysteresis Selection for EM01"]
 pub type LPCMPHYSSELEM01_R = crate::FieldReader;
 #[doc = "Field `LPCMPHYSSELEM01` writer - LP Mode Hysteresis Selection for EM01"]
-pub type LPCMPHYSSELEM01_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type LPCMPHYSSELEM01_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 impl R {
     #[doc = "Bits 8:9 - LP Mode Comparator Bias Selection for EM01"]
     #[inline(always)]
@@ -108,16 +107,20 @@ impl W {
     #[doc = "Bits 8:9 - LP Mode Comparator Bias Selection for EM01"]
     #[inline(always)]
     #[must_use]
-    pub fn lpcmpbiasem01(&mut self) -> LPCMPBIASEM01_W<DCDCLPEM01CFG_SPEC, 8> {
-        LPCMPBIASEM01_W::new(self)
+    pub fn lpcmpbiasem01(&mut self) -> LPCMPBIASEM01_W<DCDCLPEM01CFG_SPEC> {
+        LPCMPBIASEM01_W::new(self, 8)
     }
     #[doc = "Bits 12:15 - LP Mode Hysteresis Selection for EM01"]
     #[inline(always)]
     #[must_use]
-    pub fn lpcmphysselem01(&mut self) -> LPCMPHYSSELEM01_W<DCDCLPEM01CFG_SPEC, 12> {
-        LPCMPHYSSELEM01_W::new(self)
+    pub fn lpcmphysselem01(&mut self) -> LPCMPHYSSELEM01_W<DCDCLPEM01CFG_SPEC> {
+        LPCMPHYSSELEM01_W::new(self, 12)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -133,10 +136,10 @@ impl crate::RegisterSpec for DCDCLPEM01CFG_SPEC {
 impl crate::Readable for DCDCLPEM01CFG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dcdclpem01cfg::W`](W) writer structure"]
 impl crate::Writable for DCDCLPEM01CFG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DCDCLPEM01CFG to value 0x0300"]
 impl crate::Resettable for DCDCLPEM01CFG_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0300;
+    const RESET_VALUE: u32 = 0x0300;
 }

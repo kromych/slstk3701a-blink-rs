@@ -5,15 +5,15 @@ pub type W = crate::W<BUCTRL_SPEC>;
 #[doc = "Field `EN` reader - Enable Backup Mode"]
 pub type EN_R = crate::BitReader;
 #[doc = "Field `EN` writer - Enable Backup Mode"]
-pub type EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STATEN` reader - Enable Backup Mode Status Export"]
 pub type STATEN_R = crate::BitReader;
 #[doc = "Field `STATEN` writer - Enable Backup Mode Status Export"]
-pub type STATEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STATEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BUVINPROBEEN` reader - Enable BU_VIN Probing"]
 pub type BUVINPROBEEN_R = crate::BitReader;
 #[doc = "Field `BUVINPROBEEN` writer - Enable BU_VIN Probing"]
-pub type BUVINPROBEEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BUVINPROBEEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `VOUTRES` reader - BU_VOUT Resistor Select"]
 pub type VOUTRES_R = crate::FieldReader<VOUTRES_A>;
 #[doc = "BU_VOUT Resistor Select\n\nValue on reset: 0"]
@@ -41,7 +41,7 @@ impl crate::FieldSpec for VOUTRES_A {
 impl VOUTRES_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> VOUTRES_A {
+    pub const fn variant(&self) -> VOUTRES_A {
         match self.bits {
             0 => VOUTRES_A::DIS,
             1 => VOUTRES_A::WEAK,
@@ -72,8 +72,8 @@ impl VOUTRES_R {
     }
 }
 #[doc = "Field `VOUTRES` writer - BU_VOUT Resistor Select"]
-pub type VOUTRES_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, VOUTRES_A>;
-impl<'a, REG, const O: u8> VOUTRES_W<'a, REG, O>
+pub type VOUTRES_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, VOUTRES_A>;
+impl<'a, REG> VOUTRES_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -126,7 +126,7 @@ impl crate::FieldSpec for PWRRES_A {
 impl PWRRES_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> PWRRES_A {
+    pub const fn variant(&self) -> PWRRES_A {
         match self.bits {
             0 => PWRRES_A::RES0,
             1 => PWRRES_A::RES1,
@@ -157,8 +157,8 @@ impl PWRRES_R {
     }
 }
 #[doc = "Field `PWRRES` writer - Power Domain Resistor Select"]
-pub type PWRRES_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, PWRRES_A>;
-impl<'a, REG, const O: u8> PWRRES_W<'a, REG, O>
+pub type PWRRES_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PWRRES_A>;
+impl<'a, REG> PWRRES_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -211,7 +211,7 @@ impl crate::FieldSpec for BUACTPWRCON_A {
 impl BUACTPWRCON_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> BUACTPWRCON_A {
+    pub const fn variant(&self) -> BUACTPWRCON_A {
         match self.bits {
             0 => BUACTPWRCON_A::NONE,
             1 => BUACTPWRCON_A::MAINBU,
@@ -242,8 +242,8 @@ impl BUACTPWRCON_R {
     }
 }
 #[doc = "Field `BUACTPWRCON` writer - Power Connection Configuration in Backup Mode"]
-pub type BUACTPWRCON_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, BUACTPWRCON_A>;
-impl<'a, REG, const O: u8> BUACTPWRCON_W<'a, REG, O>
+pub type BUACTPWRCON_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, BUACTPWRCON_A>;
+impl<'a, REG> BUACTPWRCON_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -296,7 +296,7 @@ impl crate::FieldSpec for BUINACTPWRCON_A {
 impl BUINACTPWRCON_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> BUINACTPWRCON_A {
+    pub const fn variant(&self) -> BUINACTPWRCON_A {
         match self.bits {
             0 => BUINACTPWRCON_A::NONE,
             1 => BUINACTPWRCON_A::MAINBU,
@@ -327,9 +327,8 @@ impl BUINACTPWRCON_R {
     }
 }
 #[doc = "Field `BUINACTPWRCON` writer - Power Connection Configuration When Not in Backup Mode"]
-pub type BUINACTPWRCON_W<'a, REG, const O: u8> =
-    crate::FieldWriterSafe<'a, REG, 2, O, BUINACTPWRCON_A>;
-impl<'a, REG, const O: u8> BUINACTPWRCON_W<'a, REG, O>
+pub type BUINACTPWRCON_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, BUINACTPWRCON_A>;
+impl<'a, REG> BUINACTPWRCON_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -358,7 +357,7 @@ where
 #[doc = "Field `DISMAXCOMP` reader - Disable MAIN-BU Comparator"]
 pub type DISMAXCOMP_R = crate::BitReader;
 #[doc = "Field `DISMAXCOMP` writer - Disable MAIN-BU Comparator"]
-pub type DISMAXCOMP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DISMAXCOMP_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Enable Backup Mode"]
     #[inline(always)]
@@ -405,52 +404,56 @@ impl W {
     #[doc = "Bit 0 - Enable Backup Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn en(&mut self) -> EN_W<BUCTRL_SPEC, 0> {
-        EN_W::new(self)
+    pub fn en(&mut self) -> EN_W<BUCTRL_SPEC> {
+        EN_W::new(self, 0)
     }
     #[doc = "Bit 1 - Enable Backup Mode Status Export"]
     #[inline(always)]
     #[must_use]
-    pub fn staten(&mut self) -> STATEN_W<BUCTRL_SPEC, 1> {
-        STATEN_W::new(self)
+    pub fn staten(&mut self) -> STATEN_W<BUCTRL_SPEC> {
+        STATEN_W::new(self, 1)
     }
     #[doc = "Bit 2 - Enable BU_VIN Probing"]
     #[inline(always)]
     #[must_use]
-    pub fn buvinprobeen(&mut self) -> BUVINPROBEEN_W<BUCTRL_SPEC, 2> {
-        BUVINPROBEEN_W::new(self)
+    pub fn buvinprobeen(&mut self) -> BUVINPROBEEN_W<BUCTRL_SPEC> {
+        BUVINPROBEEN_W::new(self, 2)
     }
     #[doc = "Bits 8:9 - BU_VOUT Resistor Select"]
     #[inline(always)]
     #[must_use]
-    pub fn voutres(&mut self) -> VOUTRES_W<BUCTRL_SPEC, 8> {
-        VOUTRES_W::new(self)
+    pub fn voutres(&mut self) -> VOUTRES_W<BUCTRL_SPEC> {
+        VOUTRES_W::new(self, 8)
     }
     #[doc = "Bits 12:13 - Power Domain Resistor Select"]
     #[inline(always)]
     #[must_use]
-    pub fn pwrres(&mut self) -> PWRRES_W<BUCTRL_SPEC, 12> {
-        PWRRES_W::new(self)
+    pub fn pwrres(&mut self) -> PWRRES_W<BUCTRL_SPEC> {
+        PWRRES_W::new(self, 12)
     }
     #[doc = "Bits 16:17 - Power Connection Configuration in Backup Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn buactpwrcon(&mut self) -> BUACTPWRCON_W<BUCTRL_SPEC, 16> {
-        BUACTPWRCON_W::new(self)
+    pub fn buactpwrcon(&mut self) -> BUACTPWRCON_W<BUCTRL_SPEC> {
+        BUACTPWRCON_W::new(self, 16)
     }
     #[doc = "Bits 20:21 - Power Connection Configuration When Not in Backup Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn buinactpwrcon(&mut self) -> BUINACTPWRCON_W<BUCTRL_SPEC, 20> {
-        BUINACTPWRCON_W::new(self)
+    pub fn buinactpwrcon(&mut self) -> BUINACTPWRCON_W<BUCTRL_SPEC> {
+        BUINACTPWRCON_W::new(self, 20)
     }
     #[doc = "Bit 31 - Disable MAIN-BU Comparator"]
     #[inline(always)]
     #[must_use]
-    pub fn dismaxcomp(&mut self) -> DISMAXCOMP_W<BUCTRL_SPEC, 31> {
-        DISMAXCOMP_W::new(self)
+    pub fn dismaxcomp(&mut self) -> DISMAXCOMP_W<BUCTRL_SPEC> {
+        DISMAXCOMP_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -466,10 +469,10 @@ impl crate::RegisterSpec for BUCTRL_SPEC {
 impl crate::Readable for BUCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`buctrl::W`](W) writer structure"]
 impl crate::Writable for BUCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets BUCTRL to value 0"]
 impl crate::Resettable for BUCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

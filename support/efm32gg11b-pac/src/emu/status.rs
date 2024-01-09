@@ -41,7 +41,7 @@ impl crate::FieldSpec for VSCALE_A {
 impl VSCALE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<VSCALE_A> {
+    pub const fn variant(&self) -> Option<VSCALE_A> {
         match self.bits {
             0 => Some(VSCALE_A::VSCALE2),
             2 => Some(VSCALE_A::VSCALE0),
@@ -142,5 +142,5 @@ impl crate::RegisterSpec for STATUS_SPEC {
 impl crate::Readable for STATUS_SPEC {}
 #[doc = "`reset()` method sets STATUS to value 0"]
 impl crate::Resettable for STATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

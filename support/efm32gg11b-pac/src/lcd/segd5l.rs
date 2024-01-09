@@ -5,7 +5,7 @@ pub type W = crate::W<SEGD5L_SPEC>;
 #[doc = "Field `SEGD5L` reader - COM5 Segment Data"]
 pub type SEGD5L_R = crate::FieldReader<u32>;
 #[doc = "Field `SEGD5L` writer - COM5 Segment Data"]
-pub type SEGD5L_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 32, O, u32>;
+pub type SEGD5L_W<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - COM5 Segment Data"]
     #[inline(always)]
@@ -17,10 +17,14 @@ impl W {
     #[doc = "Bits 0:31 - COM5 Segment Data"]
     #[inline(always)]
     #[must_use]
-    pub fn segd5l(&mut self) -> SEGD5L_W<SEGD5L_SPEC, 0> {
-        SEGD5L_W::new(self)
+    pub fn segd5l(&mut self) -> SEGD5L_W<SEGD5L_SPEC> {
+        SEGD5L_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -36,10 +40,10 @@ impl crate::RegisterSpec for SEGD5L_SPEC {
 impl crate::Readable for SEGD5L_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`segd5l::W`](W) writer structure"]
 impl crate::Writable for SEGD5L_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEGD5L to value 0"]
 impl crate::Resettable for SEGD5L_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

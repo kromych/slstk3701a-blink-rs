@@ -5,11 +5,11 @@ pub type W = crate::W<IEN_SPEC>;
 #[doc = "Field `INSTRDONE` reader - INSTRDONE Interrupt Enable"]
 pub type INSTRDONE_R = crate::BitReader;
 #[doc = "Field `INSTRDONE` writer - INSTRDONE Interrupt Enable"]
-pub type INSTRDONE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INSTRDONE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SEQDONE` reader - SEQDONE Interrupt Enable"]
 pub type SEQDONE_R = crate::BitReader;
 #[doc = "Field `SEQDONE` writer - SEQDONE Interrupt Enable"]
-pub type SEQDONE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SEQDONE_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - INSTRDONE Interrupt Enable"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bit 0 - INSTRDONE Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn instrdone(&mut self) -> INSTRDONE_W<IEN_SPEC, 0> {
-        INSTRDONE_W::new(self)
+    pub fn instrdone(&mut self) -> INSTRDONE_W<IEN_SPEC> {
+        INSTRDONE_W::new(self, 0)
     }
     #[doc = "Bit 1 - SEQDONE Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn seqdone(&mut self) -> SEQDONE_W<IEN_SPEC, 1> {
-        SEQDONE_W::new(self)
+    pub fn seqdone(&mut self) -> SEQDONE_W<IEN_SPEC> {
+        SEQDONE_W::new(self, 1)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for IEN_SPEC {
 impl crate::Readable for IEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ien::W`](W) writer structure"]
 impl crate::Writable for IEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IEN to value 0"]
 impl crate::Resettable for IEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

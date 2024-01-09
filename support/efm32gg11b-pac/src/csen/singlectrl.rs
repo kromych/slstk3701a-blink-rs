@@ -149,7 +149,7 @@ impl crate::FieldSpec for SINGLESEL_A {
 impl SINGLESEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<SINGLESEL_A> {
+    pub const fn variant(&self) -> Option<SINGLESEL_A> {
         match self.bits {
             32 => Some(SINGLESEL_A::APORT1XCH0),
             33 => Some(SINGLESEL_A::APORT1YCH1),
@@ -540,8 +540,8 @@ impl SINGLESEL_R {
     }
 }
 #[doc = "Field `SINGLESEL` writer - Single Channel Input Select"]
-pub type SINGLESEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 7, O, SINGLESEL_A>;
-impl<'a, REG, const O: u8> SINGLESEL_W<'a, REG, O>
+pub type SINGLESEL_W<'a, REG> = crate::FieldWriter<'a, REG, 7, SINGLESEL_A>;
+impl<'a, REG> SINGLESEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -878,10 +878,14 @@ impl W {
     #[doc = "Bits 4:10 - Single Channel Input Select"]
     #[inline(always)]
     #[must_use]
-    pub fn singlesel(&mut self) -> SINGLESEL_W<SINGLECTRL_SPEC, 4> {
-        SINGLESEL_W::new(self)
+    pub fn singlesel(&mut self) -> SINGLESEL_W<SINGLECTRL_SPEC> {
+        SINGLESEL_W::new(self, 4)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -897,10 +901,10 @@ impl crate::RegisterSpec for SINGLECTRL_SPEC {
 impl crate::Readable for SINGLECTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`singlectrl::W`](W) writer structure"]
 impl crate::Writable for SINGLECTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SINGLECTRL to value 0"]
 impl crate::Resettable for SINGLECTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

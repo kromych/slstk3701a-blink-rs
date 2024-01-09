@@ -31,7 +31,7 @@ impl crate::FieldSpec for INITDRVSTVAL_A {
 impl INITDRVSTVAL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> INITDRVSTVAL_A {
+    pub const fn variant(&self) -> INITDRVSTVAL_A {
         match self.bits {
             0 => INITDRVSTVAL_A::TYPEB,
             1 => INITDRVSTVAL_A::TYPEA,
@@ -92,7 +92,7 @@ impl crate::FieldSpec for DSPDRVSTVAL_A {
 impl DSPDRVSTVAL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DSPDRVSTVAL_A {
+    pub const fn variant(&self) -> DSPDRVSTVAL_A {
         match self.bits {
             0 => DSPDRVSTVAL_A::TYPEB,
             1 => DSPDRVSTVAL_A::TYPEA,
@@ -163,5 +163,5 @@ impl crate::RegisterSpec for PRSTVAL0_SPEC {
 impl crate::Readable for PRSTVAL0_SPEC {}
 #[doc = "`reset()` method sets PRSTVAL0 to value 0"]
 impl crate::Resettable for PRSTVAL0_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

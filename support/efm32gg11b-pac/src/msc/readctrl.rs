@@ -5,31 +5,31 @@ pub type W = crate::W<READCTRL_SPEC>;
 #[doc = "Field `IFCDIS` reader - Internal Flash Cache Disable"]
 pub type IFCDIS_R = crate::BitReader;
 #[doc = "Field `IFCDIS` writer - Internal Flash Cache Disable"]
-pub type IFCDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type IFCDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AIDIS` reader - Automatic Invalidate Disable"]
 pub type AIDIS_R = crate::BitReader;
 #[doc = "Field `AIDIS` writer - Automatic Invalidate Disable"]
-pub type AIDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AIDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ICCDIS` reader - Interrupt Context Cache Disable"]
 pub type ICCDIS_R = crate::BitReader;
 #[doc = "Field `ICCDIS` writer - Interrupt Context Cache Disable"]
-pub type ICCDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ICCDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EBICDIS` reader - External Bus Interface Cache Disable"]
 pub type EBICDIS_R = crate::BitReader;
 #[doc = "Field `EBICDIS` writer - External Bus Interface Cache Disable"]
-pub type EBICDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EBICDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PREFETCH` reader - Prefetch Mode"]
 pub type PREFETCH_R = crate::BitReader;
 #[doc = "Field `PREFETCH` writer - Prefetch Mode"]
-pub type PREFETCH_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PREFETCH_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USEHPROT` reader - AHB_HPROT Mode"]
 pub type USEHPROT_R = crate::BitReader;
 #[doc = "Field `USEHPROT` writer - AHB_HPROT Mode"]
-pub type USEHPROT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type USEHPROT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `QSPICDIS` reader - QSPI Cache Disable"]
 pub type QSPICDIS_R = crate::BitReader;
 #[doc = "Field `QSPICDIS` writer - QSPI Cache Disable"]
-pub type QSPICDIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type QSPICDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MODE` reader - Read Mode"]
 pub type MODE_R = crate::FieldReader<MODE_A>;
 #[doc = "Read Mode\n\nValue on reset: 1"]
@@ -57,7 +57,7 @@ impl crate::FieldSpec for MODE_A {
 impl MODE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> MODE_A {
+    pub const fn variant(&self) -> MODE_A {
         match self.bits {
             0 => MODE_A::WS0,
             1 => MODE_A::WS1,
@@ -88,8 +88,8 @@ impl MODE_R {
     }
 }
 #[doc = "Field `MODE` writer - Read Mode"]
-pub type MODE_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, MODE_A>;
-impl<'a, REG, const O: u8> MODE_W<'a, REG, O>
+pub type MODE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, MODE_A>;
+impl<'a, REG> MODE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -118,7 +118,7 @@ where
 #[doc = "Field `SCBTP` reader - Suppress Conditional Branch Target Perfetch"]
 pub type SCBTP_R = crate::BitReader;
 #[doc = "Field `SCBTP` writer - Suppress Conditional Branch Target Perfetch"]
-pub type SCBTP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SCBTP_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 3 - Internal Flash Cache Disable"]
     #[inline(always)]
@@ -170,58 +170,62 @@ impl W {
     #[doc = "Bit 3 - Internal Flash Cache Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn ifcdis(&mut self) -> IFCDIS_W<READCTRL_SPEC, 3> {
-        IFCDIS_W::new(self)
+    pub fn ifcdis(&mut self) -> IFCDIS_W<READCTRL_SPEC> {
+        IFCDIS_W::new(self, 3)
     }
     #[doc = "Bit 4 - Automatic Invalidate Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn aidis(&mut self) -> AIDIS_W<READCTRL_SPEC, 4> {
-        AIDIS_W::new(self)
+    pub fn aidis(&mut self) -> AIDIS_W<READCTRL_SPEC> {
+        AIDIS_W::new(self, 4)
     }
     #[doc = "Bit 5 - Interrupt Context Cache Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn iccdis(&mut self) -> ICCDIS_W<READCTRL_SPEC, 5> {
-        ICCDIS_W::new(self)
+    pub fn iccdis(&mut self) -> ICCDIS_W<READCTRL_SPEC> {
+        ICCDIS_W::new(self, 5)
     }
     #[doc = "Bit 6 - External Bus Interface Cache Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn ebicdis(&mut self) -> EBICDIS_W<READCTRL_SPEC, 6> {
-        EBICDIS_W::new(self)
+    pub fn ebicdis(&mut self) -> EBICDIS_W<READCTRL_SPEC> {
+        EBICDIS_W::new(self, 6)
     }
     #[doc = "Bit 8 - Prefetch Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn prefetch(&mut self) -> PREFETCH_W<READCTRL_SPEC, 8> {
-        PREFETCH_W::new(self)
+    pub fn prefetch(&mut self) -> PREFETCH_W<READCTRL_SPEC> {
+        PREFETCH_W::new(self, 8)
     }
     #[doc = "Bit 9 - AHB_HPROT Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn usehprot(&mut self) -> USEHPROT_W<READCTRL_SPEC, 9> {
-        USEHPROT_W::new(self)
+    pub fn usehprot(&mut self) -> USEHPROT_W<READCTRL_SPEC> {
+        USEHPROT_W::new(self, 9)
     }
     #[doc = "Bit 10 - QSPI Cache Disable"]
     #[inline(always)]
     #[must_use]
-    pub fn qspicdis(&mut self) -> QSPICDIS_W<READCTRL_SPEC, 10> {
-        QSPICDIS_W::new(self)
+    pub fn qspicdis(&mut self) -> QSPICDIS_W<READCTRL_SPEC> {
+        QSPICDIS_W::new(self, 10)
     }
     #[doc = "Bits 24:25 - Read Mode"]
     #[inline(always)]
     #[must_use]
-    pub fn mode(&mut self) -> MODE_W<READCTRL_SPEC, 24> {
-        MODE_W::new(self)
+    pub fn mode(&mut self) -> MODE_W<READCTRL_SPEC> {
+        MODE_W::new(self, 24)
     }
     #[doc = "Bit 28 - Suppress Conditional Branch Target Perfetch"]
     #[inline(always)]
     #[must_use]
-    pub fn scbtp(&mut self) -> SCBTP_W<READCTRL_SPEC, 28> {
-        SCBTP_W::new(self)
+    pub fn scbtp(&mut self) -> SCBTP_W<READCTRL_SPEC> {
+        SCBTP_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -237,10 +241,10 @@ impl crate::RegisterSpec for READCTRL_SPEC {
 impl crate::Readable for READCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`readctrl::W`](W) writer structure"]
 impl crate::Writable for READCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets READCTRL to value 0x0100_0100"]
 impl crate::Resettable for READCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0100_0100;
+    const RESET_VALUE: u32 = 0x0100_0100;
 }

@@ -5,15 +5,15 @@ pub type W = crate::W<PWRCTRL_SPEC>;
 #[doc = "Field `ANASW` reader - Analog Switch Selection"]
 pub type ANASW_R = crate::BitReader;
 #[doc = "Field `ANASW` writer - Analog Switch Selection"]
-pub type ANASW_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ANASW_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `REGPWRSEL` reader - This Field Selects the Input Supply Pin for the Digital LDO"]
 pub type REGPWRSEL_R = crate::BitReader;
 #[doc = "Field `REGPWRSEL` writer - This Field Selects the Input Supply Pin for the Digital LDO"]
-pub type REGPWRSEL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type REGPWRSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `IMMEDIATEPWRSWITCH` reader - Allows Immediate Switching of ANASW and REGPWRSEL Bitfields"]
 pub type IMMEDIATEPWRSWITCH_R = crate::BitReader;
 #[doc = "Field `IMMEDIATEPWRSWITCH` writer - Allows Immediate Switching of ANASW and REGPWRSEL Bitfields"]
-pub type IMMEDIATEPWRSWITCH_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type IMMEDIATEPWRSWITCH_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 5 - Analog Switch Selection"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bit 5 - Analog Switch Selection"]
     #[inline(always)]
     #[must_use]
-    pub fn anasw(&mut self) -> ANASW_W<PWRCTRL_SPEC, 5> {
-        ANASW_W::new(self)
+    pub fn anasw(&mut self) -> ANASW_W<PWRCTRL_SPEC> {
+        ANASW_W::new(self, 5)
     }
     #[doc = "Bit 10 - This Field Selects the Input Supply Pin for the Digital LDO"]
     #[inline(always)]
     #[must_use]
-    pub fn regpwrsel(&mut self) -> REGPWRSEL_W<PWRCTRL_SPEC, 10> {
-        REGPWRSEL_W::new(self)
+    pub fn regpwrsel(&mut self) -> REGPWRSEL_W<PWRCTRL_SPEC> {
+        REGPWRSEL_W::new(self, 10)
     }
     #[doc = "Bit 13 - Allows Immediate Switching of ANASW and REGPWRSEL Bitfields"]
     #[inline(always)]
     #[must_use]
-    pub fn immediatepwrswitch(&mut self) -> IMMEDIATEPWRSWITCH_W<PWRCTRL_SPEC, 13> {
-        IMMEDIATEPWRSWITCH_W::new(self)
+    pub fn immediatepwrswitch(&mut self) -> IMMEDIATEPWRSWITCH_W<PWRCTRL_SPEC> {
+        IMMEDIATEPWRSWITCH_W::new(self, 13)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for PWRCTRL_SPEC {
 impl crate::Readable for PWRCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`pwrctrl::W`](W) writer structure"]
 impl crate::Writable for PWRCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PWRCTRL to value 0"]
 impl crate::Resettable for PWRCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

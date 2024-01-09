@@ -27,7 +27,7 @@ impl crate::FieldSpec for DBG_A {
 impl DBG_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<DBG_A> {
+    pub const fn variant(&self) -> Option<DBG_A> {
         match self.bits {
             0 => Some(DBG_A::AUXHFRCO),
             1 => Some(DBG_A::HFCLK),
@@ -52,8 +52,8 @@ impl DBG_R {
     }
 }
 #[doc = "Field `DBG` writer - Debug Trace Clock"]
-pub type DBG_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, DBG_A>;
-impl<'a, REG, const O: u8> DBG_W<'a, REG, O>
+pub type DBG_W<'a, REG> = crate::FieldWriter<'a, REG, 2, DBG_A>;
+impl<'a, REG> DBG_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -85,10 +85,14 @@ impl W {
     #[doc = "Bits 0:1 - Debug Trace Clock"]
     #[inline(always)]
     #[must_use]
-    pub fn dbg(&mut self) -> DBG_W<DBGCLKSEL_SPEC, 0> {
-        DBG_W::new(self)
+    pub fn dbg(&mut self) -> DBG_W<DBGCLKSEL_SPEC> {
+        DBG_W::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -104,10 +108,10 @@ impl crate::RegisterSpec for DBGCLKSEL_SPEC {
 impl crate::Readable for DBGCLKSEL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dbgclksel::W`](W) writer structure"]
 impl crate::Writable for DBGCLKSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DBGCLKSEL to value 0"]
 impl crate::Resettable for DBGCLKSEL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

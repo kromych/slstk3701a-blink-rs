@@ -5,39 +5,39 @@ pub type W = crate::W<DECCTRL_SPEC>;
 #[doc = "Field `DISABLE` reader - Disable the Decoder"]
 pub type DISABLE_R = crate::BitReader;
 #[doc = "Field `DISABLE` writer - Disable the Decoder"]
-pub type DISABLE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DISABLE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ERRCHK` reader - Enable Check of Current State"]
 pub type ERRCHK_R = crate::BitReader;
 #[doc = "Field `ERRCHK` writer - Enable Check of Current State"]
-pub type ERRCHK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ERRCHK_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INTMAP` reader - Enable Decoder to Channel Interrupt Mapping"]
 pub type INTMAP_R = crate::BitReader;
 #[doc = "Field `INTMAP` writer - Enable Decoder to Channel Interrupt Mapping"]
-pub type INTMAP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INTMAP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HYSTPRS0` reader - Enable Decoder Hysteresis on PRS0 Output"]
 pub type HYSTPRS0_R = crate::BitReader;
 #[doc = "Field `HYSTPRS0` writer - Enable Decoder Hysteresis on PRS0 Output"]
-pub type HYSTPRS0_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HYSTPRS0_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HYSTPRS1` reader - Enable Decoder Hysteresis on PRS1 Output"]
 pub type HYSTPRS1_R = crate::BitReader;
 #[doc = "Field `HYSTPRS1` writer - Enable Decoder Hysteresis on PRS1 Output"]
-pub type HYSTPRS1_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HYSTPRS1_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HYSTPRS2` reader - Enable Decoder Hysteresis on PRS2 Output"]
 pub type HYSTPRS2_R = crate::BitReader;
 #[doc = "Field `HYSTPRS2` writer - Enable Decoder Hysteresis on PRS2 Output"]
-pub type HYSTPRS2_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HYSTPRS2_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HYSTIRQ` reader - Enable Decoder Hysteresis on Interrupt Requests"]
 pub type HYSTIRQ_R = crate::BitReader;
 #[doc = "Field `HYSTIRQ` writer - Enable Decoder Hysteresis on Interrupt Requests"]
-pub type HYSTIRQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HYSTIRQ_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRSCNT` reader - Enable Count Mode on Decoder PRS Channels 0 and 1"]
 pub type PRSCNT_R = crate::BitReader;
 #[doc = "Field `PRSCNT` writer - Enable Count Mode on Decoder PRS Channels 0 and 1"]
-pub type PRSCNT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type PRSCNT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INPUT` reader - LESENSE Decoder Input Configuration"]
 pub type INPUT_R = crate::BitReader;
 #[doc = "Field `INPUT` writer - LESENSE Decoder Input Configuration"]
-pub type INPUT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INPUT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRSSEL0` reader - LESENSE Decoder PRS Input 0 Configuration"]
 pub type PRSSEL0_R = crate::FieldReader<PRSSEL0_A>;
 #[doc = "LESENSE Decoder PRS Input 0 Configuration\n\nValue on reset: 0"]
@@ -105,7 +105,7 @@ impl crate::FieldSpec for PRSSEL0_A {
 impl PRSSEL0_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL0_A> {
+    pub const fn variant(&self) -> Option<PRSSEL0_A> {
         match self.bits {
             0 => Some(PRSSEL0_A::PRSCH0),
             1 => Some(PRSSEL0_A::PRSCH1),
@@ -256,8 +256,8 @@ impl PRSSEL0_R {
     }
 }
 #[doc = "Field `PRSSEL0` writer - LESENSE Decoder PRS Input 0 Configuration"]
-pub type PRSSEL0_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL0_A>;
-impl<'a, REG, const O: u8> PRSSEL0_W<'a, REG, O>
+pub type PRSSEL0_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL0_A>;
+impl<'a, REG> PRSSEL0_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -450,7 +450,7 @@ impl crate::FieldSpec for PRSSEL1_A {
 impl PRSSEL1_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL1_A> {
+    pub const fn variant(&self) -> Option<PRSSEL1_A> {
         match self.bits {
             0 => Some(PRSSEL1_A::PRSCH0),
             1 => Some(PRSSEL1_A::PRSCH1),
@@ -601,8 +601,8 @@ impl PRSSEL1_R {
     }
 }
 #[doc = "Field `PRSSEL1` writer - LESENSE Decoder PRS Input 1 Configuration"]
-pub type PRSSEL1_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL1_A>;
-impl<'a, REG, const O: u8> PRSSEL1_W<'a, REG, O>
+pub type PRSSEL1_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL1_A>;
+impl<'a, REG> PRSSEL1_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -795,7 +795,7 @@ impl crate::FieldSpec for PRSSEL2_A {
 impl PRSSEL2_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL2_A> {
+    pub const fn variant(&self) -> Option<PRSSEL2_A> {
         match self.bits {
             0 => Some(PRSSEL2_A::PRSCH0),
             1 => Some(PRSSEL2_A::PRSCH1),
@@ -946,8 +946,8 @@ impl PRSSEL2_R {
     }
 }
 #[doc = "Field `PRSSEL2` writer - LESENSE Decoder PRS Input 2 Configuration"]
-pub type PRSSEL2_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL2_A>;
-impl<'a, REG, const O: u8> PRSSEL2_W<'a, REG, O>
+pub type PRSSEL2_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL2_A>;
+impl<'a, REG> PRSSEL2_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1140,7 +1140,7 @@ impl crate::FieldSpec for PRSSEL3_A {
 impl PRSSEL3_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRSSEL3_A> {
+    pub const fn variant(&self) -> Option<PRSSEL3_A> {
         match self.bits {
             0 => Some(PRSSEL3_A::PRSCH0),
             1 => Some(PRSSEL3_A::PRSCH1),
@@ -1291,8 +1291,8 @@ impl PRSSEL3_R {
     }
 }
 #[doc = "Field `PRSSEL3` writer - LESENSE Decoder PRS Input 3 Configuration"]
-pub type PRSSEL3_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, PRSSEL3_A>;
-impl<'a, REG, const O: u8> PRSSEL3_W<'a, REG, O>
+pub type PRSSEL3_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL3_A>;
+impl<'a, REG> PRSSEL3_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -1489,82 +1489,86 @@ impl W {
     #[doc = "Bit 0 - Disable the Decoder"]
     #[inline(always)]
     #[must_use]
-    pub fn disable(&mut self) -> DISABLE_W<DECCTRL_SPEC, 0> {
-        DISABLE_W::new(self)
+    pub fn disable(&mut self) -> DISABLE_W<DECCTRL_SPEC> {
+        DISABLE_W::new(self, 0)
     }
     #[doc = "Bit 1 - Enable Check of Current State"]
     #[inline(always)]
     #[must_use]
-    pub fn errchk(&mut self) -> ERRCHK_W<DECCTRL_SPEC, 1> {
-        ERRCHK_W::new(self)
+    pub fn errchk(&mut self) -> ERRCHK_W<DECCTRL_SPEC> {
+        ERRCHK_W::new(self, 1)
     }
     #[doc = "Bit 2 - Enable Decoder to Channel Interrupt Mapping"]
     #[inline(always)]
     #[must_use]
-    pub fn intmap(&mut self) -> INTMAP_W<DECCTRL_SPEC, 2> {
-        INTMAP_W::new(self)
+    pub fn intmap(&mut self) -> INTMAP_W<DECCTRL_SPEC> {
+        INTMAP_W::new(self, 2)
     }
     #[doc = "Bit 3 - Enable Decoder Hysteresis on PRS0 Output"]
     #[inline(always)]
     #[must_use]
-    pub fn hystprs0(&mut self) -> HYSTPRS0_W<DECCTRL_SPEC, 3> {
-        HYSTPRS0_W::new(self)
+    pub fn hystprs0(&mut self) -> HYSTPRS0_W<DECCTRL_SPEC> {
+        HYSTPRS0_W::new(self, 3)
     }
     #[doc = "Bit 4 - Enable Decoder Hysteresis on PRS1 Output"]
     #[inline(always)]
     #[must_use]
-    pub fn hystprs1(&mut self) -> HYSTPRS1_W<DECCTRL_SPEC, 4> {
-        HYSTPRS1_W::new(self)
+    pub fn hystprs1(&mut self) -> HYSTPRS1_W<DECCTRL_SPEC> {
+        HYSTPRS1_W::new(self, 4)
     }
     #[doc = "Bit 5 - Enable Decoder Hysteresis on PRS2 Output"]
     #[inline(always)]
     #[must_use]
-    pub fn hystprs2(&mut self) -> HYSTPRS2_W<DECCTRL_SPEC, 5> {
-        HYSTPRS2_W::new(self)
+    pub fn hystprs2(&mut self) -> HYSTPRS2_W<DECCTRL_SPEC> {
+        HYSTPRS2_W::new(self, 5)
     }
     #[doc = "Bit 6 - Enable Decoder Hysteresis on Interrupt Requests"]
     #[inline(always)]
     #[must_use]
-    pub fn hystirq(&mut self) -> HYSTIRQ_W<DECCTRL_SPEC, 6> {
-        HYSTIRQ_W::new(self)
+    pub fn hystirq(&mut self) -> HYSTIRQ_W<DECCTRL_SPEC> {
+        HYSTIRQ_W::new(self, 6)
     }
     #[doc = "Bit 7 - Enable Count Mode on Decoder PRS Channels 0 and 1"]
     #[inline(always)]
     #[must_use]
-    pub fn prscnt(&mut self) -> PRSCNT_W<DECCTRL_SPEC, 7> {
-        PRSCNT_W::new(self)
+    pub fn prscnt(&mut self) -> PRSCNT_W<DECCTRL_SPEC> {
+        PRSCNT_W::new(self, 7)
     }
     #[doc = "Bit 8 - LESENSE Decoder Input Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn input(&mut self) -> INPUT_W<DECCTRL_SPEC, 8> {
-        INPUT_W::new(self)
+    pub fn input(&mut self) -> INPUT_W<DECCTRL_SPEC> {
+        INPUT_W::new(self, 8)
     }
     #[doc = "Bits 10:14 - LESENSE Decoder PRS Input 0 Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel0(&mut self) -> PRSSEL0_W<DECCTRL_SPEC, 10> {
-        PRSSEL0_W::new(self)
+    pub fn prssel0(&mut self) -> PRSSEL0_W<DECCTRL_SPEC> {
+        PRSSEL0_W::new(self, 10)
     }
     #[doc = "Bits 15:19 - LESENSE Decoder PRS Input 1 Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel1(&mut self) -> PRSSEL1_W<DECCTRL_SPEC, 15> {
-        PRSSEL1_W::new(self)
+    pub fn prssel1(&mut self) -> PRSSEL1_W<DECCTRL_SPEC> {
+        PRSSEL1_W::new(self, 15)
     }
     #[doc = "Bits 20:24 - LESENSE Decoder PRS Input 2 Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel2(&mut self) -> PRSSEL2_W<DECCTRL_SPEC, 20> {
-        PRSSEL2_W::new(self)
+    pub fn prssel2(&mut self) -> PRSSEL2_W<DECCTRL_SPEC> {
+        PRSSEL2_W::new(self, 20)
     }
     #[doc = "Bits 25:29 - LESENSE Decoder PRS Input 3 Configuration"]
     #[inline(always)]
     #[must_use]
-    pub fn prssel3(&mut self) -> PRSSEL3_W<DECCTRL_SPEC, 25> {
-        PRSSEL3_W::new(self)
+    pub fn prssel3(&mut self) -> PRSSEL3_W<DECCTRL_SPEC> {
+        PRSSEL3_W::new(self, 25)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -1580,10 +1584,10 @@ impl crate::RegisterSpec for DECCTRL_SPEC {
 impl crate::Readable for DECCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`decctrl::W`](W) writer structure"]
 impl crate::Writable for DECCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DECCTRL to value 0"]
 impl crate::Resettable for DECCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

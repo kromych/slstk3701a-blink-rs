@@ -9,7 +9,7 @@ pub type DEVICESTATUSVALID_R = crate::BitReader;
 #[doc = "Field `DEVICESTATUSNBDUMMY` reader - Auto-polling Dummy Cycles"]
 pub type DEVICESTATUSNBDUMMY_R = crate::FieldReader;
 #[doc = "Field `DEVICESTATUSNBDUMMY` writer - Auto-polling Dummy Cycles"]
-pub type DEVICESTATUSNBDUMMY_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type DEVICESTATUSNBDUMMY_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 impl R {
     #[doc = "Bits 0:7 - Device Status"]
     #[inline(always)]
@@ -31,10 +31,14 @@ impl W {
     #[doc = "Bits 16:19 - Auto-polling Dummy Cycles"]
     #[inline(always)]
     #[must_use]
-    pub fn devicestatusnbdummy(&mut self) -> DEVICESTATUSNBDUMMY_W<POLLINGFLASHSTATUS_SPEC, 16> {
-        DEVICESTATUSNBDUMMY_W::new(self)
+    pub fn devicestatusnbdummy(&mut self) -> DEVICESTATUSNBDUMMY_W<POLLINGFLASHSTATUS_SPEC> {
+        DEVICESTATUSNBDUMMY_W::new(self, 16)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -50,10 +54,10 @@ impl crate::RegisterSpec for POLLINGFLASHSTATUS_SPEC {
 impl crate::Readable for POLLINGFLASHSTATUS_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`pollingflashstatus::W`](W) writer structure"]
 impl crate::Writable for POLLINGFLASHSTATUS_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets POLLINGFLASHSTATUS to value 0"]
 impl crate::Resettable for POLLINGFLASHSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

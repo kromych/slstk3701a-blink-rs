@@ -5,15 +5,15 @@ pub type W = crate::W<CTRL_SPEC>;
 #[doc = "Field `SYNCPRSSETEN` reader - Synchronization PRS Set Enable"]
 pub type SYNCPRSSETEN_R = crate::FieldReader;
 #[doc = "Field `SYNCPRSSETEN` writer - Synchronization PRS Set Enable"]
-pub type SYNCPRSSETEN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type SYNCPRSSETEN_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `SYNCPRSCLREN` reader - Synchronization PRS Clear Enable"]
 pub type SYNCPRSCLREN_R = crate::FieldReader;
 #[doc = "Field `SYNCPRSCLREN` writer - Synchronization PRS Clear Enable"]
-pub type SYNCPRSCLREN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type SYNCPRSCLREN_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `NUMFIXED` reader - Number of Fixed Priority Channels"]
 pub type NUMFIXED_R = crate::FieldReader;
 #[doc = "Field `NUMFIXED` writer - Number of Fixed Priority Channels"]
-pub type NUMFIXED_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O>;
+pub type NUMFIXED_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
     #[doc = "Bits 0:7 - Synchronization PRS Set Enable"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:7 - Synchronization PRS Set Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn syncprsseten(&mut self) -> SYNCPRSSETEN_W<CTRL_SPEC, 0> {
-        SYNCPRSSETEN_W::new(self)
+    pub fn syncprsseten(&mut self) -> SYNCPRSSETEN_W<CTRL_SPEC> {
+        SYNCPRSSETEN_W::new(self, 0)
     }
     #[doc = "Bits 8:15 - Synchronization PRS Clear Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn syncprsclren(&mut self) -> SYNCPRSCLREN_W<CTRL_SPEC, 8> {
-        SYNCPRSCLREN_W::new(self)
+    pub fn syncprsclren(&mut self) -> SYNCPRSCLREN_W<CTRL_SPEC> {
+        SYNCPRSCLREN_W::new(self, 8)
     }
     #[doc = "Bits 24:28 - Number of Fixed Priority Channels"]
     #[inline(always)]
     #[must_use]
-    pub fn numfixed(&mut self) -> NUMFIXED_W<CTRL_SPEC, 24> {
-        NUMFIXED_W::new(self)
+    pub fn numfixed(&mut self) -> NUMFIXED_W<CTRL_SPEC> {
+        NUMFIXED_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0x1700_0000"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x1700_0000;
+    const RESET_VALUE: u32 = 0x1700_0000;
 }

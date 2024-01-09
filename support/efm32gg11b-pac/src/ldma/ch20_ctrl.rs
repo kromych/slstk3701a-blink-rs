@@ -27,7 +27,7 @@ impl crate::FieldSpec for STRUCTTYPE_A {
 impl STRUCTTYPE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<STRUCTTYPE_A> {
+    pub const fn variant(&self) -> Option<STRUCTTYPE_A> {
         match self.bits {
             0 => Some(STRUCTTYPE_A::TRANSFER),
             1 => Some(STRUCTTYPE_A::SYNCHRONIZE),
@@ -52,15 +52,15 @@ impl STRUCTTYPE_R {
     }
 }
 #[doc = "Field `STRUCTREQ` writer - Structure DMA Transfer Request"]
-pub type STRUCTREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type STRUCTREQ_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `XFERCNT` reader - DMA Unit Data Transfer Count"]
 pub type XFERCNT_R = crate::FieldReader<u16>;
 #[doc = "Field `XFERCNT` writer - DMA Unit Data Transfer Count"]
-pub type XFERCNT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 11, O, u16>;
+pub type XFERCNT_W<'a, REG> = crate::FieldWriter<'a, REG, 11, u16>;
 #[doc = "Field `BYTESWAP` reader - Endian Byte Swap"]
 pub type BYTESWAP_R = crate::BitReader;
 #[doc = "Field `BYTESWAP` writer - Endian Byte Swap"]
-pub type BYTESWAP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BYTESWAP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BLOCKSIZE` reader - Block Transfer Size"]
 pub type BLOCKSIZE_R = crate::FieldReader<BLOCKSIZE_A>;
 #[doc = "Block Transfer Size\n\nValue on reset: 0"]
@@ -108,7 +108,7 @@ impl crate::FieldSpec for BLOCKSIZE_A {
 impl BLOCKSIZE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<BLOCKSIZE_A> {
+    pub const fn variant(&self) -> Option<BLOCKSIZE_A> {
         match self.bits {
             0 => Some(BLOCKSIZE_A::UNIT1),
             1 => Some(BLOCKSIZE_A::UNIT2),
@@ -199,8 +199,8 @@ impl BLOCKSIZE_R {
     }
 }
 #[doc = "Field `BLOCKSIZE` writer - Block Transfer Size"]
-pub type BLOCKSIZE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O, BLOCKSIZE_A>;
-impl<'a, REG, const O: u8> BLOCKSIZE_W<'a, REG, O>
+pub type BLOCKSIZE_W<'a, REG> = crate::FieldWriter<'a, REG, 4, BLOCKSIZE_A>;
+impl<'a, REG> BLOCKSIZE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -279,19 +279,19 @@ where
 #[doc = "Field `DONEIFSEN` reader - DMA Operation Done Interrupt Flag Set Enable"]
 pub type DONEIFSEN_R = crate::BitReader;
 #[doc = "Field `DONEIFSEN` writer - DMA Operation Done Interrupt Flag Set Enable"]
-pub type DONEIFSEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DONEIFSEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `REQMODE` reader - DMA Request Transfer Mode Select"]
 pub type REQMODE_R = crate::BitReader;
 #[doc = "Field `REQMODE` writer - DMA Request Transfer Mode Select"]
-pub type REQMODE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type REQMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DECLOOPCNT` reader - Decrement Loop Count"]
 pub type DECLOOPCNT_R = crate::BitReader;
 #[doc = "Field `DECLOOPCNT` writer - Decrement Loop Count"]
-pub type DECLOOPCNT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DECLOOPCNT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `IGNORESREQ` reader - Ignore Sreq"]
 pub type IGNORESREQ_R = crate::BitReader;
 #[doc = "Field `IGNORESREQ` writer - Ignore Sreq"]
-pub type IGNORESREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type IGNORESREQ_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SRCINC` reader - Source Address Increment Size"]
 pub type SRCINC_R = crate::FieldReader<SRCINC_A>;
 #[doc = "Source Address Increment Size\n\nValue on reset: 0"]
@@ -319,7 +319,7 @@ impl crate::FieldSpec for SRCINC_A {
 impl SRCINC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> SRCINC_A {
+    pub const fn variant(&self) -> SRCINC_A {
         match self.bits {
             0 => SRCINC_A::ONE,
             1 => SRCINC_A::TWO,
@@ -350,8 +350,8 @@ impl SRCINC_R {
     }
 }
 #[doc = "Field `SRCINC` writer - Source Address Increment Size"]
-pub type SRCINC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, SRCINC_A>;
-impl<'a, REG, const O: u8> SRCINC_W<'a, REG, O>
+pub type SRCINC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, SRCINC_A>;
+impl<'a, REG> SRCINC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -402,7 +402,7 @@ impl crate::FieldSpec for SIZE_A {
 impl SIZE_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<SIZE_A> {
+    pub const fn variant(&self) -> Option<SIZE_A> {
         match self.bits {
             0 => Some(SIZE_A::BYTE),
             1 => Some(SIZE_A::HALFWORD),
@@ -427,8 +427,8 @@ impl SIZE_R {
     }
 }
 #[doc = "Field `SIZE` writer - Unit Data Transfer Size"]
-pub type SIZE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, SIZE_A>;
-impl<'a, REG, const O: u8> SIZE_W<'a, REG, O>
+pub type SIZE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, SIZE_A>;
+impl<'a, REG> SIZE_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -476,7 +476,7 @@ impl crate::FieldSpec for DSTINC_A {
 impl DSTINC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> DSTINC_A {
+    pub const fn variant(&self) -> DSTINC_A {
         match self.bits {
             0 => DSTINC_A::ONE,
             1 => DSTINC_A::TWO,
@@ -507,8 +507,8 @@ impl DSTINC_R {
     }
 }
 #[doc = "Field `DSTINC` writer - Destination Address Increment Size"]
-pub type DSTINC_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, DSTINC_A>;
-impl<'a, REG, const O: u8> DSTINC_W<'a, REG, O>
+pub type DSTINC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, DSTINC_A>;
+impl<'a, REG> DSTINC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -609,70 +609,74 @@ impl W {
     #[doc = "Bit 3 - Structure DMA Transfer Request"]
     #[inline(always)]
     #[must_use]
-    pub fn structreq(&mut self) -> STRUCTREQ_W<CH20_CTRL_SPEC, 3> {
-        STRUCTREQ_W::new(self)
+    pub fn structreq(&mut self) -> STRUCTREQ_W<CH20_CTRL_SPEC> {
+        STRUCTREQ_W::new(self, 3)
     }
     #[doc = "Bits 4:14 - DMA Unit Data Transfer Count"]
     #[inline(always)]
     #[must_use]
-    pub fn xfercnt(&mut self) -> XFERCNT_W<CH20_CTRL_SPEC, 4> {
-        XFERCNT_W::new(self)
+    pub fn xfercnt(&mut self) -> XFERCNT_W<CH20_CTRL_SPEC> {
+        XFERCNT_W::new(self, 4)
     }
     #[doc = "Bit 15 - Endian Byte Swap"]
     #[inline(always)]
     #[must_use]
-    pub fn byteswap(&mut self) -> BYTESWAP_W<CH20_CTRL_SPEC, 15> {
-        BYTESWAP_W::new(self)
+    pub fn byteswap(&mut self) -> BYTESWAP_W<CH20_CTRL_SPEC> {
+        BYTESWAP_W::new(self, 15)
     }
     #[doc = "Bits 16:19 - Block Transfer Size"]
     #[inline(always)]
     #[must_use]
-    pub fn blocksize(&mut self) -> BLOCKSIZE_W<CH20_CTRL_SPEC, 16> {
-        BLOCKSIZE_W::new(self)
+    pub fn blocksize(&mut self) -> BLOCKSIZE_W<CH20_CTRL_SPEC> {
+        BLOCKSIZE_W::new(self, 16)
     }
     #[doc = "Bit 20 - DMA Operation Done Interrupt Flag Set Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn doneifsen(&mut self) -> DONEIFSEN_W<CH20_CTRL_SPEC, 20> {
-        DONEIFSEN_W::new(self)
+    pub fn doneifsen(&mut self) -> DONEIFSEN_W<CH20_CTRL_SPEC> {
+        DONEIFSEN_W::new(self, 20)
     }
     #[doc = "Bit 21 - DMA Request Transfer Mode Select"]
     #[inline(always)]
     #[must_use]
-    pub fn reqmode(&mut self) -> REQMODE_W<CH20_CTRL_SPEC, 21> {
-        REQMODE_W::new(self)
+    pub fn reqmode(&mut self) -> REQMODE_W<CH20_CTRL_SPEC> {
+        REQMODE_W::new(self, 21)
     }
     #[doc = "Bit 22 - Decrement Loop Count"]
     #[inline(always)]
     #[must_use]
-    pub fn decloopcnt(&mut self) -> DECLOOPCNT_W<CH20_CTRL_SPEC, 22> {
-        DECLOOPCNT_W::new(self)
+    pub fn decloopcnt(&mut self) -> DECLOOPCNT_W<CH20_CTRL_SPEC> {
+        DECLOOPCNT_W::new(self, 22)
     }
     #[doc = "Bit 23 - Ignore Sreq"]
     #[inline(always)]
     #[must_use]
-    pub fn ignoresreq(&mut self) -> IGNORESREQ_W<CH20_CTRL_SPEC, 23> {
-        IGNORESREQ_W::new(self)
+    pub fn ignoresreq(&mut self) -> IGNORESREQ_W<CH20_CTRL_SPEC> {
+        IGNORESREQ_W::new(self, 23)
     }
     #[doc = "Bits 24:25 - Source Address Increment Size"]
     #[inline(always)]
     #[must_use]
-    pub fn srcinc(&mut self) -> SRCINC_W<CH20_CTRL_SPEC, 24> {
-        SRCINC_W::new(self)
+    pub fn srcinc(&mut self) -> SRCINC_W<CH20_CTRL_SPEC> {
+        SRCINC_W::new(self, 24)
     }
     #[doc = "Bits 26:27 - Unit Data Transfer Size"]
     #[inline(always)]
     #[must_use]
-    pub fn size(&mut self) -> SIZE_W<CH20_CTRL_SPEC, 26> {
-        SIZE_W::new(self)
+    pub fn size(&mut self) -> SIZE_W<CH20_CTRL_SPEC> {
+        SIZE_W::new(self, 26)
     }
     #[doc = "Bits 28:29 - Destination Address Increment Size"]
     #[inline(always)]
     #[must_use]
-    pub fn dstinc(&mut self) -> DSTINC_W<CH20_CTRL_SPEC, 28> {
-        DSTINC_W::new(self)
+    pub fn dstinc(&mut self) -> DSTINC_W<CH20_CTRL_SPEC> {
+        DSTINC_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -688,10 +692,10 @@ impl crate::RegisterSpec for CH20_CTRL_SPEC {
 impl crate::Readable for CH20_CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ch20_ctrl::W`](W) writer structure"]
 impl crate::Writable for CH20_CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CH20_CTRL to value 0"]
 impl crate::Resettable for CH20_CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

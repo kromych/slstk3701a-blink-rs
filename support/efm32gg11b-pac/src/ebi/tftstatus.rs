@@ -25,5 +25,5 @@ impl crate::RegisterSpec for TFTSTATUS_SPEC {
 impl crate::Readable for TFTSTATUS_SPEC {}
 #[doc = "`reset()` method sets TFTSTATUS to value 0"]
 impl crate::Resettable for TFTSTATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

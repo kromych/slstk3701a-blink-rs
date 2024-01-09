@@ -5,31 +5,31 @@ pub type W = crate::W<CTRL_SPEC>;
 #[doc = "Field `INIT` reader - Initialize"]
 pub type INIT_R = crate::BitReader;
 #[doc = "Field `INIT` writer - Initialize"]
-pub type INIT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INIT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `IE` reader - Module Interrupt Enable"]
 pub type IE_R = crate::BitReader;
 #[doc = "Field `IE` writer - Module Interrupt Enable"]
-pub type IE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type IE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SIE` reader - Status Change Interrupt Enable"]
 pub type SIE_R = crate::BitReader;
 #[doc = "Field `SIE` writer - Status Change Interrupt Enable"]
-pub type SIE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SIE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EIE` reader - Error Interrupt Enable"]
 pub type EIE_R = crate::BitReader;
 #[doc = "Field `EIE` writer - Error Interrupt Enable"]
-pub type EIE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EIE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DAR` reader - Disable Automatic Retransmission"]
 pub type DAR_R = crate::BitReader;
 #[doc = "Field `DAR` writer - Disable Automatic Retransmission"]
-pub type DAR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DAR_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CCE` reader - Configuration Change Enable"]
 pub type CCE_R = crate::BitReader;
 #[doc = "Field `CCE` writer - Configuration Change Enable"]
-pub type CCE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CCE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TEST` reader - Test Mode Enable Write"]
 pub type TEST_R = crate::BitReader;
 #[doc = "Field `TEST` writer - Test Mode Enable Write"]
-pub type TEST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TEST_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Initialize"]
     #[inline(always)]
@@ -71,46 +71,50 @@ impl W {
     #[doc = "Bit 0 - Initialize"]
     #[inline(always)]
     #[must_use]
-    pub fn init(&mut self) -> INIT_W<CTRL_SPEC, 0> {
-        INIT_W::new(self)
+    pub fn init(&mut self) -> INIT_W<CTRL_SPEC> {
+        INIT_W::new(self, 0)
     }
     #[doc = "Bit 1 - Module Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn ie(&mut self) -> IE_W<CTRL_SPEC, 1> {
-        IE_W::new(self)
+    pub fn ie(&mut self) -> IE_W<CTRL_SPEC> {
+        IE_W::new(self, 1)
     }
     #[doc = "Bit 2 - Status Change Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn sie(&mut self) -> SIE_W<CTRL_SPEC, 2> {
-        SIE_W::new(self)
+    pub fn sie(&mut self) -> SIE_W<CTRL_SPEC> {
+        SIE_W::new(self, 2)
     }
     #[doc = "Bit 3 - Error Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn eie(&mut self) -> EIE_W<CTRL_SPEC, 3> {
-        EIE_W::new(self)
+    pub fn eie(&mut self) -> EIE_W<CTRL_SPEC> {
+        EIE_W::new(self, 3)
     }
     #[doc = "Bit 5 - Disable Automatic Retransmission"]
     #[inline(always)]
     #[must_use]
-    pub fn dar(&mut self) -> DAR_W<CTRL_SPEC, 5> {
-        DAR_W::new(self)
+    pub fn dar(&mut self) -> DAR_W<CTRL_SPEC> {
+        DAR_W::new(self, 5)
     }
     #[doc = "Bit 6 - Configuration Change Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn cce(&mut self) -> CCE_W<CTRL_SPEC, 6> {
-        CCE_W::new(self)
+    pub fn cce(&mut self) -> CCE_W<CTRL_SPEC> {
+        CCE_W::new(self, 6)
     }
     #[doc = "Bit 7 - Test Mode Enable Write"]
     #[inline(always)]
     #[must_use]
-    pub fn test(&mut self) -> TEST_W<CTRL_SPEC, 7> {
-        TEST_W::new(self)
+    pub fn test(&mut self) -> TEST_W<CTRL_SPEC> {
+        TEST_W::new(self, 7)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -126,10 +130,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0x01"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x01;
+    const RESET_VALUE: u32 = 0x01;
 }

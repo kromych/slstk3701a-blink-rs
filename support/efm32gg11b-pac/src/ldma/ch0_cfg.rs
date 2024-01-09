@@ -29,7 +29,7 @@ impl crate::FieldSpec for ARBSLOTS_A {
 impl ARBSLOTS_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> ARBSLOTS_A {
+    pub const fn variant(&self) -> ARBSLOTS_A {
         match self.bits {
             0 => ARBSLOTS_A::ONE,
             1 => ARBSLOTS_A::TWO,
@@ -60,8 +60,8 @@ impl ARBSLOTS_R {
     }
 }
 #[doc = "Field `ARBSLOTS` writer - Arbitration Slot Number Select"]
-pub type ARBSLOTS_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 2, O, ARBSLOTS_A>;
-impl<'a, REG, const O: u8> ARBSLOTS_W<'a, REG, O>
+pub type ARBSLOTS_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, ARBSLOTS_A>;
+impl<'a, REG> ARBSLOTS_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -90,11 +90,11 @@ where
 #[doc = "Field `SRCINCSIGN` reader - Source Address Increment Sign"]
 pub type SRCINCSIGN_R = crate::BitReader;
 #[doc = "Field `SRCINCSIGN` writer - Source Address Increment Sign"]
-pub type SRCINCSIGN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SRCINCSIGN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DSTINCSIGN` reader - Destination Address Increment Sign"]
 pub type DSTINCSIGN_R = crate::BitReader;
 #[doc = "Field `DSTINCSIGN` writer - Destination Address Increment Sign"]
-pub type DSTINCSIGN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DSTINCSIGN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 16:17 - Arbitration Slot Number Select"]
     #[inline(always)]
@@ -116,22 +116,26 @@ impl W {
     #[doc = "Bits 16:17 - Arbitration Slot Number Select"]
     #[inline(always)]
     #[must_use]
-    pub fn arbslots(&mut self) -> ARBSLOTS_W<CH0_CFG_SPEC, 16> {
-        ARBSLOTS_W::new(self)
+    pub fn arbslots(&mut self) -> ARBSLOTS_W<CH0_CFG_SPEC> {
+        ARBSLOTS_W::new(self, 16)
     }
     #[doc = "Bit 20 - Source Address Increment Sign"]
     #[inline(always)]
     #[must_use]
-    pub fn srcincsign(&mut self) -> SRCINCSIGN_W<CH0_CFG_SPEC, 20> {
-        SRCINCSIGN_W::new(self)
+    pub fn srcincsign(&mut self) -> SRCINCSIGN_W<CH0_CFG_SPEC> {
+        SRCINCSIGN_W::new(self, 20)
     }
     #[doc = "Bit 21 - Destination Address Increment Sign"]
     #[inline(always)]
     #[must_use]
-    pub fn dstincsign(&mut self) -> DSTINCSIGN_W<CH0_CFG_SPEC, 21> {
-        DSTINCSIGN_W::new(self)
+    pub fn dstincsign(&mut self) -> DSTINCSIGN_W<CH0_CFG_SPEC> {
+        DSTINCSIGN_W::new(self, 21)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -147,10 +151,10 @@ impl crate::RegisterSpec for CH0_CFG_SPEC {
 impl crate::Readable for CH0_CFG_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ch0_cfg::W`](W) writer structure"]
 impl crate::Writable for CH0_CFG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CH0_CFG to value 0"]
 impl crate::Resettable for CH0_CFG_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

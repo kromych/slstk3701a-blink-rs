@@ -23,7 +23,7 @@ impl crate::FieldSpec for PRESC_A {
 impl PRESC_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PRESC_A> {
+    pub const fn variant(&self) -> Option<PRESC_A> {
         match self.bits {
             0 => Some(PRESC_A::NODIVISION),
             _ => None,
@@ -36,8 +36,8 @@ impl PRESC_R {
     }
 }
 #[doc = "Field `PRESC` writer - HFPERCLK Prescaler"]
-pub type PRESC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 9, O, PRESC_A>;
-impl<'a, REG, const O: u8> PRESC_W<'a, REG, O>
+pub type PRESC_W<'a, REG> = crate::FieldWriter<'a, REG, 9, PRESC_A>;
+impl<'a, REG> PRESC_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u16>,
@@ -59,10 +59,14 @@ impl W {
     #[doc = "Bits 8:16 - HFPERCLK Prescaler"]
     #[inline(always)]
     #[must_use]
-    pub fn presc(&mut self) -> PRESC_W<HFPERPRESCC_SPEC, 8> {
-        PRESC_W::new(self)
+    pub fn presc(&mut self) -> PRESC_W<HFPERPRESCC_SPEC> {
+        PRESC_W::new(self, 8)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -78,10 +82,10 @@ impl crate::RegisterSpec for HFPERPRESCC_SPEC {
 impl crate::Readable for HFPERPRESCC_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`hfperprescc::W`](W) writer structure"]
 impl crate::Writable for HFPERPRESCC_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HFPERPRESCC to value 0"]
 impl crate::Resettable for HFPERPRESCC_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

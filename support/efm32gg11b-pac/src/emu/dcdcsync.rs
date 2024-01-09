@@ -18,5 +18,5 @@ impl crate::RegisterSpec for DCDCSYNC_SPEC {
 impl crate::Readable for DCDCSYNC_SPEC {}
 #[doc = "`reset()` method sets DCDCSYNC to value 0"]
 impl crate::Resettable for DCDCSYNC_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

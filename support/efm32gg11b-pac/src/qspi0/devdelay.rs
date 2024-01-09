@@ -5,19 +5,19 @@ pub type W = crate::W<DEVDELAY_SPEC>;
 #[doc = "Field `DINIT` reader - Clock Delay for CS"]
 pub type DINIT_R = crate::FieldReader;
 #[doc = "Field `DINIT` writer - Clock Delay for CS"]
-pub type DINIT_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DINIT_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `DAFTER` reader - Clock Delay for Last Transaction Bit"]
 pub type DAFTER_R = crate::FieldReader;
 #[doc = "Field `DAFTER` writer - Clock Delay for Last Transaction Bit"]
-pub type DAFTER_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DAFTER_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `DBTWN` reader - Clock Delay Between Two Chip Selects"]
 pub type DBTWN_R = crate::FieldReader;
 #[doc = "Field `DBTWN` writer - Clock Delay Between Two Chip Selects"]
-pub type DBTWN_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DBTWN_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `DNSS` reader - Clock Delay for Chip Select Deassert"]
 pub type DNSS_R = crate::FieldReader;
 #[doc = "Field `DNSS` writer - Clock Delay for Chip Select Deassert"]
-pub type DNSS_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 8, O>;
+pub type DNSS_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Clock Delay for CS"]
     #[inline(always)]
@@ -44,28 +44,32 @@ impl W {
     #[doc = "Bits 0:7 - Clock Delay for CS"]
     #[inline(always)]
     #[must_use]
-    pub fn dinit(&mut self) -> DINIT_W<DEVDELAY_SPEC, 0> {
-        DINIT_W::new(self)
+    pub fn dinit(&mut self) -> DINIT_W<DEVDELAY_SPEC> {
+        DINIT_W::new(self, 0)
     }
     #[doc = "Bits 8:15 - Clock Delay for Last Transaction Bit"]
     #[inline(always)]
     #[must_use]
-    pub fn dafter(&mut self) -> DAFTER_W<DEVDELAY_SPEC, 8> {
-        DAFTER_W::new(self)
+    pub fn dafter(&mut self) -> DAFTER_W<DEVDELAY_SPEC> {
+        DAFTER_W::new(self, 8)
     }
     #[doc = "Bits 16:23 - Clock Delay Between Two Chip Selects"]
     #[inline(always)]
     #[must_use]
-    pub fn dbtwn(&mut self) -> DBTWN_W<DEVDELAY_SPEC, 16> {
-        DBTWN_W::new(self)
+    pub fn dbtwn(&mut self) -> DBTWN_W<DEVDELAY_SPEC> {
+        DBTWN_W::new(self, 16)
     }
     #[doc = "Bits 24:31 - Clock Delay for Chip Select Deassert"]
     #[inline(always)]
     #[must_use]
-    pub fn dnss(&mut self) -> DNSS_W<DEVDELAY_SPEC, 24> {
-        DNSS_W::new(self)
+    pub fn dnss(&mut self) -> DNSS_W<DEVDELAY_SPEC> {
+        DNSS_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -81,10 +85,10 @@ impl crate::RegisterSpec for DEVDELAY_SPEC {
 impl crate::Readable for DEVDELAY_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`devdelay::W`](W) writer structure"]
 impl crate::Writable for DEVDELAY_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DEVDELAY to value 0"]
 impl crate::Resettable for DEVDELAY_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

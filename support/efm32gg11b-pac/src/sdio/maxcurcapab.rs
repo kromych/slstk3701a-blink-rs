@@ -32,5 +32,5 @@ impl crate::RegisterSpec for MAXCURCAPAB_SPEC {
 impl crate::Readable for MAXCURCAPAB_SPEC {}
 #[doc = "`reset()` method sets MAXCURCAPAB to value 0"]
 impl crate::Resettable for MAXCURCAPAB_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

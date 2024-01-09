@@ -5,11 +5,11 @@ pub type W = crate::W<DCDCLNFREQCTRL_SPEC>;
 #[doc = "Field `RCOBAND` reader - LN Mode RCO Frequency Band Selection"]
 pub type RCOBAND_R = crate::FieldReader;
 #[doc = "Field `RCOBAND` writer - LN Mode RCO Frequency Band Selection"]
-pub type RCOBAND_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type RCOBAND_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `RCOTRIM` reader - Reserved for internal use. Do not change."]
 pub type RCOTRIM_R = crate::FieldReader;
 #[doc = "Field `RCOTRIM` writer - Reserved for internal use. Do not change."]
-pub type RCOTRIM_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O>;
+pub type RCOTRIM_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
     #[doc = "Bits 0:2 - LN Mode RCO Frequency Band Selection"]
     #[inline(always)]
@@ -26,16 +26,20 @@ impl W {
     #[doc = "Bits 0:2 - LN Mode RCO Frequency Band Selection"]
     #[inline(always)]
     #[must_use]
-    pub fn rcoband(&mut self) -> RCOBAND_W<DCDCLNFREQCTRL_SPEC, 0> {
-        RCOBAND_W::new(self)
+    pub fn rcoband(&mut self) -> RCOBAND_W<DCDCLNFREQCTRL_SPEC> {
+        RCOBAND_W::new(self, 0)
     }
     #[doc = "Bits 24:28 - Reserved for internal use. Do not change."]
     #[inline(always)]
     #[must_use]
-    pub fn rcotrim(&mut self) -> RCOTRIM_W<DCDCLNFREQCTRL_SPEC, 24> {
-        RCOTRIM_W::new(self)
+    pub fn rcotrim(&mut self) -> RCOTRIM_W<DCDCLNFREQCTRL_SPEC> {
+        RCOTRIM_W::new(self, 24)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -51,10 +55,10 @@ impl crate::RegisterSpec for DCDCLNFREQCTRL_SPEC {
 impl crate::Readable for DCDCLNFREQCTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`dcdclnfreqctrl::W`](W) writer structure"]
 impl crate::Writable for DCDCLNFREQCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DCDCLNFREQCTRL to value 0x1000_0000"]
 impl crate::Resettable for DCDCLNFREQCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x1000_0000;
+    const RESET_VALUE: u32 = 0x1000_0000;
 }

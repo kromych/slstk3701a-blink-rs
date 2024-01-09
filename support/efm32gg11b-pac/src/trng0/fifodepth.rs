@@ -18,5 +18,5 @@ impl crate::RegisterSpec for FIFODEPTH_SPEC {
 impl crate::Readable for FIFODEPTH_SPEC {}
 #[doc = "`reset()` method sets FIFODEPTH to value 0x40"]
 impl crate::Resettable for FIFODEPTH_SPEC {
-    const RESET_VALUE: Self::Ux = 0x40;
+    const RESET_VALUE: u32 = 0x40;
 }

@@ -5,15 +5,15 @@ pub type W = crate::W<ADDRTIMING_SPEC>;
 #[doc = "Field `ADDRSETUP` reader - Address Setup Time"]
 pub type ADDRSETUP_R = crate::FieldReader;
 #[doc = "Field `ADDRSETUP` writer - Address Setup Time"]
-pub type ADDRSETUP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type ADDRSETUP_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `ADDRHOLD` reader - Address Hold Time"]
 pub type ADDRHOLD_R = crate::FieldReader;
 #[doc = "Field `ADDRHOLD` writer - Address Hold Time"]
-pub type ADDRHOLD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O>;
+pub type ADDRHOLD_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `HALFALE` reader - Half Cycle ALE Strobe Duration Enable"]
 pub type HALFALE_R = crate::BitReader;
 #[doc = "Field `HALFALE` writer - Half Cycle ALE Strobe Duration Enable"]
-pub type HALFALE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HALFALE_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:2 - Address Setup Time"]
     #[inline(always)]
@@ -35,22 +35,26 @@ impl W {
     #[doc = "Bits 0:2 - Address Setup Time"]
     #[inline(always)]
     #[must_use]
-    pub fn addrsetup(&mut self) -> ADDRSETUP_W<ADDRTIMING_SPEC, 0> {
-        ADDRSETUP_W::new(self)
+    pub fn addrsetup(&mut self) -> ADDRSETUP_W<ADDRTIMING_SPEC> {
+        ADDRSETUP_W::new(self, 0)
     }
     #[doc = "Bits 8:10 - Address Hold Time"]
     #[inline(always)]
     #[must_use]
-    pub fn addrhold(&mut self) -> ADDRHOLD_W<ADDRTIMING_SPEC, 8> {
-        ADDRHOLD_W::new(self)
+    pub fn addrhold(&mut self) -> ADDRHOLD_W<ADDRTIMING_SPEC> {
+        ADDRHOLD_W::new(self, 8)
     }
     #[doc = "Bit 28 - Half Cycle ALE Strobe Duration Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn halfale(&mut self) -> HALFALE_W<ADDRTIMING_SPEC, 28> {
-        HALFALE_W::new(self)
+    pub fn halfale(&mut self) -> HALFALE_W<ADDRTIMING_SPEC> {
+        HALFALE_W::new(self, 28)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -66,10 +70,10 @@ impl crate::RegisterSpec for ADDRTIMING_SPEC {
 impl crate::Readable for ADDRTIMING_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`addrtiming::W`](W) writer structure"]
 impl crate::Writable for ADDRTIMING_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ADDRTIMING to value 0x0707"]
 impl crate::Resettable for ADDRTIMING_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0707;
+    const RESET_VALUE: u32 = 0x0707;
 }

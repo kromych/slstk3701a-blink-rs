@@ -7,53 +7,53 @@ pub type SESREQSCS_R = crate::BitReader;
 #[doc = "Field `SESREQ` reader - Session Request"]
 pub type SESREQ_R = crate::BitReader;
 #[doc = "Field `SESREQ` writer - Session Request"]
-pub type SESREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SESREQ_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `VBVALIDOVEN` reader - VBUS Valid Override Enable"]
 pub type VBVALIDOVEN_R = crate::BitReader;
 #[doc = "Field `VBVALIDOVEN` writer - VBUS Valid Override Enable"]
-pub type VBVALIDOVEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type VBVALIDOVEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `VBVALIDOVVAL` reader - VBUS Valid OverrideValue"]
 pub type VBVALIDOVVAL_R = crate::BitReader;
 #[doc = "Field `VBVALIDOVVAL` writer - VBUS Valid OverrideValue"]
-pub type VBVALIDOVVAL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type VBVALIDOVVAL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AVALIDOVEN` reader - A-Peripheral Session Valid Override Enable"]
 pub type AVALIDOVEN_R = crate::BitReader;
 #[doc = "Field `AVALIDOVEN` writer - A-Peripheral Session Valid Override Enable"]
-pub type AVALIDOVEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AVALIDOVEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AVALIDOVVAL` reader - A-Peripheral Session Valid OverrideValue"]
 pub type AVALIDOVVAL_R = crate::BitReader;
 #[doc = "Field `AVALIDOVVAL` writer - A-Peripheral Session Valid OverrideValue"]
-pub type AVALIDOVVAL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type AVALIDOVVAL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BVALIDOVEN` reader - B-Peripheral Session Valid Override Enable"]
 pub type BVALIDOVEN_R = crate::BitReader;
 #[doc = "Field `BVALIDOVEN` writer - B-Peripheral Session Valid Override Enable"]
-pub type BVALIDOVEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BVALIDOVEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BVALIDOVVAL` reader - B-Peripheral Session Valid OverrideValue"]
 pub type BVALIDOVVAL_R = crate::BitReader;
 #[doc = "Field `BVALIDOVVAL` writer - B-Peripheral Session Valid OverrideValue"]
-pub type BVALIDOVVAL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type BVALIDOVVAL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HSTNEGSCS` reader - Host Negotiation Success"]
 pub type HSTNEGSCS_R = crate::BitReader;
 #[doc = "Field `HNPREQ` reader - HNP Request"]
 pub type HNPREQ_R = crate::BitReader;
 #[doc = "Field `HNPREQ` writer - HNP Request"]
-pub type HNPREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HNPREQ_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HSTSETHNPEN` reader - Host Set HNP Enable"]
 pub type HSTSETHNPEN_R = crate::BitReader;
 #[doc = "Field `HSTSETHNPEN` writer - Host Set HNP Enable"]
-pub type HSTSETHNPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type HSTSETHNPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DEVHNPEN` reader - Device HNP Enabled"]
 pub type DEVHNPEN_R = crate::BitReader;
 #[doc = "Field `DEVHNPEN` writer - Device HNP Enabled"]
-pub type DEVHNPEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DEVHNPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EHEN` reader - Embedded Host Enable"]
 pub type EHEN_R = crate::BitReader;
 #[doc = "Field `EHEN` writer - Embedded Host Enable"]
-pub type EHEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EHEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DBNCEFLTRBYPASS` reader - Debounce Filter Bypass"]
 pub type DBNCEFLTRBYPASS_R = crate::BitReader;
 #[doc = "Field `DBNCEFLTRBYPASS` writer - Debounce Filter Bypass"]
-pub type DBNCEFLTRBYPASS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DBNCEFLTRBYPASS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CONIDSTS` reader - Connector ID Status"]
 pub type CONIDSTS_R = crate::BitReader;
 #[doc = "Field `DBNCTIME` reader - Long/Short Debounce Time"]
@@ -65,7 +65,7 @@ pub type BSESVLD_R = crate::BitReader;
 #[doc = "Field `OTGVER` reader - OTG Version"]
 pub type OTGVER_R = crate::BitReader;
 #[doc = "Field `OTGVER` writer - OTG Version"]
-pub type OTGVER_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type OTGVER_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CURMOD` reader - Current Mode of Operation"]
 pub type CURMOD_R = crate::BitReader;
 impl R {
@@ -174,82 +174,86 @@ impl W {
     #[doc = "Bit 1 - Session Request"]
     #[inline(always)]
     #[must_use]
-    pub fn sesreq(&mut self) -> SESREQ_W<GOTGCTL_SPEC, 1> {
-        SESREQ_W::new(self)
+    pub fn sesreq(&mut self) -> SESREQ_W<GOTGCTL_SPEC> {
+        SESREQ_W::new(self, 1)
     }
     #[doc = "Bit 2 - VBUS Valid Override Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn vbvalidoven(&mut self) -> VBVALIDOVEN_W<GOTGCTL_SPEC, 2> {
-        VBVALIDOVEN_W::new(self)
+    pub fn vbvalidoven(&mut self) -> VBVALIDOVEN_W<GOTGCTL_SPEC> {
+        VBVALIDOVEN_W::new(self, 2)
     }
     #[doc = "Bit 3 - VBUS Valid OverrideValue"]
     #[inline(always)]
     #[must_use]
-    pub fn vbvalidovval(&mut self) -> VBVALIDOVVAL_W<GOTGCTL_SPEC, 3> {
-        VBVALIDOVVAL_W::new(self)
+    pub fn vbvalidovval(&mut self) -> VBVALIDOVVAL_W<GOTGCTL_SPEC> {
+        VBVALIDOVVAL_W::new(self, 3)
     }
     #[doc = "Bit 4 - A-Peripheral Session Valid Override Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn avalidoven(&mut self) -> AVALIDOVEN_W<GOTGCTL_SPEC, 4> {
-        AVALIDOVEN_W::new(self)
+    pub fn avalidoven(&mut self) -> AVALIDOVEN_W<GOTGCTL_SPEC> {
+        AVALIDOVEN_W::new(self, 4)
     }
     #[doc = "Bit 5 - A-Peripheral Session Valid OverrideValue"]
     #[inline(always)]
     #[must_use]
-    pub fn avalidovval(&mut self) -> AVALIDOVVAL_W<GOTGCTL_SPEC, 5> {
-        AVALIDOVVAL_W::new(self)
+    pub fn avalidovval(&mut self) -> AVALIDOVVAL_W<GOTGCTL_SPEC> {
+        AVALIDOVVAL_W::new(self, 5)
     }
     #[doc = "Bit 6 - B-Peripheral Session Valid Override Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn bvalidoven(&mut self) -> BVALIDOVEN_W<GOTGCTL_SPEC, 6> {
-        BVALIDOVEN_W::new(self)
+    pub fn bvalidoven(&mut self) -> BVALIDOVEN_W<GOTGCTL_SPEC> {
+        BVALIDOVEN_W::new(self, 6)
     }
     #[doc = "Bit 7 - B-Peripheral Session Valid OverrideValue"]
     #[inline(always)]
     #[must_use]
-    pub fn bvalidovval(&mut self) -> BVALIDOVVAL_W<GOTGCTL_SPEC, 7> {
-        BVALIDOVVAL_W::new(self)
+    pub fn bvalidovval(&mut self) -> BVALIDOVVAL_W<GOTGCTL_SPEC> {
+        BVALIDOVVAL_W::new(self, 7)
     }
     #[doc = "Bit 9 - HNP Request"]
     #[inline(always)]
     #[must_use]
-    pub fn hnpreq(&mut self) -> HNPREQ_W<GOTGCTL_SPEC, 9> {
-        HNPREQ_W::new(self)
+    pub fn hnpreq(&mut self) -> HNPREQ_W<GOTGCTL_SPEC> {
+        HNPREQ_W::new(self, 9)
     }
     #[doc = "Bit 10 - Host Set HNP Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn hstsethnpen(&mut self) -> HSTSETHNPEN_W<GOTGCTL_SPEC, 10> {
-        HSTSETHNPEN_W::new(self)
+    pub fn hstsethnpen(&mut self) -> HSTSETHNPEN_W<GOTGCTL_SPEC> {
+        HSTSETHNPEN_W::new(self, 10)
     }
     #[doc = "Bit 11 - Device HNP Enabled"]
     #[inline(always)]
     #[must_use]
-    pub fn devhnpen(&mut self) -> DEVHNPEN_W<GOTGCTL_SPEC, 11> {
-        DEVHNPEN_W::new(self)
+    pub fn devhnpen(&mut self) -> DEVHNPEN_W<GOTGCTL_SPEC> {
+        DEVHNPEN_W::new(self, 11)
     }
     #[doc = "Bit 12 - Embedded Host Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn ehen(&mut self) -> EHEN_W<GOTGCTL_SPEC, 12> {
-        EHEN_W::new(self)
+    pub fn ehen(&mut self) -> EHEN_W<GOTGCTL_SPEC> {
+        EHEN_W::new(self, 12)
     }
     #[doc = "Bit 15 - Debounce Filter Bypass"]
     #[inline(always)]
     #[must_use]
-    pub fn dbncefltrbypass(&mut self) -> DBNCEFLTRBYPASS_W<GOTGCTL_SPEC, 15> {
-        DBNCEFLTRBYPASS_W::new(self)
+    pub fn dbncefltrbypass(&mut self) -> DBNCEFLTRBYPASS_W<GOTGCTL_SPEC> {
+        DBNCEFLTRBYPASS_W::new(self, 15)
     }
     #[doc = "Bit 20 - OTG Version"]
     #[inline(always)]
     #[must_use]
-    pub fn otgver(&mut self) -> OTGVER_W<GOTGCTL_SPEC, 20> {
-        OTGVER_W::new(self)
+    pub fn otgver(&mut self) -> OTGVER_W<GOTGCTL_SPEC> {
+        OTGVER_W::new(self, 20)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -265,10 +269,10 @@ impl crate::RegisterSpec for GOTGCTL_SPEC {
 impl crate::Readable for GOTGCTL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`gotgctl::W`](W) writer structure"]
 impl crate::Writable for GOTGCTL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets GOTGCTL to value 0x0001_0000"]
 impl crate::Resettable for GOTGCTL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0001_0000;
+    const RESET_VALUE: u32 = 0x0001_0000;
 }

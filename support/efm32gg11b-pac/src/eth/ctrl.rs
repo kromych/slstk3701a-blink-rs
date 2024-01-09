@@ -31,7 +31,7 @@ impl crate::FieldSpec for TSUCLKSEL_A {
 impl TSUCLKSEL_R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<TSUCLKSEL_A> {
+    pub const fn variant(&self) -> Option<TSUCLKSEL_A> {
         match self.bits {
             0 => Some(TSUCLKSEL_A::NOCLOCK),
             1 => Some(TSUCLKSEL_A::PLL),
@@ -68,8 +68,8 @@ impl TSUCLKSEL_R {
     }
 }
 #[doc = "Field `TSUCLKSEL` writer - TSU Clock selection value"]
-pub type TSUCLKSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 3, O, TSUCLKSEL_A>;
-impl<'a, REG, const O: u8> TSUCLKSEL_W<'a, REG, O>
+pub type TSUCLKSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 3, TSUCLKSEL_A>;
+impl<'a, REG> TSUCLKSEL_W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -103,19 +103,19 @@ where
 #[doc = "Field `TSUPRESC` reader - Clock division factor of TSUPRESC+1"]
 pub type TSUPRESC_R = crate::FieldReader;
 #[doc = "Field `TSUPRESC` writer - Clock division factor of TSUPRESC+1"]
-pub type TSUPRESC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type TSUPRESC_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `MIISEL` reader - MII select signal"]
 pub type MIISEL_R = crate::BitReader;
 #[doc = "Field `MIISEL` writer - MII select signal"]
-pub type MIISEL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MIISEL_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `GBLCLKEN` reader - Global Clock Enable signal for Ethernet clocks tsu_clk, tx_clk, rx_clk and ref_clk"]
 pub type GBLCLKEN_R = crate::BitReader;
 #[doc = "Field `GBLCLKEN` writer - Global Clock Enable signal for Ethernet clocks tsu_clk, tx_clk, rx_clk and ref_clk"]
-pub type GBLCLKEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type GBLCLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXREFCLKSEL` reader - REFCLK source select for RMII_TXD and RMII_TX_EN"]
 pub type TXREFCLKSEL_R = crate::BitReader;
 #[doc = "Field `TXREFCLKSEL` writer - REFCLK source select for RMII_TXD and RMII_TX_EN"]
-pub type TXREFCLKSEL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type TXREFCLKSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:2 - TSU Clock selection value"]
     #[inline(always)]
@@ -147,34 +147,38 @@ impl W {
     #[doc = "Bits 0:2 - TSU Clock selection value"]
     #[inline(always)]
     #[must_use]
-    pub fn tsuclksel(&mut self) -> TSUCLKSEL_W<CTRL_SPEC, 0> {
-        TSUCLKSEL_W::new(self)
+    pub fn tsuclksel(&mut self) -> TSUCLKSEL_W<CTRL_SPEC> {
+        TSUCLKSEL_W::new(self, 0)
     }
     #[doc = "Bits 4:7 - Clock division factor of TSUPRESC+1"]
     #[inline(always)]
     #[must_use]
-    pub fn tsupresc(&mut self) -> TSUPRESC_W<CTRL_SPEC, 4> {
-        TSUPRESC_W::new(self)
+    pub fn tsupresc(&mut self) -> TSUPRESC_W<CTRL_SPEC> {
+        TSUPRESC_W::new(self, 4)
     }
     #[doc = "Bit 8 - MII select signal"]
     #[inline(always)]
     #[must_use]
-    pub fn miisel(&mut self) -> MIISEL_W<CTRL_SPEC, 8> {
-        MIISEL_W::new(self)
+    pub fn miisel(&mut self) -> MIISEL_W<CTRL_SPEC> {
+        MIISEL_W::new(self, 8)
     }
     #[doc = "Bit 9 - Global Clock Enable signal for Ethernet clocks tsu_clk, tx_clk, rx_clk and ref_clk"]
     #[inline(always)]
     #[must_use]
-    pub fn gblclken(&mut self) -> GBLCLKEN_W<CTRL_SPEC, 9> {
-        GBLCLKEN_W::new(self)
+    pub fn gblclken(&mut self) -> GBLCLKEN_W<CTRL_SPEC> {
+        GBLCLKEN_W::new(self, 9)
     }
     #[doc = "Bit 10 - REFCLK source select for RMII_TXD and RMII_TX_EN"]
     #[inline(always)]
     #[must_use]
-    pub fn txrefclksel(&mut self) -> TXREFCLKSEL_W<CTRL_SPEC, 10> {
-        TXREFCLKSEL_W::new(self)
+    pub fn txrefclksel(&mut self) -> TXREFCLKSEL_W<CTRL_SPEC> {
+        TXREFCLKSEL_W::new(self, 10)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -190,10 +194,10 @@ impl crate::RegisterSpec for CTRL_SPEC {
 impl crate::Readable for CTRL_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

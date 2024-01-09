@@ -25,5 +25,5 @@ impl crate::RegisterSpec for ADMAES_SPEC {
 impl crate::Readable for ADMAES_SPEC {}
 #[doc = "`reset()` method sets ADMAES to value 0"]
 impl crate::Resettable for ADMAES_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

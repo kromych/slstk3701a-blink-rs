@@ -5,27 +5,27 @@ pub type W = crate::W<IEN_SPEC>;
 #[doc = "Field `FPIOC` reader - FPIOC Interrupt Enable"]
 pub type FPIOC_R = crate::BitReader;
 #[doc = "Field `FPIOC` writer - FPIOC Interrupt Enable"]
-pub type FPIOC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FPIOC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FPDZC` reader - FPDZC Interrupt Enable"]
 pub type FPDZC_R = crate::BitReader;
 #[doc = "Field `FPDZC` writer - FPDZC Interrupt Enable"]
-pub type FPDZC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FPDZC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FPUFC` reader - FPUFC Interrupt Enable"]
 pub type FPUFC_R = crate::BitReader;
 #[doc = "Field `FPUFC` writer - FPUFC Interrupt Enable"]
-pub type FPUFC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FPUFC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FPOFC` reader - FPOFC Interrupt Enable"]
 pub type FPOFC_R = crate::BitReader;
 #[doc = "Field `FPOFC` writer - FPOFC Interrupt Enable"]
-pub type FPOFC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FPOFC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FPIDC` reader - FPIDC Interrupt Enable"]
 pub type FPIDC_R = crate::BitReader;
 #[doc = "Field `FPIDC` writer - FPIDC Interrupt Enable"]
-pub type FPIDC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FPIDC_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FPIXC` reader - FPIXC Interrupt Enable"]
 pub type FPIXC_R = crate::BitReader;
 #[doc = "Field `FPIXC` writer - FPIXC Interrupt Enable"]
-pub type FPIXC_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FPIXC_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - FPIOC Interrupt Enable"]
     #[inline(always)]
@@ -62,40 +62,44 @@ impl W {
     #[doc = "Bit 0 - FPIOC Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn fpioc(&mut self) -> FPIOC_W<IEN_SPEC, 0> {
-        FPIOC_W::new(self)
+    pub fn fpioc(&mut self) -> FPIOC_W<IEN_SPEC> {
+        FPIOC_W::new(self, 0)
     }
     #[doc = "Bit 1 - FPDZC Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn fpdzc(&mut self) -> FPDZC_W<IEN_SPEC, 1> {
-        FPDZC_W::new(self)
+    pub fn fpdzc(&mut self) -> FPDZC_W<IEN_SPEC> {
+        FPDZC_W::new(self, 1)
     }
     #[doc = "Bit 2 - FPUFC Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn fpufc(&mut self) -> FPUFC_W<IEN_SPEC, 2> {
-        FPUFC_W::new(self)
+    pub fn fpufc(&mut self) -> FPUFC_W<IEN_SPEC> {
+        FPUFC_W::new(self, 2)
     }
     #[doc = "Bit 3 - FPOFC Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn fpofc(&mut self) -> FPOFC_W<IEN_SPEC, 3> {
-        FPOFC_W::new(self)
+    pub fn fpofc(&mut self) -> FPOFC_W<IEN_SPEC> {
+        FPOFC_W::new(self, 3)
     }
     #[doc = "Bit 4 - FPIDC Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn fpidc(&mut self) -> FPIDC_W<IEN_SPEC, 4> {
-        FPIDC_W::new(self)
+    pub fn fpidc(&mut self) -> FPIDC_W<IEN_SPEC> {
+        FPIDC_W::new(self, 4)
     }
     #[doc = "Bit 5 - FPIXC Interrupt Enable"]
     #[inline(always)]
     #[must_use]
-    pub fn fpixc(&mut self) -> FPIXC_W<IEN_SPEC, 5> {
-        FPIXC_W::new(self)
+    pub fn fpixc(&mut self) -> FPIXC_W<IEN_SPEC> {
+        FPIXC_W::new(self, 5)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -111,10 +115,10 @@ impl crate::RegisterSpec for IEN_SPEC {
 impl crate::Readable for IEN_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`ien::W`](W) writer structure"]
 impl crate::Writable for IEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IEN to value 0"]
 impl crate::Resettable for IEN_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

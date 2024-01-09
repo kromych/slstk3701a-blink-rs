@@ -7,13 +7,13 @@ pub type CURMOD_R = crate::BitReader;
 #[doc = "Field `MODEMIS` reader - Mode Mismatch Interrupt (host and device)"]
 pub type MODEMIS_R = crate::BitReader;
 #[doc = "Field `MODEMIS` writer - Mode Mismatch Interrupt (host and device)"]
-pub type MODEMIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type MODEMIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OTGINT` reader - OTG Interrupt (host and device)"]
 pub type OTGINT_R = crate::BitReader;
 #[doc = "Field `SOF` reader - Start of Frame (host and device)"]
 pub type SOF_R = crate::BitReader;
 #[doc = "Field `SOF` writer - Start of Frame (host and device)"]
-pub type SOF_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SOF_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXFLVL` reader - RxFIFO Non-Empty (host and device)"]
 pub type RXFLVL_R = crate::BitReader;
 #[doc = "Field `NPTXFEMP` reader - Non-Periodic TxFIFO Empty (host only)"]
@@ -25,31 +25,31 @@ pub type GOUTNAKEFF_R = crate::BitReader;
 #[doc = "Field `ERLYSUSP` reader - Early Suspend (device only)"]
 pub type ERLYSUSP_R = crate::BitReader;
 #[doc = "Field `ERLYSUSP` writer - Early Suspend (device only)"]
-pub type ERLYSUSP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ERLYSUSP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USBSUSP` reader - USB Suspend (device only)"]
 pub type USBSUSP_R = crate::BitReader;
 #[doc = "Field `USBSUSP` writer - USB Suspend (device only)"]
-pub type USBSUSP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type USBSUSP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USBRST` reader - USB Reset (device only)"]
 pub type USBRST_R = crate::BitReader;
 #[doc = "Field `USBRST` writer - USB Reset (device only)"]
-pub type USBRST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type USBRST_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ENUMDONE` reader - Enumeration Done (device only)"]
 pub type ENUMDONE_R = crate::BitReader;
 #[doc = "Field `ENUMDONE` writer - Enumeration Done (device only)"]
-pub type ENUMDONE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ENUMDONE_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ISOOUTDROP` reader - Isochronous OUT Packet Dropped Interrupt (device only)"]
 pub type ISOOUTDROP_R = crate::BitReader;
 #[doc = "Field `ISOOUTDROP` writer - Isochronous OUT Packet Dropped Interrupt (device only)"]
-pub type ISOOUTDROP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type ISOOUTDROP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EOPF` reader - End of Periodic Frame Interrupt"]
 pub type EOPF_R = crate::BitReader;
 #[doc = "Field `EOPF` writer - End of Periodic Frame Interrupt"]
-pub type EOPF_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EOPF_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EPMIS` reader - Endpoint Mismatch Interrupt (device only)"]
 pub type EPMIS_R = crate::BitReader;
 #[doc = "Field `EPMIS` writer - Endpoint Mismatch Interrupt (device only)"]
-pub type EPMIS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type EPMIS_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `IEPINT` reader - IN Endpoints Interrupt (device only)"]
 pub type IEPINT_R = crate::BitReader;
 #[doc = "Field `OEPINT` reader - OUT Endpoints Interrupt (device only)"]
@@ -57,19 +57,19 @@ pub type OEPINT_R = crate::BitReader;
 #[doc = "Field `INCOMPISOIN` reader - Incomplete Isochronous IN Transfer (device only)"]
 pub type INCOMPISOIN_R = crate::BitReader;
 #[doc = "Field `INCOMPISOIN` writer - Incomplete Isochronous IN Transfer (device only)"]
-pub type INCOMPISOIN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INCOMPISOIN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INCOMPLP` reader - Incomplete Periodic Transfer (device only)"]
 pub type INCOMPLP_R = crate::BitReader;
 #[doc = "Field `INCOMPLP` writer - Incomplete Periodic Transfer (device only)"]
-pub type INCOMPLP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type INCOMPLP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FETSUSP` reader - Data Fetch Suspended (device only)"]
 pub type FETSUSP_R = crate::BitReader;
 #[doc = "Field `FETSUSP` writer - Data Fetch Suspended (device only)"]
-pub type FETSUSP_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type FETSUSP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RESETDET` reader - Reset detected Interrupt (device only)"]
 pub type RESETDET_R = crate::BitReader;
 #[doc = "Field `RESETDET` writer - Reset detected Interrupt (device only)"]
-pub type RESETDET_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type RESETDET_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PRTINT` reader - Host Port Interrupt (host only)"]
 pub type PRTINT_R = crate::BitReader;
 #[doc = "Field `HCHINT` reader - Host Channels Interrupt (host only)"]
@@ -79,19 +79,19 @@ pub type PTXFEMP_R = crate::BitReader;
 #[doc = "Field `CONIDSTSCHNG` reader - Connector ID Status Change (host and device)"]
 pub type CONIDSTSCHNG_R = crate::BitReader;
 #[doc = "Field `CONIDSTSCHNG` writer - Connector ID Status Change (host and device)"]
-pub type CONIDSTSCHNG_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type CONIDSTSCHNG_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DISCONNINT` reader - Disconnect Detected Interrupt (host only)"]
 pub type DISCONNINT_R = crate::BitReader;
 #[doc = "Field `DISCONNINT` writer - Disconnect Detected Interrupt (host only)"]
-pub type DISCONNINT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DISCONNINT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SESSREQINT` reader - Session Request/New Session Detected Interrupt (host and device)"]
 pub type SESSREQINT_R = crate::BitReader;
 #[doc = "Field `SESSREQINT` writer - Session Request/New Session Detected Interrupt (host and device)"]
-pub type SESSREQINT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type SESSREQINT_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WKUPINT` reader - Resume/Remote Wakeup Detected Interrupt (host and device)"]
 pub type WKUPINT_R = crate::BitReader;
 #[doc = "Field `WKUPINT` writer - Resume/Remote Wakeup Detected Interrupt (host and device)"]
-pub type WKUPINT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type WKUPINT_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Current Mode of Operation (host and device)"]
     #[inline(always)]
@@ -238,106 +238,110 @@ impl W {
     #[doc = "Bit 1 - Mode Mismatch Interrupt (host and device)"]
     #[inline(always)]
     #[must_use]
-    pub fn modemis(&mut self) -> MODEMIS_W<GINTSTS_SPEC, 1> {
-        MODEMIS_W::new(self)
+    pub fn modemis(&mut self) -> MODEMIS_W<GINTSTS_SPEC> {
+        MODEMIS_W::new(self, 1)
     }
     #[doc = "Bit 3 - Start of Frame (host and device)"]
     #[inline(always)]
     #[must_use]
-    pub fn sof(&mut self) -> SOF_W<GINTSTS_SPEC, 3> {
-        SOF_W::new(self)
+    pub fn sof(&mut self) -> SOF_W<GINTSTS_SPEC> {
+        SOF_W::new(self, 3)
     }
     #[doc = "Bit 10 - Early Suspend (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn erlysusp(&mut self) -> ERLYSUSP_W<GINTSTS_SPEC, 10> {
-        ERLYSUSP_W::new(self)
+    pub fn erlysusp(&mut self) -> ERLYSUSP_W<GINTSTS_SPEC> {
+        ERLYSUSP_W::new(self, 10)
     }
     #[doc = "Bit 11 - USB Suspend (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn usbsusp(&mut self) -> USBSUSP_W<GINTSTS_SPEC, 11> {
-        USBSUSP_W::new(self)
+    pub fn usbsusp(&mut self) -> USBSUSP_W<GINTSTS_SPEC> {
+        USBSUSP_W::new(self, 11)
     }
     #[doc = "Bit 12 - USB Reset (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn usbrst(&mut self) -> USBRST_W<GINTSTS_SPEC, 12> {
-        USBRST_W::new(self)
+    pub fn usbrst(&mut self) -> USBRST_W<GINTSTS_SPEC> {
+        USBRST_W::new(self, 12)
     }
     #[doc = "Bit 13 - Enumeration Done (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn enumdone(&mut self) -> ENUMDONE_W<GINTSTS_SPEC, 13> {
-        ENUMDONE_W::new(self)
+    pub fn enumdone(&mut self) -> ENUMDONE_W<GINTSTS_SPEC> {
+        ENUMDONE_W::new(self, 13)
     }
     #[doc = "Bit 14 - Isochronous OUT Packet Dropped Interrupt (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn isooutdrop(&mut self) -> ISOOUTDROP_W<GINTSTS_SPEC, 14> {
-        ISOOUTDROP_W::new(self)
+    pub fn isooutdrop(&mut self) -> ISOOUTDROP_W<GINTSTS_SPEC> {
+        ISOOUTDROP_W::new(self, 14)
     }
     #[doc = "Bit 15 - End of Periodic Frame Interrupt"]
     #[inline(always)]
     #[must_use]
-    pub fn eopf(&mut self) -> EOPF_W<GINTSTS_SPEC, 15> {
-        EOPF_W::new(self)
+    pub fn eopf(&mut self) -> EOPF_W<GINTSTS_SPEC> {
+        EOPF_W::new(self, 15)
     }
     #[doc = "Bit 17 - Endpoint Mismatch Interrupt (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn epmis(&mut self) -> EPMIS_W<GINTSTS_SPEC, 17> {
-        EPMIS_W::new(self)
+    pub fn epmis(&mut self) -> EPMIS_W<GINTSTS_SPEC> {
+        EPMIS_W::new(self, 17)
     }
     #[doc = "Bit 20 - Incomplete Isochronous IN Transfer (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn incompisoin(&mut self) -> INCOMPISOIN_W<GINTSTS_SPEC, 20> {
-        INCOMPISOIN_W::new(self)
+    pub fn incompisoin(&mut self) -> INCOMPISOIN_W<GINTSTS_SPEC> {
+        INCOMPISOIN_W::new(self, 20)
     }
     #[doc = "Bit 21 - Incomplete Periodic Transfer (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn incomplp(&mut self) -> INCOMPLP_W<GINTSTS_SPEC, 21> {
-        INCOMPLP_W::new(self)
+    pub fn incomplp(&mut self) -> INCOMPLP_W<GINTSTS_SPEC> {
+        INCOMPLP_W::new(self, 21)
     }
     #[doc = "Bit 22 - Data Fetch Suspended (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn fetsusp(&mut self) -> FETSUSP_W<GINTSTS_SPEC, 22> {
-        FETSUSP_W::new(self)
+    pub fn fetsusp(&mut self) -> FETSUSP_W<GINTSTS_SPEC> {
+        FETSUSP_W::new(self, 22)
     }
     #[doc = "Bit 23 - Reset detected Interrupt (device only)"]
     #[inline(always)]
     #[must_use]
-    pub fn resetdet(&mut self) -> RESETDET_W<GINTSTS_SPEC, 23> {
-        RESETDET_W::new(self)
+    pub fn resetdet(&mut self) -> RESETDET_W<GINTSTS_SPEC> {
+        RESETDET_W::new(self, 23)
     }
     #[doc = "Bit 28 - Connector ID Status Change (host and device)"]
     #[inline(always)]
     #[must_use]
-    pub fn conidstschng(&mut self) -> CONIDSTSCHNG_W<GINTSTS_SPEC, 28> {
-        CONIDSTSCHNG_W::new(self)
+    pub fn conidstschng(&mut self) -> CONIDSTSCHNG_W<GINTSTS_SPEC> {
+        CONIDSTSCHNG_W::new(self, 28)
     }
     #[doc = "Bit 29 - Disconnect Detected Interrupt (host only)"]
     #[inline(always)]
     #[must_use]
-    pub fn disconnint(&mut self) -> DISCONNINT_W<GINTSTS_SPEC, 29> {
-        DISCONNINT_W::new(self)
+    pub fn disconnint(&mut self) -> DISCONNINT_W<GINTSTS_SPEC> {
+        DISCONNINT_W::new(self, 29)
     }
     #[doc = "Bit 30 - Session Request/New Session Detected Interrupt (host and device)"]
     #[inline(always)]
     #[must_use]
-    pub fn sessreqint(&mut self) -> SESSREQINT_W<GINTSTS_SPEC, 30> {
-        SESSREQINT_W::new(self)
+    pub fn sessreqint(&mut self) -> SESSREQINT_W<GINTSTS_SPEC> {
+        SESSREQINT_W::new(self, 30)
     }
     #[doc = "Bit 31 - Resume/Remote Wakeup Detected Interrupt (host and device)"]
     #[inline(always)]
     #[must_use]
-    pub fn wkupint(&mut self) -> WKUPINT_W<GINTSTS_SPEC, 31> {
-        WKUPINT_W::new(self)
+    pub fn wkupint(&mut self) -> WKUPINT_W<GINTSTS_SPEC> {
+        WKUPINT_W::new(self, 31)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = r" Writes raw bits to the register."]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
         self.bits = bits;
@@ -353,10 +357,10 @@ impl crate::RegisterSpec for GINTSTS_SPEC {
 impl crate::Readable for GINTSTS_SPEC {}
 #[doc = "`write(|w| ..)` method takes [`gintsts::W`](W) writer structure"]
 impl crate::Writable for GINTSTS_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets GINTSTS to value 0x1400_0020"]
 impl crate::Resettable for GINTSTS_SPEC {
-    const RESET_VALUE: Self::Ux = 0x1400_0020;
+    const RESET_VALUE: u32 = 0x1400_0020;
 }

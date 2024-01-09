@@ -18,5 +18,5 @@ impl crate::RegisterSpec for SINGLEFIFOCOUNT_SPEC {
 impl crate::Readable for SINGLEFIFOCOUNT_SPEC {}
 #[doc = "`reset()` method sets SINGLEFIFOCOUNT to value 0"]
 impl crate::Resettable for SINGLEFIFOCOUNT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

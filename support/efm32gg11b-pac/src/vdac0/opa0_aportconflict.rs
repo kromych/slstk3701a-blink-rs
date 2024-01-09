@@ -67,5 +67,5 @@ impl crate::RegisterSpec for OPA0_APORTCONFLICT_SPEC {
 impl crate::Readable for OPA0_APORTCONFLICT_SPEC {}
 #[doc = "`reset()` method sets OPA0_APORTCONFLICT to value 0"]
 impl crate::Resettable for OPA0_APORTCONFLICT_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    const RESET_VALUE: u32 = 0;
 }

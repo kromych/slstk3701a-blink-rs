@@ -1,7 +1,8 @@
-//! Driver for the Sharp Memory LCD (LS013B7DH06) on the SLSTK3701A board.
+//! Driver for the JDI LPM013M126A Color Memory LCD on the SLSTK3701A board.
 //!
-//! The display is 128x128 pixels, 3-bit RGB color, driven via USART1 SPI.
-//! Each pixel is 3 bits (R, G, B), so each row is 128 × 3 / 8 = 48 bytes.
+//! The display is 176x176 pixels, 3-bit RGB color, driven via USART1 SPI.
+//! Each pixel is 3 bits (R, G, B), so each row is 176 × 3 / 8 = 66 bytes.
+//! Pixel value: 0b111 = white, 0b000 = black.
 //!
 //! Pin mapping (SLSTK3701A):
 //!   PA14 – USART1_TX  (SPI MOSI / SI),  location 6
@@ -16,17 +17,17 @@ use efm32gg11b_pac as pac;
 // ---------- display geometry ----------
 
 /// Display width in pixels.
-pub const WIDTH: u8 = 128;
+pub const WIDTH: u16 = 176;
 /// Display height in pixels.
-pub const HEIGHT: u8 = 128;
+pub const HEIGHT: u16 = 176;
 /// Bits per pixel (RGB 3-bit).
 pub const BPP: usize = 3;
-/// Bytes per pixel row (128 × 3 / 8 = 48).
+/// Bytes per pixel row (176 × 3 / 8 = 66).
 pub const BYTES_PER_ROW: usize = (WIDTH as usize * BPP) / 8;
-/// Number of 8-pixel-tall text rows (128 / 8).
-pub const TEXT_ROWS: u8 = 16;
-/// Number of 8-pixel-wide text columns (128 / 8).
-pub const TEXT_COLS: u8 = 16;
+/// Number of 8-pixel-tall text rows (176 / 8 = 22).
+pub const TEXT_ROWS: u8 = (HEIGHT / 8) as u8;
+/// Number of 8-pixel-wide text columns (176 / 8 = 22).
+pub const TEXT_COLS: u8 = (WIDTH / 8) as u8;
 
 // ---------- GPIO bit positions ----------
 
@@ -136,12 +137,28 @@ pub fn init() {
     // CS low initially.
     cs_low();
 
+    // Reset USART to known state before configuring.
+    u.cmd().write(|w| {
+        w.rxdis()
+            .set_bit()
+            .txdis()
+            .set_bit()
+            .masterdis()
+            .set_bit()
+            .cleartx()
+            .set_bit()
+            .clearrx()
+            .set_bit()
+    });
+
     // Synchronous mode, LSB first (MSBF=0), CPOL=0, CPHA=0.
     u.ctrl().write(|w| w.sync().set_bit());
     u.frame().write(|w| w.databits().eight());
 
     // ~1 MHz SPI clock at 19 MHz HFPERCLK.
-    u.clkdiv().write(|w| unsafe { w.bits(2176) });
+    // CLKDIV formula (sync): br = fHFPERCLK / (2 * (1 + DIV/256))
+    //   DIV = 256 * (fHFPERCLK / (2 * br) - 1) = 256 * (19/2 - 1) = 256 * 8.5 = 2176
+    u.clkdiv().write(|w| unsafe { w.div().bits(2176) });
 
     // Route TX to location 6 (PA14), CLK to location 3 (PC15).
     u.routeloc0().write(|w| w.txloc().loc6().clkloc().loc3());
@@ -152,7 +169,7 @@ pub fn init() {
     u.cmd()
         .write(|w| w.masteren().set_bit().txen().set_bit().rxen().set_bit());
 
-    // Power on the display.
+    // Power on the display (DISP_ENABLE high = EFM32 controls display).
     gpio.pa_dout()
         .modify(|r, w| unsafe { w.bits(r.bits() | PA_DISP_SEL) });
 
@@ -180,7 +197,7 @@ pub fn toggle_vcom() {
         .write(|w| unsafe { w.bits(PA_EXTCOMIN) });
 }
 
-/// Write a single pixel row (0-127) with 48 bytes of 3-bpp data.
+/// Write a single pixel row (0-based) with 66 bytes of 3-bpp data.
 pub fn write_row(row: u8, data: &[u8; BYTES_PER_ROW], vcom: &mut bool) {
     let cmd = 0x01 | if *vcom { 0x02 } else { 0x00 };
     *vcom = !*vcom;
@@ -188,7 +205,7 @@ pub fn write_row(row: u8, data: &[u8; BYTES_PER_ROW], vcom: &mut bool) {
     cs_high();
     scs_setup_delay();
     spi_write(cmd);
-    spi_write(row + 1);
+    spi_write(reverse_bits(row + 1));
     for &b in data.iter() {
         spi_write(b);
     }
@@ -211,7 +228,7 @@ pub fn write_rows(start_row: u8, rows: &[[u8; BYTES_PER_ROW]], vcom: &mut bool) 
     scs_setup_delay();
     spi_write(cmd);
     for (i, row_data) in rows.iter().enumerate() {
-        spi_write(start_row + i as u8 + 1);
+        spi_write(reverse_bits(start_row + i as u8 + 1));
         for &b in row_data.iter() {
             spi_write(b);
         }
@@ -231,7 +248,7 @@ pub fn draw_text(row: u8, col: u8, text: &str, vcom: &mut bool) {
         return;
     }
 
-    // White row: all pixel bits set (0xFF).
+    // White row: all pixel bits set (0xFF) → all pixels 0b111 = white.
     let mut pixel_rows = [[0xFFu8; BYTES_PER_ROW]; 8];
 
     for (ci, ch) in text.bytes().enumerate() {
@@ -265,11 +282,11 @@ pub fn draw_text(row: u8, col: u8, text: &str, vcom: &mut bool) {
 }
 
 /// Fill a rectangular region (in pixel coordinates) with black or white.
-pub fn fill_rect(x: u8, y: u8, w: u8, h: u8, black: bool, vcom: &mut bool) {
+pub fn fill_rect(x: u16, y: u16, w: u16, h: u16, black: bool, vcom: &mut bool) {
     let x0 = x.min(WIDTH) as usize;
     let y0 = y.min(HEIGHT);
-    let x1 = (x as u16 + w as u16).min(WIDTH as u16) as usize;
-    let y1 = (y as u16 + h as u16).min(HEIGHT as u16) as u8;
+    let x1 = (x + w).min(WIDTH) as usize;
+    let y1 = (y + h).min(HEIGHT);
 
     let color = if black { 0b000 } else { 0b111 };
 
@@ -280,7 +297,7 @@ pub fn fill_rect(x: u8, y: u8, w: u8, h: u8, black: bool, vcom: &mut bool) {
                 set_pixel(&mut data, px, color);
             }
         }
-        write_row(row, &data, vcom);
+        write_row(row as u8, &data, vcom);
     }
 }
 

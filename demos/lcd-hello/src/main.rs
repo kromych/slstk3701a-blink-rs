@@ -1,4 +1,4 @@
-//! Display a greeting and simple geometric patterns on the Sharp Memory LCD.
+//! Display a greeting and simple geometric patterns on the Color Memory LCD.
 
 #![no_main]
 #![no_std]
@@ -30,17 +30,18 @@ fn main() -> ! {
 
     // Draw a title.
     display::draw_text(1, 1, "Hello, World!", &mut vcom);
-    display::draw_text(2, 1, "EFM32 Giant", &mut vcom);
-    display::draw_text(3, 1, "Gecko SLSTK3701A", &mut vcom);
+    display::draw_text(2, 1, "EFM32 Giant Gecko 11", &mut vcom);
+    display::draw_text(3, 1, "SLSTK3701A", &mut vcom);
+    display::draw_text(5, 1, "176x176 8-color LCD", &mut vcom);
 
     // Draw a horizontal rule.
-    display::fill_rect(8, 36, 112, 2, true, &mut vcom);
+    display::fill_rect(8, 52, 160, 2, true, &mut vcom);
 
-    // Draw a checkerboard pattern (8x8 pixel blocks) in the lower half.
+    // Draw a checkerboard pattern (8x8 pixel blocks).
     for block_row in 0..5u8 {
         let mut rows = [[0xFFu8; display::BYTES_PER_ROW]; 8];
         for row in &mut rows {
-            for bx in 0..16u8 {
+            for bx in 0..22u8 {
                 let checker = ((block_row as usize + bx as usize) & 1) != 0;
                 if checker {
                     for px in 0..8 {
@@ -49,23 +50,43 @@ fn main() -> ! {
                 }
             }
         }
-        let start = 48 + block_row * 8;
+        let start = 60 + block_row * 8;
         display::write_rows(start, &rows, &mut vcom);
     }
 
-    // Draw a border rectangle outline (1-pixel lines).
-    for x in 0..128usize {
-        set_pixel_line(x, 96, true, &mut vcom);
-        set_pixel_line(x, 123, true, &mut vcom);
-    }
-    for y in 96..124u8 {
-        set_pixel_line(0, y, true, &mut vcom);
-        set_pixel_line(127, y, true, &mut vcom);
-    }
+    // Draw a border rectangle.
+    display::fill_rect(0, 110, 176, 1, true, &mut vcom); // top
+    display::fill_rect(0, 155, 176, 1, true, &mut vcom); // bottom
+    display::fill_rect(0, 110, 1, 46, true, &mut vcom); // left
+    display::fill_rect(175, 110, 1, 46, true, &mut vcom); // right
 
     // Label inside the border.
-    display::draw_text(13, 3, "Sharp LCD", &mut vcom);
-    display::draw_text(14, 3, "128x128 RGB3", &mut vcom);
+    display::draw_text(15, 3, "JDI LPM013M126A", &mut vcom);
+    display::draw_text(16, 3, "Color Memory LCD", &mut vcom);
+
+    // Draw color blocks to demonstrate 8 colors.
+    let colors: [(u8, &str); 8] = [
+        (0b000, "Blk"),
+        (0b001, "Blu"),
+        (0b010, "Grn"),
+        (0b011, "Cyn"),
+        (0b100, "Red"),
+        (0b101, "Mag"),
+        (0b110, "Yel"),
+        (0b111, "Wht"),
+    ];
+    {
+        let mut rows = [[0xFFu8; display::BYTES_PER_ROW]; 12];
+        for (i, &(color, _)) in colors.iter().enumerate() {
+            let x0 = 8 + i * 20;
+            for row in rows.iter_mut() {
+                for px in x0..x0 + 16 {
+                    set_pixel_3bpp(row, px, color);
+                }
+            }
+        }
+        display::write_rows(140, &rows, &mut vcom);
+    }
 
     defmt::info!("LCD hello demo running");
 
@@ -91,13 +112,4 @@ fn set_pixel_3bpp(row_buf: &mut [u8; display::BYTES_PER_ROW], x: usize, color: u
         row_buf[byte_idx + 1] =
             (row_buf[byte_idx + 1] & !mask2) | ((color >> bits_in_first) & mask2);
     }
-}
-
-/// Write a single pixel on a row (overwrites rest of row with white).
-fn set_pixel_line(x: usize, y: u8, black: bool, vcom: &mut bool) {
-    let mut row = [0xFFu8; display::BYTES_PER_ROW];
-    if black {
-        set_pixel_3bpp(&mut row, x, 0b000);
-    }
-    display::write_row(y, &row, vcom);
 }

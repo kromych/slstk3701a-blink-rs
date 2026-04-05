@@ -1,0 +1,18 @@
+[package]
+name = "efm32gg11b-usb"
+version = "0.0.1"
+authors = ["kromych <kromych@users.noreply.github.com>"]
+categories = ["embedded", "no-std"]
+description = "DWC2 USB device driver for EFM32GG11B"
+keywords = ["arm", "cortex-m", "efm32gg11b"]
+license = "MIT"
+edition = "2021"
+
+[dependencies]
+cortex-m.workspace = true
+cortex-m-rt.workspace = true
+critical-section.workspace = true
+defmt.workspace = true
+portable-atomic.workspace = true
+
+efm32gg11b-pac.workspace = true

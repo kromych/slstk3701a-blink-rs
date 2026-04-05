@@ -1,124 +1,105 @@
 #[doc = "Register `PCNTCTRL` reader"]
-pub type R = crate::R<PCNTCTRL_SPEC>;
+pub type R = crate::R<PcntctrlSpec>;
 #[doc = "Register `PCNTCTRL` writer"]
-pub type W = crate::W<PCNTCTRL_SPEC>;
+pub type W = crate::W<PcntctrlSpec>;
 #[doc = "Field `PCNT0CLKEN` reader - PCNT0 Clock Enable"]
-pub type PCNT0CLKEN_R = crate::BitReader;
+pub type Pcnt0clkenR = crate::BitReader;
 #[doc = "Field `PCNT0CLKEN` writer - PCNT0 Clock Enable"]
-pub type PCNT0CLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt0clkenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PCNT0CLKSEL` reader - PCNT0 Clock Select"]
-pub type PCNT0CLKSEL_R = crate::BitReader;
+pub type Pcnt0clkselR = crate::BitReader;
 #[doc = "Field `PCNT0CLKSEL` writer - PCNT0 Clock Select"]
-pub type PCNT0CLKSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt0clkselW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PCNT1CLKEN` reader - PCNT1 Clock Enable"]
-pub type PCNT1CLKEN_R = crate::BitReader;
+pub type Pcnt1clkenR = crate::BitReader;
 #[doc = "Field `PCNT1CLKEN` writer - PCNT1 Clock Enable"]
-pub type PCNT1CLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt1clkenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PCNT1CLKSEL` reader - PCNT1 Clock Select"]
-pub type PCNT1CLKSEL_R = crate::BitReader;
+pub type Pcnt1clkselR = crate::BitReader;
 #[doc = "Field `PCNT1CLKSEL` writer - PCNT1 Clock Select"]
-pub type PCNT1CLKSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt1clkselW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PCNT2CLKEN` reader - PCNT2 Clock Enable"]
-pub type PCNT2CLKEN_R = crate::BitReader;
+pub type Pcnt2clkenR = crate::BitReader;
 #[doc = "Field `PCNT2CLKEN` writer - PCNT2 Clock Enable"]
-pub type PCNT2CLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt2clkenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PCNT2CLKSEL` reader - PCNT2 Clock Select"]
-pub type PCNT2CLKSEL_R = crate::BitReader;
+pub type Pcnt2clkselR = crate::BitReader;
 #[doc = "Field `PCNT2CLKSEL` writer - PCNT2 Clock Select"]
-pub type PCNT2CLKSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt2clkselW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - PCNT0 Clock Enable"]
     #[inline(always)]
-    pub fn pcnt0clken(&self) -> PCNT0CLKEN_R {
-        PCNT0CLKEN_R::new((self.bits & 1) != 0)
+    pub fn pcnt0clken(&self) -> Pcnt0clkenR {
+        Pcnt0clkenR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - PCNT0 Clock Select"]
     #[inline(always)]
-    pub fn pcnt0clksel(&self) -> PCNT0CLKSEL_R {
-        PCNT0CLKSEL_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn pcnt0clksel(&self) -> Pcnt0clkselR {
+        Pcnt0clkselR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - PCNT1 Clock Enable"]
     #[inline(always)]
-    pub fn pcnt1clken(&self) -> PCNT1CLKEN_R {
-        PCNT1CLKEN_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn pcnt1clken(&self) -> Pcnt1clkenR {
+        Pcnt1clkenR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - PCNT1 Clock Select"]
     #[inline(always)]
-    pub fn pcnt1clksel(&self) -> PCNT1CLKSEL_R {
-        PCNT1CLKSEL_R::new(((self.bits >> 3) & 1) != 0)
+    pub fn pcnt1clksel(&self) -> Pcnt1clkselR {
+        Pcnt1clkselR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - PCNT2 Clock Enable"]
     #[inline(always)]
-    pub fn pcnt2clken(&self) -> PCNT2CLKEN_R {
-        PCNT2CLKEN_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn pcnt2clken(&self) -> Pcnt2clkenR {
+        Pcnt2clkenR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - PCNT2 Clock Select"]
     #[inline(always)]
-    pub fn pcnt2clksel(&self) -> PCNT2CLKSEL_R {
-        PCNT2CLKSEL_R::new(((self.bits >> 5) & 1) != 0)
+    pub fn pcnt2clksel(&self) -> Pcnt2clkselR {
+        Pcnt2clkselR::new(((self.bits >> 5) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - PCNT0 Clock Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt0clken(&mut self) -> PCNT0CLKEN_W<PCNTCTRL_SPEC> {
-        PCNT0CLKEN_W::new(self, 0)
+    pub fn pcnt0clken(&mut self) -> Pcnt0clkenW<'_, PcntctrlSpec> {
+        Pcnt0clkenW::new(self, 0)
     }
     #[doc = "Bit 1 - PCNT0 Clock Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt0clksel(&mut self) -> PCNT0CLKSEL_W<PCNTCTRL_SPEC> {
-        PCNT0CLKSEL_W::new(self, 1)
+    pub fn pcnt0clksel(&mut self) -> Pcnt0clkselW<'_, PcntctrlSpec> {
+        Pcnt0clkselW::new(self, 1)
     }
     #[doc = "Bit 2 - PCNT1 Clock Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt1clken(&mut self) -> PCNT1CLKEN_W<PCNTCTRL_SPEC> {
-        PCNT1CLKEN_W::new(self, 2)
+    pub fn pcnt1clken(&mut self) -> Pcnt1clkenW<'_, PcntctrlSpec> {
+        Pcnt1clkenW::new(self, 2)
     }
     #[doc = "Bit 3 - PCNT1 Clock Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt1clksel(&mut self) -> PCNT1CLKSEL_W<PCNTCTRL_SPEC> {
-        PCNT1CLKSEL_W::new(self, 3)
+    pub fn pcnt1clksel(&mut self) -> Pcnt1clkselW<'_, PcntctrlSpec> {
+        Pcnt1clkselW::new(self, 3)
     }
     #[doc = "Bit 4 - PCNT2 Clock Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt2clken(&mut self) -> PCNT2CLKEN_W<PCNTCTRL_SPEC> {
-        PCNT2CLKEN_W::new(self, 4)
+    pub fn pcnt2clken(&mut self) -> Pcnt2clkenW<'_, PcntctrlSpec> {
+        Pcnt2clkenW::new(self, 4)
     }
     #[doc = "Bit 5 - PCNT2 Clock Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt2clksel(&mut self) -> PCNT2CLKSEL_W<PCNTCTRL_SPEC> {
-        PCNT2CLKSEL_W::new(self, 5)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn pcnt2clksel(&mut self) -> Pcnt2clkselW<'_, PcntctrlSpec> {
+        Pcnt2clkselW::new(self, 5)
     }
 }
-#[doc = "PCNT Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`pcntctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`pcntctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct PCNTCTRL_SPEC;
-impl crate::RegisterSpec for PCNTCTRL_SPEC {
+#[doc = "PCNT Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`pcntctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pcntctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PcntctrlSpec;
+impl crate::RegisterSpec for PcntctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`pcntctrl::R`](R) reader structure"]
-impl crate::Readable for PCNTCTRL_SPEC {}
+impl crate::Readable for PcntctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`pcntctrl::W`](W) writer structure"]
-impl crate::Writable for PCNTCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for PcntctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets PCNTCTRL to value 0"]
-impl crate::Resettable for PCNTCTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for PcntctrlSpec {}

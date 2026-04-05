@@ -1,49 +1,35 @@
 #[doc = "Register `INDIRECTWRITEXFERNUMBYTES` reader"]
-pub type R = crate::R<INDIRECTWRITEXFERNUMBYTES_SPEC>;
+pub type R = crate::R<IndirectwritexfernumbytesSpec>;
 #[doc = "Register `INDIRECTWRITEXFERNUMBYTES` writer"]
-pub type W = crate::W<INDIRECTWRITEXFERNUMBYTES_SPEC>;
+pub type W = crate::W<IndirectwritexfernumbytesSpec>;
 #[doc = "Field `VALUE` reader - Indirect Number of Bytes"]
-pub type VALUE_R = crate::FieldReader<u32>;
+pub type ValueR = crate::FieldReader<u32>;
 #[doc = "Field `VALUE` writer - Indirect Number of Bytes"]
-pub type VALUE_W<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
+pub type ValueW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Indirect Number of Bytes"]
     #[inline(always)]
-    pub fn value(&self) -> VALUE_R {
-        VALUE_R::new(self.bits)
+    pub fn value(&self) -> ValueR {
+        ValueR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Indirect Number of Bytes"]
     #[inline(always)]
-    #[must_use]
-    pub fn value(&mut self) -> VALUE_W<INDIRECTWRITEXFERNUMBYTES_SPEC> {
-        VALUE_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn value(&mut self) -> ValueW<'_, IndirectwritexfernumbytesSpec> {
+        ValueW::new(self, 0)
     }
 }
-#[doc = "Indirect Write Transfer Number Bytes Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`indirectwritexfernumbytes::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`indirectwritexfernumbytes::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct INDIRECTWRITEXFERNUMBYTES_SPEC;
-impl crate::RegisterSpec for INDIRECTWRITEXFERNUMBYTES_SPEC {
+#[doc = "Indirect Write Transfer Number Bytes Register\n\nYou can [`read`](crate::Reg::read) this register and get [`indirectwritexfernumbytes::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`indirectwritexfernumbytes::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IndirectwritexfernumbytesSpec;
+impl crate::RegisterSpec for IndirectwritexfernumbytesSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`indirectwritexfernumbytes::R`](R) reader structure"]
-impl crate::Readable for INDIRECTWRITEXFERNUMBYTES_SPEC {}
+impl crate::Readable for IndirectwritexfernumbytesSpec {}
 #[doc = "`write(|w| ..)` method takes [`indirectwritexfernumbytes::W`](W) writer structure"]
-impl crate::Writable for INDIRECTWRITEXFERNUMBYTES_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for IndirectwritexfernumbytesSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets INDIRECTWRITEXFERNUMBYTES to value 0"]
-impl crate::Resettable for INDIRECTWRITEXFERNUMBYTES_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for IndirectwritexfernumbytesSpec {}

@@ -1,124 +1,99 @@
 #[doc = "Register `IFC` writer"]
-pub type W = crate::W<IFC_SPEC>;
+pub type W = crate::W<IfcSpec>;
 #[doc = "Field `ERASE` writer - Clear ERASE Interrupt Flag"]
-pub type ERASE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type EraseW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WRITE` writer - Clear WRITE Interrupt Flag"]
-pub type WRITE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type WriteW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CHOF` writer - Clear CHOF Interrupt Flag"]
-pub type CHOF_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type ChofW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CMOF` writer - Clear CMOF Interrupt Flag"]
-pub type CMOF_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type CmofW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PWRUPF` writer - Clear PWRUPF Interrupt Flag"]
-pub type PWRUPF_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type PwrupfW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ICACHERR` writer - Clear ICACHERR Interrupt Flag"]
-pub type ICACHERR_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type IcacherrW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WDATAOV` writer - Clear WDATAOV Interrupt Flag"]
-pub type WDATAOV_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type WdataovW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LVEWRITE` writer - Clear LVEWRITE Interrupt Flag"]
-pub type LVEWRITE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type LvewriteW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RAMERR1B` writer - Clear RAMERR1B Interrupt Flag"]
-pub type RAMERR1B_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Ramerr1bW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RAMERR2B` writer - Clear RAMERR2B Interrupt Flag"]
-pub type RAMERR2B_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Ramerr2bW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RAM1ERR1B` writer - Clear RAM1ERR1B Interrupt Flag"]
-pub type RAM1ERR1B_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Ram1err1bW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RAM1ERR2B` writer - Clear RAM1ERR2B Interrupt Flag"]
-pub type RAM1ERR2B_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Ram1err2bW<'a, REG> = crate::BitWriter<'a, REG>;
 impl W {
     #[doc = "Bit 0 - Clear ERASE Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn erase(&mut self) -> ERASE_W<IFC_SPEC> {
-        ERASE_W::new(self, 0)
+    pub fn erase(&mut self) -> EraseW<'_, IfcSpec> {
+        EraseW::new(self, 0)
     }
     #[doc = "Bit 1 - Clear WRITE Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn write(&mut self) -> WRITE_W<IFC_SPEC> {
-        WRITE_W::new(self, 1)
+    pub fn write(&mut self) -> WriteW<'_, IfcSpec> {
+        WriteW::new(self, 1)
     }
     #[doc = "Bit 2 - Clear CHOF Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn chof(&mut self) -> CHOF_W<IFC_SPEC> {
-        CHOF_W::new(self, 2)
+    pub fn chof(&mut self) -> ChofW<'_, IfcSpec> {
+        ChofW::new(self, 2)
     }
     #[doc = "Bit 3 - Clear CMOF Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmof(&mut self) -> CMOF_W<IFC_SPEC> {
-        CMOF_W::new(self, 3)
+    pub fn cmof(&mut self) -> CmofW<'_, IfcSpec> {
+        CmofW::new(self, 3)
     }
     #[doc = "Bit 4 - Clear PWRUPF Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn pwrupf(&mut self) -> PWRUPF_W<IFC_SPEC> {
-        PWRUPF_W::new(self, 4)
+    pub fn pwrupf(&mut self) -> PwrupfW<'_, IfcSpec> {
+        PwrupfW::new(self, 4)
     }
     #[doc = "Bit 5 - Clear ICACHERR Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn icacherr(&mut self) -> ICACHERR_W<IFC_SPEC> {
-        ICACHERR_W::new(self, 5)
+    pub fn icacherr(&mut self) -> IcacherrW<'_, IfcSpec> {
+        IcacherrW::new(self, 5)
     }
     #[doc = "Bit 6 - Clear WDATAOV Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn wdataov(&mut self) -> WDATAOV_W<IFC_SPEC> {
-        WDATAOV_W::new(self, 6)
+    pub fn wdataov(&mut self) -> WdataovW<'_, IfcSpec> {
+        WdataovW::new(self, 6)
     }
     #[doc = "Bit 8 - Clear LVEWRITE Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn lvewrite(&mut self) -> LVEWRITE_W<IFC_SPEC> {
-        LVEWRITE_W::new(self, 8)
+    pub fn lvewrite(&mut self) -> LvewriteW<'_, IfcSpec> {
+        LvewriteW::new(self, 8)
     }
     #[doc = "Bit 16 - Clear RAMERR1B Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn ramerr1b(&mut self) -> RAMERR1B_W<IFC_SPEC> {
-        RAMERR1B_W::new(self, 16)
+    pub fn ramerr1b(&mut self) -> Ramerr1bW<'_, IfcSpec> {
+        Ramerr1bW::new(self, 16)
     }
     #[doc = "Bit 17 - Clear RAMERR2B Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn ramerr2b(&mut self) -> RAMERR2B_W<IFC_SPEC> {
-        RAMERR2B_W::new(self, 17)
+    pub fn ramerr2b(&mut self) -> Ramerr2bW<'_, IfcSpec> {
+        Ramerr2bW::new(self, 17)
     }
     #[doc = "Bit 18 - Clear RAM1ERR1B Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn ram1err1b(&mut self) -> RAM1ERR1B_W<IFC_SPEC> {
-        RAM1ERR1B_W::new(self, 18)
+    pub fn ram1err1b(&mut self) -> Ram1err1bW<'_, IfcSpec> {
+        Ram1err1bW::new(self, 18)
     }
     #[doc = "Bit 19 - Clear RAM1ERR2B Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn ram1err2b(&mut self) -> RAM1ERR2B_W<IFC_SPEC> {
-        RAM1ERR2B_W::new(self, 19)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn ram1err2b(&mut self) -> Ram1err2bW<'_, IfcSpec> {
+        Ram1err2bW::new(self, 19)
     }
 }
-#[doc = "Interrupt Flag Clear Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ifc::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct IFC_SPEC;
-impl crate::RegisterSpec for IFC_SPEC {
+#[doc = "Interrupt Flag Clear Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ifc::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IfcSpec;
+impl crate::RegisterSpec for IfcSpec {
     type Ux = u32;
 }
 #[doc = "`write(|w| ..)` method takes [`ifc::W`](W) writer structure"]
-impl crate::Writable for IFC_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for IfcSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets IFC to value 0"]
-impl crate::Resettable for IFC_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for IfcSpec {}

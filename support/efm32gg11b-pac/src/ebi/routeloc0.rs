@@ -1,83 +1,84 @@
 #[doc = "Register `ROUTELOC0` reader"]
-pub type R = crate::R<ROUTELOC0_SPEC>;
+pub type R = crate::R<Routeloc0Spec>;
 #[doc = "Register `ROUTELOC0` writer"]
-pub type W = crate::W<ROUTELOC0_SPEC>;
-#[doc = "Field `EBILOC` reader - I/O Location"]
-pub type EBILOC_R = crate::FieldReader<EBILOC_A>;
+pub type W = crate::W<Routeloc0Spec>;
 #[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum EBILOC_A {
+pub enum Ebiloc {
     #[doc = "0: Location 0"]
-    LOC0 = 0,
+    Loc0 = 0,
     #[doc = "1: Location 1"]
-    LOC1 = 1,
+    Loc1 = 1,
     #[doc = "2: Location 2"]
-    LOC2 = 2,
+    Loc2 = 2,
     #[doc = "3: Location 3"]
-    LOC3 = 3,
+    Loc3 = 3,
     #[doc = "4: Location 4"]
-    LOC4 = 4,
+    Loc4 = 4,
     #[doc = "5: Location 5"]
-    LOC5 = 5,
+    Loc5 = 5,
 }
-impl From<EBILOC_A> for u8 {
+impl From<Ebiloc> for u8 {
     #[inline(always)]
-    fn from(variant: EBILOC_A) -> Self {
+    fn from(variant: Ebiloc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for EBILOC_A {
+impl crate::FieldSpec for Ebiloc {
     type Ux = u8;
 }
-impl EBILOC_R {
+impl crate::IsEnum for Ebiloc {}
+#[doc = "Field `EBILOC` reader - I/O Location"]
+pub type EbilocR = crate::FieldReader<Ebiloc>;
+impl EbilocR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<EBILOC_A> {
+    pub const fn variant(&self) -> Option<Ebiloc> {
         match self.bits {
-            0 => Some(EBILOC_A::LOC0),
-            1 => Some(EBILOC_A::LOC1),
-            2 => Some(EBILOC_A::LOC2),
-            3 => Some(EBILOC_A::LOC3),
-            4 => Some(EBILOC_A::LOC4),
-            5 => Some(EBILOC_A::LOC5),
+            0 => Some(Ebiloc::Loc0),
+            1 => Some(Ebiloc::Loc1),
+            2 => Some(Ebiloc::Loc2),
+            3 => Some(Ebiloc::Loc3),
+            4 => Some(Ebiloc::Loc4),
+            5 => Some(Ebiloc::Loc5),
             _ => None,
         }
     }
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == EBILOC_A::LOC0
+        *self == Ebiloc::Loc0
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == EBILOC_A::LOC1
+        *self == Ebiloc::Loc1
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == EBILOC_A::LOC2
+        *self == Ebiloc::Loc2
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == EBILOC_A::LOC3
+        *self == Ebiloc::Loc3
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn is_loc4(&self) -> bool {
-        *self == EBILOC_A::LOC4
+        *self == Ebiloc::Loc4
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn is_loc5(&self) -> bool {
-        *self == EBILOC_A::LOC5
+        *self == Ebiloc::Loc5
     }
 }
 #[doc = "Field `EBILOC` writer - I/O Location"]
-pub type EBILOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, EBILOC_A>;
-impl<'a, REG> EBILOC_W<'a, REG>
+pub type EbilocW<'a, REG> = crate::FieldWriter<'a, REG, 6, Ebiloc>;
+impl<'a, REG> EbilocW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -85,102 +86,103 @@ where
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn loc0(self) -> &'a mut crate::W<REG> {
-        self.variant(EBILOC_A::LOC0)
+        self.variant(Ebiloc::Loc0)
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn loc1(self) -> &'a mut crate::W<REG> {
-        self.variant(EBILOC_A::LOC1)
+        self.variant(Ebiloc::Loc1)
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn loc2(self) -> &'a mut crate::W<REG> {
-        self.variant(EBILOC_A::LOC2)
+        self.variant(Ebiloc::Loc2)
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn loc3(self) -> &'a mut crate::W<REG> {
-        self.variant(EBILOC_A::LOC3)
+        self.variant(Ebiloc::Loc3)
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn loc4(self) -> &'a mut crate::W<REG> {
-        self.variant(EBILOC_A::LOC4)
+        self.variant(Ebiloc::Loc4)
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn loc5(self) -> &'a mut crate::W<REG> {
-        self.variant(EBILOC_A::LOC5)
+        self.variant(Ebiloc::Loc5)
     }
 }
-#[doc = "Field `CSLOC` reader - I/O Location"]
-pub type CSLOC_R = crate::FieldReader<CSLOC_A>;
 #[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CSLOC_A {
+pub enum Csloc {
     #[doc = "0: Location 0"]
-    LOC0 = 0,
+    Loc0 = 0,
     #[doc = "1: Location 1"]
-    LOC1 = 1,
+    Loc1 = 1,
     #[doc = "2: Location 2"]
-    LOC2 = 2,
+    Loc2 = 2,
     #[doc = "3: Location 3"]
-    LOC3 = 3,
+    Loc3 = 3,
     #[doc = "4: Location 4"]
-    LOC4 = 4,
+    Loc4 = 4,
 }
-impl From<CSLOC_A> for u8 {
+impl From<Csloc> for u8 {
     #[inline(always)]
-    fn from(variant: CSLOC_A) -> Self {
+    fn from(variant: Csloc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CSLOC_A {
+impl crate::FieldSpec for Csloc {
     type Ux = u8;
 }
-impl CSLOC_R {
+impl crate::IsEnum for Csloc {}
+#[doc = "Field `CSLOC` reader - I/O Location"]
+pub type CslocR = crate::FieldReader<Csloc>;
+impl CslocR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<CSLOC_A> {
+    pub const fn variant(&self) -> Option<Csloc> {
         match self.bits {
-            0 => Some(CSLOC_A::LOC0),
-            1 => Some(CSLOC_A::LOC1),
-            2 => Some(CSLOC_A::LOC2),
-            3 => Some(CSLOC_A::LOC3),
-            4 => Some(CSLOC_A::LOC4),
+            0 => Some(Csloc::Loc0),
+            1 => Some(Csloc::Loc1),
+            2 => Some(Csloc::Loc2),
+            3 => Some(Csloc::Loc3),
+            4 => Some(Csloc::Loc4),
             _ => None,
         }
     }
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == CSLOC_A::LOC0
+        *self == Csloc::Loc0
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == CSLOC_A::LOC1
+        *self == Csloc::Loc1
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == CSLOC_A::LOC2
+        *self == Csloc::Loc2
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == CSLOC_A::LOC3
+        *self == Csloc::Loc3
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn is_loc4(&self) -> bool {
-        *self == CSLOC_A::LOC4
+        *self == Csloc::Loc4
     }
 }
 #[doc = "Field `CSLOC` writer - I/O Location"]
-pub type CSLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CSLOC_A>;
-impl<'a, REG> CSLOC_W<'a, REG>
+pub type CslocW<'a, REG> = crate::FieldWriter<'a, REG, 6, Csloc>;
+impl<'a, REG> CslocW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -188,105 +190,106 @@ where
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn loc0(self) -> &'a mut crate::W<REG> {
-        self.variant(CSLOC_A::LOC0)
+        self.variant(Csloc::Loc0)
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn loc1(self) -> &'a mut crate::W<REG> {
-        self.variant(CSLOC_A::LOC1)
+        self.variant(Csloc::Loc1)
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn loc2(self) -> &'a mut crate::W<REG> {
-        self.variant(CSLOC_A::LOC2)
+        self.variant(Csloc::Loc2)
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn loc3(self) -> &'a mut crate::W<REG> {
-        self.variant(CSLOC_A::LOC3)
+        self.variant(Csloc::Loc3)
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn loc4(self) -> &'a mut crate::W<REG> {
-        self.variant(CSLOC_A::LOC4)
+        self.variant(Csloc::Loc4)
     }
 }
-#[doc = "Field `NANDLOC` reader - I/O Location"]
-pub type NANDLOC_R = crate::FieldReader<NANDLOC_A>;
 #[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum NANDLOC_A {
+pub enum Nandloc {
     #[doc = "0: Location 0"]
-    LOC0 = 0,
+    Loc0 = 0,
     #[doc = "1: Location 1"]
-    LOC1 = 1,
+    Loc1 = 1,
     #[doc = "2: Location 2"]
-    LOC2 = 2,
+    Loc2 = 2,
     #[doc = "3: Location 3"]
-    LOC3 = 3,
+    Loc3 = 3,
     #[doc = "4: Location 4"]
-    LOC4 = 4,
+    Loc4 = 4,
     #[doc = "5: Location 5"]
-    LOC5 = 5,
+    Loc5 = 5,
 }
-impl From<NANDLOC_A> for u8 {
+impl From<Nandloc> for u8 {
     #[inline(always)]
-    fn from(variant: NANDLOC_A) -> Self {
+    fn from(variant: Nandloc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for NANDLOC_A {
+impl crate::FieldSpec for Nandloc {
     type Ux = u8;
 }
-impl NANDLOC_R {
+impl crate::IsEnum for Nandloc {}
+#[doc = "Field `NANDLOC` reader - I/O Location"]
+pub type NandlocR = crate::FieldReader<Nandloc>;
+impl NandlocR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<NANDLOC_A> {
+    pub const fn variant(&self) -> Option<Nandloc> {
         match self.bits {
-            0 => Some(NANDLOC_A::LOC0),
-            1 => Some(NANDLOC_A::LOC1),
-            2 => Some(NANDLOC_A::LOC2),
-            3 => Some(NANDLOC_A::LOC3),
-            4 => Some(NANDLOC_A::LOC4),
-            5 => Some(NANDLOC_A::LOC5),
+            0 => Some(Nandloc::Loc0),
+            1 => Some(Nandloc::Loc1),
+            2 => Some(Nandloc::Loc2),
+            3 => Some(Nandloc::Loc3),
+            4 => Some(Nandloc::Loc4),
+            5 => Some(Nandloc::Loc5),
             _ => None,
         }
     }
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == NANDLOC_A::LOC0
+        *self == Nandloc::Loc0
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == NANDLOC_A::LOC1
+        *self == Nandloc::Loc1
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == NANDLOC_A::LOC2
+        *self == Nandloc::Loc2
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == NANDLOC_A::LOC3
+        *self == Nandloc::Loc3
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn is_loc4(&self) -> bool {
-        *self == NANDLOC_A::LOC4
+        *self == Nandloc::Loc4
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn is_loc5(&self) -> bool {
-        *self == NANDLOC_A::LOC5
+        *self == Nandloc::Loc5
     }
 }
 #[doc = "Field `NANDLOC` writer - I/O Location"]
-pub type NANDLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, NANDLOC_A>;
-impl<'a, REG> NANDLOC_W<'a, REG>
+pub type NandlocW<'a, REG> = crate::FieldWriter<'a, REG, 6, Nandloc>;
+impl<'a, REG> NandlocW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -294,94 +297,95 @@ where
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn loc0(self) -> &'a mut crate::W<REG> {
-        self.variant(NANDLOC_A::LOC0)
+        self.variant(Nandloc::Loc0)
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn loc1(self) -> &'a mut crate::W<REG> {
-        self.variant(NANDLOC_A::LOC1)
+        self.variant(Nandloc::Loc1)
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn loc2(self) -> &'a mut crate::W<REG> {
-        self.variant(NANDLOC_A::LOC2)
+        self.variant(Nandloc::Loc2)
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn loc3(self) -> &'a mut crate::W<REG> {
-        self.variant(NANDLOC_A::LOC3)
+        self.variant(Nandloc::Loc3)
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn loc4(self) -> &'a mut crate::W<REG> {
-        self.variant(NANDLOC_A::LOC4)
+        self.variant(Nandloc::Loc4)
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn loc5(self) -> &'a mut crate::W<REG> {
-        self.variant(NANDLOC_A::LOC5)
+        self.variant(Nandloc::Loc5)
     }
 }
-#[doc = "Field `TFTLOC` reader - I/O Location"]
-pub type TFTLOC_R = crate::FieldReader<TFTLOC_A>;
 #[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum TFTLOC_A {
+pub enum Tftloc {
     #[doc = "0: Location 0"]
-    LOC0 = 0,
+    Loc0 = 0,
     #[doc = "1: Location 1"]
-    LOC1 = 1,
+    Loc1 = 1,
     #[doc = "2: Location 2"]
-    LOC2 = 2,
+    Loc2 = 2,
     #[doc = "3: Location 3"]
-    LOC3 = 3,
+    Loc3 = 3,
 }
-impl From<TFTLOC_A> for u8 {
+impl From<Tftloc> for u8 {
     #[inline(always)]
-    fn from(variant: TFTLOC_A) -> Self {
+    fn from(variant: Tftloc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for TFTLOC_A {
+impl crate::FieldSpec for Tftloc {
     type Ux = u8;
 }
-impl TFTLOC_R {
+impl crate::IsEnum for Tftloc {}
+#[doc = "Field `TFTLOC` reader - I/O Location"]
+pub type TftlocR = crate::FieldReader<Tftloc>;
+impl TftlocR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<TFTLOC_A> {
+    pub const fn variant(&self) -> Option<Tftloc> {
         match self.bits {
-            0 => Some(TFTLOC_A::LOC0),
-            1 => Some(TFTLOC_A::LOC1),
-            2 => Some(TFTLOC_A::LOC2),
-            3 => Some(TFTLOC_A::LOC3),
+            0 => Some(Tftloc::Loc0),
+            1 => Some(Tftloc::Loc1),
+            2 => Some(Tftloc::Loc2),
+            3 => Some(Tftloc::Loc3),
             _ => None,
         }
     }
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == TFTLOC_A::LOC0
+        *self == Tftloc::Loc0
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == TFTLOC_A::LOC1
+        *self == Tftloc::Loc1
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == TFTLOC_A::LOC2
+        *self == Tftloc::Loc2
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == TFTLOC_A::LOC3
+        *self == Tftloc::Loc3
     }
 }
 #[doc = "Field `TFTLOC` writer - I/O Location"]
-pub type TFTLOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, TFTLOC_A>;
-impl<'a, REG> TFTLOC_W<'a, REG>
+pub type TftlocW<'a, REG> = crate::FieldWriter<'a, REG, 6, Tftloc>;
+impl<'a, REG> TftlocW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -389,95 +393,78 @@ where
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn loc0(self) -> &'a mut crate::W<REG> {
-        self.variant(TFTLOC_A::LOC0)
+        self.variant(Tftloc::Loc0)
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn loc1(self) -> &'a mut crate::W<REG> {
-        self.variant(TFTLOC_A::LOC1)
+        self.variant(Tftloc::Loc1)
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn loc2(self) -> &'a mut crate::W<REG> {
-        self.variant(TFTLOC_A::LOC2)
+        self.variant(Tftloc::Loc2)
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn loc3(self) -> &'a mut crate::W<REG> {
-        self.variant(TFTLOC_A::LOC3)
+        self.variant(Tftloc::Loc3)
     }
 }
 impl R {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
-    pub fn ebiloc(&self) -> EBILOC_R {
-        EBILOC_R::new((self.bits & 0x3f) as u8)
+    pub fn ebiloc(&self) -> EbilocR {
+        EbilocR::new((self.bits & 0x3f) as u8)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
-    pub fn csloc(&self) -> CSLOC_R {
-        CSLOC_R::new(((self.bits >> 8) & 0x3f) as u8)
+    pub fn csloc(&self) -> CslocR {
+        CslocR::new(((self.bits >> 8) & 0x3f) as u8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
-    pub fn nandloc(&self) -> NANDLOC_R {
-        NANDLOC_R::new(((self.bits >> 16) & 0x3f) as u8)
+    pub fn nandloc(&self) -> NandlocR {
+        NandlocR::new(((self.bits >> 16) & 0x3f) as u8)
     }
     #[doc = "Bits 24:29 - I/O Location"]
     #[inline(always)]
-    pub fn tftloc(&self) -> TFTLOC_R {
-        TFTLOC_R::new(((self.bits >> 24) & 0x3f) as u8)
+    pub fn tftloc(&self) -> TftlocR {
+        TftlocR::new(((self.bits >> 24) & 0x3f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
-    #[must_use]
-    pub fn ebiloc(&mut self) -> EBILOC_W<ROUTELOC0_SPEC> {
-        EBILOC_W::new(self, 0)
+    pub fn ebiloc(&mut self) -> EbilocW<'_, Routeloc0Spec> {
+        EbilocW::new(self, 0)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
-    #[must_use]
-    pub fn csloc(&mut self) -> CSLOC_W<ROUTELOC0_SPEC> {
-        CSLOC_W::new(self, 8)
+    pub fn csloc(&mut self) -> CslocW<'_, Routeloc0Spec> {
+        CslocW::new(self, 8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
-    #[must_use]
-    pub fn nandloc(&mut self) -> NANDLOC_W<ROUTELOC0_SPEC> {
-        NANDLOC_W::new(self, 16)
+    pub fn nandloc(&mut self) -> NandlocW<'_, Routeloc0Spec> {
+        NandlocW::new(self, 16)
     }
     #[doc = "Bits 24:29 - I/O Location"]
     #[inline(always)]
-    #[must_use]
-    pub fn tftloc(&mut self) -> TFTLOC_W<ROUTELOC0_SPEC> {
-        TFTLOC_W::new(self, 24)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn tftloc(&mut self) -> TftlocW<'_, Routeloc0Spec> {
+        TftlocW::new(self, 24)
     }
 }
-#[doc = "I/O Routing Location Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`routeloc0::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`routeloc0::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct ROUTELOC0_SPEC;
-impl crate::RegisterSpec for ROUTELOC0_SPEC {
+#[doc = "I/O Routing Location Register\n\nYou can [`read`](crate::Reg::read) this register and get [`routeloc0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`routeloc0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Routeloc0Spec;
+impl crate::RegisterSpec for Routeloc0Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`routeloc0::R`](R) reader structure"]
-impl crate::Readable for ROUTELOC0_SPEC {}
+impl crate::Readable for Routeloc0Spec {}
 #[doc = "`write(|w| ..)` method takes [`routeloc0::W`](W) writer structure"]
-impl crate::Writable for ROUTELOC0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Routeloc0Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets ROUTELOC0 to value 0"]
-impl crate::Resettable for ROUTELOC0_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Routeloc0Spec {}

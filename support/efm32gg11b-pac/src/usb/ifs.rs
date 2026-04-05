@@ -1,76 +1,57 @@
 #[doc = "Register `IFS` writer"]
-pub type W = crate::W<IFS_SPEC>;
+pub type W = crate::W<IfsSpec>;
 #[doc = "Field `VBUSDETH` writer - Set VBUSDETH Interrupt Flag"]
-pub type VBUSDETH_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type VbusdethW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `VBUSDETL` writer - Set VBUSDETL Interrupt Flag"]
-pub type VBUSDETL_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type VbusdetlW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ERR` writer - Set ERR Interrupt Flag"]
-pub type ERR_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type ErrW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DCD` writer - Set DCD Interrupt Flag"]
-pub type DCD_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DcdW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PD` writer - Set PD Interrupt Flag"]
-pub type PD_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type PdW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SD` writer - Set SD Interrupt Flag"]
-pub type SD_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type SdW<'a, REG> = crate::BitWriter<'a, REG>;
 impl W {
     #[doc = "Bit 0 - Set VBUSDETH Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn vbusdeth(&mut self) -> VBUSDETH_W<IFS_SPEC> {
-        VBUSDETH_W::new(self, 0)
+    pub fn vbusdeth(&mut self) -> VbusdethW<'_, IfsSpec> {
+        VbusdethW::new(self, 0)
     }
     #[doc = "Bit 1 - Set VBUSDETL Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn vbusdetl(&mut self) -> VBUSDETL_W<IFS_SPEC> {
-        VBUSDETL_W::new(self, 1)
+    pub fn vbusdetl(&mut self) -> VbusdetlW<'_, IfsSpec> {
+        VbusdetlW::new(self, 1)
     }
     #[doc = "Bit 8 - Set ERR Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn err(&mut self) -> ERR_W<IFS_SPEC> {
-        ERR_W::new(self, 8)
+    pub fn err(&mut self) -> ErrW<'_, IfsSpec> {
+        ErrW::new(self, 8)
     }
     #[doc = "Bit 9 - Set DCD Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn dcd(&mut self) -> DCD_W<IFS_SPEC> {
-        DCD_W::new(self, 9)
+    pub fn dcd(&mut self) -> DcdW<'_, IfsSpec> {
+        DcdW::new(self, 9)
     }
     #[doc = "Bit 10 - Set PD Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn pd(&mut self) -> PD_W<IFS_SPEC> {
-        PD_W::new(self, 10)
+    pub fn pd(&mut self) -> PdW<'_, IfsSpec> {
+        PdW::new(self, 10)
     }
     #[doc = "Bit 11 - Set SD Interrupt Flag"]
     #[inline(always)]
-    #[must_use]
-    pub fn sd(&mut self) -> SD_W<IFS_SPEC> {
-        SD_W::new(self, 11)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn sd(&mut self) -> SdW<'_, IfsSpec> {
+        SdW::new(self, 11)
     }
 }
-#[doc = "Interrupt Flag Set Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ifs::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct IFS_SPEC;
-impl crate::RegisterSpec for IFS_SPEC {
+#[doc = "Interrupt Flag Set Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ifs::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IfsSpec;
+impl crate::RegisterSpec for IfsSpec {
     type Ux = u32;
 }
 #[doc = "`write(|w| ..)` method takes [`ifs::W`](W) writer structure"]
-impl crate::Writable for IFS_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for IfsSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets IFS to value 0"]
-impl crate::Resettable for IFS_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for IfsSpec {}

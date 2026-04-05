@@ -1,67 +1,68 @@
 #[doc = "Register `TFRMODE` reader"]
-pub type R = crate::R<TFRMODE_SPEC>;
+pub type R = crate::R<TfrmodeSpec>;
 #[doc = "Register `TFRMODE` writer"]
-pub type W = crate::W<TFRMODE_SPEC>;
+pub type W = crate::W<TfrmodeSpec>;
 #[doc = "Field `DMAEN` reader - DMA Enable"]
-pub type DMAEN_R = crate::BitReader;
+pub type DmaenR = crate::BitReader;
 #[doc = "Field `DMAEN` writer - DMA Enable"]
-pub type DMAEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DmaenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BLKCNTEN` reader - Block Count Enable"]
-pub type BLKCNTEN_R = crate::BitReader;
+pub type BlkcntenR = crate::BitReader;
 #[doc = "Field `BLKCNTEN` writer - Block Count Enable"]
-pub type BLKCNTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `AUTOCMDEN` reader - Auto Command Enable"]
-pub type AUTOCMDEN_R = crate::FieldReader<AUTOCMDEN_A>;
+pub type BlkcntenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Auto Command Enable\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum AUTOCMDEN_A {
+pub enum Autocmden {
     #[doc = "0: Auto CMD Disabled"]
-    ACMDDISABLED = 0,
+    Acmddisabled = 0,
     #[doc = "1: Auto CMD12 Enable"]
-    ACMD12EN = 1,
+    Acmd12en = 1,
     #[doc = "2: Auto CMD23 Enable"]
-    ACMD23EN = 2,
+    Acmd23en = 2,
 }
-impl From<AUTOCMDEN_A> for u8 {
+impl From<Autocmden> for u8 {
     #[inline(always)]
-    fn from(variant: AUTOCMDEN_A) -> Self {
+    fn from(variant: Autocmden) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for AUTOCMDEN_A {
+impl crate::FieldSpec for Autocmden {
     type Ux = u8;
 }
-impl AUTOCMDEN_R {
+impl crate::IsEnum for Autocmden {}
+#[doc = "Field `AUTOCMDEN` reader - Auto Command Enable"]
+pub type AutocmdenR = crate::FieldReader<Autocmden>;
+impl AutocmdenR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<AUTOCMDEN_A> {
+    pub const fn variant(&self) -> Option<Autocmden> {
         match self.bits {
-            0 => Some(AUTOCMDEN_A::ACMDDISABLED),
-            1 => Some(AUTOCMDEN_A::ACMD12EN),
-            2 => Some(AUTOCMDEN_A::ACMD23EN),
+            0 => Some(Autocmden::Acmddisabled),
+            1 => Some(Autocmden::Acmd12en),
+            2 => Some(Autocmden::Acmd23en),
             _ => None,
         }
     }
     #[doc = "Auto CMD Disabled"]
     #[inline(always)]
     pub fn is_acmddisabled(&self) -> bool {
-        *self == AUTOCMDEN_A::ACMDDISABLED
+        *self == Autocmden::Acmddisabled
     }
     #[doc = "Auto CMD12 Enable"]
     #[inline(always)]
     pub fn is_acmd12en(&self) -> bool {
-        *self == AUTOCMDEN_A::ACMD12EN
+        *self == Autocmden::Acmd12en
     }
     #[doc = "Auto CMD23 Enable"]
     #[inline(always)]
     pub fn is_acmd23en(&self) -> bool {
-        *self == AUTOCMDEN_A::ACMD23EN
+        *self == Autocmden::Acmd23en
     }
 }
 #[doc = "Field `AUTOCMDEN` writer - Auto Command Enable"]
-pub type AUTOCMDEN_W<'a, REG> = crate::FieldWriter<'a, REG, 2, AUTOCMDEN_A>;
-impl<'a, REG> AUTOCMDEN_W<'a, REG>
+pub type AutocmdenW<'a, REG> = crate::FieldWriter<'a, REG, 2, Autocmden>;
+impl<'a, REG> AutocmdenW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -69,87 +70,88 @@ where
     #[doc = "Auto CMD Disabled"]
     #[inline(always)]
     pub fn acmddisabled(self) -> &'a mut crate::W<REG> {
-        self.variant(AUTOCMDEN_A::ACMDDISABLED)
+        self.variant(Autocmden::Acmddisabled)
     }
     #[doc = "Auto CMD12 Enable"]
     #[inline(always)]
     pub fn acmd12en(self) -> &'a mut crate::W<REG> {
-        self.variant(AUTOCMDEN_A::ACMD12EN)
+        self.variant(Autocmden::Acmd12en)
     }
     #[doc = "Auto CMD23 Enable"]
     #[inline(always)]
     pub fn acmd23en(self) -> &'a mut crate::W<REG> {
-        self.variant(AUTOCMDEN_A::ACMD23EN)
+        self.variant(Autocmden::Acmd23en)
     }
 }
 #[doc = "Field `DATDIRSEL` reader - Data Transfer Direction Select"]
-pub type DATDIRSEL_R = crate::BitReader;
+pub type DatdirselR = crate::BitReader;
 #[doc = "Field `DATDIRSEL` writer - Data Transfer Direction Select"]
-pub type DATDIRSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DatdirselW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MULTSINGBLKSEL` reader - Multiple or Single Block Data Transfer Selection"]
-pub type MULTSINGBLKSEL_R = crate::BitReader;
+pub type MultsingblkselR = crate::BitReader;
 #[doc = "Field `MULTSINGBLKSEL` writer - Multiple or Single Block Data Transfer Selection"]
-pub type MULTSINGBLKSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `RESPTYPESEL` reader - Response Type Select"]
-pub type RESPTYPESEL_R = crate::FieldReader<RESPTYPESEL_A>;
+pub type MultsingblkselW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Response Type Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum RESPTYPESEL_A {
+pub enum Resptypesel {
     #[doc = "0: No RESP"]
-    NORESP = 0,
+    Noresp = 0,
     #[doc = "1: RESP Length 136"]
-    RESP136 = 1,
+    Resp136 = 1,
     #[doc = "2: RESP Length 48"]
-    RESP48 = 2,
+    Resp48 = 2,
     #[doc = "3: RESP Length 48 check busy after RESP"]
-    BUSYAFTRESP = 3,
+    Busyaftresp = 3,
 }
-impl From<RESPTYPESEL_A> for u8 {
+impl From<Resptypesel> for u8 {
     #[inline(always)]
-    fn from(variant: RESPTYPESEL_A) -> Self {
+    fn from(variant: Resptypesel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for RESPTYPESEL_A {
+impl crate::FieldSpec for Resptypesel {
     type Ux = u8;
 }
-impl RESPTYPESEL_R {
+impl crate::IsEnum for Resptypesel {}
+#[doc = "Field `RESPTYPESEL` reader - Response Type Select"]
+pub type ResptypeselR = crate::FieldReader<Resptypesel>;
+impl ResptypeselR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> RESPTYPESEL_A {
+    pub const fn variant(&self) -> Resptypesel {
         match self.bits {
-            0 => RESPTYPESEL_A::NORESP,
-            1 => RESPTYPESEL_A::RESP136,
-            2 => RESPTYPESEL_A::RESP48,
-            3 => RESPTYPESEL_A::BUSYAFTRESP,
+            0 => Resptypesel::Noresp,
+            1 => Resptypesel::Resp136,
+            2 => Resptypesel::Resp48,
+            3 => Resptypesel::Busyaftresp,
             _ => unreachable!(),
         }
     }
     #[doc = "No RESP"]
     #[inline(always)]
     pub fn is_noresp(&self) -> bool {
-        *self == RESPTYPESEL_A::NORESP
+        *self == Resptypesel::Noresp
     }
     #[doc = "RESP Length 136"]
     #[inline(always)]
     pub fn is_resp136(&self) -> bool {
-        *self == RESPTYPESEL_A::RESP136
+        *self == Resptypesel::Resp136
     }
     #[doc = "RESP Length 48"]
     #[inline(always)]
     pub fn is_resp48(&self) -> bool {
-        *self == RESPTYPESEL_A::RESP48
+        *self == Resptypesel::Resp48
     }
     #[doc = "RESP Length 48 check busy after RESP"]
     #[inline(always)]
     pub fn is_busyaftresp(&self) -> bool {
-        *self == RESPTYPESEL_A::BUSYAFTRESP
+        *self == Resptypesel::Busyaftresp
     }
 }
 #[doc = "Field `RESPTYPESEL` writer - Response Type Select"]
-pub type RESPTYPESEL_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, RESPTYPESEL_A>;
-impl<'a, REG> RESPTYPESEL_W<'a, REG>
+pub type ResptypeselW<'a, REG> = crate::FieldWriter<'a, REG, 2, Resptypesel, crate::Safe>;
+impl<'a, REG> ResptypeselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -157,96 +159,97 @@ where
     #[doc = "No RESP"]
     #[inline(always)]
     pub fn noresp(self) -> &'a mut crate::W<REG> {
-        self.variant(RESPTYPESEL_A::NORESP)
+        self.variant(Resptypesel::Noresp)
     }
     #[doc = "RESP Length 136"]
     #[inline(always)]
     pub fn resp136(self) -> &'a mut crate::W<REG> {
-        self.variant(RESPTYPESEL_A::RESP136)
+        self.variant(Resptypesel::Resp136)
     }
     #[doc = "RESP Length 48"]
     #[inline(always)]
     pub fn resp48(self) -> &'a mut crate::W<REG> {
-        self.variant(RESPTYPESEL_A::RESP48)
+        self.variant(Resptypesel::Resp48)
     }
     #[doc = "RESP Length 48 check busy after RESP"]
     #[inline(always)]
     pub fn busyaftresp(self) -> &'a mut crate::W<REG> {
-        self.variant(RESPTYPESEL_A::BUSYAFTRESP)
+        self.variant(Resptypesel::Busyaftresp)
     }
 }
 #[doc = "Field `CMDCRCCHKEN` reader - Command CRC Check Enable"]
-pub type CMDCRCCHKEN_R = crate::BitReader;
+pub type CmdcrcchkenR = crate::BitReader;
 #[doc = "Field `CMDCRCCHKEN` writer - Command CRC Check Enable"]
-pub type CMDCRCCHKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type CmdcrcchkenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CMDINDXCHKEN` reader - Command Index Check Enable"]
-pub type CMDINDXCHKEN_R = crate::BitReader;
+pub type CmdindxchkenR = crate::BitReader;
 #[doc = "Field `CMDINDXCHKEN` writer - Command Index Check Enable"]
-pub type CMDINDXCHKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type CmdindxchkenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DATPRESSEL` reader - Data Present Select"]
-pub type DATPRESSEL_R = crate::BitReader;
+pub type DatpresselR = crate::BitReader;
 #[doc = "Field `DATPRESSEL` writer - Data Present Select"]
-pub type DATPRESSEL_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `CMDTYPE` reader - Command Type"]
-pub type CMDTYPE_R = crate::FieldReader<CMDTYPE_A>;
+pub type DatpresselW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Command Type\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CMDTYPE_A {
+pub enum Cmdtype {
     #[doc = "0: Normal Command"]
-    NORMAL = 0,
+    Normal = 0,
     #[doc = "1: Suspend command"]
-    SUSPEND = 1,
+    Suspend = 1,
     #[doc = "2: Resume command"]
-    RESUME = 2,
+    Resume = 2,
     #[doc = "3: Abort command"]
-    ABORT = 3,
+    Abort = 3,
 }
-impl From<CMDTYPE_A> for u8 {
+impl From<Cmdtype> for u8 {
     #[inline(always)]
-    fn from(variant: CMDTYPE_A) -> Self {
+    fn from(variant: Cmdtype) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CMDTYPE_A {
+impl crate::FieldSpec for Cmdtype {
     type Ux = u8;
 }
-impl CMDTYPE_R {
+impl crate::IsEnum for Cmdtype {}
+#[doc = "Field `CMDTYPE` reader - Command Type"]
+pub type CmdtypeR = crate::FieldReader<Cmdtype>;
+impl CmdtypeR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> CMDTYPE_A {
+    pub const fn variant(&self) -> Cmdtype {
         match self.bits {
-            0 => CMDTYPE_A::NORMAL,
-            1 => CMDTYPE_A::SUSPEND,
-            2 => CMDTYPE_A::RESUME,
-            3 => CMDTYPE_A::ABORT,
+            0 => Cmdtype::Normal,
+            1 => Cmdtype::Suspend,
+            2 => Cmdtype::Resume,
+            3 => Cmdtype::Abort,
             _ => unreachable!(),
         }
     }
     #[doc = "Normal Command"]
     #[inline(always)]
     pub fn is_normal(&self) -> bool {
-        *self == CMDTYPE_A::NORMAL
+        *self == Cmdtype::Normal
     }
     #[doc = "Suspend command"]
     #[inline(always)]
     pub fn is_suspend(&self) -> bool {
-        *self == CMDTYPE_A::SUSPEND
+        *self == Cmdtype::Suspend
     }
     #[doc = "Resume command"]
     #[inline(always)]
     pub fn is_resume(&self) -> bool {
-        *self == CMDTYPE_A::RESUME
+        *self == Cmdtype::Resume
     }
     #[doc = "Abort command"]
     #[inline(always)]
     pub fn is_abort(&self) -> bool {
-        *self == CMDTYPE_A::ABORT
+        *self == Cmdtype::Abort
     }
 }
 #[doc = "Field `CMDTYPE` writer - Command Type"]
-pub type CMDTYPE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, CMDTYPE_A>;
-impl<'a, REG> CMDTYPE_W<'a, REG>
+pub type CmdtypeW<'a, REG> = crate::FieldWriter<'a, REG, 2, Cmdtype, crate::Safe>;
+impl<'a, REG> CmdtypeW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -254,176 +257,152 @@ where
     #[doc = "Normal Command"]
     #[inline(always)]
     pub fn normal(self) -> &'a mut crate::W<REG> {
-        self.variant(CMDTYPE_A::NORMAL)
+        self.variant(Cmdtype::Normal)
     }
     #[doc = "Suspend command"]
     #[inline(always)]
     pub fn suspend(self) -> &'a mut crate::W<REG> {
-        self.variant(CMDTYPE_A::SUSPEND)
+        self.variant(Cmdtype::Suspend)
     }
     #[doc = "Resume command"]
     #[inline(always)]
     pub fn resume(self) -> &'a mut crate::W<REG> {
-        self.variant(CMDTYPE_A::RESUME)
+        self.variant(Cmdtype::Resume)
     }
     #[doc = "Abort command"]
     #[inline(always)]
     pub fn abort(self) -> &'a mut crate::W<REG> {
-        self.variant(CMDTYPE_A::ABORT)
+        self.variant(Cmdtype::Abort)
     }
 }
 #[doc = "Field `CMDINDEX` reader - Command Index"]
-pub type CMDINDEX_R = crate::FieldReader;
+pub type CmdindexR = crate::FieldReader;
 #[doc = "Field `CMDINDEX` writer - Command Index"]
-pub type CMDINDEX_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
+pub type CmdindexW<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 impl R {
     #[doc = "Bit 0 - DMA Enable"]
     #[inline(always)]
-    pub fn dmaen(&self) -> DMAEN_R {
-        DMAEN_R::new((self.bits & 1) != 0)
+    pub fn dmaen(&self) -> DmaenR {
+        DmaenR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Block Count Enable"]
     #[inline(always)]
-    pub fn blkcnten(&self) -> BLKCNTEN_R {
-        BLKCNTEN_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn blkcnten(&self) -> BlkcntenR {
+        BlkcntenR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bits 2:3 - Auto Command Enable"]
     #[inline(always)]
-    pub fn autocmden(&self) -> AUTOCMDEN_R {
-        AUTOCMDEN_R::new(((self.bits >> 2) & 3) as u8)
+    pub fn autocmden(&self) -> AutocmdenR {
+        AutocmdenR::new(((self.bits >> 2) & 3) as u8)
     }
     #[doc = "Bit 4 - Data Transfer Direction Select"]
     #[inline(always)]
-    pub fn datdirsel(&self) -> DATDIRSEL_R {
-        DATDIRSEL_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn datdirsel(&self) -> DatdirselR {
+        DatdirselR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Multiple or Single Block Data Transfer Selection"]
     #[inline(always)]
-    pub fn multsingblksel(&self) -> MULTSINGBLKSEL_R {
-        MULTSINGBLKSEL_R::new(((self.bits >> 5) & 1) != 0)
+    pub fn multsingblksel(&self) -> MultsingblkselR {
+        MultsingblkselR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bits 16:17 - Response Type Select"]
     #[inline(always)]
-    pub fn resptypesel(&self) -> RESPTYPESEL_R {
-        RESPTYPESEL_R::new(((self.bits >> 16) & 3) as u8)
+    pub fn resptypesel(&self) -> ResptypeselR {
+        ResptypeselR::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bit 19 - Command CRC Check Enable"]
     #[inline(always)]
-    pub fn cmdcrcchken(&self) -> CMDCRCCHKEN_R {
-        CMDCRCCHKEN_R::new(((self.bits >> 19) & 1) != 0)
+    pub fn cmdcrcchken(&self) -> CmdcrcchkenR {
+        CmdcrcchkenR::new(((self.bits >> 19) & 1) != 0)
     }
     #[doc = "Bit 20 - Command Index Check Enable"]
     #[inline(always)]
-    pub fn cmdindxchken(&self) -> CMDINDXCHKEN_R {
-        CMDINDXCHKEN_R::new(((self.bits >> 20) & 1) != 0)
+    pub fn cmdindxchken(&self) -> CmdindxchkenR {
+        CmdindxchkenR::new(((self.bits >> 20) & 1) != 0)
     }
     #[doc = "Bit 21 - Data Present Select"]
     #[inline(always)]
-    pub fn datpressel(&self) -> DATPRESSEL_R {
-        DATPRESSEL_R::new(((self.bits >> 21) & 1) != 0)
+    pub fn datpressel(&self) -> DatpresselR {
+        DatpresselR::new(((self.bits >> 21) & 1) != 0)
     }
     #[doc = "Bits 22:23 - Command Type"]
     #[inline(always)]
-    pub fn cmdtype(&self) -> CMDTYPE_R {
-        CMDTYPE_R::new(((self.bits >> 22) & 3) as u8)
+    pub fn cmdtype(&self) -> CmdtypeR {
+        CmdtypeR::new(((self.bits >> 22) & 3) as u8)
     }
     #[doc = "Bits 24:29 - Command Index"]
     #[inline(always)]
-    pub fn cmdindex(&self) -> CMDINDEX_R {
-        CMDINDEX_R::new(((self.bits >> 24) & 0x3f) as u8)
+    pub fn cmdindex(&self) -> CmdindexR {
+        CmdindexR::new(((self.bits >> 24) & 0x3f) as u8)
     }
 }
 impl W {
     #[doc = "Bit 0 - DMA Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn dmaen(&mut self) -> DMAEN_W<TFRMODE_SPEC> {
-        DMAEN_W::new(self, 0)
+    pub fn dmaen(&mut self) -> DmaenW<'_, TfrmodeSpec> {
+        DmaenW::new(self, 0)
     }
     #[doc = "Bit 1 - Block Count Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn blkcnten(&mut self) -> BLKCNTEN_W<TFRMODE_SPEC> {
-        BLKCNTEN_W::new(self, 1)
+    pub fn blkcnten(&mut self) -> BlkcntenW<'_, TfrmodeSpec> {
+        BlkcntenW::new(self, 1)
     }
     #[doc = "Bits 2:3 - Auto Command Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn autocmden(&mut self) -> AUTOCMDEN_W<TFRMODE_SPEC> {
-        AUTOCMDEN_W::new(self, 2)
+    pub fn autocmden(&mut self) -> AutocmdenW<'_, TfrmodeSpec> {
+        AutocmdenW::new(self, 2)
     }
     #[doc = "Bit 4 - Data Transfer Direction Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn datdirsel(&mut self) -> DATDIRSEL_W<TFRMODE_SPEC> {
-        DATDIRSEL_W::new(self, 4)
+    pub fn datdirsel(&mut self) -> DatdirselW<'_, TfrmodeSpec> {
+        DatdirselW::new(self, 4)
     }
     #[doc = "Bit 5 - Multiple or Single Block Data Transfer Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn multsingblksel(&mut self) -> MULTSINGBLKSEL_W<TFRMODE_SPEC> {
-        MULTSINGBLKSEL_W::new(self, 5)
+    pub fn multsingblksel(&mut self) -> MultsingblkselW<'_, TfrmodeSpec> {
+        MultsingblkselW::new(self, 5)
     }
     #[doc = "Bits 16:17 - Response Type Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn resptypesel(&mut self) -> RESPTYPESEL_W<TFRMODE_SPEC> {
-        RESPTYPESEL_W::new(self, 16)
+    pub fn resptypesel(&mut self) -> ResptypeselW<'_, TfrmodeSpec> {
+        ResptypeselW::new(self, 16)
     }
     #[doc = "Bit 19 - Command CRC Check Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmdcrcchken(&mut self) -> CMDCRCCHKEN_W<TFRMODE_SPEC> {
-        CMDCRCCHKEN_W::new(self, 19)
+    pub fn cmdcrcchken(&mut self) -> CmdcrcchkenW<'_, TfrmodeSpec> {
+        CmdcrcchkenW::new(self, 19)
     }
     #[doc = "Bit 20 - Command Index Check Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmdindxchken(&mut self) -> CMDINDXCHKEN_W<TFRMODE_SPEC> {
-        CMDINDXCHKEN_W::new(self, 20)
+    pub fn cmdindxchken(&mut self) -> CmdindxchkenW<'_, TfrmodeSpec> {
+        CmdindxchkenW::new(self, 20)
     }
     #[doc = "Bit 21 - Data Present Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn datpressel(&mut self) -> DATPRESSEL_W<TFRMODE_SPEC> {
-        DATPRESSEL_W::new(self, 21)
+    pub fn datpressel(&mut self) -> DatpresselW<'_, TfrmodeSpec> {
+        DatpresselW::new(self, 21)
     }
     #[doc = "Bits 22:23 - Command Type"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmdtype(&mut self) -> CMDTYPE_W<TFRMODE_SPEC> {
-        CMDTYPE_W::new(self, 22)
+    pub fn cmdtype(&mut self) -> CmdtypeW<'_, TfrmodeSpec> {
+        CmdtypeW::new(self, 22)
     }
     #[doc = "Bits 24:29 - Command Index"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmdindex(&mut self) -> CMDINDEX_W<TFRMODE_SPEC> {
-        CMDINDEX_W::new(self, 24)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn cmdindex(&mut self) -> CmdindexW<'_, TfrmodeSpec> {
+        CmdindexW::new(self, 24)
     }
 }
-#[doc = "Transfer Mode and Command Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tfrmode::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`tfrmode::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct TFRMODE_SPEC;
-impl crate::RegisterSpec for TFRMODE_SPEC {
+#[doc = "Transfer Mode and Command Register\n\nYou can [`read`](crate::Reg::read) this register and get [`tfrmode::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tfrmode::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct TfrmodeSpec;
+impl crate::RegisterSpec for TfrmodeSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`tfrmode::R`](R) reader structure"]
-impl crate::Readable for TFRMODE_SPEC {}
+impl crate::Readable for TfrmodeSpec {}
 #[doc = "`write(|w| ..)` method takes [`tfrmode::W`](W) writer structure"]
-impl crate::Writable for TFRMODE_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for TfrmodeSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets TFRMODE to value 0"]
-impl crate::Resettable for TFRMODE_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for TfrmodeSpec {}

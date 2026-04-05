@@ -1,49 +1,37 @@
 #[doc = "Register `IF1IEN` reader"]
-pub type R = crate::R<IF1IEN_SPEC>;
+pub type R = crate::R<If1ienSpec>;
 #[doc = "Register `IF1IEN` writer"]
-pub type W = crate::W<IF1IEN_SPEC>;
+pub type W = crate::W<If1ienSpec>;
 #[doc = "Field `STATUS` reader - STATUS Interrupt Enable"]
-pub type STATUS_R = crate::BitReader;
+pub type StatusR = crate::BitReader;
 #[doc = "Field `STATUS` writer - STATUS Interrupt Enable"]
-pub type STATUS_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type StatusW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - STATUS Interrupt Enable"]
     #[inline(always)]
-    pub fn status(&self) -> STATUS_R {
-        STATUS_R::new((self.bits & 1) != 0)
+    pub fn status(&self) -> StatusR {
+        StatusR::new((self.bits & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - STATUS Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn status(&mut self) -> STATUS_W<IF1IEN_SPEC> {
-        STATUS_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn status(&mut self) -> StatusW<'_, If1ienSpec> {
+        StatusW::new(self, 0)
     }
 }
-#[doc = "Status Interrupt Enable Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`if1ien::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`if1ien::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct IF1IEN_SPEC;
-impl crate::RegisterSpec for IF1IEN_SPEC {
+#[doc = "Status Interrupt Enable Register\n\nYou can [`read`](crate::Reg::read) this register and get [`if1ien::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`if1ien::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct If1ienSpec;
+impl crate::RegisterSpec for If1ienSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`if1ien::R`](R) reader structure"]
-impl crate::Readable for IF1IEN_SPEC {}
+impl crate::Readable for If1ienSpec {}
 #[doc = "`write(|w| ..)` method takes [`if1ien::W`](W) writer structure"]
-impl crate::Writable for IF1IEN_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for If1ienSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets IF1IEN to value 0x01"]
-impl crate::Resettable for IF1IEN_SPEC {
+impl crate::Resettable for If1ienSpec {
     const RESET_VALUE: u32 = 0x01;
 }

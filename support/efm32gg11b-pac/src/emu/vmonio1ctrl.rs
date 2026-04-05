@@ -1,124 +1,105 @@
 #[doc = "Register `VMONIO1CTRL` reader"]
-pub type R = crate::R<VMONIO1CTRL_SPEC>;
+pub type R = crate::R<Vmonio1ctrlSpec>;
 #[doc = "Register `VMONIO1CTRL` writer"]
-pub type W = crate::W<VMONIO1CTRL_SPEC>;
+pub type W = crate::W<Vmonio1ctrlSpec>;
 #[doc = "Field `EN` reader - Enable"]
-pub type EN_R = crate::BitReader;
+pub type EnR = crate::BitReader;
 #[doc = "Field `EN` writer - Enable"]
-pub type EN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type EnW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RISEWU` reader - Rise Wakeup"]
-pub type RISEWU_R = crate::BitReader;
+pub type RisewuR = crate::BitReader;
 #[doc = "Field `RISEWU` writer - Rise Wakeup"]
-pub type RISEWU_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RisewuW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FALLWU` reader - Fall Wakeup"]
-pub type FALLWU_R = crate::BitReader;
+pub type FallwuR = crate::BitReader;
 #[doc = "Field `FALLWU` writer - Fall Wakeup"]
-pub type FALLWU_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type FallwuW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RETDIS` reader - EM4 IO1 Retention Disable"]
-pub type RETDIS_R = crate::BitReader;
+pub type RetdisR = crate::BitReader;
 #[doc = "Field `RETDIS` writer - EM4 IO1 Retention Disable"]
-pub type RETDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RetdisW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `THRESFINE` reader - Threshold Fine Adjust"]
-pub type THRESFINE_R = crate::FieldReader;
+pub type ThresfineR = crate::FieldReader;
 #[doc = "Field `THRESFINE` writer - Threshold Fine Adjust"]
-pub type THRESFINE_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type ThresfineW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `THRESCOARSE` reader - Threshold Coarse Adjust"]
-pub type THRESCOARSE_R = crate::FieldReader;
+pub type ThrescoarseR = crate::FieldReader;
 #[doc = "Field `THRESCOARSE` writer - Threshold Coarse Adjust"]
-pub type THRESCOARSE_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type ThrescoarseW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 impl R {
     #[doc = "Bit 0 - Enable"]
     #[inline(always)]
-    pub fn en(&self) -> EN_R {
-        EN_R::new((self.bits & 1) != 0)
+    pub fn en(&self) -> EnR {
+        EnR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 2 - Rise Wakeup"]
     #[inline(always)]
-    pub fn risewu(&self) -> RISEWU_R {
-        RISEWU_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn risewu(&self) -> RisewuR {
+        RisewuR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Fall Wakeup"]
     #[inline(always)]
-    pub fn fallwu(&self) -> FALLWU_R {
-        FALLWU_R::new(((self.bits >> 3) & 1) != 0)
+    pub fn fallwu(&self) -> FallwuR {
+        FallwuR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - EM4 IO1 Retention Disable"]
     #[inline(always)]
-    pub fn retdis(&self) -> RETDIS_R {
-        RETDIS_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn retdis(&self) -> RetdisR {
+        RetdisR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bits 8:11 - Threshold Fine Adjust"]
     #[inline(always)]
-    pub fn thresfine(&self) -> THRESFINE_R {
-        THRESFINE_R::new(((self.bits >> 8) & 0x0f) as u8)
+    pub fn thresfine(&self) -> ThresfineR {
+        ThresfineR::new(((self.bits >> 8) & 0x0f) as u8)
     }
     #[doc = "Bits 12:15 - Threshold Coarse Adjust"]
     #[inline(always)]
-    pub fn threscoarse(&self) -> THRESCOARSE_R {
-        THRESCOARSE_R::new(((self.bits >> 12) & 0x0f) as u8)
+    pub fn threscoarse(&self) -> ThrescoarseR {
+        ThrescoarseR::new(((self.bits >> 12) & 0x0f) as u8)
     }
 }
 impl W {
     #[doc = "Bit 0 - Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn en(&mut self) -> EN_W<VMONIO1CTRL_SPEC> {
-        EN_W::new(self, 0)
+    pub fn en(&mut self) -> EnW<'_, Vmonio1ctrlSpec> {
+        EnW::new(self, 0)
     }
     #[doc = "Bit 2 - Rise Wakeup"]
     #[inline(always)]
-    #[must_use]
-    pub fn risewu(&mut self) -> RISEWU_W<VMONIO1CTRL_SPEC> {
-        RISEWU_W::new(self, 2)
+    pub fn risewu(&mut self) -> RisewuW<'_, Vmonio1ctrlSpec> {
+        RisewuW::new(self, 2)
     }
     #[doc = "Bit 3 - Fall Wakeup"]
     #[inline(always)]
-    #[must_use]
-    pub fn fallwu(&mut self) -> FALLWU_W<VMONIO1CTRL_SPEC> {
-        FALLWU_W::new(self, 3)
+    pub fn fallwu(&mut self) -> FallwuW<'_, Vmonio1ctrlSpec> {
+        FallwuW::new(self, 3)
     }
     #[doc = "Bit 4 - EM4 IO1 Retention Disable"]
     #[inline(always)]
-    #[must_use]
-    pub fn retdis(&mut self) -> RETDIS_W<VMONIO1CTRL_SPEC> {
-        RETDIS_W::new(self, 4)
+    pub fn retdis(&mut self) -> RetdisW<'_, Vmonio1ctrlSpec> {
+        RetdisW::new(self, 4)
     }
     #[doc = "Bits 8:11 - Threshold Fine Adjust"]
     #[inline(always)]
-    #[must_use]
-    pub fn thresfine(&mut self) -> THRESFINE_W<VMONIO1CTRL_SPEC> {
-        THRESFINE_W::new(self, 8)
+    pub fn thresfine(&mut self) -> ThresfineW<'_, Vmonio1ctrlSpec> {
+        ThresfineW::new(self, 8)
     }
     #[doc = "Bits 12:15 - Threshold Coarse Adjust"]
     #[inline(always)]
-    #[must_use]
-    pub fn threscoarse(&mut self) -> THRESCOARSE_W<VMONIO1CTRL_SPEC> {
-        THRESCOARSE_W::new(self, 12)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn threscoarse(&mut self) -> ThrescoarseW<'_, Vmonio1ctrlSpec> {
+        ThrescoarseW::new(self, 12)
     }
 }
-#[doc = "VMON IOVDD1 Channel Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`vmonio1ctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`vmonio1ctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct VMONIO1CTRL_SPEC;
-impl crate::RegisterSpec for VMONIO1CTRL_SPEC {
+#[doc = "VMON IOVDD1 Channel Control\n\nYou can [`read`](crate::Reg::read) this register and get [`vmonio1ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`vmonio1ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Vmonio1ctrlSpec;
+impl crate::RegisterSpec for Vmonio1ctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`vmonio1ctrl::R`](R) reader structure"]
-impl crate::Readable for VMONIO1CTRL_SPEC {}
+impl crate::Readable for Vmonio1ctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`vmonio1ctrl::W`](W) writer structure"]
-impl crate::Writable for VMONIO1CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Vmonio1ctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets VMONIO1CTRL to value 0"]
-impl crate::Resettable for VMONIO1CTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Vmonio1ctrlSpec {}

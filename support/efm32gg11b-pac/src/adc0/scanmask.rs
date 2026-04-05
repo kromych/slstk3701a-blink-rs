@@ -1,49 +1,35 @@
 #[doc = "Register `SCANMASK` reader"]
-pub type R = crate::R<SCANMASK_SPEC>;
+pub type R = crate::R<ScanmaskSpec>;
 #[doc = "Register `SCANMASK` writer"]
-pub type W = crate::W<SCANMASK_SPEC>;
+pub type W = crate::W<ScanmaskSpec>;
 #[doc = "Field `SCANINPUTEN` reader - Scan Sequence Input Mask"]
-pub type SCANINPUTEN_R = crate::FieldReader<u32>;
+pub type ScaninputenR = crate::FieldReader<u32>;
 #[doc = "Field `SCANINPUTEN` writer - Scan Sequence Input Mask"]
-pub type SCANINPUTEN_W<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
+pub type ScaninputenW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Scan Sequence Input Mask"]
     #[inline(always)]
-    pub fn scaninputen(&self) -> SCANINPUTEN_R {
-        SCANINPUTEN_R::new(self.bits)
+    pub fn scaninputen(&self) -> ScaninputenR {
+        ScaninputenR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Scan Sequence Input Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn scaninputen(&mut self) -> SCANINPUTEN_W<SCANMASK_SPEC> {
-        SCANINPUTEN_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn scaninputen(&mut self) -> ScaninputenW<'_, ScanmaskSpec> {
+        ScaninputenW::new(self, 0)
     }
 }
-#[doc = "Scan Sequence Input Mask Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`scanmask::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`scanmask::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct SCANMASK_SPEC;
-impl crate::RegisterSpec for SCANMASK_SPEC {
+#[doc = "Scan Sequence Input Mask Register\n\nYou can [`read`](crate::Reg::read) this register and get [`scanmask::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`scanmask::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ScanmaskSpec;
+impl crate::RegisterSpec for ScanmaskSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`scanmask::R`](R) reader structure"]
-impl crate::Readable for SCANMASK_SPEC {}
+impl crate::Readable for ScanmaskSpec {}
 #[doc = "`write(|w| ..)` method takes [`scanmask::W`](W) writer structure"]
-impl crate::Writable for SCANMASK_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for ScanmaskSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets SCANMASK to value 0"]
-impl crate::Resettable for SCANMASK_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for ScanmaskSpec {}

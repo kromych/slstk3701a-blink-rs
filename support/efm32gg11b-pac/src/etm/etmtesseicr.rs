@@ -1,64 +1,49 @@
 #[doc = "Register `ETMTESSEICR` reader"]
-pub type R = crate::R<ETMTESSEICR_SPEC>;
+pub type R = crate::R<EtmtesseicrSpec>;
 #[doc = "Register `ETMTESSEICR` writer"]
-pub type W = crate::W<ETMTESSEICR_SPEC>;
+pub type W = crate::W<EtmtesseicrSpec>;
 #[doc = "Field `STARTRSEL` reader - Stop Resource Selection"]
-pub type STARTRSEL_R = crate::FieldReader;
+pub type StartrselR = crate::FieldReader;
 #[doc = "Field `STARTRSEL` writer - Stop Resource Selection"]
-pub type STARTRSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type StartrselW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `STOPRSEL` reader - Stop Resource Selection"]
-pub type STOPRSEL_R = crate::FieldReader;
+pub type StoprselR = crate::FieldReader;
 #[doc = "Field `STOPRSEL` writer - Stop Resource Selection"]
-pub type STOPRSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type StoprselW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 impl R {
     #[doc = "Bits 0:3 - Stop Resource Selection"]
     #[inline(always)]
-    pub fn startrsel(&self) -> STARTRSEL_R {
-        STARTRSEL_R::new((self.bits & 0x0f) as u8)
+    pub fn startrsel(&self) -> StartrselR {
+        StartrselR::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bits 16:19 - Stop Resource Selection"]
     #[inline(always)]
-    pub fn stoprsel(&self) -> STOPRSEL_R {
-        STOPRSEL_R::new(((self.bits >> 16) & 0x0f) as u8)
+    pub fn stoprsel(&self) -> StoprselR {
+        StoprselR::new(((self.bits >> 16) & 0x0f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Stop Resource Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn startrsel(&mut self) -> STARTRSEL_W<ETMTESSEICR_SPEC> {
-        STARTRSEL_W::new(self, 0)
+    pub fn startrsel(&mut self) -> StartrselW<'_, EtmtesseicrSpec> {
+        StartrselW::new(self, 0)
     }
     #[doc = "Bits 16:19 - Stop Resource Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn stoprsel(&mut self) -> STOPRSEL_W<ETMTESSEICR_SPEC> {
-        STOPRSEL_W::new(self, 16)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn stoprsel(&mut self) -> StoprselW<'_, EtmtesseicrSpec> {
+        StoprselW::new(self, 16)
     }
 }
-#[doc = "TraceEnable Start/Stop EmbeddedICE Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`etmtesseicr::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`etmtesseicr::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct ETMTESSEICR_SPEC;
-impl crate::RegisterSpec for ETMTESSEICR_SPEC {
+#[doc = "TraceEnable Start/Stop EmbeddedICE Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`etmtesseicr::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`etmtesseicr::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct EtmtesseicrSpec;
+impl crate::RegisterSpec for EtmtesseicrSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`etmtesseicr::R`](R) reader structure"]
-impl crate::Readable for ETMTESSEICR_SPEC {}
+impl crate::Readable for EtmtesseicrSpec {}
 #[doc = "`write(|w| ..)` method takes [`etmtesseicr::W`](W) writer structure"]
-impl crate::Writable for ETMTESSEICR_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for EtmtesseicrSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets ETMTESSEICR to value 0"]
-impl crate::Resettable for ETMTESSEICR_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for EtmtesseicrSpec {}

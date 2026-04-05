@@ -1,0 +1,11 @@
+[package]
+name = "slstk3701a"
+version = "0.1.0"
+authors = ["kromych <kromych@users.noreply.github.com>"]
+edition = "2021"
+description = "Board support for SLSTK3701A (EFM32GG11B) starter kit"
+license = "MIT"
+
+[dependencies]
+cortex-m.workspace = true
+efm32gg11b-pac.workspace = true

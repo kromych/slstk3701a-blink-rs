@@ -1,154 +1,135 @@
 #[doc = "Register `CAL` reader"]
-pub type R = crate::R<CAL_SPEC>;
+pub type R = crate::R<CalSpec>;
 #[doc = "Register `CAL` writer"]
-pub type W = crate::W<CAL_SPEC>;
+pub type W = crate::W<CalSpec>;
 #[doc = "Field `SINGLEOFFSET` reader - Single Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
-pub type SINGLEOFFSET_R = crate::FieldReader;
+pub type SingleoffsetR = crate::FieldReader;
 #[doc = "Field `SINGLEOFFSET` writer - Single Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
-pub type SINGLEOFFSET_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type SingleoffsetW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `SINGLEOFFSETINV` reader - Single Mode Offset Calibration Value for Negative Single-ended Mode"]
-pub type SINGLEOFFSETINV_R = crate::FieldReader;
+pub type SingleoffsetinvR = crate::FieldReader;
 #[doc = "Field `SINGLEOFFSETINV` writer - Single Mode Offset Calibration Value for Negative Single-ended Mode"]
-pub type SINGLEOFFSETINV_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type SingleoffsetinvW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `SINGLEGAIN` reader - Single Mode Gain Calibration Value"]
-pub type SINGLEGAIN_R = crate::FieldReader;
+pub type SinglegainR = crate::FieldReader;
 #[doc = "Field `SINGLEGAIN` writer - Single Mode Gain Calibration Value"]
-pub type SINGLEGAIN_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
+pub type SinglegainW<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `OFFSETINVMODE` reader - Negative Single-ended Offset Calibration is Enabled"]
-pub type OFFSETINVMODE_R = crate::BitReader;
+pub type OffsetinvmodeR = crate::BitReader;
 #[doc = "Field `OFFSETINVMODE` writer - Negative Single-ended Offset Calibration is Enabled"]
-pub type OFFSETINVMODE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type OffsetinvmodeW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SCANOFFSET` reader - Scan Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
-pub type SCANOFFSET_R = crate::FieldReader;
+pub type ScanoffsetR = crate::FieldReader;
 #[doc = "Field `SCANOFFSET` writer - Scan Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
-pub type SCANOFFSET_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type ScanoffsetW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `SCANOFFSETINV` reader - Scan Mode Offset Calibration Value for Negative Single-ended Mode"]
-pub type SCANOFFSETINV_R = crate::FieldReader;
+pub type ScanoffsetinvR = crate::FieldReader;
 #[doc = "Field `SCANOFFSETINV` writer - Scan Mode Offset Calibration Value for Negative Single-ended Mode"]
-pub type SCANOFFSETINV_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type ScanoffsetinvW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `SCANGAIN` reader - Scan Mode Gain Calibration Value"]
-pub type SCANGAIN_R = crate::FieldReader;
+pub type ScangainR = crate::FieldReader;
 #[doc = "Field `SCANGAIN` writer - Scan Mode Gain Calibration Value"]
-pub type SCANGAIN_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
+pub type ScangainW<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `CALEN` reader - Calibration Mode is Enabled"]
-pub type CALEN_R = crate::BitReader;
+pub type CalenR = crate::BitReader;
 #[doc = "Field `CALEN` writer - Calibration Mode is Enabled"]
-pub type CALEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type CalenW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:3 - Single Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
     #[inline(always)]
-    pub fn singleoffset(&self) -> SINGLEOFFSET_R {
-        SINGLEOFFSET_R::new((self.bits & 0x0f) as u8)
+    pub fn singleoffset(&self) -> SingleoffsetR {
+        SingleoffsetR::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bits 4:7 - Single Mode Offset Calibration Value for Negative Single-ended Mode"]
     #[inline(always)]
-    pub fn singleoffsetinv(&self) -> SINGLEOFFSETINV_R {
-        SINGLEOFFSETINV_R::new(((self.bits >> 4) & 0x0f) as u8)
+    pub fn singleoffsetinv(&self) -> SingleoffsetinvR {
+        SingleoffsetinvR::new(((self.bits >> 4) & 0x0f) as u8)
     }
     #[doc = "Bits 8:14 - Single Mode Gain Calibration Value"]
     #[inline(always)]
-    pub fn singlegain(&self) -> SINGLEGAIN_R {
-        SINGLEGAIN_R::new(((self.bits >> 8) & 0x7f) as u8)
+    pub fn singlegain(&self) -> SinglegainR {
+        SinglegainR::new(((self.bits >> 8) & 0x7f) as u8)
     }
     #[doc = "Bit 15 - Negative Single-ended Offset Calibration is Enabled"]
     #[inline(always)]
-    pub fn offsetinvmode(&self) -> OFFSETINVMODE_R {
-        OFFSETINVMODE_R::new(((self.bits >> 15) & 1) != 0)
+    pub fn offsetinvmode(&self) -> OffsetinvmodeR {
+        OffsetinvmodeR::new(((self.bits >> 15) & 1) != 0)
     }
     #[doc = "Bits 16:19 - Scan Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
     #[inline(always)]
-    pub fn scanoffset(&self) -> SCANOFFSET_R {
-        SCANOFFSET_R::new(((self.bits >> 16) & 0x0f) as u8)
+    pub fn scanoffset(&self) -> ScanoffsetR {
+        ScanoffsetR::new(((self.bits >> 16) & 0x0f) as u8)
     }
     #[doc = "Bits 20:23 - Scan Mode Offset Calibration Value for Negative Single-ended Mode"]
     #[inline(always)]
-    pub fn scanoffsetinv(&self) -> SCANOFFSETINV_R {
-        SCANOFFSETINV_R::new(((self.bits >> 20) & 0x0f) as u8)
+    pub fn scanoffsetinv(&self) -> ScanoffsetinvR {
+        ScanoffsetinvR::new(((self.bits >> 20) & 0x0f) as u8)
     }
     #[doc = "Bits 24:30 - Scan Mode Gain Calibration Value"]
     #[inline(always)]
-    pub fn scangain(&self) -> SCANGAIN_R {
-        SCANGAIN_R::new(((self.bits >> 24) & 0x7f) as u8)
+    pub fn scangain(&self) -> ScangainR {
+        ScangainR::new(((self.bits >> 24) & 0x7f) as u8)
     }
     #[doc = "Bit 31 - Calibration Mode is Enabled"]
     #[inline(always)]
-    pub fn calen(&self) -> CALEN_R {
-        CALEN_R::new(((self.bits >> 31) & 1) != 0)
+    pub fn calen(&self) -> CalenR {
+        CalenR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Single Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn singleoffset(&mut self) -> SINGLEOFFSET_W<CAL_SPEC> {
-        SINGLEOFFSET_W::new(self, 0)
+    pub fn singleoffset(&mut self) -> SingleoffsetW<'_, CalSpec> {
+        SingleoffsetW::new(self, 0)
     }
     #[doc = "Bits 4:7 - Single Mode Offset Calibration Value for Negative Single-ended Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn singleoffsetinv(&mut self) -> SINGLEOFFSETINV_W<CAL_SPEC> {
-        SINGLEOFFSETINV_W::new(self, 4)
+    pub fn singleoffsetinv(&mut self) -> SingleoffsetinvW<'_, CalSpec> {
+        SingleoffsetinvW::new(self, 4)
     }
     #[doc = "Bits 8:14 - Single Mode Gain Calibration Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn singlegain(&mut self) -> SINGLEGAIN_W<CAL_SPEC> {
-        SINGLEGAIN_W::new(self, 8)
+    pub fn singlegain(&mut self) -> SinglegainW<'_, CalSpec> {
+        SinglegainW::new(self, 8)
     }
     #[doc = "Bit 15 - Negative Single-ended Offset Calibration is Enabled"]
     #[inline(always)]
-    #[must_use]
-    pub fn offsetinvmode(&mut self) -> OFFSETINVMODE_W<CAL_SPEC> {
-        OFFSETINVMODE_W::new(self, 15)
+    pub fn offsetinvmode(&mut self) -> OffsetinvmodeW<'_, CalSpec> {
+        OffsetinvmodeW::new(self, 15)
     }
     #[doc = "Bits 16:19 - Scan Mode Offset Calibration Value for Differential or Positive Single-ended Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn scanoffset(&mut self) -> SCANOFFSET_W<CAL_SPEC> {
-        SCANOFFSET_W::new(self, 16)
+    pub fn scanoffset(&mut self) -> ScanoffsetW<'_, CalSpec> {
+        ScanoffsetW::new(self, 16)
     }
     #[doc = "Bits 20:23 - Scan Mode Offset Calibration Value for Negative Single-ended Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn scanoffsetinv(&mut self) -> SCANOFFSETINV_W<CAL_SPEC> {
-        SCANOFFSETINV_W::new(self, 20)
+    pub fn scanoffsetinv(&mut self) -> ScanoffsetinvW<'_, CalSpec> {
+        ScanoffsetinvW::new(self, 20)
     }
     #[doc = "Bits 24:30 - Scan Mode Gain Calibration Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn scangain(&mut self) -> SCANGAIN_W<CAL_SPEC> {
-        SCANGAIN_W::new(self, 24)
+    pub fn scangain(&mut self) -> ScangainW<'_, CalSpec> {
+        ScangainW::new(self, 24)
     }
     #[doc = "Bit 31 - Calibration Mode is Enabled"]
     #[inline(always)]
-    #[must_use]
-    pub fn calen(&mut self) -> CALEN_W<CAL_SPEC> {
-        CALEN_W::new(self, 31)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn calen(&mut self) -> CalenW<'_, CalSpec> {
+        CalenW::new(self, 31)
     }
 }
-#[doc = "Calibration Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`cal::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`cal::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CAL_SPEC;
-impl crate::RegisterSpec for CAL_SPEC {
+#[doc = "Calibration Register\n\nYou can [`read`](crate::Reg::read) this register and get [`cal::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cal::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CalSpec;
+impl crate::RegisterSpec for CalSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`cal::R`](R) reader structure"]
-impl crate::Readable for CAL_SPEC {}
+impl crate::Readable for CalSpec {}
 #[doc = "`write(|w| ..)` method takes [`cal::W`](W) writer structure"]
-impl crate::Writable for CAL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for CalSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets CAL to value 0x4078_4078"]
-impl crate::Resettable for CAL_SPEC {
+impl crate::Resettable for CalSpec {
     const RESET_VALUE: u32 = 0x4078_4078;
 }

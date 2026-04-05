@@ -1,689 +1,689 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    ctrl: CTRL,
+    ctrl: Ctrl,
     _reserved1: [u8; 0x04],
-    ushfrcoctrl: USHFRCOCTRL,
+    ushfrcoctrl: Ushfrcoctrl,
     _reserved2: [u8; 0x04],
-    hfrcoctrl: HFRCOCTRL,
+    hfrcoctrl: Hfrcoctrl,
     _reserved3: [u8; 0x04],
-    auxhfrcoctrl: AUXHFRCOCTRL,
+    auxhfrcoctrl: Auxhfrcoctrl,
     _reserved4: [u8; 0x04],
-    lfrcoctrl: LFRCOCTRL,
-    hfxoctrl: HFXOCTRL,
-    hfxoctrl1: HFXOCTRL1,
-    hfxostartupctrl: HFXOSTARTUPCTRL,
-    hfxosteadystatectrl: HFXOSTEADYSTATECTRL,
-    hfxotimeoutctrl: HFXOTIMEOUTCTRL,
-    lfxoctrl: LFXOCTRL,
+    lfrcoctrl: Lfrcoctrl,
+    hfxoctrl: Hfxoctrl,
+    hfxoctrl1: Hfxoctrl1,
+    hfxostartupctrl: Hfxostartupctrl,
+    hfxosteadystatectrl: Hfxosteadystatectrl,
+    hfxotimeoutctrl: Hfxotimeoutctrl,
+    lfxoctrl: Lfxoctrl,
     _reserved11: [u8; 0x04],
-    dpllctrl: DPLLCTRL,
-    dpllctrl1: DPLLCTRL1,
+    dpllctrl: Dpllctrl,
+    dpllctrl1: Dpllctrl1,
     _reserved13: [u8; 0x08],
-    calctrl: CALCTRL,
-    calcnt: CALCNT,
+    calctrl: Calctrl,
+    calcnt: Calcnt,
     _reserved15: [u8; 0x08],
-    oscencmd: OSCENCMD,
-    cmd: CMD,
+    oscencmd: Oscencmd,
+    cmd: Cmd,
     _reserved17: [u8; 0x08],
-    dbgclksel: DBGCLKSEL,
-    hfclksel: HFCLKSEL,
+    dbgclksel: Dbgclksel,
+    hfclksel: Hfclksel,
     _reserved19: [u8; 0x08],
-    lfaclksel: LFACLKSEL,
-    lfbclksel: LFBCLKSEL,
-    lfeclksel: LFECLKSEL,
-    lfcclksel: LFCCLKSEL,
-    status: STATUS,
-    hfclkstatus: HFCLKSTATUS,
+    lfaclksel: Lfaclksel,
+    lfbclksel: Lfbclksel,
+    lfeclksel: Lfeclksel,
+    lfcclksel: Lfcclksel,
+    status: Status,
+    hfclkstatus: Hfclkstatus,
     _reserved25: [u8; 0x04],
-    hfxotrimstatus: HFXOTRIMSTATUS,
-    if_: IF,
-    ifs: IFS,
-    ifc: IFC,
-    ien: IEN,
-    hfbusclken0: HFBUSCLKEN0,
+    hfxotrimstatus: Hfxotrimstatus,
+    if_: If,
+    ifs: Ifs,
+    ifc: Ifc,
+    ien: Ien,
+    hfbusclken0: Hfbusclken0,
     _reserved31: [u8; 0x0c],
-    hfperclken0: HFPERCLKEN0,
-    hfperclken1: HFPERCLKEN1,
+    hfperclken0: Hfperclken0,
+    hfperclken1: Hfperclken1,
     _reserved33: [u8; 0x18],
-    lfaclken0: LFACLKEN0,
+    lfaclken0: Lfaclken0,
     _reserved34: [u8; 0x04],
-    lfbclken0: LFBCLKEN0,
-    lfcclken0: LFCCLKEN0,
-    lfeclken0: LFECLKEN0,
+    lfbclken0: Lfbclken0,
+    lfcclken0: Lfcclken0,
+    lfeclken0: Lfeclken0,
     _reserved37: [u8; 0x0c],
-    hfpresc: HFPRESC,
-    hfbuspresc: HFBUSPRESC,
-    hfcorepresc: HFCOREPRESC,
-    hfperpresc: HFPERPRESC,
+    hfpresc: Hfpresc,
+    hfbuspresc: Hfbuspresc,
+    hfcorepresc: Hfcorepresc,
+    hfperpresc: Hfperpresc,
     _reserved41: [u8; 0x04],
-    hfexppresc: HFEXPPRESC,
-    hfperprescb: HFPERPRESCB,
-    hfperprescc: HFPERPRESCC,
-    lfapresc0: LFAPRESC0,
+    hfexppresc: Hfexppresc,
+    hfperprescb: Hfperprescb,
+    hfperprescc: Hfperprescc,
+    lfapresc0: Lfapresc0,
     _reserved45: [u8; 0x04],
-    lfbpresc0: LFBPRESC0,
+    lfbpresc0: Lfbpresc0,
     _reserved46: [u8; 0x04],
-    lfepresc0: LFEPRESC0,
+    lfepresc0: Lfepresc0,
     _reserved47: [u8; 0x0c],
-    syncbusy: SYNCBUSY,
-    freeze: FREEZE,
+    syncbusy: Syncbusy,
+    freeze: Freeze,
     _reserved49: [u8; 0x08],
-    pcntctrl: PCNTCTRL,
+    pcntctrl: Pcntctrl,
     _reserved50: [u8; 0x08],
-    adcctrl: ADCCTRL,
-    sdioctrl: SDIOCTRL,
-    qspictrl: QSPICTRL,
+    adcctrl: Adcctrl,
+    sdioctrl: Sdioctrl,
+    qspictrl: Qspictrl,
     _reserved53: [u8; 0x08],
-    routepen: ROUTEPEN,
-    routeloc0: ROUTELOC0,
-    routeloc1: ROUTELOC1,
+    routepen: Routepen,
+    routeloc0: Routeloc0,
+    routeloc1: Routeloc1,
     _reserved56: [u8; 0x04],
-    lock: LOCK,
-    hfrcoss: HFRCOSS,
+    lock: Lock,
+    hfrcoss: Hfrcoss,
     _reserved58: [u8; 0x68],
-    usbctrl: USBCTRL,
-    usbcrctrl: USBCRCTRL,
+    usbctrl: Usbctrl,
+    usbcrctrl: Usbcrctrl,
 }
 impl RegisterBlock {
     #[doc = "0x00 - CMU Control Register"]
     #[inline(always)]
-    pub const fn ctrl(&self) -> &CTRL {
+    pub const fn ctrl(&self) -> &Ctrl {
         &self.ctrl
     }
     #[doc = "0x08 - USHFRCO Control Register"]
     #[inline(always)]
-    pub const fn ushfrcoctrl(&self) -> &USHFRCOCTRL {
+    pub const fn ushfrcoctrl(&self) -> &Ushfrcoctrl {
         &self.ushfrcoctrl
     }
     #[doc = "0x10 - HFRCO Control Register"]
     #[inline(always)]
-    pub const fn hfrcoctrl(&self) -> &HFRCOCTRL {
+    pub const fn hfrcoctrl(&self) -> &Hfrcoctrl {
         &self.hfrcoctrl
     }
     #[doc = "0x18 - AUXHFRCO Control Register"]
     #[inline(always)]
-    pub const fn auxhfrcoctrl(&self) -> &AUXHFRCOCTRL {
+    pub const fn auxhfrcoctrl(&self) -> &Auxhfrcoctrl {
         &self.auxhfrcoctrl
     }
     #[doc = "0x20 - LFRCO Control Register"]
     #[inline(always)]
-    pub const fn lfrcoctrl(&self) -> &LFRCOCTRL {
+    pub const fn lfrcoctrl(&self) -> &Lfrcoctrl {
         &self.lfrcoctrl
     }
     #[doc = "0x24 - HFXO Control Register"]
     #[inline(always)]
-    pub const fn hfxoctrl(&self) -> &HFXOCTRL {
+    pub const fn hfxoctrl(&self) -> &Hfxoctrl {
         &self.hfxoctrl
     }
     #[doc = "0x28 - HFXO Control 1"]
     #[inline(always)]
-    pub const fn hfxoctrl1(&self) -> &HFXOCTRL1 {
+    pub const fn hfxoctrl1(&self) -> &Hfxoctrl1 {
         &self.hfxoctrl1
     }
     #[doc = "0x2c - HFXO Startup Control"]
     #[inline(always)]
-    pub const fn hfxostartupctrl(&self) -> &HFXOSTARTUPCTRL {
+    pub const fn hfxostartupctrl(&self) -> &Hfxostartupctrl {
         &self.hfxostartupctrl
     }
     #[doc = "0x30 - HFXO Steady State Control"]
     #[inline(always)]
-    pub const fn hfxosteadystatectrl(&self) -> &HFXOSTEADYSTATECTRL {
+    pub const fn hfxosteadystatectrl(&self) -> &Hfxosteadystatectrl {
         &self.hfxosteadystatectrl
     }
     #[doc = "0x34 - HFXO Timeout Control"]
     #[inline(always)]
-    pub const fn hfxotimeoutctrl(&self) -> &HFXOTIMEOUTCTRL {
+    pub const fn hfxotimeoutctrl(&self) -> &Hfxotimeoutctrl {
         &self.hfxotimeoutctrl
     }
     #[doc = "0x38 - LFXO Control Register"]
     #[inline(always)]
-    pub const fn lfxoctrl(&self) -> &LFXOCTRL {
+    pub const fn lfxoctrl(&self) -> &Lfxoctrl {
         &self.lfxoctrl
     }
     #[doc = "0x40 - DPLL Control Register"]
     #[inline(always)]
-    pub const fn dpllctrl(&self) -> &DPLLCTRL {
+    pub const fn dpllctrl(&self) -> &Dpllctrl {
         &self.dpllctrl
     }
     #[doc = "0x44 - DPLL Control Register"]
     #[inline(always)]
-    pub const fn dpllctrl1(&self) -> &DPLLCTRL1 {
+    pub const fn dpllctrl1(&self) -> &Dpllctrl1 {
         &self.dpllctrl1
     }
     #[doc = "0x50 - Calibration Control Register"]
     #[inline(always)]
-    pub const fn calctrl(&self) -> &CALCTRL {
+    pub const fn calctrl(&self) -> &Calctrl {
         &self.calctrl
     }
     #[doc = "0x54 - Calibration Counter Register"]
     #[inline(always)]
-    pub const fn calcnt(&self) -> &CALCNT {
+    pub const fn calcnt(&self) -> &Calcnt {
         &self.calcnt
     }
     #[doc = "0x60 - Oscillator Enable/Disable Command Register"]
     #[inline(always)]
-    pub const fn oscencmd(&self) -> &OSCENCMD {
+    pub const fn oscencmd(&self) -> &Oscencmd {
         &self.oscencmd
     }
     #[doc = "0x64 - Command Register"]
     #[inline(always)]
-    pub const fn cmd(&self) -> &CMD {
+    pub const fn cmd(&self) -> &Cmd {
         &self.cmd
     }
     #[doc = "0x70 - Debug Trace Clock Select"]
     #[inline(always)]
-    pub const fn dbgclksel(&self) -> &DBGCLKSEL {
+    pub const fn dbgclksel(&self) -> &Dbgclksel {
         &self.dbgclksel
     }
     #[doc = "0x74 - High Frequency Clock Select Command Register"]
     #[inline(always)]
-    pub const fn hfclksel(&self) -> &HFCLKSEL {
+    pub const fn hfclksel(&self) -> &Hfclksel {
         &self.hfclksel
     }
     #[doc = "0x80 - Low Frequency A Clock Select Register"]
     #[inline(always)]
-    pub const fn lfaclksel(&self) -> &LFACLKSEL {
+    pub const fn lfaclksel(&self) -> &Lfaclksel {
         &self.lfaclksel
     }
     #[doc = "0x84 - Low Frequency B Clock Select Register"]
     #[inline(always)]
-    pub const fn lfbclksel(&self) -> &LFBCLKSEL {
+    pub const fn lfbclksel(&self) -> &Lfbclksel {
         &self.lfbclksel
     }
     #[doc = "0x88 - Low Frequency E Clock Select Register"]
     #[inline(always)]
-    pub const fn lfeclksel(&self) -> &LFECLKSEL {
+    pub const fn lfeclksel(&self) -> &Lfeclksel {
         &self.lfeclksel
     }
     #[doc = "0x8c - Low Frequency C Clock Select Register"]
     #[inline(always)]
-    pub const fn lfcclksel(&self) -> &LFCCLKSEL {
+    pub const fn lfcclksel(&self) -> &Lfcclksel {
         &self.lfcclksel
     }
     #[doc = "0x90 - Status Register"]
     #[inline(always)]
-    pub const fn status(&self) -> &STATUS {
+    pub const fn status(&self) -> &Status {
         &self.status
     }
     #[doc = "0x94 - HFCLK Status Register"]
     #[inline(always)]
-    pub const fn hfclkstatus(&self) -> &HFCLKSTATUS {
+    pub const fn hfclkstatus(&self) -> &Hfclkstatus {
         &self.hfclkstatus
     }
     #[doc = "0x9c - HFXO Trim Status"]
     #[inline(always)]
-    pub const fn hfxotrimstatus(&self) -> &HFXOTRIMSTATUS {
+    pub const fn hfxotrimstatus(&self) -> &Hfxotrimstatus {
         &self.hfxotrimstatus
     }
     #[doc = "0xa0 - Interrupt Flag Register"]
     #[inline(always)]
-    pub const fn if_(&self) -> &IF {
+    pub const fn if_(&self) -> &If {
         &self.if_
     }
     #[doc = "0xa4 - Interrupt Flag Set Register"]
     #[inline(always)]
-    pub const fn ifs(&self) -> &IFS {
+    pub const fn ifs(&self) -> &Ifs {
         &self.ifs
     }
     #[doc = "0xa8 - Interrupt Flag Clear Register"]
     #[inline(always)]
-    pub const fn ifc(&self) -> &IFC {
+    pub const fn ifc(&self) -> &Ifc {
         &self.ifc
     }
     #[doc = "0xac - Interrupt Enable Register"]
     #[inline(always)]
-    pub const fn ien(&self) -> &IEN {
+    pub const fn ien(&self) -> &Ien {
         &self.ien
     }
     #[doc = "0xb0 - High Frequency Bus Clock Enable Register 0"]
     #[inline(always)]
-    pub const fn hfbusclken0(&self) -> &HFBUSCLKEN0 {
+    pub const fn hfbusclken0(&self) -> &Hfbusclken0 {
         &self.hfbusclken0
     }
     #[doc = "0xc0 - High Frequency Peripheral Clock Enable Register 0"]
     #[inline(always)]
-    pub const fn hfperclken0(&self) -> &HFPERCLKEN0 {
+    pub const fn hfperclken0(&self) -> &Hfperclken0 {
         &self.hfperclken0
     }
     #[doc = "0xc4 - High Frequency Peripheral Clock Enable Register 1"]
     #[inline(always)]
-    pub const fn hfperclken1(&self) -> &HFPERCLKEN1 {
+    pub const fn hfperclken1(&self) -> &Hfperclken1 {
         &self.hfperclken1
     }
     #[doc = "0xe0 - Low Frequency a Clock Enable Register 0 (Async Reg)"]
     #[inline(always)]
-    pub const fn lfaclken0(&self) -> &LFACLKEN0 {
+    pub const fn lfaclken0(&self) -> &Lfaclken0 {
         &self.lfaclken0
     }
     #[doc = "0xe8 - Low Frequency B Clock Enable Register 0 (Async Reg)"]
     #[inline(always)]
-    pub const fn lfbclken0(&self) -> &LFBCLKEN0 {
+    pub const fn lfbclken0(&self) -> &Lfbclken0 {
         &self.lfbclken0
     }
     #[doc = "0xec - Low Frequency C Clock Enable Register 0 (Async Reg)"]
     #[inline(always)]
-    pub const fn lfcclken0(&self) -> &LFCCLKEN0 {
+    pub const fn lfcclken0(&self) -> &Lfcclken0 {
         &self.lfcclken0
     }
     #[doc = "0xf0 - Low Frequency E Clock Enable Register 0 (Async Reg)"]
     #[inline(always)]
-    pub const fn lfeclken0(&self) -> &LFECLKEN0 {
+    pub const fn lfeclken0(&self) -> &Lfeclken0 {
         &self.lfeclken0
     }
     #[doc = "0x100 - High Frequency Clock Prescaler Register"]
     #[inline(always)]
-    pub const fn hfpresc(&self) -> &HFPRESC {
+    pub const fn hfpresc(&self) -> &Hfpresc {
         &self.hfpresc
     }
     #[doc = "0x104 - High Frequency Bus Clock Prescaler Register"]
     #[inline(always)]
-    pub const fn hfbuspresc(&self) -> &HFBUSPRESC {
+    pub const fn hfbuspresc(&self) -> &Hfbuspresc {
         &self.hfbuspresc
     }
     #[doc = "0x108 - High Frequency Core Clock Prescaler Register"]
     #[inline(always)]
-    pub const fn hfcorepresc(&self) -> &HFCOREPRESC {
+    pub const fn hfcorepresc(&self) -> &Hfcorepresc {
         &self.hfcorepresc
     }
     #[doc = "0x10c - High Frequency Peripheral Clock Prescaler Register"]
     #[inline(always)]
-    pub const fn hfperpresc(&self) -> &HFPERPRESC {
+    pub const fn hfperpresc(&self) -> &Hfperpresc {
         &self.hfperpresc
     }
     #[doc = "0x114 - High Frequency Export Clock Prescaler Register"]
     #[inline(always)]
-    pub const fn hfexppresc(&self) -> &HFEXPPRESC {
+    pub const fn hfexppresc(&self) -> &Hfexppresc {
         &self.hfexppresc
     }
     #[doc = "0x118 - High Frequency Peripheral Clock Prescaler B Register"]
     #[inline(always)]
-    pub const fn hfperprescb(&self) -> &HFPERPRESCB {
+    pub const fn hfperprescb(&self) -> &Hfperprescb {
         &self.hfperprescb
     }
     #[doc = "0x11c - High Frequency Peripheral Clock Prescaler C Register"]
     #[inline(always)]
-    pub const fn hfperprescc(&self) -> &HFPERPRESCC {
+    pub const fn hfperprescc(&self) -> &Hfperprescc {
         &self.hfperprescc
     }
     #[doc = "0x120 - Low Frequency a Prescaler Register 0 (Async Reg)"]
     #[inline(always)]
-    pub const fn lfapresc0(&self) -> &LFAPRESC0 {
+    pub const fn lfapresc0(&self) -> &Lfapresc0 {
         &self.lfapresc0
     }
     #[doc = "0x128 - Low Frequency B Prescaler Register 0 (Async Reg)"]
     #[inline(always)]
-    pub const fn lfbpresc0(&self) -> &LFBPRESC0 {
+    pub const fn lfbpresc0(&self) -> &Lfbpresc0 {
         &self.lfbpresc0
     }
     #[doc = "0x130 - Low Frequency E Prescaler Register 0 (Async Reg)"]
     #[inline(always)]
-    pub const fn lfepresc0(&self) -> &LFEPRESC0 {
+    pub const fn lfepresc0(&self) -> &Lfepresc0 {
         &self.lfepresc0
     }
     #[doc = "0x140 - Synchronization Busy Register"]
     #[inline(always)]
-    pub const fn syncbusy(&self) -> &SYNCBUSY {
+    pub const fn syncbusy(&self) -> &Syncbusy {
         &self.syncbusy
     }
     #[doc = "0x144 - Freeze Register"]
     #[inline(always)]
-    pub const fn freeze(&self) -> &FREEZE {
+    pub const fn freeze(&self) -> &Freeze {
         &self.freeze
     }
     #[doc = "0x150 - PCNT Control Register"]
     #[inline(always)]
-    pub const fn pcntctrl(&self) -> &PCNTCTRL {
+    pub const fn pcntctrl(&self) -> &Pcntctrl {
         &self.pcntctrl
     }
     #[doc = "0x15c - ADC Control Register"]
     #[inline(always)]
-    pub const fn adcctrl(&self) -> &ADCCTRL {
+    pub const fn adcctrl(&self) -> &Adcctrl {
         &self.adcctrl
     }
     #[doc = "0x160 - SDIO Control Register"]
     #[inline(always)]
-    pub const fn sdioctrl(&self) -> &SDIOCTRL {
+    pub const fn sdioctrl(&self) -> &Sdioctrl {
         &self.sdioctrl
     }
     #[doc = "0x164 - QSPI Control Register"]
     #[inline(always)]
-    pub const fn qspictrl(&self) -> &QSPICTRL {
+    pub const fn qspictrl(&self) -> &Qspictrl {
         &self.qspictrl
     }
     #[doc = "0x170 - I/O Routing Pin Enable Register"]
     #[inline(always)]
-    pub const fn routepen(&self) -> &ROUTEPEN {
+    pub const fn routepen(&self) -> &Routepen {
         &self.routepen
     }
     #[doc = "0x174 - I/O Routing Location Register"]
     #[inline(always)]
-    pub const fn routeloc0(&self) -> &ROUTELOC0 {
+    pub const fn routeloc0(&self) -> &Routeloc0 {
         &self.routeloc0
     }
     #[doc = "0x178 - I/O Routing Location Register"]
     #[inline(always)]
-    pub const fn routeloc1(&self) -> &ROUTELOC1 {
+    pub const fn routeloc1(&self) -> &Routeloc1 {
         &self.routeloc1
     }
     #[doc = "0x180 - Configuration Lock Register"]
     #[inline(always)]
-    pub const fn lock(&self) -> &LOCK {
+    pub const fn lock(&self) -> &Lock {
         &self.lock
     }
     #[doc = "0x184 - HFRCO Spread Spectrum Register"]
     #[inline(always)]
-    pub const fn hfrcoss(&self) -> &HFRCOSS {
+    pub const fn hfrcoss(&self) -> &Hfrcoss {
         &self.hfrcoss
     }
     #[doc = "0x1f0 - USB Control Register"]
     #[inline(always)]
-    pub const fn usbctrl(&self) -> &USBCTRL {
+    pub const fn usbctrl(&self) -> &Usbctrl {
         &self.usbctrl
     }
     #[doc = "0x1f4 - USB Clock Recovery Control"]
     #[inline(always)]
-    pub const fn usbcrctrl(&self) -> &USBCRCTRL {
+    pub const fn usbcrctrl(&self) -> &Usbcrctrl {
         &self.usbcrctrl
     }
 }
-#[doc = "CTRL (rw) register accessor: CMU Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`]
-module"]
-pub type CTRL = crate::Reg<ctrl::CTRL_SPEC>;
+#[doc = "CTRL (rw) register accessor: CMU Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`] module"]
+#[doc(alias = "CTRL")]
+pub type Ctrl = crate::Reg<ctrl::CtrlSpec>;
 #[doc = "CMU Control Register"]
 pub mod ctrl;
-#[doc = "USHFRCOCTRL (rw) register accessor: USHFRCO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ushfrcoctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ushfrcoctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ushfrcoctrl`]
-module"]
-pub type USHFRCOCTRL = crate::Reg<ushfrcoctrl::USHFRCOCTRL_SPEC>;
+#[doc = "USHFRCOCTRL (rw) register accessor: USHFRCO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ushfrcoctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ushfrcoctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ushfrcoctrl`] module"]
+#[doc(alias = "USHFRCOCTRL")]
+pub type Ushfrcoctrl = crate::Reg<ushfrcoctrl::UshfrcoctrlSpec>;
 #[doc = "USHFRCO Control Register"]
 pub mod ushfrcoctrl;
-#[doc = "HFRCOCTRL (rw) register accessor: HFRCO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfrcoctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfrcoctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfrcoctrl`]
-module"]
-pub type HFRCOCTRL = crate::Reg<hfrcoctrl::HFRCOCTRL_SPEC>;
+#[doc = "HFRCOCTRL (rw) register accessor: HFRCO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfrcoctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfrcoctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfrcoctrl`] module"]
+#[doc(alias = "HFRCOCTRL")]
+pub type Hfrcoctrl = crate::Reg<hfrcoctrl::HfrcoctrlSpec>;
 #[doc = "HFRCO Control Register"]
 pub mod hfrcoctrl;
-#[doc = "AUXHFRCOCTRL (rw) register accessor: AUXHFRCO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`auxhfrcoctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`auxhfrcoctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@auxhfrcoctrl`]
-module"]
-pub type AUXHFRCOCTRL = crate::Reg<auxhfrcoctrl::AUXHFRCOCTRL_SPEC>;
+#[doc = "AUXHFRCOCTRL (rw) register accessor: AUXHFRCO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`auxhfrcoctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`auxhfrcoctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@auxhfrcoctrl`] module"]
+#[doc(alias = "AUXHFRCOCTRL")]
+pub type Auxhfrcoctrl = crate::Reg<auxhfrcoctrl::AuxhfrcoctrlSpec>;
 #[doc = "AUXHFRCO Control Register"]
 pub mod auxhfrcoctrl;
-#[doc = "LFRCOCTRL (rw) register accessor: LFRCO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfrcoctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfrcoctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfrcoctrl`]
-module"]
-pub type LFRCOCTRL = crate::Reg<lfrcoctrl::LFRCOCTRL_SPEC>;
+#[doc = "LFRCOCTRL (rw) register accessor: LFRCO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lfrcoctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfrcoctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfrcoctrl`] module"]
+#[doc(alias = "LFRCOCTRL")]
+pub type Lfrcoctrl = crate::Reg<lfrcoctrl::LfrcoctrlSpec>;
 #[doc = "LFRCO Control Register"]
 pub mod lfrcoctrl;
-#[doc = "HFXOCTRL (rw) register accessor: HFXO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfxoctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfxoctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxoctrl`]
-module"]
-pub type HFXOCTRL = crate::Reg<hfxoctrl::HFXOCTRL_SPEC>;
+#[doc = "HFXOCTRL (rw) register accessor: HFXO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfxoctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfxoctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxoctrl`] module"]
+#[doc(alias = "HFXOCTRL")]
+pub type Hfxoctrl = crate::Reg<hfxoctrl::HfxoctrlSpec>;
 #[doc = "HFXO Control Register"]
 pub mod hfxoctrl;
-#[doc = "HFXOCTRL1 (rw) register accessor: HFXO Control 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfxoctrl1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfxoctrl1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxoctrl1`]
-module"]
-pub type HFXOCTRL1 = crate::Reg<hfxoctrl1::HFXOCTRL1_SPEC>;
+#[doc = "HFXOCTRL1 (rw) register accessor: HFXO Control 1\n\nYou can [`read`](crate::Reg::read) this register and get [`hfxoctrl1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfxoctrl1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxoctrl1`] module"]
+#[doc(alias = "HFXOCTRL1")]
+pub type Hfxoctrl1 = crate::Reg<hfxoctrl1::Hfxoctrl1Spec>;
 #[doc = "HFXO Control 1"]
 pub mod hfxoctrl1;
-#[doc = "HFXOSTARTUPCTRL (rw) register accessor: HFXO Startup Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfxostartupctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfxostartupctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxostartupctrl`]
-module"]
-pub type HFXOSTARTUPCTRL = crate::Reg<hfxostartupctrl::HFXOSTARTUPCTRL_SPEC>;
+#[doc = "HFXOSTARTUPCTRL (rw) register accessor: HFXO Startup Control\n\nYou can [`read`](crate::Reg::read) this register and get [`hfxostartupctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfxostartupctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxostartupctrl`] module"]
+#[doc(alias = "HFXOSTARTUPCTRL")]
+pub type Hfxostartupctrl = crate::Reg<hfxostartupctrl::HfxostartupctrlSpec>;
 #[doc = "HFXO Startup Control"]
 pub mod hfxostartupctrl;
-#[doc = "HFXOSTEADYSTATECTRL (rw) register accessor: HFXO Steady State Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfxosteadystatectrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfxosteadystatectrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxosteadystatectrl`]
-module"]
-pub type HFXOSTEADYSTATECTRL = crate::Reg<hfxosteadystatectrl::HFXOSTEADYSTATECTRL_SPEC>;
+#[doc = "HFXOSTEADYSTATECTRL (rw) register accessor: HFXO Steady State Control\n\nYou can [`read`](crate::Reg::read) this register and get [`hfxosteadystatectrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfxosteadystatectrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxosteadystatectrl`] module"]
+#[doc(alias = "HFXOSTEADYSTATECTRL")]
+pub type Hfxosteadystatectrl = crate::Reg<hfxosteadystatectrl::HfxosteadystatectrlSpec>;
 #[doc = "HFXO Steady State Control"]
 pub mod hfxosteadystatectrl;
-#[doc = "HFXOTIMEOUTCTRL (rw) register accessor: HFXO Timeout Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfxotimeoutctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfxotimeoutctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxotimeoutctrl`]
-module"]
-pub type HFXOTIMEOUTCTRL = crate::Reg<hfxotimeoutctrl::HFXOTIMEOUTCTRL_SPEC>;
+#[doc = "HFXOTIMEOUTCTRL (rw) register accessor: HFXO Timeout Control\n\nYou can [`read`](crate::Reg::read) this register and get [`hfxotimeoutctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfxotimeoutctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxotimeoutctrl`] module"]
+#[doc(alias = "HFXOTIMEOUTCTRL")]
+pub type Hfxotimeoutctrl = crate::Reg<hfxotimeoutctrl::HfxotimeoutctrlSpec>;
 #[doc = "HFXO Timeout Control"]
 pub mod hfxotimeoutctrl;
-#[doc = "LFXOCTRL (rw) register accessor: LFXO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfxoctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfxoctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfxoctrl`]
-module"]
-pub type LFXOCTRL = crate::Reg<lfxoctrl::LFXOCTRL_SPEC>;
+#[doc = "LFXOCTRL (rw) register accessor: LFXO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lfxoctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfxoctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfxoctrl`] module"]
+#[doc(alias = "LFXOCTRL")]
+pub type Lfxoctrl = crate::Reg<lfxoctrl::LfxoctrlSpec>;
 #[doc = "LFXO Control Register"]
 pub mod lfxoctrl;
-#[doc = "DPLLCTRL (rw) register accessor: DPLL Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`dpllctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`dpllctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dpllctrl`]
-module"]
-pub type DPLLCTRL = crate::Reg<dpllctrl::DPLLCTRL_SPEC>;
+#[doc = "DPLLCTRL (rw) register accessor: DPLL Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`dpllctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dpllctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dpllctrl`] module"]
+#[doc(alias = "DPLLCTRL")]
+pub type Dpllctrl = crate::Reg<dpllctrl::DpllctrlSpec>;
 #[doc = "DPLL Control Register"]
 pub mod dpllctrl;
-#[doc = "DPLLCTRL1 (rw) register accessor: DPLL Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`dpllctrl1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`dpllctrl1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dpllctrl1`]
-module"]
-pub type DPLLCTRL1 = crate::Reg<dpllctrl1::DPLLCTRL1_SPEC>;
+#[doc = "DPLLCTRL1 (rw) register accessor: DPLL Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`dpllctrl1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dpllctrl1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dpllctrl1`] module"]
+#[doc(alias = "DPLLCTRL1")]
+pub type Dpllctrl1 = crate::Reg<dpllctrl1::Dpllctrl1Spec>;
 #[doc = "DPLL Control Register"]
 pub mod dpllctrl1;
-#[doc = "CALCTRL (rw) register accessor: Calibration Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`calctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`calctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@calctrl`]
-module"]
-pub type CALCTRL = crate::Reg<calctrl::CALCTRL_SPEC>;
+#[doc = "CALCTRL (rw) register accessor: Calibration Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`calctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`calctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@calctrl`] module"]
+#[doc(alias = "CALCTRL")]
+pub type Calctrl = crate::Reg<calctrl::CalctrlSpec>;
 #[doc = "Calibration Control Register"]
 pub mod calctrl;
-#[doc = "CALCNT (rw) register accessor: Calibration Counter Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`calcnt::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`calcnt::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@calcnt`]
-module"]
-pub type CALCNT = crate::Reg<calcnt::CALCNT_SPEC>;
+#[doc = "CALCNT (rw) register accessor: Calibration Counter Register\n\nYou can [`read`](crate::Reg::read) this register and get [`calcnt::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`calcnt::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@calcnt`] module"]
+#[doc(alias = "CALCNT")]
+pub type Calcnt = crate::Reg<calcnt::CalcntSpec>;
 #[doc = "Calibration Counter Register"]
 pub mod calcnt;
-#[doc = "OSCENCMD (w) register accessor: Oscillator Enable/Disable Command Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`oscencmd::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@oscencmd`]
-module"]
-pub type OSCENCMD = crate::Reg<oscencmd::OSCENCMD_SPEC>;
+#[doc = "OSCENCMD (w) register accessor: Oscillator Enable/Disable Command Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`oscencmd::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@oscencmd`] module"]
+#[doc(alias = "OSCENCMD")]
+pub type Oscencmd = crate::Reg<oscencmd::OscencmdSpec>;
 #[doc = "Oscillator Enable/Disable Command Register"]
 pub mod oscencmd;
-#[doc = "CMD (w) register accessor: Command Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`cmd::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@cmd`]
-module"]
-pub type CMD = crate::Reg<cmd::CMD_SPEC>;
+#[doc = "CMD (w) register accessor: Command Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cmd::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@cmd`] module"]
+#[doc(alias = "CMD")]
+pub type Cmd = crate::Reg<cmd::CmdSpec>;
 #[doc = "Command Register"]
 pub mod cmd;
-#[doc = "DBGCLKSEL (rw) register accessor: Debug Trace Clock Select\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`dbgclksel::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`dbgclksel::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dbgclksel`]
-module"]
-pub type DBGCLKSEL = crate::Reg<dbgclksel::DBGCLKSEL_SPEC>;
+#[doc = "DBGCLKSEL (rw) register accessor: Debug Trace Clock Select\n\nYou can [`read`](crate::Reg::read) this register and get [`dbgclksel::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dbgclksel::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dbgclksel`] module"]
+#[doc(alias = "DBGCLKSEL")]
+pub type Dbgclksel = crate::Reg<dbgclksel::DbgclkselSpec>;
 #[doc = "Debug Trace Clock Select"]
 pub mod dbgclksel;
-#[doc = "HFCLKSEL (w) register accessor: High Frequency Clock Select Command Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfclksel::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfclksel`]
-module"]
-pub type HFCLKSEL = crate::Reg<hfclksel::HFCLKSEL_SPEC>;
+#[doc = "HFCLKSEL (w) register accessor: High Frequency Clock Select Command Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfclksel::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfclksel`] module"]
+#[doc(alias = "HFCLKSEL")]
+pub type Hfclksel = crate::Reg<hfclksel::HfclkselSpec>;
 #[doc = "High Frequency Clock Select Command Register"]
 pub mod hfclksel;
-#[doc = "LFACLKSEL (rw) register accessor: Low Frequency A Clock Select Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfaclksel::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfaclksel::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfaclksel`]
-module"]
-pub type LFACLKSEL = crate::Reg<lfaclksel::LFACLKSEL_SPEC>;
+#[doc = "LFACLKSEL (rw) register accessor: Low Frequency A Clock Select Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lfaclksel::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfaclksel::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfaclksel`] module"]
+#[doc(alias = "LFACLKSEL")]
+pub type Lfaclksel = crate::Reg<lfaclksel::LfaclkselSpec>;
 #[doc = "Low Frequency A Clock Select Register"]
 pub mod lfaclksel;
-#[doc = "LFBCLKSEL (rw) register accessor: Low Frequency B Clock Select Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfbclksel::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfbclksel::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfbclksel`]
-module"]
-pub type LFBCLKSEL = crate::Reg<lfbclksel::LFBCLKSEL_SPEC>;
+#[doc = "LFBCLKSEL (rw) register accessor: Low Frequency B Clock Select Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lfbclksel::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfbclksel::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfbclksel`] module"]
+#[doc(alias = "LFBCLKSEL")]
+pub type Lfbclksel = crate::Reg<lfbclksel::LfbclkselSpec>;
 #[doc = "Low Frequency B Clock Select Register"]
 pub mod lfbclksel;
-#[doc = "LFECLKSEL (rw) register accessor: Low Frequency E Clock Select Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfeclksel::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfeclksel::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfeclksel`]
-module"]
-pub type LFECLKSEL = crate::Reg<lfeclksel::LFECLKSEL_SPEC>;
+#[doc = "LFECLKSEL (rw) register accessor: Low Frequency E Clock Select Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lfeclksel::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfeclksel::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfeclksel`] module"]
+#[doc(alias = "LFECLKSEL")]
+pub type Lfeclksel = crate::Reg<lfeclksel::LfeclkselSpec>;
 #[doc = "Low Frequency E Clock Select Register"]
 pub mod lfeclksel;
-#[doc = "LFCCLKSEL (rw) register accessor: Low Frequency C Clock Select Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfcclksel::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfcclksel::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfcclksel`]
-module"]
-pub type LFCCLKSEL = crate::Reg<lfcclksel::LFCCLKSEL_SPEC>;
+#[doc = "LFCCLKSEL (rw) register accessor: Low Frequency C Clock Select Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lfcclksel::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfcclksel::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfcclksel`] module"]
+#[doc(alias = "LFCCLKSEL")]
+pub type Lfcclksel = crate::Reg<lfcclksel::LfcclkselSpec>;
 #[doc = "Low Frequency C Clock Select Register"]
 pub mod lfcclksel;
-#[doc = "STATUS (r) register accessor: Status Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`status::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@status`]
-module"]
-pub type STATUS = crate::Reg<status::STATUS_SPEC>;
+#[doc = "STATUS (r) register accessor: Status Register\n\nYou can [`read`](crate::Reg::read) this register and get [`status::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@status`] module"]
+#[doc(alias = "STATUS")]
+pub type Status = crate::Reg<status::StatusSpec>;
 #[doc = "Status Register"]
 pub mod status;
-#[doc = "HFCLKSTATUS (r) register accessor: HFCLK Status Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfclkstatus::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfclkstatus`]
-module"]
-pub type HFCLKSTATUS = crate::Reg<hfclkstatus::HFCLKSTATUS_SPEC>;
+#[doc = "HFCLKSTATUS (r) register accessor: HFCLK Status Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfclkstatus::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfclkstatus`] module"]
+#[doc(alias = "HFCLKSTATUS")]
+pub type Hfclkstatus = crate::Reg<hfclkstatus::HfclkstatusSpec>;
 #[doc = "HFCLK Status Register"]
 pub mod hfclkstatus;
-#[doc = "HFXOTRIMSTATUS (r) register accessor: HFXO Trim Status\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfxotrimstatus::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxotrimstatus`]
-module"]
-pub type HFXOTRIMSTATUS = crate::Reg<hfxotrimstatus::HFXOTRIMSTATUS_SPEC>;
+#[doc = "HFXOTRIMSTATUS (r) register accessor: HFXO Trim Status\n\nYou can [`read`](crate::Reg::read) this register and get [`hfxotrimstatus::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfxotrimstatus`] module"]
+#[doc(alias = "HFXOTRIMSTATUS")]
+pub type Hfxotrimstatus = crate::Reg<hfxotrimstatus::HfxotrimstatusSpec>;
 #[doc = "HFXO Trim Status"]
 pub mod hfxotrimstatus;
-#[doc = "IF (r) register accessor: Interrupt Flag Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`if_::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@if_`]
-module"]
-pub type IF = crate::Reg<if_::IF_SPEC>;
+#[doc = "IF (r) register accessor: Interrupt Flag Register\n\nYou can [`read`](crate::Reg::read) this register and get [`if_::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@if_`] module"]
+#[doc(alias = "IF")]
+pub type If = crate::Reg<if_::IfSpec>;
 #[doc = "Interrupt Flag Register"]
 pub mod if_;
-#[doc = "IFS (w) register accessor: Interrupt Flag Set Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ifs::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ifs`]
-module"]
-pub type IFS = crate::Reg<ifs::IFS_SPEC>;
+#[doc = "IFS (w) register accessor: Interrupt Flag Set Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ifs::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ifs`] module"]
+#[doc(alias = "IFS")]
+pub type Ifs = crate::Reg<ifs::IfsSpec>;
 #[doc = "Interrupt Flag Set Register"]
 pub mod ifs;
-#[doc = "IFC (w) register accessor: Interrupt Flag Clear Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ifc::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ifc`]
-module"]
-pub type IFC = crate::Reg<ifc::IFC_SPEC>;
+#[doc = "IFC (w) register accessor: Interrupt Flag Clear Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ifc::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ifc`] module"]
+#[doc(alias = "IFC")]
+pub type Ifc = crate::Reg<ifc::IfcSpec>;
 #[doc = "Interrupt Flag Clear Register"]
 pub mod ifc;
-#[doc = "IEN (rw) register accessor: Interrupt Enable Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ien::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ien::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ien`]
-module"]
-pub type IEN = crate::Reg<ien::IEN_SPEC>;
+#[doc = "IEN (rw) register accessor: Interrupt Enable Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ien::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ien::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ien`] module"]
+#[doc(alias = "IEN")]
+pub type Ien = crate::Reg<ien::IenSpec>;
 #[doc = "Interrupt Enable Register"]
 pub mod ien;
-#[doc = "HFBUSCLKEN0 (rw) register accessor: High Frequency Bus Clock Enable Register 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfbusclken0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfbusclken0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfbusclken0`]
-module"]
-pub type HFBUSCLKEN0 = crate::Reg<hfbusclken0::HFBUSCLKEN0_SPEC>;
+#[doc = "HFBUSCLKEN0 (rw) register accessor: High Frequency Bus Clock Enable Register 0\n\nYou can [`read`](crate::Reg::read) this register and get [`hfbusclken0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfbusclken0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfbusclken0`] module"]
+#[doc(alias = "HFBUSCLKEN0")]
+pub type Hfbusclken0 = crate::Reg<hfbusclken0::Hfbusclken0Spec>;
 #[doc = "High Frequency Bus Clock Enable Register 0"]
 pub mod hfbusclken0;
-#[doc = "HFPERCLKEN0 (rw) register accessor: High Frequency Peripheral Clock Enable Register 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfperclken0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfperclken0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperclken0`]
-module"]
-pub type HFPERCLKEN0 = crate::Reg<hfperclken0::HFPERCLKEN0_SPEC>;
+#[doc = "HFPERCLKEN0 (rw) register accessor: High Frequency Peripheral Clock Enable Register 0\n\nYou can [`read`](crate::Reg::read) this register and get [`hfperclken0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfperclken0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperclken0`] module"]
+#[doc(alias = "HFPERCLKEN0")]
+pub type Hfperclken0 = crate::Reg<hfperclken0::Hfperclken0Spec>;
 #[doc = "High Frequency Peripheral Clock Enable Register 0"]
 pub mod hfperclken0;
-#[doc = "HFPERCLKEN1 (rw) register accessor: High Frequency Peripheral Clock Enable Register 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfperclken1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfperclken1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperclken1`]
-module"]
-pub type HFPERCLKEN1 = crate::Reg<hfperclken1::HFPERCLKEN1_SPEC>;
+#[doc = "HFPERCLKEN1 (rw) register accessor: High Frequency Peripheral Clock Enable Register 1\n\nYou can [`read`](crate::Reg::read) this register and get [`hfperclken1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfperclken1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperclken1`] module"]
+#[doc(alias = "HFPERCLKEN1")]
+pub type Hfperclken1 = crate::Reg<hfperclken1::Hfperclken1Spec>;
 #[doc = "High Frequency Peripheral Clock Enable Register 1"]
 pub mod hfperclken1;
-#[doc = "LFACLKEN0 (rw) register accessor: Low Frequency a Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfaclken0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfaclken0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfaclken0`]
-module"]
-pub type LFACLKEN0 = crate::Reg<lfaclken0::LFACLKEN0_SPEC>;
+#[doc = "LFACLKEN0 (rw) register accessor: Low Frequency a Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfaclken0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfaclken0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfaclken0`] module"]
+#[doc(alias = "LFACLKEN0")]
+pub type Lfaclken0 = crate::Reg<lfaclken0::Lfaclken0Spec>;
 #[doc = "Low Frequency a Clock Enable Register 0 (Async Reg)"]
 pub mod lfaclken0;
-#[doc = "LFBCLKEN0 (rw) register accessor: Low Frequency B Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfbclken0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfbclken0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfbclken0`]
-module"]
-pub type LFBCLKEN0 = crate::Reg<lfbclken0::LFBCLKEN0_SPEC>;
+#[doc = "LFBCLKEN0 (rw) register accessor: Low Frequency B Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfbclken0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfbclken0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfbclken0`] module"]
+#[doc(alias = "LFBCLKEN0")]
+pub type Lfbclken0 = crate::Reg<lfbclken0::Lfbclken0Spec>;
 #[doc = "Low Frequency B Clock Enable Register 0 (Async Reg)"]
 pub mod lfbclken0;
-#[doc = "LFCCLKEN0 (rw) register accessor: Low Frequency C Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfcclken0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfcclken0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfcclken0`]
-module"]
-pub type LFCCLKEN0 = crate::Reg<lfcclken0::LFCCLKEN0_SPEC>;
+#[doc = "LFCCLKEN0 (rw) register accessor: Low Frequency C Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfcclken0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfcclken0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfcclken0`] module"]
+#[doc(alias = "LFCCLKEN0")]
+pub type Lfcclken0 = crate::Reg<lfcclken0::Lfcclken0Spec>;
 #[doc = "Low Frequency C Clock Enable Register 0 (Async Reg)"]
 pub mod lfcclken0;
-#[doc = "LFECLKEN0 (rw) register accessor: Low Frequency E Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfeclken0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfeclken0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfeclken0`]
-module"]
-pub type LFECLKEN0 = crate::Reg<lfeclken0::LFECLKEN0_SPEC>;
+#[doc = "LFECLKEN0 (rw) register accessor: Low Frequency E Clock Enable Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfeclken0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfeclken0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfeclken0`] module"]
+#[doc(alias = "LFECLKEN0")]
+pub type Lfeclken0 = crate::Reg<lfeclken0::Lfeclken0Spec>;
 #[doc = "Low Frequency E Clock Enable Register 0 (Async Reg)"]
 pub mod lfeclken0;
-#[doc = "HFPRESC (rw) register accessor: High Frequency Clock Prescaler Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfpresc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfpresc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfpresc`]
-module"]
-pub type HFPRESC = crate::Reg<hfpresc::HFPRESC_SPEC>;
+#[doc = "HFPRESC (rw) register accessor: High Frequency Clock Prescaler Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfpresc::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfpresc::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfpresc`] module"]
+#[doc(alias = "HFPRESC")]
+pub type Hfpresc = crate::Reg<hfpresc::HfprescSpec>;
 #[doc = "High Frequency Clock Prescaler Register"]
 pub mod hfpresc;
-#[doc = "HFBUSPRESC (rw) register accessor: High Frequency Bus Clock Prescaler Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfbuspresc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfbuspresc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfbuspresc`]
-module"]
-pub type HFBUSPRESC = crate::Reg<hfbuspresc::HFBUSPRESC_SPEC>;
+#[doc = "HFBUSPRESC (rw) register accessor: High Frequency Bus Clock Prescaler Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfbuspresc::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfbuspresc::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfbuspresc`] module"]
+#[doc(alias = "HFBUSPRESC")]
+pub type Hfbuspresc = crate::Reg<hfbuspresc::HfbusprescSpec>;
 #[doc = "High Frequency Bus Clock Prescaler Register"]
 pub mod hfbuspresc;
-#[doc = "HFCOREPRESC (rw) register accessor: High Frequency Core Clock Prescaler Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfcorepresc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfcorepresc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfcorepresc`]
-module"]
-pub type HFCOREPRESC = crate::Reg<hfcorepresc::HFCOREPRESC_SPEC>;
+#[doc = "HFCOREPRESC (rw) register accessor: High Frequency Core Clock Prescaler Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfcorepresc::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfcorepresc::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfcorepresc`] module"]
+#[doc(alias = "HFCOREPRESC")]
+pub type Hfcorepresc = crate::Reg<hfcorepresc::HfcoreprescSpec>;
 #[doc = "High Frequency Core Clock Prescaler Register"]
 pub mod hfcorepresc;
-#[doc = "HFPERPRESC (rw) register accessor: High Frequency Peripheral Clock Prescaler Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfperpresc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfperpresc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperpresc`]
-module"]
-pub type HFPERPRESC = crate::Reg<hfperpresc::HFPERPRESC_SPEC>;
+#[doc = "HFPERPRESC (rw) register accessor: High Frequency Peripheral Clock Prescaler Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfperpresc::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfperpresc::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperpresc`] module"]
+#[doc(alias = "HFPERPRESC")]
+pub type Hfperpresc = crate::Reg<hfperpresc::HfperprescSpec>;
 #[doc = "High Frequency Peripheral Clock Prescaler Register"]
 pub mod hfperpresc;
-#[doc = "HFEXPPRESC (rw) register accessor: High Frequency Export Clock Prescaler Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfexppresc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfexppresc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfexppresc`]
-module"]
-pub type HFEXPPRESC = crate::Reg<hfexppresc::HFEXPPRESC_SPEC>;
+#[doc = "HFEXPPRESC (rw) register accessor: High Frequency Export Clock Prescaler Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfexppresc::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfexppresc::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfexppresc`] module"]
+#[doc(alias = "HFEXPPRESC")]
+pub type Hfexppresc = crate::Reg<hfexppresc::HfexpprescSpec>;
 #[doc = "High Frequency Export Clock Prescaler Register"]
 pub mod hfexppresc;
-#[doc = "HFPERPRESCB (rw) register accessor: High Frequency Peripheral Clock Prescaler B Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfperprescb::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfperprescb::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperprescb`]
-module"]
-pub type HFPERPRESCB = crate::Reg<hfperprescb::HFPERPRESCB_SPEC>;
+#[doc = "HFPERPRESCB (rw) register accessor: High Frequency Peripheral Clock Prescaler B Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfperprescb::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfperprescb::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperprescb`] module"]
+#[doc(alias = "HFPERPRESCB")]
+pub type Hfperprescb = crate::Reg<hfperprescb::HfperprescbSpec>;
 #[doc = "High Frequency Peripheral Clock Prescaler B Register"]
 pub mod hfperprescb;
-#[doc = "HFPERPRESCC (rw) register accessor: High Frequency Peripheral Clock Prescaler C Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfperprescc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfperprescc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperprescc`]
-module"]
-pub type HFPERPRESCC = crate::Reg<hfperprescc::HFPERPRESCC_SPEC>;
+#[doc = "HFPERPRESCC (rw) register accessor: High Frequency Peripheral Clock Prescaler C Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfperprescc::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfperprescc::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfperprescc`] module"]
+#[doc(alias = "HFPERPRESCC")]
+pub type Hfperprescc = crate::Reg<hfperprescc::HfperpresccSpec>;
 #[doc = "High Frequency Peripheral Clock Prescaler C Register"]
 pub mod hfperprescc;
-#[doc = "LFAPRESC0 (rw) register accessor: Low Frequency a Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfapresc0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfapresc0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfapresc0`]
-module"]
-pub type LFAPRESC0 = crate::Reg<lfapresc0::LFAPRESC0_SPEC>;
+#[doc = "LFAPRESC0 (rw) register accessor: Low Frequency a Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfapresc0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfapresc0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfapresc0`] module"]
+#[doc(alias = "LFAPRESC0")]
+pub type Lfapresc0 = crate::Reg<lfapresc0::Lfapresc0Spec>;
 #[doc = "Low Frequency a Prescaler Register 0 (Async Reg)"]
 pub mod lfapresc0;
-#[doc = "LFBPRESC0 (rw) register accessor: Low Frequency B Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfbpresc0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfbpresc0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfbpresc0`]
-module"]
-pub type LFBPRESC0 = crate::Reg<lfbpresc0::LFBPRESC0_SPEC>;
+#[doc = "LFBPRESC0 (rw) register accessor: Low Frequency B Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfbpresc0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfbpresc0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfbpresc0`] module"]
+#[doc(alias = "LFBPRESC0")]
+pub type Lfbpresc0 = crate::Reg<lfbpresc0::Lfbpresc0Spec>;
 #[doc = "Low Frequency B Prescaler Register 0 (Async Reg)"]
 pub mod lfbpresc0;
-#[doc = "LFEPRESC0 (rw) register accessor: Low Frequency E Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfepresc0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfepresc0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfepresc0`]
-module"]
-pub type LFEPRESC0 = crate::Reg<lfepresc0::LFEPRESC0_SPEC>;
+#[doc = "LFEPRESC0 (rw) register accessor: Low Frequency E Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfepresc0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfepresc0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lfepresc0`] module"]
+#[doc(alias = "LFEPRESC0")]
+pub type Lfepresc0 = crate::Reg<lfepresc0::Lfepresc0Spec>;
 #[doc = "Low Frequency E Prescaler Register 0 (Async Reg)"]
 pub mod lfepresc0;
-#[doc = "SYNCBUSY (r) register accessor: Synchronization Busy Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`syncbusy::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@syncbusy`]
-module"]
-pub type SYNCBUSY = crate::Reg<syncbusy::SYNCBUSY_SPEC>;
+#[doc = "SYNCBUSY (r) register accessor: Synchronization Busy Register\n\nYou can [`read`](crate::Reg::read) this register and get [`syncbusy::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@syncbusy`] module"]
+#[doc(alias = "SYNCBUSY")]
+pub type Syncbusy = crate::Reg<syncbusy::SyncbusySpec>;
 #[doc = "Synchronization Busy Register"]
 pub mod syncbusy;
-#[doc = "FREEZE (rw) register accessor: Freeze Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`freeze::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`freeze::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@freeze`]
-module"]
-pub type FREEZE = crate::Reg<freeze::FREEZE_SPEC>;
+#[doc = "FREEZE (rw) register accessor: Freeze Register\n\nYou can [`read`](crate::Reg::read) this register and get [`freeze::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`freeze::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@freeze`] module"]
+#[doc(alias = "FREEZE")]
+pub type Freeze = crate::Reg<freeze::FreezeSpec>;
 #[doc = "Freeze Register"]
 pub mod freeze;
-#[doc = "PCNTCTRL (rw) register accessor: PCNT Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`pcntctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`pcntctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pcntctrl`]
-module"]
-pub type PCNTCTRL = crate::Reg<pcntctrl::PCNTCTRL_SPEC>;
+#[doc = "PCNTCTRL (rw) register accessor: PCNT Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`pcntctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pcntctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pcntctrl`] module"]
+#[doc(alias = "PCNTCTRL")]
+pub type Pcntctrl = crate::Reg<pcntctrl::PcntctrlSpec>;
 #[doc = "PCNT Control Register"]
 pub mod pcntctrl;
-#[doc = "ADCCTRL (rw) register accessor: ADC Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`adcctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`adcctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@adcctrl`]
-module"]
-pub type ADCCTRL = crate::Reg<adcctrl::ADCCTRL_SPEC>;
+#[doc = "ADCCTRL (rw) register accessor: ADC Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`adcctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`adcctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@adcctrl`] module"]
+#[doc(alias = "ADCCTRL")]
+pub type Adcctrl = crate::Reg<adcctrl::AdcctrlSpec>;
 #[doc = "ADC Control Register"]
 pub mod adcctrl;
-#[doc = "SDIOCTRL (rw) register accessor: SDIO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`sdioctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`sdioctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@sdioctrl`]
-module"]
-pub type SDIOCTRL = crate::Reg<sdioctrl::SDIOCTRL_SPEC>;
+#[doc = "SDIOCTRL (rw) register accessor: SDIO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`sdioctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sdioctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@sdioctrl`] module"]
+#[doc(alias = "SDIOCTRL")]
+pub type Sdioctrl = crate::Reg<sdioctrl::SdioctrlSpec>;
 #[doc = "SDIO Control Register"]
 pub mod sdioctrl;
-#[doc = "QSPICTRL (rw) register accessor: QSPI Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`qspictrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`qspictrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@qspictrl`]
-module"]
-pub type QSPICTRL = crate::Reg<qspictrl::QSPICTRL_SPEC>;
+#[doc = "QSPICTRL (rw) register accessor: QSPI Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`qspictrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`qspictrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@qspictrl`] module"]
+#[doc(alias = "QSPICTRL")]
+pub type Qspictrl = crate::Reg<qspictrl::QspictrlSpec>;
 #[doc = "QSPI Control Register"]
 pub mod qspictrl;
-#[doc = "ROUTEPEN (rw) register accessor: I/O Routing Pin Enable Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`routepen::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`routepen::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@routepen`]
-module"]
-pub type ROUTEPEN = crate::Reg<routepen::ROUTEPEN_SPEC>;
+#[doc = "ROUTEPEN (rw) register accessor: I/O Routing Pin Enable Register\n\nYou can [`read`](crate::Reg::read) this register and get [`routepen::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`routepen::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@routepen`] module"]
+#[doc(alias = "ROUTEPEN")]
+pub type Routepen = crate::Reg<routepen::RoutepenSpec>;
 #[doc = "I/O Routing Pin Enable Register"]
 pub mod routepen;
-#[doc = "ROUTELOC0 (rw) register accessor: I/O Routing Location Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`routeloc0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`routeloc0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@routeloc0`]
-module"]
-pub type ROUTELOC0 = crate::Reg<routeloc0::ROUTELOC0_SPEC>;
+#[doc = "ROUTELOC0 (rw) register accessor: I/O Routing Location Register\n\nYou can [`read`](crate::Reg::read) this register and get [`routeloc0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`routeloc0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@routeloc0`] module"]
+#[doc(alias = "ROUTELOC0")]
+pub type Routeloc0 = crate::Reg<routeloc0::Routeloc0Spec>;
 #[doc = "I/O Routing Location Register"]
 pub mod routeloc0;
-#[doc = "ROUTELOC1 (rw) register accessor: I/O Routing Location Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`routeloc1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`routeloc1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@routeloc1`]
-module"]
-pub type ROUTELOC1 = crate::Reg<routeloc1::ROUTELOC1_SPEC>;
+#[doc = "ROUTELOC1 (rw) register accessor: I/O Routing Location Register\n\nYou can [`read`](crate::Reg::read) this register and get [`routeloc1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`routeloc1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@routeloc1`] module"]
+#[doc(alias = "ROUTELOC1")]
+pub type Routeloc1 = crate::Reg<routeloc1::Routeloc1Spec>;
 #[doc = "I/O Routing Location Register"]
 pub mod routeloc1;
-#[doc = "LOCK (rw) register accessor: Configuration Lock Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lock::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lock::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lock`]
-module"]
-pub type LOCK = crate::Reg<lock::LOCK_SPEC>;
+#[doc = "LOCK (rw) register accessor: Configuration Lock Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lock::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lock::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lock`] module"]
+#[doc(alias = "LOCK")]
+pub type Lock = crate::Reg<lock::LockSpec>;
 #[doc = "Configuration Lock Register"]
 pub mod lock;
-#[doc = "HFRCOSS (rw) register accessor: HFRCO Spread Spectrum Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hfrcoss::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hfrcoss::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfrcoss`]
-module"]
-pub type HFRCOSS = crate::Reg<hfrcoss::HFRCOSS_SPEC>;
+#[doc = "HFRCOSS (rw) register accessor: HFRCO Spread Spectrum Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hfrcoss::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hfrcoss::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hfrcoss`] module"]
+#[doc(alias = "HFRCOSS")]
+pub type Hfrcoss = crate::Reg<hfrcoss::HfrcossSpec>;
 #[doc = "HFRCO Spread Spectrum Register"]
 pub mod hfrcoss;
-#[doc = "USBCTRL (rw) register accessor: USB Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`usbctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`usbctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@usbctrl`]
-module"]
-pub type USBCTRL = crate::Reg<usbctrl::USBCTRL_SPEC>;
+#[doc = "USBCTRL (rw) register accessor: USB Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`usbctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`usbctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@usbctrl`] module"]
+#[doc(alias = "USBCTRL")]
+pub type Usbctrl = crate::Reg<usbctrl::UsbctrlSpec>;
 #[doc = "USB Control Register"]
 pub mod usbctrl;
-#[doc = "USBCRCTRL (rw) register accessor: USB Clock Recovery Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`usbcrctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`usbcrctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@usbcrctrl`]
-module"]
-pub type USBCRCTRL = crate::Reg<usbcrctrl::USBCRCTRL_SPEC>;
+#[doc = "USBCRCTRL (rw) register accessor: USB Clock Recovery Control\n\nYou can [`read`](crate::Reg::read) this register and get [`usbcrctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`usbcrctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@usbcrctrl`] module"]
+#[doc(alias = "USBCRCTRL")]
+pub type Usbcrctrl = crate::Reg<usbcrctrl::UsbcrctrlSpec>;
 #[doc = "USB Clock Recovery Control"]
 pub mod usbcrctrl;

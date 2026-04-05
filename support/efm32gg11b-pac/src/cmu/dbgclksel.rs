@@ -1,59 +1,60 @@
 #[doc = "Register `DBGCLKSEL` reader"]
-pub type R = crate::R<DBGCLKSEL_SPEC>;
+pub type R = crate::R<DbgclkselSpec>;
 #[doc = "Register `DBGCLKSEL` writer"]
-pub type W = crate::W<DBGCLKSEL_SPEC>;
-#[doc = "Field `DBG` reader - Debug Trace Clock"]
-pub type DBG_R = crate::FieldReader<DBG_A>;
+pub type W = crate::W<DbgclkselSpec>;
 #[doc = "Debug Trace Clock\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum DBG_A {
+pub enum Dbg {
     #[doc = "0: AUXHFRCO is the debug trace clock"]
-    AUXHFRCO = 0,
+    Auxhfrco = 0,
     #[doc = "1: HFCLK is the debug trace clock"]
-    HFCLK = 1,
+    Hfclk = 1,
     #[doc = "2: HFRCO divided by 2 is the debug trace clock"]
-    HFRCODIV2 = 2,
+    Hfrcodiv2 = 2,
 }
-impl From<DBG_A> for u8 {
+impl From<Dbg> for u8 {
     #[inline(always)]
-    fn from(variant: DBG_A) -> Self {
+    fn from(variant: Dbg) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for DBG_A {
+impl crate::FieldSpec for Dbg {
     type Ux = u8;
 }
-impl DBG_R {
+impl crate::IsEnum for Dbg {}
+#[doc = "Field `DBG` reader - Debug Trace Clock"]
+pub type DbgR = crate::FieldReader<Dbg>;
+impl DbgR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<DBG_A> {
+    pub const fn variant(&self) -> Option<Dbg> {
         match self.bits {
-            0 => Some(DBG_A::AUXHFRCO),
-            1 => Some(DBG_A::HFCLK),
-            2 => Some(DBG_A::HFRCODIV2),
+            0 => Some(Dbg::Auxhfrco),
+            1 => Some(Dbg::Hfclk),
+            2 => Some(Dbg::Hfrcodiv2),
             _ => None,
         }
     }
     #[doc = "AUXHFRCO is the debug trace clock"]
     #[inline(always)]
     pub fn is_auxhfrco(&self) -> bool {
-        *self == DBG_A::AUXHFRCO
+        *self == Dbg::Auxhfrco
     }
     #[doc = "HFCLK is the debug trace clock"]
     #[inline(always)]
     pub fn is_hfclk(&self) -> bool {
-        *self == DBG_A::HFCLK
+        *self == Dbg::Hfclk
     }
     #[doc = "HFRCO divided by 2 is the debug trace clock"]
     #[inline(always)]
     pub fn is_hfrcodiv2(&self) -> bool {
-        *self == DBG_A::HFRCODIV2
+        *self == Dbg::Hfrcodiv2
     }
 }
 #[doc = "Field `DBG` writer - Debug Trace Clock"]
-pub type DBG_W<'a, REG> = crate::FieldWriter<'a, REG, 2, DBG_A>;
-impl<'a, REG> DBG_W<'a, REG>
+pub type DbgW<'a, REG> = crate::FieldWriter<'a, REG, 2, Dbg>;
+impl<'a, REG> DbgW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -61,57 +62,43 @@ where
     #[doc = "AUXHFRCO is the debug trace clock"]
     #[inline(always)]
     pub fn auxhfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(DBG_A::AUXHFRCO)
+        self.variant(Dbg::Auxhfrco)
     }
     #[doc = "HFCLK is the debug trace clock"]
     #[inline(always)]
     pub fn hfclk(self) -> &'a mut crate::W<REG> {
-        self.variant(DBG_A::HFCLK)
+        self.variant(Dbg::Hfclk)
     }
     #[doc = "HFRCO divided by 2 is the debug trace clock"]
     #[inline(always)]
     pub fn hfrcodiv2(self) -> &'a mut crate::W<REG> {
-        self.variant(DBG_A::HFRCODIV2)
+        self.variant(Dbg::Hfrcodiv2)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Debug Trace Clock"]
     #[inline(always)]
-    pub fn dbg(&self) -> DBG_R {
-        DBG_R::new((self.bits & 3) as u8)
+    pub fn dbg(&self) -> DbgR {
+        DbgR::new((self.bits & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Debug Trace Clock"]
     #[inline(always)]
-    #[must_use]
-    pub fn dbg(&mut self) -> DBG_W<DBGCLKSEL_SPEC> {
-        DBG_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn dbg(&mut self) -> DbgW<'_, DbgclkselSpec> {
+        DbgW::new(self, 0)
     }
 }
-#[doc = "Debug Trace Clock Select\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`dbgclksel::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`dbgclksel::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct DBGCLKSEL_SPEC;
-impl crate::RegisterSpec for DBGCLKSEL_SPEC {
+#[doc = "Debug Trace Clock Select\n\nYou can [`read`](crate::Reg::read) this register and get [`dbgclksel::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dbgclksel::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct DbgclkselSpec;
+impl crate::RegisterSpec for DbgclkselSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`dbgclksel::R`](R) reader structure"]
-impl crate::Readable for DBGCLKSEL_SPEC {}
+impl crate::Readable for DbgclkselSpec {}
 #[doc = "`write(|w| ..)` method takes [`dbgclksel::W`](W) writer structure"]
-impl crate::Writable for DBGCLKSEL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for DbgclkselSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets DBGCLKSEL to value 0"]
-impl crate::Resettable for DBGCLKSEL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for DbgclkselSpec {}

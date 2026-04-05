@@ -1,59 +1,60 @@
 #[doc = "Register `ALTEXCONF` reader"]
-pub type R = crate::R<ALTEXCONF_SPEC>;
+pub type R = crate::R<AltexconfSpec>;
 #[doc = "Register `ALTEXCONF` writer"]
-pub type W = crate::W<ALTEXCONF_SPEC>;
-#[doc = "Field `IDLECONF0` reader - ALTEX0 Idle Phase Configuration"]
-pub type IDLECONF0_R = crate::FieldReader<IDLECONF0_A>;
+pub type W = crate::W<AltexconfSpec>;
 #[doc = "ALTEX0 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF0_A {
+pub enum Idleconf0 {
     #[doc = "0: ALTEX0 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX0 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX0 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF0_A> for u8 {
+impl From<Idleconf0> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF0_A) -> Self {
+    fn from(variant: Idleconf0) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF0_A {
+impl crate::FieldSpec for Idleconf0 {
     type Ux = u8;
 }
-impl IDLECONF0_R {
+impl crate::IsEnum for Idleconf0 {}
+#[doc = "Field `IDLECONF0` reader - ALTEX0 Idle Phase Configuration"]
+pub type Idleconf0R = crate::FieldReader<Idleconf0>;
+impl Idleconf0R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF0_A> {
+    pub const fn variant(&self) -> Option<Idleconf0> {
         match self.bits {
-            0 => Some(IDLECONF0_A::DISABLE),
-            1 => Some(IDLECONF0_A::HIGH),
-            2 => Some(IDLECONF0_A::LOW),
+            0 => Some(Idleconf0::Disable),
+            1 => Some(Idleconf0::High),
+            2 => Some(Idleconf0::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX0 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF0_A::DISABLE
+        *self == Idleconf0::Disable
     }
     #[doc = "ALTEX0 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF0_A::HIGH
+        *self == Idleconf0::High
     }
     #[doc = "ALTEX0 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF0_A::LOW
+        *self == Idleconf0::Low
     }
 }
 #[doc = "Field `IDLECONF0` writer - ALTEX0 Idle Phase Configuration"]
-pub type IDLECONF0_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF0_A>;
-impl<'a, REG> IDLECONF0_W<'a, REG>
+pub type Idleconf0W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf0>;
+impl<'a, REG> Idleconf0W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -61,71 +62,72 @@ where
     #[doc = "ALTEX0 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF0_A::DISABLE)
+        self.variant(Idleconf0::Disable)
     }
     #[doc = "ALTEX0 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF0_A::HIGH)
+        self.variant(Idleconf0::High)
     }
     #[doc = "ALTEX0 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF0_A::LOW)
+        self.variant(Idleconf0::Low)
     }
 }
-#[doc = "Field `IDLECONF1` reader - ALTEX1 Idle Phase Configuration"]
-pub type IDLECONF1_R = crate::FieldReader<IDLECONF1_A>;
 #[doc = "ALTEX1 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF1_A {
+pub enum Idleconf1 {
     #[doc = "0: ALTEX1 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX1 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX1 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF1_A> for u8 {
+impl From<Idleconf1> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF1_A) -> Self {
+    fn from(variant: Idleconf1) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF1_A {
+impl crate::FieldSpec for Idleconf1 {
     type Ux = u8;
 }
-impl IDLECONF1_R {
+impl crate::IsEnum for Idleconf1 {}
+#[doc = "Field `IDLECONF1` reader - ALTEX1 Idle Phase Configuration"]
+pub type Idleconf1R = crate::FieldReader<Idleconf1>;
+impl Idleconf1R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF1_A> {
+    pub const fn variant(&self) -> Option<Idleconf1> {
         match self.bits {
-            0 => Some(IDLECONF1_A::DISABLE),
-            1 => Some(IDLECONF1_A::HIGH),
-            2 => Some(IDLECONF1_A::LOW),
+            0 => Some(Idleconf1::Disable),
+            1 => Some(Idleconf1::High),
+            2 => Some(Idleconf1::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX1 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF1_A::DISABLE
+        *self == Idleconf1::Disable
     }
     #[doc = "ALTEX1 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF1_A::HIGH
+        *self == Idleconf1::High
     }
     #[doc = "ALTEX1 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF1_A::LOW
+        *self == Idleconf1::Low
     }
 }
 #[doc = "Field `IDLECONF1` writer - ALTEX1 Idle Phase Configuration"]
-pub type IDLECONF1_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF1_A>;
-impl<'a, REG> IDLECONF1_W<'a, REG>
+pub type Idleconf1W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf1>;
+impl<'a, REG> Idleconf1W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -133,71 +135,72 @@ where
     #[doc = "ALTEX1 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF1_A::DISABLE)
+        self.variant(Idleconf1::Disable)
     }
     #[doc = "ALTEX1 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF1_A::HIGH)
+        self.variant(Idleconf1::High)
     }
     #[doc = "ALTEX1 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF1_A::LOW)
+        self.variant(Idleconf1::Low)
     }
 }
-#[doc = "Field `IDLECONF2` reader - ALTEX2 Idle Phase Configuration"]
-pub type IDLECONF2_R = crate::FieldReader<IDLECONF2_A>;
 #[doc = "ALTEX2 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF2_A {
+pub enum Idleconf2 {
     #[doc = "0: ALTEX2 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX2 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX2 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF2_A> for u8 {
+impl From<Idleconf2> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF2_A) -> Self {
+    fn from(variant: Idleconf2) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF2_A {
+impl crate::FieldSpec for Idleconf2 {
     type Ux = u8;
 }
-impl IDLECONF2_R {
+impl crate::IsEnum for Idleconf2 {}
+#[doc = "Field `IDLECONF2` reader - ALTEX2 Idle Phase Configuration"]
+pub type Idleconf2R = crate::FieldReader<Idleconf2>;
+impl Idleconf2R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF2_A> {
+    pub const fn variant(&self) -> Option<Idleconf2> {
         match self.bits {
-            0 => Some(IDLECONF2_A::DISABLE),
-            1 => Some(IDLECONF2_A::HIGH),
-            2 => Some(IDLECONF2_A::LOW),
+            0 => Some(Idleconf2::Disable),
+            1 => Some(Idleconf2::High),
+            2 => Some(Idleconf2::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX2 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF2_A::DISABLE
+        *self == Idleconf2::Disable
     }
     #[doc = "ALTEX2 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF2_A::HIGH
+        *self == Idleconf2::High
     }
     #[doc = "ALTEX2 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF2_A::LOW
+        *self == Idleconf2::Low
     }
 }
 #[doc = "Field `IDLECONF2` writer - ALTEX2 Idle Phase Configuration"]
-pub type IDLECONF2_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF2_A>;
-impl<'a, REG> IDLECONF2_W<'a, REG>
+pub type Idleconf2W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf2>;
+impl<'a, REG> Idleconf2W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -205,71 +208,72 @@ where
     #[doc = "ALTEX2 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF2_A::DISABLE)
+        self.variant(Idleconf2::Disable)
     }
     #[doc = "ALTEX2 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF2_A::HIGH)
+        self.variant(Idleconf2::High)
     }
     #[doc = "ALTEX2 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF2_A::LOW)
+        self.variant(Idleconf2::Low)
     }
 }
-#[doc = "Field `IDLECONF3` reader - ALTEX3 Idle Phase Configuration"]
-pub type IDLECONF3_R = crate::FieldReader<IDLECONF3_A>;
 #[doc = "ALTEX3 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF3_A {
+pub enum Idleconf3 {
     #[doc = "0: ALTEX3 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX3 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX3 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF3_A> for u8 {
+impl From<Idleconf3> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF3_A) -> Self {
+    fn from(variant: Idleconf3) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF3_A {
+impl crate::FieldSpec for Idleconf3 {
     type Ux = u8;
 }
-impl IDLECONF3_R {
+impl crate::IsEnum for Idleconf3 {}
+#[doc = "Field `IDLECONF3` reader - ALTEX3 Idle Phase Configuration"]
+pub type Idleconf3R = crate::FieldReader<Idleconf3>;
+impl Idleconf3R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF3_A> {
+    pub const fn variant(&self) -> Option<Idleconf3> {
         match self.bits {
-            0 => Some(IDLECONF3_A::DISABLE),
-            1 => Some(IDLECONF3_A::HIGH),
-            2 => Some(IDLECONF3_A::LOW),
+            0 => Some(Idleconf3::Disable),
+            1 => Some(Idleconf3::High),
+            2 => Some(Idleconf3::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX3 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF3_A::DISABLE
+        *self == Idleconf3::Disable
     }
     #[doc = "ALTEX3 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF3_A::HIGH
+        *self == Idleconf3::High
     }
     #[doc = "ALTEX3 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF3_A::LOW
+        *self == Idleconf3::Low
     }
 }
 #[doc = "Field `IDLECONF3` writer - ALTEX3 Idle Phase Configuration"]
-pub type IDLECONF3_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF3_A>;
-impl<'a, REG> IDLECONF3_W<'a, REG>
+pub type Idleconf3W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf3>;
+impl<'a, REG> Idleconf3W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -277,71 +281,72 @@ where
     #[doc = "ALTEX3 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF3_A::DISABLE)
+        self.variant(Idleconf3::Disable)
     }
     #[doc = "ALTEX3 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF3_A::HIGH)
+        self.variant(Idleconf3::High)
     }
     #[doc = "ALTEX3 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF3_A::LOW)
+        self.variant(Idleconf3::Low)
     }
 }
-#[doc = "Field `IDLECONF4` reader - ALTEX4 Idle Phase Configuration"]
-pub type IDLECONF4_R = crate::FieldReader<IDLECONF4_A>;
 #[doc = "ALTEX4 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF4_A {
+pub enum Idleconf4 {
     #[doc = "0: ALTEX4 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX4 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX4 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF4_A> for u8 {
+impl From<Idleconf4> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF4_A) -> Self {
+    fn from(variant: Idleconf4) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF4_A {
+impl crate::FieldSpec for Idleconf4 {
     type Ux = u8;
 }
-impl IDLECONF4_R {
+impl crate::IsEnum for Idleconf4 {}
+#[doc = "Field `IDLECONF4` reader - ALTEX4 Idle Phase Configuration"]
+pub type Idleconf4R = crate::FieldReader<Idleconf4>;
+impl Idleconf4R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF4_A> {
+    pub const fn variant(&self) -> Option<Idleconf4> {
         match self.bits {
-            0 => Some(IDLECONF4_A::DISABLE),
-            1 => Some(IDLECONF4_A::HIGH),
-            2 => Some(IDLECONF4_A::LOW),
+            0 => Some(Idleconf4::Disable),
+            1 => Some(Idleconf4::High),
+            2 => Some(Idleconf4::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX4 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF4_A::DISABLE
+        *self == Idleconf4::Disable
     }
     #[doc = "ALTEX4 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF4_A::HIGH
+        *self == Idleconf4::High
     }
     #[doc = "ALTEX4 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF4_A::LOW
+        *self == Idleconf4::Low
     }
 }
 #[doc = "Field `IDLECONF4` writer - ALTEX4 Idle Phase Configuration"]
-pub type IDLECONF4_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF4_A>;
-impl<'a, REG> IDLECONF4_W<'a, REG>
+pub type Idleconf4W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf4>;
+impl<'a, REG> Idleconf4W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -349,71 +354,72 @@ where
     #[doc = "ALTEX4 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF4_A::DISABLE)
+        self.variant(Idleconf4::Disable)
     }
     #[doc = "ALTEX4 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF4_A::HIGH)
+        self.variant(Idleconf4::High)
     }
     #[doc = "ALTEX4 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF4_A::LOW)
+        self.variant(Idleconf4::Low)
     }
 }
-#[doc = "Field `IDLECONF5` reader - ALTEX5 Idle Phase Configuration"]
-pub type IDLECONF5_R = crate::FieldReader<IDLECONF5_A>;
 #[doc = "ALTEX5 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF5_A {
+pub enum Idleconf5 {
     #[doc = "0: ALTEX5 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX5 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX5 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF5_A> for u8 {
+impl From<Idleconf5> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF5_A) -> Self {
+    fn from(variant: Idleconf5) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF5_A {
+impl crate::FieldSpec for Idleconf5 {
     type Ux = u8;
 }
-impl IDLECONF5_R {
+impl crate::IsEnum for Idleconf5 {}
+#[doc = "Field `IDLECONF5` reader - ALTEX5 Idle Phase Configuration"]
+pub type Idleconf5R = crate::FieldReader<Idleconf5>;
+impl Idleconf5R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF5_A> {
+    pub const fn variant(&self) -> Option<Idleconf5> {
         match self.bits {
-            0 => Some(IDLECONF5_A::DISABLE),
-            1 => Some(IDLECONF5_A::HIGH),
-            2 => Some(IDLECONF5_A::LOW),
+            0 => Some(Idleconf5::Disable),
+            1 => Some(Idleconf5::High),
+            2 => Some(Idleconf5::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX5 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF5_A::DISABLE
+        *self == Idleconf5::Disable
     }
     #[doc = "ALTEX5 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF5_A::HIGH
+        *self == Idleconf5::High
     }
     #[doc = "ALTEX5 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF5_A::LOW
+        *self == Idleconf5::Low
     }
 }
 #[doc = "Field `IDLECONF5` writer - ALTEX5 Idle Phase Configuration"]
-pub type IDLECONF5_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF5_A>;
-impl<'a, REG> IDLECONF5_W<'a, REG>
+pub type Idleconf5W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf5>;
+impl<'a, REG> Idleconf5W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -421,71 +427,72 @@ where
     #[doc = "ALTEX5 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF5_A::DISABLE)
+        self.variant(Idleconf5::Disable)
     }
     #[doc = "ALTEX5 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF5_A::HIGH)
+        self.variant(Idleconf5::High)
     }
     #[doc = "ALTEX5 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF5_A::LOW)
+        self.variant(Idleconf5::Low)
     }
 }
-#[doc = "Field `IDLECONF6` reader - ALTEX6 Idle Phase Configuration"]
-pub type IDLECONF6_R = crate::FieldReader<IDLECONF6_A>;
 #[doc = "ALTEX6 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF6_A {
+pub enum Idleconf6 {
     #[doc = "0: ALTEX6 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX6 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX6 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF6_A> for u8 {
+impl From<Idleconf6> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF6_A) -> Self {
+    fn from(variant: Idleconf6) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF6_A {
+impl crate::FieldSpec for Idleconf6 {
     type Ux = u8;
 }
-impl IDLECONF6_R {
+impl crate::IsEnum for Idleconf6 {}
+#[doc = "Field `IDLECONF6` reader - ALTEX6 Idle Phase Configuration"]
+pub type Idleconf6R = crate::FieldReader<Idleconf6>;
+impl Idleconf6R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF6_A> {
+    pub const fn variant(&self) -> Option<Idleconf6> {
         match self.bits {
-            0 => Some(IDLECONF6_A::DISABLE),
-            1 => Some(IDLECONF6_A::HIGH),
-            2 => Some(IDLECONF6_A::LOW),
+            0 => Some(Idleconf6::Disable),
+            1 => Some(Idleconf6::High),
+            2 => Some(Idleconf6::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX6 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF6_A::DISABLE
+        *self == Idleconf6::Disable
     }
     #[doc = "ALTEX6 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF6_A::HIGH
+        *self == Idleconf6::High
     }
     #[doc = "ALTEX6 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF6_A::LOW
+        *self == Idleconf6::Low
     }
 }
 #[doc = "Field `IDLECONF6` writer - ALTEX6 Idle Phase Configuration"]
-pub type IDLECONF6_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF6_A>;
-impl<'a, REG> IDLECONF6_W<'a, REG>
+pub type Idleconf6W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf6>;
+impl<'a, REG> Idleconf6W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -493,71 +500,72 @@ where
     #[doc = "ALTEX6 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF6_A::DISABLE)
+        self.variant(Idleconf6::Disable)
     }
     #[doc = "ALTEX6 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF6_A::HIGH)
+        self.variant(Idleconf6::High)
     }
     #[doc = "ALTEX6 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF6_A::LOW)
+        self.variant(Idleconf6::Low)
     }
 }
-#[doc = "Field `IDLECONF7` reader - ALTEX7 Idle Phase Configuration"]
-pub type IDLECONF7_R = crate::FieldReader<IDLECONF7_A>;
 #[doc = "ALTEX7 Idle Phase Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum IDLECONF7_A {
+pub enum Idleconf7 {
     #[doc = "0: ALTEX7 output is disabled in idle phase"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: ALTEX7 output is high in idle phase"]
-    HIGH = 1,
+    High = 1,
     #[doc = "2: ALTEX7 output is low in idle phase"]
-    LOW = 2,
+    Low = 2,
 }
-impl From<IDLECONF7_A> for u8 {
+impl From<Idleconf7> for u8 {
     #[inline(always)]
-    fn from(variant: IDLECONF7_A) -> Self {
+    fn from(variant: Idleconf7) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDLECONF7_A {
+impl crate::FieldSpec for Idleconf7 {
     type Ux = u8;
 }
-impl IDLECONF7_R {
+impl crate::IsEnum for Idleconf7 {}
+#[doc = "Field `IDLECONF7` reader - ALTEX7 Idle Phase Configuration"]
+pub type Idleconf7R = crate::FieldReader<Idleconf7>;
+impl Idleconf7R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<IDLECONF7_A> {
+    pub const fn variant(&self) -> Option<Idleconf7> {
         match self.bits {
-            0 => Some(IDLECONF7_A::DISABLE),
-            1 => Some(IDLECONF7_A::HIGH),
-            2 => Some(IDLECONF7_A::LOW),
+            0 => Some(Idleconf7::Disable),
+            1 => Some(Idleconf7::High),
+            2 => Some(Idleconf7::Low),
             _ => None,
         }
     }
     #[doc = "ALTEX7 output is disabled in idle phase"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == IDLECONF7_A::DISABLE
+        *self == Idleconf7::Disable
     }
     #[doc = "ALTEX7 output is high in idle phase"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == IDLECONF7_A::HIGH
+        *self == Idleconf7::High
     }
     #[doc = "ALTEX7 output is low in idle phase"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == IDLECONF7_A::LOW
+        *self == Idleconf7::Low
     }
 }
 #[doc = "Field `IDLECONF7` writer - ALTEX7 Idle Phase Configuration"]
-pub type IDLECONF7_W<'a, REG> = crate::FieldWriter<'a, REG, 2, IDLECONF7_A>;
-impl<'a, REG> IDLECONF7_W<'a, REG>
+pub type Idleconf7W<'a, REG> = crate::FieldWriter<'a, REG, 2, Idleconf7>;
+impl<'a, REG> Idleconf7W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -565,254 +573,225 @@ where
     #[doc = "ALTEX7 output is disabled in idle phase"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF7_A::DISABLE)
+        self.variant(Idleconf7::Disable)
     }
     #[doc = "ALTEX7 output is high in idle phase"]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF7_A::HIGH)
+        self.variant(Idleconf7::High)
     }
     #[doc = "ALTEX7 output is low in idle phase"]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(IDLECONF7_A::LOW)
+        self.variant(Idleconf7::Low)
     }
 }
 #[doc = "Field `AEX0` reader - ALTEX0 Always Excite Enable"]
-pub type AEX0_R = crate::BitReader;
+pub type Aex0R = crate::BitReader;
 #[doc = "Field `AEX0` writer - ALTEX0 Always Excite Enable"]
-pub type AEX0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AEX1` reader - ALTEX1 Always Excite Enable"]
-pub type AEX1_R = crate::BitReader;
+pub type Aex1R = crate::BitReader;
 #[doc = "Field `AEX1` writer - ALTEX1 Always Excite Enable"]
-pub type AEX1_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AEX2` reader - ALTEX2 Always Excite Enable"]
-pub type AEX2_R = crate::BitReader;
+pub type Aex2R = crate::BitReader;
 #[doc = "Field `AEX2` writer - ALTEX2 Always Excite Enable"]
-pub type AEX2_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AEX3` reader - ALTEX3 Always Excite Enable"]
-pub type AEX3_R = crate::BitReader;
+pub type Aex3R = crate::BitReader;
 #[doc = "Field `AEX3` writer - ALTEX3 Always Excite Enable"]
-pub type AEX3_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex3W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AEX4` reader - ALTEX4 Always Excite Enable"]
-pub type AEX4_R = crate::BitReader;
+pub type Aex4R = crate::BitReader;
 #[doc = "Field `AEX4` writer - ALTEX4 Always Excite Enable"]
-pub type AEX4_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex4W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AEX5` reader - ALTEX5 Always Excite Enable"]
-pub type AEX5_R = crate::BitReader;
+pub type Aex5R = crate::BitReader;
 #[doc = "Field `AEX5` writer - ALTEX5 Always Excite Enable"]
-pub type AEX5_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex5W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AEX6` reader - ALTEX6 Always Excite Enable"]
-pub type AEX6_R = crate::BitReader;
+pub type Aex6R = crate::BitReader;
 #[doc = "Field `AEX6` writer - ALTEX6 Always Excite Enable"]
-pub type AEX6_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex6W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AEX7` reader - ALTEX7 Always Excite Enable"]
-pub type AEX7_R = crate::BitReader;
+pub type Aex7R = crate::BitReader;
 #[doc = "Field `AEX7` writer - ALTEX7 Always Excite Enable"]
-pub type AEX7_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Aex7W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:1 - ALTEX0 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf0(&self) -> IDLECONF0_R {
-        IDLECONF0_R::new((self.bits & 3) as u8)
+    pub fn idleconf0(&self) -> Idleconf0R {
+        Idleconf0R::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 2:3 - ALTEX1 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf1(&self) -> IDLECONF1_R {
-        IDLECONF1_R::new(((self.bits >> 2) & 3) as u8)
+    pub fn idleconf1(&self) -> Idleconf1R {
+        Idleconf1R::new(((self.bits >> 2) & 3) as u8)
     }
     #[doc = "Bits 4:5 - ALTEX2 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf2(&self) -> IDLECONF2_R {
-        IDLECONF2_R::new(((self.bits >> 4) & 3) as u8)
+    pub fn idleconf2(&self) -> Idleconf2R {
+        Idleconf2R::new(((self.bits >> 4) & 3) as u8)
     }
     #[doc = "Bits 6:7 - ALTEX3 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf3(&self) -> IDLECONF3_R {
-        IDLECONF3_R::new(((self.bits >> 6) & 3) as u8)
+    pub fn idleconf3(&self) -> Idleconf3R {
+        Idleconf3R::new(((self.bits >> 6) & 3) as u8)
     }
     #[doc = "Bits 8:9 - ALTEX4 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf4(&self) -> IDLECONF4_R {
-        IDLECONF4_R::new(((self.bits >> 8) & 3) as u8)
+    pub fn idleconf4(&self) -> Idleconf4R {
+        Idleconf4R::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 10:11 - ALTEX5 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf5(&self) -> IDLECONF5_R {
-        IDLECONF5_R::new(((self.bits >> 10) & 3) as u8)
+    pub fn idleconf5(&self) -> Idleconf5R {
+        Idleconf5R::new(((self.bits >> 10) & 3) as u8)
     }
     #[doc = "Bits 12:13 - ALTEX6 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf6(&self) -> IDLECONF6_R {
-        IDLECONF6_R::new(((self.bits >> 12) & 3) as u8)
+    pub fn idleconf6(&self) -> Idleconf6R {
+        Idleconf6R::new(((self.bits >> 12) & 3) as u8)
     }
     #[doc = "Bits 14:15 - ALTEX7 Idle Phase Configuration"]
     #[inline(always)]
-    pub fn idleconf7(&self) -> IDLECONF7_R {
-        IDLECONF7_R::new(((self.bits >> 14) & 3) as u8)
+    pub fn idleconf7(&self) -> Idleconf7R {
+        Idleconf7R::new(((self.bits >> 14) & 3) as u8)
     }
     #[doc = "Bit 16 - ALTEX0 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex0(&self) -> AEX0_R {
-        AEX0_R::new(((self.bits >> 16) & 1) != 0)
+    pub fn aex0(&self) -> Aex0R {
+        Aex0R::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - ALTEX1 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex1(&self) -> AEX1_R {
-        AEX1_R::new(((self.bits >> 17) & 1) != 0)
+    pub fn aex1(&self) -> Aex1R {
+        Aex1R::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - ALTEX2 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex2(&self) -> AEX2_R {
-        AEX2_R::new(((self.bits >> 18) & 1) != 0)
+    pub fn aex2(&self) -> Aex2R {
+        Aex2R::new(((self.bits >> 18) & 1) != 0)
     }
     #[doc = "Bit 19 - ALTEX3 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex3(&self) -> AEX3_R {
-        AEX3_R::new(((self.bits >> 19) & 1) != 0)
+    pub fn aex3(&self) -> Aex3R {
+        Aex3R::new(((self.bits >> 19) & 1) != 0)
     }
     #[doc = "Bit 20 - ALTEX4 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex4(&self) -> AEX4_R {
-        AEX4_R::new(((self.bits >> 20) & 1) != 0)
+    pub fn aex4(&self) -> Aex4R {
+        Aex4R::new(((self.bits >> 20) & 1) != 0)
     }
     #[doc = "Bit 21 - ALTEX5 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex5(&self) -> AEX5_R {
-        AEX5_R::new(((self.bits >> 21) & 1) != 0)
+    pub fn aex5(&self) -> Aex5R {
+        Aex5R::new(((self.bits >> 21) & 1) != 0)
     }
     #[doc = "Bit 22 - ALTEX6 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex6(&self) -> AEX6_R {
-        AEX6_R::new(((self.bits >> 22) & 1) != 0)
+    pub fn aex6(&self) -> Aex6R {
+        Aex6R::new(((self.bits >> 22) & 1) != 0)
     }
     #[doc = "Bit 23 - ALTEX7 Always Excite Enable"]
     #[inline(always)]
-    pub fn aex7(&self) -> AEX7_R {
-        AEX7_R::new(((self.bits >> 23) & 1) != 0)
+    pub fn aex7(&self) -> Aex7R {
+        Aex7R::new(((self.bits >> 23) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - ALTEX0 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf0(&mut self) -> IDLECONF0_W<ALTEXCONF_SPEC> {
-        IDLECONF0_W::new(self, 0)
+    pub fn idleconf0(&mut self) -> Idleconf0W<'_, AltexconfSpec> {
+        Idleconf0W::new(self, 0)
     }
     #[doc = "Bits 2:3 - ALTEX1 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf1(&mut self) -> IDLECONF1_W<ALTEXCONF_SPEC> {
-        IDLECONF1_W::new(self, 2)
+    pub fn idleconf1(&mut self) -> Idleconf1W<'_, AltexconfSpec> {
+        Idleconf1W::new(self, 2)
     }
     #[doc = "Bits 4:5 - ALTEX2 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf2(&mut self) -> IDLECONF2_W<ALTEXCONF_SPEC> {
-        IDLECONF2_W::new(self, 4)
+    pub fn idleconf2(&mut self) -> Idleconf2W<'_, AltexconfSpec> {
+        Idleconf2W::new(self, 4)
     }
     #[doc = "Bits 6:7 - ALTEX3 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf3(&mut self) -> IDLECONF3_W<ALTEXCONF_SPEC> {
-        IDLECONF3_W::new(self, 6)
+    pub fn idleconf3(&mut self) -> Idleconf3W<'_, AltexconfSpec> {
+        Idleconf3W::new(self, 6)
     }
     #[doc = "Bits 8:9 - ALTEX4 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf4(&mut self) -> IDLECONF4_W<ALTEXCONF_SPEC> {
-        IDLECONF4_W::new(self, 8)
+    pub fn idleconf4(&mut self) -> Idleconf4W<'_, AltexconfSpec> {
+        Idleconf4W::new(self, 8)
     }
     #[doc = "Bits 10:11 - ALTEX5 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf5(&mut self) -> IDLECONF5_W<ALTEXCONF_SPEC> {
-        IDLECONF5_W::new(self, 10)
+    pub fn idleconf5(&mut self) -> Idleconf5W<'_, AltexconfSpec> {
+        Idleconf5W::new(self, 10)
     }
     #[doc = "Bits 12:13 - ALTEX6 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf6(&mut self) -> IDLECONF6_W<ALTEXCONF_SPEC> {
-        IDLECONF6_W::new(self, 12)
+    pub fn idleconf6(&mut self) -> Idleconf6W<'_, AltexconfSpec> {
+        Idleconf6W::new(self, 12)
     }
     #[doc = "Bits 14:15 - ALTEX7 Idle Phase Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn idleconf7(&mut self) -> IDLECONF7_W<ALTEXCONF_SPEC> {
-        IDLECONF7_W::new(self, 14)
+    pub fn idleconf7(&mut self) -> Idleconf7W<'_, AltexconfSpec> {
+        Idleconf7W::new(self, 14)
     }
     #[doc = "Bit 16 - ALTEX0 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex0(&mut self) -> AEX0_W<ALTEXCONF_SPEC> {
-        AEX0_W::new(self, 16)
+    pub fn aex0(&mut self) -> Aex0W<'_, AltexconfSpec> {
+        Aex0W::new(self, 16)
     }
     #[doc = "Bit 17 - ALTEX1 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex1(&mut self) -> AEX1_W<ALTEXCONF_SPEC> {
-        AEX1_W::new(self, 17)
+    pub fn aex1(&mut self) -> Aex1W<'_, AltexconfSpec> {
+        Aex1W::new(self, 17)
     }
     #[doc = "Bit 18 - ALTEX2 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex2(&mut self) -> AEX2_W<ALTEXCONF_SPEC> {
-        AEX2_W::new(self, 18)
+    pub fn aex2(&mut self) -> Aex2W<'_, AltexconfSpec> {
+        Aex2W::new(self, 18)
     }
     #[doc = "Bit 19 - ALTEX3 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex3(&mut self) -> AEX3_W<ALTEXCONF_SPEC> {
-        AEX3_W::new(self, 19)
+    pub fn aex3(&mut self) -> Aex3W<'_, AltexconfSpec> {
+        Aex3W::new(self, 19)
     }
     #[doc = "Bit 20 - ALTEX4 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex4(&mut self) -> AEX4_W<ALTEXCONF_SPEC> {
-        AEX4_W::new(self, 20)
+    pub fn aex4(&mut self) -> Aex4W<'_, AltexconfSpec> {
+        Aex4W::new(self, 20)
     }
     #[doc = "Bit 21 - ALTEX5 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex5(&mut self) -> AEX5_W<ALTEXCONF_SPEC> {
-        AEX5_W::new(self, 21)
+    pub fn aex5(&mut self) -> Aex5W<'_, AltexconfSpec> {
+        Aex5W::new(self, 21)
     }
     #[doc = "Bit 22 - ALTEX6 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex6(&mut self) -> AEX6_W<ALTEXCONF_SPEC> {
-        AEX6_W::new(self, 22)
+    pub fn aex6(&mut self) -> Aex6W<'_, AltexconfSpec> {
+        Aex6W::new(self, 22)
     }
     #[doc = "Bit 23 - ALTEX7 Always Excite Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn aex7(&mut self) -> AEX7_W<ALTEXCONF_SPEC> {
-        AEX7_W::new(self, 23)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn aex7(&mut self) -> Aex7W<'_, AltexconfSpec> {
+        Aex7W::new(self, 23)
     }
 }
-#[doc = "Alternative Excite Pin Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`altexconf::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`altexconf::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct ALTEXCONF_SPEC;
-impl crate::RegisterSpec for ALTEXCONF_SPEC {
+#[doc = "Alternative Excite Pin Configuration\n\nYou can [`read`](crate::Reg::read) this register and get [`altexconf::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`altexconf::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct AltexconfSpec;
+impl crate::RegisterSpec for AltexconfSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`altexconf::R`](R) reader structure"]
-impl crate::Readable for ALTEXCONF_SPEC {}
+impl crate::Readable for AltexconfSpec {}
 #[doc = "`write(|w| ..)` method takes [`altexconf::W`](W) writer structure"]
-impl crate::Writable for ALTEXCONF_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for AltexconfSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets ALTEXCONF to value 0"]
-impl crate::Resettable for ALTEXCONF_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for AltexconfSpec {}

@@ -1,49 +1,35 @@
 #[doc = "Register `COMPF_COMP` reader"]
-pub type R = crate::R<COMPF_COMP_SPEC>;
+pub type R = crate::R<CompfCompSpec>;
 #[doc = "Register `COMPF_COMP` writer"]
-pub type W = crate::W<COMPF_COMP_SPEC>;
+pub type W = crate::W<CompfCompSpec>;
 #[doc = "Field `COMP` reader - Compare Value"]
-pub type COMP_R = crate::FieldReader<u32>;
+pub type CompR = crate::FieldReader<u32>;
 #[doc = "Field `COMP` writer - Compare Value"]
-pub type COMP_W<'a, REG> = crate::FieldWriter<'a, REG, 24, u32>;
+pub type CompW<'a, REG> = crate::FieldWriter<'a, REG, 24, u32>;
 impl R {
     #[doc = "Bits 0:23 - Compare Value"]
     #[inline(always)]
-    pub fn comp(&self) -> COMP_R {
-        COMP_R::new(self.bits & 0x00ff_ffff)
+    pub fn comp(&self) -> CompR {
+        CompR::new(self.bits & 0x00ff_ffff)
     }
 }
 impl W {
     #[doc = "Bits 0:23 - Compare Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn comp(&mut self) -> COMP_W<COMPF_COMP_SPEC> {
-        COMP_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn comp(&mut self) -> CompW<'_, CompfCompSpec> {
+        CompW::new(self, 0)
     }
 }
-#[doc = "Compare Value Register X\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`compf_comp::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`compf_comp::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct COMPF_COMP_SPEC;
-impl crate::RegisterSpec for COMPF_COMP_SPEC {
+#[doc = "Compare Value Register X\n\nYou can [`read`](crate::Reg::read) this register and get [`compf_comp::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`compf_comp::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CompfCompSpec;
+impl crate::RegisterSpec for CompfCompSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`compf_comp::R`](R) reader structure"]
-impl crate::Readable for COMPF_COMP_SPEC {}
+impl crate::Readable for CompfCompSpec {}
 #[doc = "`write(|w| ..)` method takes [`compf_comp::W`](W) writer structure"]
-impl crate::Writable for COMPF_COMP_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for CompfCompSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets COMPF_COMP to value 0"]
-impl crate::Resettable for COMPF_COMP_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for CompfCompSpec {}

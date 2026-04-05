@@ -1,167 +1,167 @@
 #[doc = "Register `PRSTVAL0` reader"]
-pub type R = crate::R<PRSTVAL0_SPEC>;
+pub type R = crate::R<Prstval0Spec>;
 #[doc = "Field `INITSDCLKFREQVAL` reader - SD_CLK Frequency Select Value for Initialization"]
-pub type INITSDCLKFREQVAL_R = crate::FieldReader<u16>;
+pub type InitsdclkfreqvalR = crate::FieldReader<u16>;
 #[doc = "Field `INITCLCKGENVAL` reader - Clock Generator Select Value for Initialization"]
-pub type INITCLCKGENVAL_R = crate::BitReader;
-#[doc = "Field `INITDRVSTVAL` reader - Driver Strength Select Value for Initialization"]
-pub type INITDRVSTVAL_R = crate::FieldReader<INITDRVSTVAL_A>;
+pub type InitclckgenvalR = crate::BitReader;
 #[doc = "Driver Strength Select Value for Initialization\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum INITDRVSTVAL_A {
+pub enum Initdrvstval {
     #[doc = "0: Driver Type B is selected (Default)"]
-    TYPEB = 0,
+    Typeb = 0,
     #[doc = "1: Driver Type A is selected"]
-    TYPEA = 1,
+    Typea = 1,
     #[doc = "2: Driver Type C is selected"]
-    TYPEC = 2,
+    Typec = 2,
     #[doc = "3: Driver Type D is selected"]
-    TYPED = 3,
+    Typed = 3,
 }
-impl From<INITDRVSTVAL_A> for u8 {
+impl From<Initdrvstval> for u8 {
     #[inline(always)]
-    fn from(variant: INITDRVSTVAL_A) -> Self {
+    fn from(variant: Initdrvstval) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for INITDRVSTVAL_A {
+impl crate::FieldSpec for Initdrvstval {
     type Ux = u8;
 }
-impl INITDRVSTVAL_R {
+impl crate::IsEnum for Initdrvstval {}
+#[doc = "Field `INITDRVSTVAL` reader - Driver Strength Select Value for Initialization"]
+pub type InitdrvstvalR = crate::FieldReader<Initdrvstval>;
+impl InitdrvstvalR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> INITDRVSTVAL_A {
+    pub const fn variant(&self) -> Initdrvstval {
         match self.bits {
-            0 => INITDRVSTVAL_A::TYPEB,
-            1 => INITDRVSTVAL_A::TYPEA,
-            2 => INITDRVSTVAL_A::TYPEC,
-            3 => INITDRVSTVAL_A::TYPED,
+            0 => Initdrvstval::Typeb,
+            1 => Initdrvstval::Typea,
+            2 => Initdrvstval::Typec,
+            3 => Initdrvstval::Typed,
             _ => unreachable!(),
         }
     }
     #[doc = "Driver Type B is selected (Default)"]
     #[inline(always)]
     pub fn is_typeb(&self) -> bool {
-        *self == INITDRVSTVAL_A::TYPEB
+        *self == Initdrvstval::Typeb
     }
     #[doc = "Driver Type A is selected"]
     #[inline(always)]
     pub fn is_typea(&self) -> bool {
-        *self == INITDRVSTVAL_A::TYPEA
+        *self == Initdrvstval::Typea
     }
     #[doc = "Driver Type C is selected"]
     #[inline(always)]
     pub fn is_typec(&self) -> bool {
-        *self == INITDRVSTVAL_A::TYPEC
+        *self == Initdrvstval::Typec
     }
     #[doc = "Driver Type D is selected"]
     #[inline(always)]
     pub fn is_typed(&self) -> bool {
-        *self == INITDRVSTVAL_A::TYPED
+        *self == Initdrvstval::Typed
     }
 }
 #[doc = "Field `DSPSDCLKFREQVAL` reader - SD_CLK Frequency Select Value for Default Speed"]
-pub type DSPSDCLKFREQVAL_R = crate::FieldReader<u16>;
+pub type DspsdclkfreqvalR = crate::FieldReader<u16>;
 #[doc = "Field `DSPCLKGENVAL` reader - Clock Generator Select Value for Default Speed"]
-pub type DSPCLKGENVAL_R = crate::BitReader;
-#[doc = "Field `DSPDRVSTVAL` reader - Driver Strength Select Value for Default Speed"]
-pub type DSPDRVSTVAL_R = crate::FieldReader<DSPDRVSTVAL_A>;
+pub type DspclkgenvalR = crate::BitReader;
 #[doc = "Driver Strength Select Value for Default Speed\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum DSPDRVSTVAL_A {
+pub enum Dspdrvstval {
     #[doc = "0: Driver Type B is selected (Default)"]
-    TYPEB = 0,
+    Typeb = 0,
     #[doc = "1: Driver Type A is selected"]
-    TYPEA = 1,
+    Typea = 1,
     #[doc = "2: Driver Type C is selected"]
-    TYPEC = 2,
+    Typec = 2,
     #[doc = "3: Driver Type D is selected"]
-    TYPED = 3,
+    Typed = 3,
 }
-impl From<DSPDRVSTVAL_A> for u8 {
+impl From<Dspdrvstval> for u8 {
     #[inline(always)]
-    fn from(variant: DSPDRVSTVAL_A) -> Self {
+    fn from(variant: Dspdrvstval) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for DSPDRVSTVAL_A {
+impl crate::FieldSpec for Dspdrvstval {
     type Ux = u8;
 }
-impl DSPDRVSTVAL_R {
+impl crate::IsEnum for Dspdrvstval {}
+#[doc = "Field `DSPDRVSTVAL` reader - Driver Strength Select Value for Default Speed"]
+pub type DspdrvstvalR = crate::FieldReader<Dspdrvstval>;
+impl DspdrvstvalR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> DSPDRVSTVAL_A {
+    pub const fn variant(&self) -> Dspdrvstval {
         match self.bits {
-            0 => DSPDRVSTVAL_A::TYPEB,
-            1 => DSPDRVSTVAL_A::TYPEA,
-            2 => DSPDRVSTVAL_A::TYPEC,
-            3 => DSPDRVSTVAL_A::TYPED,
+            0 => Dspdrvstval::Typeb,
+            1 => Dspdrvstval::Typea,
+            2 => Dspdrvstval::Typec,
+            3 => Dspdrvstval::Typed,
             _ => unreachable!(),
         }
     }
     #[doc = "Driver Type B is selected (Default)"]
     #[inline(always)]
     pub fn is_typeb(&self) -> bool {
-        *self == DSPDRVSTVAL_A::TYPEB
+        *self == Dspdrvstval::Typeb
     }
     #[doc = "Driver Type A is selected"]
     #[inline(always)]
     pub fn is_typea(&self) -> bool {
-        *self == DSPDRVSTVAL_A::TYPEA
+        *self == Dspdrvstval::Typea
     }
     #[doc = "Driver Type C is selected"]
     #[inline(always)]
     pub fn is_typec(&self) -> bool {
-        *self == DSPDRVSTVAL_A::TYPEC
+        *self == Dspdrvstval::Typec
     }
     #[doc = "Driver Type D is selected"]
     #[inline(always)]
     pub fn is_typed(&self) -> bool {
-        *self == DSPDRVSTVAL_A::TYPED
+        *self == Dspdrvstval::Typed
     }
 }
 impl R {
     #[doc = "Bits 0:9 - SD_CLK Frequency Select Value for Initialization"]
     #[inline(always)]
-    pub fn initsdclkfreqval(&self) -> INITSDCLKFREQVAL_R {
-        INITSDCLKFREQVAL_R::new((self.bits & 0x03ff) as u16)
+    pub fn initsdclkfreqval(&self) -> InitsdclkfreqvalR {
+        InitsdclkfreqvalR::new((self.bits & 0x03ff) as u16)
     }
     #[doc = "Bit 10 - Clock Generator Select Value for Initialization"]
     #[inline(always)]
-    pub fn initclckgenval(&self) -> INITCLCKGENVAL_R {
-        INITCLCKGENVAL_R::new(((self.bits >> 10) & 1) != 0)
+    pub fn initclckgenval(&self) -> InitclckgenvalR {
+        InitclckgenvalR::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bits 14:15 - Driver Strength Select Value for Initialization"]
     #[inline(always)]
-    pub fn initdrvstval(&self) -> INITDRVSTVAL_R {
-        INITDRVSTVAL_R::new(((self.bits >> 14) & 3) as u8)
+    pub fn initdrvstval(&self) -> InitdrvstvalR {
+        InitdrvstvalR::new(((self.bits >> 14) & 3) as u8)
     }
     #[doc = "Bits 16:25 - SD_CLK Frequency Select Value for Default Speed"]
     #[inline(always)]
-    pub fn dspsdclkfreqval(&self) -> DSPSDCLKFREQVAL_R {
-        DSPSDCLKFREQVAL_R::new(((self.bits >> 16) & 0x03ff) as u16)
+    pub fn dspsdclkfreqval(&self) -> DspsdclkfreqvalR {
+        DspsdclkfreqvalR::new(((self.bits >> 16) & 0x03ff) as u16)
     }
     #[doc = "Bit 26 - Clock Generator Select Value for Default Speed"]
     #[inline(always)]
-    pub fn dspclkgenval(&self) -> DSPCLKGENVAL_R {
-        DSPCLKGENVAL_R::new(((self.bits >> 26) & 1) != 0)
+    pub fn dspclkgenval(&self) -> DspclkgenvalR {
+        DspclkgenvalR::new(((self.bits >> 26) & 1) != 0)
     }
     #[doc = "Bits 30:31 - Driver Strength Select Value for Default Speed"]
     #[inline(always)]
-    pub fn dspdrvstval(&self) -> DSPDRVSTVAL_R {
-        DSPDRVSTVAL_R::new(((self.bits >> 30) & 3) as u8)
+    pub fn dspdrvstval(&self) -> DspdrvstvalR {
+        DspdrvstvalR::new(((self.bits >> 30) & 3) as u8)
     }
 }
-#[doc = "Preset Value for Initialization and Default Speed Mode\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`prstval0::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct PRSTVAL0_SPEC;
-impl crate::RegisterSpec for PRSTVAL0_SPEC {
+#[doc = "Preset Value for Initialization and Default Speed Mode\n\nYou can [`read`](crate::Reg::read) this register and get [`prstval0::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Prstval0Spec;
+impl crate::RegisterSpec for Prstval0Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`prstval0::R`](R) reader structure"]
-impl crate::Readable for PRSTVAL0_SPEC {}
+impl crate::Readable for Prstval0Spec {}
 #[doc = "`reset()` method sets PRSTVAL0 to value 0"]
-impl crate::Resettable for PRSTVAL0_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Prstval0Spec {}

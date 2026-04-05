@@ -1,29 +1,27 @@
 #[doc = "Register `ETMIDR2` reader"]
-pub type R = crate::R<ETMIDR2_SPEC>;
+pub type R = crate::R<Etmidr2Spec>;
 #[doc = "Field `RFE` reader - RFE Transfer Order"]
-pub type RFE_R = crate::BitReader;
+pub type RfeR = crate::BitReader;
 #[doc = "Field `SWP` reader - SWP Transfer Order"]
-pub type SWP_R = crate::BitReader;
+pub type SwpR = crate::BitReader;
 impl R {
     #[doc = "Bit 0 - RFE Transfer Order"]
     #[inline(always)]
-    pub fn rfe(&self) -> RFE_R {
-        RFE_R::new((self.bits & 1) != 0)
+    pub fn rfe(&self) -> RfeR {
+        RfeR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - SWP Transfer Order"]
     #[inline(always)]
-    pub fn swp(&self) -> SWP_R {
-        SWP_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn swp(&self) -> SwpR {
+        SwpR::new(((self.bits >> 1) & 1) != 0)
     }
 }
-#[doc = "ETM ID Register 2\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`etmidr2::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct ETMIDR2_SPEC;
-impl crate::RegisterSpec for ETMIDR2_SPEC {
+#[doc = "ETM ID Register 2\n\nYou can [`read`](crate::Reg::read) this register and get [`etmidr2::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Etmidr2Spec;
+impl crate::RegisterSpec for Etmidr2Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`etmidr2::R`](R) reader structure"]
-impl crate::Readable for ETMIDR2_SPEC {}
+impl crate::Readable for Etmidr2Spec {}
 #[doc = "`reset()` method sets ETMIDR2 to value 0"]
-impl crate::Resettable for ETMIDR2_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Etmidr2Spec {}

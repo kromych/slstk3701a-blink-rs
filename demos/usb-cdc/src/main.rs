@@ -46,6 +46,12 @@ fn main() -> ! {
         .ph_dout()
         .modify(|r, w| unsafe { w.bits(r.bits() & !((1 << 10) | (1 << 13))) });
 
+    // VBUSEN: PF5 push-pull, driven low (device mode — don't supply VBUS).
+    p.gpio.pf_model().modify(|_, w| w.mode5().pushpull());
+    p.gpio
+        .pf_dout()
+        .modify(|r, w| unsafe { w.bits(r.bits() & !(1 << 5)) });
+
     let dev = UsbDevice::init(
         &p.cmu,
         &p.usb,
@@ -54,6 +60,10 @@ fn main() -> ! {
     );
 
     defmt::info!("USB CDC ACM serial port ready");
+    defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
-    efm32gg11b_usb::idle();
+
+    loop {
+        cortex_m::asm::wfi();
+    }
 }

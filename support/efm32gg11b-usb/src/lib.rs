@@ -177,6 +177,15 @@ macro_rules! usb_device {
 }
 
 // ---------------------------------------------------------------------------
+// DMA buffer for EP0 SETUP packets (required when GAHBCFG.DMAEN is set)
+// ---------------------------------------------------------------------------
+
+/// 3 SETUP packets × 8 bytes, 4-byte aligned.
+#[repr(C, align(4))]
+struct SetupBuf([u8; 24]);
+static mut EP0_SETUP_DMA_BUF: SetupBuf = SetupBuf([0u8; 24]);
+
+// ---------------------------------------------------------------------------
 // String descriptor 0
 // ---------------------------------------------------------------------------
 
@@ -208,11 +217,15 @@ impl<C: UsbClass> UsbDevice<C> {
         class: C,
         config: UsbConfig,
     ) -> Self {
-        // ---- Clock setup (USHFRCO 48 MHz + USB clock recovery) ----
+        // ---- EMU: set VREGO output level ----
+        let emu = unsafe { &*pac::Emu::ptr() };
+        // Wait for low-frequency sync domain to be ready before writing.
+        while emu.r5vsync().read().outlevelbusy().bit_is_set() {}
+        // Set VREGO output to 5 V (OUTLEVEL=10).
+        emu.r5voutlevel()
+            .write(|w| unsafe { w.outlevel().bits(10) });
 
-        // Enable USB clock on HFBUS.
-        cmu.hfbusclken0().modify(|_, w| w.usb().set_bit());
-        let _ = cmu.hfbusclken0().read();
+        // ---- Clock setup (USHFRCO 48 MHz + USB clock recovery) ----
 
         // Enable USHFRCO.
         cmu.oscencmd().write(|w| w.ushfrcoen().set_bit());
@@ -225,47 +238,56 @@ impl<C: UsbClass> UsbDevice<C> {
         // Enable USB clock recovery from SOF packets.
         cmu.usbcrctrl().modify(|_, w| w.usbcren().set_bit());
 
-        // ---- GG11B-specific USB init ----
+        // Enable USB clock on HFBUS.
+        cmu.hfbusclken0().modify(|_, w| w.usb().set_bit());
+        let _ = cmu.hfbusclken0().read();
 
-        // Clear VBUS override bits in GOTGCTL.
-        usb.gotgctl().modify(|_, w| {
-            w.bvalidoven()
-                .clear_bit()
-                .bvalidovval()
-                .clear_bit()
-                .vbvalidoven()
-                .clear_bit()
-                .vbvalidovval()
-                .clear_bit()
+        // ---- LEM and PHY setup (per Silicon Labs reference) ----
+        usb.ctrl().write(|w| {
+            w.lemoscctrl()
+                .gate()
+                .lemidleen()
+                .set_bit()
+                .lemphyctrl()
+                .set_bit()
         });
 
-        // Enable delayed pull-up for signal integrity.
-        usb.dattrim1().modify(|_, w| w.endlypullup().set_bit());
+        // PHY pins enable + VBUS enable pin (PF5 on SLSTK3701A).
+        usb.route()
+            .write(|w| w.phypen().set_bit().vbusenpen().set_bit());
 
-        // ---- USB peripheral init ----
+        // ---- Core reset (matches EMLIB USBHAL_CoreReset) ----
+        usb.pcgcctl().modify(|r, w| unsafe {
+            w.bits(r.bits() & !0x0000_000D) // clear STOPPCLK, PWRCLMP, RSTPDWNMODULE
+        });
 
-        // Disable LEM oscillator control during init.
-        usb.ctrl().modify(|_, w| w.lemoscctrl().none());
-        // PHY pins enable (GG11B ROUTE has phypen only, no dmpupen).
-        usb.route().write(|w| w.phypen().set_bit());
-        // Power/clock gating off.
-        usb.pcgcctl().write(|w| unsafe { w.bits(0) });
-
-        // Soft-reset.
-        while usb.gahbcfg().read().bits() != 0 || usb.grstctl().read().ahbidle().bit_is_clear() {}
+        // Core soft-reset FIRST, before setting GOTGCTL/DATTRIM1
+        // (csftrst may clear those registers).
         usb.grstctl().modify(|_, w| w.csftrst().set_bit());
         while usb.grstctl().read().csftrst().bit_is_set() {}
+        cortex_m::asm::delay(19); // ~1 µs
         while usb.grstctl().read().ahbidle().bit_is_clear() {}
 
-        usb.gahbcfg().write(|w| w.glblintrmsk().set_bit());
-        usb.dctl().modify(|_, w| w.sftdiscon().set_bit());
-        usb.dcfg()
-            .write(|w| unsafe { w.devspd().fs().devaddr().bits(0) });
+        // GG11B-specific: enable D+ pull-up delay (per EMLIB).
+        usb.dattrim1().modify(|_, w| w.endlypullup().set_bit());
 
-        // Endpoint interrupt masks.
-        usb.diepmsk().write(|w| w.xfercomplmsk().set_bit());
-        usb.doepmsk()
-            .write(|w| w.xfercomplmsk().set_bit().setupmsk().set_bit());
+        // ---- Force device mode + 50 ms delay ----
+        usb.gusbcfg().modify(|_, w| unsafe {
+            w.forcedevmode().set_bit().usbtrdtim().bits(9) // 9 for <=32 MHz AHB
+        });
+        cortex_m::asm::delay(950_000); // ~50 ms at 19 MHz HFRCO
+
+        // Set device speed to FS @ 48 MHz, enable NZSTSOUTHSHK.
+        usb.dcfg().modify(|_, w| {
+            w.devspd().fs().nzstsouthshk().set_bit()
+        });
+
+        // AHB config: slave (FIFO) mode + global interrupt mask.
+        usb.gahbcfg()
+            .write(|w| w.glblintrmsk().set_bit());
+
+        // Ignore frame number on isochronous endpoints.
+        usb.dctl().modify(|_, w| w.ignrfrmnum().set_bit());
 
         // ---- FIFO allocation ----
         usb.grxfsiz()
@@ -292,34 +314,47 @@ impl<C: UsbClass> UsbDevice<C> {
                 .bits(config.tx2_fifo_words)
         });
 
-        // ---- Global interrupt mask ----
-        usb.gintmsk().write(|w| {
-            w.usbrstmsk()
-                .set_bit()
-                .enumdonemsk()
-                .set_bit()
-                .usbsuspmsk()
-                .set_bit()
-                .wkupintmsk()
-                .set_bit()
-                .iepintmsk()
-                .set_bit()
-                .oepintmsk()
-                .set_bit()
-                .rxflvlmsk()
-                .set_bit()
-        });
+        // Flush all FIFOs.
+        usb.grstctl()
+            .write(|w| w.txfflsh().set_bit().txfnum().fall().rxfflsh().set_bit());
+        while usb.grstctl().read().txfflsh().bit_is_set()
+            || usb.grstctl().read().rxfflsh().bit_is_set()
+        {}
 
-        // Clear all pending interrupts.
-        usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+        // Disable all device interrupts; clear all EP state.
+        usb.diepmsk().write(|w| unsafe { w.bits(0) });
+        usb.doepmsk().write(|w| unsafe { w.bits(0) });
+        usb.daintmsk().write(|w| unsafe { w.bits(0) });
 
-        // Power-on programming done handshake.
-        usb.dctl().modify(|_, w| w.pwronprgdone().set_bit());
-        cortex_m::asm::delay(800); // ~10 µs at 48 MHz
-        usb.dctl().modify(|_, w| w.pwronprgdone().clear_bit());
+        // Clear all EP interrupt flags.
+        usb.diep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+        usb.doep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
 
         // Connect (clear soft-disconnect).
         usb.dctl().modify(|_, w| w.sftdiscon().clear_bit());
+
+        // ---- VBUS detection via USB wrapper interrupts (per EMLIB) ----
+        // Don't enable DWC2 core GINTMSK yet — wait until VBUS is detected.
+        usb.gintmsk().write(|w| unsafe { w.bits(0) });
+        usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+
+        // Clear and enable VBUS detect interrupts.
+        usb.ifc().write(|w| w.vbusdeth().set_bit().vbusdetl().set_bit());
+        usb.ien().write(|w| w.vbusdeth().set_bit().vbusdetl().set_bit());
+
+        // Force-trigger a VBUS detect interrupt based on current state.
+        if usb.status().read().vbusdeth().bit_is_set() {
+            usb.ifs().write(|w| w.vbusdeth().set_bit());
+        } else {
+            usb.ifs().write(|w| w.vbusdetl().set_bit());
+        }
+
+        defmt::info!("USB: init done, STATUS={:08x} GOTGCTL={:08x} DSTS={:08x}",
+            usb.status().read().bits(),
+            usb.gotgctl().read().bits(),
+            usb.dsts().read().bits());
+        defmt::info!("  EMU: R5VSTATUS={:08x}",
+            emu.r5vstatus().read().bits());
 
         Self {
             bus: UsbBus::new(),
@@ -339,7 +374,67 @@ impl<C: UsbClass> UsbDevice<C> {
 
     /// Poll for and handle USB interrupts.
     pub fn poll(&mut self) {
-        let gintsts = self.bus.regs().gintsts().read();
+        let usb = self.bus.regs();
+
+        // ---- Handle USB wrapper interrupts (VBUS detection) ----
+        let usb_if = usb.if_().read();
+        if usb_if.vbusdeth().bit_is_set() {
+            usb.ifc().write(|w| w.vbusdeth().set_bit());
+            if usb.status().read().vbusdeth().bit_is_set() {
+                defmt::info!("VBUS detected");
+                let emu = unsafe { &*pac::Emu::ptr() };
+                emu.r5voutlevel()
+                    .write(|w| unsafe { w.outlevel().bits(10) }); // 5.0 V
+
+                // Tell DWC2 core that VBUS/B-session is valid (EFM32 wrapper
+                // detects VBUS but the core's own comparators don't see it).
+                usb.gotgctl().modify(|_, w| {
+                    w.bvalidoven()
+                        .set_bit()
+                        .bvalidovval()
+                        .set_bit()
+                        .vbvalidoven()
+                        .set_bit()
+                        .vbvalidovval()
+                        .set_bit()
+                });
+
+                // Re-assert D+ pullup by toggling soft-disconnect.
+                usb.dctl().modify(|_, w| w.sftdiscon().set_bit());
+                cortex_m::asm::delay(190); // ~10 µs
+                usb.dctl().modify(|_, w| w.sftdiscon().clear_bit());
+
+                // Enable USB reset + suspend interrupts now that VBUS is present.
+                usb.gintmsk().write(|w| unsafe { w.bits(0) });
+                usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+                usb.gintmsk().write(|w| {
+                    w.usbrstmsk().set_bit().usbsuspmsk().set_bit()
+                });
+                defmt::info!("  GOTGCTL={:08x} DCTL={:08x}",
+                    usb.gotgctl().read().bits(), usb.dctl().read().bits());
+            }
+        }
+        if usb_if.vbusdetl().bit_is_set() {
+            usb.ifc().write(|w| w.vbusdetl().set_bit());
+            if usb.status().read().vbusdeth().bit_is_clear() {
+                defmt::info!("VBUS removed");
+                usb.gintmsk().write(|w| unsafe { w.bits(0) });
+                usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+                // Clear GOTGCTL overrides.
+                usb.gotgctl().modify(|_, w| {
+                    w.bvalidoven()
+                        .clear_bit()
+                        .vbvalidoven()
+                        .clear_bit()
+                });
+                // Disconnect.
+                usb.dctl().modify(|_, w| w.sftdiscon().set_bit());
+            }
+        }
+
+        // ---- Handle DWC2 core interrupts ----
+        let gintsts = usb.gintsts().read();
+        defmt::debug!("poll: GINTSTS={:08x}", gintsts.bits());
 
         if gintsts.usbrst().bit_is_set() {
             self.bus.regs().gintsts().write(|w| w.usbrst().set_bit());
@@ -350,11 +445,46 @@ impl<C: UsbClass> UsbDevice<C> {
             let usb = self.bus.regs();
             usb.gintsts().write(|w| w.enumdone().set_bit());
             usb.gusbcfg()
-                .modify(|_, w| unsafe { w.usbtrdtim().bits(5) });
-            usb.diep0ctl().modify(|_, w| w.mps()._64b());
+                .modify(|_, w| unsafe { w.usbtrdtim().bits(9) });
+
+            // Flush all FIFOs (deferred from reset handler).
+            usb.grstctl()
+                .write(|w| w.txfflsh().set_bit().txfnum().fall().rxfflsh().set_bit());
+            while usb.grstctl().read().txfflsh().bit_is_set()
+                || usb.grstctl().read().rxfflsh().bit_is_set()
+            {}
+
+            // Configure EP0.
+            usb.diep0ctl().write(|w| w.mps()._64b().snak().set_bit());
+            usb.doep0ctl().write(|w| w.snak().set_bit());
+            self.activate_endpoints();
+            usb.doep0tsiz().write(|w| unsafe { w.supcnt().bits(3) });
+
             usb.dctl().modify(|_, w| w.cgnpinnak().set_bit());
+
+            // Enable endpoint and RXFLVL interrupts, plus EP masks.
+            usb.diepmsk().write(|w| w.xfercomplmsk().set_bit());
+            usb.doepmsk()
+                .write(|w| w.xfercomplmsk().set_bit().setupmsk().set_bit());
+            usb.gintmsk().write(|w| {
+                w.usbrstmsk()
+                    .set_bit()
+                    .enumdonemsk()
+                    .set_bit()
+                    .usbsuspmsk()
+                    .set_bit()
+                    .wkupintmsk()
+                    .set_bit()
+                    .iepintmsk()
+                    .set_bit()
+                    .oepintmsk()
+                    .set_bit()
+                    .rxflvlmsk()
+                    .set_bit()
+            });
+
             self.bus.ep0_prepare_out();
-            defmt::info!("Speed negotiation complete");
+            defmt::info!("Speed negotiation complete, DSTS={:08x}", usb.dsts().read().bits());
         }
 
         if gintsts.usbsusp().bit_is_set() {
@@ -389,25 +519,70 @@ impl<C: UsbClass> UsbDevice<C> {
         defmt::info!("USB reset");
         let usb = self.bus.regs();
 
+        // Clear Remote Wakeup Signalling.
+        usb.dctl().modify(|_, w| w.rmtwkupsig().clear_bit());
+
+        // Flush TX FIFO 0.
+        usb.grstctl()
+            .write(|w| w.txfflsh().set_bit().txfnum().f0());
+        while usb.grstctl().read().txfflsh().bit_is_set() {}
+
+        // Clear EP interrupt flags.
+        usb.diep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+        usb.doep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+
+        // GG11B: re-assert D+ pull-up delay (per EMLIB).
+        usb.dattrim1().modify(|_, w| w.endlypullup().set_bit());
+
+        // Clear device address.
         usb.dcfg().modify(|_, w| unsafe { w.devaddr().bits(0) });
 
-        // Flush all FIFOs.
-        usb.grstctl()
-            .write(|w| w.txfflsh().set_bit().txfnum().fall().rxfflsh().set_bit());
-        while usb.grstctl().read().txfflsh().bit_is_set()
-            || usb.grstctl().read().rxfflsh().bit_is_set()
-        {}
+        // Set turnaround time for 19MHz AHB clock.
+        usb.gusbcfg()
+            .modify(|_, w| unsafe { w.usbtrdtim().bits(9) });
 
         // Configure EP0.
         usb.diep0ctl().write(|w| w.mps()._64b().snak().set_bit());
         usb.doep0ctl().write(|w| w.snak().set_bit());
-
         self.activate_endpoints();
 
-        usb.doep0tsiz().write(|w| unsafe { w.supcnt().bits(3) });
+        // Prepare EP0 OUT for SETUP reception.
+        usb.doep0tsiz()
+            .write(|w| unsafe { w.supcnt().bits(3) });
+        usb.doep0dmaaddr().write(|w| unsafe {
+            w.bits(core::ptr::addr_of!(EP0_SETUP_DMA_BUF) as u32)
+        });
+
+        usb.dctl().modify(|_, w| w.cgnpinnak().set_bit());
 
         self.pending_data_out = false;
         self.class.reset();
+
+        // Enable full interrupt set: clear all pending then set mask.
+        usb.gintmsk().write(|w| unsafe { w.bits(0) });
+        usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+        usb.gintmsk().write(|w| {
+            w.usbrstmsk()
+                .set_bit()
+                .enumdonemsk()
+                .set_bit()
+                .usbsuspmsk()
+                .set_bit()
+                .wkupintmsk()
+                .set_bit()
+                .iepintmsk()
+                .set_bit()
+                .oepintmsk()
+                .set_bit()
+                .rxflvlmsk()
+                .set_bit()
+        });
+
+        self.bus.ep0_prepare_out();
+
+        defmt::info!("  reset done, ready for SETUP. GINTMSK={:08x} DSTS={:08x}",
+            usb.gintmsk().read().bits(),
+            usb.dsts().read().bits());
     }
 
     fn activate_endpoints(&self) {

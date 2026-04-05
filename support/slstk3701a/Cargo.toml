@@ -8,4 +8,5 @@ license = "MIT"
 
 [dependencies]
 cortex-m.workspace = true
+defmt.workspace = true
 efm32gg11b-pac.workspace = true

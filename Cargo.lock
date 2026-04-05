@@ -391,7 +391,82 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 
 [[package]]
+name = "usb-audio"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "critical-section",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "efm32gg11b-usb",
+ "panic-halt",
+ "portable-atomic",
+]
+
+[[package]]
 name = "usb-cdc"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "critical-section",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "efm32gg11b-usb",
+ "panic-halt",
+ "portable-atomic",
+]
+
+[[package]]
+name = "usb-hid"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "critical-section",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "efm32gg11b-usb",
+ "panic-halt",
+ "portable-atomic",
+]
+
+[[package]]
+name = "usb-midi"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "critical-section",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "efm32gg11b-usb",
+ "panic-halt",
+ "portable-atomic",
+]
+
+[[package]]
+name = "usb-msc"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "critical-section",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "efm32gg11b-usb",
+ "panic-halt",
+ "portable-atomic",
+]
+
+[[package]]
+name = "usb-video"
 version = "0.0.1"
 dependencies = [
  "cortex-m",

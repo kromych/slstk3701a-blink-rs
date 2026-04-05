@@ -10,13 +10,28 @@
 
 #![no_std]
 
+pub mod audio;
 pub mod bus;
 pub mod cdc_acm;
+pub mod hid_keyboard;
+pub mod midi;
+pub mod msc;
+pub mod video;
 
 pub use bus::UsbBus;
+
 use efm32gg11b_pac as pac;
 use pac::interrupt;
 use portable_atomic::{AtomicUsize, Ordering};
+
+// ---------------------------------------------------------------------------
+// Utilities
+// ---------------------------------------------------------------------------
+
+/// Busy-wait delay assuming the 19 MHz HFRCO default.
+pub fn delay_ms(ms: u32) {
+    cortex_m::asm::delay(ms * 19_000);
+}
 
 // ---------------------------------------------------------------------------
 // Public types
@@ -278,13 +293,11 @@ impl<C: UsbClass> UsbDevice<C> {
         cortex_m::asm::delay(950_000); // ~50 ms at 19 MHz HFRCO
 
         // Set device speed to FS @ 48 MHz, enable NZSTSOUTHSHK.
-        usb.dcfg().modify(|_, w| {
-            w.devspd().fs().nzstsouthshk().set_bit()
-        });
+        usb.dcfg()
+            .modify(|_, w| w.devspd().fs().nzstsouthshk().set_bit());
 
         // AHB config: slave (FIFO) mode + global interrupt mask.
-        usb.gahbcfg()
-            .write(|w| w.glblintrmsk().set_bit());
+        usb.gahbcfg().write(|w| w.glblintrmsk().set_bit());
 
         // Ignore frame number on isochronous endpoints.
         usb.dctl().modify(|_, w| w.ignrfrmnum().set_bit());
@@ -339,8 +352,10 @@ impl<C: UsbClass> UsbDevice<C> {
         usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
 
         // Clear and enable VBUS detect interrupts.
-        usb.ifc().write(|w| w.vbusdeth().set_bit().vbusdetl().set_bit());
-        usb.ien().write(|w| w.vbusdeth().set_bit().vbusdetl().set_bit());
+        usb.ifc()
+            .write(|w| w.vbusdeth().set_bit().vbusdetl().set_bit());
+        usb.ien()
+            .write(|w| w.vbusdeth().set_bit().vbusdetl().set_bit());
 
         // Force-trigger a VBUS detect interrupt based on current state.
         if usb.status().read().vbusdeth().bit_is_set() {
@@ -349,12 +364,13 @@ impl<C: UsbClass> UsbDevice<C> {
             usb.ifs().write(|w| w.vbusdetl().set_bit());
         }
 
-        defmt::info!("USB: init done, STATUS={:08x} GOTGCTL={:08x} DSTS={:08x}",
+        defmt::info!(
+            "USB: init done, STATUS={:08x} GOTGCTL={:08x} DSTS={:08x}",
             usb.status().read().bits(),
             usb.gotgctl().read().bits(),
-            usb.dsts().read().bits());
-        defmt::info!("  EMU: R5VSTATUS={:08x}",
-            emu.r5vstatus().read().bits());
+            usb.dsts().read().bits()
+        );
+        defmt::info!("  EMU: R5VSTATUS={:08x}", emu.r5vstatus().read().bits());
 
         Self {
             bus: UsbBus::new(),
@@ -407,11 +423,13 @@ impl<C: UsbClass> UsbDevice<C> {
                 // Enable USB reset + suspend interrupts now that VBUS is present.
                 usb.gintmsk().write(|w| unsafe { w.bits(0) });
                 usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
-                usb.gintmsk().write(|w| {
-                    w.usbrstmsk().set_bit().usbsuspmsk().set_bit()
-                });
-                defmt::info!("  GOTGCTL={:08x} DCTL={:08x}",
-                    usb.gotgctl().read().bits(), usb.dctl().read().bits());
+                usb.gintmsk()
+                    .write(|w| w.usbrstmsk().set_bit().usbsuspmsk().set_bit());
+                defmt::info!(
+                    "  GOTGCTL={:08x} DCTL={:08x}",
+                    usb.gotgctl().read().bits(),
+                    usb.dctl().read().bits()
+                );
             }
         }
         if usb_if.vbusdetl().bit_is_set() {
@@ -421,12 +439,8 @@ impl<C: UsbClass> UsbDevice<C> {
                 usb.gintmsk().write(|w| unsafe { w.bits(0) });
                 usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
                 // Clear GOTGCTL overrides.
-                usb.gotgctl().modify(|_, w| {
-                    w.bvalidoven()
-                        .clear_bit()
-                        .vbvalidoven()
-                        .clear_bit()
-                });
+                usb.gotgctl()
+                    .modify(|_, w| w.bvalidoven().clear_bit().vbvalidoven().clear_bit());
                 // Disconnect.
                 usb.dctl().modify(|_, w| w.sftdiscon().set_bit());
             }
@@ -484,7 +498,10 @@ impl<C: UsbClass> UsbDevice<C> {
             });
 
             self.bus.ep0_prepare_out();
-            defmt::info!("Speed negotiation complete, DSTS={:08x}", usb.dsts().read().bits());
+            defmt::info!(
+                "Speed negotiation complete, DSTS={:08x}",
+                usb.dsts().read().bits()
+            );
         }
 
         if gintsts.usbsusp().bit_is_set() {
@@ -523,8 +540,7 @@ impl<C: UsbClass> UsbDevice<C> {
         usb.dctl().modify(|_, w| w.rmtwkupsig().clear_bit());
 
         // Flush TX FIFO 0.
-        usb.grstctl()
-            .write(|w| w.txfflsh().set_bit().txfnum().f0());
+        usb.grstctl().write(|w| w.txfflsh().set_bit().txfnum().f0());
         while usb.grstctl().read().txfflsh().bit_is_set() {}
 
         // Clear EP interrupt flags.
@@ -547,11 +563,9 @@ impl<C: UsbClass> UsbDevice<C> {
         self.activate_endpoints();
 
         // Prepare EP0 OUT for SETUP reception.
-        usb.doep0tsiz()
-            .write(|w| unsafe { w.supcnt().bits(3) });
-        usb.doep0dmaaddr().write(|w| unsafe {
-            w.bits(core::ptr::addr_of!(EP0_SETUP_DMA_BUF) as u32)
-        });
+        usb.doep0tsiz().write(|w| unsafe { w.supcnt().bits(3) });
+        usb.doep0dmaaddr()
+            .write(|w| unsafe { w.bits(core::ptr::addr_of!(EP0_SETUP_DMA_BUF) as u32) });
 
         usb.dctl().modify(|_, w| w.cgnpinnak().set_bit());
 
@@ -580,9 +594,11 @@ impl<C: UsbClass> UsbDevice<C> {
 
         self.bus.ep0_prepare_out();
 
-        defmt::info!("  reset done, ready for SETUP. GINTMSK={:08x} DSTS={:08x}",
+        defmt::info!(
+            "  reset done, ready for SETUP. GINTMSK={:08x} DSTS={:08x}",
             usb.gintmsk().read().bits(),
-            usb.dsts().read().bits());
+            usb.dsts().read().bits()
+        );
     }
 
     fn activate_endpoints(&self) {

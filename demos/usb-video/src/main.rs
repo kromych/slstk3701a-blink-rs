@@ -1,7 +1,9 @@
 //! USB Video device demo for the SLSTK3701A.
 //!
-//! Streams a Star Wars-style opening text crawl as 160x120 YUY2 video
-//! at 5 fps via isochronous IN transfers.
+//! Streams a Star Wars-style opening text crawl as 320x240 YUY2 video
+//! at 5 fps via isochronous IN transfers. This is 4x the pixel count
+//! of the HG version, enabled by the GG11B's larger FIFO (2 KB) which
+//! supports 1023-byte isochronous packets (USB FS max).
 
 #![no_main]
 #![no_std]
@@ -132,8 +134,7 @@ static CRAWL: &[&[u8]] = &[
     b"",
     b"",
     b"",
-    b"A long time ago",
-    b"in a galaxy",
+    b"A long time ago in a galaxy",
     b"far, far away....",
     b"",
     b"",
@@ -150,36 +151,36 @@ static CRAWL: &[&[u8]] = &[
     b"A NEW HOPE",
     b"",
     b"",
-    b"It is a period of",
-    b"civil war. Rebel",
-    b"spaceships, striking",
-    b"from a hidden base,",
-    b"have won their first",
-    b"victory against the",
-    b"evil Galactic Empire.",
+    b"It is a period of civil war.",
+    b"Rebel spaceships, striking",
+    b"from a hidden base, have won",
+    b"their first victory against",
+    b"the evil Galactic Empire.",
     b"",
-    b"During the battle,",
-    b"Rebel spies managed",
-    b"to steal secret",
-    b"plans to the",
-    b"Empire's ultimate",
-    b"weapon, the DEATH",
-    b"STAR, an armored",
-    b"space station with",
-    b"enough power to",
-    b"destroy an entire",
-    b"planet.",
+    b"During the battle, Rebel",
+    b"spies managed to steal",
+    b"secret plans to the Empire's",
+    b"ultimate weapon, the DEATH",
+    b"STAR, an armored space",
+    b"station with enough power",
+    b"to destroy an entire planet.",
     b"",
-    b"Pursued by the",
-    b"Empire's sinister",
-    b"agents, Princess",
-    b"Leia races home",
-    b"aboard her starship,",
-    b"custodian of the",
-    b"stolen plans that",
-    b"can save her people",
-    b"and restore freedom",
-    b"to the galaxy....",
+    b"Pursued by the Empire's",
+    b"sinister agents, Princess",
+    b"Leia races home aboard her",
+    b"starship, custodian of the",
+    b"stolen plans that can save",
+    b"her people and restore",
+    b"freedom to the galaxy....",
+    b"",
+    b"",
+    b"",
+    b"",
+    b"",
+    b"",
+    b"",
+    b"",
+    b"",
     b"",
     b"",
     b"",
@@ -192,7 +193,7 @@ static CRAWL: &[&[u8]] = &[
     b"",
 ];
 
-// Max chars per line at full width: 160 / 6 = 26
+// Max chars per line at full width: 320 / 6 = 53
 const CHARS_PER_LINE: usize = WIDTH / CHAR_W;
 
 // ---------------------------------------------------------------------------
@@ -214,7 +215,7 @@ const fn build_perspective() -> [u16; HEIGHT] {
     let mut y: i32 = (HEIGHT as i32) - 2;
     while y >= 0 {
         // Inverse scale * 256 for fixed-point accumulation.
-        let inv_scale_256 = ((HEIGHT as u32 + 16) * 256) / (y as u32 + 16);
+        let inv_scale_256 = ((HEIGHT as u32 + 32) * 256) / (y as u32 + 32);
         accum += inv_scale_256;
         map[y as usize] = (accum >> 8) as u16;
         y -= 1;
@@ -240,8 +241,8 @@ impl StarWarsCrawl {
 
 impl VideoHandler for StarWarsCrawl {
     fn advance_frame(&mut self) {
-        // Scroll up by 6 virtual rows per frame (= 30 rows/s at 5 fps).
-        self.scroll = self.scroll.wrapping_add(6);
+        // Scroll up by 4 virtual rows per frame (= 20 rows/s at 5 fps).
+        self.scroll = self.scroll.wrapping_add(4);
     }
 
     fn render(&mut self, buf: &mut [u8], offset: usize) -> usize {
@@ -257,11 +258,11 @@ impl VideoHandler for StarWarsCrawl {
             let vy = self.scroll.wrapping_sub(vrow_offset);
 
             // Margins and brightness (computed once per scanline).
-            let margin = ((HEIGHT - 1 - display_y) as u32 * 50 / HEIGHT as u32) as usize;
+            let margin = ((HEIGHT - 1 - display_y) as u32 * 80 / HEIGHT as u32) as usize;
             let margin_bytes = margin * 2;
             let visible_w = WIDTH - 2 * margin;
-            let brightness = if vrow_offset < 200 {
-                255 - (vrow_offset as u32 * 200 / 200) as u8
+            let brightness = if vrow_offset < 400 {
+                255 - (vrow_offset as u32 * 200 / 400) as u8
             } else {
                 55
             };
@@ -369,7 +370,7 @@ fn main() -> ! {
     let class = VideoClass::new(StarWarsCrawl::new());
     let dev = UsbDevice::init(&p.cmu, &p.usb, class, video::usb_config());
 
-    defmt::info!("USB Video device ready");
+    defmt::info!("USB Video device ready (320x240 @ 5fps)");
     defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
     efm32gg11b_usb::idle();

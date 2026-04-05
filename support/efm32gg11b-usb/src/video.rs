@@ -2,6 +2,9 @@
 //!
 //! Streams uncompressed YUY2 video to the host via an isochronous IN endpoint.
 //! The application provides pixel data through the [`VideoHandler`] trait.
+//!
+//! Resolution: 320×240 at 5 fps, using 1023-byte isochronous packets (FS max).
+//! This is possible on the EFM32GG11B thanks to the 512-word (2 KB) FIFO RAM.
 
 use crate::{usb_string, EpConfig, EpType, SetupPacket, SetupResult, UsbBus, UsbClass, UsbConfig};
 use portable_atomic::{AtomicBool, Ordering};
@@ -10,9 +13,9 @@ use portable_atomic::{AtomicBool, Ordering};
 pub static CONFIGURED: AtomicBool = AtomicBool::new(false);
 
 /// Frame width in pixels.
-pub const WIDTH: usize = 160;
+pub const WIDTH: usize = 320;
 /// Frame height in pixels.
-pub const HEIGHT: usize = 120;
+pub const HEIGHT: usize = 240;
 /// Bytes per scanline (YUY2 = 2 bytes/pixel).
 pub const BYTES_PER_LINE: usize = WIDTH * 2;
 /// Total bytes per video frame.
@@ -21,8 +24,8 @@ pub const FRAME_SIZE: usize = WIDTH * HEIGHT * 2;
 pub const FRAME_RATE: u32 = 5;
 /// Milliseconds between frames.
 const FRAME_INTERVAL: u16 = (1000 / FRAME_RATE) as u16;
-/// Max isochronous packet size.
-const MAX_PACKET: usize = 512;
+/// Max isochronous packet size (USB Full Speed max for isochronous).
+const MAX_PACKET: usize = 1023;
 /// UVC payload header size.
 const HEADER_LEN: usize = 2;
 /// Max video data bytes per packet.
@@ -58,9 +61,9 @@ const VS_TOTAL: u16 = 77;
 const CONFIG_TOTAL_LEN: u16 = 167;
 const _: () = assert!(CONFIG_TOTAL_LEN == 167);
 
-// Frame timing: 200 ms = 2,000,000 * 100 ns units = 0x001E8480
-// Bit rate: 160*120*16*5 = 1,536,000 = 0x00177000
-// Frame buffer: 160*120*2 = 38,400 = 0x00009600
+// Frame timing: 200 ms = 2,000,000 * 100 ns units
+// Bit rate: 320*240*16*5 = 6,144,000 = 0x005DC000
+// Frame buffer: 320*240*2 = 153,600 = 0x00025800
 
 #[rustfmt::skip]
 static CONFIG_DESC: [u8; CONFIG_TOTAL_LEN as usize] = [
@@ -154,11 +157,11 @@ static CONFIG_DESC: [u8; CONFIG_TOTAL_LEN as usize] = [
     30, 0x24, 0x05, // CS_INTERFACE, VS_FRAME_UNCOMPRESSED
     1,              // bFrameIndex
     0x00,           // bmCapabilities
-    (WIDTH as u16 & 0xFF) as u8, (WIDTH as u16 >> 8) as u8,
-    (HEIGHT as u16 & 0xFF) as u8, (HEIGHT as u16 >> 8) as u8,
-    0x00, 0x70, 0x17, 0x00, // dwMinBitRate  = 1,536,000
-    0x00, 0x70, 0x17, 0x00, // dwMaxBitRate  = 1,536,000
-    0x00, 0x96, 0x00, 0x00, // dwMaxVideoFrameBufferSize = 38,400
+    (WIDTH as u16 & 0xFF) as u8, (WIDTH as u16 >> 8) as u8,     // 320
+    (HEIGHT as u16 & 0xFF) as u8, (HEIGHT as u16 >> 8) as u8,   // 240
+    0x00, 0xC0, 0x5D, 0x00, // dwMinBitRate  = 6,144,000
+    0x00, 0xC0, 0x5D, 0x00, // dwMaxBitRate  = 6,144,000
+    0x00, 0x58, 0x02, 0x00, // dwMaxVideoFrameBufferSize = 153,600
     0x80, 0x84, 0x1E, 0x00, // dwDefaultFrameInterval = 2,000,000 (200 ms)
     1,              // bFrameIntervalType (1 discrete)
     0x80, 0x84, 0x1E, 0x00, // dwFrameInterval = 2,000,000
@@ -179,7 +182,7 @@ static CONFIG_DESC: [u8; CONFIG_TOTAL_LEN as usize] = [
     7, 0x05,
     0x81,           // bEndpointAddress (EP1 IN)
     0x05,           // bmAttributes (isochronous, asynchronous)
-    (MAX_PACKET & 0xFF) as u8, (MAX_PACKET >> 8) as u8,
+    (MAX_PACKET & 0xFF) as u8, ((MAX_PACKET >> 8) & 0x07) as u8, // wMaxPacketSize (1023)
     1,              // bInterval (every frame)
 ];
 
@@ -202,8 +205,8 @@ static PROBE_COMMIT: [u8; 26] = [
     0x00, 0x00,     // wCompQuality
     0x00, 0x00,     // wCompWindowSize
     0x00, 0x00,     // wDelay
-    0x00, 0x96, 0x00, 0x00, // dwMaxVideoFrameSize = 38,400
-    0x00, 0x02, 0x00, 0x00, // dwMaxPayloadTransferSize = 512
+    0x00, 0x58, 0x02, 0x00, // dwMaxVideoFrameSize = 153,600
+    0xFF, 0x03, 0x00, 0x00, // dwMaxPayloadTransferSize = 1023
 ];
 
 // ---------------------------------------------------------------------------
@@ -290,11 +293,14 @@ impl<H: VideoHandler> VideoClass<H> {
 }
 
 /// Recommended USB peripheral / FIFO configuration for video.
+///
+/// Uses 1023-byte isochronous packets — requires 256-word TX1 FIFO.
+/// Total FIFO: 64 + 48 + 256 = 368 of 512 words available.
 pub fn usb_config() -> UsbConfig {
     UsbConfig {
         rx_fifo_words: 64,
         tx0_fifo_words: 48,  // 192 bytes - fits 167-byte config descriptor
-        tx1_fifo_words: 144, // 576 bytes - fits 512-byte isochronous packets
+        tx1_fifo_words: 256, // 1024 bytes - fits 1023-byte isochronous packets
         tx2_fifo_words: 0,
         ep1: Some(EpConfig {
             ep_type: EpType::Isochronous,

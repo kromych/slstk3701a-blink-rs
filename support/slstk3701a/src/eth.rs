@@ -65,14 +65,16 @@
 //!   GBLCLKEN = 1   enable MAC internal clocks (tsu, tx, rx, ref)
 //!   TXREFCLKSEL = 1  TX engine uses internal ref_clk, not pad input
 //!
-//! # Why no ETH interrupt
+//! # ETH interrupts
 //!
-//! This driver uses polling: the main loop calls `rx_available()` which checks
-//! the DMA descriptor ownership bit directly.  This is simpler and fine for
-//! the DHCP + HTTP demo where the main loop has nothing else to do between
-//! polls.  Interrupts would help if the CPU needed to sleep (WFI) between
-//! packets for power savings, but that would require sharing the smoltcp
-//! socket set between interrupt and main contexts via a critical section.
+//! The Cadence GEM supports a rich interrupt set.  By default this driver
+//! uses polling (`rx_available()`), which is simplest.  Call
+//! `enable_interrupts()` after `init()` to enable the RXCMPLT and TXCMPLT
+//! interrupts.  The ISR sets atomic event flags that the main loop can
+//! check, allowing the CPU to sleep via WFI between Ethernet events.
+//!
+//! The caller must unmask `pac::Interrupt::ETH` in the NVIC and provide
+//! an `#[interrupt] fn ETH()` handler that calls `eth::irq_handler()`.
 //!
 //! # Pin mapping (SLSTK3701A, RMII Location 1)
 //!
@@ -87,8 +89,16 @@
 //! ```
 
 use core::ptr::{self, addr_of, addr_of_mut};
+use core::sync::atomic::{AtomicBool, Ordering};
 
 use efm32gg11b_pac as pac;
+
+// ---------- interrupt event flags ----------
+
+/// Set by the ISR when a frame has been received (RXCMPLT).
+static RX_EVENT: AtomicBool = AtomicBool::new(false);
+/// Set by the ISR when a frame has been transmitted (TXCMPLT).
+static TX_EVENT: AtomicBool = AtomicBool::new(false);
 
 // ---------- constants ----------
 
@@ -557,6 +567,49 @@ pub fn tx_packet(data: &[u8]) -> bool {
         eth().networkctrl().modify(|_, w| w.txstrt().set_bit());
         true
     }
+}
+
+// ---------- interrupt support ----------
+
+/// Enable RXCMPLT and TXCMPLT interrupts on the Cadence GEM.
+///
+/// The caller must also:
+///   1. Unmask `pac::Interrupt::ETH` in the NVIC
+///   2. Provide an `#[interrupt] fn ETH()` that calls `eth::irq_handler()`
+pub fn enable_interrupts() {
+    let e = eth();
+    // Clear any pending flags first.
+    e.ifcr().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+    // Enable RXCMPLT (bit 1) and TXCMPLT (bit 7).
+    e.iens().write(|w| w.rxcmplt().set_bit().txcmplt().set_bit());
+}
+
+/// ETH interrupt handler.  Call this from the `#[interrupt] fn ETH()` ISR.
+///
+/// Clears the interrupt flags and sets atomic event flags that the main
+/// loop can consume via `take_rx_event()` / `take_tx_event()`.
+pub fn irq_handler() {
+    let e = eth();
+    let status = e.ifcr().read();
+    // Write-1-to-clear the flags we handle.
+    e.ifcr().write(|w| unsafe { w.bits(status.bits()) });
+
+    if status.rxcmplt().bit_is_set() {
+        RX_EVENT.store(true, Ordering::Release);
+    }
+    if status.txcmplt().bit_is_set() {
+        TX_EVENT.store(true, Ordering::Release);
+    }
+}
+
+/// Check and clear the RX event flag (set by the ISR on RXCMPLT).
+pub fn take_rx_event() -> bool {
+    RX_EVENT.swap(false, Ordering::Acquire)
+}
+
+/// Check and clear the TX event flag (set by the ISR on TXCMPLT).
+pub fn take_tx_event() -> bool {
+    TX_EVENT.swap(false, Ordering::Acquire)
 }
 
 // ---------- internal ----------

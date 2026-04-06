@@ -15,6 +15,7 @@ members = [
     "demos/usb-audio",
     "demos/usb-midi",
     "demos/usb-video",
+    "demos/space-invaders",
     "support/efm32gg11b-pac",
     "support/efm32gg11b-usb",
     "support/slstk3701a",

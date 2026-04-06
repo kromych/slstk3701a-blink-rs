@@ -97,7 +97,7 @@ fn scs_hold_delay() {
 /// `color` is a 3-bit value: bit 0 = blue, bit 1 = green, bit 2 = red.
 /// White = 0b111, black = 0b000.
 #[inline]
-fn set_pixel(row_buf: &mut [u8; BYTES_PER_ROW], x: usize, color: u8) {
+pub fn set_pixel(row_buf: &mut [u8; BYTES_PER_ROW], x: usize, color: u8) {
     let bit_offset = x * BPP;
     let byte_idx = bit_offset / 8;
     let bit_idx = bit_offset % 8;
@@ -155,10 +155,10 @@ pub fn init() {
     u.ctrl().write(|w| w.sync().set_bit());
     u.frame().write(|w| w.databits().eight());
 
-    // ~1 MHz SPI clock at 19 MHz HFPERCLK.
+    // ~4 MHz SPI clock at 19 MHz HFPERCLK.
     // CLKDIV formula (sync): br = fHFPERCLK / (2 * (1 + DIV/256))
-    //   DIV = 256 * (fHFPERCLK / (2 * br) - 1) = 256 * (19/2 - 1) = 256 * 8.5 = 2176
-    u.clkdiv().write(|w| unsafe { w.div().bits(2176) });
+    //   DIV = 256 * (fHFPERCLK / (2 * br) - 1) = 256 * (19/8 - 1) = 256 * 1.375 = 352
+    u.clkdiv().write(|w| unsafe { w.div().bits(352) });
 
     // Route TX to location 6 (PA14), CLK to location 3 (PC15).
     u.routeloc0().write(|w| w.txloc().loc6().clkloc().loc3());
@@ -177,7 +177,21 @@ pub fn init() {
 }
 
 /// Clear the entire display to white.
+///
+/// Writes all-white pixel data to every row. The JDI LPM013M126A's
+/// all-clear command may clear to black, so we explicitly write white.
 pub fn clear(vcom: &mut bool) {
+    let white_band = [[0xFFu8; BYTES_PER_ROW]; 8];
+    let mut row = 0u8;
+    while row < HEIGHT as u8 {
+        let remaining = (HEIGHT as u8 - row).min(8) as usize;
+        write_rows(row, &white_band[..remaining], vcom);
+        row += remaining as u8;
+    }
+}
+
+/// TODO: See why clears t balck
+fn _clear_with_cmd(vcom: &mut bool) {
     let cmd = 0x04 | if *vcom { 0x02 } else { 0x00 };
     *vcom = !*vcom;
 
@@ -273,6 +287,53 @@ pub fn draw_text(row: u8, col: u8, text: &str, vcom: &mut bool) {
                     set_pixel(&mut pixel_rows[py], cx * 8 + px, 0b000);
                 }
                 // White pixels are already 0xFF.
+            }
+        }
+    }
+
+    let start = row * 8;
+    write_rows(start, &pixel_rows, vcom);
+}
+
+/// Render a text string with specified foreground and background colors.
+///
+/// Colors are 3-bit values: bit 0 = blue, bit 1 = green, bit 2 = red.
+pub fn draw_text_colored(row: u8, col: u8, text: &str, fg: u8, bg: u8, vcom: &mut bool) {
+    if row >= TEXT_ROWS {
+        return;
+    }
+
+    let mut pixel_rows = [[0xFFu8; BYTES_PER_ROW]; 8];
+
+    // Fill background for the text area.
+    if bg != 0b111 {
+        let start_px = col as usize * 8;
+        let end_px = ((col as usize + text.len()).min(TEXT_COLS as usize)) * 8;
+        for py in 0..8 {
+            for px in start_px..end_px {
+                set_pixel(&mut pixel_rows[py], px, bg);
+            }
+        }
+    }
+
+    for (ci, ch) in text.bytes().enumerate() {
+        let cx = col as usize + ci;
+        if cx >= TEXT_COLS as usize {
+            break;
+        }
+        let glyph_idx = if (32..=126).contains(&ch) {
+            (ch - 32) as usize
+        } else {
+            0
+        };
+        let glyph = &FONT[glyph_idx];
+        for py in 0..8 {
+            let font_byte = reverse_bits(glyph[py]);
+            for px in 0..8 {
+                let on = (font_byte >> px) & 1 != 0;
+                if on {
+                    set_pixel(&mut pixel_rows[py], cx * 8 + px, fg);
+                }
             }
         }
     }

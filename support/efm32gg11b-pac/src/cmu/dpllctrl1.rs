@@ -1,64 +1,49 @@
 #[doc = "Register `DPLLCTRL1` reader"]
-pub type R = crate::R<DPLLCTRL1_SPEC>;
+pub type R = crate::R<Dpllctrl1Spec>;
 #[doc = "Register `DPLLCTRL1` writer"]
-pub type W = crate::W<DPLLCTRL1_SPEC>;
+pub type W = crate::W<Dpllctrl1Spec>;
 #[doc = "Field `M` reader - Factor M"]
-pub type M_R = crate::FieldReader<u16>;
+pub type MR = crate::FieldReader<u16>;
 #[doc = "Field `M` writer - Factor M"]
-pub type M_W<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
+pub type MW<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
 #[doc = "Field `N` reader - Factor N"]
-pub type N_R = crate::FieldReader<u16>;
+pub type NR = crate::FieldReader<u16>;
 #[doc = "Field `N` writer - Factor N"]
-pub type N_W<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
+pub type NW<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
 impl R {
     #[doc = "Bits 0:11 - Factor M"]
     #[inline(always)]
-    pub fn m(&self) -> M_R {
-        M_R::new((self.bits & 0x0fff) as u16)
+    pub fn m(&self) -> MR {
+        MR::new((self.bits & 0x0fff) as u16)
     }
     #[doc = "Bits 16:27 - Factor N"]
     #[inline(always)]
-    pub fn n(&self) -> N_R {
-        N_R::new(((self.bits >> 16) & 0x0fff) as u16)
+    pub fn n(&self) -> NR {
+        NR::new(((self.bits >> 16) & 0x0fff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:11 - Factor M"]
     #[inline(always)]
-    #[must_use]
-    pub fn m(&mut self) -> M_W<DPLLCTRL1_SPEC> {
-        M_W::new(self, 0)
+    pub fn m(&mut self) -> MW<'_, Dpllctrl1Spec> {
+        MW::new(self, 0)
     }
     #[doc = "Bits 16:27 - Factor N"]
     #[inline(always)]
-    #[must_use]
-    pub fn n(&mut self) -> N_W<DPLLCTRL1_SPEC> {
-        N_W::new(self, 16)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn n(&mut self) -> NW<'_, Dpllctrl1Spec> {
+        NW::new(self, 16)
     }
 }
-#[doc = "DPLL Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`dpllctrl1::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`dpllctrl1::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct DPLLCTRL1_SPEC;
-impl crate::RegisterSpec for DPLLCTRL1_SPEC {
+#[doc = "DPLL Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`dpllctrl1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dpllctrl1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Dpllctrl1Spec;
+impl crate::RegisterSpec for Dpllctrl1Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`dpllctrl1::R`](R) reader structure"]
-impl crate::Readable for DPLLCTRL1_SPEC {}
+impl crate::Readable for Dpllctrl1Spec {}
 #[doc = "`write(|w| ..)` method takes [`dpllctrl1::W`](W) writer structure"]
-impl crate::Writable for DPLLCTRL1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Dpllctrl1Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets DPLLCTRL1 to value 0"]
-impl crate::Resettable for DPLLCTRL1_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Dpllctrl1Spec {}

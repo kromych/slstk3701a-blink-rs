@@ -1,7 +1,25 @@
 # Example applications for SLSTK3701A
 
-This example shows how to log via RTT and blink an LED on
-[the SLSTK3701A starter kit board](https://www.silabs.com/development-tools/mcu/32-bit/efm32gg11-starter-kit?tab=overview)
+Here are some examples for the
+[SLSTK3701A starter kit board](https://www.silabs.com/development-tools/mcu/32-bit/efm32gg11-starter-kit?tab=overview)
+
+Demo | Description
+-----|--------------------------
+[`adc-temp`](./demos/adc-temp) | internal temperature sensor
+[`blink`](./demos/blink) | blink
+[`blink-pb`](./demos/blink-pb) | blink with push buttons
+[`blink-systick`](./demos/blink-systick) | blink with SysTick
+[`eth-http`](./demos/eth-http) | Ethernet DHCP + HTTP demo
+[`lcd-counter`](./demos/lcd-counter) | RTC counter on JDI Color LCD
+[`lcd-hello`](./demos/lcd-hello) | JDI Color LCD hello demo
+[`space-invaders`](./demos/space-invaders) | Space Invaders on JDI Color LCD
+[`stopwatch`](./demos/stopwatch) | stopwatch with JDI Color LCD
+[`usb-audio`](./demos/usb-audio) | USB Audio synth demo
+[`usb-cdc`](./demos/usb-cdc) | USB CDC ACM serial port demo
+[`usb-hid`](./demos/usb-hid) | USB HID keyboard demo
+[`usb-midi`](./demos/usb-midi) | USB MIDI demo
+[`usb-msc`](./demos/usb-msc) | USB Mass Storage demo
+[`usb-video`](./demos/usb-video) | USB Video demo
 
 ## Prepare
 

@@ -1,59 +1,60 @@
 #[doc = "Register `CACHECONFIG0` reader"]
-pub type R = crate::R<CACHECONFIG0_SPEC>;
+pub type R = crate::R<Cacheconfig0Spec>;
 #[doc = "Register `CACHECONFIG0` writer"]
-pub type W = crate::W<CACHECONFIG0_SPEC>;
-#[doc = "Field `CACHELPLEVEL` reader - Instruction Cache Low-Power Level"]
-pub type CACHELPLEVEL_R = crate::FieldReader<CACHELPLEVEL_A>;
+pub type W = crate::W<Cacheconfig0Spec>;
 #[doc = "Instruction Cache Low-Power Level\n\nValue on reset: 3"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CACHELPLEVEL_A {
+pub enum Cachelplevel {
     #[doc = "0: Base instruction cache functionality."]
-    BASE = 0,
+    Base = 0,
     #[doc = "1: Advanced buffering mode, where the cache uses the fetch pattern to predict highly accessed data and store it in low-energy memory."]
-    ADVANCED = 1,
+    Advanced = 1,
     #[doc = "3: Minimum activity mode, which allows the cache to minimize activity in logic that it predicts has a low probability being used. This mode can introduce wait-states into the instruction fetch stream when the cache exits one of its low-activity states. The number of wait-states introduced is small, but users running with 0-wait-state memory and wishing to reduce the variability that the cache might introduce with additional wait-states may wish to lower the cache low-power level. Note, this mode includes the advanced buffering mode functionality."]
-    MINACTIVITY = 3,
+    Minactivity = 3,
 }
-impl From<CACHELPLEVEL_A> for u8 {
+impl From<Cachelplevel> for u8 {
     #[inline(always)]
-    fn from(variant: CACHELPLEVEL_A) -> Self {
+    fn from(variant: Cachelplevel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CACHELPLEVEL_A {
+impl crate::FieldSpec for Cachelplevel {
     type Ux = u8;
 }
-impl CACHELPLEVEL_R {
+impl crate::IsEnum for Cachelplevel {}
+#[doc = "Field `CACHELPLEVEL` reader - Instruction Cache Low-Power Level"]
+pub type CachelplevelR = crate::FieldReader<Cachelplevel>;
+impl CachelplevelR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<CACHELPLEVEL_A> {
+    pub const fn variant(&self) -> Option<Cachelplevel> {
         match self.bits {
-            0 => Some(CACHELPLEVEL_A::BASE),
-            1 => Some(CACHELPLEVEL_A::ADVANCED),
-            3 => Some(CACHELPLEVEL_A::MINACTIVITY),
+            0 => Some(Cachelplevel::Base),
+            1 => Some(Cachelplevel::Advanced),
+            3 => Some(Cachelplevel::Minactivity),
             _ => None,
         }
     }
     #[doc = "Base instruction cache functionality."]
     #[inline(always)]
     pub fn is_base(&self) -> bool {
-        *self == CACHELPLEVEL_A::BASE
+        *self == Cachelplevel::Base
     }
     #[doc = "Advanced buffering mode, where the cache uses the fetch pattern to predict highly accessed data and store it in low-energy memory."]
     #[inline(always)]
     pub fn is_advanced(&self) -> bool {
-        *self == CACHELPLEVEL_A::ADVANCED
+        *self == Cachelplevel::Advanced
     }
     #[doc = "Minimum activity mode, which allows the cache to minimize activity in logic that it predicts has a low probability being used. This mode can introduce wait-states into the instruction fetch stream when the cache exits one of its low-activity states. The number of wait-states introduced is small, but users running with 0-wait-state memory and wishing to reduce the variability that the cache might introduce with additional wait-states may wish to lower the cache low-power level. Note, this mode includes the advanced buffering mode functionality."]
     #[inline(always)]
     pub fn is_minactivity(&self) -> bool {
-        *self == CACHELPLEVEL_A::MINACTIVITY
+        *self == Cachelplevel::Minactivity
     }
 }
 #[doc = "Field `CACHELPLEVEL` writer - Instruction Cache Low-Power Level"]
-pub type CACHELPLEVEL_W<'a, REG> = crate::FieldWriter<'a, REG, 2, CACHELPLEVEL_A>;
-impl<'a, REG> CACHELPLEVEL_W<'a, REG>
+pub type CachelplevelW<'a, REG> = crate::FieldWriter<'a, REG, 2, Cachelplevel>;
+impl<'a, REG> CachelplevelW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -61,57 +62,45 @@ where
     #[doc = "Base instruction cache functionality."]
     #[inline(always)]
     pub fn base(self) -> &'a mut crate::W<REG> {
-        self.variant(CACHELPLEVEL_A::BASE)
+        self.variant(Cachelplevel::Base)
     }
     #[doc = "Advanced buffering mode, where the cache uses the fetch pattern to predict highly accessed data and store it in low-energy memory."]
     #[inline(always)]
     pub fn advanced(self) -> &'a mut crate::W<REG> {
-        self.variant(CACHELPLEVEL_A::ADVANCED)
+        self.variant(Cachelplevel::Advanced)
     }
     #[doc = "Minimum activity mode, which allows the cache to minimize activity in logic that it predicts has a low probability being used. This mode can introduce wait-states into the instruction fetch stream when the cache exits one of its low-activity states. The number of wait-states introduced is small, but users running with 0-wait-state memory and wishing to reduce the variability that the cache might introduce with additional wait-states may wish to lower the cache low-power level. Note, this mode includes the advanced buffering mode functionality."]
     #[inline(always)]
     pub fn minactivity(self) -> &'a mut crate::W<REG> {
-        self.variant(CACHELPLEVEL_A::MINACTIVITY)
+        self.variant(Cachelplevel::Minactivity)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Instruction Cache Low-Power Level"]
     #[inline(always)]
-    pub fn cachelplevel(&self) -> CACHELPLEVEL_R {
-        CACHELPLEVEL_R::new((self.bits & 3) as u8)
+    pub fn cachelplevel(&self) -> CachelplevelR {
+        CachelplevelR::new((self.bits & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Instruction Cache Low-Power Level"]
     #[inline(always)]
-    #[must_use]
-    pub fn cachelplevel(&mut self) -> CACHELPLEVEL_W<CACHECONFIG0_SPEC> {
-        CACHELPLEVEL_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn cachelplevel(&mut self) -> CachelplevelW<'_, Cacheconfig0Spec> {
+        CachelplevelW::new(self, 0)
     }
 }
-#[doc = "Cache Configuration Register 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`cacheconfig0::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`cacheconfig0::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CACHECONFIG0_SPEC;
-impl crate::RegisterSpec for CACHECONFIG0_SPEC {
+#[doc = "Cache Configuration Register 0\n\nYou can [`read`](crate::Reg::read) this register and get [`cacheconfig0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cacheconfig0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Cacheconfig0Spec;
+impl crate::RegisterSpec for Cacheconfig0Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`cacheconfig0::R`](R) reader structure"]
-impl crate::Readable for CACHECONFIG0_SPEC {}
+impl crate::Readable for Cacheconfig0Spec {}
 #[doc = "`write(|w| ..)` method takes [`cacheconfig0::W`](W) writer structure"]
-impl crate::Writable for CACHECONFIG0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Cacheconfig0Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets CACHECONFIG0 to value 0x03"]
-impl crate::Resettable for CACHECONFIG0_SPEC {
+impl crate::Resettable for Cacheconfig0Spec {
     const RESET_VALUE: u32 = 0x03;
 }

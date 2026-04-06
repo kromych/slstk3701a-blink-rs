@@ -1,59 +1,60 @@
 #[doc = "Register `CTRL` reader"]
-pub type R = crate::R<CTRL_SPEC>;
+pub type R = crate::R<CtrlSpec>;
 #[doc = "Register `CTRL` writer"]
-pub type W = crate::W<CTRL_SPEC>;
-#[doc = "Field `SCANMODE` reader - Configure Scan Mode"]
-pub type SCANMODE_R = crate::FieldReader<SCANMODE_A>;
+pub type W = crate::W<CtrlSpec>;
 #[doc = "Configure Scan Mode\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SCANMODE_A {
+pub enum Scanmode {
     #[doc = "0: A new scan is started each time the period counter overflows"]
-    PERIODIC = 0,
+    Periodic = 0,
     #[doc = "1: A single scan is performed when START in CMD is set"]
-    ONESHOT = 1,
+    Oneshot = 1,
     #[doc = "2: Pulse on PRS channel"]
-    PRS = 2,
+    Prs = 2,
 }
-impl From<SCANMODE_A> for u8 {
+impl From<Scanmode> for u8 {
     #[inline(always)]
-    fn from(variant: SCANMODE_A) -> Self {
+    fn from(variant: Scanmode) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for SCANMODE_A {
+impl crate::FieldSpec for Scanmode {
     type Ux = u8;
 }
-impl SCANMODE_R {
+impl crate::IsEnum for Scanmode {}
+#[doc = "Field `SCANMODE` reader - Configure Scan Mode"]
+pub type ScanmodeR = crate::FieldReader<Scanmode>;
+impl ScanmodeR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<SCANMODE_A> {
+    pub const fn variant(&self) -> Option<Scanmode> {
         match self.bits {
-            0 => Some(SCANMODE_A::PERIODIC),
-            1 => Some(SCANMODE_A::ONESHOT),
-            2 => Some(SCANMODE_A::PRS),
+            0 => Some(Scanmode::Periodic),
+            1 => Some(Scanmode::Oneshot),
+            2 => Some(Scanmode::Prs),
             _ => None,
         }
     }
     #[doc = "A new scan is started each time the period counter overflows"]
     #[inline(always)]
     pub fn is_periodic(&self) -> bool {
-        *self == SCANMODE_A::PERIODIC
+        *self == Scanmode::Periodic
     }
     #[doc = "A single scan is performed when START in CMD is set"]
     #[inline(always)]
     pub fn is_oneshot(&self) -> bool {
-        *self == SCANMODE_A::ONESHOT
+        *self == Scanmode::Oneshot
     }
     #[doc = "Pulse on PRS channel"]
     #[inline(always)]
     pub fn is_prs(&self) -> bool {
-        *self == SCANMODE_A::PRS
+        *self == Scanmode::Prs
     }
 }
 #[doc = "Field `SCANMODE` writer - Configure Scan Mode"]
-pub type SCANMODE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, SCANMODE_A>;
-impl<'a, REG> SCANMODE_W<'a, REG>
+pub type ScanmodeW<'a, REG> = crate::FieldWriter<'a, REG, 2, Scanmode>;
+impl<'a, REG> ScanmodeW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -61,239 +62,240 @@ where
     #[doc = "A new scan is started each time the period counter overflows"]
     #[inline(always)]
     pub fn periodic(self) -> &'a mut crate::W<REG> {
-        self.variant(SCANMODE_A::PERIODIC)
+        self.variant(Scanmode::Periodic)
     }
     #[doc = "A single scan is performed when START in CMD is set"]
     #[inline(always)]
     pub fn oneshot(self) -> &'a mut crate::W<REG> {
-        self.variant(SCANMODE_A::ONESHOT)
+        self.variant(Scanmode::Oneshot)
     }
     #[doc = "Pulse on PRS channel"]
     #[inline(always)]
     pub fn prs(self) -> &'a mut crate::W<REG> {
-        self.variant(SCANMODE_A::PRS)
+        self.variant(Scanmode::Prs)
     }
 }
-#[doc = "Field `PRSSEL` reader - Scan Start PRS Select"]
-pub type PRSSEL_R = crate::FieldReader<PRSSEL_A>;
 #[doc = "Scan Start PRS Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum PRSSEL_A {
+pub enum Prssel {
     #[doc = "0: PRS Channel 0 selected as input"]
-    PRSCH0 = 0,
+    Prsch0 = 0,
     #[doc = "1: PRS Channel 1 selected as input"]
-    PRSCH1 = 1,
+    Prsch1 = 1,
     #[doc = "2: PRS Channel 2 selected as input"]
-    PRSCH2 = 2,
+    Prsch2 = 2,
     #[doc = "3: PRS Channel 3 selected as input"]
-    PRSCH3 = 3,
+    Prsch3 = 3,
     #[doc = "4: PRS Channel 4 selected as input"]
-    PRSCH4 = 4,
+    Prsch4 = 4,
     #[doc = "5: PRS Channel 5 selected as input"]
-    PRSCH5 = 5,
+    Prsch5 = 5,
     #[doc = "6: PRS Channel 6 selected as input"]
-    PRSCH6 = 6,
+    Prsch6 = 6,
     #[doc = "7: PRS Channel 7 selected as input"]
-    PRSCH7 = 7,
+    Prsch7 = 7,
     #[doc = "8: PRS Channel 8 selected as input"]
-    PRSCH8 = 8,
+    Prsch8 = 8,
     #[doc = "9: PRS Channel 9 selected as input"]
-    PRSCH9 = 9,
+    Prsch9 = 9,
     #[doc = "10: PRS Channel 10 selected as input"]
-    PRSCH10 = 10,
+    Prsch10 = 10,
     #[doc = "11: PRS Channel 11 selected as input"]
-    PRSCH11 = 11,
+    Prsch11 = 11,
     #[doc = "12: PRS Channel 12 selected as input"]
-    PRSCH12 = 12,
+    Prsch12 = 12,
     #[doc = "13: PRS Channel 13 selected as input"]
-    PRSCH13 = 13,
+    Prsch13 = 13,
     #[doc = "14: PRS Channel 14 selected as input"]
-    PRSCH14 = 14,
+    Prsch14 = 14,
     #[doc = "15: PRS Channel 15 selected as input"]
-    PRSCH15 = 15,
+    Prsch15 = 15,
     #[doc = "16: PRS Channel 16 selected as input"]
-    PRSCH16 = 16,
+    Prsch16 = 16,
     #[doc = "17: PRS Channel 17 selected as input"]
-    PRSCH17 = 17,
+    Prsch17 = 17,
     #[doc = "18: PRS Channel 18 selected as input"]
-    PRSCH18 = 18,
+    Prsch18 = 18,
     #[doc = "19: PRS Channel 19 selected as input"]
-    PRSCH19 = 19,
+    Prsch19 = 19,
     #[doc = "20: PRS Channel 20 selected as input"]
-    PRSCH20 = 20,
+    Prsch20 = 20,
     #[doc = "21: PRS Channel 21 selected as input"]
-    PRSCH21 = 21,
+    Prsch21 = 21,
     #[doc = "22: PRS Channel 22 selected as input"]
-    PRSCH22 = 22,
+    Prsch22 = 22,
     #[doc = "23: PRS Channel 23 selected as input"]
-    PRSCH23 = 23,
+    Prsch23 = 23,
 }
-impl From<PRSSEL_A> for u8 {
+impl From<Prssel> for u8 {
     #[inline(always)]
-    fn from(variant: PRSSEL_A) -> Self {
+    fn from(variant: Prssel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for PRSSEL_A {
+impl crate::FieldSpec for Prssel {
     type Ux = u8;
 }
-impl PRSSEL_R {
+impl crate::IsEnum for Prssel {}
+#[doc = "Field `PRSSEL` reader - Scan Start PRS Select"]
+pub type PrsselR = crate::FieldReader<Prssel>;
+impl PrsselR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<PRSSEL_A> {
+    pub const fn variant(&self) -> Option<Prssel> {
         match self.bits {
-            0 => Some(PRSSEL_A::PRSCH0),
-            1 => Some(PRSSEL_A::PRSCH1),
-            2 => Some(PRSSEL_A::PRSCH2),
-            3 => Some(PRSSEL_A::PRSCH3),
-            4 => Some(PRSSEL_A::PRSCH4),
-            5 => Some(PRSSEL_A::PRSCH5),
-            6 => Some(PRSSEL_A::PRSCH6),
-            7 => Some(PRSSEL_A::PRSCH7),
-            8 => Some(PRSSEL_A::PRSCH8),
-            9 => Some(PRSSEL_A::PRSCH9),
-            10 => Some(PRSSEL_A::PRSCH10),
-            11 => Some(PRSSEL_A::PRSCH11),
-            12 => Some(PRSSEL_A::PRSCH12),
-            13 => Some(PRSSEL_A::PRSCH13),
-            14 => Some(PRSSEL_A::PRSCH14),
-            15 => Some(PRSSEL_A::PRSCH15),
-            16 => Some(PRSSEL_A::PRSCH16),
-            17 => Some(PRSSEL_A::PRSCH17),
-            18 => Some(PRSSEL_A::PRSCH18),
-            19 => Some(PRSSEL_A::PRSCH19),
-            20 => Some(PRSSEL_A::PRSCH20),
-            21 => Some(PRSSEL_A::PRSCH21),
-            22 => Some(PRSSEL_A::PRSCH22),
-            23 => Some(PRSSEL_A::PRSCH23),
+            0 => Some(Prssel::Prsch0),
+            1 => Some(Prssel::Prsch1),
+            2 => Some(Prssel::Prsch2),
+            3 => Some(Prssel::Prsch3),
+            4 => Some(Prssel::Prsch4),
+            5 => Some(Prssel::Prsch5),
+            6 => Some(Prssel::Prsch6),
+            7 => Some(Prssel::Prsch7),
+            8 => Some(Prssel::Prsch8),
+            9 => Some(Prssel::Prsch9),
+            10 => Some(Prssel::Prsch10),
+            11 => Some(Prssel::Prsch11),
+            12 => Some(Prssel::Prsch12),
+            13 => Some(Prssel::Prsch13),
+            14 => Some(Prssel::Prsch14),
+            15 => Some(Prssel::Prsch15),
+            16 => Some(Prssel::Prsch16),
+            17 => Some(Prssel::Prsch17),
+            18 => Some(Prssel::Prsch18),
+            19 => Some(Prssel::Prsch19),
+            20 => Some(Prssel::Prsch20),
+            21 => Some(Prssel::Prsch21),
+            22 => Some(Prssel::Prsch22),
+            23 => Some(Prssel::Prsch23),
             _ => None,
         }
     }
     #[doc = "PRS Channel 0 selected as input"]
     #[inline(always)]
     pub fn is_prsch0(&self) -> bool {
-        *self == PRSSEL_A::PRSCH0
+        *self == Prssel::Prsch0
     }
     #[doc = "PRS Channel 1 selected as input"]
     #[inline(always)]
     pub fn is_prsch1(&self) -> bool {
-        *self == PRSSEL_A::PRSCH1
+        *self == Prssel::Prsch1
     }
     #[doc = "PRS Channel 2 selected as input"]
     #[inline(always)]
     pub fn is_prsch2(&self) -> bool {
-        *self == PRSSEL_A::PRSCH2
+        *self == Prssel::Prsch2
     }
     #[doc = "PRS Channel 3 selected as input"]
     #[inline(always)]
     pub fn is_prsch3(&self) -> bool {
-        *self == PRSSEL_A::PRSCH3
+        *self == Prssel::Prsch3
     }
     #[doc = "PRS Channel 4 selected as input"]
     #[inline(always)]
     pub fn is_prsch4(&self) -> bool {
-        *self == PRSSEL_A::PRSCH4
+        *self == Prssel::Prsch4
     }
     #[doc = "PRS Channel 5 selected as input"]
     #[inline(always)]
     pub fn is_prsch5(&self) -> bool {
-        *self == PRSSEL_A::PRSCH5
+        *self == Prssel::Prsch5
     }
     #[doc = "PRS Channel 6 selected as input"]
     #[inline(always)]
     pub fn is_prsch6(&self) -> bool {
-        *self == PRSSEL_A::PRSCH6
+        *self == Prssel::Prsch6
     }
     #[doc = "PRS Channel 7 selected as input"]
     #[inline(always)]
     pub fn is_prsch7(&self) -> bool {
-        *self == PRSSEL_A::PRSCH7
+        *self == Prssel::Prsch7
     }
     #[doc = "PRS Channel 8 selected as input"]
     #[inline(always)]
     pub fn is_prsch8(&self) -> bool {
-        *self == PRSSEL_A::PRSCH8
+        *self == Prssel::Prsch8
     }
     #[doc = "PRS Channel 9 selected as input"]
     #[inline(always)]
     pub fn is_prsch9(&self) -> bool {
-        *self == PRSSEL_A::PRSCH9
+        *self == Prssel::Prsch9
     }
     #[doc = "PRS Channel 10 selected as input"]
     #[inline(always)]
     pub fn is_prsch10(&self) -> bool {
-        *self == PRSSEL_A::PRSCH10
+        *self == Prssel::Prsch10
     }
     #[doc = "PRS Channel 11 selected as input"]
     #[inline(always)]
     pub fn is_prsch11(&self) -> bool {
-        *self == PRSSEL_A::PRSCH11
+        *self == Prssel::Prsch11
     }
     #[doc = "PRS Channel 12 selected as input"]
     #[inline(always)]
     pub fn is_prsch12(&self) -> bool {
-        *self == PRSSEL_A::PRSCH12
+        *self == Prssel::Prsch12
     }
     #[doc = "PRS Channel 13 selected as input"]
     #[inline(always)]
     pub fn is_prsch13(&self) -> bool {
-        *self == PRSSEL_A::PRSCH13
+        *self == Prssel::Prsch13
     }
     #[doc = "PRS Channel 14 selected as input"]
     #[inline(always)]
     pub fn is_prsch14(&self) -> bool {
-        *self == PRSSEL_A::PRSCH14
+        *self == Prssel::Prsch14
     }
     #[doc = "PRS Channel 15 selected as input"]
     #[inline(always)]
     pub fn is_prsch15(&self) -> bool {
-        *self == PRSSEL_A::PRSCH15
+        *self == Prssel::Prsch15
     }
     #[doc = "PRS Channel 16 selected as input"]
     #[inline(always)]
     pub fn is_prsch16(&self) -> bool {
-        *self == PRSSEL_A::PRSCH16
+        *self == Prssel::Prsch16
     }
     #[doc = "PRS Channel 17 selected as input"]
     #[inline(always)]
     pub fn is_prsch17(&self) -> bool {
-        *self == PRSSEL_A::PRSCH17
+        *self == Prssel::Prsch17
     }
     #[doc = "PRS Channel 18 selected as input"]
     #[inline(always)]
     pub fn is_prsch18(&self) -> bool {
-        *self == PRSSEL_A::PRSCH18
+        *self == Prssel::Prsch18
     }
     #[doc = "PRS Channel 19 selected as input"]
     #[inline(always)]
     pub fn is_prsch19(&self) -> bool {
-        *self == PRSSEL_A::PRSCH19
+        *self == Prssel::Prsch19
     }
     #[doc = "PRS Channel 20 selected as input"]
     #[inline(always)]
     pub fn is_prsch20(&self) -> bool {
-        *self == PRSSEL_A::PRSCH20
+        *self == Prssel::Prsch20
     }
     #[doc = "PRS Channel 21 selected as input"]
     #[inline(always)]
     pub fn is_prsch21(&self) -> bool {
-        *self == PRSSEL_A::PRSCH21
+        *self == Prssel::Prsch21
     }
     #[doc = "PRS Channel 22 selected as input"]
     #[inline(always)]
     pub fn is_prsch22(&self) -> bool {
-        *self == PRSSEL_A::PRSCH22
+        *self == Prssel::Prsch22
     }
     #[doc = "PRS Channel 23 selected as input"]
     #[inline(always)]
     pub fn is_prsch23(&self) -> bool {
-        *self == PRSSEL_A::PRSCH23
+        *self == Prssel::Prsch23
     }
 }
 #[doc = "Field `PRSSEL` writer - Scan Start PRS Select"]
-pub type PRSSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSSEL_A>;
-impl<'a, REG> PRSSEL_W<'a, REG>
+pub type PrsselW<'a, REG> = crate::FieldWriter<'a, REG, 5, Prssel>;
+impl<'a, REG> PrsselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -301,184 +303,185 @@ where
     #[doc = "PRS Channel 0 selected as input"]
     #[inline(always)]
     pub fn prsch0(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH0)
+        self.variant(Prssel::Prsch0)
     }
     #[doc = "PRS Channel 1 selected as input"]
     #[inline(always)]
     pub fn prsch1(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH1)
+        self.variant(Prssel::Prsch1)
     }
     #[doc = "PRS Channel 2 selected as input"]
     #[inline(always)]
     pub fn prsch2(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH2)
+        self.variant(Prssel::Prsch2)
     }
     #[doc = "PRS Channel 3 selected as input"]
     #[inline(always)]
     pub fn prsch3(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH3)
+        self.variant(Prssel::Prsch3)
     }
     #[doc = "PRS Channel 4 selected as input"]
     #[inline(always)]
     pub fn prsch4(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH4)
+        self.variant(Prssel::Prsch4)
     }
     #[doc = "PRS Channel 5 selected as input"]
     #[inline(always)]
     pub fn prsch5(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH5)
+        self.variant(Prssel::Prsch5)
     }
     #[doc = "PRS Channel 6 selected as input"]
     #[inline(always)]
     pub fn prsch6(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH6)
+        self.variant(Prssel::Prsch6)
     }
     #[doc = "PRS Channel 7 selected as input"]
     #[inline(always)]
     pub fn prsch7(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH7)
+        self.variant(Prssel::Prsch7)
     }
     #[doc = "PRS Channel 8 selected as input"]
     #[inline(always)]
     pub fn prsch8(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH8)
+        self.variant(Prssel::Prsch8)
     }
     #[doc = "PRS Channel 9 selected as input"]
     #[inline(always)]
     pub fn prsch9(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH9)
+        self.variant(Prssel::Prsch9)
     }
     #[doc = "PRS Channel 10 selected as input"]
     #[inline(always)]
     pub fn prsch10(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH10)
+        self.variant(Prssel::Prsch10)
     }
     #[doc = "PRS Channel 11 selected as input"]
     #[inline(always)]
     pub fn prsch11(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH11)
+        self.variant(Prssel::Prsch11)
     }
     #[doc = "PRS Channel 12 selected as input"]
     #[inline(always)]
     pub fn prsch12(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH12)
+        self.variant(Prssel::Prsch12)
     }
     #[doc = "PRS Channel 13 selected as input"]
     #[inline(always)]
     pub fn prsch13(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH13)
+        self.variant(Prssel::Prsch13)
     }
     #[doc = "PRS Channel 14 selected as input"]
     #[inline(always)]
     pub fn prsch14(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH14)
+        self.variant(Prssel::Prsch14)
     }
     #[doc = "PRS Channel 15 selected as input"]
     #[inline(always)]
     pub fn prsch15(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH15)
+        self.variant(Prssel::Prsch15)
     }
     #[doc = "PRS Channel 16 selected as input"]
     #[inline(always)]
     pub fn prsch16(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH16)
+        self.variant(Prssel::Prsch16)
     }
     #[doc = "PRS Channel 17 selected as input"]
     #[inline(always)]
     pub fn prsch17(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH17)
+        self.variant(Prssel::Prsch17)
     }
     #[doc = "PRS Channel 18 selected as input"]
     #[inline(always)]
     pub fn prsch18(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH18)
+        self.variant(Prssel::Prsch18)
     }
     #[doc = "PRS Channel 19 selected as input"]
     #[inline(always)]
     pub fn prsch19(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH19)
+        self.variant(Prssel::Prsch19)
     }
     #[doc = "PRS Channel 20 selected as input"]
     #[inline(always)]
     pub fn prsch20(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH20)
+        self.variant(Prssel::Prsch20)
     }
     #[doc = "PRS Channel 21 selected as input"]
     #[inline(always)]
     pub fn prsch21(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH21)
+        self.variant(Prssel::Prsch21)
     }
     #[doc = "PRS Channel 22 selected as input"]
     #[inline(always)]
     pub fn prsch22(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH22)
+        self.variant(Prssel::Prsch22)
     }
     #[doc = "PRS Channel 23 selected as input"]
     #[inline(always)]
     pub fn prsch23(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSSEL_A::PRSCH23)
+        self.variant(Prssel::Prsch23)
     }
 }
-#[doc = "Field `SCANCONF` reader - Select Scan Configuration"]
-pub type SCANCONF_R = crate::FieldReader<SCANCONF_A>;
 #[doc = "Select Scan Configuration\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SCANCONF_A {
+pub enum Scanconf {
     #[doc = "0: The channel configuration register registers used are directly mapped to the channel number."]
-    DIRMAP = 0,
+    Dirmap = 0,
     #[doc = "1: The channel configuration register registers used are CHX+8_CONF for channels 0-7 and CHX-8_CONF for channels 8-15."]
-    INVMAP = 1,
+    Invmap = 1,
     #[doc = "2: The channel configuration register registers used toggles between CHX_CONF and CHX+8_CONF when channel x triggers"]
-    TOGGLE = 2,
+    Toggle = 2,
     #[doc = "3: The decoder state defines the CONF registers to be used."]
-    DECDEF = 3,
+    Decdef = 3,
 }
-impl From<SCANCONF_A> for u8 {
+impl From<Scanconf> for u8 {
     #[inline(always)]
-    fn from(variant: SCANCONF_A) -> Self {
+    fn from(variant: Scanconf) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for SCANCONF_A {
+impl crate::FieldSpec for Scanconf {
     type Ux = u8;
 }
-impl SCANCONF_R {
+impl crate::IsEnum for Scanconf {}
+#[doc = "Field `SCANCONF` reader - Select Scan Configuration"]
+pub type ScanconfR = crate::FieldReader<Scanconf>;
+impl ScanconfR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> SCANCONF_A {
+    pub const fn variant(&self) -> Scanconf {
         match self.bits {
-            0 => SCANCONF_A::DIRMAP,
-            1 => SCANCONF_A::INVMAP,
-            2 => SCANCONF_A::TOGGLE,
-            3 => SCANCONF_A::DECDEF,
+            0 => Scanconf::Dirmap,
+            1 => Scanconf::Invmap,
+            2 => Scanconf::Toggle,
+            3 => Scanconf::Decdef,
             _ => unreachable!(),
         }
     }
     #[doc = "The channel configuration register registers used are directly mapped to the channel number."]
     #[inline(always)]
     pub fn is_dirmap(&self) -> bool {
-        *self == SCANCONF_A::DIRMAP
+        *self == Scanconf::Dirmap
     }
     #[doc = "The channel configuration register registers used are CHX+8_CONF for channels 0-7 and CHX-8_CONF for channels 8-15."]
     #[inline(always)]
     pub fn is_invmap(&self) -> bool {
-        *self == SCANCONF_A::INVMAP
+        *self == Scanconf::Invmap
     }
     #[doc = "The channel configuration register registers used toggles between CHX_CONF and CHX+8_CONF when channel x triggers"]
     #[inline(always)]
     pub fn is_toggle(&self) -> bool {
-        *self == SCANCONF_A::TOGGLE
+        *self == Scanconf::Toggle
     }
     #[doc = "The decoder state defines the CONF registers to be used."]
     #[inline(always)]
     pub fn is_decdef(&self) -> bool {
-        *self == SCANCONF_A::DECDEF
+        *self == Scanconf::Decdef
     }
 }
 #[doc = "Field `SCANCONF` writer - Select Scan Configuration"]
-pub type SCANCONF_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, SCANCONF_A>;
-impl<'a, REG> SCANCONF_W<'a, REG>
+pub type ScanconfW<'a, REG> = crate::FieldWriter<'a, REG, 2, Scanconf, crate::Safe>;
+impl<'a, REG> ScanconfW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -486,96 +489,97 @@ where
     #[doc = "The channel configuration register registers used are directly mapped to the channel number."]
     #[inline(always)]
     pub fn dirmap(self) -> &'a mut crate::W<REG> {
-        self.variant(SCANCONF_A::DIRMAP)
+        self.variant(Scanconf::Dirmap)
     }
     #[doc = "The channel configuration register registers used are CHX+8_CONF for channels 0-7 and CHX-8_CONF for channels 8-15."]
     #[inline(always)]
     pub fn invmap(self) -> &'a mut crate::W<REG> {
-        self.variant(SCANCONF_A::INVMAP)
+        self.variant(Scanconf::Invmap)
     }
     #[doc = "The channel configuration register registers used toggles between CHX_CONF and CHX+8_CONF when channel x triggers"]
     #[inline(always)]
     pub fn toggle(self) -> &'a mut crate::W<REG> {
-        self.variant(SCANCONF_A::TOGGLE)
+        self.variant(Scanconf::Toggle)
     }
     #[doc = "The decoder state defines the CONF registers to be used."]
     #[inline(always)]
     pub fn decdef(self) -> &'a mut crate::W<REG> {
-        self.variant(SCANCONF_A::DECDEF)
+        self.variant(Scanconf::Decdef)
     }
 }
 #[doc = "Field `ALTEXMAP` reader - Alternative Excitation Map"]
-pub type ALTEXMAP_R = crate::BitReader;
+pub type AltexmapR = crate::BitReader;
 #[doc = "Field `ALTEXMAP` writer - Alternative Excitation Map"]
-pub type ALTEXMAP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type AltexmapW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DUALSAMPLE` reader - Enable Dual Sample Mode"]
-pub type DUALSAMPLE_R = crate::BitReader;
+pub type DualsampleR = crate::BitReader;
 #[doc = "Field `DUALSAMPLE` writer - Enable Dual Sample Mode"]
-pub type DUALSAMPLE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DualsampleW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BUFOW` reader - Result Buffer Overwrite"]
-pub type BUFOW_R = crate::BitReader;
+pub type BufowR = crate::BitReader;
 #[doc = "Field `BUFOW` writer - Result Buffer Overwrite"]
-pub type BUFOW_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type BufowW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STRSCANRES` reader - Enable Storing of SCANRES"]
-pub type STRSCANRES_R = crate::BitReader;
+pub type StrscanresR = crate::BitReader;
 #[doc = "Field `STRSCANRES` writer - Enable Storing of SCANRES"]
-pub type STRSCANRES_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type StrscanresW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BUFIDL` reader - Result Buffer Interrupt and DMA Trigger Level"]
-pub type BUFIDL_R = crate::BitReader;
+pub type BufidlR = crate::BitReader;
 #[doc = "Field `BUFIDL` writer - Result Buffer Interrupt and DMA Trigger Level"]
-pub type BUFIDL_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `DMAWU` reader - DMA Wake-up From EM2"]
-pub type DMAWU_R = crate::FieldReader<DMAWU_A>;
+pub type BufidlW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "DMA Wake-up From EM2\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum DMAWU_A {
+pub enum Dmawu {
     #[doc = "0: No DMA wake-up from EM2"]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: DMA wake-up from EM2 when data is valid in the result buffer"]
-    BUFDATAV = 1,
+    Bufdatav = 1,
     #[doc = "2: DMA wake-up from EM2 when the result buffer is full/half-full depending on BUFIDL configuration"]
-    BUFLEVEL = 2,
+    Buflevel = 2,
 }
-impl From<DMAWU_A> for u8 {
+impl From<Dmawu> for u8 {
     #[inline(always)]
-    fn from(variant: DMAWU_A) -> Self {
+    fn from(variant: Dmawu) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for DMAWU_A {
+impl crate::FieldSpec for Dmawu {
     type Ux = u8;
 }
-impl DMAWU_R {
+impl crate::IsEnum for Dmawu {}
+#[doc = "Field `DMAWU` reader - DMA Wake-up From EM2"]
+pub type DmawuR = crate::FieldReader<Dmawu>;
+impl DmawuR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<DMAWU_A> {
+    pub const fn variant(&self) -> Option<Dmawu> {
         match self.bits {
-            0 => Some(DMAWU_A::DISABLE),
-            1 => Some(DMAWU_A::BUFDATAV),
-            2 => Some(DMAWU_A::BUFLEVEL),
+            0 => Some(Dmawu::Disable),
+            1 => Some(Dmawu::Bufdatav),
+            2 => Some(Dmawu::Buflevel),
             _ => None,
         }
     }
     #[doc = "No DMA wake-up from EM2"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == DMAWU_A::DISABLE
+        *self == Dmawu::Disable
     }
     #[doc = "DMA wake-up from EM2 when data is valid in the result buffer"]
     #[inline(always)]
     pub fn is_bufdatav(&self) -> bool {
-        *self == DMAWU_A::BUFDATAV
+        *self == Dmawu::Bufdatav
     }
     #[doc = "DMA wake-up from EM2 when the result buffer is full/half-full depending on BUFIDL configuration"]
     #[inline(always)]
     pub fn is_buflevel(&self) -> bool {
-        *self == DMAWU_A::BUFLEVEL
+        *self == Dmawu::Buflevel
     }
 }
 #[doc = "Field `DMAWU` writer - DMA Wake-up From EM2"]
-pub type DMAWU_W<'a, REG> = crate::FieldWriter<'a, REG, 2, DMAWU_A>;
-impl<'a, REG> DMAWU_W<'a, REG>
+pub type DmawuW<'a, REG> = crate::FieldWriter<'a, REG, 2, Dmawu>;
+impl<'a, REG> DmawuW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -583,160 +587,137 @@ where
     #[doc = "No DMA wake-up from EM2"]
     #[inline(always)]
     pub fn disable(self) -> &'a mut crate::W<REG> {
-        self.variant(DMAWU_A::DISABLE)
+        self.variant(Dmawu::Disable)
     }
     #[doc = "DMA wake-up from EM2 when data is valid in the result buffer"]
     #[inline(always)]
     pub fn bufdatav(self) -> &'a mut crate::W<REG> {
-        self.variant(DMAWU_A::BUFDATAV)
+        self.variant(Dmawu::Bufdatav)
     }
     #[doc = "DMA wake-up from EM2 when the result buffer is full/half-full depending on BUFIDL configuration"]
     #[inline(always)]
     pub fn buflevel(self) -> &'a mut crate::W<REG> {
-        self.variant(DMAWU_A::BUFLEVEL)
+        self.variant(Dmawu::Buflevel)
     }
 }
 #[doc = "Field `DEBUGRUN` reader - Debug Mode Run Enable"]
-pub type DEBUGRUN_R = crate::BitReader;
+pub type DebugrunR = crate::BitReader;
 #[doc = "Field `DEBUGRUN` writer - Debug Mode Run Enable"]
-pub type DEBUGRUN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DebugrunW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:1 - Configure Scan Mode"]
     #[inline(always)]
-    pub fn scanmode(&self) -> SCANMODE_R {
-        SCANMODE_R::new((self.bits & 3) as u8)
+    pub fn scanmode(&self) -> ScanmodeR {
+        ScanmodeR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 2:6 - Scan Start PRS Select"]
     #[inline(always)]
-    pub fn prssel(&self) -> PRSSEL_R {
-        PRSSEL_R::new(((self.bits >> 2) & 0x1f) as u8)
+    pub fn prssel(&self) -> PrsselR {
+        PrsselR::new(((self.bits >> 2) & 0x1f) as u8)
     }
     #[doc = "Bits 7:8 - Select Scan Configuration"]
     #[inline(always)]
-    pub fn scanconf(&self) -> SCANCONF_R {
-        SCANCONF_R::new(((self.bits >> 7) & 3) as u8)
+    pub fn scanconf(&self) -> ScanconfR {
+        ScanconfR::new(((self.bits >> 7) & 3) as u8)
     }
     #[doc = "Bit 11 - Alternative Excitation Map"]
     #[inline(always)]
-    pub fn altexmap(&self) -> ALTEXMAP_R {
-        ALTEXMAP_R::new(((self.bits >> 11) & 1) != 0)
+    pub fn altexmap(&self) -> AltexmapR {
+        AltexmapR::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 13 - Enable Dual Sample Mode"]
     #[inline(always)]
-    pub fn dualsample(&self) -> DUALSAMPLE_R {
-        DUALSAMPLE_R::new(((self.bits >> 13) & 1) != 0)
+    pub fn dualsample(&self) -> DualsampleR {
+        DualsampleR::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bit 16 - Result Buffer Overwrite"]
     #[inline(always)]
-    pub fn bufow(&self) -> BUFOW_R {
-        BUFOW_R::new(((self.bits >> 16) & 1) != 0)
+    pub fn bufow(&self) -> BufowR {
+        BufowR::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - Enable Storing of SCANRES"]
     #[inline(always)]
-    pub fn strscanres(&self) -> STRSCANRES_R {
-        STRSCANRES_R::new(((self.bits >> 17) & 1) != 0)
+    pub fn strscanres(&self) -> StrscanresR {
+        StrscanresR::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 19 - Result Buffer Interrupt and DMA Trigger Level"]
     #[inline(always)]
-    pub fn bufidl(&self) -> BUFIDL_R {
-        BUFIDL_R::new(((self.bits >> 19) & 1) != 0)
+    pub fn bufidl(&self) -> BufidlR {
+        BufidlR::new(((self.bits >> 19) & 1) != 0)
     }
     #[doc = "Bits 20:21 - DMA Wake-up From EM2"]
     #[inline(always)]
-    pub fn dmawu(&self) -> DMAWU_R {
-        DMAWU_R::new(((self.bits >> 20) & 3) as u8)
+    pub fn dmawu(&self) -> DmawuR {
+        DmawuR::new(((self.bits >> 20) & 3) as u8)
     }
     #[doc = "Bit 22 - Debug Mode Run Enable"]
     #[inline(always)]
-    pub fn debugrun(&self) -> DEBUGRUN_R {
-        DEBUGRUN_R::new(((self.bits >> 22) & 1) != 0)
+    pub fn debugrun(&self) -> DebugrunR {
+        DebugrunR::new(((self.bits >> 22) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Configure Scan Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn scanmode(&mut self) -> SCANMODE_W<CTRL_SPEC> {
-        SCANMODE_W::new(self, 0)
+    pub fn scanmode(&mut self) -> ScanmodeW<'_, CtrlSpec> {
+        ScanmodeW::new(self, 0)
     }
     #[doc = "Bits 2:6 - Scan Start PRS Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn prssel(&mut self) -> PRSSEL_W<CTRL_SPEC> {
-        PRSSEL_W::new(self, 2)
+    pub fn prssel(&mut self) -> PrsselW<'_, CtrlSpec> {
+        PrsselW::new(self, 2)
     }
     #[doc = "Bits 7:8 - Select Scan Configuration"]
     #[inline(always)]
-    #[must_use]
-    pub fn scanconf(&mut self) -> SCANCONF_W<CTRL_SPEC> {
-        SCANCONF_W::new(self, 7)
+    pub fn scanconf(&mut self) -> ScanconfW<'_, CtrlSpec> {
+        ScanconfW::new(self, 7)
     }
     #[doc = "Bit 11 - Alternative Excitation Map"]
     #[inline(always)]
-    #[must_use]
-    pub fn altexmap(&mut self) -> ALTEXMAP_W<CTRL_SPEC> {
-        ALTEXMAP_W::new(self, 11)
+    pub fn altexmap(&mut self) -> AltexmapW<'_, CtrlSpec> {
+        AltexmapW::new(self, 11)
     }
     #[doc = "Bit 13 - Enable Dual Sample Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn dualsample(&mut self) -> DUALSAMPLE_W<CTRL_SPEC> {
-        DUALSAMPLE_W::new(self, 13)
+    pub fn dualsample(&mut self) -> DualsampleW<'_, CtrlSpec> {
+        DualsampleW::new(self, 13)
     }
     #[doc = "Bit 16 - Result Buffer Overwrite"]
     #[inline(always)]
-    #[must_use]
-    pub fn bufow(&mut self) -> BUFOW_W<CTRL_SPEC> {
-        BUFOW_W::new(self, 16)
+    pub fn bufow(&mut self) -> BufowW<'_, CtrlSpec> {
+        BufowW::new(self, 16)
     }
     #[doc = "Bit 17 - Enable Storing of SCANRES"]
     #[inline(always)]
-    #[must_use]
-    pub fn strscanres(&mut self) -> STRSCANRES_W<CTRL_SPEC> {
-        STRSCANRES_W::new(self, 17)
+    pub fn strscanres(&mut self) -> StrscanresW<'_, CtrlSpec> {
+        StrscanresW::new(self, 17)
     }
     #[doc = "Bit 19 - Result Buffer Interrupt and DMA Trigger Level"]
     #[inline(always)]
-    #[must_use]
-    pub fn bufidl(&mut self) -> BUFIDL_W<CTRL_SPEC> {
-        BUFIDL_W::new(self, 19)
+    pub fn bufidl(&mut self) -> BufidlW<'_, CtrlSpec> {
+        BufidlW::new(self, 19)
     }
     #[doc = "Bits 20:21 - DMA Wake-up From EM2"]
     #[inline(always)]
-    #[must_use]
-    pub fn dmawu(&mut self) -> DMAWU_W<CTRL_SPEC> {
-        DMAWU_W::new(self, 20)
+    pub fn dmawu(&mut self) -> DmawuW<'_, CtrlSpec> {
+        DmawuW::new(self, 20)
     }
     #[doc = "Bit 22 - Debug Mode Run Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn debugrun(&mut self) -> DEBUGRUN_W<CTRL_SPEC> {
-        DEBUGRUN_W::new(self, 22)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn debugrun(&mut self) -> DebugrunW<'_, CtrlSpec> {
+        DebugrunW::new(self, 22)
     }
 }
-#[doc = "Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CTRL_SPEC;
-impl crate::RegisterSpec for CTRL_SPEC {
+#[doc = "Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CtrlSpec;
+impl crate::RegisterSpec for CtrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`ctrl::R`](R) reader structure"]
-impl crate::Readable for CTRL_SPEC {}
+impl crate::Readable for CtrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
-impl crate::Writable for CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for CtrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
-impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for CtrlSpec {}

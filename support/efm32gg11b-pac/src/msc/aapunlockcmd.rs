@@ -1,36 +1,22 @@
 #[doc = "Register `AAPUNLOCKCMD` writer"]
-pub type W = crate::W<AAPUNLOCKCMD_SPEC>;
+pub type W = crate::W<AapunlockcmdSpec>;
 #[doc = "Field `UNLOCKAAP` writer - Software Unlock AAP Command"]
-pub type UNLOCKAAP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type UnlockaapW<'a, REG> = crate::BitWriter<'a, REG>;
 impl W {
     #[doc = "Bit 0 - Software Unlock AAP Command"]
     #[inline(always)]
-    #[must_use]
-    pub fn unlockaap(&mut self) -> UNLOCKAAP_W<AAPUNLOCKCMD_SPEC> {
-        UNLOCKAAP_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn unlockaap(&mut self) -> UnlockaapW<'_, AapunlockcmdSpec> {
+        UnlockaapW::new(self, 0)
     }
 }
-#[doc = "Software Unlock AAP Command Register\n\nYou can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`aapunlockcmd::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct AAPUNLOCKCMD_SPEC;
-impl crate::RegisterSpec for AAPUNLOCKCMD_SPEC {
+#[doc = "Software Unlock AAP Command Register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`aapunlockcmd::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct AapunlockcmdSpec;
+impl crate::RegisterSpec for AapunlockcmdSpec {
     type Ux = u32;
 }
 #[doc = "`write(|w| ..)` method takes [`aapunlockcmd::W`](W) writer structure"]
-impl crate::Writable for AAPUNLOCKCMD_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for AapunlockcmdSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets AAPUNLOCKCMD to value 0"]
-impl crate::Resettable for AAPUNLOCKCMD_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for AapunlockcmdSpec {}

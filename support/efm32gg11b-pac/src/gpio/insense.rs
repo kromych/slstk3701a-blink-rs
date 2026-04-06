@@ -1,64 +1,51 @@
 #[doc = "Register `INSENSE` reader"]
-pub type R = crate::R<INSENSE_SPEC>;
+pub type R = crate::R<InsenseSpec>;
 #[doc = "Register `INSENSE` writer"]
-pub type W = crate::W<INSENSE_SPEC>;
+pub type W = crate::W<InsenseSpec>;
 #[doc = "Field `INT` reader - Interrupt Sense Enable"]
-pub type INT_R = crate::BitReader;
+pub type IntR = crate::BitReader;
 #[doc = "Field `INT` writer - Interrupt Sense Enable"]
-pub type INT_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type IntW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `EM4WU` reader - EM4WU Interrupt Sense Enable"]
-pub type EM4WU_R = crate::BitReader;
+pub type Em4wuR = crate::BitReader;
 #[doc = "Field `EM4WU` writer - EM4WU Interrupt Sense Enable"]
-pub type EM4WU_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Em4wuW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Interrupt Sense Enable"]
     #[inline(always)]
-    pub fn int(&self) -> INT_R {
-        INT_R::new((self.bits & 1) != 0)
+    pub fn int(&self) -> IntR {
+        IntR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - EM4WU Interrupt Sense Enable"]
     #[inline(always)]
-    pub fn em4wu(&self) -> EM4WU_R {
-        EM4WU_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn em4wu(&self) -> Em4wuR {
+        Em4wuR::new(((self.bits >> 1) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Interrupt Sense Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn int(&mut self) -> INT_W<INSENSE_SPEC> {
-        INT_W::new(self, 0)
+    pub fn int(&mut self) -> IntW<'_, InsenseSpec> {
+        IntW::new(self, 0)
     }
     #[doc = "Bit 1 - EM4WU Interrupt Sense Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn em4wu(&mut self) -> EM4WU_W<INSENSE_SPEC> {
-        EM4WU_W::new(self, 1)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn em4wu(&mut self) -> Em4wuW<'_, InsenseSpec> {
+        Em4wuW::new(self, 1)
     }
 }
-#[doc = "Input Sense Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`insense::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`insense::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct INSENSE_SPEC;
-impl crate::RegisterSpec for INSENSE_SPEC {
+#[doc = "Input Sense Register\n\nYou can [`read`](crate::Reg::read) this register and get [`insense::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`insense::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct InsenseSpec;
+impl crate::RegisterSpec for InsenseSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`insense::R`](R) reader structure"]
-impl crate::Readable for INSENSE_SPEC {}
+impl crate::Readable for InsenseSpec {}
 #[doc = "`write(|w| ..)` method takes [`insense::W`](W) writer structure"]
-impl crate::Writable for INSENSE_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for InsenseSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets INSENSE to value 0x03"]
-impl crate::Resettable for INSENSE_SPEC {
+impl crate::Resettable for InsenseSpec {
     const RESET_VALUE: u32 = 0x03;
 }

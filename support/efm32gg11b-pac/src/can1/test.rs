@@ -1,79 +1,80 @@
 #[doc = "Register `TEST` reader"]
-pub type R = crate::R<TEST_SPEC>;
+pub type R = crate::R<TestSpec>;
 #[doc = "Register `TEST` writer"]
-pub type W = crate::W<TEST_SPEC>;
+pub type W = crate::W<TestSpec>;
 #[doc = "Field `BASIC` reader - Basic Mode"]
-pub type BASIC_R = crate::BitReader;
+pub type BasicR = crate::BitReader;
 #[doc = "Field `BASIC` writer - Basic Mode"]
-pub type BASIC_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type BasicW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SILENT` reader - Silent Mode"]
-pub type SILENT_R = crate::BitReader;
+pub type SilentR = crate::BitReader;
 #[doc = "Field `SILENT` writer - Silent Mode"]
-pub type SILENT_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type SilentW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LBACK` reader - Loopback Mode"]
-pub type LBACK_R = crate::BitReader;
+pub type LbackR = crate::BitReader;
 #[doc = "Field `LBACK` writer - Loopback Mode"]
-pub type LBACK_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `TX` reader - Control of CAN_TX Pin"]
-pub type TX_R = crate::FieldReader<TX_A>;
+pub type LbackW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Control of CAN_TX Pin\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum TX_A {
+pub enum Tx {
     #[doc = "0: Reset value, CAN_TX is controlled by the CAN Core."]
-    CORE = 0,
+    Core = 0,
     #[doc = "1: Sample Point can be monitored at CAN_TX pin."]
-    SAMPT = 1,
+    Sampt = 1,
     #[doc = "2: CAN_TX pin drives a dominant bit (0) value."]
-    LOW = 2,
+    Low = 2,
     #[doc = "3: CAN_TX pin drives a recessive bit (1) value."]
-    HIGH = 3,
+    High = 3,
 }
-impl From<TX_A> for u8 {
+impl From<Tx> for u8 {
     #[inline(always)]
-    fn from(variant: TX_A) -> Self {
+    fn from(variant: Tx) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for TX_A {
+impl crate::FieldSpec for Tx {
     type Ux = u8;
 }
-impl TX_R {
+impl crate::IsEnum for Tx {}
+#[doc = "Field `TX` reader - Control of CAN_TX Pin"]
+pub type TxR = crate::FieldReader<Tx>;
+impl TxR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> TX_A {
+    pub const fn variant(&self) -> Tx {
         match self.bits {
-            0 => TX_A::CORE,
-            1 => TX_A::SAMPT,
-            2 => TX_A::LOW,
-            3 => TX_A::HIGH,
+            0 => Tx::Core,
+            1 => Tx::Sampt,
+            2 => Tx::Low,
+            3 => Tx::High,
             _ => unreachable!(),
         }
     }
     #[doc = "Reset value, CAN_TX is controlled by the CAN Core."]
     #[inline(always)]
     pub fn is_core(&self) -> bool {
-        *self == TX_A::CORE
+        *self == Tx::Core
     }
     #[doc = "Sample Point can be monitored at CAN_TX pin."]
     #[inline(always)]
     pub fn is_sampt(&self) -> bool {
-        *self == TX_A::SAMPT
+        *self == Tx::Sampt
     }
     #[doc = "CAN_TX pin drives a dominant bit (0) value."]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == TX_A::LOW
+        *self == Tx::Low
     }
     #[doc = "CAN_TX pin drives a recessive bit (1) value."]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == TX_A::HIGH
+        *self == Tx::High
     }
 }
 #[doc = "Field `TX` writer - Control of CAN_TX Pin"]
-pub type TX_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, TX_A>;
-impl<'a, REG> TX_W<'a, REG>
+pub type TxW<'a, REG> = crate::FieldWriter<'a, REG, 2, Tx, crate::Safe>;
+impl<'a, REG> TxW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -81,102 +82,85 @@ where
     #[doc = "Reset value, CAN_TX is controlled by the CAN Core."]
     #[inline(always)]
     pub fn core(self) -> &'a mut crate::W<REG> {
-        self.variant(TX_A::CORE)
+        self.variant(Tx::Core)
     }
     #[doc = "Sample Point can be monitored at CAN_TX pin."]
     #[inline(always)]
     pub fn sampt(self) -> &'a mut crate::W<REG> {
-        self.variant(TX_A::SAMPT)
+        self.variant(Tx::Sampt)
     }
     #[doc = "CAN_TX pin drives a dominant bit (0) value."]
     #[inline(always)]
     pub fn low(self) -> &'a mut crate::W<REG> {
-        self.variant(TX_A::LOW)
+        self.variant(Tx::Low)
     }
     #[doc = "CAN_TX pin drives a recessive bit (1) value."]
     #[inline(always)]
     pub fn high(self) -> &'a mut crate::W<REG> {
-        self.variant(TX_A::HIGH)
+        self.variant(Tx::High)
     }
 }
 #[doc = "Field `RX` reader - Monitors the Actual Value of CAN_RX Pin"]
-pub type RX_R = crate::BitReader;
+pub type RxR = crate::BitReader;
 impl R {
     #[doc = "Bit 2 - Basic Mode"]
     #[inline(always)]
-    pub fn basic(&self) -> BASIC_R {
-        BASIC_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn basic(&self) -> BasicR {
+        BasicR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Silent Mode"]
     #[inline(always)]
-    pub fn silent(&self) -> SILENT_R {
-        SILENT_R::new(((self.bits >> 3) & 1) != 0)
+    pub fn silent(&self) -> SilentR {
+        SilentR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Loopback Mode"]
     #[inline(always)]
-    pub fn lback(&self) -> LBACK_R {
-        LBACK_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn lback(&self) -> LbackR {
+        LbackR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bits 5:6 - Control of CAN_TX Pin"]
     #[inline(always)]
-    pub fn tx(&self) -> TX_R {
-        TX_R::new(((self.bits >> 5) & 3) as u8)
+    pub fn tx(&self) -> TxR {
+        TxR::new(((self.bits >> 5) & 3) as u8)
     }
     #[doc = "Bit 7 - Monitors the Actual Value of CAN_RX Pin"]
     #[inline(always)]
-    pub fn rx(&self) -> RX_R {
-        RX_R::new(((self.bits >> 7) & 1) != 0)
+    pub fn rx(&self) -> RxR {
+        RxR::new(((self.bits >> 7) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 2 - Basic Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn basic(&mut self) -> BASIC_W<TEST_SPEC> {
-        BASIC_W::new(self, 2)
+    pub fn basic(&mut self) -> BasicW<'_, TestSpec> {
+        BasicW::new(self, 2)
     }
     #[doc = "Bit 3 - Silent Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn silent(&mut self) -> SILENT_W<TEST_SPEC> {
-        SILENT_W::new(self, 3)
+    pub fn silent(&mut self) -> SilentW<'_, TestSpec> {
+        SilentW::new(self, 3)
     }
     #[doc = "Bit 4 - Loopback Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn lback(&mut self) -> LBACK_W<TEST_SPEC> {
-        LBACK_W::new(self, 4)
+    pub fn lback(&mut self) -> LbackW<'_, TestSpec> {
+        LbackW::new(self, 4)
     }
     #[doc = "Bits 5:6 - Control of CAN_TX Pin"]
     #[inline(always)]
-    #[must_use]
-    pub fn tx(&mut self) -> TX_W<TEST_SPEC> {
-        TX_W::new(self, 5)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn tx(&mut self) -> TxW<'_, TestSpec> {
+        TxW::new(self, 5)
     }
 }
-#[doc = "Test Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`test::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`test::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct TEST_SPEC;
-impl crate::RegisterSpec for TEST_SPEC {
+#[doc = "Test Register\n\nYou can [`read`](crate::Reg::read) this register and get [`test::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`test::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct TestSpec;
+impl crate::RegisterSpec for TestSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`test::R`](R) reader structure"]
-impl crate::Readable for TEST_SPEC {}
+impl crate::Readable for TestSpec {}
 #[doc = "`write(|w| ..)` method takes [`test::W`](W) writer structure"]
-impl crate::Writable for TEST_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for TestSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets TEST to value 0"]
-impl crate::Resettable for TEST_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for TestSpec {}

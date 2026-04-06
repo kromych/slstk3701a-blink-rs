@@ -1,109 +1,93 @@
 #[doc = "Register `WRTIMING1` reader"]
-pub type R = crate::R<WRTIMING1_SPEC>;
+pub type R = crate::R<Wrtiming1Spec>;
 #[doc = "Register `WRTIMING1` writer"]
-pub type W = crate::W<WRTIMING1_SPEC>;
+pub type W = crate::W<Wrtiming1Spec>;
 #[doc = "Field `WRSETUP` reader - Write Setup Time"]
-pub type WRSETUP_R = crate::FieldReader;
+pub type WrsetupR = crate::FieldReader;
 #[doc = "Field `WRSETUP` writer - Write Setup Time"]
-pub type WRSETUP_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
+pub type WrsetupW<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `WRSTRB` reader - Write Strobe Time"]
-pub type WRSTRB_R = crate::FieldReader;
+pub type WrstrbR = crate::FieldReader;
 #[doc = "Field `WRSTRB` writer - Write Strobe Time"]
-pub type WRSTRB_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
+pub type WrstrbW<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `WRHOLD` reader - Write Hold Time"]
-pub type WRHOLD_R = crate::FieldReader;
+pub type WrholdR = crate::FieldReader;
 #[doc = "Field `WRHOLD` writer - Write Hold Time"]
-pub type WRHOLD_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
+pub type WrholdW<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `HALFWE` reader - Half Cycle WEn Strobe Duration Enable"]
-pub type HALFWE_R = crate::BitReader;
+pub type HalfweR = crate::BitReader;
 #[doc = "Field `HALFWE` writer - Half Cycle WEn Strobe Duration Enable"]
-pub type HALFWE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type HalfweW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WBUFDIS` reader - Write Buffer Disable"]
-pub type WBUFDIS_R = crate::BitReader;
+pub type WbufdisR = crate::BitReader;
 #[doc = "Field `WBUFDIS` writer - Write Buffer Disable"]
-pub type WBUFDIS_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type WbufdisW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:2 - Write Setup Time"]
     #[inline(always)]
-    pub fn wrsetup(&self) -> WRSETUP_R {
-        WRSETUP_R::new((self.bits & 7) as u8)
+    pub fn wrsetup(&self) -> WrsetupR {
+        WrsetupR::new((self.bits & 7) as u8)
     }
     #[doc = "Bits 8:14 - Write Strobe Time"]
     #[inline(always)]
-    pub fn wrstrb(&self) -> WRSTRB_R {
-        WRSTRB_R::new(((self.bits >> 8) & 0x7f) as u8)
+    pub fn wrstrb(&self) -> WrstrbR {
+        WrstrbR::new(((self.bits >> 8) & 0x7f) as u8)
     }
     #[doc = "Bits 16:18 - Write Hold Time"]
     #[inline(always)]
-    pub fn wrhold(&self) -> WRHOLD_R {
-        WRHOLD_R::new(((self.bits >> 16) & 7) as u8)
+    pub fn wrhold(&self) -> WrholdR {
+        WrholdR::new(((self.bits >> 16) & 7) as u8)
     }
     #[doc = "Bit 28 - Half Cycle WEn Strobe Duration Enable"]
     #[inline(always)]
-    pub fn halfwe(&self) -> HALFWE_R {
-        HALFWE_R::new(((self.bits >> 28) & 1) != 0)
+    pub fn halfwe(&self) -> HalfweR {
+        HalfweR::new(((self.bits >> 28) & 1) != 0)
     }
     #[doc = "Bit 29 - Write Buffer Disable"]
     #[inline(always)]
-    pub fn wbufdis(&self) -> WBUFDIS_R {
-        WBUFDIS_R::new(((self.bits >> 29) & 1) != 0)
+    pub fn wbufdis(&self) -> WbufdisR {
+        WbufdisR::new(((self.bits >> 29) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:2 - Write Setup Time"]
     #[inline(always)]
-    #[must_use]
-    pub fn wrsetup(&mut self) -> WRSETUP_W<WRTIMING1_SPEC> {
-        WRSETUP_W::new(self, 0)
+    pub fn wrsetup(&mut self) -> WrsetupW<'_, Wrtiming1Spec> {
+        WrsetupW::new(self, 0)
     }
     #[doc = "Bits 8:14 - Write Strobe Time"]
     #[inline(always)]
-    #[must_use]
-    pub fn wrstrb(&mut self) -> WRSTRB_W<WRTIMING1_SPEC> {
-        WRSTRB_W::new(self, 8)
+    pub fn wrstrb(&mut self) -> WrstrbW<'_, Wrtiming1Spec> {
+        WrstrbW::new(self, 8)
     }
     #[doc = "Bits 16:18 - Write Hold Time"]
     #[inline(always)]
-    #[must_use]
-    pub fn wrhold(&mut self) -> WRHOLD_W<WRTIMING1_SPEC> {
-        WRHOLD_W::new(self, 16)
+    pub fn wrhold(&mut self) -> WrholdW<'_, Wrtiming1Spec> {
+        WrholdW::new(self, 16)
     }
     #[doc = "Bit 28 - Half Cycle WEn Strobe Duration Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn halfwe(&mut self) -> HALFWE_W<WRTIMING1_SPEC> {
-        HALFWE_W::new(self, 28)
+    pub fn halfwe(&mut self) -> HalfweW<'_, Wrtiming1Spec> {
+        HalfweW::new(self, 28)
     }
     #[doc = "Bit 29 - Write Buffer Disable"]
     #[inline(always)]
-    #[must_use]
-    pub fn wbufdis(&mut self) -> WBUFDIS_W<WRTIMING1_SPEC> {
-        WBUFDIS_W::new(self, 29)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn wbufdis(&mut self) -> WbufdisW<'_, Wrtiming1Spec> {
+        WbufdisW::new(self, 29)
     }
 }
-#[doc = "Write Timing Register 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`wrtiming1::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`wrtiming1::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct WRTIMING1_SPEC;
-impl crate::RegisterSpec for WRTIMING1_SPEC {
+#[doc = "Write Timing Register 1\n\nYou can [`read`](crate::Reg::read) this register and get [`wrtiming1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`wrtiming1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Wrtiming1Spec;
+impl crate::RegisterSpec for Wrtiming1Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`wrtiming1::R`](R) reader structure"]
-impl crate::Readable for WRTIMING1_SPEC {}
+impl crate::Readable for Wrtiming1Spec {}
 #[doc = "`write(|w| ..)` method takes [`wrtiming1::W`](W) writer structure"]
-impl crate::Writable for WRTIMING1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Wrtiming1Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets WRTIMING1 to value 0x0007_7f07"]
-impl crate::Resettable for WRTIMING1_SPEC {
+impl crate::Resettable for Wrtiming1Spec {
     const RESET_VALUE: u32 = 0x0007_7f07;
 }

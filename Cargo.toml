@@ -3,20 +3,40 @@ resolver = "2"
 
 members = [
     "demos/blink",
+    "demos/blink-systick",
+    "demos/blink-pb",
+    "demos/adc-temp",
+    "demos/lcd-hello",
+    "demos/lcd-counter",
+    "demos/stopwatch",
+    "demos/usb-cdc",
+    "demos/usb-hid",
+    "demos/usb-msc",
+    "demos/usb-audio",
+    "demos/usb-midi",
+    "demos/usb-video",
+    "demos/space-invaders",
+    "demos/eth-http",
     "support/efm32gg11b-pac",
+    "support/efm32gg11b-usb",
+    "support/slstk3701a",
 ]
 
 [workspace.dependencies]
-bare-metal = "1.0.0"
 vcell = "0.1.0"
-portable-atomic = { version = "1", default-features = false, features = ["critical-section"]}
+portable-atomic = { version = "1", default-features = false, features = ["critical-section"] }
 
-embedded-hal = { version = "0.2", features = ["unproven"] }
-panic-halt = "0.2"
+panic-halt = "1"
 cortex-m = { version = "0.7", features = ["critical-section-single-core"] }
 cortex-m-rt = { version = "0.7", features = ["device"] }
 critical-section = "1"
-defmt = "0.3"
+defmt = "1"
 defmt-rtt = "0.4"
 
+smoltcp = { version = "0.12", default-features = false, features = [
+    "medium-ethernet", "proto-ipv4", "socket-tcp", "socket-dhcpv4",
+] }
+
 efm32gg11b-pac = { path = "support/efm32gg11b-pac" }
+efm32gg11b-usb = { path = "support/efm32gg11b-usb" }
+slstk3701a = { path = "support/slstk3701a" }

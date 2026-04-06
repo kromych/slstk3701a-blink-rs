@@ -1,79 +1,80 @@
 #[doc = "Register `USHFRCOCTRL` reader"]
-pub type R = crate::R<USHFRCOCTRL_SPEC>;
+pub type R = crate::R<UshfrcoctrlSpec>;
 #[doc = "Register `USHFRCOCTRL` writer"]
-pub type W = crate::W<USHFRCOCTRL_SPEC>;
+pub type W = crate::W<UshfrcoctrlSpec>;
 #[doc = "Field `TUNING` reader - USHFRCO Tuning Value"]
-pub type TUNING_R = crate::FieldReader;
+pub type TuningR = crate::FieldReader;
 #[doc = "Field `TUNING` writer - USHFRCO Tuning Value"]
-pub type TUNING_W<'a, REG> = crate::FieldWriter<'a, REG, 7>;
+pub type TuningW<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Field `FINETUNING` reader - USHFRCO Fine Tuning Value"]
-pub type FINETUNING_R = crate::FieldReader;
+pub type FinetuningR = crate::FieldReader;
 #[doc = "Field `FINETUNING` writer - USHFRCO Fine Tuning Value"]
-pub type FINETUNING_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
+pub type FinetuningW<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 #[doc = "Field `FREQRANGE` reader - USHFRCO Frequency Range"]
-pub type FREQRANGE_R = crate::FieldReader;
+pub type FreqrangeR = crate::FieldReader;
 #[doc = "Field `FREQRANGE` writer - USHFRCO Frequency Range"]
-pub type FREQRANGE_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
+pub type FreqrangeW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `CMPBIAS` reader - USHFRCO Comparator Bias Current"]
-pub type CMPBIAS_R = crate::FieldReader;
+pub type CmpbiasR = crate::FieldReader;
 #[doc = "Field `CMPBIAS` writer - USHFRCO Comparator Bias Current"]
-pub type CMPBIAS_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
+pub type CmpbiasW<'a, REG> = crate::FieldWriter<'a, REG, 3>;
 #[doc = "Field `LDOHP` reader - USHFRCO LDO High Power Mode"]
-pub type LDOHP_R = crate::BitReader;
+pub type LdohpR = crate::BitReader;
 #[doc = "Field `LDOHP` writer - USHFRCO LDO High Power Mode"]
-pub type LDOHP_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `CLKDIV` reader - Locally Divide USHFRCO Clock Output"]
-pub type CLKDIV_R = crate::FieldReader<CLKDIV_A>;
+pub type LdohpW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Locally Divide USHFRCO Clock Output\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CLKDIV_A {
+pub enum Clkdiv {
     #[doc = "0: Divide by 1."]
-    DIV1 = 0,
+    Div1 = 0,
     #[doc = "1: Divide by 2."]
-    DIV2 = 1,
+    Div2 = 1,
     #[doc = "2: Divide by 4."]
-    DIV4 = 2,
+    Div4 = 2,
 }
-impl From<CLKDIV_A> for u8 {
+impl From<Clkdiv> for u8 {
     #[inline(always)]
-    fn from(variant: CLKDIV_A) -> Self {
+    fn from(variant: Clkdiv) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CLKDIV_A {
+impl crate::FieldSpec for Clkdiv {
     type Ux = u8;
 }
-impl CLKDIV_R {
+impl crate::IsEnum for Clkdiv {}
+#[doc = "Field `CLKDIV` reader - Locally Divide USHFRCO Clock Output"]
+pub type ClkdivR = crate::FieldReader<Clkdiv>;
+impl ClkdivR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<CLKDIV_A> {
+    pub const fn variant(&self) -> Option<Clkdiv> {
         match self.bits {
-            0 => Some(CLKDIV_A::DIV1),
-            1 => Some(CLKDIV_A::DIV2),
-            2 => Some(CLKDIV_A::DIV4),
+            0 => Some(Clkdiv::Div1),
+            1 => Some(Clkdiv::Div2),
+            2 => Some(Clkdiv::Div4),
             _ => None,
         }
     }
     #[doc = "Divide by 1."]
     #[inline(always)]
     pub fn is_div1(&self) -> bool {
-        *self == CLKDIV_A::DIV1
+        *self == Clkdiv::Div1
     }
     #[doc = "Divide by 2."]
     #[inline(always)]
     pub fn is_div2(&self) -> bool {
-        *self == CLKDIV_A::DIV2
+        *self == Clkdiv::Div2
     }
     #[doc = "Divide by 4."]
     #[inline(always)]
     pub fn is_div4(&self) -> bool {
-        *self == CLKDIV_A::DIV4
+        *self == Clkdiv::Div4
     }
 }
 #[doc = "Field `CLKDIV` writer - Locally Divide USHFRCO Clock Output"]
-pub type CLKDIV_W<'a, REG> = crate::FieldWriter<'a, REG, 2, CLKDIV_A>;
-impl<'a, REG> CLKDIV_W<'a, REG>
+pub type ClkdivW<'a, REG> = crate::FieldWriter<'a, REG, 2, Clkdiv>;
+impl<'a, REG> ClkdivW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -81,142 +82,123 @@ where
     #[doc = "Divide by 1."]
     #[inline(always)]
     pub fn div1(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKDIV_A::DIV1)
+        self.variant(Clkdiv::Div1)
     }
     #[doc = "Divide by 2."]
     #[inline(always)]
     pub fn div2(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKDIV_A::DIV2)
+        self.variant(Clkdiv::Div2)
     }
     #[doc = "Divide by 4."]
     #[inline(always)]
     pub fn div4(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKDIV_A::DIV4)
+        self.variant(Clkdiv::Div4)
     }
 }
 #[doc = "Field `FINETUNINGEN` reader - Enable Reference for Fine Tuning"]
-pub type FINETUNINGEN_R = crate::BitReader;
+pub type FinetuningenR = crate::BitReader;
 #[doc = "Field `FINETUNINGEN` writer - Enable Reference for Fine Tuning"]
-pub type FINETUNINGEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type FinetuningenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `VREFTC` reader - USHFRCO Temperature Coefficient Trim on Comparator Reference"]
-pub type VREFTC_R = crate::FieldReader;
+pub type VreftcR = crate::FieldReader;
 #[doc = "Field `VREFTC` writer - USHFRCO Temperature Coefficient Trim on Comparator Reference"]
-pub type VREFTC_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type VreftcW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 impl R {
     #[doc = "Bits 0:6 - USHFRCO Tuning Value"]
     #[inline(always)]
-    pub fn tuning(&self) -> TUNING_R {
-        TUNING_R::new((self.bits & 0x7f) as u8)
+    pub fn tuning(&self) -> TuningR {
+        TuningR::new((self.bits & 0x7f) as u8)
     }
     #[doc = "Bits 8:13 - USHFRCO Fine Tuning Value"]
     #[inline(always)]
-    pub fn finetuning(&self) -> FINETUNING_R {
-        FINETUNING_R::new(((self.bits >> 8) & 0x3f) as u8)
+    pub fn finetuning(&self) -> FinetuningR {
+        FinetuningR::new(((self.bits >> 8) & 0x3f) as u8)
     }
     #[doc = "Bits 16:20 - USHFRCO Frequency Range"]
     #[inline(always)]
-    pub fn freqrange(&self) -> FREQRANGE_R {
-        FREQRANGE_R::new(((self.bits >> 16) & 0x1f) as u8)
+    pub fn freqrange(&self) -> FreqrangeR {
+        FreqrangeR::new(((self.bits >> 16) & 0x1f) as u8)
     }
     #[doc = "Bits 21:23 - USHFRCO Comparator Bias Current"]
     #[inline(always)]
-    pub fn cmpbias(&self) -> CMPBIAS_R {
-        CMPBIAS_R::new(((self.bits >> 21) & 7) as u8)
+    pub fn cmpbias(&self) -> CmpbiasR {
+        CmpbiasR::new(((self.bits >> 21) & 7) as u8)
     }
     #[doc = "Bit 24 - USHFRCO LDO High Power Mode"]
     #[inline(always)]
-    pub fn ldohp(&self) -> LDOHP_R {
-        LDOHP_R::new(((self.bits >> 24) & 1) != 0)
+    pub fn ldohp(&self) -> LdohpR {
+        LdohpR::new(((self.bits >> 24) & 1) != 0)
     }
     #[doc = "Bits 25:26 - Locally Divide USHFRCO Clock Output"]
     #[inline(always)]
-    pub fn clkdiv(&self) -> CLKDIV_R {
-        CLKDIV_R::new(((self.bits >> 25) & 3) as u8)
+    pub fn clkdiv(&self) -> ClkdivR {
+        ClkdivR::new(((self.bits >> 25) & 3) as u8)
     }
     #[doc = "Bit 27 - Enable Reference for Fine Tuning"]
     #[inline(always)]
-    pub fn finetuningen(&self) -> FINETUNINGEN_R {
-        FINETUNINGEN_R::new(((self.bits >> 27) & 1) != 0)
+    pub fn finetuningen(&self) -> FinetuningenR {
+        FinetuningenR::new(((self.bits >> 27) & 1) != 0)
     }
     #[doc = "Bits 28:31 - USHFRCO Temperature Coefficient Trim on Comparator Reference"]
     #[inline(always)]
-    pub fn vreftc(&self) -> VREFTC_R {
-        VREFTC_R::new(((self.bits >> 28) & 0x0f) as u8)
+    pub fn vreftc(&self) -> VreftcR {
+        VreftcR::new(((self.bits >> 28) & 0x0f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:6 - USHFRCO Tuning Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn tuning(&mut self) -> TUNING_W<USHFRCOCTRL_SPEC> {
-        TUNING_W::new(self, 0)
+    pub fn tuning(&mut self) -> TuningW<'_, UshfrcoctrlSpec> {
+        TuningW::new(self, 0)
     }
     #[doc = "Bits 8:13 - USHFRCO Fine Tuning Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn finetuning(&mut self) -> FINETUNING_W<USHFRCOCTRL_SPEC> {
-        FINETUNING_W::new(self, 8)
+    pub fn finetuning(&mut self) -> FinetuningW<'_, UshfrcoctrlSpec> {
+        FinetuningW::new(self, 8)
     }
     #[doc = "Bits 16:20 - USHFRCO Frequency Range"]
     #[inline(always)]
-    #[must_use]
-    pub fn freqrange(&mut self) -> FREQRANGE_W<USHFRCOCTRL_SPEC> {
-        FREQRANGE_W::new(self, 16)
+    pub fn freqrange(&mut self) -> FreqrangeW<'_, UshfrcoctrlSpec> {
+        FreqrangeW::new(self, 16)
     }
     #[doc = "Bits 21:23 - USHFRCO Comparator Bias Current"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmpbias(&mut self) -> CMPBIAS_W<USHFRCOCTRL_SPEC> {
-        CMPBIAS_W::new(self, 21)
+    pub fn cmpbias(&mut self) -> CmpbiasW<'_, UshfrcoctrlSpec> {
+        CmpbiasW::new(self, 21)
     }
     #[doc = "Bit 24 - USHFRCO LDO High Power Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn ldohp(&mut self) -> LDOHP_W<USHFRCOCTRL_SPEC> {
-        LDOHP_W::new(self, 24)
+    pub fn ldohp(&mut self) -> LdohpW<'_, UshfrcoctrlSpec> {
+        LdohpW::new(self, 24)
     }
     #[doc = "Bits 25:26 - Locally Divide USHFRCO Clock Output"]
     #[inline(always)]
-    #[must_use]
-    pub fn clkdiv(&mut self) -> CLKDIV_W<USHFRCOCTRL_SPEC> {
-        CLKDIV_W::new(self, 25)
+    pub fn clkdiv(&mut self) -> ClkdivW<'_, UshfrcoctrlSpec> {
+        ClkdivW::new(self, 25)
     }
     #[doc = "Bit 27 - Enable Reference for Fine Tuning"]
     #[inline(always)]
-    #[must_use]
-    pub fn finetuningen(&mut self) -> FINETUNINGEN_W<USHFRCOCTRL_SPEC> {
-        FINETUNINGEN_W::new(self, 27)
+    pub fn finetuningen(&mut self) -> FinetuningenW<'_, UshfrcoctrlSpec> {
+        FinetuningenW::new(self, 27)
     }
     #[doc = "Bits 28:31 - USHFRCO Temperature Coefficient Trim on Comparator Reference"]
     #[inline(always)]
-    #[must_use]
-    pub fn vreftc(&mut self) -> VREFTC_W<USHFRCOCTRL_SPEC> {
-        VREFTC_W::new(self, 28)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn vreftc(&mut self) -> VreftcW<'_, UshfrcoctrlSpec> {
+        VreftcW::new(self, 28)
     }
 }
-#[doc = "USHFRCO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ushfrcoctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ushfrcoctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct USHFRCOCTRL_SPEC;
-impl crate::RegisterSpec for USHFRCOCTRL_SPEC {
+#[doc = "USHFRCO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ushfrcoctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ushfrcoctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct UshfrcoctrlSpec;
+impl crate::RegisterSpec for UshfrcoctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`ushfrcoctrl::R`](R) reader structure"]
-impl crate::Readable for USHFRCOCTRL_SPEC {}
+impl crate::Readable for UshfrcoctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`ushfrcoctrl::W`](W) writer structure"]
-impl crate::Writable for USHFRCOCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for UshfrcoctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets USHFRCOCTRL to value 0xb148_1f7f"]
-impl crate::Resettable for USHFRCOCTRL_SPEC {
+impl crate::Resettable for UshfrcoctrlSpec {
     const RESET_VALUE: u32 = 0xb148_1f7f;
 }

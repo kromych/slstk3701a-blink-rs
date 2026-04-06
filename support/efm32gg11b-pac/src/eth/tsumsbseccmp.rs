@@ -1,49 +1,35 @@
 #[doc = "Register `TSUMSBSECCMP` reader"]
-pub type R = crate::R<TSUMSBSECCMP_SPEC>;
+pub type R = crate::R<TsumsbseccmpSpec>;
 #[doc = "Register `TSUMSBSECCMP` writer"]
-pub type W = crate::W<TSUMSBSECCMP_SPEC>;
+pub type W = crate::W<TsumsbseccmpSpec>;
 #[doc = "Field `COMPVAL` reader - TSU timer comparison value (s)"]
-pub type COMPVAL_R = crate::FieldReader<u16>;
+pub type CompvalR = crate::FieldReader<u16>;
 #[doc = "Field `COMPVAL` writer - TSU timer comparison value (s)"]
-pub type COMPVAL_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
+pub type CompvalW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
     #[doc = "Bits 0:15 - TSU timer comparison value (s)"]
     #[inline(always)]
-    pub fn compval(&self) -> COMPVAL_R {
-        COMPVAL_R::new((self.bits & 0xffff) as u16)
+    pub fn compval(&self) -> CompvalR {
+        CompvalR::new((self.bits & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:15 - TSU timer comparison value (s)"]
     #[inline(always)]
-    #[must_use]
-    pub fn compval(&mut self) -> COMPVAL_W<TSUMSBSECCMP_SPEC> {
-        COMPVAL_W::new(self, 0)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn compval(&mut self) -> CompvalW<'_, TsumsbseccmpSpec> {
+        CompvalW::new(self, 0)
     }
 }
-#[doc = "TSU timer comparison value seconds \\[47:32\\]\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tsumsbseccmp::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`tsumsbseccmp::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct TSUMSBSECCMP_SPEC;
-impl crate::RegisterSpec for TSUMSBSECCMP_SPEC {
+#[doc = "TSU timer comparison value seconds \\[47:32\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`tsumsbseccmp::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tsumsbseccmp::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct TsumsbseccmpSpec;
+impl crate::RegisterSpec for TsumsbseccmpSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`tsumsbseccmp::R`](R) reader structure"]
-impl crate::Readable for TSUMSBSECCMP_SPEC {}
+impl crate::Readable for TsumsbseccmpSpec {}
 #[doc = "`write(|w| ..)` method takes [`tsumsbseccmp::W`](W) writer structure"]
-impl crate::Writable for TSUMSBSECCMP_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for TsumsbseccmpSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets TSUMSBSECCMP to value 0"]
-impl crate::Resettable for TSUMSBSECCMP_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for TsumsbseccmpSpec {}

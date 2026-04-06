@@ -1,117 +1,93 @@
 #[doc = "Register `DEVSIZECONFIG` reader"]
-pub type R = crate::R<DEVSIZECONFIG_SPEC>;
+pub type R = crate::R<DevsizeconfigSpec>;
 #[doc = "Register `DEVSIZECONFIG` writer"]
-pub type W = crate::W<DEVSIZECONFIG_SPEC>;
+pub type W = crate::W<DevsizeconfigSpec>;
 #[doc = "Field `NUMADDRBYTES` reader - Number of Address Bytes"]
-pub type NUMADDRBYTES_R = crate::FieldReader;
+pub type NumaddrbytesR = crate::FieldReader;
 #[doc = "Field `NUMADDRBYTES` writer - Number of Address Bytes"]
-pub type NUMADDRBYTES_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type NumaddrbytesW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `BYTESPERDEVICEPAGE` reader - Number of Bytes Per Device Page"]
-pub type BYTESPERDEVICEPAGE_R = crate::FieldReader<u16>;
+pub type BytesperdevicepageR = crate::FieldReader<u16>;
 #[doc = "Field `BYTESPERDEVICEPAGE` writer - Number of Bytes Per Device Page"]
-pub type BYTESPERDEVICEPAGE_W<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
+pub type BytesperdevicepageW<'a, REG> = crate::FieldWriter<'a, REG, 12, u16>;
 #[doc = "Field `BYTESPERSUBSECTOR` reader - Number of Bytes Per Block"]
-pub type BYTESPERSUBSECTOR_R = crate::FieldReader;
+pub type BytespersubsectorR = crate::FieldReader;
 #[doc = "Field `BYTESPERSUBSECTOR` writer - Number of Bytes Per Block"]
-pub type BYTESPERSUBSECTOR_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
-#[doc = "Field `MEMSIZEONCS0` reader - Size of Flash Device Connected to CS\\[0\\]
-Pin"]
-pub type MEMSIZEONCS0_R = crate::FieldReader;
-#[doc = "Field `MEMSIZEONCS0` writer - Size of Flash Device Connected to CS\\[0\\]
-Pin"]
-pub type MEMSIZEONCS0_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
-#[doc = "Field `MEMSIZEONCS1` reader - Size of Flash Device Connected to CS\\[1\\]
-Pin"]
-pub type MEMSIZEONCS1_R = crate::FieldReader;
-#[doc = "Field `MEMSIZEONCS1` writer - Size of Flash Device Connected to CS\\[1\\]
-Pin"]
-pub type MEMSIZEONCS1_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+pub type BytespersubsectorW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
+#[doc = "Field `MEMSIZEONCS0` reader - Size of Flash Device Connected to CS\\[0\\] Pin"]
+pub type Memsizeoncs0R = crate::FieldReader;
+#[doc = "Field `MEMSIZEONCS0` writer - Size of Flash Device Connected to CS\\[0\\] Pin"]
+pub type Memsizeoncs0W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+#[doc = "Field `MEMSIZEONCS1` reader - Size of Flash Device Connected to CS\\[1\\] Pin"]
+pub type Memsizeoncs1R = crate::FieldReader;
+#[doc = "Field `MEMSIZEONCS1` writer - Size of Flash Device Connected to CS\\[1\\] Pin"]
+pub type Memsizeoncs1W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bits 0:3 - Number of Address Bytes"]
     #[inline(always)]
-    pub fn numaddrbytes(&self) -> NUMADDRBYTES_R {
-        NUMADDRBYTES_R::new((self.bits & 0x0f) as u8)
+    pub fn numaddrbytes(&self) -> NumaddrbytesR {
+        NumaddrbytesR::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bits 4:15 - Number of Bytes Per Device Page"]
     #[inline(always)]
-    pub fn bytesperdevicepage(&self) -> BYTESPERDEVICEPAGE_R {
-        BYTESPERDEVICEPAGE_R::new(((self.bits >> 4) & 0x0fff) as u16)
+    pub fn bytesperdevicepage(&self) -> BytesperdevicepageR {
+        BytesperdevicepageR::new(((self.bits >> 4) & 0x0fff) as u16)
     }
     #[doc = "Bits 16:20 - Number of Bytes Per Block"]
     #[inline(always)]
-    pub fn bytespersubsector(&self) -> BYTESPERSUBSECTOR_R {
-        BYTESPERSUBSECTOR_R::new(((self.bits >> 16) & 0x1f) as u8)
+    pub fn bytespersubsector(&self) -> BytespersubsectorR {
+        BytespersubsectorR::new(((self.bits >> 16) & 0x1f) as u8)
     }
-    #[doc = "Bits 21:22 - Size of Flash Device Connected to CS\\[0\\]
-Pin"]
+    #[doc = "Bits 21:22 - Size of Flash Device Connected to CS\\[0\\] Pin"]
     #[inline(always)]
-    pub fn memsizeoncs0(&self) -> MEMSIZEONCS0_R {
-        MEMSIZEONCS0_R::new(((self.bits >> 21) & 3) as u8)
+    pub fn memsizeoncs0(&self) -> Memsizeoncs0R {
+        Memsizeoncs0R::new(((self.bits >> 21) & 3) as u8)
     }
-    #[doc = "Bits 23:24 - Size of Flash Device Connected to CS\\[1\\]
-Pin"]
+    #[doc = "Bits 23:24 - Size of Flash Device Connected to CS\\[1\\] Pin"]
     #[inline(always)]
-    pub fn memsizeoncs1(&self) -> MEMSIZEONCS1_R {
-        MEMSIZEONCS1_R::new(((self.bits >> 23) & 3) as u8)
+    pub fn memsizeoncs1(&self) -> Memsizeoncs1R {
+        Memsizeoncs1R::new(((self.bits >> 23) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Number of Address Bytes"]
     #[inline(always)]
-    #[must_use]
-    pub fn numaddrbytes(&mut self) -> NUMADDRBYTES_W<DEVSIZECONFIG_SPEC> {
-        NUMADDRBYTES_W::new(self, 0)
+    pub fn numaddrbytes(&mut self) -> NumaddrbytesW<'_, DevsizeconfigSpec> {
+        NumaddrbytesW::new(self, 0)
     }
     #[doc = "Bits 4:15 - Number of Bytes Per Device Page"]
     #[inline(always)]
-    #[must_use]
-    pub fn bytesperdevicepage(&mut self) -> BYTESPERDEVICEPAGE_W<DEVSIZECONFIG_SPEC> {
-        BYTESPERDEVICEPAGE_W::new(self, 4)
+    pub fn bytesperdevicepage(&mut self) -> BytesperdevicepageW<'_, DevsizeconfigSpec> {
+        BytesperdevicepageW::new(self, 4)
     }
     #[doc = "Bits 16:20 - Number of Bytes Per Block"]
     #[inline(always)]
-    #[must_use]
-    pub fn bytespersubsector(&mut self) -> BYTESPERSUBSECTOR_W<DEVSIZECONFIG_SPEC> {
-        BYTESPERSUBSECTOR_W::new(self, 16)
+    pub fn bytespersubsector(&mut self) -> BytespersubsectorW<'_, DevsizeconfigSpec> {
+        BytespersubsectorW::new(self, 16)
     }
-    #[doc = "Bits 21:22 - Size of Flash Device Connected to CS\\[0\\]
-Pin"]
+    #[doc = "Bits 21:22 - Size of Flash Device Connected to CS\\[0\\] Pin"]
     #[inline(always)]
-    #[must_use]
-    pub fn memsizeoncs0(&mut self) -> MEMSIZEONCS0_W<DEVSIZECONFIG_SPEC> {
-        MEMSIZEONCS0_W::new(self, 21)
+    pub fn memsizeoncs0(&mut self) -> Memsizeoncs0W<'_, DevsizeconfigSpec> {
+        Memsizeoncs0W::new(self, 21)
     }
-    #[doc = "Bits 23:24 - Size of Flash Device Connected to CS\\[1\\]
-Pin"]
+    #[doc = "Bits 23:24 - Size of Flash Device Connected to CS\\[1\\] Pin"]
     #[inline(always)]
-    #[must_use]
-    pub fn memsizeoncs1(&mut self) -> MEMSIZEONCS1_W<DEVSIZECONFIG_SPEC> {
-        MEMSIZEONCS1_W::new(self, 23)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn memsizeoncs1(&mut self) -> Memsizeoncs1W<'_, DevsizeconfigSpec> {
+        Memsizeoncs1W::new(self, 23)
     }
 }
-#[doc = "Device Size Configuration Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`devsizeconfig::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`devsizeconfig::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct DEVSIZECONFIG_SPEC;
-impl crate::RegisterSpec for DEVSIZECONFIG_SPEC {
+#[doc = "Device Size Configuration Register\n\nYou can [`read`](crate::Reg::read) this register and get [`devsizeconfig::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`devsizeconfig::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct DevsizeconfigSpec;
+impl crate::RegisterSpec for DevsizeconfigSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`devsizeconfig::R`](R) reader structure"]
-impl crate::Readable for DEVSIZECONFIG_SPEC {}
+impl crate::Readable for DevsizeconfigSpec {}
 #[doc = "`write(|w| ..)` method takes [`devsizeconfig::W`](W) writer structure"]
-impl crate::Writable for DEVSIZECONFIG_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for DevsizeconfigSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets DEVSIZECONFIG to value 0x0010_1002"]
-impl crate::Resettable for DEVSIZECONFIG_SPEC {
+impl crate::Resettable for DevsizeconfigSpec {
     const RESET_VALUE: u32 = 0x0010_1002;
 }

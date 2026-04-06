@@ -1,71 +1,56 @@
 #[doc = "Register `CH7_LINK` reader"]
-pub type R = crate::R<CH7_LINK_SPEC>;
+pub type R = crate::R<Ch7LinkSpec>;
 #[doc = "Register `CH7_LINK` writer"]
-pub type W = crate::W<CH7_LINK_SPEC>;
+pub type W = crate::W<Ch7LinkSpec>;
 #[doc = "Field `LINKMODE` reader - Link Structure Addressing Mode"]
-pub type LINKMODE_R = crate::BitReader;
+pub type LinkmodeR = crate::BitReader;
 #[doc = "Field `LINK` reader - Link Next Structure"]
-pub type LINK_R = crate::BitReader;
+pub type LinkR = crate::BitReader;
 #[doc = "Field `LINK` writer - Link Next Structure"]
-pub type LINK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type LinkW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LINKADDR` reader - Link Structure Address"]
-pub type LINKADDR_R = crate::FieldReader<u32>;
+pub type LinkaddrR = crate::FieldReader<u32>;
 #[doc = "Field `LINKADDR` writer - Link Structure Address"]
-pub type LINKADDR_W<'a, REG> = crate::FieldWriter<'a, REG, 30, u32>;
+pub type LinkaddrW<'a, REG> = crate::FieldWriter<'a, REG, 30, u32>;
 impl R {
     #[doc = "Bit 0 - Link Structure Addressing Mode"]
     #[inline(always)]
-    pub fn linkmode(&self) -> LINKMODE_R {
-        LINKMODE_R::new((self.bits & 1) != 0)
+    pub fn linkmode(&self) -> LinkmodeR {
+        LinkmodeR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Link Next Structure"]
     #[inline(always)]
-    pub fn link(&self) -> LINK_R {
-        LINK_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn link(&self) -> LinkR {
+        LinkR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bits 2:31 - Link Structure Address"]
     #[inline(always)]
-    pub fn linkaddr(&self) -> LINKADDR_R {
-        LINKADDR_R::new((self.bits >> 2) & 0x3fff_ffff)
+    pub fn linkaddr(&self) -> LinkaddrR {
+        LinkaddrR::new((self.bits >> 2) & 0x3fff_ffff)
     }
 }
 impl W {
     #[doc = "Bit 1 - Link Next Structure"]
     #[inline(always)]
-    #[must_use]
-    pub fn link(&mut self) -> LINK_W<CH7_LINK_SPEC> {
-        LINK_W::new(self, 1)
+    pub fn link(&mut self) -> LinkW<'_, Ch7LinkSpec> {
+        LinkW::new(self, 1)
     }
     #[doc = "Bits 2:31 - Link Structure Address"]
     #[inline(always)]
-    #[must_use]
-    pub fn linkaddr(&mut self) -> LINKADDR_W<CH7_LINK_SPEC> {
-        LINKADDR_W::new(self, 2)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn linkaddr(&mut self) -> LinkaddrW<'_, Ch7LinkSpec> {
+        LinkaddrW::new(self, 2)
     }
 }
-#[doc = "Channel Descriptor Link Structure Address Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ch7_link::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ch7_link::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CH7_LINK_SPEC;
-impl crate::RegisterSpec for CH7_LINK_SPEC {
+#[doc = "Channel Descriptor Link Structure Address Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ch7_link::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ch7_link::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Ch7LinkSpec;
+impl crate::RegisterSpec for Ch7LinkSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`ch7_link::R`](R) reader structure"]
-impl crate::Readable for CH7_LINK_SPEC {}
+impl crate::Readable for Ch7LinkSpec {}
 #[doc = "`write(|w| ..)` method takes [`ch7_link::W`](W) writer structure"]
-impl crate::Writable for CH7_LINK_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Ch7LinkSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets CH7_LINK to value 0"]
-impl crate::Resettable for CH7_LINK_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Ch7LinkSpec {}

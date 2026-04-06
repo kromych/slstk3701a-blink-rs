@@ -1,163 +1,164 @@
 #[doc = "Register `LFAPRESC0` reader"]
-pub type R = crate::R<LFAPRESC0_SPEC>;
+pub type R = crate::R<Lfapresc0Spec>;
 #[doc = "Register `LFAPRESC0` writer"]
-pub type W = crate::W<LFAPRESC0_SPEC>;
-#[doc = "Field `LETIMER0` reader - Low Energy Timer 0 Prescaler"]
-pub type LETIMER0_R = crate::FieldReader<LETIMER0_A>;
+pub type W = crate::W<Lfapresc0Spec>;
 #[doc = "Low Energy Timer 0 Prescaler\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum LETIMER0_A {
+pub enum Letimer0 {
     #[doc = "0: LFACLKLETIMER0 = LFACLK"]
-    DIV1 = 0,
+    Div1 = 0,
     #[doc = "1: LFACLKLETIMER0 = LFACLK/2"]
-    DIV2 = 1,
+    Div2 = 1,
     #[doc = "2: LFACLKLETIMER0 = LFACLK/4"]
-    DIV4 = 2,
+    Div4 = 2,
     #[doc = "3: LFACLKLETIMER0 = LFACLK/8"]
-    DIV8 = 3,
+    Div8 = 3,
     #[doc = "4: LFACLKLETIMER0 = LFACLK/16"]
-    DIV16 = 4,
+    Div16 = 4,
     #[doc = "5: LFACLKLETIMER0 = LFACLK/32"]
-    DIV32 = 5,
+    Div32 = 5,
     #[doc = "6: LFACLKLETIMER0 = LFACLK/64"]
-    DIV64 = 6,
+    Div64 = 6,
     #[doc = "7: LFACLKLETIMER0 = LFACLK/128"]
-    DIV128 = 7,
+    Div128 = 7,
     #[doc = "8: LFACLKLETIMER0 = LFACLK/256"]
-    DIV256 = 8,
+    Div256 = 8,
     #[doc = "9: LFACLKLETIMER0 = LFACLK/512"]
-    DIV512 = 9,
+    Div512 = 9,
     #[doc = "10: LFACLKLETIMER0 = LFACLK/1024"]
-    DIV1024 = 10,
+    Div1024 = 10,
     #[doc = "11: LFACLKLETIMER0 = LFACLK/2048"]
-    DIV2048 = 11,
+    Div2048 = 11,
     #[doc = "12: LFACLKLETIMER0 = LFACLK/4096"]
-    DIV4096 = 12,
+    Div4096 = 12,
     #[doc = "13: LFACLKLETIMER0 = LFACLK/8192"]
-    DIV8192 = 13,
+    Div8192 = 13,
     #[doc = "14: LFACLKLETIMER0 = LFACLK/16384"]
-    DIV16384 = 14,
+    Div16384 = 14,
     #[doc = "15: LFACLKLETIMER0 = LFACLK/32768"]
-    DIV32768 = 15,
+    Div32768 = 15,
 }
-impl From<LETIMER0_A> for u8 {
+impl From<Letimer0> for u8 {
     #[inline(always)]
-    fn from(variant: LETIMER0_A) -> Self {
+    fn from(variant: Letimer0) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for LETIMER0_A {
+impl crate::FieldSpec for Letimer0 {
     type Ux = u8;
 }
-impl LETIMER0_R {
+impl crate::IsEnum for Letimer0 {}
+#[doc = "Field `LETIMER0` reader - Low Energy Timer 0 Prescaler"]
+pub type Letimer0R = crate::FieldReader<Letimer0>;
+impl Letimer0R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> LETIMER0_A {
+    pub const fn variant(&self) -> Letimer0 {
         match self.bits {
-            0 => LETIMER0_A::DIV1,
-            1 => LETIMER0_A::DIV2,
-            2 => LETIMER0_A::DIV4,
-            3 => LETIMER0_A::DIV8,
-            4 => LETIMER0_A::DIV16,
-            5 => LETIMER0_A::DIV32,
-            6 => LETIMER0_A::DIV64,
-            7 => LETIMER0_A::DIV128,
-            8 => LETIMER0_A::DIV256,
-            9 => LETIMER0_A::DIV512,
-            10 => LETIMER0_A::DIV1024,
-            11 => LETIMER0_A::DIV2048,
-            12 => LETIMER0_A::DIV4096,
-            13 => LETIMER0_A::DIV8192,
-            14 => LETIMER0_A::DIV16384,
-            15 => LETIMER0_A::DIV32768,
+            0 => Letimer0::Div1,
+            1 => Letimer0::Div2,
+            2 => Letimer0::Div4,
+            3 => Letimer0::Div8,
+            4 => Letimer0::Div16,
+            5 => Letimer0::Div32,
+            6 => Letimer0::Div64,
+            7 => Letimer0::Div128,
+            8 => Letimer0::Div256,
+            9 => Letimer0::Div512,
+            10 => Letimer0::Div1024,
+            11 => Letimer0::Div2048,
+            12 => Letimer0::Div4096,
+            13 => Letimer0::Div8192,
+            14 => Letimer0::Div16384,
+            15 => Letimer0::Div32768,
             _ => unreachable!(),
         }
     }
     #[doc = "LFACLKLETIMER0 = LFACLK"]
     #[inline(always)]
     pub fn is_div1(&self) -> bool {
-        *self == LETIMER0_A::DIV1
+        *self == Letimer0::Div1
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/2"]
     #[inline(always)]
     pub fn is_div2(&self) -> bool {
-        *self == LETIMER0_A::DIV2
+        *self == Letimer0::Div2
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/4"]
     #[inline(always)]
     pub fn is_div4(&self) -> bool {
-        *self == LETIMER0_A::DIV4
+        *self == Letimer0::Div4
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/8"]
     #[inline(always)]
     pub fn is_div8(&self) -> bool {
-        *self == LETIMER0_A::DIV8
+        *self == Letimer0::Div8
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/16"]
     #[inline(always)]
     pub fn is_div16(&self) -> bool {
-        *self == LETIMER0_A::DIV16
+        *self == Letimer0::Div16
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/32"]
     #[inline(always)]
     pub fn is_div32(&self) -> bool {
-        *self == LETIMER0_A::DIV32
+        *self == Letimer0::Div32
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/64"]
     #[inline(always)]
     pub fn is_div64(&self) -> bool {
-        *self == LETIMER0_A::DIV64
+        *self == Letimer0::Div64
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/128"]
     #[inline(always)]
     pub fn is_div128(&self) -> bool {
-        *self == LETIMER0_A::DIV128
+        *self == Letimer0::Div128
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/256"]
     #[inline(always)]
     pub fn is_div256(&self) -> bool {
-        *self == LETIMER0_A::DIV256
+        *self == Letimer0::Div256
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/512"]
     #[inline(always)]
     pub fn is_div512(&self) -> bool {
-        *self == LETIMER0_A::DIV512
+        *self == Letimer0::Div512
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/1024"]
     #[inline(always)]
     pub fn is_div1024(&self) -> bool {
-        *self == LETIMER0_A::DIV1024
+        *self == Letimer0::Div1024
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/2048"]
     #[inline(always)]
     pub fn is_div2048(&self) -> bool {
-        *self == LETIMER0_A::DIV2048
+        *self == Letimer0::Div2048
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/4096"]
     #[inline(always)]
     pub fn is_div4096(&self) -> bool {
-        *self == LETIMER0_A::DIV4096
+        *self == Letimer0::Div4096
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/8192"]
     #[inline(always)]
     pub fn is_div8192(&self) -> bool {
-        *self == LETIMER0_A::DIV8192
+        *self == Letimer0::Div8192
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/16384"]
     #[inline(always)]
     pub fn is_div16384(&self) -> bool {
-        *self == LETIMER0_A::DIV16384
+        *self == Letimer0::Div16384
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/32768"]
     #[inline(always)]
     pub fn is_div32768(&self) -> bool {
-        *self == LETIMER0_A::DIV32768
+        *self == Letimer0::Div32768
     }
 }
 #[doc = "Field `LETIMER0` writer - Low Energy Timer 0 Prescaler"]
-pub type LETIMER0_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 4, LETIMER0_A>;
-impl<'a, REG> LETIMER0_W<'a, REG>
+pub type Letimer0W<'a, REG> = crate::FieldWriter<'a, REG, 4, Letimer0, crate::Safe>;
+impl<'a, REG> Letimer0W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -165,240 +166,241 @@ where
     #[doc = "LFACLKLETIMER0 = LFACLK"]
     #[inline(always)]
     pub fn div1(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV1)
+        self.variant(Letimer0::Div1)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/2"]
     #[inline(always)]
     pub fn div2(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV2)
+        self.variant(Letimer0::Div2)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/4"]
     #[inline(always)]
     pub fn div4(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV4)
+        self.variant(Letimer0::Div4)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/8"]
     #[inline(always)]
     pub fn div8(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV8)
+        self.variant(Letimer0::Div8)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/16"]
     #[inline(always)]
     pub fn div16(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV16)
+        self.variant(Letimer0::Div16)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/32"]
     #[inline(always)]
     pub fn div32(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV32)
+        self.variant(Letimer0::Div32)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/64"]
     #[inline(always)]
     pub fn div64(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV64)
+        self.variant(Letimer0::Div64)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/128"]
     #[inline(always)]
     pub fn div128(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV128)
+        self.variant(Letimer0::Div128)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/256"]
     #[inline(always)]
     pub fn div256(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV256)
+        self.variant(Letimer0::Div256)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/512"]
     #[inline(always)]
     pub fn div512(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV512)
+        self.variant(Letimer0::Div512)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/1024"]
     #[inline(always)]
     pub fn div1024(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV1024)
+        self.variant(Letimer0::Div1024)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/2048"]
     #[inline(always)]
     pub fn div2048(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV2048)
+        self.variant(Letimer0::Div2048)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/4096"]
     #[inline(always)]
     pub fn div4096(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV4096)
+        self.variant(Letimer0::Div4096)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/8192"]
     #[inline(always)]
     pub fn div8192(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV8192)
+        self.variant(Letimer0::Div8192)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/16384"]
     #[inline(always)]
     pub fn div16384(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV16384)
+        self.variant(Letimer0::Div16384)
     }
     #[doc = "LFACLKLETIMER0 = LFACLK/32768"]
     #[inline(always)]
     pub fn div32768(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER0_A::DIV32768)
+        self.variant(Letimer0::Div32768)
     }
 }
-#[doc = "Field `LETIMER1` reader - Low Energy Timer 1 Prescaler"]
-pub type LETIMER1_R = crate::FieldReader<LETIMER1_A>;
 #[doc = "Low Energy Timer 1 Prescaler\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum LETIMER1_A {
+pub enum Letimer1 {
     #[doc = "0: LFACLKLETIMER1 = LFACLK"]
-    DIV1 = 0,
+    Div1 = 0,
     #[doc = "1: LFACLKLETIMER1 = LFACLK/2"]
-    DIV2 = 1,
+    Div2 = 1,
     #[doc = "2: LFACLKLETIMER1 = LFACLK/4"]
-    DIV4 = 2,
+    Div4 = 2,
     #[doc = "3: LFACLKLETIMER1 = LFACLK/8"]
-    DIV8 = 3,
+    Div8 = 3,
     #[doc = "4: LFACLKLETIMER1 = LFACLK/16"]
-    DIV16 = 4,
+    Div16 = 4,
     #[doc = "5: LFACLKLETIMER1 = LFACLK/32"]
-    DIV32 = 5,
+    Div32 = 5,
     #[doc = "6: LFACLKLETIMER1 = LFACLK/64"]
-    DIV64 = 6,
+    Div64 = 6,
     #[doc = "7: LFACLKLETIMER1 = LFACLK/128"]
-    DIV128 = 7,
+    Div128 = 7,
     #[doc = "8: LFACLKLETIMER1 = LFACLK/256"]
-    DIV256 = 8,
+    Div256 = 8,
     #[doc = "9: LFACLKLETIMER1 = LFACLK/512"]
-    DIV512 = 9,
+    Div512 = 9,
     #[doc = "10: LFACLKLETIMER1 = LFACLK/1024"]
-    DIV1024 = 10,
+    Div1024 = 10,
     #[doc = "11: LFACLKLETIMER1 = LFACLK/2048"]
-    DIV2048 = 11,
+    Div2048 = 11,
     #[doc = "12: LFACLKLETIMER1 = LFACLK/4096"]
-    DIV4096 = 12,
+    Div4096 = 12,
     #[doc = "13: LFACLKLETIMER1 = LFACLK/8192"]
-    DIV8192 = 13,
+    Div8192 = 13,
     #[doc = "14: LFACLKLETIMER1 = LFACLK/16384"]
-    DIV16384 = 14,
+    Div16384 = 14,
     #[doc = "15: LFACLKLETIMER1 = LFACLK/32768"]
-    DIV32768 = 15,
+    Div32768 = 15,
 }
-impl From<LETIMER1_A> for u8 {
+impl From<Letimer1> for u8 {
     #[inline(always)]
-    fn from(variant: LETIMER1_A) -> Self {
+    fn from(variant: Letimer1) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for LETIMER1_A {
+impl crate::FieldSpec for Letimer1 {
     type Ux = u8;
 }
-impl LETIMER1_R {
+impl crate::IsEnum for Letimer1 {}
+#[doc = "Field `LETIMER1` reader - Low Energy Timer 1 Prescaler"]
+pub type Letimer1R = crate::FieldReader<Letimer1>;
+impl Letimer1R {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> LETIMER1_A {
+    pub const fn variant(&self) -> Letimer1 {
         match self.bits {
-            0 => LETIMER1_A::DIV1,
-            1 => LETIMER1_A::DIV2,
-            2 => LETIMER1_A::DIV4,
-            3 => LETIMER1_A::DIV8,
-            4 => LETIMER1_A::DIV16,
-            5 => LETIMER1_A::DIV32,
-            6 => LETIMER1_A::DIV64,
-            7 => LETIMER1_A::DIV128,
-            8 => LETIMER1_A::DIV256,
-            9 => LETIMER1_A::DIV512,
-            10 => LETIMER1_A::DIV1024,
-            11 => LETIMER1_A::DIV2048,
-            12 => LETIMER1_A::DIV4096,
-            13 => LETIMER1_A::DIV8192,
-            14 => LETIMER1_A::DIV16384,
-            15 => LETIMER1_A::DIV32768,
+            0 => Letimer1::Div1,
+            1 => Letimer1::Div2,
+            2 => Letimer1::Div4,
+            3 => Letimer1::Div8,
+            4 => Letimer1::Div16,
+            5 => Letimer1::Div32,
+            6 => Letimer1::Div64,
+            7 => Letimer1::Div128,
+            8 => Letimer1::Div256,
+            9 => Letimer1::Div512,
+            10 => Letimer1::Div1024,
+            11 => Letimer1::Div2048,
+            12 => Letimer1::Div4096,
+            13 => Letimer1::Div8192,
+            14 => Letimer1::Div16384,
+            15 => Letimer1::Div32768,
             _ => unreachable!(),
         }
     }
     #[doc = "LFACLKLETIMER1 = LFACLK"]
     #[inline(always)]
     pub fn is_div1(&self) -> bool {
-        *self == LETIMER1_A::DIV1
+        *self == Letimer1::Div1
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/2"]
     #[inline(always)]
     pub fn is_div2(&self) -> bool {
-        *self == LETIMER1_A::DIV2
+        *self == Letimer1::Div2
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/4"]
     #[inline(always)]
     pub fn is_div4(&self) -> bool {
-        *self == LETIMER1_A::DIV4
+        *self == Letimer1::Div4
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/8"]
     #[inline(always)]
     pub fn is_div8(&self) -> bool {
-        *self == LETIMER1_A::DIV8
+        *self == Letimer1::Div8
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/16"]
     #[inline(always)]
     pub fn is_div16(&self) -> bool {
-        *self == LETIMER1_A::DIV16
+        *self == Letimer1::Div16
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/32"]
     #[inline(always)]
     pub fn is_div32(&self) -> bool {
-        *self == LETIMER1_A::DIV32
+        *self == Letimer1::Div32
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/64"]
     #[inline(always)]
     pub fn is_div64(&self) -> bool {
-        *self == LETIMER1_A::DIV64
+        *self == Letimer1::Div64
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/128"]
     #[inline(always)]
     pub fn is_div128(&self) -> bool {
-        *self == LETIMER1_A::DIV128
+        *self == Letimer1::Div128
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/256"]
     #[inline(always)]
     pub fn is_div256(&self) -> bool {
-        *self == LETIMER1_A::DIV256
+        *self == Letimer1::Div256
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/512"]
     #[inline(always)]
     pub fn is_div512(&self) -> bool {
-        *self == LETIMER1_A::DIV512
+        *self == Letimer1::Div512
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/1024"]
     #[inline(always)]
     pub fn is_div1024(&self) -> bool {
-        *self == LETIMER1_A::DIV1024
+        *self == Letimer1::Div1024
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/2048"]
     #[inline(always)]
     pub fn is_div2048(&self) -> bool {
-        *self == LETIMER1_A::DIV2048
+        *self == Letimer1::Div2048
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/4096"]
     #[inline(always)]
     pub fn is_div4096(&self) -> bool {
-        *self == LETIMER1_A::DIV4096
+        *self == Letimer1::Div4096
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/8192"]
     #[inline(always)]
     pub fn is_div8192(&self) -> bool {
-        *self == LETIMER1_A::DIV8192
+        *self == Letimer1::Div8192
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/16384"]
     #[inline(always)]
     pub fn is_div16384(&self) -> bool {
-        *self == LETIMER1_A::DIV16384
+        *self == Letimer1::Div16384
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/32768"]
     #[inline(always)]
     pub fn is_div32768(&self) -> bool {
-        *self == LETIMER1_A::DIV32768
+        *self == Letimer1::Div32768
     }
 }
 #[doc = "Field `LETIMER1` writer - Low Energy Timer 1 Prescaler"]
-pub type LETIMER1_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 4, LETIMER1_A>;
-impl<'a, REG> LETIMER1_W<'a, REG>
+pub type Letimer1W<'a, REG> = crate::FieldWriter<'a, REG, 4, Letimer1, crate::Safe>;
+impl<'a, REG> Letimer1W<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -406,144 +408,145 @@ where
     #[doc = "LFACLKLETIMER1 = LFACLK"]
     #[inline(always)]
     pub fn div1(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV1)
+        self.variant(Letimer1::Div1)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/2"]
     #[inline(always)]
     pub fn div2(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV2)
+        self.variant(Letimer1::Div2)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/4"]
     #[inline(always)]
     pub fn div4(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV4)
+        self.variant(Letimer1::Div4)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/8"]
     #[inline(always)]
     pub fn div8(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV8)
+        self.variant(Letimer1::Div8)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/16"]
     #[inline(always)]
     pub fn div16(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV16)
+        self.variant(Letimer1::Div16)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/32"]
     #[inline(always)]
     pub fn div32(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV32)
+        self.variant(Letimer1::Div32)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/64"]
     #[inline(always)]
     pub fn div64(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV64)
+        self.variant(Letimer1::Div64)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/128"]
     #[inline(always)]
     pub fn div128(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV128)
+        self.variant(Letimer1::Div128)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/256"]
     #[inline(always)]
     pub fn div256(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV256)
+        self.variant(Letimer1::Div256)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/512"]
     #[inline(always)]
     pub fn div512(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV512)
+        self.variant(Letimer1::Div512)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/1024"]
     #[inline(always)]
     pub fn div1024(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV1024)
+        self.variant(Letimer1::Div1024)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/2048"]
     #[inline(always)]
     pub fn div2048(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV2048)
+        self.variant(Letimer1::Div2048)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/4096"]
     #[inline(always)]
     pub fn div4096(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV4096)
+        self.variant(Letimer1::Div4096)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/8192"]
     #[inline(always)]
     pub fn div8192(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV8192)
+        self.variant(Letimer1::Div8192)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/16384"]
     #[inline(always)]
     pub fn div16384(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV16384)
+        self.variant(Letimer1::Div16384)
     }
     #[doc = "LFACLKLETIMER1 = LFACLK/32768"]
     #[inline(always)]
     pub fn div32768(self) -> &'a mut crate::W<REG> {
-        self.variant(LETIMER1_A::DIV32768)
+        self.variant(Letimer1::Div32768)
     }
 }
-#[doc = "Field `LESENSE` reader - Low Energy Sensor Interface Prescaler"]
-pub type LESENSE_R = crate::FieldReader<LESENSE_A>;
 #[doc = "Low Energy Sensor Interface Prescaler\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum LESENSE_A {
+pub enum Lesense {
     #[doc = "0: LFACLKLESENSE = LFACLK"]
-    DIV1 = 0,
+    Div1 = 0,
     #[doc = "1: LFACLKLESENSE = LFACLK/2"]
-    DIV2 = 1,
+    Div2 = 1,
     #[doc = "2: LFACLKLESENSE = LFACLK/4"]
-    DIV4 = 2,
+    Div4 = 2,
     #[doc = "3: LFACLKLESENSE = LFACLK/8"]
-    DIV8 = 3,
+    Div8 = 3,
 }
-impl From<LESENSE_A> for u8 {
+impl From<Lesense> for u8 {
     #[inline(always)]
-    fn from(variant: LESENSE_A) -> Self {
+    fn from(variant: Lesense) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for LESENSE_A {
+impl crate::FieldSpec for Lesense {
     type Ux = u8;
 }
-impl LESENSE_R {
+impl crate::IsEnum for Lesense {}
+#[doc = "Field `LESENSE` reader - Low Energy Sensor Interface Prescaler"]
+pub type LesenseR = crate::FieldReader<Lesense>;
+impl LesenseR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> LESENSE_A {
+    pub const fn variant(&self) -> Lesense {
         match self.bits {
-            0 => LESENSE_A::DIV1,
-            1 => LESENSE_A::DIV2,
-            2 => LESENSE_A::DIV4,
-            3 => LESENSE_A::DIV8,
+            0 => Lesense::Div1,
+            1 => Lesense::Div2,
+            2 => Lesense::Div4,
+            3 => Lesense::Div8,
             _ => unreachable!(),
         }
     }
     #[doc = "LFACLKLESENSE = LFACLK"]
     #[inline(always)]
     pub fn is_div1(&self) -> bool {
-        *self == LESENSE_A::DIV1
+        *self == Lesense::Div1
     }
     #[doc = "LFACLKLESENSE = LFACLK/2"]
     #[inline(always)]
     pub fn is_div2(&self) -> bool {
-        *self == LESENSE_A::DIV2
+        *self == Lesense::Div2
     }
     #[doc = "LFACLKLESENSE = LFACLK/4"]
     #[inline(always)]
     pub fn is_div4(&self) -> bool {
-        *self == LESENSE_A::DIV4
+        *self == Lesense::Div4
     }
     #[doc = "LFACLKLESENSE = LFACLK/8"]
     #[inline(always)]
     pub fn is_div8(&self) -> bool {
-        *self == LESENSE_A::DIV8
+        *self == Lesense::Div8
     }
 }
 #[doc = "Field `LESENSE` writer - Low Energy Sensor Interface Prescaler"]
-pub type LESENSE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, LESENSE_A>;
-impl<'a, REG> LESENSE_W<'a, REG>
+pub type LesenseW<'a, REG> = crate::FieldWriter<'a, REG, 2, Lesense, crate::Safe>;
+impl<'a, REG> LesenseW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -551,116 +554,117 @@ where
     #[doc = "LFACLKLESENSE = LFACLK"]
     #[inline(always)]
     pub fn div1(self) -> &'a mut crate::W<REG> {
-        self.variant(LESENSE_A::DIV1)
+        self.variant(Lesense::Div1)
     }
     #[doc = "LFACLKLESENSE = LFACLK/2"]
     #[inline(always)]
     pub fn div2(self) -> &'a mut crate::W<REG> {
-        self.variant(LESENSE_A::DIV2)
+        self.variant(Lesense::Div2)
     }
     #[doc = "LFACLKLESENSE = LFACLK/4"]
     #[inline(always)]
     pub fn div4(self) -> &'a mut crate::W<REG> {
-        self.variant(LESENSE_A::DIV4)
+        self.variant(Lesense::Div4)
     }
     #[doc = "LFACLKLESENSE = LFACLK/8"]
     #[inline(always)]
     pub fn div8(self) -> &'a mut crate::W<REG> {
-        self.variant(LESENSE_A::DIV8)
+        self.variant(Lesense::Div8)
     }
 }
-#[doc = "Field `LCD` reader - Liquid Crystal Display Controller Prescaler"]
-pub type LCD_R = crate::FieldReader<LCD_A>;
 #[doc = "Liquid Crystal Display Controller Prescaler\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum LCD_A {
+pub enum Lcd {
     #[doc = "0: LFACLKLCD = LFACLK"]
-    DIV1 = 0,
+    Div1 = 0,
     #[doc = "1: LFACLKLCD = LFACLK/2"]
-    DIV2 = 1,
+    Div2 = 1,
     #[doc = "2: LFACLKLCD = LFACLK/4"]
-    DIV4 = 2,
+    Div4 = 2,
     #[doc = "3: LFACLKLCD = LFACLK/8"]
-    DIV8 = 3,
+    Div8 = 3,
     #[doc = "4: LFACLKLCD = LFACLK/16"]
-    DIV16 = 4,
+    Div16 = 4,
     #[doc = "5: LFACLKLCD = LFACLK/32"]
-    DIV32 = 5,
+    Div32 = 5,
     #[doc = "6: LFACLKLCD = LFACLK/64"]
-    DIV64 = 6,
+    Div64 = 6,
     #[doc = "7: LFACLKLCD = LFACLK/128"]
-    DIV128 = 7,
+    Div128 = 7,
 }
-impl From<LCD_A> for u8 {
+impl From<Lcd> for u8 {
     #[inline(always)]
-    fn from(variant: LCD_A) -> Self {
+    fn from(variant: Lcd) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for LCD_A {
+impl crate::FieldSpec for Lcd {
     type Ux = u8;
 }
-impl LCD_R {
+impl crate::IsEnum for Lcd {}
+#[doc = "Field `LCD` reader - Liquid Crystal Display Controller Prescaler"]
+pub type LcdR = crate::FieldReader<Lcd>;
+impl LcdR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> LCD_A {
+    pub const fn variant(&self) -> Lcd {
         match self.bits {
-            0 => LCD_A::DIV1,
-            1 => LCD_A::DIV2,
-            2 => LCD_A::DIV4,
-            3 => LCD_A::DIV8,
-            4 => LCD_A::DIV16,
-            5 => LCD_A::DIV32,
-            6 => LCD_A::DIV64,
-            7 => LCD_A::DIV128,
+            0 => Lcd::Div1,
+            1 => Lcd::Div2,
+            2 => Lcd::Div4,
+            3 => Lcd::Div8,
+            4 => Lcd::Div16,
+            5 => Lcd::Div32,
+            6 => Lcd::Div64,
+            7 => Lcd::Div128,
             _ => unreachable!(),
         }
     }
     #[doc = "LFACLKLCD = LFACLK"]
     #[inline(always)]
     pub fn is_div1(&self) -> bool {
-        *self == LCD_A::DIV1
+        *self == Lcd::Div1
     }
     #[doc = "LFACLKLCD = LFACLK/2"]
     #[inline(always)]
     pub fn is_div2(&self) -> bool {
-        *self == LCD_A::DIV2
+        *self == Lcd::Div2
     }
     #[doc = "LFACLKLCD = LFACLK/4"]
     #[inline(always)]
     pub fn is_div4(&self) -> bool {
-        *self == LCD_A::DIV4
+        *self == Lcd::Div4
     }
     #[doc = "LFACLKLCD = LFACLK/8"]
     #[inline(always)]
     pub fn is_div8(&self) -> bool {
-        *self == LCD_A::DIV8
+        *self == Lcd::Div8
     }
     #[doc = "LFACLKLCD = LFACLK/16"]
     #[inline(always)]
     pub fn is_div16(&self) -> bool {
-        *self == LCD_A::DIV16
+        *self == Lcd::Div16
     }
     #[doc = "LFACLKLCD = LFACLK/32"]
     #[inline(always)]
     pub fn is_div32(&self) -> bool {
-        *self == LCD_A::DIV32
+        *self == Lcd::Div32
     }
     #[doc = "LFACLKLCD = LFACLK/64"]
     #[inline(always)]
     pub fn is_div64(&self) -> bool {
-        *self == LCD_A::DIV64
+        *self == Lcd::Div64
     }
     #[doc = "LFACLKLCD = LFACLK/128"]
     #[inline(always)]
     pub fn is_div128(&self) -> bool {
-        *self == LCD_A::DIV128
+        *self == Lcd::Div128
     }
 }
 #[doc = "Field `LCD` writer - Liquid Crystal Display Controller Prescaler"]
-pub type LCD_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, LCD_A>;
-impl<'a, REG> LCD_W<'a, REG>
+pub type LcdW<'a, REG> = crate::FieldWriter<'a, REG, 3, Lcd, crate::Safe>;
+impl<'a, REG> LcdW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -668,200 +672,201 @@ where
     #[doc = "LFACLKLCD = LFACLK"]
     #[inline(always)]
     pub fn div1(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV1)
+        self.variant(Lcd::Div1)
     }
     #[doc = "LFACLKLCD = LFACLK/2"]
     #[inline(always)]
     pub fn div2(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV2)
+        self.variant(Lcd::Div2)
     }
     #[doc = "LFACLKLCD = LFACLK/4"]
     #[inline(always)]
     pub fn div4(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV4)
+        self.variant(Lcd::Div4)
     }
     #[doc = "LFACLKLCD = LFACLK/8"]
     #[inline(always)]
     pub fn div8(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV8)
+        self.variant(Lcd::Div8)
     }
     #[doc = "LFACLKLCD = LFACLK/16"]
     #[inline(always)]
     pub fn div16(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV16)
+        self.variant(Lcd::Div16)
     }
     #[doc = "LFACLKLCD = LFACLK/32"]
     #[inline(always)]
     pub fn div32(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV32)
+        self.variant(Lcd::Div32)
     }
     #[doc = "LFACLKLCD = LFACLK/64"]
     #[inline(always)]
     pub fn div64(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV64)
+        self.variant(Lcd::Div64)
     }
     #[doc = "LFACLKLCD = LFACLK/128"]
     #[inline(always)]
     pub fn div128(self) -> &'a mut crate::W<REG> {
-        self.variant(LCD_A::DIV128)
+        self.variant(Lcd::Div128)
     }
 }
-#[doc = "Field `RTC` reader - Real-Time Counter Prescaler"]
-pub type RTC_R = crate::FieldReader<RTC_A>;
 #[doc = "Real-Time Counter Prescaler\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum RTC_A {
+pub enum Rtc {
     #[doc = "0: LFACLKRTC = LFACLK"]
-    DIV1 = 0,
+    Div1 = 0,
     #[doc = "1: LFACLKRTC = LFACLK/2"]
-    DIV2 = 1,
+    Div2 = 1,
     #[doc = "2: LFACLKRTC = LFACLK/4"]
-    DIV4 = 2,
+    Div4 = 2,
     #[doc = "3: LFACLKRTC = LFACLK/8"]
-    DIV8 = 3,
+    Div8 = 3,
     #[doc = "4: LFACLKRTC = LFACLK/16"]
-    DIV16 = 4,
+    Div16 = 4,
     #[doc = "5: LFACLKRTC = LFACLK/32"]
-    DIV32 = 5,
+    Div32 = 5,
     #[doc = "6: LFACLKRTC = LFACLK/64"]
-    DIV64 = 6,
+    Div64 = 6,
     #[doc = "7: LFACLKRTC = LFACLK/128"]
-    DIV128 = 7,
+    Div128 = 7,
     #[doc = "8: LFACLKRTC = LFACLK/256"]
-    DIV256 = 8,
+    Div256 = 8,
     #[doc = "9: LFACLKRTC = LFACLK/512"]
-    DIV512 = 9,
+    Div512 = 9,
     #[doc = "10: LFACLKRTC = LFACLK/1024"]
-    DIV1024 = 10,
+    Div1024 = 10,
     #[doc = "11: LFACLKRTC = LFACLK/2048"]
-    DIV2048 = 11,
+    Div2048 = 11,
     #[doc = "12: LFACLKRTC = LFACLK/4096"]
-    DIV4096 = 12,
+    Div4096 = 12,
     #[doc = "13: LFACLKRTC = LFACLK/8192"]
-    DIV8192 = 13,
+    Div8192 = 13,
     #[doc = "14: LFACLKRTC = LFACLK/16384"]
-    DIV16384 = 14,
+    Div16384 = 14,
     #[doc = "15: LFACLKRTC = LFACLK/32768"]
-    DIV32768 = 15,
+    Div32768 = 15,
 }
-impl From<RTC_A> for u8 {
+impl From<Rtc> for u8 {
     #[inline(always)]
-    fn from(variant: RTC_A) -> Self {
+    fn from(variant: Rtc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for RTC_A {
+impl crate::FieldSpec for Rtc {
     type Ux = u8;
 }
-impl RTC_R {
+impl crate::IsEnum for Rtc {}
+#[doc = "Field `RTC` reader - Real-Time Counter Prescaler"]
+pub type RtcR = crate::FieldReader<Rtc>;
+impl RtcR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> RTC_A {
+    pub const fn variant(&self) -> Rtc {
         match self.bits {
-            0 => RTC_A::DIV1,
-            1 => RTC_A::DIV2,
-            2 => RTC_A::DIV4,
-            3 => RTC_A::DIV8,
-            4 => RTC_A::DIV16,
-            5 => RTC_A::DIV32,
-            6 => RTC_A::DIV64,
-            7 => RTC_A::DIV128,
-            8 => RTC_A::DIV256,
-            9 => RTC_A::DIV512,
-            10 => RTC_A::DIV1024,
-            11 => RTC_A::DIV2048,
-            12 => RTC_A::DIV4096,
-            13 => RTC_A::DIV8192,
-            14 => RTC_A::DIV16384,
-            15 => RTC_A::DIV32768,
+            0 => Rtc::Div1,
+            1 => Rtc::Div2,
+            2 => Rtc::Div4,
+            3 => Rtc::Div8,
+            4 => Rtc::Div16,
+            5 => Rtc::Div32,
+            6 => Rtc::Div64,
+            7 => Rtc::Div128,
+            8 => Rtc::Div256,
+            9 => Rtc::Div512,
+            10 => Rtc::Div1024,
+            11 => Rtc::Div2048,
+            12 => Rtc::Div4096,
+            13 => Rtc::Div8192,
+            14 => Rtc::Div16384,
+            15 => Rtc::Div32768,
             _ => unreachable!(),
         }
     }
     #[doc = "LFACLKRTC = LFACLK"]
     #[inline(always)]
     pub fn is_div1(&self) -> bool {
-        *self == RTC_A::DIV1
+        *self == Rtc::Div1
     }
     #[doc = "LFACLKRTC = LFACLK/2"]
     #[inline(always)]
     pub fn is_div2(&self) -> bool {
-        *self == RTC_A::DIV2
+        *self == Rtc::Div2
     }
     #[doc = "LFACLKRTC = LFACLK/4"]
     #[inline(always)]
     pub fn is_div4(&self) -> bool {
-        *self == RTC_A::DIV4
+        *self == Rtc::Div4
     }
     #[doc = "LFACLKRTC = LFACLK/8"]
     #[inline(always)]
     pub fn is_div8(&self) -> bool {
-        *self == RTC_A::DIV8
+        *self == Rtc::Div8
     }
     #[doc = "LFACLKRTC = LFACLK/16"]
     #[inline(always)]
     pub fn is_div16(&self) -> bool {
-        *self == RTC_A::DIV16
+        *self == Rtc::Div16
     }
     #[doc = "LFACLKRTC = LFACLK/32"]
     #[inline(always)]
     pub fn is_div32(&self) -> bool {
-        *self == RTC_A::DIV32
+        *self == Rtc::Div32
     }
     #[doc = "LFACLKRTC = LFACLK/64"]
     #[inline(always)]
     pub fn is_div64(&self) -> bool {
-        *self == RTC_A::DIV64
+        *self == Rtc::Div64
     }
     #[doc = "LFACLKRTC = LFACLK/128"]
     #[inline(always)]
     pub fn is_div128(&self) -> bool {
-        *self == RTC_A::DIV128
+        *self == Rtc::Div128
     }
     #[doc = "LFACLKRTC = LFACLK/256"]
     #[inline(always)]
     pub fn is_div256(&self) -> bool {
-        *self == RTC_A::DIV256
+        *self == Rtc::Div256
     }
     #[doc = "LFACLKRTC = LFACLK/512"]
     #[inline(always)]
     pub fn is_div512(&self) -> bool {
-        *self == RTC_A::DIV512
+        *self == Rtc::Div512
     }
     #[doc = "LFACLKRTC = LFACLK/1024"]
     #[inline(always)]
     pub fn is_div1024(&self) -> bool {
-        *self == RTC_A::DIV1024
+        *self == Rtc::Div1024
     }
     #[doc = "LFACLKRTC = LFACLK/2048"]
     #[inline(always)]
     pub fn is_div2048(&self) -> bool {
-        *self == RTC_A::DIV2048
+        *self == Rtc::Div2048
     }
     #[doc = "LFACLKRTC = LFACLK/4096"]
     #[inline(always)]
     pub fn is_div4096(&self) -> bool {
-        *self == RTC_A::DIV4096
+        *self == Rtc::Div4096
     }
     #[doc = "LFACLKRTC = LFACLK/8192"]
     #[inline(always)]
     pub fn is_div8192(&self) -> bool {
-        *self == RTC_A::DIV8192
+        *self == Rtc::Div8192
     }
     #[doc = "LFACLKRTC = LFACLK/16384"]
     #[inline(always)]
     pub fn is_div16384(&self) -> bool {
-        *self == RTC_A::DIV16384
+        *self == Rtc::Div16384
     }
     #[doc = "LFACLKRTC = LFACLK/32768"]
     #[inline(always)]
     pub fn is_div32768(&self) -> bool {
-        *self == RTC_A::DIV32768
+        *self == Rtc::Div32768
     }
 }
 #[doc = "Field `RTC` writer - Real-Time Counter Prescaler"]
-pub type RTC_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 4, RTC_A>;
-impl<'a, REG> RTC_W<'a, REG>
+pub type RtcW<'a, REG> = crate::FieldWriter<'a, REG, 4, Rtc, crate::Safe>;
+impl<'a, REG> RtcW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -869,166 +874,148 @@ where
     #[doc = "LFACLKRTC = LFACLK"]
     #[inline(always)]
     pub fn div1(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV1)
+        self.variant(Rtc::Div1)
     }
     #[doc = "LFACLKRTC = LFACLK/2"]
     #[inline(always)]
     pub fn div2(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV2)
+        self.variant(Rtc::Div2)
     }
     #[doc = "LFACLKRTC = LFACLK/4"]
     #[inline(always)]
     pub fn div4(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV4)
+        self.variant(Rtc::Div4)
     }
     #[doc = "LFACLKRTC = LFACLK/8"]
     #[inline(always)]
     pub fn div8(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV8)
+        self.variant(Rtc::Div8)
     }
     #[doc = "LFACLKRTC = LFACLK/16"]
     #[inline(always)]
     pub fn div16(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV16)
+        self.variant(Rtc::Div16)
     }
     #[doc = "LFACLKRTC = LFACLK/32"]
     #[inline(always)]
     pub fn div32(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV32)
+        self.variant(Rtc::Div32)
     }
     #[doc = "LFACLKRTC = LFACLK/64"]
     #[inline(always)]
     pub fn div64(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV64)
+        self.variant(Rtc::Div64)
     }
     #[doc = "LFACLKRTC = LFACLK/128"]
     #[inline(always)]
     pub fn div128(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV128)
+        self.variant(Rtc::Div128)
     }
     #[doc = "LFACLKRTC = LFACLK/256"]
     #[inline(always)]
     pub fn div256(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV256)
+        self.variant(Rtc::Div256)
     }
     #[doc = "LFACLKRTC = LFACLK/512"]
     #[inline(always)]
     pub fn div512(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV512)
+        self.variant(Rtc::Div512)
     }
     #[doc = "LFACLKRTC = LFACLK/1024"]
     #[inline(always)]
     pub fn div1024(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV1024)
+        self.variant(Rtc::Div1024)
     }
     #[doc = "LFACLKRTC = LFACLK/2048"]
     #[inline(always)]
     pub fn div2048(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV2048)
+        self.variant(Rtc::Div2048)
     }
     #[doc = "LFACLKRTC = LFACLK/4096"]
     #[inline(always)]
     pub fn div4096(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV4096)
+        self.variant(Rtc::Div4096)
     }
     #[doc = "LFACLKRTC = LFACLK/8192"]
     #[inline(always)]
     pub fn div8192(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV8192)
+        self.variant(Rtc::Div8192)
     }
     #[doc = "LFACLKRTC = LFACLK/16384"]
     #[inline(always)]
     pub fn div16384(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV16384)
+        self.variant(Rtc::Div16384)
     }
     #[doc = "LFACLKRTC = LFACLK/32768"]
     #[inline(always)]
     pub fn div32768(self) -> &'a mut crate::W<REG> {
-        self.variant(RTC_A::DIV32768)
+        self.variant(Rtc::Div32768)
     }
 }
 impl R {
     #[doc = "Bits 0:3 - Low Energy Timer 0 Prescaler"]
     #[inline(always)]
-    pub fn letimer0(&self) -> LETIMER0_R {
-        LETIMER0_R::new((self.bits & 0x0f) as u8)
+    pub fn letimer0(&self) -> Letimer0R {
+        Letimer0R::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bits 4:7 - Low Energy Timer 1 Prescaler"]
     #[inline(always)]
-    pub fn letimer1(&self) -> LETIMER1_R {
-        LETIMER1_R::new(((self.bits >> 4) & 0x0f) as u8)
+    pub fn letimer1(&self) -> Letimer1R {
+        Letimer1R::new(((self.bits >> 4) & 0x0f) as u8)
     }
     #[doc = "Bits 8:9 - Low Energy Sensor Interface Prescaler"]
     #[inline(always)]
-    pub fn lesense(&self) -> LESENSE_R {
-        LESENSE_R::new(((self.bits >> 8) & 3) as u8)
+    pub fn lesense(&self) -> LesenseR {
+        LesenseR::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 12:14 - Liquid Crystal Display Controller Prescaler"]
     #[inline(always)]
-    pub fn lcd(&self) -> LCD_R {
-        LCD_R::new(((self.bits >> 12) & 7) as u8)
+    pub fn lcd(&self) -> LcdR {
+        LcdR::new(((self.bits >> 12) & 7) as u8)
     }
     #[doc = "Bits 16:19 - Real-Time Counter Prescaler"]
     #[inline(always)]
-    pub fn rtc(&self) -> RTC_R {
-        RTC_R::new(((self.bits >> 16) & 0x0f) as u8)
+    pub fn rtc(&self) -> RtcR {
+        RtcR::new(((self.bits >> 16) & 0x0f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Low Energy Timer 0 Prescaler"]
     #[inline(always)]
-    #[must_use]
-    pub fn letimer0(&mut self) -> LETIMER0_W<LFAPRESC0_SPEC> {
-        LETIMER0_W::new(self, 0)
+    pub fn letimer0(&mut self) -> Letimer0W<'_, Lfapresc0Spec> {
+        Letimer0W::new(self, 0)
     }
     #[doc = "Bits 4:7 - Low Energy Timer 1 Prescaler"]
     #[inline(always)]
-    #[must_use]
-    pub fn letimer1(&mut self) -> LETIMER1_W<LFAPRESC0_SPEC> {
-        LETIMER1_W::new(self, 4)
+    pub fn letimer1(&mut self) -> Letimer1W<'_, Lfapresc0Spec> {
+        Letimer1W::new(self, 4)
     }
     #[doc = "Bits 8:9 - Low Energy Sensor Interface Prescaler"]
     #[inline(always)]
-    #[must_use]
-    pub fn lesense(&mut self) -> LESENSE_W<LFAPRESC0_SPEC> {
-        LESENSE_W::new(self, 8)
+    pub fn lesense(&mut self) -> LesenseW<'_, Lfapresc0Spec> {
+        LesenseW::new(self, 8)
     }
     #[doc = "Bits 12:14 - Liquid Crystal Display Controller Prescaler"]
     #[inline(always)]
-    #[must_use]
-    pub fn lcd(&mut self) -> LCD_W<LFAPRESC0_SPEC> {
-        LCD_W::new(self, 12)
+    pub fn lcd(&mut self) -> LcdW<'_, Lfapresc0Spec> {
+        LcdW::new(self, 12)
     }
     #[doc = "Bits 16:19 - Real-Time Counter Prescaler"]
     #[inline(always)]
-    #[must_use]
-    pub fn rtc(&mut self) -> RTC_W<LFAPRESC0_SPEC> {
-        RTC_W::new(self, 16)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn rtc(&mut self) -> RtcW<'_, Lfapresc0Spec> {
+        RtcW::new(self, 16)
     }
 }
-#[doc = "Low Frequency a Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfapresc0::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfapresc0::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct LFAPRESC0_SPEC;
-impl crate::RegisterSpec for LFAPRESC0_SPEC {
+#[doc = "Low Frequency a Prescaler Register 0 (Async Reg)\n\nYou can [`read`](crate::Reg::read) this register and get [`lfapresc0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfapresc0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Lfapresc0Spec;
+impl crate::RegisterSpec for Lfapresc0Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`lfapresc0::R`](R) reader structure"]
-impl crate::Readable for LFAPRESC0_SPEC {}
+impl crate::Readable for Lfapresc0Spec {}
 #[doc = "`write(|w| ..)` method takes [`lfapresc0::W`](W) writer structure"]
-impl crate::Writable for LFAPRESC0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Lfapresc0Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets LFAPRESC0 to value 0"]
-impl crate::Resettable for LFAPRESC0_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Lfapresc0Spec {}

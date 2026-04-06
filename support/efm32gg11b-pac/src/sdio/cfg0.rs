@@ -1,75 +1,76 @@
 #[doc = "Register `CFG0` reader"]
-pub type R = crate::R<CFG0_SPEC>;
+pub type R = crate::R<Cfg0Spec>;
 #[doc = "Register `CFG0` writer"]
-pub type W = crate::W<CFG0_SPEC>;
+pub type W = crate::W<Cfg0Spec>;
 #[doc = "Field `TUNINGCNT` reader - Tuning Counter Value"]
-pub type TUNINGCNT_R = crate::FieldReader;
+pub type TuningcntR = crate::FieldReader;
 #[doc = "Field `TUNINGCNT` writer - Tuning Counter Value"]
-pub type TUNINGCNT_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
+pub type TuningcntW<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 #[doc = "Field `TOUTCLKFREQ` reader - Timeout Clock Frequency"]
-pub type TOUTCLKFREQ_R = crate::FieldReader;
+pub type ToutclkfreqR = crate::FieldReader;
 #[doc = "Field `TOUTCLKFREQ` writer - Timeout Clock Frequency"]
-pub type TOUTCLKFREQ_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
+pub type ToutclkfreqW<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 #[doc = "Field `TOUTCLKUNIT` reader - Timeout Clock Unit in kHz or MHz"]
-pub type TOUTCLKUNIT_R = crate::BitReader;
+pub type ToutclkunitR = crate::BitReader;
 #[doc = "Field `TOUTCLKUNIT` writer - Timeout Clock Unit in kHz or MHz"]
-pub type TOUTCLKUNIT_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type ToutclkunitW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BASECLKFREQ` reader - Base Clock Frequency for SD_CLK"]
-pub type BASECLKFREQ_R = crate::FieldReader;
+pub type BaseclkfreqR = crate::FieldReader;
 #[doc = "Field `BASECLKFREQ` writer - Base Clock Frequency for SD_CLK"]
-pub type BASECLKFREQ_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
-#[doc = "Field `MAXBLKLEN` reader - MAX Block Length of Transfer"]
-pub type MAXBLKLEN_R = crate::FieldReader<MAXBLKLEN_A>;
+pub type BaseclkfreqW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "MAX Block Length of Transfer\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum MAXBLKLEN_A {
+pub enum Maxblklen {
     #[doc = "0: 512 Bytes are Selected"]
-    _512B = 0,
+    _512b = 0,
     #[doc = "1: 1024 Bytes are Selected"]
-    _1024B = 1,
+    _1024b = 1,
     #[doc = "2: 2048 Bytes are Selected"]
-    _2048B = 2,
+    _2048b = 2,
 }
-impl From<MAXBLKLEN_A> for u8 {
+impl From<Maxblklen> for u8 {
     #[inline(always)]
-    fn from(variant: MAXBLKLEN_A) -> Self {
+    fn from(variant: Maxblklen) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for MAXBLKLEN_A {
+impl crate::FieldSpec for Maxblklen {
     type Ux = u8;
 }
-impl MAXBLKLEN_R {
+impl crate::IsEnum for Maxblklen {}
+#[doc = "Field `MAXBLKLEN` reader - MAX Block Length of Transfer"]
+pub type MaxblklenR = crate::FieldReader<Maxblklen>;
+impl MaxblklenR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<MAXBLKLEN_A> {
+    pub const fn variant(&self) -> Option<Maxblklen> {
         match self.bits {
-            0 => Some(MAXBLKLEN_A::_512B),
-            1 => Some(MAXBLKLEN_A::_1024B),
-            2 => Some(MAXBLKLEN_A::_2048B),
+            0 => Some(Maxblklen::_512b),
+            1 => Some(Maxblklen::_1024b),
+            2 => Some(Maxblklen::_2048b),
             _ => None,
         }
     }
     #[doc = "512 Bytes are Selected"]
     #[inline(always)]
     pub fn is_512b(&self) -> bool {
-        *self == MAXBLKLEN_A::_512B
+        *self == Maxblklen::_512b
     }
     #[doc = "1024 Bytes are Selected"]
     #[inline(always)]
     pub fn is_1024b(&self) -> bool {
-        *self == MAXBLKLEN_A::_1024B
+        *self == Maxblklen::_1024b
     }
     #[doc = "2048 Bytes are Selected"]
     #[inline(always)]
     pub fn is_2048b(&self) -> bool {
-        *self == MAXBLKLEN_A::_2048B
+        *self == Maxblklen::_2048b
     }
 }
 #[doc = "Field `MAXBLKLEN` writer - MAX Block Length of Transfer"]
-pub type MAXBLKLEN_W<'a, REG> = crate::FieldWriter<'a, REG, 2, MAXBLKLEN_A>;
-impl<'a, REG> MAXBLKLEN_W<'a, REG>
+pub type MaxblklenW<'a, REG> = crate::FieldWriter<'a, REG, 2, Maxblklen>;
+impl<'a, REG> MaxblklenW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -77,221 +78,195 @@ where
     #[doc = "512 Bytes are Selected"]
     #[inline(always)]
     pub fn _512b(self) -> &'a mut crate::W<REG> {
-        self.variant(MAXBLKLEN_A::_512B)
+        self.variant(Maxblklen::_512b)
     }
     #[doc = "1024 Bytes are Selected"]
     #[inline(always)]
     pub fn _1024b(self) -> &'a mut crate::W<REG> {
-        self.variant(MAXBLKLEN_A::_1024B)
+        self.variant(Maxblklen::_1024b)
     }
     #[doc = "2048 Bytes are Selected"]
     #[inline(always)]
     pub fn _2048b(self) -> &'a mut crate::W<REG> {
-        self.variant(MAXBLKLEN_A::_2048B)
+        self.variant(Maxblklen::_2048b)
     }
 }
 #[doc = "Field `C8BITSUP` reader - 8-bit Interface Support"]
-pub type C8BITSUP_R = crate::BitReader;
+pub type C8bitsupR = crate::BitReader;
 #[doc = "Field `C8BITSUP` writer - 8-bit Interface Support"]
-pub type C8BITSUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type C8bitsupW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CADMA2SUP` reader - ADMA2 Mode Support"]
-pub type CADMA2SUP_R = crate::BitReader;
+pub type Cadma2supR = crate::BitReader;
 #[doc = "Field `CADMA2SUP` writer - ADMA2 Mode Support"]
-pub type CADMA2SUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Cadma2supW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CHSSUP` reader - High Speed Mode Support"]
-pub type CHSSUP_R = crate::BitReader;
+pub type ChssupR = crate::BitReader;
 #[doc = "Field `CHSSUP` writer - High Speed Mode Support"]
-pub type CHSSUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type ChssupW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CSDMASUP` reader - SDMA Mode Support"]
-pub type CSDMASUP_R = crate::BitReader;
+pub type CsdmasupR = crate::BitReader;
 #[doc = "Field `CSDMASUP` writer - SDMA Mode Support"]
-pub type CSDMASUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type CsdmasupW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CSUSPRESSUP` reader - Suspend/Resume Support"]
-pub type CSUSPRESSUP_R = crate::BitReader;
+pub type CsuspressupR = crate::BitReader;
 #[doc = "Field `CSUSPRESSUP` writer - Suspend/Resume Support"]
-pub type CSUSPRESSUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type CsuspressupW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `C3P3VSUP` reader - Core 3P3V Support"]
-pub type C3P3VSUP_R = crate::BitReader;
+pub type C3p3vsupR = crate::BitReader;
 #[doc = "Field `C3P3VSUP` writer - Core 3P3V Support"]
-pub type C3P3VSUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type C3p3vsupW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `C3P0VSUP` reader - 3P0V Support"]
-pub type C3P0VSUP_R = crate::BitReader;
+pub type C3p0vsupR = crate::BitReader;
 #[doc = "Field `C3P0VSUP` writer - 3P0V Support"]
-pub type C3P0VSUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type C3p0vsupW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `C1P8VSUP` reader - 1P8V Support"]
-pub type C1P8VSUP_R = crate::BitReader;
+pub type C1p8vsupR = crate::BitReader;
 #[doc = "Field `C1P8VSUP` writer - 1P8V Support"]
-pub type C1P8VSUP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type C1p8vsupW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:5 - Tuning Counter Value"]
     #[inline(always)]
-    pub fn tuningcnt(&self) -> TUNINGCNT_R {
-        TUNINGCNT_R::new((self.bits & 0x3f) as u8)
+    pub fn tuningcnt(&self) -> TuningcntR {
+        TuningcntR::new((self.bits & 0x3f) as u8)
     }
     #[doc = "Bits 6:11 - Timeout Clock Frequency"]
     #[inline(always)]
-    pub fn toutclkfreq(&self) -> TOUTCLKFREQ_R {
-        TOUTCLKFREQ_R::new(((self.bits >> 6) & 0x3f) as u8)
+    pub fn toutclkfreq(&self) -> ToutclkfreqR {
+        ToutclkfreqR::new(((self.bits >> 6) & 0x3f) as u8)
     }
     #[doc = "Bit 12 - Timeout Clock Unit in kHz or MHz"]
     #[inline(always)]
-    pub fn toutclkunit(&self) -> TOUTCLKUNIT_R {
-        TOUTCLKUNIT_R::new(((self.bits >> 12) & 1) != 0)
+    pub fn toutclkunit(&self) -> ToutclkunitR {
+        ToutclkunitR::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bits 13:20 - Base Clock Frequency for SD_CLK"]
     #[inline(always)]
-    pub fn baseclkfreq(&self) -> BASECLKFREQ_R {
-        BASECLKFREQ_R::new(((self.bits >> 13) & 0xff) as u8)
+    pub fn baseclkfreq(&self) -> BaseclkfreqR {
+        BaseclkfreqR::new(((self.bits >> 13) & 0xff) as u8)
     }
     #[doc = "Bits 21:22 - MAX Block Length of Transfer"]
     #[inline(always)]
-    pub fn maxblklen(&self) -> MAXBLKLEN_R {
-        MAXBLKLEN_R::new(((self.bits >> 21) & 3) as u8)
+    pub fn maxblklen(&self) -> MaxblklenR {
+        MaxblklenR::new(((self.bits >> 21) & 3) as u8)
     }
     #[doc = "Bit 23 - 8-bit Interface Support"]
     #[inline(always)]
-    pub fn c8bitsup(&self) -> C8BITSUP_R {
-        C8BITSUP_R::new(((self.bits >> 23) & 1) != 0)
+    pub fn c8bitsup(&self) -> C8bitsupR {
+        C8bitsupR::new(((self.bits >> 23) & 1) != 0)
     }
     #[doc = "Bit 24 - ADMA2 Mode Support"]
     #[inline(always)]
-    pub fn cadma2sup(&self) -> CADMA2SUP_R {
-        CADMA2SUP_R::new(((self.bits >> 24) & 1) != 0)
+    pub fn cadma2sup(&self) -> Cadma2supR {
+        Cadma2supR::new(((self.bits >> 24) & 1) != 0)
     }
     #[doc = "Bit 25 - High Speed Mode Support"]
     #[inline(always)]
-    pub fn chssup(&self) -> CHSSUP_R {
-        CHSSUP_R::new(((self.bits >> 25) & 1) != 0)
+    pub fn chssup(&self) -> ChssupR {
+        ChssupR::new(((self.bits >> 25) & 1) != 0)
     }
     #[doc = "Bit 26 - SDMA Mode Support"]
     #[inline(always)]
-    pub fn csdmasup(&self) -> CSDMASUP_R {
-        CSDMASUP_R::new(((self.bits >> 26) & 1) != 0)
+    pub fn csdmasup(&self) -> CsdmasupR {
+        CsdmasupR::new(((self.bits >> 26) & 1) != 0)
     }
     #[doc = "Bit 27 - Suspend/Resume Support"]
     #[inline(always)]
-    pub fn csuspressup(&self) -> CSUSPRESSUP_R {
-        CSUSPRESSUP_R::new(((self.bits >> 27) & 1) != 0)
+    pub fn csuspressup(&self) -> CsuspressupR {
+        CsuspressupR::new(((self.bits >> 27) & 1) != 0)
     }
     #[doc = "Bit 28 - Core 3P3V Support"]
     #[inline(always)]
-    pub fn c3p3vsup(&self) -> C3P3VSUP_R {
-        C3P3VSUP_R::new(((self.bits >> 28) & 1) != 0)
+    pub fn c3p3vsup(&self) -> C3p3vsupR {
+        C3p3vsupR::new(((self.bits >> 28) & 1) != 0)
     }
     #[doc = "Bit 29 - 3P0V Support"]
     #[inline(always)]
-    pub fn c3p0vsup(&self) -> C3P0VSUP_R {
-        C3P0VSUP_R::new(((self.bits >> 29) & 1) != 0)
+    pub fn c3p0vsup(&self) -> C3p0vsupR {
+        C3p0vsupR::new(((self.bits >> 29) & 1) != 0)
     }
     #[doc = "Bit 30 - 1P8V Support"]
     #[inline(always)]
-    pub fn c1p8vsup(&self) -> C1P8VSUP_R {
-        C1P8VSUP_R::new(((self.bits >> 30) & 1) != 0)
+    pub fn c1p8vsup(&self) -> C1p8vsupR {
+        C1p8vsupR::new(((self.bits >> 30) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:5 - Tuning Counter Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn tuningcnt(&mut self) -> TUNINGCNT_W<CFG0_SPEC> {
-        TUNINGCNT_W::new(self, 0)
+    pub fn tuningcnt(&mut self) -> TuningcntW<'_, Cfg0Spec> {
+        TuningcntW::new(self, 0)
     }
     #[doc = "Bits 6:11 - Timeout Clock Frequency"]
     #[inline(always)]
-    #[must_use]
-    pub fn toutclkfreq(&mut self) -> TOUTCLKFREQ_W<CFG0_SPEC> {
-        TOUTCLKFREQ_W::new(self, 6)
+    pub fn toutclkfreq(&mut self) -> ToutclkfreqW<'_, Cfg0Spec> {
+        ToutclkfreqW::new(self, 6)
     }
     #[doc = "Bit 12 - Timeout Clock Unit in kHz or MHz"]
     #[inline(always)]
-    #[must_use]
-    pub fn toutclkunit(&mut self) -> TOUTCLKUNIT_W<CFG0_SPEC> {
-        TOUTCLKUNIT_W::new(self, 12)
+    pub fn toutclkunit(&mut self) -> ToutclkunitW<'_, Cfg0Spec> {
+        ToutclkunitW::new(self, 12)
     }
     #[doc = "Bits 13:20 - Base Clock Frequency for SD_CLK"]
     #[inline(always)]
-    #[must_use]
-    pub fn baseclkfreq(&mut self) -> BASECLKFREQ_W<CFG0_SPEC> {
-        BASECLKFREQ_W::new(self, 13)
+    pub fn baseclkfreq(&mut self) -> BaseclkfreqW<'_, Cfg0Spec> {
+        BaseclkfreqW::new(self, 13)
     }
     #[doc = "Bits 21:22 - MAX Block Length of Transfer"]
     #[inline(always)]
-    #[must_use]
-    pub fn maxblklen(&mut self) -> MAXBLKLEN_W<CFG0_SPEC> {
-        MAXBLKLEN_W::new(self, 21)
+    pub fn maxblklen(&mut self) -> MaxblklenW<'_, Cfg0Spec> {
+        MaxblklenW::new(self, 21)
     }
     #[doc = "Bit 23 - 8-bit Interface Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn c8bitsup(&mut self) -> C8BITSUP_W<CFG0_SPEC> {
-        C8BITSUP_W::new(self, 23)
+    pub fn c8bitsup(&mut self) -> C8bitsupW<'_, Cfg0Spec> {
+        C8bitsupW::new(self, 23)
     }
     #[doc = "Bit 24 - ADMA2 Mode Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn cadma2sup(&mut self) -> CADMA2SUP_W<CFG0_SPEC> {
-        CADMA2SUP_W::new(self, 24)
+    pub fn cadma2sup(&mut self) -> Cadma2supW<'_, Cfg0Spec> {
+        Cadma2supW::new(self, 24)
     }
     #[doc = "Bit 25 - High Speed Mode Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn chssup(&mut self) -> CHSSUP_W<CFG0_SPEC> {
-        CHSSUP_W::new(self, 25)
+    pub fn chssup(&mut self) -> ChssupW<'_, Cfg0Spec> {
+        ChssupW::new(self, 25)
     }
     #[doc = "Bit 26 - SDMA Mode Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn csdmasup(&mut self) -> CSDMASUP_W<CFG0_SPEC> {
-        CSDMASUP_W::new(self, 26)
+    pub fn csdmasup(&mut self) -> CsdmasupW<'_, Cfg0Spec> {
+        CsdmasupW::new(self, 26)
     }
     #[doc = "Bit 27 - Suspend/Resume Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn csuspressup(&mut self) -> CSUSPRESSUP_W<CFG0_SPEC> {
-        CSUSPRESSUP_W::new(self, 27)
+    pub fn csuspressup(&mut self) -> CsuspressupW<'_, Cfg0Spec> {
+        CsuspressupW::new(self, 27)
     }
     #[doc = "Bit 28 - Core 3P3V Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn c3p3vsup(&mut self) -> C3P3VSUP_W<CFG0_SPEC> {
-        C3P3VSUP_W::new(self, 28)
+    pub fn c3p3vsup(&mut self) -> C3p3vsupW<'_, Cfg0Spec> {
+        C3p3vsupW::new(self, 28)
     }
     #[doc = "Bit 29 - 3P0V Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn c3p0vsup(&mut self) -> C3P0VSUP_W<CFG0_SPEC> {
-        C3P0VSUP_W::new(self, 29)
+    pub fn c3p0vsup(&mut self) -> C3p0vsupW<'_, Cfg0Spec> {
+        C3p0vsupW::new(self, 29)
     }
     #[doc = "Bit 30 - 1P8V Support"]
     #[inline(always)]
-    #[must_use]
-    pub fn c1p8vsup(&mut self) -> C1P8VSUP_W<CFG0_SPEC> {
-        C1P8VSUP_W::new(self, 30)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn c1p8vsup(&mut self) -> C1p8vsupW<'_, Cfg0Spec> {
+        C1p8vsupW::new(self, 30)
     }
 }
-#[doc = "Core Configuration 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`cfg0::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`cfg0::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CFG0_SPEC;
-impl crate::RegisterSpec for CFG0_SPEC {
+#[doc = "Core Configuration 0\n\nYou can [`read`](crate::Reg::read) this register and get [`cfg0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cfg0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Cfg0Spec;
+impl crate::RegisterSpec for Cfg0Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`cfg0::R`](R) reader structure"]
-impl crate::Readable for CFG0_SPEC {}
+impl crate::Readable for Cfg0Spec {}
 #[doc = "`write(|w| ..)` method takes [`cfg0::W`](W) writer structure"]
-impl crate::Writable for CFG0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Cfg0Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets CFG0 to value 0"]
-impl crate::Resettable for CFG0_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Cfg0Spec {}

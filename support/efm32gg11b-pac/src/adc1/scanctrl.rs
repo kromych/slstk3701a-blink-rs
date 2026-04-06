@@ -1,79 +1,80 @@
 #[doc = "Register `SCANCTRL` reader"]
-pub type R = crate::R<SCANCTRL_SPEC>;
+pub type R = crate::R<ScanctrlSpec>;
 #[doc = "Register `SCANCTRL` writer"]
-pub type W = crate::W<SCANCTRL_SPEC>;
+pub type W = crate::W<ScanctrlSpec>;
 #[doc = "Field `REP` reader - Scan Sequence Repetitive Mode"]
-pub type REP_R = crate::BitReader;
+pub type RepR = crate::BitReader;
 #[doc = "Field `REP` writer - Scan Sequence Repetitive Mode"]
-pub type REP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RepW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DIFF` reader - Scan Sequence Differential Mode"]
-pub type DIFF_R = crate::BitReader;
+pub type DiffR = crate::BitReader;
 #[doc = "Field `DIFF` writer - Scan Sequence Differential Mode"]
-pub type DIFF_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DiffW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ADJ` reader - Scan Sequence Result Adjustment"]
-pub type ADJ_R = crate::BitReader;
+pub type AdjR = crate::BitReader;
 #[doc = "Field `ADJ` writer - Scan Sequence Result Adjustment"]
-pub type ADJ_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `RES` reader - Scan Sequence Resolution Select"]
-pub type RES_R = crate::FieldReader<RES_A>;
+pub type AdjW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Scan Sequence Resolution Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum RES_A {
+pub enum Res {
     #[doc = "0: 12-bit resolution"]
-    _12BIT = 0,
+    _12bit = 0,
     #[doc = "1: 8-bit resolution"]
-    _8BIT = 1,
+    _8bit = 1,
     #[doc = "2: 6-bit resolution"]
-    _6BIT = 2,
+    _6bit = 2,
     #[doc = "3: Oversampling enabled. Oversampling rate is set in OVSRSEL"]
-    OVS = 3,
+    Ovs = 3,
 }
-impl From<RES_A> for u8 {
+impl From<Res> for u8 {
     #[inline(always)]
-    fn from(variant: RES_A) -> Self {
+    fn from(variant: Res) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for RES_A {
+impl crate::FieldSpec for Res {
     type Ux = u8;
 }
-impl RES_R {
+impl crate::IsEnum for Res {}
+#[doc = "Field `RES` reader - Scan Sequence Resolution Select"]
+pub type ResR = crate::FieldReader<Res>;
+impl ResR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> RES_A {
+    pub const fn variant(&self) -> Res {
         match self.bits {
-            0 => RES_A::_12BIT,
-            1 => RES_A::_8BIT,
-            2 => RES_A::_6BIT,
-            3 => RES_A::OVS,
+            0 => Res::_12bit,
+            1 => Res::_8bit,
+            2 => Res::_6bit,
+            3 => Res::Ovs,
             _ => unreachable!(),
         }
     }
     #[doc = "12-bit resolution"]
     #[inline(always)]
     pub fn is_12bit(&self) -> bool {
-        *self == RES_A::_12BIT
+        *self == Res::_12bit
     }
     #[doc = "8-bit resolution"]
     #[inline(always)]
     pub fn is_8bit(&self) -> bool {
-        *self == RES_A::_8BIT
+        *self == Res::_8bit
     }
     #[doc = "6-bit resolution"]
     #[inline(always)]
     pub fn is_6bit(&self) -> bool {
-        *self == RES_A::_6BIT
+        *self == Res::_6bit
     }
     #[doc = "Oversampling enabled. Oversampling rate is set in OVSRSEL"]
     #[inline(always)]
     pub fn is_ovs(&self) -> bool {
-        *self == RES_A::OVS
+        *self == Res::Ovs
     }
 }
 #[doc = "Field `RES` writer - Scan Sequence Resolution Select"]
-pub type RES_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, RES_A>;
-impl<'a, REG> RES_W<'a, REG>
+pub type ResW<'a, REG> = crate::FieldWriter<'a, REG, 2, Res, crate::Safe>;
+impl<'a, REG> ResW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -81,116 +82,117 @@ where
     #[doc = "12-bit resolution"]
     #[inline(always)]
     pub fn _12bit(self) -> &'a mut crate::W<REG> {
-        self.variant(RES_A::_12BIT)
+        self.variant(Res::_12bit)
     }
     #[doc = "8-bit resolution"]
     #[inline(always)]
     pub fn _8bit(self) -> &'a mut crate::W<REG> {
-        self.variant(RES_A::_8BIT)
+        self.variant(Res::_8bit)
     }
     #[doc = "6-bit resolution"]
     #[inline(always)]
     pub fn _6bit(self) -> &'a mut crate::W<REG> {
-        self.variant(RES_A::_6BIT)
+        self.variant(Res::_6bit)
     }
     #[doc = "Oversampling enabled. Oversampling rate is set in OVSRSEL"]
     #[inline(always)]
     pub fn ovs(self) -> &'a mut crate::W<REG> {
-        self.variant(RES_A::OVS)
+        self.variant(Res::Ovs)
     }
 }
-#[doc = "Field `REF` reader - Scan Sequence Reference Selection"]
-pub type REF_R = crate::FieldReader<REF_A>;
 #[doc = "Scan Sequence Reference Selection\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum REF_A {
+pub enum Ref {
     #[doc = "0: VFS = 1.25V with internal VBGR reference"]
-    _1V25 = 0,
+    _1v25 = 0,
     #[doc = "1: VFS = 2.5V with internal VBGR reference"]
-    _2V5 = 1,
+    _2v5 = 1,
     #[doc = "2: VFS = AVDD with AVDD as reference source"]
-    VDD = 2,
+    Vdd = 2,
     #[doc = "3: VFS = 5V with internal VBGR reference"]
-    _5V = 3,
+    _5v = 3,
     #[doc = "4: Single ended external reference"]
-    EXTSINGLE = 4,
+    Extsingle = 4,
     #[doc = "5: Differential external reference, 2x"]
-    _2XEXTDIFF = 5,
+    _2xextdiff = 5,
     #[doc = "6: VFS=2xAVDD with AVDD as the reference source"]
-    _2XVDD = 6,
+    _2xvdd = 6,
     #[doc = "7: Use SCANCTRLX to configure reference"]
-    CONF = 7,
+    Conf = 7,
 }
-impl From<REF_A> for u8 {
+impl From<Ref> for u8 {
     #[inline(always)]
-    fn from(variant: REF_A) -> Self {
+    fn from(variant: Ref) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for REF_A {
+impl crate::FieldSpec for Ref {
     type Ux = u8;
 }
-impl REF_R {
+impl crate::IsEnum for Ref {}
+#[doc = "Field `REF` reader - Scan Sequence Reference Selection"]
+pub type RefR = crate::FieldReader<Ref>;
+impl RefR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> REF_A {
+    pub const fn variant(&self) -> Ref {
         match self.bits {
-            0 => REF_A::_1V25,
-            1 => REF_A::_2V5,
-            2 => REF_A::VDD,
-            3 => REF_A::_5V,
-            4 => REF_A::EXTSINGLE,
-            5 => REF_A::_2XEXTDIFF,
-            6 => REF_A::_2XVDD,
-            7 => REF_A::CONF,
+            0 => Ref::_1v25,
+            1 => Ref::_2v5,
+            2 => Ref::Vdd,
+            3 => Ref::_5v,
+            4 => Ref::Extsingle,
+            5 => Ref::_2xextdiff,
+            6 => Ref::_2xvdd,
+            7 => Ref::Conf,
             _ => unreachable!(),
         }
     }
     #[doc = "VFS = 1.25V with internal VBGR reference"]
     #[inline(always)]
     pub fn is_1v25(&self) -> bool {
-        *self == REF_A::_1V25
+        *self == Ref::_1v25
     }
     #[doc = "VFS = 2.5V with internal VBGR reference"]
     #[inline(always)]
     pub fn is_2v5(&self) -> bool {
-        *self == REF_A::_2V5
+        *self == Ref::_2v5
     }
     #[doc = "VFS = AVDD with AVDD as reference source"]
     #[inline(always)]
     pub fn is_vdd(&self) -> bool {
-        *self == REF_A::VDD
+        *self == Ref::Vdd
     }
     #[doc = "VFS = 5V with internal VBGR reference"]
     #[inline(always)]
     pub fn is_5v(&self) -> bool {
-        *self == REF_A::_5V
+        *self == Ref::_5v
     }
     #[doc = "Single ended external reference"]
     #[inline(always)]
     pub fn is_extsingle(&self) -> bool {
-        *self == REF_A::EXTSINGLE
+        *self == Ref::Extsingle
     }
     #[doc = "Differential external reference, 2x"]
     #[inline(always)]
     pub fn is_2xextdiff(&self) -> bool {
-        *self == REF_A::_2XEXTDIFF
+        *self == Ref::_2xextdiff
     }
     #[doc = "VFS=2xAVDD with AVDD as the reference source"]
     #[inline(always)]
     pub fn is_2xvdd(&self) -> bool {
-        *self == REF_A::_2XVDD
+        *self == Ref::_2xvdd
     }
     #[doc = "Use SCANCTRLX to configure reference"]
     #[inline(always)]
     pub fn is_conf(&self) -> bool {
-        *self == REF_A::CONF
+        *self == Ref::Conf
     }
 }
 #[doc = "Field `REF` writer - Scan Sequence Reference Selection"]
-pub type REF_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 3, REF_A>;
-impl<'a, REG> REF_W<'a, REG>
+pub type RefW<'a, REG> = crate::FieldWriter<'a, REG, 3, Ref, crate::Safe>;
+impl<'a, REG> RefW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -198,152 +200,153 @@ where
     #[doc = "VFS = 1.25V with internal VBGR reference"]
     #[inline(always)]
     pub fn _1v25(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::_1V25)
+        self.variant(Ref::_1v25)
     }
     #[doc = "VFS = 2.5V with internal VBGR reference"]
     #[inline(always)]
     pub fn _2v5(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::_2V5)
+        self.variant(Ref::_2v5)
     }
     #[doc = "VFS = AVDD with AVDD as reference source"]
     #[inline(always)]
     pub fn vdd(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::VDD)
+        self.variant(Ref::Vdd)
     }
     #[doc = "VFS = 5V with internal VBGR reference"]
     #[inline(always)]
     pub fn _5v(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::_5V)
+        self.variant(Ref::_5v)
     }
     #[doc = "Single ended external reference"]
     #[inline(always)]
     pub fn extsingle(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::EXTSINGLE)
+        self.variant(Ref::Extsingle)
     }
     #[doc = "Differential external reference, 2x"]
     #[inline(always)]
     pub fn _2xextdiff(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::_2XEXTDIFF)
+        self.variant(Ref::_2xextdiff)
     }
     #[doc = "VFS=2xAVDD with AVDD as the reference source"]
     #[inline(always)]
     pub fn _2xvdd(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::_2XVDD)
+        self.variant(Ref::_2xvdd)
     }
     #[doc = "Use SCANCTRLX to configure reference"]
     #[inline(always)]
     pub fn conf(self) -> &'a mut crate::W<REG> {
-        self.variant(REF_A::CONF)
+        self.variant(Ref::Conf)
     }
 }
-#[doc = "Field `AT` reader - Scan Acquisition Time"]
-pub type AT_R = crate::FieldReader<AT_A>;
 #[doc = "Scan Acquisition Time\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum AT_A {
+pub enum At {
     #[doc = "0: 1 conversion clock cycle acquisition time for scan"]
-    _1CYCLE = 0,
+    _1cycle = 0,
     #[doc = "1: 2 conversion clock cycles acquisition time for scan"]
-    _2CYCLES = 1,
+    _2cycles = 1,
     #[doc = "2: 3 conversion clock cycles acquisition time for scan"]
-    _3CYCLES = 2,
+    _3cycles = 2,
     #[doc = "3: 4 conversion clock cycles acquisition time for scan"]
-    _4CYCLES = 3,
+    _4cycles = 3,
     #[doc = "4: 8 conversion clock cycles acquisition time for scan"]
-    _8CYCLES = 4,
+    _8cycles = 4,
     #[doc = "5: 16 conversion clock cycles acquisition time for scan"]
-    _16CYCLES = 5,
+    _16cycles = 5,
     #[doc = "6: 32 conversion clock cycles acquisition time for scan"]
-    _32CYCLES = 6,
+    _32cycles = 6,
     #[doc = "7: 64 conversion clock cycles acquisition time for scan"]
-    _64CYCLES = 7,
+    _64cycles = 7,
     #[doc = "8: 128 conversion clock cycles acquisition time for scan"]
-    _128CYCLES = 8,
+    _128cycles = 8,
     #[doc = "9: 256 conversion clock cycles acquisition time for scan"]
-    _256CYCLES = 9,
+    _256cycles = 9,
 }
-impl From<AT_A> for u8 {
+impl From<At> for u8 {
     #[inline(always)]
-    fn from(variant: AT_A) -> Self {
+    fn from(variant: At) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for AT_A {
+impl crate::FieldSpec for At {
     type Ux = u8;
 }
-impl AT_R {
+impl crate::IsEnum for At {}
+#[doc = "Field `AT` reader - Scan Acquisition Time"]
+pub type AtR = crate::FieldReader<At>;
+impl AtR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<AT_A> {
+    pub const fn variant(&self) -> Option<At> {
         match self.bits {
-            0 => Some(AT_A::_1CYCLE),
-            1 => Some(AT_A::_2CYCLES),
-            2 => Some(AT_A::_3CYCLES),
-            3 => Some(AT_A::_4CYCLES),
-            4 => Some(AT_A::_8CYCLES),
-            5 => Some(AT_A::_16CYCLES),
-            6 => Some(AT_A::_32CYCLES),
-            7 => Some(AT_A::_64CYCLES),
-            8 => Some(AT_A::_128CYCLES),
-            9 => Some(AT_A::_256CYCLES),
+            0 => Some(At::_1cycle),
+            1 => Some(At::_2cycles),
+            2 => Some(At::_3cycles),
+            3 => Some(At::_4cycles),
+            4 => Some(At::_8cycles),
+            5 => Some(At::_16cycles),
+            6 => Some(At::_32cycles),
+            7 => Some(At::_64cycles),
+            8 => Some(At::_128cycles),
+            9 => Some(At::_256cycles),
             _ => None,
         }
     }
     #[doc = "1 conversion clock cycle acquisition time for scan"]
     #[inline(always)]
     pub fn is_1cycle(&self) -> bool {
-        *self == AT_A::_1CYCLE
+        *self == At::_1cycle
     }
     #[doc = "2 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_2cycles(&self) -> bool {
-        *self == AT_A::_2CYCLES
+        *self == At::_2cycles
     }
     #[doc = "3 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_3cycles(&self) -> bool {
-        *self == AT_A::_3CYCLES
+        *self == At::_3cycles
     }
     #[doc = "4 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_4cycles(&self) -> bool {
-        *self == AT_A::_4CYCLES
+        *self == At::_4cycles
     }
     #[doc = "8 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_8cycles(&self) -> bool {
-        *self == AT_A::_8CYCLES
+        *self == At::_8cycles
     }
     #[doc = "16 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_16cycles(&self) -> bool {
-        *self == AT_A::_16CYCLES
+        *self == At::_16cycles
     }
     #[doc = "32 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_32cycles(&self) -> bool {
-        *self == AT_A::_32CYCLES
+        *self == At::_32cycles
     }
     #[doc = "64 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_64cycles(&self) -> bool {
-        *self == AT_A::_64CYCLES
+        *self == At::_64cycles
     }
     #[doc = "128 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_128cycles(&self) -> bool {
-        *self == AT_A::_128CYCLES
+        *self == At::_128cycles
     }
     #[doc = "256 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn is_256cycles(&self) -> bool {
-        *self == AT_A::_256CYCLES
+        *self == At::_256cycles
     }
 }
 #[doc = "Field `AT` writer - Scan Acquisition Time"]
-pub type AT_W<'a, REG> = crate::FieldWriter<'a, REG, 4, AT_A>;
-impl<'a, REG> AT_W<'a, REG>
+pub type AtW<'a, REG> = crate::FieldWriter<'a, REG, 4, At>;
+impl<'a, REG> AtW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -351,177 +354,156 @@ where
     #[doc = "1 conversion clock cycle acquisition time for scan"]
     #[inline(always)]
     pub fn _1cycle(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_1CYCLE)
+        self.variant(At::_1cycle)
     }
     #[doc = "2 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _2cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_2CYCLES)
+        self.variant(At::_2cycles)
     }
     #[doc = "3 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _3cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_3CYCLES)
+        self.variant(At::_3cycles)
     }
     #[doc = "4 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _4cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_4CYCLES)
+        self.variant(At::_4cycles)
     }
     #[doc = "8 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _8cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_8CYCLES)
+        self.variant(At::_8cycles)
     }
     #[doc = "16 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _16cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_16CYCLES)
+        self.variant(At::_16cycles)
     }
     #[doc = "32 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _32cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_32CYCLES)
+        self.variant(At::_32cycles)
     }
     #[doc = "64 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _64cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_64CYCLES)
+        self.variant(At::_64cycles)
     }
     #[doc = "128 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _128cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_128CYCLES)
+        self.variant(At::_128cycles)
     }
     #[doc = "256 conversion clock cycles acquisition time for scan"]
     #[inline(always)]
     pub fn _256cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(AT_A::_256CYCLES)
+        self.variant(At::_256cycles)
     }
 }
 #[doc = "Field `PRSEN` reader - Scan Sequence PRS Trigger Enable"]
-pub type PRSEN_R = crate::BitReader;
+pub type PrsenR = crate::BitReader;
 #[doc = "Field `PRSEN` writer - Scan Sequence PRS Trigger Enable"]
-pub type PRSEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type PrsenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CMPEN` reader - Compare Logic Enable for Scan"]
-pub type CMPEN_R = crate::BitReader;
+pub type CmpenR = crate::BitReader;
 #[doc = "Field `CMPEN` writer - Compare Logic Enable for Scan"]
-pub type CMPEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type CmpenW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Scan Sequence Repetitive Mode"]
     #[inline(always)]
-    pub fn rep(&self) -> REP_R {
-        REP_R::new((self.bits & 1) != 0)
+    pub fn rep(&self) -> RepR {
+        RepR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Scan Sequence Differential Mode"]
     #[inline(always)]
-    pub fn diff(&self) -> DIFF_R {
-        DIFF_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn diff(&self) -> DiffR {
+        DiffR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Scan Sequence Result Adjustment"]
     #[inline(always)]
-    pub fn adj(&self) -> ADJ_R {
-        ADJ_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn adj(&self) -> AdjR {
+        AdjR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bits 3:4 - Scan Sequence Resolution Select"]
     #[inline(always)]
-    pub fn res(&self) -> RES_R {
-        RES_R::new(((self.bits >> 3) & 3) as u8)
+    pub fn res(&self) -> ResR {
+        ResR::new(((self.bits >> 3) & 3) as u8)
     }
     #[doc = "Bits 5:7 - Scan Sequence Reference Selection"]
     #[inline(always)]
-    pub fn ref_(&self) -> REF_R {
-        REF_R::new(((self.bits >> 5) & 7) as u8)
+    pub fn ref_(&self) -> RefR {
+        RefR::new(((self.bits >> 5) & 7) as u8)
     }
     #[doc = "Bits 24:27 - Scan Acquisition Time"]
     #[inline(always)]
-    pub fn at(&self) -> AT_R {
-        AT_R::new(((self.bits >> 24) & 0x0f) as u8)
+    pub fn at(&self) -> AtR {
+        AtR::new(((self.bits >> 24) & 0x0f) as u8)
     }
     #[doc = "Bit 29 - Scan Sequence PRS Trigger Enable"]
     #[inline(always)]
-    pub fn prsen(&self) -> PRSEN_R {
-        PRSEN_R::new(((self.bits >> 29) & 1) != 0)
+    pub fn prsen(&self) -> PrsenR {
+        PrsenR::new(((self.bits >> 29) & 1) != 0)
     }
     #[doc = "Bit 31 - Compare Logic Enable for Scan"]
     #[inline(always)]
-    pub fn cmpen(&self) -> CMPEN_R {
-        CMPEN_R::new(((self.bits >> 31) & 1) != 0)
+    pub fn cmpen(&self) -> CmpenR {
+        CmpenR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Scan Sequence Repetitive Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn rep(&mut self) -> REP_W<SCANCTRL_SPEC> {
-        REP_W::new(self, 0)
+    pub fn rep(&mut self) -> RepW<'_, ScanctrlSpec> {
+        RepW::new(self, 0)
     }
     #[doc = "Bit 1 - Scan Sequence Differential Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn diff(&mut self) -> DIFF_W<SCANCTRL_SPEC> {
-        DIFF_W::new(self, 1)
+    pub fn diff(&mut self) -> DiffW<'_, ScanctrlSpec> {
+        DiffW::new(self, 1)
     }
     #[doc = "Bit 2 - Scan Sequence Result Adjustment"]
     #[inline(always)]
-    #[must_use]
-    pub fn adj(&mut self) -> ADJ_W<SCANCTRL_SPEC> {
-        ADJ_W::new(self, 2)
+    pub fn adj(&mut self) -> AdjW<'_, ScanctrlSpec> {
+        AdjW::new(self, 2)
     }
     #[doc = "Bits 3:4 - Scan Sequence Resolution Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn res(&mut self) -> RES_W<SCANCTRL_SPEC> {
-        RES_W::new(self, 3)
+    pub fn res(&mut self) -> ResW<'_, ScanctrlSpec> {
+        ResW::new(self, 3)
     }
     #[doc = "Bits 5:7 - Scan Sequence Reference Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn ref_(&mut self) -> REF_W<SCANCTRL_SPEC> {
-        REF_W::new(self, 5)
+    pub fn ref_(&mut self) -> RefW<'_, ScanctrlSpec> {
+        RefW::new(self, 5)
     }
     #[doc = "Bits 24:27 - Scan Acquisition Time"]
     #[inline(always)]
-    #[must_use]
-    pub fn at(&mut self) -> AT_W<SCANCTRL_SPEC> {
-        AT_W::new(self, 24)
+    pub fn at(&mut self) -> AtW<'_, ScanctrlSpec> {
+        AtW::new(self, 24)
     }
     #[doc = "Bit 29 - Scan Sequence PRS Trigger Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn prsen(&mut self) -> PRSEN_W<SCANCTRL_SPEC> {
-        PRSEN_W::new(self, 29)
+    pub fn prsen(&mut self) -> PrsenW<'_, ScanctrlSpec> {
+        PrsenW::new(self, 29)
     }
     #[doc = "Bit 31 - Compare Logic Enable for Scan"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmpen(&mut self) -> CMPEN_W<SCANCTRL_SPEC> {
-        CMPEN_W::new(self, 31)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn cmpen(&mut self) -> CmpenW<'_, ScanctrlSpec> {
+        CmpenW::new(self, 31)
     }
 }
-#[doc = "Scan Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`scanctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`scanctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct SCANCTRL_SPEC;
-impl crate::RegisterSpec for SCANCTRL_SPEC {
+#[doc = "Scan Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`scanctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`scanctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ScanctrlSpec;
+impl crate::RegisterSpec for ScanctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`scanctrl::R`](R) reader structure"]
-impl crate::Readable for SCANCTRL_SPEC {}
+impl crate::Readable for ScanctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`scanctrl::W`](W) writer structure"]
-impl crate::Writable for SCANCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for ScanctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets SCANCTRL to value 0"]
-impl crate::Resettable for SCANCTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for ScanctrlSpec {}

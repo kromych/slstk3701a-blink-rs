@@ -1,83 +1,84 @@
 #[doc = "Register `LFRCOCTRL` reader"]
-pub type R = crate::R<LFRCOCTRL_SPEC>;
+pub type R = crate::R<LfrcoctrlSpec>;
 #[doc = "Register `LFRCOCTRL` writer"]
-pub type W = crate::W<LFRCOCTRL_SPEC>;
+pub type W = crate::W<LfrcoctrlSpec>;
 #[doc = "Field `TUNING` reader - LFRCO Tuning Value"]
-pub type TUNING_R = crate::FieldReader<u16>;
+pub type TuningR = crate::FieldReader<u16>;
 #[doc = "Field `TUNING` writer - LFRCO Tuning Value"]
-pub type TUNING_W<'a, REG> = crate::FieldWriter<'a, REG, 9, u16>;
+pub type TuningW<'a, REG> = crate::FieldWriter<'a, REG, 9, u16>;
 #[doc = "Field `ENVREF` reader - Enable Duty Cycling of Vref"]
-pub type ENVREF_R = crate::BitReader;
+pub type EnvrefR = crate::BitReader;
 #[doc = "Field `ENVREF` writer - Enable Duty Cycling of Vref"]
-pub type ENVREF_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type EnvrefW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ENCHOP` reader - Enable Comparator Chopping"]
-pub type ENCHOP_R = crate::BitReader;
+pub type EnchopR = crate::BitReader;
 #[doc = "Field `ENCHOP` writer - Enable Comparator Chopping"]
-pub type ENCHOP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type EnchopW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ENDEM` reader - Enable Dynamic Element Matching"]
-pub type ENDEM_R = crate::BitReader;
+pub type EndemR = crate::BitReader;
 #[doc = "Field `ENDEM` writer - Enable Dynamic Element Matching"]
-pub type ENDEM_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `VREFUPDATE` reader - Control Vref Update Rate"]
-pub type VREFUPDATE_R = crate::FieldReader<VREFUPDATE_A>;
+pub type EndemW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Control Vref Update Rate\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum VREFUPDATE_A {
+pub enum Vrefupdate {
     #[doc = "0: 32 clocks."]
-    _32CYCLES = 0,
+    _32cycles = 0,
     #[doc = "1: 64 clocks."]
-    _64CYCLES = 1,
+    _64cycles = 1,
     #[doc = "2: 128 clocks."]
-    _128CYCLES = 2,
+    _128cycles = 2,
     #[doc = "3: 256 clocks."]
-    _256CYCLES = 3,
+    _256cycles = 3,
 }
-impl From<VREFUPDATE_A> for u8 {
+impl From<Vrefupdate> for u8 {
     #[inline(always)]
-    fn from(variant: VREFUPDATE_A) -> Self {
+    fn from(variant: Vrefupdate) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for VREFUPDATE_A {
+impl crate::FieldSpec for Vrefupdate {
     type Ux = u8;
 }
-impl VREFUPDATE_R {
+impl crate::IsEnum for Vrefupdate {}
+#[doc = "Field `VREFUPDATE` reader - Control Vref Update Rate"]
+pub type VrefupdateR = crate::FieldReader<Vrefupdate>;
+impl VrefupdateR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> VREFUPDATE_A {
+    pub const fn variant(&self) -> Vrefupdate {
         match self.bits {
-            0 => VREFUPDATE_A::_32CYCLES,
-            1 => VREFUPDATE_A::_64CYCLES,
-            2 => VREFUPDATE_A::_128CYCLES,
-            3 => VREFUPDATE_A::_256CYCLES,
+            0 => Vrefupdate::_32cycles,
+            1 => Vrefupdate::_64cycles,
+            2 => Vrefupdate::_128cycles,
+            3 => Vrefupdate::_256cycles,
             _ => unreachable!(),
         }
     }
     #[doc = "32 clocks."]
     #[inline(always)]
     pub fn is_32cycles(&self) -> bool {
-        *self == VREFUPDATE_A::_32CYCLES
+        *self == Vrefupdate::_32cycles
     }
     #[doc = "64 clocks."]
     #[inline(always)]
     pub fn is_64cycles(&self) -> bool {
-        *self == VREFUPDATE_A::_64CYCLES
+        *self == Vrefupdate::_64cycles
     }
     #[doc = "128 clocks."]
     #[inline(always)]
     pub fn is_128cycles(&self) -> bool {
-        *self == VREFUPDATE_A::_128CYCLES
+        *self == Vrefupdate::_128cycles
     }
     #[doc = "256 clocks."]
     #[inline(always)]
     pub fn is_256cycles(&self) -> bool {
-        *self == VREFUPDATE_A::_256CYCLES
+        *self == Vrefupdate::_256cycles
     }
 }
 #[doc = "Field `VREFUPDATE` writer - Control Vref Update Rate"]
-pub type VREFUPDATE_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, VREFUPDATE_A>;
-impl<'a, REG> VREFUPDATE_W<'a, REG>
+pub type VrefupdateW<'a, REG> = crate::FieldWriter<'a, REG, 2, Vrefupdate, crate::Safe>;
+impl<'a, REG> VrefupdateW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -85,76 +86,77 @@ where
     #[doc = "32 clocks."]
     #[inline(always)]
     pub fn _32cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(VREFUPDATE_A::_32CYCLES)
+        self.variant(Vrefupdate::_32cycles)
     }
     #[doc = "64 clocks."]
     #[inline(always)]
     pub fn _64cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(VREFUPDATE_A::_64CYCLES)
+        self.variant(Vrefupdate::_64cycles)
     }
     #[doc = "128 clocks."]
     #[inline(always)]
     pub fn _128cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(VREFUPDATE_A::_128CYCLES)
+        self.variant(Vrefupdate::_128cycles)
     }
     #[doc = "256 clocks."]
     #[inline(always)]
     pub fn _256cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(VREFUPDATE_A::_256CYCLES)
+        self.variant(Vrefupdate::_256cycles)
     }
 }
-#[doc = "Field `TIMEOUT` reader - LFRCO Timeout"]
-pub type TIMEOUT_R = crate::FieldReader<TIMEOUT_A>;
 #[doc = "LFRCO Timeout\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum TIMEOUT_A {
+pub enum Timeout {
     #[doc = "0: Timeout period of 2 cycles"]
-    _2CYCLES = 0,
+    _2cycles = 0,
     #[doc = "1: Timeout period of 16 cycles"]
-    _16CYCLES = 1,
+    _16cycles = 1,
     #[doc = "2: Timeout period of 32 cycles"]
-    _32CYCLES = 2,
+    _32cycles = 2,
 }
-impl From<TIMEOUT_A> for u8 {
+impl From<Timeout> for u8 {
     #[inline(always)]
-    fn from(variant: TIMEOUT_A) -> Self {
+    fn from(variant: Timeout) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for TIMEOUT_A {
+impl crate::FieldSpec for Timeout {
     type Ux = u8;
 }
-impl TIMEOUT_R {
+impl crate::IsEnum for Timeout {}
+#[doc = "Field `TIMEOUT` reader - LFRCO Timeout"]
+pub type TimeoutR = crate::FieldReader<Timeout>;
+impl TimeoutR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<TIMEOUT_A> {
+    pub const fn variant(&self) -> Option<Timeout> {
         match self.bits {
-            0 => Some(TIMEOUT_A::_2CYCLES),
-            1 => Some(TIMEOUT_A::_16CYCLES),
-            2 => Some(TIMEOUT_A::_32CYCLES),
+            0 => Some(Timeout::_2cycles),
+            1 => Some(Timeout::_16cycles),
+            2 => Some(Timeout::_32cycles),
             _ => None,
         }
     }
     #[doc = "Timeout period of 2 cycles"]
     #[inline(always)]
     pub fn is_2cycles(&self) -> bool {
-        *self == TIMEOUT_A::_2CYCLES
+        *self == Timeout::_2cycles
     }
     #[doc = "Timeout period of 16 cycles"]
     #[inline(always)]
     pub fn is_16cycles(&self) -> bool {
-        *self == TIMEOUT_A::_16CYCLES
+        *self == Timeout::_16cycles
     }
     #[doc = "Timeout period of 32 cycles"]
     #[inline(always)]
     pub fn is_32cycles(&self) -> bool {
-        *self == TIMEOUT_A::_32CYCLES
+        *self == Timeout::_32cycles
     }
 }
 #[doc = "Field `TIMEOUT` writer - LFRCO Timeout"]
-pub type TIMEOUT_W<'a, REG> = crate::FieldWriter<'a, REG, 2, TIMEOUT_A>;
-impl<'a, REG> TIMEOUT_W<'a, REG>
+pub type TimeoutW<'a, REG> = crate::FieldWriter<'a, REG, 2, Timeout>;
+impl<'a, REG> TimeoutW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -162,127 +164,109 @@ where
     #[doc = "Timeout period of 2 cycles"]
     #[inline(always)]
     pub fn _2cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(TIMEOUT_A::_2CYCLES)
+        self.variant(Timeout::_2cycles)
     }
     #[doc = "Timeout period of 16 cycles"]
     #[inline(always)]
     pub fn _16cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(TIMEOUT_A::_16CYCLES)
+        self.variant(Timeout::_16cycles)
     }
     #[doc = "Timeout period of 32 cycles"]
     #[inline(always)]
     pub fn _32cycles(self) -> &'a mut crate::W<REG> {
-        self.variant(TIMEOUT_A::_32CYCLES)
+        self.variant(Timeout::_32cycles)
     }
 }
 #[doc = "Field `GMCCURTUNE` reader - Tuning of Gmc Current"]
-pub type GMCCURTUNE_R = crate::FieldReader;
+pub type GmccurtuneR = crate::FieldReader;
 #[doc = "Field `GMCCURTUNE` writer - Tuning of Gmc Current"]
-pub type GMCCURTUNE_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type GmccurtuneW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 impl R {
     #[doc = "Bits 0:8 - LFRCO Tuning Value"]
     #[inline(always)]
-    pub fn tuning(&self) -> TUNING_R {
-        TUNING_R::new((self.bits & 0x01ff) as u16)
+    pub fn tuning(&self) -> TuningR {
+        TuningR::new((self.bits & 0x01ff) as u16)
     }
     #[doc = "Bit 16 - Enable Duty Cycling of Vref"]
     #[inline(always)]
-    pub fn envref(&self) -> ENVREF_R {
-        ENVREF_R::new(((self.bits >> 16) & 1) != 0)
+    pub fn envref(&self) -> EnvrefR {
+        EnvrefR::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - Enable Comparator Chopping"]
     #[inline(always)]
-    pub fn enchop(&self) -> ENCHOP_R {
-        ENCHOP_R::new(((self.bits >> 17) & 1) != 0)
+    pub fn enchop(&self) -> EnchopR {
+        EnchopR::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - Enable Dynamic Element Matching"]
     #[inline(always)]
-    pub fn endem(&self) -> ENDEM_R {
-        ENDEM_R::new(((self.bits >> 18) & 1) != 0)
+    pub fn endem(&self) -> EndemR {
+        EndemR::new(((self.bits >> 18) & 1) != 0)
     }
     #[doc = "Bits 20:21 - Control Vref Update Rate"]
     #[inline(always)]
-    pub fn vrefupdate(&self) -> VREFUPDATE_R {
-        VREFUPDATE_R::new(((self.bits >> 20) & 3) as u8)
+    pub fn vrefupdate(&self) -> VrefupdateR {
+        VrefupdateR::new(((self.bits >> 20) & 3) as u8)
     }
     #[doc = "Bits 24:25 - LFRCO Timeout"]
     #[inline(always)]
-    pub fn timeout(&self) -> TIMEOUT_R {
-        TIMEOUT_R::new(((self.bits >> 24) & 3) as u8)
+    pub fn timeout(&self) -> TimeoutR {
+        TimeoutR::new(((self.bits >> 24) & 3) as u8)
     }
     #[doc = "Bits 28:31 - Tuning of Gmc Current"]
     #[inline(always)]
-    pub fn gmccurtune(&self) -> GMCCURTUNE_R {
-        GMCCURTUNE_R::new(((self.bits >> 28) & 0x0f) as u8)
+    pub fn gmccurtune(&self) -> GmccurtuneR {
+        GmccurtuneR::new(((self.bits >> 28) & 0x0f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:8 - LFRCO Tuning Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn tuning(&mut self) -> TUNING_W<LFRCOCTRL_SPEC> {
-        TUNING_W::new(self, 0)
+    pub fn tuning(&mut self) -> TuningW<'_, LfrcoctrlSpec> {
+        TuningW::new(self, 0)
     }
     #[doc = "Bit 16 - Enable Duty Cycling of Vref"]
     #[inline(always)]
-    #[must_use]
-    pub fn envref(&mut self) -> ENVREF_W<LFRCOCTRL_SPEC> {
-        ENVREF_W::new(self, 16)
+    pub fn envref(&mut self) -> EnvrefW<'_, LfrcoctrlSpec> {
+        EnvrefW::new(self, 16)
     }
     #[doc = "Bit 17 - Enable Comparator Chopping"]
     #[inline(always)]
-    #[must_use]
-    pub fn enchop(&mut self) -> ENCHOP_W<LFRCOCTRL_SPEC> {
-        ENCHOP_W::new(self, 17)
+    pub fn enchop(&mut self) -> EnchopW<'_, LfrcoctrlSpec> {
+        EnchopW::new(self, 17)
     }
     #[doc = "Bit 18 - Enable Dynamic Element Matching"]
     #[inline(always)]
-    #[must_use]
-    pub fn endem(&mut self) -> ENDEM_W<LFRCOCTRL_SPEC> {
-        ENDEM_W::new(self, 18)
+    pub fn endem(&mut self) -> EndemW<'_, LfrcoctrlSpec> {
+        EndemW::new(self, 18)
     }
     #[doc = "Bits 20:21 - Control Vref Update Rate"]
     #[inline(always)]
-    #[must_use]
-    pub fn vrefupdate(&mut self) -> VREFUPDATE_W<LFRCOCTRL_SPEC> {
-        VREFUPDATE_W::new(self, 20)
+    pub fn vrefupdate(&mut self) -> VrefupdateW<'_, LfrcoctrlSpec> {
+        VrefupdateW::new(self, 20)
     }
     #[doc = "Bits 24:25 - LFRCO Timeout"]
     #[inline(always)]
-    #[must_use]
-    pub fn timeout(&mut self) -> TIMEOUT_W<LFRCOCTRL_SPEC> {
-        TIMEOUT_W::new(self, 24)
+    pub fn timeout(&mut self) -> TimeoutW<'_, LfrcoctrlSpec> {
+        TimeoutW::new(self, 24)
     }
     #[doc = "Bits 28:31 - Tuning of Gmc Current"]
     #[inline(always)]
-    #[must_use]
-    pub fn gmccurtune(&mut self) -> GMCCURTUNE_W<LFRCOCTRL_SPEC> {
-        GMCCURTUNE_W::new(self, 28)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn gmccurtune(&mut self) -> GmccurtuneW<'_, LfrcoctrlSpec> {
+        GmccurtuneW::new(self, 28)
     }
 }
-#[doc = "LFRCO Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`lfrcoctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`lfrcoctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct LFRCOCTRL_SPEC;
-impl crate::RegisterSpec for LFRCOCTRL_SPEC {
+#[doc = "LFRCO Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`lfrcoctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lfrcoctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct LfrcoctrlSpec;
+impl crate::RegisterSpec for LfrcoctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`lfrcoctrl::R`](R) reader structure"]
-impl crate::Readable for LFRCOCTRL_SPEC {}
+impl crate::Readable for LfrcoctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`lfrcoctrl::W`](W) writer structure"]
-impl crate::Writable for LFRCOCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for LfrcoctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets LFRCOCTRL to value 0x8106_0100"]
-impl crate::Resettable for LFRCOCTRL_SPEC {
+impl crate::Resettable for LfrcoctrlSpec {
     const RESET_VALUE: u32 = 0x8106_0100;
 }

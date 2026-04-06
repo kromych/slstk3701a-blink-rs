@@ -1,184 +1,161 @@
 #[doc = "Register `HC6_INTMSK` reader"]
-pub type R = crate::R<HC6_INTMSK_SPEC>;
+pub type R = crate::R<Hc6IntmskSpec>;
 #[doc = "Register `HC6_INTMSK` writer"]
-pub type W = crate::W<HC6_INTMSK_SPEC>;
+pub type W = crate::W<Hc6IntmskSpec>;
 #[doc = "Field `XFERCOMPLMSK` reader - Transfer Completed Mask"]
-pub type XFERCOMPLMSK_R = crate::BitReader;
+pub type XfercomplmskR = crate::BitReader;
 #[doc = "Field `XFERCOMPLMSK` writer - Transfer Completed Mask"]
-pub type XFERCOMPLMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type XfercomplmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CHHLTDMSK` reader - Channel Halted Mask"]
-pub type CHHLTDMSK_R = crate::BitReader;
+pub type ChhltdmskR = crate::BitReader;
 #[doc = "Field `CHHLTDMSK` writer - Channel Halted Mask"]
-pub type CHHLTDMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type ChhltdmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AHBERRMSK` reader - AHB Error Mask"]
-pub type AHBERRMSK_R = crate::BitReader;
+pub type AhberrmskR = crate::BitReader;
 #[doc = "Field `AHBERRMSK` writer - AHB Error Mask"]
-pub type AHBERRMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type AhberrmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STALLMSK` reader - STALL Response Received Interrupt Mask"]
-pub type STALLMSK_R = crate::BitReader;
+pub type StallmskR = crate::BitReader;
 #[doc = "Field `STALLMSK` writer - STALL Response Received Interrupt Mask"]
-pub type STALLMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type StallmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NAKMSK` reader - NAK Response Received Interrupt Mask"]
-pub type NAKMSK_R = crate::BitReader;
+pub type NakmskR = crate::BitReader;
 #[doc = "Field `NAKMSK` writer - NAK Response Received Interrupt Mask"]
-pub type NAKMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type NakmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ACKMSK` reader - ACK Response Received/Transmitted Interrupt Mask"]
-pub type ACKMSK_R = crate::BitReader;
+pub type AckmskR = crate::BitReader;
 #[doc = "Field `ACKMSK` writer - ACK Response Received/Transmitted Interrupt Mask"]
-pub type ACKMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type AckmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `XACTERRMSK` reader - Transaction Error Mask"]
-pub type XACTERRMSK_R = crate::BitReader;
+pub type XacterrmskR = crate::BitReader;
 #[doc = "Field `XACTERRMSK` writer - Transaction Error Mask"]
-pub type XACTERRMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type XacterrmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BBLERRMSK` reader - Babble Error Mask"]
-pub type BBLERRMSK_R = crate::BitReader;
+pub type BblerrmskR = crate::BitReader;
 #[doc = "Field `BBLERRMSK` writer - Babble Error Mask"]
-pub type BBLERRMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type BblerrmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FRMOVRUNMSK` reader - Frame Overrun Mask"]
-pub type FRMOVRUNMSK_R = crate::BitReader;
+pub type FrmovrunmskR = crate::BitReader;
 #[doc = "Field `FRMOVRUNMSK` writer - Frame Overrun Mask"]
-pub type FRMOVRUNMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type FrmovrunmskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DATATGLERRMSK` reader - Data Toggle Error Mask"]
-pub type DATATGLERRMSK_R = crate::BitReader;
+pub type DatatglerrmskR = crate::BitReader;
 #[doc = "Field `DATATGLERRMSK` writer - Data Toggle Error Mask"]
-pub type DATATGLERRMSK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DatatglerrmskW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Transfer Completed Mask"]
     #[inline(always)]
-    pub fn xfercomplmsk(&self) -> XFERCOMPLMSK_R {
-        XFERCOMPLMSK_R::new((self.bits & 1) != 0)
+    pub fn xfercomplmsk(&self) -> XfercomplmskR {
+        XfercomplmskR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Channel Halted Mask"]
     #[inline(always)]
-    pub fn chhltdmsk(&self) -> CHHLTDMSK_R {
-        CHHLTDMSK_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn chhltdmsk(&self) -> ChhltdmskR {
+        ChhltdmskR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - AHB Error Mask"]
     #[inline(always)]
-    pub fn ahberrmsk(&self) -> AHBERRMSK_R {
-        AHBERRMSK_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn ahberrmsk(&self) -> AhberrmskR {
+        AhberrmskR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - STALL Response Received Interrupt Mask"]
     #[inline(always)]
-    pub fn stallmsk(&self) -> STALLMSK_R {
-        STALLMSK_R::new(((self.bits >> 3) & 1) != 0)
+    pub fn stallmsk(&self) -> StallmskR {
+        StallmskR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - NAK Response Received Interrupt Mask"]
     #[inline(always)]
-    pub fn nakmsk(&self) -> NAKMSK_R {
-        NAKMSK_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn nakmsk(&self) -> NakmskR {
+        NakmskR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - ACK Response Received/Transmitted Interrupt Mask"]
     #[inline(always)]
-    pub fn ackmsk(&self) -> ACKMSK_R {
-        ACKMSK_R::new(((self.bits >> 5) & 1) != 0)
+    pub fn ackmsk(&self) -> AckmskR {
+        AckmskR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 7 - Transaction Error Mask"]
     #[inline(always)]
-    pub fn xacterrmsk(&self) -> XACTERRMSK_R {
-        XACTERRMSK_R::new(((self.bits >> 7) & 1) != 0)
+    pub fn xacterrmsk(&self) -> XacterrmskR {
+        XacterrmskR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Babble Error Mask"]
     #[inline(always)]
-    pub fn bblerrmsk(&self) -> BBLERRMSK_R {
-        BBLERRMSK_R::new(((self.bits >> 8) & 1) != 0)
+    pub fn bblerrmsk(&self) -> BblerrmskR {
+        BblerrmskR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Frame Overrun Mask"]
     #[inline(always)]
-    pub fn frmovrunmsk(&self) -> FRMOVRUNMSK_R {
-        FRMOVRUNMSK_R::new(((self.bits >> 9) & 1) != 0)
+    pub fn frmovrunmsk(&self) -> FrmovrunmskR {
+        FrmovrunmskR::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Data Toggle Error Mask"]
     #[inline(always)]
-    pub fn datatglerrmsk(&self) -> DATATGLERRMSK_R {
-        DATATGLERRMSK_R::new(((self.bits >> 10) & 1) != 0)
+    pub fn datatglerrmsk(&self) -> DatatglerrmskR {
+        DatatglerrmskR::new(((self.bits >> 10) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Transfer Completed Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn xfercomplmsk(&mut self) -> XFERCOMPLMSK_W<HC6_INTMSK_SPEC> {
-        XFERCOMPLMSK_W::new(self, 0)
+    pub fn xfercomplmsk(&mut self) -> XfercomplmskW<'_, Hc6IntmskSpec> {
+        XfercomplmskW::new(self, 0)
     }
     #[doc = "Bit 1 - Channel Halted Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn chhltdmsk(&mut self) -> CHHLTDMSK_W<HC6_INTMSK_SPEC> {
-        CHHLTDMSK_W::new(self, 1)
+    pub fn chhltdmsk(&mut self) -> ChhltdmskW<'_, Hc6IntmskSpec> {
+        ChhltdmskW::new(self, 1)
     }
     #[doc = "Bit 2 - AHB Error Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn ahberrmsk(&mut self) -> AHBERRMSK_W<HC6_INTMSK_SPEC> {
-        AHBERRMSK_W::new(self, 2)
+    pub fn ahberrmsk(&mut self) -> AhberrmskW<'_, Hc6IntmskSpec> {
+        AhberrmskW::new(self, 2)
     }
     #[doc = "Bit 3 - STALL Response Received Interrupt Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn stallmsk(&mut self) -> STALLMSK_W<HC6_INTMSK_SPEC> {
-        STALLMSK_W::new(self, 3)
+    pub fn stallmsk(&mut self) -> StallmskW<'_, Hc6IntmskSpec> {
+        StallmskW::new(self, 3)
     }
     #[doc = "Bit 4 - NAK Response Received Interrupt Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn nakmsk(&mut self) -> NAKMSK_W<HC6_INTMSK_SPEC> {
-        NAKMSK_W::new(self, 4)
+    pub fn nakmsk(&mut self) -> NakmskW<'_, Hc6IntmskSpec> {
+        NakmskW::new(self, 4)
     }
     #[doc = "Bit 5 - ACK Response Received/Transmitted Interrupt Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn ackmsk(&mut self) -> ACKMSK_W<HC6_INTMSK_SPEC> {
-        ACKMSK_W::new(self, 5)
+    pub fn ackmsk(&mut self) -> AckmskW<'_, Hc6IntmskSpec> {
+        AckmskW::new(self, 5)
     }
     #[doc = "Bit 7 - Transaction Error Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn xacterrmsk(&mut self) -> XACTERRMSK_W<HC6_INTMSK_SPEC> {
-        XACTERRMSK_W::new(self, 7)
+    pub fn xacterrmsk(&mut self) -> XacterrmskW<'_, Hc6IntmskSpec> {
+        XacterrmskW::new(self, 7)
     }
     #[doc = "Bit 8 - Babble Error Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn bblerrmsk(&mut self) -> BBLERRMSK_W<HC6_INTMSK_SPEC> {
-        BBLERRMSK_W::new(self, 8)
+    pub fn bblerrmsk(&mut self) -> BblerrmskW<'_, Hc6IntmskSpec> {
+        BblerrmskW::new(self, 8)
     }
     #[doc = "Bit 9 - Frame Overrun Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn frmovrunmsk(&mut self) -> FRMOVRUNMSK_W<HC6_INTMSK_SPEC> {
-        FRMOVRUNMSK_W::new(self, 9)
+    pub fn frmovrunmsk(&mut self) -> FrmovrunmskW<'_, Hc6IntmskSpec> {
+        FrmovrunmskW::new(self, 9)
     }
     #[doc = "Bit 10 - Data Toggle Error Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn datatglerrmsk(&mut self) -> DATATGLERRMSK_W<HC6_INTMSK_SPEC> {
-        DATATGLERRMSK_W::new(self, 10)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn datatglerrmsk(&mut self) -> DatatglerrmskW<'_, Hc6IntmskSpec> {
+        DatatglerrmskW::new(self, 10)
     }
 }
-#[doc = "Host Channel x Interrupt Mask Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`hc6_intmsk::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`hc6_intmsk::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct HC6_INTMSK_SPEC;
-impl crate::RegisterSpec for HC6_INTMSK_SPEC {
+#[doc = "Host Channel x Interrupt Mask Register\n\nYou can [`read`](crate::Reg::read) this register and get [`hc6_intmsk::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hc6_intmsk::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Hc6IntmskSpec;
+impl crate::RegisterSpec for Hc6IntmskSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`hc6_intmsk::R`](R) reader structure"]
-impl crate::Readable for HC6_INTMSK_SPEC {}
+impl crate::Readable for Hc6IntmskSpec {}
 #[doc = "`write(|w| ..)` method takes [`hc6_intmsk::W`](W) writer structure"]
-impl crate::Writable for HC6_INTMSK_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Hc6IntmskSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets HC6_INTMSK to value 0"]
-impl crate::Resettable for HC6_INTMSK_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Hc6IntmskSpec {}

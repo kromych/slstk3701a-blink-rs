@@ -1,79 +1,80 @@
 #[doc = "Register `BUCTRL` reader"]
-pub type R = crate::R<BUCTRL_SPEC>;
+pub type R = crate::R<BuctrlSpec>;
 #[doc = "Register `BUCTRL` writer"]
-pub type W = crate::W<BUCTRL_SPEC>;
+pub type W = crate::W<BuctrlSpec>;
 #[doc = "Field `EN` reader - Enable Backup Mode"]
-pub type EN_R = crate::BitReader;
+pub type EnR = crate::BitReader;
 #[doc = "Field `EN` writer - Enable Backup Mode"]
-pub type EN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type EnW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `STATEN` reader - Enable Backup Mode Status Export"]
-pub type STATEN_R = crate::BitReader;
+pub type StatenR = crate::BitReader;
 #[doc = "Field `STATEN` writer - Enable Backup Mode Status Export"]
-pub type STATEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type StatenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BUVINPROBEEN` reader - Enable BU_VIN Probing"]
-pub type BUVINPROBEEN_R = crate::BitReader;
+pub type BuvinprobeenR = crate::BitReader;
 #[doc = "Field `BUVINPROBEEN` writer - Enable BU_VIN Probing"]
-pub type BUVINPROBEEN_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `VOUTRES` reader - BU_VOUT Resistor Select"]
-pub type VOUTRES_R = crate::FieldReader<VOUTRES_A>;
+pub type BuvinprobeenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "BU_VOUT Resistor Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum VOUTRES_A {
+pub enum Voutres {
     #[doc = "0: BU_VOUT is not connected"]
-    DIS = 0,
+    Dis = 0,
     #[doc = "1: Enable weak switch between BU_VOUT and backup domain power supply."]
-    WEAK = 1,
+    Weak = 1,
     #[doc = "2: Enable medium switch between BU_VOUT and backup domain power supply."]
-    MED = 2,
+    Med = 2,
     #[doc = "3: Enable strong switch between BU_VOUT and backup domain power supply."]
-    STRONG = 3,
+    Strong = 3,
 }
-impl From<VOUTRES_A> for u8 {
+impl From<Voutres> for u8 {
     #[inline(always)]
-    fn from(variant: VOUTRES_A) -> Self {
+    fn from(variant: Voutres) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for VOUTRES_A {
+impl crate::FieldSpec for Voutres {
     type Ux = u8;
 }
-impl VOUTRES_R {
+impl crate::IsEnum for Voutres {}
+#[doc = "Field `VOUTRES` reader - BU_VOUT Resistor Select"]
+pub type VoutresR = crate::FieldReader<Voutres>;
+impl VoutresR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> VOUTRES_A {
+    pub const fn variant(&self) -> Voutres {
         match self.bits {
-            0 => VOUTRES_A::DIS,
-            1 => VOUTRES_A::WEAK,
-            2 => VOUTRES_A::MED,
-            3 => VOUTRES_A::STRONG,
+            0 => Voutres::Dis,
+            1 => Voutres::Weak,
+            2 => Voutres::Med,
+            3 => Voutres::Strong,
             _ => unreachable!(),
         }
     }
     #[doc = "BU_VOUT is not connected"]
     #[inline(always)]
     pub fn is_dis(&self) -> bool {
-        *self == VOUTRES_A::DIS
+        *self == Voutres::Dis
     }
     #[doc = "Enable weak switch between BU_VOUT and backup domain power supply."]
     #[inline(always)]
     pub fn is_weak(&self) -> bool {
-        *self == VOUTRES_A::WEAK
+        *self == Voutres::Weak
     }
     #[doc = "Enable medium switch between BU_VOUT and backup domain power supply."]
     #[inline(always)]
     pub fn is_med(&self) -> bool {
-        *self == VOUTRES_A::MED
+        *self == Voutres::Med
     }
     #[doc = "Enable strong switch between BU_VOUT and backup domain power supply."]
     #[inline(always)]
     pub fn is_strong(&self) -> bool {
-        *self == VOUTRES_A::STRONG
+        *self == Voutres::Strong
     }
 }
 #[doc = "Field `VOUTRES` writer - BU_VOUT Resistor Select"]
-pub type VOUTRES_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, VOUTRES_A>;
-impl<'a, REG> VOUTRES_W<'a, REG>
+pub type VoutresW<'a, REG> = crate::FieldWriter<'a, REG, 2, Voutres, crate::Safe>;
+impl<'a, REG> VoutresW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -81,84 +82,85 @@ where
     #[doc = "BU_VOUT is not connected"]
     #[inline(always)]
     pub fn dis(self) -> &'a mut crate::W<REG> {
-        self.variant(VOUTRES_A::DIS)
+        self.variant(Voutres::Dis)
     }
     #[doc = "Enable weak switch between BU_VOUT and backup domain power supply."]
     #[inline(always)]
     pub fn weak(self) -> &'a mut crate::W<REG> {
-        self.variant(VOUTRES_A::WEAK)
+        self.variant(Voutres::Weak)
     }
     #[doc = "Enable medium switch between BU_VOUT and backup domain power supply."]
     #[inline(always)]
     pub fn med(self) -> &'a mut crate::W<REG> {
-        self.variant(VOUTRES_A::MED)
+        self.variant(Voutres::Med)
     }
     #[doc = "Enable strong switch between BU_VOUT and backup domain power supply."]
     #[inline(always)]
     pub fn strong(self) -> &'a mut crate::W<REG> {
-        self.variant(VOUTRES_A::STRONG)
+        self.variant(Voutres::Strong)
     }
 }
-#[doc = "Field `PWRRES` reader - Power Domain Resistor Select"]
-pub type PWRRES_R = crate::FieldReader<PWRRES_A>;
 #[doc = "Power Domain Resistor Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum PWRRES_A {
+pub enum Pwrres {
     #[doc = "0: Main power and backup power connected with RES0 series resistance."]
-    RES0 = 0,
+    Res0 = 0,
     #[doc = "1: Main power and backup power connected with RES1 series resistance."]
-    RES1 = 1,
+    Res1 = 1,
     #[doc = "2: Main power and backup power connected with RES2 series resistance."]
-    RES2 = 2,
+    Res2 = 2,
     #[doc = "3: Main power and backup power connected with RES3 series resistance."]
-    RES3 = 3,
+    Res3 = 3,
 }
-impl From<PWRRES_A> for u8 {
+impl From<Pwrres> for u8 {
     #[inline(always)]
-    fn from(variant: PWRRES_A) -> Self {
+    fn from(variant: Pwrres) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for PWRRES_A {
+impl crate::FieldSpec for Pwrres {
     type Ux = u8;
 }
-impl PWRRES_R {
+impl crate::IsEnum for Pwrres {}
+#[doc = "Field `PWRRES` reader - Power Domain Resistor Select"]
+pub type PwrresR = crate::FieldReader<Pwrres>;
+impl PwrresR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> PWRRES_A {
+    pub const fn variant(&self) -> Pwrres {
         match self.bits {
-            0 => PWRRES_A::RES0,
-            1 => PWRRES_A::RES1,
-            2 => PWRRES_A::RES2,
-            3 => PWRRES_A::RES3,
+            0 => Pwrres::Res0,
+            1 => Pwrres::Res1,
+            2 => Pwrres::Res2,
+            3 => Pwrres::Res3,
             _ => unreachable!(),
         }
     }
     #[doc = "Main power and backup power connected with RES0 series resistance."]
     #[inline(always)]
     pub fn is_res0(&self) -> bool {
-        *self == PWRRES_A::RES0
+        *self == Pwrres::Res0
     }
     #[doc = "Main power and backup power connected with RES1 series resistance."]
     #[inline(always)]
     pub fn is_res1(&self) -> bool {
-        *self == PWRRES_A::RES1
+        *self == Pwrres::Res1
     }
     #[doc = "Main power and backup power connected with RES2 series resistance."]
     #[inline(always)]
     pub fn is_res2(&self) -> bool {
-        *self == PWRRES_A::RES2
+        *self == Pwrres::Res2
     }
     #[doc = "Main power and backup power connected with RES3 series resistance."]
     #[inline(always)]
     pub fn is_res3(&self) -> bool {
-        *self == PWRRES_A::RES3
+        *self == Pwrres::Res3
     }
 }
 #[doc = "Field `PWRRES` writer - Power Domain Resistor Select"]
-pub type PWRRES_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, PWRRES_A>;
-impl<'a, REG> PWRRES_W<'a, REG>
+pub type PwrresW<'a, REG> = crate::FieldWriter<'a, REG, 2, Pwrres, crate::Safe>;
+impl<'a, REG> PwrresW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -166,84 +168,85 @@ where
     #[doc = "Main power and backup power connected with RES0 series resistance."]
     #[inline(always)]
     pub fn res0(self) -> &'a mut crate::W<REG> {
-        self.variant(PWRRES_A::RES0)
+        self.variant(Pwrres::Res0)
     }
     #[doc = "Main power and backup power connected with RES1 series resistance."]
     #[inline(always)]
     pub fn res1(self) -> &'a mut crate::W<REG> {
-        self.variant(PWRRES_A::RES1)
+        self.variant(Pwrres::Res1)
     }
     #[doc = "Main power and backup power connected with RES2 series resistance."]
     #[inline(always)]
     pub fn res2(self) -> &'a mut crate::W<REG> {
-        self.variant(PWRRES_A::RES2)
+        self.variant(Pwrres::Res2)
     }
     #[doc = "Main power and backup power connected with RES3 series resistance."]
     #[inline(always)]
     pub fn res3(self) -> &'a mut crate::W<REG> {
-        self.variant(PWRRES_A::RES3)
+        self.variant(Pwrres::Res3)
     }
 }
-#[doc = "Field `BUACTPWRCON` reader - Power Connection Configuration in Backup Mode"]
-pub type BUACTPWRCON_R = crate::FieldReader<BUACTPWRCON_A>;
 #[doc = "Power Connection Configuration in Backup Mode\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum BUACTPWRCON_A {
+pub enum Buactpwrcon {
     #[doc = "0: No connection."]
-    NONE = 0,
+    None = 0,
     #[doc = "1: Main power and backup power are connected through a diode, allowing current to flow from backup power source to main power source, but not the other way."]
-    MAINBU = 1,
+    Mainbu = 1,
     #[doc = "2: Main power and backup power are connected through a diode, allowing current to flow from main power source to backup power source, but not the other way."]
-    BUMAIN = 2,
+    Bumain = 2,
     #[doc = "3: Main power and backup power are connected without diode."]
-    NODIODE = 3,
+    Nodiode = 3,
 }
-impl From<BUACTPWRCON_A> for u8 {
+impl From<Buactpwrcon> for u8 {
     #[inline(always)]
-    fn from(variant: BUACTPWRCON_A) -> Self {
+    fn from(variant: Buactpwrcon) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for BUACTPWRCON_A {
+impl crate::FieldSpec for Buactpwrcon {
     type Ux = u8;
 }
-impl BUACTPWRCON_R {
+impl crate::IsEnum for Buactpwrcon {}
+#[doc = "Field `BUACTPWRCON` reader - Power Connection Configuration in Backup Mode"]
+pub type BuactpwrconR = crate::FieldReader<Buactpwrcon>;
+impl BuactpwrconR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> BUACTPWRCON_A {
+    pub const fn variant(&self) -> Buactpwrcon {
         match self.bits {
-            0 => BUACTPWRCON_A::NONE,
-            1 => BUACTPWRCON_A::MAINBU,
-            2 => BUACTPWRCON_A::BUMAIN,
-            3 => BUACTPWRCON_A::NODIODE,
+            0 => Buactpwrcon::None,
+            1 => Buactpwrcon::Mainbu,
+            2 => Buactpwrcon::Bumain,
+            3 => Buactpwrcon::Nodiode,
             _ => unreachable!(),
         }
     }
     #[doc = "No connection."]
     #[inline(always)]
     pub fn is_none(&self) -> bool {
-        *self == BUACTPWRCON_A::NONE
+        *self == Buactpwrcon::None
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from backup power source to main power source, but not the other way."]
     #[inline(always)]
     pub fn is_mainbu(&self) -> bool {
-        *self == BUACTPWRCON_A::MAINBU
+        *self == Buactpwrcon::Mainbu
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from main power source to backup power source, but not the other way."]
     #[inline(always)]
     pub fn is_bumain(&self) -> bool {
-        *self == BUACTPWRCON_A::BUMAIN
+        *self == Buactpwrcon::Bumain
     }
     #[doc = "Main power and backup power are connected without diode."]
     #[inline(always)]
     pub fn is_nodiode(&self) -> bool {
-        *self == BUACTPWRCON_A::NODIODE
+        *self == Buactpwrcon::Nodiode
     }
 }
 #[doc = "Field `BUACTPWRCON` writer - Power Connection Configuration in Backup Mode"]
-pub type BUACTPWRCON_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, BUACTPWRCON_A>;
-impl<'a, REG> BUACTPWRCON_W<'a, REG>
+pub type BuactpwrconW<'a, REG> = crate::FieldWriter<'a, REG, 2, Buactpwrcon, crate::Safe>;
+impl<'a, REG> BuactpwrconW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -251,84 +254,85 @@ where
     #[doc = "No connection."]
     #[inline(always)]
     pub fn none(self) -> &'a mut crate::W<REG> {
-        self.variant(BUACTPWRCON_A::NONE)
+        self.variant(Buactpwrcon::None)
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from backup power source to main power source, but not the other way."]
     #[inline(always)]
     pub fn mainbu(self) -> &'a mut crate::W<REG> {
-        self.variant(BUACTPWRCON_A::MAINBU)
+        self.variant(Buactpwrcon::Mainbu)
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from main power source to backup power source, but not the other way."]
     #[inline(always)]
     pub fn bumain(self) -> &'a mut crate::W<REG> {
-        self.variant(BUACTPWRCON_A::BUMAIN)
+        self.variant(Buactpwrcon::Bumain)
     }
     #[doc = "Main power and backup power are connected without diode."]
     #[inline(always)]
     pub fn nodiode(self) -> &'a mut crate::W<REG> {
-        self.variant(BUACTPWRCON_A::NODIODE)
+        self.variant(Buactpwrcon::Nodiode)
     }
 }
-#[doc = "Field `BUINACTPWRCON` reader - Power Connection Configuration When Not in Backup Mode"]
-pub type BUINACTPWRCON_R = crate::FieldReader<BUINACTPWRCON_A>;
 #[doc = "Power Connection Configuration When Not in Backup Mode\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum BUINACTPWRCON_A {
+pub enum Buinactpwrcon {
     #[doc = "0: No connection."]
-    NONE = 0,
+    None = 0,
     #[doc = "1: Main power and backup power are connected through a diode, allowing current to flow from main power source to backup power source, but not the other way."]
-    MAINBU = 1,
+    Mainbu = 1,
     #[doc = "2: Main power and backup power are connected through a diode, allowing current to flow from backup power source to main power source, but not the other way."]
-    BUMAIN = 2,
+    Bumain = 2,
     #[doc = "3: Main power and backup power are connected without diode."]
-    NODIODE = 3,
+    Nodiode = 3,
 }
-impl From<BUINACTPWRCON_A> for u8 {
+impl From<Buinactpwrcon> for u8 {
     #[inline(always)]
-    fn from(variant: BUINACTPWRCON_A) -> Self {
+    fn from(variant: Buinactpwrcon) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for BUINACTPWRCON_A {
+impl crate::FieldSpec for Buinactpwrcon {
     type Ux = u8;
 }
-impl BUINACTPWRCON_R {
+impl crate::IsEnum for Buinactpwrcon {}
+#[doc = "Field `BUINACTPWRCON` reader - Power Connection Configuration When Not in Backup Mode"]
+pub type BuinactpwrconR = crate::FieldReader<Buinactpwrcon>;
+impl BuinactpwrconR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> BUINACTPWRCON_A {
+    pub const fn variant(&self) -> Buinactpwrcon {
         match self.bits {
-            0 => BUINACTPWRCON_A::NONE,
-            1 => BUINACTPWRCON_A::MAINBU,
-            2 => BUINACTPWRCON_A::BUMAIN,
-            3 => BUINACTPWRCON_A::NODIODE,
+            0 => Buinactpwrcon::None,
+            1 => Buinactpwrcon::Mainbu,
+            2 => Buinactpwrcon::Bumain,
+            3 => Buinactpwrcon::Nodiode,
             _ => unreachable!(),
         }
     }
     #[doc = "No connection."]
     #[inline(always)]
     pub fn is_none(&self) -> bool {
-        *self == BUINACTPWRCON_A::NONE
+        *self == Buinactpwrcon::None
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from main power source to backup power source, but not the other way."]
     #[inline(always)]
     pub fn is_mainbu(&self) -> bool {
-        *self == BUINACTPWRCON_A::MAINBU
+        *self == Buinactpwrcon::Mainbu
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from backup power source to main power source, but not the other way."]
     #[inline(always)]
     pub fn is_bumain(&self) -> bool {
-        *self == BUINACTPWRCON_A::BUMAIN
+        *self == Buinactpwrcon::Bumain
     }
     #[doc = "Main power and backup power are connected without diode."]
     #[inline(always)]
     pub fn is_nodiode(&self) -> bool {
-        *self == BUINACTPWRCON_A::NODIODE
+        *self == Buinactpwrcon::Nodiode
     }
 }
 #[doc = "Field `BUINACTPWRCON` writer - Power Connection Configuration When Not in Backup Mode"]
-pub type BUINACTPWRCON_W<'a, REG> = crate::FieldWriterSafe<'a, REG, 2, BUINACTPWRCON_A>;
-impl<'a, REG> BUINACTPWRCON_W<'a, REG>
+pub type BuinactpwrconW<'a, REG> = crate::FieldWriter<'a, REG, 2, Buinactpwrcon, crate::Safe>;
+impl<'a, REG> BuinactpwrconW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -336,143 +340,122 @@ where
     #[doc = "No connection."]
     #[inline(always)]
     pub fn none(self) -> &'a mut crate::W<REG> {
-        self.variant(BUINACTPWRCON_A::NONE)
+        self.variant(Buinactpwrcon::None)
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from main power source to backup power source, but not the other way."]
     #[inline(always)]
     pub fn mainbu(self) -> &'a mut crate::W<REG> {
-        self.variant(BUINACTPWRCON_A::MAINBU)
+        self.variant(Buinactpwrcon::Mainbu)
     }
     #[doc = "Main power and backup power are connected through a diode, allowing current to flow from backup power source to main power source, but not the other way."]
     #[inline(always)]
     pub fn bumain(self) -> &'a mut crate::W<REG> {
-        self.variant(BUINACTPWRCON_A::BUMAIN)
+        self.variant(Buinactpwrcon::Bumain)
     }
     #[doc = "Main power and backup power are connected without diode."]
     #[inline(always)]
     pub fn nodiode(self) -> &'a mut crate::W<REG> {
-        self.variant(BUINACTPWRCON_A::NODIODE)
+        self.variant(Buinactpwrcon::Nodiode)
     }
 }
 #[doc = "Field `DISMAXCOMP` reader - Disable MAIN-BU Comparator"]
-pub type DISMAXCOMP_R = crate::BitReader;
+pub type DismaxcompR = crate::BitReader;
 #[doc = "Field `DISMAXCOMP` writer - Disable MAIN-BU Comparator"]
-pub type DISMAXCOMP_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DismaxcompW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Enable Backup Mode"]
     #[inline(always)]
-    pub fn en(&self) -> EN_R {
-        EN_R::new((self.bits & 1) != 0)
+    pub fn en(&self) -> EnR {
+        EnR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Enable Backup Mode Status Export"]
     #[inline(always)]
-    pub fn staten(&self) -> STATEN_R {
-        STATEN_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn staten(&self) -> StatenR {
+        StatenR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Enable BU_VIN Probing"]
     #[inline(always)]
-    pub fn buvinprobeen(&self) -> BUVINPROBEEN_R {
-        BUVINPROBEEN_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn buvinprobeen(&self) -> BuvinprobeenR {
+        BuvinprobeenR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bits 8:9 - BU_VOUT Resistor Select"]
     #[inline(always)]
-    pub fn voutres(&self) -> VOUTRES_R {
-        VOUTRES_R::new(((self.bits >> 8) & 3) as u8)
+    pub fn voutres(&self) -> VoutresR {
+        VoutresR::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 12:13 - Power Domain Resistor Select"]
     #[inline(always)]
-    pub fn pwrres(&self) -> PWRRES_R {
-        PWRRES_R::new(((self.bits >> 12) & 3) as u8)
+    pub fn pwrres(&self) -> PwrresR {
+        PwrresR::new(((self.bits >> 12) & 3) as u8)
     }
     #[doc = "Bits 16:17 - Power Connection Configuration in Backup Mode"]
     #[inline(always)]
-    pub fn buactpwrcon(&self) -> BUACTPWRCON_R {
-        BUACTPWRCON_R::new(((self.bits >> 16) & 3) as u8)
+    pub fn buactpwrcon(&self) -> BuactpwrconR {
+        BuactpwrconR::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bits 20:21 - Power Connection Configuration When Not in Backup Mode"]
     #[inline(always)]
-    pub fn buinactpwrcon(&self) -> BUINACTPWRCON_R {
-        BUINACTPWRCON_R::new(((self.bits >> 20) & 3) as u8)
+    pub fn buinactpwrcon(&self) -> BuinactpwrconR {
+        BuinactpwrconR::new(((self.bits >> 20) & 3) as u8)
     }
     #[doc = "Bit 31 - Disable MAIN-BU Comparator"]
     #[inline(always)]
-    pub fn dismaxcomp(&self) -> DISMAXCOMP_R {
-        DISMAXCOMP_R::new(((self.bits >> 31) & 1) != 0)
+    pub fn dismaxcomp(&self) -> DismaxcompR {
+        DismaxcompR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Enable Backup Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn en(&mut self) -> EN_W<BUCTRL_SPEC> {
-        EN_W::new(self, 0)
+    pub fn en(&mut self) -> EnW<'_, BuctrlSpec> {
+        EnW::new(self, 0)
     }
     #[doc = "Bit 1 - Enable Backup Mode Status Export"]
     #[inline(always)]
-    #[must_use]
-    pub fn staten(&mut self) -> STATEN_W<BUCTRL_SPEC> {
-        STATEN_W::new(self, 1)
+    pub fn staten(&mut self) -> StatenW<'_, BuctrlSpec> {
+        StatenW::new(self, 1)
     }
     #[doc = "Bit 2 - Enable BU_VIN Probing"]
     #[inline(always)]
-    #[must_use]
-    pub fn buvinprobeen(&mut self) -> BUVINPROBEEN_W<BUCTRL_SPEC> {
-        BUVINPROBEEN_W::new(self, 2)
+    pub fn buvinprobeen(&mut self) -> BuvinprobeenW<'_, BuctrlSpec> {
+        BuvinprobeenW::new(self, 2)
     }
     #[doc = "Bits 8:9 - BU_VOUT Resistor Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn voutres(&mut self) -> VOUTRES_W<BUCTRL_SPEC> {
-        VOUTRES_W::new(self, 8)
+    pub fn voutres(&mut self) -> VoutresW<'_, BuctrlSpec> {
+        VoutresW::new(self, 8)
     }
     #[doc = "Bits 12:13 - Power Domain Resistor Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn pwrres(&mut self) -> PWRRES_W<BUCTRL_SPEC> {
-        PWRRES_W::new(self, 12)
+    pub fn pwrres(&mut self) -> PwrresW<'_, BuctrlSpec> {
+        PwrresW::new(self, 12)
     }
     #[doc = "Bits 16:17 - Power Connection Configuration in Backup Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn buactpwrcon(&mut self) -> BUACTPWRCON_W<BUCTRL_SPEC> {
-        BUACTPWRCON_W::new(self, 16)
+    pub fn buactpwrcon(&mut self) -> BuactpwrconW<'_, BuctrlSpec> {
+        BuactpwrconW::new(self, 16)
     }
     #[doc = "Bits 20:21 - Power Connection Configuration When Not in Backup Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn buinactpwrcon(&mut self) -> BUINACTPWRCON_W<BUCTRL_SPEC> {
-        BUINACTPWRCON_W::new(self, 20)
+    pub fn buinactpwrcon(&mut self) -> BuinactpwrconW<'_, BuctrlSpec> {
+        BuinactpwrconW::new(self, 20)
     }
     #[doc = "Bit 31 - Disable MAIN-BU Comparator"]
     #[inline(always)]
-    #[must_use]
-    pub fn dismaxcomp(&mut self) -> DISMAXCOMP_W<BUCTRL_SPEC> {
-        DISMAXCOMP_W::new(self, 31)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn dismaxcomp(&mut self) -> DismaxcompW<'_, BuctrlSpec> {
+        DismaxcompW::new(self, 31)
     }
 }
-#[doc = "Backup Power Configuration Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`buctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`buctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct BUCTRL_SPEC;
-impl crate::RegisterSpec for BUCTRL_SPEC {
+#[doc = "Backup Power Configuration Register\n\nYou can [`read`](crate::Reg::read) this register and get [`buctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`buctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct BuctrlSpec;
+impl crate::RegisterSpec for BuctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`buctrl::R`](R) reader structure"]
-impl crate::Readable for BUCTRL_SPEC {}
+impl crate::Readable for BuctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`buctrl::W`](W) writer structure"]
-impl crate::Writable for BUCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for BuctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets BUCTRL to value 0"]
-impl crate::Resettable for BUCTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for BuctrlSpec {}

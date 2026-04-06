@@ -1,184 +1,161 @@
 #[doc = "Register `MIR0_CTRL` reader"]
-pub type R = crate::R<MIR0_CTRL_SPEC>;
+pub type R = crate::R<Mir0CtrlSpec>;
 #[doc = "Register `MIR0_CTRL` writer"]
-pub type W = crate::W<MIR0_CTRL_SPEC>;
+pub type W = crate::W<Mir0CtrlSpec>;
 #[doc = "Field `DLC` reader - Data Length Code"]
-pub type DLC_R = crate::FieldReader;
+pub type DlcR = crate::FieldReader;
 #[doc = "Field `DLC` writer - Data Length Code"]
-pub type DLC_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type DlcW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `EOB` reader - End of Buffer"]
-pub type EOB_R = crate::BitReader;
+pub type EobR = crate::BitReader;
 #[doc = "Field `EOB` writer - End of Buffer"]
-pub type EOB_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type EobW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXRQST` reader - Transmit Request"]
-pub type TXRQST_R = crate::BitReader;
+pub type TxrqstR = crate::BitReader;
 #[doc = "Field `TXRQST` writer - Transmit Request"]
-pub type TXRQST_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type TxrqstW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RMTEN` reader - Remote Enable"]
-pub type RMTEN_R = crate::BitReader;
+pub type RmtenR = crate::BitReader;
 #[doc = "Field `RMTEN` writer - Remote Enable"]
-pub type RMTEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RmtenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RXIE` reader - Receive Interrupt Enable"]
-pub type RXIE_R = crate::BitReader;
+pub type RxieR = crate::BitReader;
 #[doc = "Field `RXIE` writer - Receive Interrupt Enable"]
-pub type RXIE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RxieW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TXIE` reader - Transmit Interrupt Enable"]
-pub type TXIE_R = crate::BitReader;
+pub type TxieR = crate::BitReader;
 #[doc = "Field `TXIE` writer - Transmit Interrupt Enable"]
-pub type TXIE_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type TxieW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `UMASK` reader - Use Acceptance Mask"]
-pub type UMASK_R = crate::BitReader;
+pub type UmaskR = crate::BitReader;
 #[doc = "Field `UMASK` writer - Use Acceptance Mask"]
-pub type UMASK_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type UmaskW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INTPND` reader - Interrupt Pending"]
-pub type INTPND_R = crate::BitReader;
+pub type IntpndR = crate::BitReader;
 #[doc = "Field `INTPND` writer - Interrupt Pending"]
-pub type INTPND_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type IntpndW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MESSAGEOF` reader - Message Lost (only Valid for Message Objects With Direction = Receive)"]
-pub type MESSAGEOF_R = crate::BitReader;
+pub type MessageofR = crate::BitReader;
 #[doc = "Field `MESSAGEOF` writer - Message Lost (only Valid for Message Objects With Direction = Receive)"]
-pub type MESSAGEOF_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type MessageofW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DATAVALID` reader - New Data"]
-pub type DATAVALID_R = crate::BitReader;
+pub type DatavalidR = crate::BitReader;
 #[doc = "Field `DATAVALID` writer - New Data"]
-pub type DATAVALID_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type DatavalidW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:3 - Data Length Code"]
     #[inline(always)]
-    pub fn dlc(&self) -> DLC_R {
-        DLC_R::new((self.bits & 0x0f) as u8)
+    pub fn dlc(&self) -> DlcR {
+        DlcR::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bit 7 - End of Buffer"]
     #[inline(always)]
-    pub fn eob(&self) -> EOB_R {
-        EOB_R::new(((self.bits >> 7) & 1) != 0)
+    pub fn eob(&self) -> EobR {
+        EobR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Transmit Request"]
     #[inline(always)]
-    pub fn txrqst(&self) -> TXRQST_R {
-        TXRQST_R::new(((self.bits >> 8) & 1) != 0)
+    pub fn txrqst(&self) -> TxrqstR {
+        TxrqstR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Remote Enable"]
     #[inline(always)]
-    pub fn rmten(&self) -> RMTEN_R {
-        RMTEN_R::new(((self.bits >> 9) & 1) != 0)
+    pub fn rmten(&self) -> RmtenR {
+        RmtenR::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Receive Interrupt Enable"]
     #[inline(always)]
-    pub fn rxie(&self) -> RXIE_R {
-        RXIE_R::new(((self.bits >> 10) & 1) != 0)
+    pub fn rxie(&self) -> RxieR {
+        RxieR::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - Transmit Interrupt Enable"]
     #[inline(always)]
-    pub fn txie(&self) -> TXIE_R {
-        TXIE_R::new(((self.bits >> 11) & 1) != 0)
+    pub fn txie(&self) -> TxieR {
+        TxieR::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 12 - Use Acceptance Mask"]
     #[inline(always)]
-    pub fn umask(&self) -> UMASK_R {
-        UMASK_R::new(((self.bits >> 12) & 1) != 0)
+    pub fn umask(&self) -> UmaskR {
+        UmaskR::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13 - Interrupt Pending"]
     #[inline(always)]
-    pub fn intpnd(&self) -> INTPND_R {
-        INTPND_R::new(((self.bits >> 13) & 1) != 0)
+    pub fn intpnd(&self) -> IntpndR {
+        IntpndR::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bit 14 - Message Lost (only Valid for Message Objects With Direction = Receive)"]
     #[inline(always)]
-    pub fn messageof(&self) -> MESSAGEOF_R {
-        MESSAGEOF_R::new(((self.bits >> 14) & 1) != 0)
+    pub fn messageof(&self) -> MessageofR {
+        MessageofR::new(((self.bits >> 14) & 1) != 0)
     }
     #[doc = "Bit 15 - New Data"]
     #[inline(always)]
-    pub fn datavalid(&self) -> DATAVALID_R {
-        DATAVALID_R::new(((self.bits >> 15) & 1) != 0)
+    pub fn datavalid(&self) -> DatavalidR {
+        DatavalidR::new(((self.bits >> 15) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Data Length Code"]
     #[inline(always)]
-    #[must_use]
-    pub fn dlc(&mut self) -> DLC_W<MIR0_CTRL_SPEC> {
-        DLC_W::new(self, 0)
+    pub fn dlc(&mut self) -> DlcW<'_, Mir0CtrlSpec> {
+        DlcW::new(self, 0)
     }
     #[doc = "Bit 7 - End of Buffer"]
     #[inline(always)]
-    #[must_use]
-    pub fn eob(&mut self) -> EOB_W<MIR0_CTRL_SPEC> {
-        EOB_W::new(self, 7)
+    pub fn eob(&mut self) -> EobW<'_, Mir0CtrlSpec> {
+        EobW::new(self, 7)
     }
     #[doc = "Bit 8 - Transmit Request"]
     #[inline(always)]
-    #[must_use]
-    pub fn txrqst(&mut self) -> TXRQST_W<MIR0_CTRL_SPEC> {
-        TXRQST_W::new(self, 8)
+    pub fn txrqst(&mut self) -> TxrqstW<'_, Mir0CtrlSpec> {
+        TxrqstW::new(self, 8)
     }
     #[doc = "Bit 9 - Remote Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn rmten(&mut self) -> RMTEN_W<MIR0_CTRL_SPEC> {
-        RMTEN_W::new(self, 9)
+    pub fn rmten(&mut self) -> RmtenW<'_, Mir0CtrlSpec> {
+        RmtenW::new(self, 9)
     }
     #[doc = "Bit 10 - Receive Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn rxie(&mut self) -> RXIE_W<MIR0_CTRL_SPEC> {
-        RXIE_W::new(self, 10)
+    pub fn rxie(&mut self) -> RxieW<'_, Mir0CtrlSpec> {
+        RxieW::new(self, 10)
     }
     #[doc = "Bit 11 - Transmit Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn txie(&mut self) -> TXIE_W<MIR0_CTRL_SPEC> {
-        TXIE_W::new(self, 11)
+    pub fn txie(&mut self) -> TxieW<'_, Mir0CtrlSpec> {
+        TxieW::new(self, 11)
     }
     #[doc = "Bit 12 - Use Acceptance Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn umask(&mut self) -> UMASK_W<MIR0_CTRL_SPEC> {
-        UMASK_W::new(self, 12)
+    pub fn umask(&mut self) -> UmaskW<'_, Mir0CtrlSpec> {
+        UmaskW::new(self, 12)
     }
     #[doc = "Bit 13 - Interrupt Pending"]
     #[inline(always)]
-    #[must_use]
-    pub fn intpnd(&mut self) -> INTPND_W<MIR0_CTRL_SPEC> {
-        INTPND_W::new(self, 13)
+    pub fn intpnd(&mut self) -> IntpndW<'_, Mir0CtrlSpec> {
+        IntpndW::new(self, 13)
     }
     #[doc = "Bit 14 - Message Lost (only Valid for Message Objects With Direction = Receive)"]
     #[inline(always)]
-    #[must_use]
-    pub fn messageof(&mut self) -> MESSAGEOF_W<MIR0_CTRL_SPEC> {
-        MESSAGEOF_W::new(self, 14)
+    pub fn messageof(&mut self) -> MessageofW<'_, Mir0CtrlSpec> {
+        MessageofW::new(self, 14)
     }
     #[doc = "Bit 15 - New Data"]
     #[inline(always)]
-    #[must_use]
-    pub fn datavalid(&mut self) -> DATAVALID_W<MIR0_CTRL_SPEC> {
-        DATAVALID_W::new(self, 15)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn datavalid(&mut self) -> DatavalidW<'_, Mir0CtrlSpec> {
+        DatavalidW::new(self, 15)
     }
 }
-#[doc = "Interface Message Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mir0_ctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mir0_ctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct MIR0_CTRL_SPEC;
-impl crate::RegisterSpec for MIR0_CTRL_SPEC {
+#[doc = "Interface Message Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`mir0_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`mir0_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Mir0CtrlSpec;
+impl crate::RegisterSpec for Mir0CtrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`mir0_ctrl::R`](R) reader structure"]
-impl crate::Readable for MIR0_CTRL_SPEC {}
+impl crate::Readable for Mir0CtrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`mir0_ctrl::W`](W) writer structure"]
-impl crate::Writable for MIR0_CTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Mir0CtrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets MIR0_CTRL to value 0"]
-impl crate::Resettable for MIR0_CTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Mir0CtrlSpec {}

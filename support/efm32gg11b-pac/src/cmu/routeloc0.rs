@@ -1,83 +1,84 @@
 #[doc = "Register `ROUTELOC0` reader"]
-pub type R = crate::R<ROUTELOC0_SPEC>;
+pub type R = crate::R<Routeloc0Spec>;
 #[doc = "Register `ROUTELOC0` writer"]
-pub type W = crate::W<ROUTELOC0_SPEC>;
-#[doc = "Field `CLKOUT0LOC` reader - I/O Location"]
-pub type CLKOUT0LOC_R = crate::FieldReader<CLKOUT0LOC_A>;
+pub type W = crate::W<Routeloc0Spec>;
 #[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CLKOUT0LOC_A {
+pub enum Clkout0loc {
     #[doc = "0: Location 0"]
-    LOC0 = 0,
+    Loc0 = 0,
     #[doc = "1: Location 1"]
-    LOC1 = 1,
+    Loc1 = 1,
     #[doc = "2: Location 2"]
-    LOC2 = 2,
+    Loc2 = 2,
     #[doc = "3: Location 3"]
-    LOC3 = 3,
+    Loc3 = 3,
     #[doc = "4: Location 4"]
-    LOC4 = 4,
+    Loc4 = 4,
     #[doc = "5: Location 5"]
-    LOC5 = 5,
+    Loc5 = 5,
 }
-impl From<CLKOUT0LOC_A> for u8 {
+impl From<Clkout0loc> for u8 {
     #[inline(always)]
-    fn from(variant: CLKOUT0LOC_A) -> Self {
+    fn from(variant: Clkout0loc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CLKOUT0LOC_A {
+impl crate::FieldSpec for Clkout0loc {
     type Ux = u8;
 }
-impl CLKOUT0LOC_R {
+impl crate::IsEnum for Clkout0loc {}
+#[doc = "Field `CLKOUT0LOC` reader - I/O Location"]
+pub type Clkout0locR = crate::FieldReader<Clkout0loc>;
+impl Clkout0locR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<CLKOUT0LOC_A> {
+    pub const fn variant(&self) -> Option<Clkout0loc> {
         match self.bits {
-            0 => Some(CLKOUT0LOC_A::LOC0),
-            1 => Some(CLKOUT0LOC_A::LOC1),
-            2 => Some(CLKOUT0LOC_A::LOC2),
-            3 => Some(CLKOUT0LOC_A::LOC3),
-            4 => Some(CLKOUT0LOC_A::LOC4),
-            5 => Some(CLKOUT0LOC_A::LOC5),
+            0 => Some(Clkout0loc::Loc0),
+            1 => Some(Clkout0loc::Loc1),
+            2 => Some(Clkout0loc::Loc2),
+            3 => Some(Clkout0loc::Loc3),
+            4 => Some(Clkout0loc::Loc4),
+            5 => Some(Clkout0loc::Loc5),
             _ => None,
         }
     }
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == CLKOUT0LOC_A::LOC0
+        *self == Clkout0loc::Loc0
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == CLKOUT0LOC_A::LOC1
+        *self == Clkout0loc::Loc1
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == CLKOUT0LOC_A::LOC2
+        *self == Clkout0loc::Loc2
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == CLKOUT0LOC_A::LOC3
+        *self == Clkout0loc::Loc3
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn is_loc4(&self) -> bool {
-        *self == CLKOUT0LOC_A::LOC4
+        *self == Clkout0loc::Loc4
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn is_loc5(&self) -> bool {
-        *self == CLKOUT0LOC_A::LOC5
+        *self == Clkout0loc::Loc5
     }
 }
 #[doc = "Field `CLKOUT0LOC` writer - I/O Location"]
-pub type CLKOUT0LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CLKOUT0LOC_A>;
-impl<'a, REG> CLKOUT0LOC_W<'a, REG>
+pub type Clkout0locW<'a, REG> = crate::FieldWriter<'a, REG, 6, Clkout0loc>;
+impl<'a, REG> Clkout0locW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -85,110 +86,111 @@ where
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn loc0(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT0LOC_A::LOC0)
+        self.variant(Clkout0loc::Loc0)
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn loc1(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT0LOC_A::LOC1)
+        self.variant(Clkout0loc::Loc1)
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn loc2(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT0LOC_A::LOC2)
+        self.variant(Clkout0loc::Loc2)
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn loc3(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT0LOC_A::LOC3)
+        self.variant(Clkout0loc::Loc3)
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn loc4(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT0LOC_A::LOC4)
+        self.variant(Clkout0loc::Loc4)
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn loc5(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT0LOC_A::LOC5)
+        self.variant(Clkout0loc::Loc5)
     }
 }
-#[doc = "Field `CLKOUT1LOC` reader - I/O Location"]
-pub type CLKOUT1LOC_R = crate::FieldReader<CLKOUT1LOC_A>;
 #[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CLKOUT1LOC_A {
+pub enum Clkout1loc {
     #[doc = "0: Location 0"]
-    LOC0 = 0,
+    Loc0 = 0,
     #[doc = "1: Location 1"]
-    LOC1 = 1,
+    Loc1 = 1,
     #[doc = "2: Location 2"]
-    LOC2 = 2,
+    Loc2 = 2,
     #[doc = "3: Location 3"]
-    LOC3 = 3,
+    Loc3 = 3,
     #[doc = "4: Location 4"]
-    LOC4 = 4,
+    Loc4 = 4,
     #[doc = "5: Location 5"]
-    LOC5 = 5,
+    Loc5 = 5,
 }
-impl From<CLKOUT1LOC_A> for u8 {
+impl From<Clkout1loc> for u8 {
     #[inline(always)]
-    fn from(variant: CLKOUT1LOC_A) -> Self {
+    fn from(variant: Clkout1loc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CLKOUT1LOC_A {
+impl crate::FieldSpec for Clkout1loc {
     type Ux = u8;
 }
-impl CLKOUT1LOC_R {
+impl crate::IsEnum for Clkout1loc {}
+#[doc = "Field `CLKOUT1LOC` reader - I/O Location"]
+pub type Clkout1locR = crate::FieldReader<Clkout1loc>;
+impl Clkout1locR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<CLKOUT1LOC_A> {
+    pub const fn variant(&self) -> Option<Clkout1loc> {
         match self.bits {
-            0 => Some(CLKOUT1LOC_A::LOC0),
-            1 => Some(CLKOUT1LOC_A::LOC1),
-            2 => Some(CLKOUT1LOC_A::LOC2),
-            3 => Some(CLKOUT1LOC_A::LOC3),
-            4 => Some(CLKOUT1LOC_A::LOC4),
-            5 => Some(CLKOUT1LOC_A::LOC5),
+            0 => Some(Clkout1loc::Loc0),
+            1 => Some(Clkout1loc::Loc1),
+            2 => Some(Clkout1loc::Loc2),
+            3 => Some(Clkout1loc::Loc3),
+            4 => Some(Clkout1loc::Loc4),
+            5 => Some(Clkout1loc::Loc5),
             _ => None,
         }
     }
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == CLKOUT1LOC_A::LOC0
+        *self == Clkout1loc::Loc0
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == CLKOUT1LOC_A::LOC1
+        *self == Clkout1loc::Loc1
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == CLKOUT1LOC_A::LOC2
+        *self == Clkout1loc::Loc2
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == CLKOUT1LOC_A::LOC3
+        *self == Clkout1loc::Loc3
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn is_loc4(&self) -> bool {
-        *self == CLKOUT1LOC_A::LOC4
+        *self == Clkout1loc::Loc4
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn is_loc5(&self) -> bool {
-        *self == CLKOUT1LOC_A::LOC5
+        *self == Clkout1loc::Loc5
     }
 }
 #[doc = "Field `CLKOUT1LOC` writer - I/O Location"]
-pub type CLKOUT1LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CLKOUT1LOC_A>;
-impl<'a, REG> CLKOUT1LOC_W<'a, REG>
+pub type Clkout1locW<'a, REG> = crate::FieldWriter<'a, REG, 6, Clkout1loc>;
+impl<'a, REG> Clkout1locW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -196,110 +198,111 @@ where
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn loc0(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT1LOC_A::LOC0)
+        self.variant(Clkout1loc::Loc0)
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn loc1(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT1LOC_A::LOC1)
+        self.variant(Clkout1loc::Loc1)
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn loc2(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT1LOC_A::LOC2)
+        self.variant(Clkout1loc::Loc2)
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn loc3(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT1LOC_A::LOC3)
+        self.variant(Clkout1loc::Loc3)
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn loc4(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT1LOC_A::LOC4)
+        self.variant(Clkout1loc::Loc4)
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn loc5(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT1LOC_A::LOC5)
+        self.variant(Clkout1loc::Loc5)
     }
 }
-#[doc = "Field `CLKOUT2LOC` reader - I/O Location"]
-pub type CLKOUT2LOC_R = crate::FieldReader<CLKOUT2LOC_A>;
 #[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CLKOUT2LOC_A {
+pub enum Clkout2loc {
     #[doc = "0: Location 0"]
-    LOC0 = 0,
+    Loc0 = 0,
     #[doc = "1: Location 1"]
-    LOC1 = 1,
+    Loc1 = 1,
     #[doc = "2: Location 2"]
-    LOC2 = 2,
+    Loc2 = 2,
     #[doc = "3: Location 3"]
-    LOC3 = 3,
+    Loc3 = 3,
     #[doc = "4: Location 4"]
-    LOC4 = 4,
+    Loc4 = 4,
     #[doc = "5: Location 5"]
-    LOC5 = 5,
+    Loc5 = 5,
 }
-impl From<CLKOUT2LOC_A> for u8 {
+impl From<Clkout2loc> for u8 {
     #[inline(always)]
-    fn from(variant: CLKOUT2LOC_A) -> Self {
+    fn from(variant: Clkout2loc) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CLKOUT2LOC_A {
+impl crate::FieldSpec for Clkout2loc {
     type Ux = u8;
 }
-impl CLKOUT2LOC_R {
+impl crate::IsEnum for Clkout2loc {}
+#[doc = "Field `CLKOUT2LOC` reader - I/O Location"]
+pub type Clkout2locR = crate::FieldReader<Clkout2loc>;
+impl Clkout2locR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<CLKOUT2LOC_A> {
+    pub const fn variant(&self) -> Option<Clkout2loc> {
         match self.bits {
-            0 => Some(CLKOUT2LOC_A::LOC0),
-            1 => Some(CLKOUT2LOC_A::LOC1),
-            2 => Some(CLKOUT2LOC_A::LOC2),
-            3 => Some(CLKOUT2LOC_A::LOC3),
-            4 => Some(CLKOUT2LOC_A::LOC4),
-            5 => Some(CLKOUT2LOC_A::LOC5),
+            0 => Some(Clkout2loc::Loc0),
+            1 => Some(Clkout2loc::Loc1),
+            2 => Some(Clkout2loc::Loc2),
+            3 => Some(Clkout2loc::Loc3),
+            4 => Some(Clkout2loc::Loc4),
+            5 => Some(Clkout2loc::Loc5),
             _ => None,
         }
     }
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == CLKOUT2LOC_A::LOC0
+        *self == Clkout2loc::Loc0
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == CLKOUT2LOC_A::LOC1
+        *self == Clkout2loc::Loc1
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == CLKOUT2LOC_A::LOC2
+        *self == Clkout2loc::Loc2
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == CLKOUT2LOC_A::LOC3
+        *self == Clkout2loc::Loc3
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn is_loc4(&self) -> bool {
-        *self == CLKOUT2LOC_A::LOC4
+        *self == Clkout2loc::Loc4
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn is_loc5(&self) -> bool {
-        *self == CLKOUT2LOC_A::LOC5
+        *self == Clkout2loc::Loc5
     }
 }
 #[doc = "Field `CLKOUT2LOC` writer - I/O Location"]
-pub type CLKOUT2LOC_W<'a, REG> = crate::FieldWriter<'a, REG, 6, CLKOUT2LOC_A>;
-impl<'a, REG> CLKOUT2LOC_W<'a, REG>
+pub type Clkout2locW<'a, REG> = crate::FieldWriter<'a, REG, 6, Clkout2loc>;
+impl<'a, REG> Clkout2locW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -307,94 +310,78 @@ where
     #[doc = "Location 0"]
     #[inline(always)]
     pub fn loc0(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT2LOC_A::LOC0)
+        self.variant(Clkout2loc::Loc0)
     }
     #[doc = "Location 1"]
     #[inline(always)]
     pub fn loc1(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT2LOC_A::LOC1)
+        self.variant(Clkout2loc::Loc1)
     }
     #[doc = "Location 2"]
     #[inline(always)]
     pub fn loc2(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT2LOC_A::LOC2)
+        self.variant(Clkout2loc::Loc2)
     }
     #[doc = "Location 3"]
     #[inline(always)]
     pub fn loc3(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT2LOC_A::LOC3)
+        self.variant(Clkout2loc::Loc3)
     }
     #[doc = "Location 4"]
     #[inline(always)]
     pub fn loc4(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT2LOC_A::LOC4)
+        self.variant(Clkout2loc::Loc4)
     }
     #[doc = "Location 5"]
     #[inline(always)]
     pub fn loc5(self) -> &'a mut crate::W<REG> {
-        self.variant(CLKOUT2LOC_A::LOC5)
+        self.variant(Clkout2loc::Loc5)
     }
 }
 impl R {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
-    pub fn clkout0loc(&self) -> CLKOUT0LOC_R {
-        CLKOUT0LOC_R::new((self.bits & 0x3f) as u8)
+    pub fn clkout0loc(&self) -> Clkout0locR {
+        Clkout0locR::new((self.bits & 0x3f) as u8)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
-    pub fn clkout1loc(&self) -> CLKOUT1LOC_R {
-        CLKOUT1LOC_R::new(((self.bits >> 8) & 0x3f) as u8)
+    pub fn clkout1loc(&self) -> Clkout1locR {
+        Clkout1locR::new(((self.bits >> 8) & 0x3f) as u8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
-    pub fn clkout2loc(&self) -> CLKOUT2LOC_R {
-        CLKOUT2LOC_R::new(((self.bits >> 16) & 0x3f) as u8)
+    pub fn clkout2loc(&self) -> Clkout2locR {
+        Clkout2locR::new(((self.bits >> 16) & 0x3f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:5 - I/O Location"]
     #[inline(always)]
-    #[must_use]
-    pub fn clkout0loc(&mut self) -> CLKOUT0LOC_W<ROUTELOC0_SPEC> {
-        CLKOUT0LOC_W::new(self, 0)
+    pub fn clkout0loc(&mut self) -> Clkout0locW<'_, Routeloc0Spec> {
+        Clkout0locW::new(self, 0)
     }
     #[doc = "Bits 8:13 - I/O Location"]
     #[inline(always)]
-    #[must_use]
-    pub fn clkout1loc(&mut self) -> CLKOUT1LOC_W<ROUTELOC0_SPEC> {
-        CLKOUT1LOC_W::new(self, 8)
+    pub fn clkout1loc(&mut self) -> Clkout1locW<'_, Routeloc0Spec> {
+        Clkout1locW::new(self, 8)
     }
     #[doc = "Bits 16:21 - I/O Location"]
     #[inline(always)]
-    #[must_use]
-    pub fn clkout2loc(&mut self) -> CLKOUT2LOC_W<ROUTELOC0_SPEC> {
-        CLKOUT2LOC_W::new(self, 16)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn clkout2loc(&mut self) -> Clkout2locW<'_, Routeloc0Spec> {
+        Clkout2locW::new(self, 16)
     }
 }
-#[doc = "I/O Routing Location Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`routeloc0::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`routeloc0::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct ROUTELOC0_SPEC;
-impl crate::RegisterSpec for ROUTELOC0_SPEC {
+#[doc = "I/O Routing Location Register\n\nYou can [`read`](crate::Reg::read) this register and get [`routeloc0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`routeloc0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Routeloc0Spec;
+impl crate::RegisterSpec for Routeloc0Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`routeloc0::R`](R) reader structure"]
-impl crate::Readable for ROUTELOC0_SPEC {}
+impl crate::Readable for Routeloc0Spec {}
 #[doc = "`write(|w| ..)` method takes [`routeloc0::W`](W) writer structure"]
-impl crate::Writable for ROUTELOC0_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Routeloc0Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets ROUTELOC0 to value 0"]
-impl crate::Resettable for ROUTELOC0_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Routeloc0Spec {}

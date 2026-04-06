@@ -1,514 +1,469 @@
 #[doc = "Register `PPUPATD1` reader"]
-pub type R = crate::R<PPUPATD1_SPEC>;
+pub type R = crate::R<Ppupatd1Spec>;
 #[doc = "Register `PPUPATD1` writer"]
-pub type W = crate::W<PPUPATD1_SPEC>;
+pub type W = crate::W<Ppupatd1Spec>;
 #[doc = "Field `PCNT0` reader - Pulse Counter 0 access control bit"]
-pub type PCNT0_R = crate::BitReader;
+pub type Pcnt0R = crate::BitReader;
 #[doc = "Field `PCNT0` writer - Pulse Counter 0 access control bit"]
-pub type PCNT0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PCNT1` reader - Pulse Counter 1 access control bit"]
-pub type PCNT1_R = crate::BitReader;
+pub type Pcnt1R = crate::BitReader;
 #[doc = "Field `PCNT1` writer - Pulse Counter 1 access control bit"]
-pub type PCNT1_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PCNT2` reader - Pulse Counter 2 access control bit"]
-pub type PCNT2_R = crate::BitReader;
+pub type Pcnt2R = crate::BitReader;
 #[doc = "Field `PCNT2` writer - Pulse Counter 2 access control bit"]
-pub type PCNT2_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Pcnt2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `QSPI0` reader - Quad-SPI access control bit"]
-pub type QSPI0_R = crate::BitReader;
+pub type Qspi0R = crate::BitReader;
 #[doc = "Field `QSPI0` writer - Quad-SPI access control bit"]
-pub type QSPI0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Qspi0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RMU` reader - Reset Management Unit access control bit"]
-pub type RMU_R = crate::BitReader;
+pub type RmuR = crate::BitReader;
 #[doc = "Field `RMU` writer - Reset Management Unit access control bit"]
-pub type RMU_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RmuW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RTC` reader - Real-Time Counter access control bit"]
-pub type RTC_R = crate::BitReader;
+pub type RtcR = crate::BitReader;
 #[doc = "Field `RTC` writer - Real-Time Counter access control bit"]
-pub type RTC_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RtcW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RTCC` reader - Real-Time Counter and Calendar access control bit"]
-pub type RTCC_R = crate::BitReader;
+pub type RtccR = crate::BitReader;
 #[doc = "Field `RTCC` writer - Real-Time Counter and Calendar access control bit"]
-pub type RTCC_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type RtccW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SDIO` reader - SDIO Controller access control bit"]
-pub type SDIO_R = crate::BitReader;
+pub type SdioR = crate::BitReader;
 #[doc = "Field `SDIO` writer - SDIO Controller access control bit"]
-pub type SDIO_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type SdioW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SMU` reader - Security Management Unit access control bit"]
-pub type SMU_R = crate::BitReader;
+pub type SmuR = crate::BitReader;
 #[doc = "Field `SMU` writer - Security Management Unit access control bit"]
-pub type SMU_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type SmuW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TIMER0` reader - Timer 0 access control bit"]
-pub type TIMER0_R = crate::BitReader;
+pub type Timer0R = crate::BitReader;
 #[doc = "Field `TIMER0` writer - Timer 0 access control bit"]
-pub type TIMER0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Timer0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TIMER1` reader - Timer 1 access control bit"]
-pub type TIMER1_R = crate::BitReader;
+pub type Timer1R = crate::BitReader;
 #[doc = "Field `TIMER1` writer - Timer 1 access control bit"]
-pub type TIMER1_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Timer1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TIMER2` reader - Timer 2 access control bit"]
-pub type TIMER2_R = crate::BitReader;
+pub type Timer2R = crate::BitReader;
 #[doc = "Field `TIMER2` writer - Timer 2 access control bit"]
-pub type TIMER2_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Timer2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TIMER3` reader - Timer 3 access control bit"]
-pub type TIMER3_R = crate::BitReader;
+pub type Timer3R = crate::BitReader;
 #[doc = "Field `TIMER3` writer - Timer 3 access control bit"]
-pub type TIMER3_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Timer3W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TIMER4` reader - Timer 4 access control bit"]
-pub type TIMER4_R = crate::BitReader;
+pub type Timer4R = crate::BitReader;
 #[doc = "Field `TIMER4` writer - Timer 4 access control bit"]
-pub type TIMER4_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Timer4W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TIMER5` reader - Timer 5 access control bit"]
-pub type TIMER5_R = crate::BitReader;
+pub type Timer5R = crate::BitReader;
 #[doc = "Field `TIMER5` writer - Timer 5 access control bit"]
-pub type TIMER5_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Timer5W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TIMER6` reader - Timer 6 access control bit"]
-pub type TIMER6_R = crate::BitReader;
+pub type Timer6R = crate::BitReader;
 #[doc = "Field `TIMER6` writer - Timer 6 access control bit"]
-pub type TIMER6_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Timer6W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `TRNG0` reader - True Random Number Generator 0 access control bit"]
-pub type TRNG0_R = crate::BitReader;
+pub type Trng0R = crate::BitReader;
 #[doc = "Field `TRNG0` writer - True Random Number Generator 0 access control bit"]
-pub type TRNG0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Trng0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `UART0` reader - Universal Asynchronous Receiver/Transmitter 0 access control bit"]
-pub type UART0_R = crate::BitReader;
+pub type Uart0R = crate::BitReader;
 #[doc = "Field `UART0` writer - Universal Asynchronous Receiver/Transmitter 0 access control bit"]
-pub type UART0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Uart0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `UART1` reader - Universal Asynchronous Receiver/Transmitter 1 access control bit"]
-pub type UART1_R = crate::BitReader;
+pub type Uart1R = crate::BitReader;
 #[doc = "Field `UART1` writer - Universal Asynchronous Receiver/Transmitter 1 access control bit"]
-pub type UART1_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Uart1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USART0` reader - Universal Synchronous/Asynchronous Receiver/Transmitter 0 access control bit"]
-pub type USART0_R = crate::BitReader;
+pub type Usart0R = crate::BitReader;
 #[doc = "Field `USART0` writer - Universal Synchronous/Asynchronous Receiver/Transmitter 0 access control bit"]
-pub type USART0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Usart0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USART1` reader - Universal Synchronous/Asynchronous Receiver/Transmitter 1 access control bit"]
-pub type USART1_R = crate::BitReader;
+pub type Usart1R = crate::BitReader;
 #[doc = "Field `USART1` writer - Universal Synchronous/Asynchronous Receiver/Transmitter 1 access control bit"]
-pub type USART1_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Usart1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USART2` reader - Universal Synchronous/Asynchronous Receiver/Transmitter 2 access control bit"]
-pub type USART2_R = crate::BitReader;
+pub type Usart2R = crate::BitReader;
 #[doc = "Field `USART2` writer - Universal Synchronous/Asynchronous Receiver/Transmitter 2 access control bit"]
-pub type USART2_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Usart2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USART3` reader - Universal Synchronous/Asynchronous Receiver/Transmitter 3 access control bit"]
-pub type USART3_R = crate::BitReader;
+pub type Usart3R = crate::BitReader;
 #[doc = "Field `USART3` writer - Universal Synchronous/Asynchronous Receiver/Transmitter 3 access control bit"]
-pub type USART3_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Usart3W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USART4` reader - Universal Synchronous/Asynchronous Receiver/Transmitter 4 access control bit"]
-pub type USART4_R = crate::BitReader;
+pub type Usart4R = crate::BitReader;
 #[doc = "Field `USART4` writer - Universal Synchronous/Asynchronous Receiver/Transmitter 4 access control bit"]
-pub type USART4_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Usart4W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USART5` reader - Universal Synchronous/Asynchronous Receiver/Transmitter 5 access control bit"]
-pub type USART5_R = crate::BitReader;
+pub type Usart5R = crate::BitReader;
 #[doc = "Field `USART5` writer - Universal Synchronous/Asynchronous Receiver/Transmitter 5 access control bit"]
-pub type USART5_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Usart5W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `USB` reader - Universal Serial Bus Interface access control bit"]
-pub type USB_R = crate::BitReader;
+pub type UsbR = crate::BitReader;
 #[doc = "Field `USB` writer - Universal Serial Bus Interface access control bit"]
-pub type USB_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type UsbW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WDOG0` reader - Watchdog access control bit"]
-pub type WDOG0_R = crate::BitReader;
+pub type Wdog0R = crate::BitReader;
 #[doc = "Field `WDOG0` writer - Watchdog access control bit"]
-pub type WDOG0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Wdog0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WDOG1` reader - Watchdog access control bit"]
-pub type WDOG1_R = crate::BitReader;
+pub type Wdog1R = crate::BitReader;
 #[doc = "Field `WDOG1` writer - Watchdog access control bit"]
-pub type WDOG1_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Wdog1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WTIMER0` reader - Wide Timer 0 access control bit"]
-pub type WTIMER0_R = crate::BitReader;
+pub type Wtimer0R = crate::BitReader;
 #[doc = "Field `WTIMER0` writer - Wide Timer 0 access control bit"]
-pub type WTIMER0_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Wtimer0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WTIMER1` reader - Wide Timer 0 access control bit"]
-pub type WTIMER1_R = crate::BitReader;
+pub type Wtimer1R = crate::BitReader;
 #[doc = "Field `WTIMER1` writer - Wide Timer 0 access control bit"]
-pub type WTIMER1_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Wtimer1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WTIMER2` reader - Wide Timer 2 access control bit"]
-pub type WTIMER2_R = crate::BitReader;
+pub type Wtimer2R = crate::BitReader;
 #[doc = "Field `WTIMER2` writer - Wide Timer 2 access control bit"]
-pub type WTIMER2_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Wtimer2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WTIMER3` reader - Wide Timer 3 access control bit"]
-pub type WTIMER3_R = crate::BitReader;
+pub type Wtimer3R = crate::BitReader;
 #[doc = "Field `WTIMER3` writer - Wide Timer 3 access control bit"]
-pub type WTIMER3_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Wtimer3W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Pulse Counter 0 access control bit"]
     #[inline(always)]
-    pub fn pcnt0(&self) -> PCNT0_R {
-        PCNT0_R::new((self.bits & 1) != 0)
+    pub fn pcnt0(&self) -> Pcnt0R {
+        Pcnt0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Pulse Counter 1 access control bit"]
     #[inline(always)]
-    pub fn pcnt1(&self) -> PCNT1_R {
-        PCNT1_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn pcnt1(&self) -> Pcnt1R {
+        Pcnt1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Pulse Counter 2 access control bit"]
     #[inline(always)]
-    pub fn pcnt2(&self) -> PCNT2_R {
-        PCNT2_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn pcnt2(&self) -> Pcnt2R {
+        Pcnt2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Quad-SPI access control bit"]
     #[inline(always)]
-    pub fn qspi0(&self) -> QSPI0_R {
-        QSPI0_R::new(((self.bits >> 3) & 1) != 0)
+    pub fn qspi0(&self) -> Qspi0R {
+        Qspi0R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Reset Management Unit access control bit"]
     #[inline(always)]
-    pub fn rmu(&self) -> RMU_R {
-        RMU_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn rmu(&self) -> RmuR {
+        RmuR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Real-Time Counter access control bit"]
     #[inline(always)]
-    pub fn rtc(&self) -> RTC_R {
-        RTC_R::new(((self.bits >> 5) & 1) != 0)
+    pub fn rtc(&self) -> RtcR {
+        RtcR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Real-Time Counter and Calendar access control bit"]
     #[inline(always)]
-    pub fn rtcc(&self) -> RTCC_R {
-        RTCC_R::new(((self.bits >> 6) & 1) != 0)
+    pub fn rtcc(&self) -> RtccR {
+        RtccR::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - SDIO Controller access control bit"]
     #[inline(always)]
-    pub fn sdio(&self) -> SDIO_R {
-        SDIO_R::new(((self.bits >> 7) & 1) != 0)
+    pub fn sdio(&self) -> SdioR {
+        SdioR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Security Management Unit access control bit"]
     #[inline(always)]
-    pub fn smu(&self) -> SMU_R {
-        SMU_R::new(((self.bits >> 8) & 1) != 0)
+    pub fn smu(&self) -> SmuR {
+        SmuR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Timer 0 access control bit"]
     #[inline(always)]
-    pub fn timer0(&self) -> TIMER0_R {
-        TIMER0_R::new(((self.bits >> 9) & 1) != 0)
+    pub fn timer0(&self) -> Timer0R {
+        Timer0R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Timer 1 access control bit"]
     #[inline(always)]
-    pub fn timer1(&self) -> TIMER1_R {
-        TIMER1_R::new(((self.bits >> 10) & 1) != 0)
+    pub fn timer1(&self) -> Timer1R {
+        Timer1R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - Timer 2 access control bit"]
     #[inline(always)]
-    pub fn timer2(&self) -> TIMER2_R {
-        TIMER2_R::new(((self.bits >> 11) & 1) != 0)
+    pub fn timer2(&self) -> Timer2R {
+        Timer2R::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 12 - Timer 3 access control bit"]
     #[inline(always)]
-    pub fn timer3(&self) -> TIMER3_R {
-        TIMER3_R::new(((self.bits >> 12) & 1) != 0)
+    pub fn timer3(&self) -> Timer3R {
+        Timer3R::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13 - Timer 4 access control bit"]
     #[inline(always)]
-    pub fn timer4(&self) -> TIMER4_R {
-        TIMER4_R::new(((self.bits >> 13) & 1) != 0)
+    pub fn timer4(&self) -> Timer4R {
+        Timer4R::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bit 14 - Timer 5 access control bit"]
     #[inline(always)]
-    pub fn timer5(&self) -> TIMER5_R {
-        TIMER5_R::new(((self.bits >> 14) & 1) != 0)
+    pub fn timer5(&self) -> Timer5R {
+        Timer5R::new(((self.bits >> 14) & 1) != 0)
     }
     #[doc = "Bit 15 - Timer 6 access control bit"]
     #[inline(always)]
-    pub fn timer6(&self) -> TIMER6_R {
-        TIMER6_R::new(((self.bits >> 15) & 1) != 0)
+    pub fn timer6(&self) -> Timer6R {
+        Timer6R::new(((self.bits >> 15) & 1) != 0)
     }
     #[doc = "Bit 16 - True Random Number Generator 0 access control bit"]
     #[inline(always)]
-    pub fn trng0(&self) -> TRNG0_R {
-        TRNG0_R::new(((self.bits >> 16) & 1) != 0)
+    pub fn trng0(&self) -> Trng0R {
+        Trng0R::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - Universal Asynchronous Receiver/Transmitter 0 access control bit"]
     #[inline(always)]
-    pub fn uart0(&self) -> UART0_R {
-        UART0_R::new(((self.bits >> 17) & 1) != 0)
+    pub fn uart0(&self) -> Uart0R {
+        Uart0R::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - Universal Asynchronous Receiver/Transmitter 1 access control bit"]
     #[inline(always)]
-    pub fn uart1(&self) -> UART1_R {
-        UART1_R::new(((self.bits >> 18) & 1) != 0)
+    pub fn uart1(&self) -> Uart1R {
+        Uart1R::new(((self.bits >> 18) & 1) != 0)
     }
     #[doc = "Bit 19 - Universal Synchronous/Asynchronous Receiver/Transmitter 0 access control bit"]
     #[inline(always)]
-    pub fn usart0(&self) -> USART0_R {
-        USART0_R::new(((self.bits >> 19) & 1) != 0)
+    pub fn usart0(&self) -> Usart0R {
+        Usart0R::new(((self.bits >> 19) & 1) != 0)
     }
     #[doc = "Bit 20 - Universal Synchronous/Asynchronous Receiver/Transmitter 1 access control bit"]
     #[inline(always)]
-    pub fn usart1(&self) -> USART1_R {
-        USART1_R::new(((self.bits >> 20) & 1) != 0)
+    pub fn usart1(&self) -> Usart1R {
+        Usart1R::new(((self.bits >> 20) & 1) != 0)
     }
     #[doc = "Bit 21 - Universal Synchronous/Asynchronous Receiver/Transmitter 2 access control bit"]
     #[inline(always)]
-    pub fn usart2(&self) -> USART2_R {
-        USART2_R::new(((self.bits >> 21) & 1) != 0)
+    pub fn usart2(&self) -> Usart2R {
+        Usart2R::new(((self.bits >> 21) & 1) != 0)
     }
     #[doc = "Bit 22 - Universal Synchronous/Asynchronous Receiver/Transmitter 3 access control bit"]
     #[inline(always)]
-    pub fn usart3(&self) -> USART3_R {
-        USART3_R::new(((self.bits >> 22) & 1) != 0)
+    pub fn usart3(&self) -> Usart3R {
+        Usart3R::new(((self.bits >> 22) & 1) != 0)
     }
     #[doc = "Bit 23 - Universal Synchronous/Asynchronous Receiver/Transmitter 4 access control bit"]
     #[inline(always)]
-    pub fn usart4(&self) -> USART4_R {
-        USART4_R::new(((self.bits >> 23) & 1) != 0)
+    pub fn usart4(&self) -> Usart4R {
+        Usart4R::new(((self.bits >> 23) & 1) != 0)
     }
     #[doc = "Bit 24 - Universal Synchronous/Asynchronous Receiver/Transmitter 5 access control bit"]
     #[inline(always)]
-    pub fn usart5(&self) -> USART5_R {
-        USART5_R::new(((self.bits >> 24) & 1) != 0)
+    pub fn usart5(&self) -> Usart5R {
+        Usart5R::new(((self.bits >> 24) & 1) != 0)
     }
     #[doc = "Bit 25 - Universal Serial Bus Interface access control bit"]
     #[inline(always)]
-    pub fn usb(&self) -> USB_R {
-        USB_R::new(((self.bits >> 25) & 1) != 0)
+    pub fn usb(&self) -> UsbR {
+        UsbR::new(((self.bits >> 25) & 1) != 0)
     }
     #[doc = "Bit 26 - Watchdog access control bit"]
     #[inline(always)]
-    pub fn wdog0(&self) -> WDOG0_R {
-        WDOG0_R::new(((self.bits >> 26) & 1) != 0)
+    pub fn wdog0(&self) -> Wdog0R {
+        Wdog0R::new(((self.bits >> 26) & 1) != 0)
     }
     #[doc = "Bit 27 - Watchdog access control bit"]
     #[inline(always)]
-    pub fn wdog1(&self) -> WDOG1_R {
-        WDOG1_R::new(((self.bits >> 27) & 1) != 0)
+    pub fn wdog1(&self) -> Wdog1R {
+        Wdog1R::new(((self.bits >> 27) & 1) != 0)
     }
     #[doc = "Bit 28 - Wide Timer 0 access control bit"]
     #[inline(always)]
-    pub fn wtimer0(&self) -> WTIMER0_R {
-        WTIMER0_R::new(((self.bits >> 28) & 1) != 0)
+    pub fn wtimer0(&self) -> Wtimer0R {
+        Wtimer0R::new(((self.bits >> 28) & 1) != 0)
     }
     #[doc = "Bit 29 - Wide Timer 0 access control bit"]
     #[inline(always)]
-    pub fn wtimer1(&self) -> WTIMER1_R {
-        WTIMER1_R::new(((self.bits >> 29) & 1) != 0)
+    pub fn wtimer1(&self) -> Wtimer1R {
+        Wtimer1R::new(((self.bits >> 29) & 1) != 0)
     }
     #[doc = "Bit 30 - Wide Timer 2 access control bit"]
     #[inline(always)]
-    pub fn wtimer2(&self) -> WTIMER2_R {
-        WTIMER2_R::new(((self.bits >> 30) & 1) != 0)
+    pub fn wtimer2(&self) -> Wtimer2R {
+        Wtimer2R::new(((self.bits >> 30) & 1) != 0)
     }
     #[doc = "Bit 31 - Wide Timer 3 access control bit"]
     #[inline(always)]
-    pub fn wtimer3(&self) -> WTIMER3_R {
-        WTIMER3_R::new(((self.bits >> 31) & 1) != 0)
+    pub fn wtimer3(&self) -> Wtimer3R {
+        Wtimer3R::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Pulse Counter 0 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt0(&mut self) -> PCNT0_W<PPUPATD1_SPEC> {
-        PCNT0_W::new(self, 0)
+    pub fn pcnt0(&mut self) -> Pcnt0W<'_, Ppupatd1Spec> {
+        Pcnt0W::new(self, 0)
     }
     #[doc = "Bit 1 - Pulse Counter 1 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt1(&mut self) -> PCNT1_W<PPUPATD1_SPEC> {
-        PCNT1_W::new(self, 1)
+    pub fn pcnt1(&mut self) -> Pcnt1W<'_, Ppupatd1Spec> {
+        Pcnt1W::new(self, 1)
     }
     #[doc = "Bit 2 - Pulse Counter 2 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn pcnt2(&mut self) -> PCNT2_W<PPUPATD1_SPEC> {
-        PCNT2_W::new(self, 2)
+    pub fn pcnt2(&mut self) -> Pcnt2W<'_, Ppupatd1Spec> {
+        Pcnt2W::new(self, 2)
     }
     #[doc = "Bit 3 - Quad-SPI access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn qspi0(&mut self) -> QSPI0_W<PPUPATD1_SPEC> {
-        QSPI0_W::new(self, 3)
+    pub fn qspi0(&mut self) -> Qspi0W<'_, Ppupatd1Spec> {
+        Qspi0W::new(self, 3)
     }
     #[doc = "Bit 4 - Reset Management Unit access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn rmu(&mut self) -> RMU_W<PPUPATD1_SPEC> {
-        RMU_W::new(self, 4)
+    pub fn rmu(&mut self) -> RmuW<'_, Ppupatd1Spec> {
+        RmuW::new(self, 4)
     }
     #[doc = "Bit 5 - Real-Time Counter access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn rtc(&mut self) -> RTC_W<PPUPATD1_SPEC> {
-        RTC_W::new(self, 5)
+    pub fn rtc(&mut self) -> RtcW<'_, Ppupatd1Spec> {
+        RtcW::new(self, 5)
     }
     #[doc = "Bit 6 - Real-Time Counter and Calendar access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn rtcc(&mut self) -> RTCC_W<PPUPATD1_SPEC> {
-        RTCC_W::new(self, 6)
+    pub fn rtcc(&mut self) -> RtccW<'_, Ppupatd1Spec> {
+        RtccW::new(self, 6)
     }
     #[doc = "Bit 7 - SDIO Controller access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn sdio(&mut self) -> SDIO_W<PPUPATD1_SPEC> {
-        SDIO_W::new(self, 7)
+    pub fn sdio(&mut self) -> SdioW<'_, Ppupatd1Spec> {
+        SdioW::new(self, 7)
     }
     #[doc = "Bit 8 - Security Management Unit access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn smu(&mut self) -> SMU_W<PPUPATD1_SPEC> {
-        SMU_W::new(self, 8)
+    pub fn smu(&mut self) -> SmuW<'_, Ppupatd1Spec> {
+        SmuW::new(self, 8)
     }
     #[doc = "Bit 9 - Timer 0 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn timer0(&mut self) -> TIMER0_W<PPUPATD1_SPEC> {
-        TIMER0_W::new(self, 9)
+    pub fn timer0(&mut self) -> Timer0W<'_, Ppupatd1Spec> {
+        Timer0W::new(self, 9)
     }
     #[doc = "Bit 10 - Timer 1 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn timer1(&mut self) -> TIMER1_W<PPUPATD1_SPEC> {
-        TIMER1_W::new(self, 10)
+    pub fn timer1(&mut self) -> Timer1W<'_, Ppupatd1Spec> {
+        Timer1W::new(self, 10)
     }
     #[doc = "Bit 11 - Timer 2 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn timer2(&mut self) -> TIMER2_W<PPUPATD1_SPEC> {
-        TIMER2_W::new(self, 11)
+    pub fn timer2(&mut self) -> Timer2W<'_, Ppupatd1Spec> {
+        Timer2W::new(self, 11)
     }
     #[doc = "Bit 12 - Timer 3 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn timer3(&mut self) -> TIMER3_W<PPUPATD1_SPEC> {
-        TIMER3_W::new(self, 12)
+    pub fn timer3(&mut self) -> Timer3W<'_, Ppupatd1Spec> {
+        Timer3W::new(self, 12)
     }
     #[doc = "Bit 13 - Timer 4 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn timer4(&mut self) -> TIMER4_W<PPUPATD1_SPEC> {
-        TIMER4_W::new(self, 13)
+    pub fn timer4(&mut self) -> Timer4W<'_, Ppupatd1Spec> {
+        Timer4W::new(self, 13)
     }
     #[doc = "Bit 14 - Timer 5 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn timer5(&mut self) -> TIMER5_W<PPUPATD1_SPEC> {
-        TIMER5_W::new(self, 14)
+    pub fn timer5(&mut self) -> Timer5W<'_, Ppupatd1Spec> {
+        Timer5W::new(self, 14)
     }
     #[doc = "Bit 15 - Timer 6 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn timer6(&mut self) -> TIMER6_W<PPUPATD1_SPEC> {
-        TIMER6_W::new(self, 15)
+    pub fn timer6(&mut self) -> Timer6W<'_, Ppupatd1Spec> {
+        Timer6W::new(self, 15)
     }
     #[doc = "Bit 16 - True Random Number Generator 0 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn trng0(&mut self) -> TRNG0_W<PPUPATD1_SPEC> {
-        TRNG0_W::new(self, 16)
+    pub fn trng0(&mut self) -> Trng0W<'_, Ppupatd1Spec> {
+        Trng0W::new(self, 16)
     }
     #[doc = "Bit 17 - Universal Asynchronous Receiver/Transmitter 0 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn uart0(&mut self) -> UART0_W<PPUPATD1_SPEC> {
-        UART0_W::new(self, 17)
+    pub fn uart0(&mut self) -> Uart0W<'_, Ppupatd1Spec> {
+        Uart0W::new(self, 17)
     }
     #[doc = "Bit 18 - Universal Asynchronous Receiver/Transmitter 1 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn uart1(&mut self) -> UART1_W<PPUPATD1_SPEC> {
-        UART1_W::new(self, 18)
+    pub fn uart1(&mut self) -> Uart1W<'_, Ppupatd1Spec> {
+        Uart1W::new(self, 18)
     }
     #[doc = "Bit 19 - Universal Synchronous/Asynchronous Receiver/Transmitter 0 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn usart0(&mut self) -> USART0_W<PPUPATD1_SPEC> {
-        USART0_W::new(self, 19)
+    pub fn usart0(&mut self) -> Usart0W<'_, Ppupatd1Spec> {
+        Usart0W::new(self, 19)
     }
     #[doc = "Bit 20 - Universal Synchronous/Asynchronous Receiver/Transmitter 1 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn usart1(&mut self) -> USART1_W<PPUPATD1_SPEC> {
-        USART1_W::new(self, 20)
+    pub fn usart1(&mut self) -> Usart1W<'_, Ppupatd1Spec> {
+        Usart1W::new(self, 20)
     }
     #[doc = "Bit 21 - Universal Synchronous/Asynchronous Receiver/Transmitter 2 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn usart2(&mut self) -> USART2_W<PPUPATD1_SPEC> {
-        USART2_W::new(self, 21)
+    pub fn usart2(&mut self) -> Usart2W<'_, Ppupatd1Spec> {
+        Usart2W::new(self, 21)
     }
     #[doc = "Bit 22 - Universal Synchronous/Asynchronous Receiver/Transmitter 3 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn usart3(&mut self) -> USART3_W<PPUPATD1_SPEC> {
-        USART3_W::new(self, 22)
+    pub fn usart3(&mut self) -> Usart3W<'_, Ppupatd1Spec> {
+        Usart3W::new(self, 22)
     }
     #[doc = "Bit 23 - Universal Synchronous/Asynchronous Receiver/Transmitter 4 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn usart4(&mut self) -> USART4_W<PPUPATD1_SPEC> {
-        USART4_W::new(self, 23)
+    pub fn usart4(&mut self) -> Usart4W<'_, Ppupatd1Spec> {
+        Usart4W::new(self, 23)
     }
     #[doc = "Bit 24 - Universal Synchronous/Asynchronous Receiver/Transmitter 5 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn usart5(&mut self) -> USART5_W<PPUPATD1_SPEC> {
-        USART5_W::new(self, 24)
+    pub fn usart5(&mut self) -> Usart5W<'_, Ppupatd1Spec> {
+        Usart5W::new(self, 24)
     }
     #[doc = "Bit 25 - Universal Serial Bus Interface access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn usb(&mut self) -> USB_W<PPUPATD1_SPEC> {
-        USB_W::new(self, 25)
+    pub fn usb(&mut self) -> UsbW<'_, Ppupatd1Spec> {
+        UsbW::new(self, 25)
     }
     #[doc = "Bit 26 - Watchdog access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn wdog0(&mut self) -> WDOG0_W<PPUPATD1_SPEC> {
-        WDOG0_W::new(self, 26)
+    pub fn wdog0(&mut self) -> Wdog0W<'_, Ppupatd1Spec> {
+        Wdog0W::new(self, 26)
     }
     #[doc = "Bit 27 - Watchdog access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn wdog1(&mut self) -> WDOG1_W<PPUPATD1_SPEC> {
-        WDOG1_W::new(self, 27)
+    pub fn wdog1(&mut self) -> Wdog1W<'_, Ppupatd1Spec> {
+        Wdog1W::new(self, 27)
     }
     #[doc = "Bit 28 - Wide Timer 0 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn wtimer0(&mut self) -> WTIMER0_W<PPUPATD1_SPEC> {
-        WTIMER0_W::new(self, 28)
+    pub fn wtimer0(&mut self) -> Wtimer0W<'_, Ppupatd1Spec> {
+        Wtimer0W::new(self, 28)
     }
     #[doc = "Bit 29 - Wide Timer 0 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn wtimer1(&mut self) -> WTIMER1_W<PPUPATD1_SPEC> {
-        WTIMER1_W::new(self, 29)
+    pub fn wtimer1(&mut self) -> Wtimer1W<'_, Ppupatd1Spec> {
+        Wtimer1W::new(self, 29)
     }
     #[doc = "Bit 30 - Wide Timer 2 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn wtimer2(&mut self) -> WTIMER2_W<PPUPATD1_SPEC> {
-        WTIMER2_W::new(self, 30)
+    pub fn wtimer2(&mut self) -> Wtimer2W<'_, Ppupatd1Spec> {
+        Wtimer2W::new(self, 30)
     }
     #[doc = "Bit 31 - Wide Timer 3 access control bit"]
     #[inline(always)]
-    #[must_use]
-    pub fn wtimer3(&mut self) -> WTIMER3_W<PPUPATD1_SPEC> {
-        WTIMER3_W::new(self, 31)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn wtimer3(&mut self) -> Wtimer3W<'_, Ppupatd1Spec> {
+        Wtimer3W::new(self, 31)
     }
 }
-#[doc = "PPU Privilege Access Type Descriptor 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ppupatd1::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ppupatd1::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct PPUPATD1_SPEC;
-impl crate::RegisterSpec for PPUPATD1_SPEC {
+#[doc = "PPU Privilege Access Type Descriptor 1\n\nYou can [`read`](crate::Reg::read) this register and get [`ppupatd1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ppupatd1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Ppupatd1Spec;
+impl crate::RegisterSpec for Ppupatd1Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`ppupatd1::R`](R) reader structure"]
-impl crate::Readable for PPUPATD1_SPEC {}
+impl crate::Readable for Ppupatd1Spec {}
 #[doc = "`write(|w| ..)` method takes [`ppupatd1::W`](W) writer structure"]
-impl crate::Writable for PPUPATD1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Ppupatd1Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets PPUPATD1 to value 0"]
-impl crate::Resettable for PPUPATD1_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Ppupatd1Spec {}

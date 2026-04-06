@@ -1,91 +1,92 @@
 #[doc = "Register `CALCTRL` reader"]
-pub type R = crate::R<CALCTRL_SPEC>;
+pub type R = crate::R<CalctrlSpec>;
 #[doc = "Register `CALCTRL` writer"]
-pub type W = crate::W<CALCTRL_SPEC>;
-#[doc = "Field `UPSEL` reader - Calibration Up-counter Select"]
-pub type UPSEL_R = crate::FieldReader<UPSEL_A>;
+pub type W = crate::W<CalctrlSpec>;
 #[doc = "Calibration Up-counter Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum UPSEL_A {
+pub enum Upsel {
     #[doc = "0: Select HFXO as up-counter"]
-    HFXO = 0,
+    Hfxo = 0,
     #[doc = "1: Select LFXO as up-counter"]
-    LFXO = 1,
+    Lfxo = 1,
     #[doc = "2: Select HFRCO as up-counter"]
-    HFRCO = 2,
+    Hfrco = 2,
     #[doc = "3: Select LFRCO as up-counter"]
-    LFRCO = 3,
+    Lfrco = 3,
     #[doc = "4: Select AUXHFRCO as up-counter"]
-    AUXHFRCO = 4,
+    Auxhfrco = 4,
     #[doc = "5: Select PRS input selected by PRSUPSEL as up-counter"]
-    PRS = 5,
+    Prs = 5,
     #[doc = "7: Select USHFRCO as up-counter"]
-    USHFRCO = 7,
+    Ushfrco = 7,
 }
-impl From<UPSEL_A> for u8 {
+impl From<Upsel> for u8 {
     #[inline(always)]
-    fn from(variant: UPSEL_A) -> Self {
+    fn from(variant: Upsel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for UPSEL_A {
+impl crate::FieldSpec for Upsel {
     type Ux = u8;
 }
-impl UPSEL_R {
+impl crate::IsEnum for Upsel {}
+#[doc = "Field `UPSEL` reader - Calibration Up-counter Select"]
+pub type UpselR = crate::FieldReader<Upsel>;
+impl UpselR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<UPSEL_A> {
+    pub const fn variant(&self) -> Option<Upsel> {
         match self.bits {
-            0 => Some(UPSEL_A::HFXO),
-            1 => Some(UPSEL_A::LFXO),
-            2 => Some(UPSEL_A::HFRCO),
-            3 => Some(UPSEL_A::LFRCO),
-            4 => Some(UPSEL_A::AUXHFRCO),
-            5 => Some(UPSEL_A::PRS),
-            7 => Some(UPSEL_A::USHFRCO),
+            0 => Some(Upsel::Hfxo),
+            1 => Some(Upsel::Lfxo),
+            2 => Some(Upsel::Hfrco),
+            3 => Some(Upsel::Lfrco),
+            4 => Some(Upsel::Auxhfrco),
+            5 => Some(Upsel::Prs),
+            7 => Some(Upsel::Ushfrco),
             _ => None,
         }
     }
     #[doc = "Select HFXO as up-counter"]
     #[inline(always)]
     pub fn is_hfxo(&self) -> bool {
-        *self == UPSEL_A::HFXO
+        *self == Upsel::Hfxo
     }
     #[doc = "Select LFXO as up-counter"]
     #[inline(always)]
     pub fn is_lfxo(&self) -> bool {
-        *self == UPSEL_A::LFXO
+        *self == Upsel::Lfxo
     }
     #[doc = "Select HFRCO as up-counter"]
     #[inline(always)]
     pub fn is_hfrco(&self) -> bool {
-        *self == UPSEL_A::HFRCO
+        *self == Upsel::Hfrco
     }
     #[doc = "Select LFRCO as up-counter"]
     #[inline(always)]
     pub fn is_lfrco(&self) -> bool {
-        *self == UPSEL_A::LFRCO
+        *self == Upsel::Lfrco
     }
     #[doc = "Select AUXHFRCO as up-counter"]
     #[inline(always)]
     pub fn is_auxhfrco(&self) -> bool {
-        *self == UPSEL_A::AUXHFRCO
+        *self == Upsel::Auxhfrco
     }
     #[doc = "Select PRS input selected by PRSUPSEL as up-counter"]
     #[inline(always)]
     pub fn is_prs(&self) -> bool {
-        *self == UPSEL_A::PRS
+        *self == Upsel::Prs
     }
     #[doc = "Select USHFRCO as up-counter"]
     #[inline(always)]
     pub fn is_ushfrco(&self) -> bool {
-        *self == UPSEL_A::USHFRCO
+        *self == Upsel::Ushfrco
     }
 }
 #[doc = "Field `UPSEL` writer - Calibration Up-counter Select"]
-pub type UPSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 3, UPSEL_A>;
-impl<'a, REG> UPSEL_W<'a, REG>
+pub type UpselW<'a, REG> = crate::FieldWriter<'a, REG, 3, Upsel>;
+impl<'a, REG> UpselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -93,131 +94,132 @@ where
     #[doc = "Select HFXO as up-counter"]
     #[inline(always)]
     pub fn hfxo(self) -> &'a mut crate::W<REG> {
-        self.variant(UPSEL_A::HFXO)
+        self.variant(Upsel::Hfxo)
     }
     #[doc = "Select LFXO as up-counter"]
     #[inline(always)]
     pub fn lfxo(self) -> &'a mut crate::W<REG> {
-        self.variant(UPSEL_A::LFXO)
+        self.variant(Upsel::Lfxo)
     }
     #[doc = "Select HFRCO as up-counter"]
     #[inline(always)]
     pub fn hfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(UPSEL_A::HFRCO)
+        self.variant(Upsel::Hfrco)
     }
     #[doc = "Select LFRCO as up-counter"]
     #[inline(always)]
     pub fn lfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(UPSEL_A::LFRCO)
+        self.variant(Upsel::Lfrco)
     }
     #[doc = "Select AUXHFRCO as up-counter"]
     #[inline(always)]
     pub fn auxhfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(UPSEL_A::AUXHFRCO)
+        self.variant(Upsel::Auxhfrco)
     }
     #[doc = "Select PRS input selected by PRSUPSEL as up-counter"]
     #[inline(always)]
     pub fn prs(self) -> &'a mut crate::W<REG> {
-        self.variant(UPSEL_A::PRS)
+        self.variant(Upsel::Prs)
     }
     #[doc = "Select USHFRCO as up-counter"]
     #[inline(always)]
     pub fn ushfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(UPSEL_A::USHFRCO)
+        self.variant(Upsel::Ushfrco)
     }
 }
-#[doc = "Field `DOWNSEL` reader - Calibration Down-counter Select"]
-pub type DOWNSEL_R = crate::FieldReader<DOWNSEL_A>;
 #[doc = "Calibration Down-counter Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum DOWNSEL_A {
+pub enum Downsel {
     #[doc = "0: Select HFCLK for down-counter"]
-    HFCLK = 0,
+    Hfclk = 0,
     #[doc = "1: Select HFXO for down-counter"]
-    HFXO = 1,
+    Hfxo = 1,
     #[doc = "2: Select LFXO for down-counter"]
-    LFXO = 2,
+    Lfxo = 2,
     #[doc = "3: Select HFRCO for down-counter"]
-    HFRCO = 3,
+    Hfrco = 3,
     #[doc = "4: Select LFRCO for down-counter"]
-    LFRCO = 4,
+    Lfrco = 4,
     #[doc = "5: Select AUXHFRCO for down-counter"]
-    AUXHFRCO = 5,
+    Auxhfrco = 5,
     #[doc = "6: Select PRS input selected by PRSDOWNSEL as down-counter"]
-    PRS = 6,
+    Prs = 6,
     #[doc = "8: Select USHFRCO for down-counter"]
-    USHFRCO = 8,
+    Ushfrco = 8,
 }
-impl From<DOWNSEL_A> for u8 {
+impl From<Downsel> for u8 {
     #[inline(always)]
-    fn from(variant: DOWNSEL_A) -> Self {
+    fn from(variant: Downsel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for DOWNSEL_A {
+impl crate::FieldSpec for Downsel {
     type Ux = u8;
 }
-impl DOWNSEL_R {
+impl crate::IsEnum for Downsel {}
+#[doc = "Field `DOWNSEL` reader - Calibration Down-counter Select"]
+pub type DownselR = crate::FieldReader<Downsel>;
+impl DownselR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<DOWNSEL_A> {
+    pub const fn variant(&self) -> Option<Downsel> {
         match self.bits {
-            0 => Some(DOWNSEL_A::HFCLK),
-            1 => Some(DOWNSEL_A::HFXO),
-            2 => Some(DOWNSEL_A::LFXO),
-            3 => Some(DOWNSEL_A::HFRCO),
-            4 => Some(DOWNSEL_A::LFRCO),
-            5 => Some(DOWNSEL_A::AUXHFRCO),
-            6 => Some(DOWNSEL_A::PRS),
-            8 => Some(DOWNSEL_A::USHFRCO),
+            0 => Some(Downsel::Hfclk),
+            1 => Some(Downsel::Hfxo),
+            2 => Some(Downsel::Lfxo),
+            3 => Some(Downsel::Hfrco),
+            4 => Some(Downsel::Lfrco),
+            5 => Some(Downsel::Auxhfrco),
+            6 => Some(Downsel::Prs),
+            8 => Some(Downsel::Ushfrco),
             _ => None,
         }
     }
     #[doc = "Select HFCLK for down-counter"]
     #[inline(always)]
     pub fn is_hfclk(&self) -> bool {
-        *self == DOWNSEL_A::HFCLK
+        *self == Downsel::Hfclk
     }
     #[doc = "Select HFXO for down-counter"]
     #[inline(always)]
     pub fn is_hfxo(&self) -> bool {
-        *self == DOWNSEL_A::HFXO
+        *self == Downsel::Hfxo
     }
     #[doc = "Select LFXO for down-counter"]
     #[inline(always)]
     pub fn is_lfxo(&self) -> bool {
-        *self == DOWNSEL_A::LFXO
+        *self == Downsel::Lfxo
     }
     #[doc = "Select HFRCO for down-counter"]
     #[inline(always)]
     pub fn is_hfrco(&self) -> bool {
-        *self == DOWNSEL_A::HFRCO
+        *self == Downsel::Hfrco
     }
     #[doc = "Select LFRCO for down-counter"]
     #[inline(always)]
     pub fn is_lfrco(&self) -> bool {
-        *self == DOWNSEL_A::LFRCO
+        *self == Downsel::Lfrco
     }
     #[doc = "Select AUXHFRCO for down-counter"]
     #[inline(always)]
     pub fn is_auxhfrco(&self) -> bool {
-        *self == DOWNSEL_A::AUXHFRCO
+        *self == Downsel::Auxhfrco
     }
     #[doc = "Select PRS input selected by PRSDOWNSEL as down-counter"]
     #[inline(always)]
     pub fn is_prs(&self) -> bool {
-        *self == DOWNSEL_A::PRS
+        *self == Downsel::Prs
     }
     #[doc = "Select USHFRCO for down-counter"]
     #[inline(always)]
     pub fn is_ushfrco(&self) -> bool {
-        *self == DOWNSEL_A::USHFRCO
+        *self == Downsel::Ushfrco
     }
 }
 #[doc = "Field `DOWNSEL` writer - Calibration Down-counter Select"]
-pub type DOWNSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 4, DOWNSEL_A>;
-impl<'a, REG> DOWNSEL_W<'a, REG>
+pub type DownselW<'a, REG> = crate::FieldWriter<'a, REG, 4, Downsel>;
+impl<'a, REG> DownselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -225,268 +227,269 @@ where
     #[doc = "Select HFCLK for down-counter"]
     #[inline(always)]
     pub fn hfclk(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::HFCLK)
+        self.variant(Downsel::Hfclk)
     }
     #[doc = "Select HFXO for down-counter"]
     #[inline(always)]
     pub fn hfxo(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::HFXO)
+        self.variant(Downsel::Hfxo)
     }
     #[doc = "Select LFXO for down-counter"]
     #[inline(always)]
     pub fn lfxo(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::LFXO)
+        self.variant(Downsel::Lfxo)
     }
     #[doc = "Select HFRCO for down-counter"]
     #[inline(always)]
     pub fn hfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::HFRCO)
+        self.variant(Downsel::Hfrco)
     }
     #[doc = "Select LFRCO for down-counter"]
     #[inline(always)]
     pub fn lfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::LFRCO)
+        self.variant(Downsel::Lfrco)
     }
     #[doc = "Select AUXHFRCO for down-counter"]
     #[inline(always)]
     pub fn auxhfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::AUXHFRCO)
+        self.variant(Downsel::Auxhfrco)
     }
     #[doc = "Select PRS input selected by PRSDOWNSEL as down-counter"]
     #[inline(always)]
     pub fn prs(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::PRS)
+        self.variant(Downsel::Prs)
     }
     #[doc = "Select USHFRCO for down-counter"]
     #[inline(always)]
     pub fn ushfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(DOWNSEL_A::USHFRCO)
+        self.variant(Downsel::Ushfrco)
     }
 }
 #[doc = "Field `CONT` reader - Continuous Calibration"]
-pub type CONT_R = crate::BitReader;
+pub type ContR = crate::BitReader;
 #[doc = "Field `CONT` writer - Continuous Calibration"]
-pub type CONT_W<'a, REG> = crate::BitWriter<'a, REG>;
-#[doc = "Field `PRSUPSEL` reader - PRS Select for PRS Input When Selected in UPSEL"]
-pub type PRSUPSEL_R = crate::FieldReader<PRSUPSEL_A>;
+pub type ContW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "PRS Select for PRS Input When Selected in UPSEL\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum PRSUPSEL_A {
+pub enum Prsupsel {
     #[doc = "0: PRS Channel 0 selected as input"]
-    PRSCH0 = 0,
+    Prsch0 = 0,
     #[doc = "1: PRS Channel 1 selected as input"]
-    PRSCH1 = 1,
+    Prsch1 = 1,
     #[doc = "2: PRS Channel 2 selected as input"]
-    PRSCH2 = 2,
+    Prsch2 = 2,
     #[doc = "3: PRS Channel 3 selected as input"]
-    PRSCH3 = 3,
+    Prsch3 = 3,
     #[doc = "4: PRS Channel 4 selected as input"]
-    PRSCH4 = 4,
+    Prsch4 = 4,
     #[doc = "5: PRS Channel 5 selected as input"]
-    PRSCH5 = 5,
+    Prsch5 = 5,
     #[doc = "6: PRS Channel 6 selected as input"]
-    PRSCH6 = 6,
+    Prsch6 = 6,
     #[doc = "7: PRS Channel 7 selected as input"]
-    PRSCH7 = 7,
+    Prsch7 = 7,
     #[doc = "8: PRS Channel 8 selected as input"]
-    PRSCH8 = 8,
+    Prsch8 = 8,
     #[doc = "9: PRS Channel 9 selected as input"]
-    PRSCH9 = 9,
+    Prsch9 = 9,
     #[doc = "10: PRS Channel 10 selected as input"]
-    PRSCH10 = 10,
+    Prsch10 = 10,
     #[doc = "11: PRS Channel 11 selected as input"]
-    PRSCH11 = 11,
+    Prsch11 = 11,
     #[doc = "12: PRS Channel 12 selected as input"]
-    PRSCH12 = 12,
+    Prsch12 = 12,
     #[doc = "13: PRS Channel 13 selected as input"]
-    PRSCH13 = 13,
+    Prsch13 = 13,
     #[doc = "14: PRS Channel 14 selected as input"]
-    PRSCH14 = 14,
+    Prsch14 = 14,
     #[doc = "15: PRS Channel 15 selected as input"]
-    PRSCH15 = 15,
+    Prsch15 = 15,
     #[doc = "16: PRS Channel 16 selected as input"]
-    PRSCH16 = 16,
+    Prsch16 = 16,
     #[doc = "17: PRS Channel 17 selected as input"]
-    PRSCH17 = 17,
+    Prsch17 = 17,
     #[doc = "18: PRS Channel 18 selected as input"]
-    PRSCH18 = 18,
+    Prsch18 = 18,
     #[doc = "19: PRS Channel 19 selected as input"]
-    PRSCH19 = 19,
+    Prsch19 = 19,
     #[doc = "20: PRS Channel 20 selected as input"]
-    PRSCH20 = 20,
+    Prsch20 = 20,
     #[doc = "21: PRS Channel 21 selected as input"]
-    PRSCH21 = 21,
+    Prsch21 = 21,
     #[doc = "22: PRS Channel 22 selected as input"]
-    PRSCH22 = 22,
+    Prsch22 = 22,
     #[doc = "23: PRS Channel 23 selected as input"]
-    PRSCH23 = 23,
+    Prsch23 = 23,
 }
-impl From<PRSUPSEL_A> for u8 {
+impl From<Prsupsel> for u8 {
     #[inline(always)]
-    fn from(variant: PRSUPSEL_A) -> Self {
+    fn from(variant: Prsupsel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for PRSUPSEL_A {
+impl crate::FieldSpec for Prsupsel {
     type Ux = u8;
 }
-impl PRSUPSEL_R {
+impl crate::IsEnum for Prsupsel {}
+#[doc = "Field `PRSUPSEL` reader - PRS Select for PRS Input When Selected in UPSEL"]
+pub type PrsupselR = crate::FieldReader<Prsupsel>;
+impl PrsupselR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<PRSUPSEL_A> {
+    pub const fn variant(&self) -> Option<Prsupsel> {
         match self.bits {
-            0 => Some(PRSUPSEL_A::PRSCH0),
-            1 => Some(PRSUPSEL_A::PRSCH1),
-            2 => Some(PRSUPSEL_A::PRSCH2),
-            3 => Some(PRSUPSEL_A::PRSCH3),
-            4 => Some(PRSUPSEL_A::PRSCH4),
-            5 => Some(PRSUPSEL_A::PRSCH5),
-            6 => Some(PRSUPSEL_A::PRSCH6),
-            7 => Some(PRSUPSEL_A::PRSCH7),
-            8 => Some(PRSUPSEL_A::PRSCH8),
-            9 => Some(PRSUPSEL_A::PRSCH9),
-            10 => Some(PRSUPSEL_A::PRSCH10),
-            11 => Some(PRSUPSEL_A::PRSCH11),
-            12 => Some(PRSUPSEL_A::PRSCH12),
-            13 => Some(PRSUPSEL_A::PRSCH13),
-            14 => Some(PRSUPSEL_A::PRSCH14),
-            15 => Some(PRSUPSEL_A::PRSCH15),
-            16 => Some(PRSUPSEL_A::PRSCH16),
-            17 => Some(PRSUPSEL_A::PRSCH17),
-            18 => Some(PRSUPSEL_A::PRSCH18),
-            19 => Some(PRSUPSEL_A::PRSCH19),
-            20 => Some(PRSUPSEL_A::PRSCH20),
-            21 => Some(PRSUPSEL_A::PRSCH21),
-            22 => Some(PRSUPSEL_A::PRSCH22),
-            23 => Some(PRSUPSEL_A::PRSCH23),
+            0 => Some(Prsupsel::Prsch0),
+            1 => Some(Prsupsel::Prsch1),
+            2 => Some(Prsupsel::Prsch2),
+            3 => Some(Prsupsel::Prsch3),
+            4 => Some(Prsupsel::Prsch4),
+            5 => Some(Prsupsel::Prsch5),
+            6 => Some(Prsupsel::Prsch6),
+            7 => Some(Prsupsel::Prsch7),
+            8 => Some(Prsupsel::Prsch8),
+            9 => Some(Prsupsel::Prsch9),
+            10 => Some(Prsupsel::Prsch10),
+            11 => Some(Prsupsel::Prsch11),
+            12 => Some(Prsupsel::Prsch12),
+            13 => Some(Prsupsel::Prsch13),
+            14 => Some(Prsupsel::Prsch14),
+            15 => Some(Prsupsel::Prsch15),
+            16 => Some(Prsupsel::Prsch16),
+            17 => Some(Prsupsel::Prsch17),
+            18 => Some(Prsupsel::Prsch18),
+            19 => Some(Prsupsel::Prsch19),
+            20 => Some(Prsupsel::Prsch20),
+            21 => Some(Prsupsel::Prsch21),
+            22 => Some(Prsupsel::Prsch22),
+            23 => Some(Prsupsel::Prsch23),
             _ => None,
         }
     }
     #[doc = "PRS Channel 0 selected as input"]
     #[inline(always)]
     pub fn is_prsch0(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH0
+        *self == Prsupsel::Prsch0
     }
     #[doc = "PRS Channel 1 selected as input"]
     #[inline(always)]
     pub fn is_prsch1(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH1
+        *self == Prsupsel::Prsch1
     }
     #[doc = "PRS Channel 2 selected as input"]
     #[inline(always)]
     pub fn is_prsch2(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH2
+        *self == Prsupsel::Prsch2
     }
     #[doc = "PRS Channel 3 selected as input"]
     #[inline(always)]
     pub fn is_prsch3(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH3
+        *self == Prsupsel::Prsch3
     }
     #[doc = "PRS Channel 4 selected as input"]
     #[inline(always)]
     pub fn is_prsch4(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH4
+        *self == Prsupsel::Prsch4
     }
     #[doc = "PRS Channel 5 selected as input"]
     #[inline(always)]
     pub fn is_prsch5(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH5
+        *self == Prsupsel::Prsch5
     }
     #[doc = "PRS Channel 6 selected as input"]
     #[inline(always)]
     pub fn is_prsch6(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH6
+        *self == Prsupsel::Prsch6
     }
     #[doc = "PRS Channel 7 selected as input"]
     #[inline(always)]
     pub fn is_prsch7(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH7
+        *self == Prsupsel::Prsch7
     }
     #[doc = "PRS Channel 8 selected as input"]
     #[inline(always)]
     pub fn is_prsch8(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH8
+        *self == Prsupsel::Prsch8
     }
     #[doc = "PRS Channel 9 selected as input"]
     #[inline(always)]
     pub fn is_prsch9(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH9
+        *self == Prsupsel::Prsch9
     }
     #[doc = "PRS Channel 10 selected as input"]
     #[inline(always)]
     pub fn is_prsch10(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH10
+        *self == Prsupsel::Prsch10
     }
     #[doc = "PRS Channel 11 selected as input"]
     #[inline(always)]
     pub fn is_prsch11(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH11
+        *self == Prsupsel::Prsch11
     }
     #[doc = "PRS Channel 12 selected as input"]
     #[inline(always)]
     pub fn is_prsch12(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH12
+        *self == Prsupsel::Prsch12
     }
     #[doc = "PRS Channel 13 selected as input"]
     #[inline(always)]
     pub fn is_prsch13(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH13
+        *self == Prsupsel::Prsch13
     }
     #[doc = "PRS Channel 14 selected as input"]
     #[inline(always)]
     pub fn is_prsch14(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH14
+        *self == Prsupsel::Prsch14
     }
     #[doc = "PRS Channel 15 selected as input"]
     #[inline(always)]
     pub fn is_prsch15(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH15
+        *self == Prsupsel::Prsch15
     }
     #[doc = "PRS Channel 16 selected as input"]
     #[inline(always)]
     pub fn is_prsch16(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH16
+        *self == Prsupsel::Prsch16
     }
     #[doc = "PRS Channel 17 selected as input"]
     #[inline(always)]
     pub fn is_prsch17(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH17
+        *self == Prsupsel::Prsch17
     }
     #[doc = "PRS Channel 18 selected as input"]
     #[inline(always)]
     pub fn is_prsch18(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH18
+        *self == Prsupsel::Prsch18
     }
     #[doc = "PRS Channel 19 selected as input"]
     #[inline(always)]
     pub fn is_prsch19(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH19
+        *self == Prsupsel::Prsch19
     }
     #[doc = "PRS Channel 20 selected as input"]
     #[inline(always)]
     pub fn is_prsch20(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH20
+        *self == Prsupsel::Prsch20
     }
     #[doc = "PRS Channel 21 selected as input"]
     #[inline(always)]
     pub fn is_prsch21(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH21
+        *self == Prsupsel::Prsch21
     }
     #[doc = "PRS Channel 22 selected as input"]
     #[inline(always)]
     pub fn is_prsch22(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH22
+        *self == Prsupsel::Prsch22
     }
     #[doc = "PRS Channel 23 selected as input"]
     #[inline(always)]
     pub fn is_prsch23(&self) -> bool {
-        *self == PRSUPSEL_A::PRSCH23
+        *self == Prsupsel::Prsch23
     }
 }
 #[doc = "Field `PRSUPSEL` writer - PRS Select for PRS Input When Selected in UPSEL"]
-pub type PRSUPSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSUPSEL_A>;
-impl<'a, REG> PRSUPSEL_W<'a, REG>
+pub type PrsupselW<'a, REG> = crate::FieldWriter<'a, REG, 5, Prsupsel>;
+impl<'a, REG> PrsupselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -494,344 +497,345 @@ where
     #[doc = "PRS Channel 0 selected as input"]
     #[inline(always)]
     pub fn prsch0(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH0)
+        self.variant(Prsupsel::Prsch0)
     }
     #[doc = "PRS Channel 1 selected as input"]
     #[inline(always)]
     pub fn prsch1(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH1)
+        self.variant(Prsupsel::Prsch1)
     }
     #[doc = "PRS Channel 2 selected as input"]
     #[inline(always)]
     pub fn prsch2(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH2)
+        self.variant(Prsupsel::Prsch2)
     }
     #[doc = "PRS Channel 3 selected as input"]
     #[inline(always)]
     pub fn prsch3(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH3)
+        self.variant(Prsupsel::Prsch3)
     }
     #[doc = "PRS Channel 4 selected as input"]
     #[inline(always)]
     pub fn prsch4(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH4)
+        self.variant(Prsupsel::Prsch4)
     }
     #[doc = "PRS Channel 5 selected as input"]
     #[inline(always)]
     pub fn prsch5(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH5)
+        self.variant(Prsupsel::Prsch5)
     }
     #[doc = "PRS Channel 6 selected as input"]
     #[inline(always)]
     pub fn prsch6(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH6)
+        self.variant(Prsupsel::Prsch6)
     }
     #[doc = "PRS Channel 7 selected as input"]
     #[inline(always)]
     pub fn prsch7(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH7)
+        self.variant(Prsupsel::Prsch7)
     }
     #[doc = "PRS Channel 8 selected as input"]
     #[inline(always)]
     pub fn prsch8(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH8)
+        self.variant(Prsupsel::Prsch8)
     }
     #[doc = "PRS Channel 9 selected as input"]
     #[inline(always)]
     pub fn prsch9(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH9)
+        self.variant(Prsupsel::Prsch9)
     }
     #[doc = "PRS Channel 10 selected as input"]
     #[inline(always)]
     pub fn prsch10(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH10)
+        self.variant(Prsupsel::Prsch10)
     }
     #[doc = "PRS Channel 11 selected as input"]
     #[inline(always)]
     pub fn prsch11(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH11)
+        self.variant(Prsupsel::Prsch11)
     }
     #[doc = "PRS Channel 12 selected as input"]
     #[inline(always)]
     pub fn prsch12(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH12)
+        self.variant(Prsupsel::Prsch12)
     }
     #[doc = "PRS Channel 13 selected as input"]
     #[inline(always)]
     pub fn prsch13(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH13)
+        self.variant(Prsupsel::Prsch13)
     }
     #[doc = "PRS Channel 14 selected as input"]
     #[inline(always)]
     pub fn prsch14(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH14)
+        self.variant(Prsupsel::Prsch14)
     }
     #[doc = "PRS Channel 15 selected as input"]
     #[inline(always)]
     pub fn prsch15(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH15)
+        self.variant(Prsupsel::Prsch15)
     }
     #[doc = "PRS Channel 16 selected as input"]
     #[inline(always)]
     pub fn prsch16(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH16)
+        self.variant(Prsupsel::Prsch16)
     }
     #[doc = "PRS Channel 17 selected as input"]
     #[inline(always)]
     pub fn prsch17(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH17)
+        self.variant(Prsupsel::Prsch17)
     }
     #[doc = "PRS Channel 18 selected as input"]
     #[inline(always)]
     pub fn prsch18(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH18)
+        self.variant(Prsupsel::Prsch18)
     }
     #[doc = "PRS Channel 19 selected as input"]
     #[inline(always)]
     pub fn prsch19(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH19)
+        self.variant(Prsupsel::Prsch19)
     }
     #[doc = "PRS Channel 20 selected as input"]
     #[inline(always)]
     pub fn prsch20(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH20)
+        self.variant(Prsupsel::Prsch20)
     }
     #[doc = "PRS Channel 21 selected as input"]
     #[inline(always)]
     pub fn prsch21(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH21)
+        self.variant(Prsupsel::Prsch21)
     }
     #[doc = "PRS Channel 22 selected as input"]
     #[inline(always)]
     pub fn prsch22(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH22)
+        self.variant(Prsupsel::Prsch22)
     }
     #[doc = "PRS Channel 23 selected as input"]
     #[inline(always)]
     pub fn prsch23(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSUPSEL_A::PRSCH23)
+        self.variant(Prsupsel::Prsch23)
     }
 }
-#[doc = "Field `PRSDOWNSEL` reader - PRS Select for PRS Input When Selected in DOWNSEL"]
-pub type PRSDOWNSEL_R = crate::FieldReader<PRSDOWNSEL_A>;
 #[doc = "PRS Select for PRS Input When Selected in DOWNSEL\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum PRSDOWNSEL_A {
+pub enum Prsdownsel {
     #[doc = "0: PRS Channel 0 selected as input"]
-    PRSCH0 = 0,
+    Prsch0 = 0,
     #[doc = "1: PRS Channel 1 selected as input"]
-    PRSCH1 = 1,
+    Prsch1 = 1,
     #[doc = "2: PRS Channel 2 selected as input"]
-    PRSCH2 = 2,
+    Prsch2 = 2,
     #[doc = "3: PRS Channel 3 selected as input"]
-    PRSCH3 = 3,
+    Prsch3 = 3,
     #[doc = "4: PRS Channel 4 selected as input"]
-    PRSCH4 = 4,
+    Prsch4 = 4,
     #[doc = "5: PRS Channel 5 selected as input"]
-    PRSCH5 = 5,
+    Prsch5 = 5,
     #[doc = "6: PRS Channel 6 selected as input"]
-    PRSCH6 = 6,
+    Prsch6 = 6,
     #[doc = "7: PRS Channel 7 selected as input"]
-    PRSCH7 = 7,
+    Prsch7 = 7,
     #[doc = "8: PRS Channel 8 selected as input"]
-    PRSCH8 = 8,
+    Prsch8 = 8,
     #[doc = "9: PRS Channel 9 selected as input"]
-    PRSCH9 = 9,
+    Prsch9 = 9,
     #[doc = "10: PRS Channel 10 selected as input"]
-    PRSCH10 = 10,
+    Prsch10 = 10,
     #[doc = "11: PRS Channel 11 selected as input"]
-    PRSCH11 = 11,
+    Prsch11 = 11,
     #[doc = "12: PRS Channel 12 selected as input"]
-    PRSCH12 = 12,
+    Prsch12 = 12,
     #[doc = "13: PRS Channel 13 selected as input"]
-    PRSCH13 = 13,
+    Prsch13 = 13,
     #[doc = "14: PRS Channel 14 selected as input"]
-    PRSCH14 = 14,
+    Prsch14 = 14,
     #[doc = "15: PRS Channel 15 selected as input"]
-    PRSCH15 = 15,
+    Prsch15 = 15,
     #[doc = "16: PRS Channel 16 selected as input"]
-    PRSCH16 = 16,
+    Prsch16 = 16,
     #[doc = "17: PRS Channel 17 selected as input"]
-    PRSCH17 = 17,
+    Prsch17 = 17,
     #[doc = "18: PRS Channel 18 selected as input"]
-    PRSCH18 = 18,
+    Prsch18 = 18,
     #[doc = "19: PRS Channel 19 selected as input"]
-    PRSCH19 = 19,
+    Prsch19 = 19,
     #[doc = "20: PRS Channel 20 selected as input"]
-    PRSCH20 = 20,
+    Prsch20 = 20,
     #[doc = "21: PRS Channel 21 selected as input"]
-    PRSCH21 = 21,
+    Prsch21 = 21,
     #[doc = "22: PRS Channel 22 selected as input"]
-    PRSCH22 = 22,
+    Prsch22 = 22,
     #[doc = "23: PRS Channel 23 selected as input"]
-    PRSCH23 = 23,
+    Prsch23 = 23,
 }
-impl From<PRSDOWNSEL_A> for u8 {
+impl From<Prsdownsel> for u8 {
     #[inline(always)]
-    fn from(variant: PRSDOWNSEL_A) -> Self {
+    fn from(variant: Prsdownsel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for PRSDOWNSEL_A {
+impl crate::FieldSpec for Prsdownsel {
     type Ux = u8;
 }
-impl PRSDOWNSEL_R {
+impl crate::IsEnum for Prsdownsel {}
+#[doc = "Field `PRSDOWNSEL` reader - PRS Select for PRS Input When Selected in DOWNSEL"]
+pub type PrsdownselR = crate::FieldReader<Prsdownsel>;
+impl PrsdownselR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<PRSDOWNSEL_A> {
+    pub const fn variant(&self) -> Option<Prsdownsel> {
         match self.bits {
-            0 => Some(PRSDOWNSEL_A::PRSCH0),
-            1 => Some(PRSDOWNSEL_A::PRSCH1),
-            2 => Some(PRSDOWNSEL_A::PRSCH2),
-            3 => Some(PRSDOWNSEL_A::PRSCH3),
-            4 => Some(PRSDOWNSEL_A::PRSCH4),
-            5 => Some(PRSDOWNSEL_A::PRSCH5),
-            6 => Some(PRSDOWNSEL_A::PRSCH6),
-            7 => Some(PRSDOWNSEL_A::PRSCH7),
-            8 => Some(PRSDOWNSEL_A::PRSCH8),
-            9 => Some(PRSDOWNSEL_A::PRSCH9),
-            10 => Some(PRSDOWNSEL_A::PRSCH10),
-            11 => Some(PRSDOWNSEL_A::PRSCH11),
-            12 => Some(PRSDOWNSEL_A::PRSCH12),
-            13 => Some(PRSDOWNSEL_A::PRSCH13),
-            14 => Some(PRSDOWNSEL_A::PRSCH14),
-            15 => Some(PRSDOWNSEL_A::PRSCH15),
-            16 => Some(PRSDOWNSEL_A::PRSCH16),
-            17 => Some(PRSDOWNSEL_A::PRSCH17),
-            18 => Some(PRSDOWNSEL_A::PRSCH18),
-            19 => Some(PRSDOWNSEL_A::PRSCH19),
-            20 => Some(PRSDOWNSEL_A::PRSCH20),
-            21 => Some(PRSDOWNSEL_A::PRSCH21),
-            22 => Some(PRSDOWNSEL_A::PRSCH22),
-            23 => Some(PRSDOWNSEL_A::PRSCH23),
+            0 => Some(Prsdownsel::Prsch0),
+            1 => Some(Prsdownsel::Prsch1),
+            2 => Some(Prsdownsel::Prsch2),
+            3 => Some(Prsdownsel::Prsch3),
+            4 => Some(Prsdownsel::Prsch4),
+            5 => Some(Prsdownsel::Prsch5),
+            6 => Some(Prsdownsel::Prsch6),
+            7 => Some(Prsdownsel::Prsch7),
+            8 => Some(Prsdownsel::Prsch8),
+            9 => Some(Prsdownsel::Prsch9),
+            10 => Some(Prsdownsel::Prsch10),
+            11 => Some(Prsdownsel::Prsch11),
+            12 => Some(Prsdownsel::Prsch12),
+            13 => Some(Prsdownsel::Prsch13),
+            14 => Some(Prsdownsel::Prsch14),
+            15 => Some(Prsdownsel::Prsch15),
+            16 => Some(Prsdownsel::Prsch16),
+            17 => Some(Prsdownsel::Prsch17),
+            18 => Some(Prsdownsel::Prsch18),
+            19 => Some(Prsdownsel::Prsch19),
+            20 => Some(Prsdownsel::Prsch20),
+            21 => Some(Prsdownsel::Prsch21),
+            22 => Some(Prsdownsel::Prsch22),
+            23 => Some(Prsdownsel::Prsch23),
             _ => None,
         }
     }
     #[doc = "PRS Channel 0 selected as input"]
     #[inline(always)]
     pub fn is_prsch0(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH0
+        *self == Prsdownsel::Prsch0
     }
     #[doc = "PRS Channel 1 selected as input"]
     #[inline(always)]
     pub fn is_prsch1(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH1
+        *self == Prsdownsel::Prsch1
     }
     #[doc = "PRS Channel 2 selected as input"]
     #[inline(always)]
     pub fn is_prsch2(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH2
+        *self == Prsdownsel::Prsch2
     }
     #[doc = "PRS Channel 3 selected as input"]
     #[inline(always)]
     pub fn is_prsch3(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH3
+        *self == Prsdownsel::Prsch3
     }
     #[doc = "PRS Channel 4 selected as input"]
     #[inline(always)]
     pub fn is_prsch4(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH4
+        *self == Prsdownsel::Prsch4
     }
     #[doc = "PRS Channel 5 selected as input"]
     #[inline(always)]
     pub fn is_prsch5(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH5
+        *self == Prsdownsel::Prsch5
     }
     #[doc = "PRS Channel 6 selected as input"]
     #[inline(always)]
     pub fn is_prsch6(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH6
+        *self == Prsdownsel::Prsch6
     }
     #[doc = "PRS Channel 7 selected as input"]
     #[inline(always)]
     pub fn is_prsch7(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH7
+        *self == Prsdownsel::Prsch7
     }
     #[doc = "PRS Channel 8 selected as input"]
     #[inline(always)]
     pub fn is_prsch8(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH8
+        *self == Prsdownsel::Prsch8
     }
     #[doc = "PRS Channel 9 selected as input"]
     #[inline(always)]
     pub fn is_prsch9(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH9
+        *self == Prsdownsel::Prsch9
     }
     #[doc = "PRS Channel 10 selected as input"]
     #[inline(always)]
     pub fn is_prsch10(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH10
+        *self == Prsdownsel::Prsch10
     }
     #[doc = "PRS Channel 11 selected as input"]
     #[inline(always)]
     pub fn is_prsch11(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH11
+        *self == Prsdownsel::Prsch11
     }
     #[doc = "PRS Channel 12 selected as input"]
     #[inline(always)]
     pub fn is_prsch12(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH12
+        *self == Prsdownsel::Prsch12
     }
     #[doc = "PRS Channel 13 selected as input"]
     #[inline(always)]
     pub fn is_prsch13(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH13
+        *self == Prsdownsel::Prsch13
     }
     #[doc = "PRS Channel 14 selected as input"]
     #[inline(always)]
     pub fn is_prsch14(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH14
+        *self == Prsdownsel::Prsch14
     }
     #[doc = "PRS Channel 15 selected as input"]
     #[inline(always)]
     pub fn is_prsch15(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH15
+        *self == Prsdownsel::Prsch15
     }
     #[doc = "PRS Channel 16 selected as input"]
     #[inline(always)]
     pub fn is_prsch16(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH16
+        *self == Prsdownsel::Prsch16
     }
     #[doc = "PRS Channel 17 selected as input"]
     #[inline(always)]
     pub fn is_prsch17(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH17
+        *self == Prsdownsel::Prsch17
     }
     #[doc = "PRS Channel 18 selected as input"]
     #[inline(always)]
     pub fn is_prsch18(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH18
+        *self == Prsdownsel::Prsch18
     }
     #[doc = "PRS Channel 19 selected as input"]
     #[inline(always)]
     pub fn is_prsch19(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH19
+        *self == Prsdownsel::Prsch19
     }
     #[doc = "PRS Channel 20 selected as input"]
     #[inline(always)]
     pub fn is_prsch20(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH20
+        *self == Prsdownsel::Prsch20
     }
     #[doc = "PRS Channel 21 selected as input"]
     #[inline(always)]
     pub fn is_prsch21(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH21
+        *self == Prsdownsel::Prsch21
     }
     #[doc = "PRS Channel 22 selected as input"]
     #[inline(always)]
     pub fn is_prsch22(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH22
+        *self == Prsdownsel::Prsch22
     }
     #[doc = "PRS Channel 23 selected as input"]
     #[inline(always)]
     pub fn is_prsch23(&self) -> bool {
-        *self == PRSDOWNSEL_A::PRSCH23
+        *self == Prsdownsel::Prsch23
     }
 }
 #[doc = "Field `PRSDOWNSEL` writer - PRS Select for PRS Input When Selected in DOWNSEL"]
-pub type PRSDOWNSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 5, PRSDOWNSEL_A>;
-impl<'a, REG> PRSDOWNSEL_W<'a, REG>
+pub type PrsdownselW<'a, REG> = crate::FieldWriter<'a, REG, 5, Prsdownsel>;
+impl<'a, REG> PrsdownselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -839,206 +843,188 @@ where
     #[doc = "PRS Channel 0 selected as input"]
     #[inline(always)]
     pub fn prsch0(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH0)
+        self.variant(Prsdownsel::Prsch0)
     }
     #[doc = "PRS Channel 1 selected as input"]
     #[inline(always)]
     pub fn prsch1(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH1)
+        self.variant(Prsdownsel::Prsch1)
     }
     #[doc = "PRS Channel 2 selected as input"]
     #[inline(always)]
     pub fn prsch2(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH2)
+        self.variant(Prsdownsel::Prsch2)
     }
     #[doc = "PRS Channel 3 selected as input"]
     #[inline(always)]
     pub fn prsch3(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH3)
+        self.variant(Prsdownsel::Prsch3)
     }
     #[doc = "PRS Channel 4 selected as input"]
     #[inline(always)]
     pub fn prsch4(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH4)
+        self.variant(Prsdownsel::Prsch4)
     }
     #[doc = "PRS Channel 5 selected as input"]
     #[inline(always)]
     pub fn prsch5(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH5)
+        self.variant(Prsdownsel::Prsch5)
     }
     #[doc = "PRS Channel 6 selected as input"]
     #[inline(always)]
     pub fn prsch6(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH6)
+        self.variant(Prsdownsel::Prsch6)
     }
     #[doc = "PRS Channel 7 selected as input"]
     #[inline(always)]
     pub fn prsch7(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH7)
+        self.variant(Prsdownsel::Prsch7)
     }
     #[doc = "PRS Channel 8 selected as input"]
     #[inline(always)]
     pub fn prsch8(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH8)
+        self.variant(Prsdownsel::Prsch8)
     }
     #[doc = "PRS Channel 9 selected as input"]
     #[inline(always)]
     pub fn prsch9(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH9)
+        self.variant(Prsdownsel::Prsch9)
     }
     #[doc = "PRS Channel 10 selected as input"]
     #[inline(always)]
     pub fn prsch10(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH10)
+        self.variant(Prsdownsel::Prsch10)
     }
     #[doc = "PRS Channel 11 selected as input"]
     #[inline(always)]
     pub fn prsch11(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH11)
+        self.variant(Prsdownsel::Prsch11)
     }
     #[doc = "PRS Channel 12 selected as input"]
     #[inline(always)]
     pub fn prsch12(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH12)
+        self.variant(Prsdownsel::Prsch12)
     }
     #[doc = "PRS Channel 13 selected as input"]
     #[inline(always)]
     pub fn prsch13(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH13)
+        self.variant(Prsdownsel::Prsch13)
     }
     #[doc = "PRS Channel 14 selected as input"]
     #[inline(always)]
     pub fn prsch14(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH14)
+        self.variant(Prsdownsel::Prsch14)
     }
     #[doc = "PRS Channel 15 selected as input"]
     #[inline(always)]
     pub fn prsch15(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH15)
+        self.variant(Prsdownsel::Prsch15)
     }
     #[doc = "PRS Channel 16 selected as input"]
     #[inline(always)]
     pub fn prsch16(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH16)
+        self.variant(Prsdownsel::Prsch16)
     }
     #[doc = "PRS Channel 17 selected as input"]
     #[inline(always)]
     pub fn prsch17(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH17)
+        self.variant(Prsdownsel::Prsch17)
     }
     #[doc = "PRS Channel 18 selected as input"]
     #[inline(always)]
     pub fn prsch18(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH18)
+        self.variant(Prsdownsel::Prsch18)
     }
     #[doc = "PRS Channel 19 selected as input"]
     #[inline(always)]
     pub fn prsch19(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH19)
+        self.variant(Prsdownsel::Prsch19)
     }
     #[doc = "PRS Channel 20 selected as input"]
     #[inline(always)]
     pub fn prsch20(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH20)
+        self.variant(Prsdownsel::Prsch20)
     }
     #[doc = "PRS Channel 21 selected as input"]
     #[inline(always)]
     pub fn prsch21(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH21)
+        self.variant(Prsdownsel::Prsch21)
     }
     #[doc = "PRS Channel 22 selected as input"]
     #[inline(always)]
     pub fn prsch22(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH22)
+        self.variant(Prsdownsel::Prsch22)
     }
     #[doc = "PRS Channel 23 selected as input"]
     #[inline(always)]
     pub fn prsch23(self) -> &'a mut crate::W<REG> {
-        self.variant(PRSDOWNSEL_A::PRSCH23)
+        self.variant(Prsdownsel::Prsch23)
     }
 }
 impl R {
     #[doc = "Bits 0:2 - Calibration Up-counter Select"]
     #[inline(always)]
-    pub fn upsel(&self) -> UPSEL_R {
-        UPSEL_R::new((self.bits & 7) as u8)
+    pub fn upsel(&self) -> UpselR {
+        UpselR::new((self.bits & 7) as u8)
     }
     #[doc = "Bits 4:7 - Calibration Down-counter Select"]
     #[inline(always)]
-    pub fn downsel(&self) -> DOWNSEL_R {
-        DOWNSEL_R::new(((self.bits >> 4) & 0x0f) as u8)
+    pub fn downsel(&self) -> DownselR {
+        DownselR::new(((self.bits >> 4) & 0x0f) as u8)
     }
     #[doc = "Bit 8 - Continuous Calibration"]
     #[inline(always)]
-    pub fn cont(&self) -> CONT_R {
-        CONT_R::new(((self.bits >> 8) & 1) != 0)
+    pub fn cont(&self) -> ContR {
+        ContR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bits 16:20 - PRS Select for PRS Input When Selected in UPSEL"]
     #[inline(always)]
-    pub fn prsupsel(&self) -> PRSUPSEL_R {
-        PRSUPSEL_R::new(((self.bits >> 16) & 0x1f) as u8)
+    pub fn prsupsel(&self) -> PrsupselR {
+        PrsupselR::new(((self.bits >> 16) & 0x1f) as u8)
     }
     #[doc = "Bits 24:28 - PRS Select for PRS Input When Selected in DOWNSEL"]
     #[inline(always)]
-    pub fn prsdownsel(&self) -> PRSDOWNSEL_R {
-        PRSDOWNSEL_R::new(((self.bits >> 24) & 0x1f) as u8)
+    pub fn prsdownsel(&self) -> PrsdownselR {
+        PrsdownselR::new(((self.bits >> 24) & 0x1f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:2 - Calibration Up-counter Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn upsel(&mut self) -> UPSEL_W<CALCTRL_SPEC> {
-        UPSEL_W::new(self, 0)
+    pub fn upsel(&mut self) -> UpselW<'_, CalctrlSpec> {
+        UpselW::new(self, 0)
     }
     #[doc = "Bits 4:7 - Calibration Down-counter Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn downsel(&mut self) -> DOWNSEL_W<CALCTRL_SPEC> {
-        DOWNSEL_W::new(self, 4)
+    pub fn downsel(&mut self) -> DownselW<'_, CalctrlSpec> {
+        DownselW::new(self, 4)
     }
     #[doc = "Bit 8 - Continuous Calibration"]
     #[inline(always)]
-    #[must_use]
-    pub fn cont(&mut self) -> CONT_W<CALCTRL_SPEC> {
-        CONT_W::new(self, 8)
+    pub fn cont(&mut self) -> ContW<'_, CalctrlSpec> {
+        ContW::new(self, 8)
     }
     #[doc = "Bits 16:20 - PRS Select for PRS Input When Selected in UPSEL"]
     #[inline(always)]
-    #[must_use]
-    pub fn prsupsel(&mut self) -> PRSUPSEL_W<CALCTRL_SPEC> {
-        PRSUPSEL_W::new(self, 16)
+    pub fn prsupsel(&mut self) -> PrsupselW<'_, CalctrlSpec> {
+        PrsupselW::new(self, 16)
     }
     #[doc = "Bits 24:28 - PRS Select for PRS Input When Selected in DOWNSEL"]
     #[inline(always)]
-    #[must_use]
-    pub fn prsdownsel(&mut self) -> PRSDOWNSEL_W<CALCTRL_SPEC> {
-        PRSDOWNSEL_W::new(self, 24)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn prsdownsel(&mut self) -> PrsdownselW<'_, CalctrlSpec> {
+        PrsdownselW::new(self, 24)
     }
 }
-#[doc = "Calibration Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`calctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`calctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CALCTRL_SPEC;
-impl crate::RegisterSpec for CALCTRL_SPEC {
+#[doc = "Calibration Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`calctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`calctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CalctrlSpec;
+impl crate::RegisterSpec for CalctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`calctrl::R`](R) reader structure"]
-impl crate::Readable for CALCTRL_SPEC {}
+impl crate::Readable for CalctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`calctrl::W`](W) writer structure"]
-impl crate::Writable for CALCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for CalctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets CALCTRL to value 0"]
-impl crate::Resettable for CALCTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for CalctrlSpec {}

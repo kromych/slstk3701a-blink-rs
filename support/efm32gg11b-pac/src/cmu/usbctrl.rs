@@ -1,83 +1,84 @@
 #[doc = "Register `USBCTRL` reader"]
-pub type R = crate::R<USBCTRL_SPEC>;
+pub type R = crate::R<UsbctrlSpec>;
 #[doc = "Register `USBCTRL` writer"]
-pub type W = crate::W<USBCTRL_SPEC>;
-#[doc = "Field `USBCLKSEL` reader - USB Rate Clock Select"]
-pub type USBCLKSEL_R = crate::FieldReader<USBCLKSEL_A>;
+pub type W = crate::W<UsbctrlSpec>;
 #[doc = "USB Rate Clock Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum USBCLKSEL_A {
+pub enum Usbclksel {
     #[doc = "0: USHFRCO (clock recovery) is clocking USB"]
-    USHFRCO = 0,
+    Ushfrco = 0,
     #[doc = "1: HFXO clock is used to clock USB"]
-    HFXO = 1,
+    Hfxo = 1,
     #[doc = "2: HFXO clock doubler is used to clock USB"]
-    HFXOX2 = 2,
+    Hfxox2 = 2,
     #[doc = "3: HFRCO clock is used to clock USB"]
-    HFRCO = 3,
+    Hfrco = 3,
     #[doc = "4: LFXO clock is used to clock USB"]
-    LFXO = 4,
+    Lfxo = 4,
     #[doc = "5: LFRCO clock is used to clock USB"]
-    LFRCO = 5,
+    Lfrco = 5,
 }
-impl From<USBCLKSEL_A> for u8 {
+impl From<Usbclksel> for u8 {
     #[inline(always)]
-    fn from(variant: USBCLKSEL_A) -> Self {
+    fn from(variant: Usbclksel) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for USBCLKSEL_A {
+impl crate::FieldSpec for Usbclksel {
     type Ux = u8;
 }
-impl USBCLKSEL_R {
+impl crate::IsEnum for Usbclksel {}
+#[doc = "Field `USBCLKSEL` reader - USB Rate Clock Select"]
+pub type UsbclkselR = crate::FieldReader<Usbclksel>;
+impl UsbclkselR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub const fn variant(&self) -> Option<USBCLKSEL_A> {
+    pub const fn variant(&self) -> Option<Usbclksel> {
         match self.bits {
-            0 => Some(USBCLKSEL_A::USHFRCO),
-            1 => Some(USBCLKSEL_A::HFXO),
-            2 => Some(USBCLKSEL_A::HFXOX2),
-            3 => Some(USBCLKSEL_A::HFRCO),
-            4 => Some(USBCLKSEL_A::LFXO),
-            5 => Some(USBCLKSEL_A::LFRCO),
+            0 => Some(Usbclksel::Ushfrco),
+            1 => Some(Usbclksel::Hfxo),
+            2 => Some(Usbclksel::Hfxox2),
+            3 => Some(Usbclksel::Hfrco),
+            4 => Some(Usbclksel::Lfxo),
+            5 => Some(Usbclksel::Lfrco),
             _ => None,
         }
     }
     #[doc = "USHFRCO (clock recovery) is clocking USB"]
     #[inline(always)]
     pub fn is_ushfrco(&self) -> bool {
-        *self == USBCLKSEL_A::USHFRCO
+        *self == Usbclksel::Ushfrco
     }
     #[doc = "HFXO clock is used to clock USB"]
     #[inline(always)]
     pub fn is_hfxo(&self) -> bool {
-        *self == USBCLKSEL_A::HFXO
+        *self == Usbclksel::Hfxo
     }
     #[doc = "HFXO clock doubler is used to clock USB"]
     #[inline(always)]
     pub fn is_hfxox2(&self) -> bool {
-        *self == USBCLKSEL_A::HFXOX2
+        *self == Usbclksel::Hfxox2
     }
     #[doc = "HFRCO clock is used to clock USB"]
     #[inline(always)]
     pub fn is_hfrco(&self) -> bool {
-        *self == USBCLKSEL_A::HFRCO
+        *self == Usbclksel::Hfrco
     }
     #[doc = "LFXO clock is used to clock USB"]
     #[inline(always)]
     pub fn is_lfxo(&self) -> bool {
-        *self == USBCLKSEL_A::LFXO
+        *self == Usbclksel::Lfxo
     }
     #[doc = "LFRCO clock is used to clock USB"]
     #[inline(always)]
     pub fn is_lfrco(&self) -> bool {
-        *self == USBCLKSEL_A::LFRCO
+        *self == Usbclksel::Lfrco
     }
 }
 #[doc = "Field `USBCLKSEL` writer - USB Rate Clock Select"]
-pub type USBCLKSEL_W<'a, REG> = crate::FieldWriter<'a, REG, 3, USBCLKSEL_A>;
-impl<'a, REG> USBCLKSEL_W<'a, REG>
+pub type UsbclkselW<'a, REG> = crate::FieldWriter<'a, REG, 3, Usbclksel>;
+impl<'a, REG> UsbclkselW<'a, REG>
 where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
@@ -85,87 +86,72 @@ where
     #[doc = "USHFRCO (clock recovery) is clocking USB"]
     #[inline(always)]
     pub fn ushfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(USBCLKSEL_A::USHFRCO)
+        self.variant(Usbclksel::Ushfrco)
     }
     #[doc = "HFXO clock is used to clock USB"]
     #[inline(always)]
     pub fn hfxo(self) -> &'a mut crate::W<REG> {
-        self.variant(USBCLKSEL_A::HFXO)
+        self.variant(Usbclksel::Hfxo)
     }
     #[doc = "HFXO clock doubler is used to clock USB"]
     #[inline(always)]
     pub fn hfxox2(self) -> &'a mut crate::W<REG> {
-        self.variant(USBCLKSEL_A::HFXOX2)
+        self.variant(Usbclksel::Hfxox2)
     }
     #[doc = "HFRCO clock is used to clock USB"]
     #[inline(always)]
     pub fn hfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(USBCLKSEL_A::HFRCO)
+        self.variant(Usbclksel::Hfrco)
     }
     #[doc = "LFXO clock is used to clock USB"]
     #[inline(always)]
     pub fn lfxo(self) -> &'a mut crate::W<REG> {
-        self.variant(USBCLKSEL_A::LFXO)
+        self.variant(Usbclksel::Lfxo)
     }
     #[doc = "LFRCO clock is used to clock USB"]
     #[inline(always)]
     pub fn lfrco(self) -> &'a mut crate::W<REG> {
-        self.variant(USBCLKSEL_A::LFRCO)
+        self.variant(Usbclksel::Lfrco)
     }
 }
 #[doc = "Field `USBCLKEN` reader - USB Rate Clock Enable"]
-pub type USBCLKEN_R = crate::BitReader;
+pub type UsbclkenR = crate::BitReader;
 #[doc = "Field `USBCLKEN` writer - USB Rate Clock Enable"]
-pub type USBCLKEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type UsbclkenW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:2 - USB Rate Clock Select"]
     #[inline(always)]
-    pub fn usbclksel(&self) -> USBCLKSEL_R {
-        USBCLKSEL_R::new((self.bits & 7) as u8)
+    pub fn usbclksel(&self) -> UsbclkselR {
+        UsbclkselR::new((self.bits & 7) as u8)
     }
     #[doc = "Bit 7 - USB Rate Clock Enable"]
     #[inline(always)]
-    pub fn usbclken(&self) -> USBCLKEN_R {
-        USBCLKEN_R::new(((self.bits >> 7) & 1) != 0)
+    pub fn usbclken(&self) -> UsbclkenR {
+        UsbclkenR::new(((self.bits >> 7) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:2 - USB Rate Clock Select"]
     #[inline(always)]
-    #[must_use]
-    pub fn usbclksel(&mut self) -> USBCLKSEL_W<USBCTRL_SPEC> {
-        USBCLKSEL_W::new(self, 0)
+    pub fn usbclksel(&mut self) -> UsbclkselW<'_, UsbctrlSpec> {
+        UsbclkselW::new(self, 0)
     }
     #[doc = "Bit 7 - USB Rate Clock Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn usbclken(&mut self) -> USBCLKEN_W<USBCTRL_SPEC> {
-        USBCLKEN_W::new(self, 7)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn usbclken(&mut self) -> UsbclkenW<'_, UsbctrlSpec> {
+        UsbclkenW::new(self, 7)
     }
 }
-#[doc = "USB Control Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`usbctrl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`usbctrl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct USBCTRL_SPEC;
-impl crate::RegisterSpec for USBCTRL_SPEC {
+#[doc = "USB Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`usbctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`usbctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct UsbctrlSpec;
+impl crate::RegisterSpec for UsbctrlSpec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`usbctrl::R`](R) reader structure"]
-impl crate::Readable for USBCTRL_SPEC {}
+impl crate::Readable for UsbctrlSpec {}
 #[doc = "`write(|w| ..)` method takes [`usbctrl::W`](W) writer structure"]
-impl crate::Writable for USBCTRL_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for UsbctrlSpec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets USBCTRL to value 0"]
-impl crate::Resettable for USBCTRL_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for UsbctrlSpec {}

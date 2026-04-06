@@ -1,124 +1,105 @@
 #[doc = "Register `CFGPRESETVAL1` reader"]
-pub type R = crate::R<CFGPRESETVAL1_SPEC>;
+pub type R = crate::R<Cfgpresetval1Spec>;
 #[doc = "Register `CFGPRESETVAL1` writer"]
-pub type W = crate::W<CFGPRESETVAL1_SPEC>;
+pub type W = crate::W<Cfgpresetval1Spec>;
 #[doc = "Field `HSPSDCLKFREQ` reader - High Speed SD_CLK Frequency"]
-pub type HSPSDCLKFREQ_R = crate::FieldReader<u16>;
+pub type HspsdclkfreqR = crate::FieldReader<u16>;
 #[doc = "Field `HSPSDCLKFREQ` writer - High Speed SD_CLK Frequency"]
-pub type HSPSDCLKFREQ_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
+pub type HspsdclkfreqW<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 #[doc = "Field `HSPCLKGENEN` reader - High Speed SD_CLK Gen Enable"]
-pub type HSPCLKGENEN_R = crate::BitReader;
+pub type HspclkgenenR = crate::BitReader;
 #[doc = "Field `HSPCLKGENEN` writer - High Speed SD_CLK Gen Enable"]
-pub type HSPCLKGENEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type HspclkgenenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HSPDRVST` reader - High Speed SD Drive Strength"]
-pub type HSPDRVST_R = crate::FieldReader;
+pub type HspdrvstR = crate::FieldReader;
 #[doc = "Field `HSPDRVST` writer - High Speed SD Drive Strength"]
-pub type HSPDRVST_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+pub type HspdrvstW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `SDR12SDCLKFREQ` reader - Preset Value for SDR12 Speed of SD_CLK"]
-pub type SDR12SDCLKFREQ_R = crate::FieldReader<u16>;
+pub type Sdr12sdclkfreqR = crate::FieldReader<u16>;
 #[doc = "Field `SDR12SDCLKFREQ` writer - Preset Value for SDR12 Speed of SD_CLK"]
-pub type SDR12SDCLKFREQ_W<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
+pub type Sdr12sdclkfreqW<'a, REG> = crate::FieldWriter<'a, REG, 10, u16>;
 #[doc = "Field `SDR12CLKGENEN` reader - SDR12 Speed Clock Gen Enable"]
-pub type SDR12CLKGENEN_R = crate::BitReader;
+pub type Sdr12clkgenenR = crate::BitReader;
 #[doc = "Field `SDR12CLKGENEN` writer - SDR12 Speed Clock Gen Enable"]
-pub type SDR12CLKGENEN_W<'a, REG> = crate::BitWriter<'a, REG>;
+pub type Sdr12clkgenenW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SDR12DRVST` reader - SDR12 Speed Drive Strength"]
-pub type SDR12DRVST_R = crate::FieldReader;
+pub type Sdr12drvstR = crate::FieldReader;
 #[doc = "Field `SDR12DRVST` writer - SDR12 Speed Drive Strength"]
-pub type SDR12DRVST_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+pub type Sdr12drvstW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bits 0:9 - High Speed SD_CLK Frequency"]
     #[inline(always)]
-    pub fn hspsdclkfreq(&self) -> HSPSDCLKFREQ_R {
-        HSPSDCLKFREQ_R::new((self.bits & 0x03ff) as u16)
+    pub fn hspsdclkfreq(&self) -> HspsdclkfreqR {
+        HspsdclkfreqR::new((self.bits & 0x03ff) as u16)
     }
     #[doc = "Bit 10 - High Speed SD_CLK Gen Enable"]
     #[inline(always)]
-    pub fn hspclkgenen(&self) -> HSPCLKGENEN_R {
-        HSPCLKGENEN_R::new(((self.bits >> 10) & 1) != 0)
+    pub fn hspclkgenen(&self) -> HspclkgenenR {
+        HspclkgenenR::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bits 11:12 - High Speed SD Drive Strength"]
     #[inline(always)]
-    pub fn hspdrvst(&self) -> HSPDRVST_R {
-        HSPDRVST_R::new(((self.bits >> 11) & 3) as u8)
+    pub fn hspdrvst(&self) -> HspdrvstR {
+        HspdrvstR::new(((self.bits >> 11) & 3) as u8)
     }
     #[doc = "Bits 16:25 - Preset Value for SDR12 Speed of SD_CLK"]
     #[inline(always)]
-    pub fn sdr12sdclkfreq(&self) -> SDR12SDCLKFREQ_R {
-        SDR12SDCLKFREQ_R::new(((self.bits >> 16) & 0x03ff) as u16)
+    pub fn sdr12sdclkfreq(&self) -> Sdr12sdclkfreqR {
+        Sdr12sdclkfreqR::new(((self.bits >> 16) & 0x03ff) as u16)
     }
     #[doc = "Bit 26 - SDR12 Speed Clock Gen Enable"]
     #[inline(always)]
-    pub fn sdr12clkgenen(&self) -> SDR12CLKGENEN_R {
-        SDR12CLKGENEN_R::new(((self.bits >> 26) & 1) != 0)
+    pub fn sdr12clkgenen(&self) -> Sdr12clkgenenR {
+        Sdr12clkgenenR::new(((self.bits >> 26) & 1) != 0)
     }
     #[doc = "Bits 27:28 - SDR12 Speed Drive Strength"]
     #[inline(always)]
-    pub fn sdr12drvst(&self) -> SDR12DRVST_R {
-        SDR12DRVST_R::new(((self.bits >> 27) & 3) as u8)
+    pub fn sdr12drvst(&self) -> Sdr12drvstR {
+        Sdr12drvstR::new(((self.bits >> 27) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:9 - High Speed SD_CLK Frequency"]
     #[inline(always)]
-    #[must_use]
-    pub fn hspsdclkfreq(&mut self) -> HSPSDCLKFREQ_W<CFGPRESETVAL1_SPEC> {
-        HSPSDCLKFREQ_W::new(self, 0)
+    pub fn hspsdclkfreq(&mut self) -> HspsdclkfreqW<'_, Cfgpresetval1Spec> {
+        HspsdclkfreqW::new(self, 0)
     }
     #[doc = "Bit 10 - High Speed SD_CLK Gen Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn hspclkgenen(&mut self) -> HSPCLKGENEN_W<CFGPRESETVAL1_SPEC> {
-        HSPCLKGENEN_W::new(self, 10)
+    pub fn hspclkgenen(&mut self) -> HspclkgenenW<'_, Cfgpresetval1Spec> {
+        HspclkgenenW::new(self, 10)
     }
     #[doc = "Bits 11:12 - High Speed SD Drive Strength"]
     #[inline(always)]
-    #[must_use]
-    pub fn hspdrvst(&mut self) -> HSPDRVST_W<CFGPRESETVAL1_SPEC> {
-        HSPDRVST_W::new(self, 11)
+    pub fn hspdrvst(&mut self) -> HspdrvstW<'_, Cfgpresetval1Spec> {
+        HspdrvstW::new(self, 11)
     }
     #[doc = "Bits 16:25 - Preset Value for SDR12 Speed of SD_CLK"]
     #[inline(always)]
-    #[must_use]
-    pub fn sdr12sdclkfreq(&mut self) -> SDR12SDCLKFREQ_W<CFGPRESETVAL1_SPEC> {
-        SDR12SDCLKFREQ_W::new(self, 16)
+    pub fn sdr12sdclkfreq(&mut self) -> Sdr12sdclkfreqW<'_, Cfgpresetval1Spec> {
+        Sdr12sdclkfreqW::new(self, 16)
     }
     #[doc = "Bit 26 - SDR12 Speed Clock Gen Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn sdr12clkgenen(&mut self) -> SDR12CLKGENEN_W<CFGPRESETVAL1_SPEC> {
-        SDR12CLKGENEN_W::new(self, 26)
+    pub fn sdr12clkgenen(&mut self) -> Sdr12clkgenenW<'_, Cfgpresetval1Spec> {
+        Sdr12clkgenenW::new(self, 26)
     }
     #[doc = "Bits 27:28 - SDR12 Speed Drive Strength"]
     #[inline(always)]
-    #[must_use]
-    pub fn sdr12drvst(&mut self) -> SDR12DRVST_W<CFGPRESETVAL1_SPEC> {
-        SDR12DRVST_W::new(self, 27)
-    }
-    #[doc = r" Writes raw bits to the register."]
-    #[doc = r""]
-    #[doc = r" # Safety"]
-    #[doc = r""]
-    #[doc = r" Passing incorrect value can cause undefined behaviour. See reference manual"]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
+    pub fn sdr12drvst(&mut self) -> Sdr12drvstW<'_, Cfgpresetval1Spec> {
+        Sdr12drvstW::new(self, 27)
     }
 }
-#[doc = "Core Configuration Preset Value 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`cfgpresetval1::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`cfgpresetval1::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CFGPRESETVAL1_SPEC;
-impl crate::RegisterSpec for CFGPRESETVAL1_SPEC {
+#[doc = "Core Configuration Preset Value 1\n\nYou can [`read`](crate::Reg::read) this register and get [`cfgpresetval1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cfgpresetval1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Cfgpresetval1Spec;
+impl crate::RegisterSpec for Cfgpresetval1Spec {
     type Ux = u32;
 }
 #[doc = "`read()` method returns [`cfgpresetval1::R`](R) reader structure"]
-impl crate::Readable for CFGPRESETVAL1_SPEC {}
+impl crate::Readable for Cfgpresetval1Spec {}
 #[doc = "`write(|w| ..)` method takes [`cfgpresetval1::W`](W) writer structure"]
-impl crate::Writable for CFGPRESETVAL1_SPEC {
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+impl crate::Writable for Cfgpresetval1Spec {
+    type Safety = crate::Unsafe;
 }
 #[doc = "`reset()` method sets CFGPRESETVAL1 to value 0"]
-impl crate::Resettable for CFGPRESETVAL1_SPEC {
-    const RESET_VALUE: u32 = 0;
-}
+impl crate::Resettable for Cfgpresetval1Spec {}

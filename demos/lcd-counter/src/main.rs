@@ -1,4 +1,4 @@
-//! Count seconds using the RTCC and display the value on the Sharp Memory LCD.
+//! Count seconds using SysTick and display the value on the Color Memory LCD.
 //! Push button 0 (PC8) resets the counter.
 
 #![no_main]
@@ -8,23 +8,20 @@ use cortex_m as _;
 use defmt_rtt as _;
 use panic_halt as _;
 
-use core::cell::RefCell;
-use critical_section::Mutex;
+use cortex_m::peripheral::syst::SystClkSource;
+use cortex_m_rt::exception;
 use efm32gg11b_pac as pac;
 use pac::interrupt;
 use portable_atomic::{AtomicBool, AtomicU32, Ordering};
 use slstk3701a::display;
 
-static RTCC: Mutex<RefCell<Option<pac::Rtcc>>> = Mutex::new(RefCell::new(None));
-static SECONDS: AtomicU32 = AtomicU32::new(0);
+static MILLIS: AtomicU32 = AtomicU32::new(0);
 static RESET_REQ: AtomicBool = AtomicBool::new(false);
-
-/// LFRCO ticks per second.
-const TICKS_PER_SEC: u32 = 32_768;
 
 #[cortex_m_rt::entry]
 fn main() -> ! {
     let p = pac::Peripherals::take().unwrap();
+    let mut cp = pac::CorePeripherals::take().unwrap();
 
     p.wdog0.ctrl().modify(|_, w| w.en().clear_bit());
     p.wdog1.ctrl().modify(|_, w| w.en().clear_bit());
@@ -58,46 +55,30 @@ fn main() -> ! {
 
     unsafe { pac::NVIC::unmask(pac::Interrupt::GPIO_EVEN) };
 
-    // --- RTCC setup ---
-    // Enable LFRCO.
-    p.cmu.oscencmd().write(|w| w.lfrcoen().set_bit());
-    // Wait for LFRCO ready.
-    while p.cmu.status().read().lfrcordy().bit_is_clear() {}
+    // SysTick at 1 kHz (19 MHz / 19000 = 1 kHz).
+    cp.SYST.set_clock_source(SystClkSource::Core);
+    cp.SYST.set_reload(19_000 - 1);
+    cp.SYST.clear_current();
+    cp.SYST.enable_counter();
+    cp.SYST.enable_interrupt();
 
-    // Select LFRCO as LFE clock (for RTCC).
-    p.cmu.lfeclksel().write(|w| w.lfe().lfrco());
+    defmt::info!("LCD counter started");
 
-    // Enable RTCC clock.
-    p.cmu.lfeclken0().modify(|_, w| w.rtcc().set_bit());
-
-    // Configure RTCC: enable, no prescaler.
-    p.rtcc.ctrl().write(|w| w.enable().set_bit());
-
-    // CC0 in output-compare mode, compare value = 1 second.
-    p.rtcc.cc0_ctrl().write(|w| w.mode().outputcompare());
-    p.rtcc
-        .cc0_ccv()
-        .write(|w| unsafe { w.ccv().bits(TICKS_PER_SEC) });
-
-    // Enable CC0 interrupt.
-    p.rtcc.ien().write(|w| w.cc0().set_bit());
-    p.rtcc.ifc().write(|w| w.cc0().set_bit());
-
-    unsafe { pac::NVIC::unmask(pac::Interrupt::RTCC) };
-
-    critical_section::with(|cs| {
-        RTCC.borrow(cs).replace(Some(p.rtcc));
-    });
-
-    let mut last_displayed = u32::MAX;
+    let mut last_sec = u32::MAX;
+    let mut last_vcom: u32 = 0;
     loop {
+        cortex_m::asm::wfi();
+
         if RESET_REQ.swap(false, Ordering::Relaxed) {
-            SECONDS.store(0, Ordering::Relaxed);
+            MILLIS.store(0, Ordering::Relaxed);
+            last_sec = u32::MAX;
         }
 
-        let secs = SECONDS.load(Ordering::Relaxed);
-        if secs != last_displayed {
-            last_displayed = secs;
+        let ms = MILLIS.load(Ordering::Relaxed);
+        let secs = ms / 1000;
+
+        if secs != last_sec {
+            last_sec = secs;
 
             let mut buf = [0u8; 10];
             let digits = display::format_u32(secs, &mut buf);
@@ -110,28 +91,17 @@ fn main() -> ! {
             defmt::info!("Counter: {}", secs);
         }
 
-        display::toggle_vcom();
-        cortex_m::asm::wfe();
+        // Toggle VCOM at ~60 Hz.
+        if ms.wrapping_sub(last_vcom) >= 16 {
+            last_vcom = ms;
+            display::toggle_vcom();
+        }
     }
 }
 
-#[interrupt]
-fn RTCC() {
-    SECONDS.fetch_add(1, Ordering::Relaxed);
-    critical_section::with(|cs| {
-        if let Some(rtcc) = RTCC.borrow(cs).borrow().as_ref() {
-            // Advance compare value by one second.
-            let next = rtcc
-                .cc0_ccv()
-                .read()
-                .ccv()
-                .bits()
-                .wrapping_add(TICKS_PER_SEC);
-            rtcc.cc0_ccv().write(|w| unsafe { w.ccv().bits(next) });
-            rtcc.ifc().write(|w| w.cc0().set_bit());
-        }
-    });
-    cortex_m::asm::sev();
+#[exception]
+fn SysTick() {
+    MILLIS.fetch_add(1, Ordering::Relaxed);
 }
 
 #[interrupt]
@@ -139,5 +109,4 @@ fn GPIO_EVEN() {
     let gpio = unsafe { &*pac::Gpio::ptr() };
     gpio.ifc().write(|w| unsafe { w.ext().bits(1 << 8) });
     RESET_REQ.store(true, Ordering::Relaxed);
-    cortex_m::asm::sev();
 }

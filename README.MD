@@ -18,6 +18,7 @@ Demo | Description
 [`usb-cdc`](./demos/usb-cdc) | USB CDC ACM serial port demo
 [`usb-hid`](./demos/usb-hid) | USB HID keyboard demo
 [`usb-midi`](./demos/usb-midi) | USB MIDI demo
+[`usb-nic`](./demos/usb-nic) | USB Network demo
 [`usb-msc`](./demos/usb-msc) | USB Mass Storage demo
 [`usb-video`](./demos/usb-video) | USB Video demo
 

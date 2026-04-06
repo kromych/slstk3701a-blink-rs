@@ -62,5 +62,7 @@ fn main() -> ! {
     defmt::info!("USB MIDI device ready");
     defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
-    midi::run(&TwinkleTune, |pkt| { usb_with_bus(|bus| bus.ep_write(1, pkt)); });
+    midi::run(&TwinkleTune, |pkt| {
+        usb_with_bus(|bus| bus.ep_write(1, pkt));
+    });
 }

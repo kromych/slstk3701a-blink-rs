@@ -16,6 +16,7 @@ members = [
     "demos/usb-midi",
     "demos/usb-video",
     "demos/space-invaders",
+    "demos/eth-http",
     "support/efm32gg11b-pac",
     "support/efm32gg11b-usb",
     "support/slstk3701a",
@@ -31,6 +32,10 @@ cortex-m-rt = { version = "0.7", features = ["device"] }
 critical-section = "1"
 defmt = "1"
 defmt-rtt = "0.4"
+
+smoltcp = { version = "0.12", default-features = false, features = [
+    "medium-ethernet", "proto-ipv4", "socket-tcp", "socket-dhcpv4",
+] }
 
 efm32gg11b-pac = { path = "support/efm32gg11b-pac" }
 efm32gg11b-usb = { path = "support/efm32gg11b-usb" }

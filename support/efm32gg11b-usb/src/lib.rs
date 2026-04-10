@@ -13,6 +13,7 @@
 pub mod audio;
 pub mod bus;
 pub mod cdc_acm;
+pub mod cdc_ecm;
 pub mod hid_keyboard;
 pub mod midi;
 pub mod msc;

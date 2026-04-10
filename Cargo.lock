@@ -554,6 +554,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "usb-nic"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "critical-section",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "efm32gg11b-usb",
+ "panic-halt",
+ "portable-atomic",
+ "slstk3701a",
+]
+
+[[package]]
 name = "usb-video"
 version = "0.0.1"
 dependencies = [

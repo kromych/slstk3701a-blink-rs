@@ -1,0 +1,22 @@
+[package]
+authors = ["kromych <kromych@users.noreply.github.com>"]
+categories = ["embedded", "no-std"]
+description = "SLSTK3701A USB NIC demo -- Ethernet-to-USB bridge via CDC-ECM"
+name = "usb-nic"
+keywords = ["arm", "cortex-m", "efm32gg11b"]
+license = "MIT"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+panic-halt.workspace = true
+cortex-m.workspace = true
+cortex-m-rt.workspace = true
+critical-section.workspace = true
+portable-atomic.workspace = true
+defmt.workspace = true
+defmt-rtt.workspace = true
+
+efm32gg11b-pac.workspace = true
+efm32gg11b-usb.workspace = true
+slstk3701a.workspace = true

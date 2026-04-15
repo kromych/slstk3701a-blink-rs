@@ -289,7 +289,15 @@ impl Game {
             if !b.active {
                 continue;
             }
+            let mut hit = false;
             for row in 0..ALIEN_ROWS {
+                let ay = ALIEN_START_Y as i16
+                    + row as i16 * ALIEN_SPACING_Y as i16
+                    + self.alien_offset_y;
+                // Skip this row entirely if bullet is above or below it.
+                if b.y >= ay + ALIEN_H as i16 || b.y + BULLET_H as i16 <= ay {
+                    continue;
+                }
                 for col in 0..ALIEN_COLS {
                     if !self.aliens[row][col] {
                         continue;
@@ -297,19 +305,17 @@ impl Game {
                     let ax = ALIEN_START_X as i16
                         + col as i16 * ALIEN_SPACING_X as i16
                         + self.alien_offset_x;
-                    let ay = ALIEN_START_Y as i16
-                        + row as i16 * ALIEN_SPACING_Y as i16
-                        + self.alien_offset_y;
-                    if b.x >= ax
-                        && b.x < ax + ALIEN_W as i16
-                        && b.y >= ay
-                        && b.y < ay + ALIEN_H as i16
-                    {
+                    if b.x >= ax && b.x < ax + ALIEN_W as i16 {
                         self.aliens[row][col] = false;
                         b.active = false;
                         self.score += (ALIEN_ROWS - row) as u32 * 10;
                         self.aliens_remaining -= 1;
+                        hit = true;
+                        break;
                     }
+                }
+                if hit {
+                    break;
                 }
             }
         }
@@ -329,17 +335,19 @@ impl Game {
             }
         }
 
-        // Check if aliens reached player.
-        for row in 0..ALIEN_ROWS {
+        // Check if aliens reached player — scan bottom-up, exit early.
+        'reached: for row in (0..ALIEN_ROWS).rev() {
+            let ay = ALIEN_START_Y as i16
+                + row as i16 * ALIEN_SPACING_Y as i16
+                + self.alien_offset_y
+                + ALIEN_H as i16;
+            if ay < PLAYER_Y as i16 {
+                break; // All higher rows are above the player too.
+            }
             for col in 0..ALIEN_COLS {
                 if self.aliens[row][col] {
-                    let ay = ALIEN_START_Y as i16
-                        + row as i16 * ALIEN_SPACING_Y as i16
-                        + self.alien_offset_y
-                        + ALIEN_H as i16;
-                    if ay >= PLAYER_Y as i16 {
-                        self.game_over = true;
-                    }
+                    self.game_over = true;
+                    break 'reached;
                 }
             }
         }
@@ -401,12 +409,17 @@ fn dirty_bands(game: &Game) -> u32 {
     // Player.
     mark_bands(&mut dirty, PLAYER_Y as i16, PLAYER_H);
 
-    // Aliens.
+    // Aliens — mark once per row that has any alive alien (all aliens in
+    // a row share the same y, so we only need one mark_bands call per row).
     for row in 0..ALIEN_ROWS {
+        let mut row_alive = false;
         for col in 0..ALIEN_COLS {
-            if !game.aliens[row][col] {
-                continue;
+            if game.aliens[row][col] {
+                row_alive = true;
+                break;
             }
+        }
+        if row_alive {
             let ay =
                 ALIEN_START_Y as i16 + row as i16 * ALIEN_SPACING_Y as i16 + game.alien_offset_y;
             mark_bands(&mut dirty, ay, ALIEN_H);
@@ -478,8 +491,19 @@ fn render_game(game: &Game, last_score: &mut u32, prev_dirty: &mut u32, vcom: &m
             }
         }
 
-        // Draw aliens.
+        // Draw aliens — check row overlap once, then iterate columns.
         for row in 0..ALIEN_ROWS {
+            let ay =
+                ALIEN_START_Y as i16 + row as i16 * ALIEN_SPACING_Y as i16 + game.alien_offset_y;
+            if ay + ALIEN_H as i16 <= y as i16 || ay >= band_end as i16 {
+                continue;
+            }
+            let color = match row {
+                0 => RED,
+                1 => MAGENTA,
+                2 => CYAN,
+                _ => GREEN,
+            };
             for col in 0..ALIEN_COLS {
                 if !game.aliens[row][col] {
                     continue;
@@ -487,18 +511,6 @@ fn render_game(game: &Game, last_score: &mut u32, prev_dirty: &mut u32, vcom: &m
                 let ax = ALIEN_START_X as i16
                     + col as i16 * ALIEN_SPACING_X as i16
                     + game.alien_offset_x;
-                let ay = ALIEN_START_Y as i16
-                    + row as i16 * ALIEN_SPACING_Y as i16
-                    + game.alien_offset_y;
-                if ay + ALIEN_H as i16 <= y as i16 || ay >= band_end as i16 {
-                    continue;
-                }
-                let color = match row {
-                    0 => RED,
-                    1 => MAGENTA,
-                    2 => CYAN,
-                    _ => GREEN,
-                };
                 if row < 2 {
                     draw_sprite(&mut band_buf[..band_rows], &ALIEN_A, ax, ay, y, color);
                 } else {

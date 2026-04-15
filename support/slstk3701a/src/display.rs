@@ -45,6 +45,32 @@ fn usart1() -> &'static pac::usart1::RegisterBlock {
     unsafe { &*pac::Usart1::ptr() }
 }
 
+#[cfg(feature = "dma")]
+fn ldma() -> &'static pac::ldma::RegisterBlock {
+    unsafe { &*pac::Ldma::ptr() }
+}
+
+// ---------- DMA buffer (LDMA mode) ----------
+
+/// USART1 TXDATA register address (USART1 base 0x4001_0400 + TXDATA offset 0x34).
+#[cfg(feature = "dma")]
+const USART1_TXDATA_ADDR: u32 = 0x4001_0434;
+
+/// Maximum rows per DMA transfer. 30 rows * 68 bytes/row + 2 = 2042 bytes,
+/// within the LDMA XFERCNT 11-bit limit (max 2048 unit transfers).
+#[cfg(feature = "dma")]
+const DMA_BUF_MAX_ROWS: usize = 30;
+
+#[cfg(feature = "dma")]
+const DMA_BUF_SIZE: usize = 2 + DMA_BUF_MAX_ROWS * (1 + BYTES_PER_ROW + 1);
+
+#[cfg(feature = "dma")]
+#[repr(C, align(4))]
+struct DmaBuf([u8; DMA_BUF_SIZE]);
+
+#[cfg(feature = "dma")]
+static mut SPI_DMA_BUF: DmaBuf = DmaBuf([0; DMA_BUF_SIZE]);
+
 // ---------- GPIO helpers ----------
 
 #[inline]
@@ -63,6 +89,7 @@ fn cs_low() {
 
 // ---------- SPI helpers ----------
 
+#[cfg_attr(feature = "dma", allow(dead_code))]
 #[inline]
 fn spi_write(byte: u8) {
     let u = usart1();
@@ -125,6 +152,10 @@ pub fn init() {
 
     // Enable USART1 peripheral clock on HFPER bus.
     cmu.hfperclken0().modify(|_, w| w.usart1().set_bit());
+
+    // Enable LDMA clock for DMA-driven SPI transfers.
+    #[cfg(feature = "dma")]
+    cmu.hfbusclken0().modify(|_, w| w.ldma().set_bit());
 
     // PA9 (DISP_SEL), PA11 (EXTCOMIN), PA14 (USART1_TX / MOSI) → push-pull.
     gpio.pa_modeh()
@@ -212,6 +243,7 @@ pub fn toggle_vcom() {
 }
 
 /// Write a single pixel row (0-based) with 66 bytes of 3-bpp data.
+#[cfg(not(feature = "dma"))]
 pub fn write_row(row: u8, data: &[u8; BYTES_PER_ROW], vcom: &mut bool) {
     let cmd = 0x01 | if *vcom { 0x02 } else { 0x00 };
     *vcom = !*vcom;
@@ -230,7 +262,14 @@ pub fn write_row(row: u8, data: &[u8; BYTES_PER_ROW], vcom: &mut bool) {
     cs_low();
 }
 
-/// Write multiple consecutive pixel rows starting at `start_row`.
+/// Write a single pixel row (0-based) with 66 bytes of 3-bpp data.
+#[cfg(feature = "dma")]
+pub fn write_row(row: u8, data: &[u8; BYTES_PER_ROW], vcom: &mut bool) {
+    write_rows(row, core::slice::from_ref(data), vcom);
+}
+
+/// Write multiple consecutive pixel rows starting at `start_row` (polling mode).
+#[cfg(not(feature = "dma"))]
 pub fn write_rows(start_row: u8, rows: &[[u8; BYTES_PER_ROW]], vcom: &mut bool) {
     if rows.is_empty() {
         return;
@@ -249,6 +288,96 @@ pub fn write_rows(start_row: u8, rows: &[[u8; BYTES_PER_ROW]], vcom: &mut bool) 
         spi_write(0x00); // line trailer
     }
     spi_write(0x00); // final trailer
+    spi_wait_done();
+    scs_hold_delay();
+    cs_low();
+}
+
+/// Write multiple consecutive pixel rows starting at `start_row` (LDMA mode).
+///
+/// Assembles the full SPI message (cmd + per-row address/data/trailer + final
+/// trailer) into a static buffer, then transfers it to USART1 TXDATA via LDMA
+/// channel 0. The CPU is free while the DMA engine feeds the SPI peripheral.
+#[cfg(feature = "dma")]
+pub fn write_rows(start_row: u8, rows: &[[u8; BYTES_PER_ROW]], vcom: &mut bool) {
+    if rows.is_empty() {
+        return;
+    }
+
+    let cmd = 0x01 | if *vcom { 0x02 } else { 0x00 };
+    *vcom = !*vcom;
+
+    // Assemble the SPI message into the DMA buffer.
+    let buf = unsafe { &mut *core::ptr::addr_of_mut!(SPI_DMA_BUF) };
+    let mut pos = 0usize;
+    buf.0[pos] = cmd;
+    pos += 1;
+
+    let row_count = rows.len().min(DMA_BUF_MAX_ROWS);
+    for (i, row_data) in rows[..row_count].iter().enumerate() {
+        buf.0[pos] = reverse_bits(start_row + i as u8 + 1);
+        pos += 1;
+        buf.0[pos..pos + BYTES_PER_ROW].copy_from_slice(row_data);
+        pos += BYTES_PER_ROW;
+        buf.0[pos] = 0x00; // line trailer
+        pos += 1;
+    }
+    buf.0[pos] = 0x00; // final trailer
+    pos += 1;
+
+    cs_high();
+    scs_setup_delay();
+
+    let ldma = ldma();
+
+    // Clear done flag for channel 0.
+    ldma.chdone()
+        .modify(|r, w| unsafe { w.chdone().bits(r.chdone().bits() & !1) });
+
+    // Configure LDMA channel 0 for USART1 TX (SIGSEL=1 = TXBL).
+    ldma.ch0_reqsel().write(|w| {
+        w.sourcesel().usart1();
+        unsafe { w.sigsel().bits(1) }
+    });
+    ldma.ch0_src()
+        .write(|w| unsafe { w.bits(core::ptr::addr_of!(SPI_DMA_BUF) as u32) });
+    ldma.ch0_dst()
+        .write(|w| unsafe { w.bits(USART1_TXDATA_ADDR) });
+    ldma.ch0_link().reset();
+    // STRUCTREQ arms the channel so the LDMA actually loads the descriptor
+    // from the channel registers into its internal transfer engine.  Without
+    // it the channel is enabled but idle — TXBL requests are ignored and the
+    // CHDONE flag is never set, hanging the CPU in the spin-loop below.
+    //
+    // BLOCKSIZE must be UNIT1 (one byte per peripheral request).  A larger
+    // block size (e.g. ALL) causes the LDMA to write multiple bytes to TXDATA
+    // per single TXBL assertion, overflowing the USART's single-entry TX
+    // buffer and corrupting the SPI output.
+    ldma.ch0_ctrl().write(|w| unsafe {
+        w.structreq()
+            .set_bit()
+            .xfercnt()
+            .bits((pos - 1) as u16)
+            .blocksize()
+            .unit1()
+            .size()
+            .byte()
+            .srcinc()
+            .one()
+            .dstinc()
+            .none()
+            .doneifsen()
+            .set_bit()
+    });
+
+    // Start the transfer.
+    ldma.chen()
+        .modify(|r, w| unsafe { w.chen().bits(r.chen().bits() | 1) });
+
+    // Wait for DMA completion.
+    while ldma.chdone().read().chdone().bits() & 1 == 0 {}
+
+    // Wait for the last byte to finish shifting out of USART1.
     spi_wait_done();
     scs_hold_delay();
     cs_low();

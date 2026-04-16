@@ -80,86 +80,286 @@ and connect a second cable to the **USB Micro-AB** connector.
 
 ## EFM32GG11B-specific Init Sequence
 
-1. Wait for `EMU->R5VSYNC.OUTLEVELBUSY = 0`, set `R5VOUTLEVEL = 10` (5 V)
-2. Enable USHFRCO, select as USB clock via `CMU.USBCTRL`, enable clock recovery
-3. Enable USB on HFBUS: `HFBUSCLKEN0.USB = 1`
-4. `USB->CTRL`: `LEMOSCCTRL = GATE`, `LEMIDLEEN`, `LEMPHYCTRL`
-5. `USB->ROUTE`: `PHYPEN + VBUSENPEN`
-6. Clear `PCGCCTL` power/clock gating bits
-7. Soft-reset: `GRSTCTL.CSFTRST`, wait `AHBIDLE`
-8. Set `DATTRIM1.ENDLYPULLUP` (GG11B-specific D+ timing)
-9. Force device mode: `GUSBCFG.FORCEDEVMODE`, `USBTRDTIM = 9`, wait 50 ms
-10. `DCFG.DEVSPD = FS`, `NZSTSOUTHSHK = 1`
-11. `GAHBCFG`: `GLBLINTRMSK = 1`, `DMAEN = 1`, `HBSTLEN = INCR4` (Buffer DMA mode)
-12. `DCTL.IGNRFRMNUM = 1`
-13. Allocate FIFOs (RX, TX0, TX1, TX2), flush all
-14. Clear EP interrupt masks and flags
-15. Connect: clear `DCTL.SFTDISCON`
-16. Enable VBUS detect: `USB->IEN = VBUSDETH | VBUSDETL`, force-trigger via `IFS`
+```mermaid
+sequenceDiagram
+    participant FW as Firmware
+    participant EMU as EMU (Power)
+    participant CMU as CMU (Clocks)
+    participant USB as USB / DWC2
+
+    FW->>EMU: Wait R5VSYNC.OUTLEVELBUSY = 0
+    FW->>EMU: R5VOUTLEVEL = 10 (5 V)
+    FW->>CMU: Enable USHFRCO, wait USHFRCORDY
+    FW->>CMU: USBCTRL.USBCLKSEL = USHFRCO, USBCLKEN
+    FW->>CMU: USBCRCTRL.USBCREN (SOF clock recovery)
+    FW->>CMU: HFBUSCLKEN0.USB = 1
+    FW->>USB: CTRL: LEMOSCCTRL = GATE, LEMIDLEEN, LEMPHYCTRL
+    FW->>USB: ROUTE = PHYPEN | VBUSENPEN
+    FW->>USB: Clear PCGCCTL
+    FW->>USB: GRSTCTL.CSFTRST (soft-reset)
+    USB-->>FW: GRSTCTL.AHBIDLE
+    FW->>USB: DATTRIM1.ENDLYPULLUP (GG11B D+ timing)
+    FW->>USB: GUSBCFG.FORCEDEVMODE, USBTRDTIM = 9
+    Note over FW: Wait 50 ms
+    FW->>USB: DCFG.DEVSPD = FS, NZSTSOUTHSHK = 1
+    FW->>USB: GAHBCFG: GLBLINTRMSK, DMAEN, HBSTLEN = INCR4
+    FW->>USB: DCTL.IGNRFRMNUM = 1
+    FW->>USB: Allocate FIFOs (RX, TX0–TX3), flush all
+    FW->>USB: Clear EP interrupt masks and flags
+    FW->>USB: Clear DCTL.SFTDISCON (connect)
+    FW->>USB: IEN = VBUSDETH | VBUSDETL
+    FW->>USB: Force-trigger VBUSDETH/VBUSDETL via IFS
+```
 
 Then in the VBUSDETH handler:
-- Set `R5VOUTLEVEL = 10`
-- Set GOTGCTL overrides (BVALIDOV + VBVALIDOV)
-- Toggle SFTDISCON to re-assert D+ pull-up
-- Enable `GINTMSK`: USBRST + USBSUSP
 
-## SETUP Packet Flow (Buffer DMA Mode)
+```mermaid
+sequenceDiagram
+    participant ISR as poll()
+    participant EMU as EMU
+    participant USB as USB / DWC2
 
-```
-Host sends SETUP token + 8 data bytes
-  |
-  v
-DWC2 DMA writes 8 bytes to DOEP0DMAADDR (EP0_SETUP_DMA_BUF)
-  v
-GINTSTS.OEPINT fires -> DOEP0INT.SETUP set
-  +-- Read SETUP data from DMA buffer (last of up to 3 back-to-back)
-  +-- Dispatch to UsbClass::handle_setup()
-  +-- Handled  -> ZLP status     DataIn  -> class wrote response
-      DataOut  -> arm EP0 OUT with data buffer, prepare OUT
-      Unhandled -> STALL
+    USB->>ISR: IF.VBUSDETH
+    ISR->>EMU: R5VOUTLEVEL = 10 (5 V)
+    ISR->>USB: GOTGCTL: BVALIDOV + VBVALIDOV overrides
+    ISR->>USB: Toggle SFTDISCON (re-assert D+ pull-up)
+    ISR->>USB: GINTMSK = USBRST + USBSUSP
 ```
 
-## IN Transfer Flow (DMA)
+## SETUP Packet Flow — FIFO (Slave) Mode
 
-```
-Copy data to DMA buffer
-Set DIEPnDMAADDR to buffer address
-Set DIEPnTSIZ (xfersize, pktcnt=1)
-Set DIEPnCTL: EPENA + CNAK [+ frame parity for ISO]
-  --> DWC2 DMA reads buffer, pushes to TX FIFO, sends on IN token
-  --> GINTSTS.IEPINT -> DIEPnINT.XFERCOMPL
-  --> For EP0: send next chunk if multi-packet
-  --> For EPn: call UsbClass::in_complete(ep)
+```mermaid
+sequenceDiagram
+    participant Host
+    participant DWC2
+    participant ISR as poll()
+    participant Class as UsbClass
+
+    Host->>DWC2: SETUP token + 8 data bytes
+    DWC2->>ISR: GINTSTS.RXFLVL
+    ISR->>DWC2: Read GRXSTSP (pktsts=0x6 SETUP_DATA)
+    ISR->>DWC2: Read 2 words from RX FIFO
+    Note over ISR: Parse SetupPacket
+
+    DWC2->>ISR: GINTSTS.RXFLVL (pktsts=0x4 SETUP_COMPL)
+    ISR->>DWC2: ep0_prepare_out()
+
+    DWC2->>ISR: GINTSTS.OEPINT (DOEP0INT.SETUP)
+    Note over ISR: Ignored (already handled in RXFLVL)
+
+    ISR->>Class: handle_setup()
+
+    alt Handled (e.g. SET_ADDRESS)
+        ISR->>DWC2: ep0_write_packet(ZLP)
+    else DataIn (e.g. GET_DESCRIPTOR)
+        Class->>DWC2: ep0_write_packet(data)
+    else DataOut (e.g. SET_LINE_CODING)
+        ISR->>DWC2: ep0_prepare_out()
+        Host->>DWC2: DATA OUT payload
+        DWC2->>ISR: RXFLVL (pktsts=0x2 OUT_DATA)
+        DWC2->>ISR: OEPINT.XFERCOMPL
+        ISR->>Class: ep0_data_out(data)
+        ISR->>DWC2: ep0_write_packet(ZLP)
+    else Unhandled
+        ISR->>DWC2: STALL EP0
+    end
 ```
 
-## OUT Transfer Flow (DMA)
+## SETUP Packet Flow — DMA Mode
 
+EP0 OUT is always armed with **SNAK** so that only SETUP packets (which
+bypass NAK on the DWC2) can arrive.  DATA OUT is gated by an explicit
+`ep0_clear_out_nak()` call after the SETUP has been read and processed,
+preventing a host DATA OUT from overwriting the SETUP data in the shared
+DMA buffer before the ISR can parse it.
+
+```mermaid
+sequenceDiagram
+    participant Host
+    participant DWC2
+    participant ISR as poll()
+    participant Class as UsbClass
+
+    Note over DWC2: EP0 OUT armed with SNAK<br/>(SETUP bypasses NAK)
+    Host->>DWC2: SETUP token + 8 data bytes
+    Note over DWC2: DMA writes 8 bytes to EP0 OUT buffer
+
+    DWC2->>ISR: OEPINT (setup + xfercompl both set)
+    ISR->>DWC2: Read SETUP from DMA buffer
+    Note over ISR: Parse SetupPacket
+    ISR->>Class: handle_setup()
+
+    Note over ISR: xfercompl is from SETUP DMA,<br/>not a DATA OUT payload
+
+    alt Handled
+        ISR->>DWC2: ep0_write_packet(ZLP)
+    else DataIn
+        Class->>DWC2: ep0_write_packet(data)
+    else DataOut
+        Note over ISR: setup bit set → skip xfercompl
+        ISR->>DWC2: ep0_prepare_out() [SNAK]
+        ISR->>DWC2: ep0_clear_out_nak() [CNAK]
+        Note over DWC2: NAK cleared — DATA OUT can arrive
+        Host->>DWC2: DATA OUT payload
+        Note over DWC2: DMA writes payload to EP0 OUT buffer
+        DWC2->>ISR: OEPINT.XFERCOMPL (setup NOT set)
+        ISR->>DWC2: Read actual byte count from DOEP0TSIZ
+        ISR->>Class: ep0_data_out(data)
+        ISR->>DWC2: ep0_write_packet(ZLP)
+    else Unhandled
+        ISR->>DWC2: STALL EP0
+    end
 ```
-Set DOEPnDMAADDR to receive buffer
-Set DOEPnTSIZ (xfersize=MPS, pktcnt=1)
-Set DOEPnCTL: EPENA + CNAK
-  --> Host sends OUT token + data
-  --> DWC2 DMA reads RX FIFO, writes to buffer
-  --> GINTSTS.OEPINT -> DOEPnINT.XFERCOMPL
-  --> Read received length from DOEPnTSIZ (MPS - remaining xfersize)
-  --> Call UsbClass::data_out(ep, data)
+
+## Multi-Packet EP0 IN Transfer
+
+`DIEP0TSIZ.xfersize` is only 7 bits wide (max 127), so descriptors
+larger than 64 bytes must be sent one packet at a time in both modes.
+
+```mermaid
+sequenceDiagram
+    participant FW as ep0_start_in
+    participant Bus as UsbBus
+    participant Host
+
+    FW->>Bus: ep0_write_packet(data[0..64])
+    Note over FW: Save pointer + remaining
+
+    loop While ep0_in_remaining > 0
+        Bus-->>Host: 64-byte DATA packet
+        Host-->>Bus: ACK
+        Bus->>FW: IEPINT.XFERCOMPL
+        FW->>Bus: ep0_continue_in → ep0_write_packet(next chunk)
+    end
+
+    Bus-->>Host: Final packet (may be short / ZLP)
+    Host-->>Bus: ACK
+    Bus->>FW: IEPINT.XFERCOMPL
+
+    alt FIFO mode
+        FW->>Bus: ep0_prepare_out() [CNAK]
+    else DMA mode
+        FW->>Bus: ep0_prepare_out() [SNAK]
+        FW->>Bus: ep0_clear_out_nak() [CNAK]
+        Note over FW: CNAK after prepare so status<br/>ZLP / next SETUP can arrive
+    end
+```
+
+## IN Transfer Flow (EPn)
+
+Isochronous IN endpoints are activated with `usbactep` deferred: the bit
+is **not** set in `activate_endpoints()` so the DWC2 NAKs host IN tokens
+until the first `ep_write()` supplies real data.  This prevents the
+controller from transmitting stale/zero data (which appears as a green
+flash in YUY2 video).
+
+```mermaid
+sequenceDiagram
+    participant Class as UsbClass
+    participant Bus as UsbBus
+    participant DWC2
+    participant Host
+
+    Note over Bus: Iso IN: usbactep deferred<br/>until first ep_write
+
+    Class->>Bus: ep_write(ep, data)
+
+    alt DMA mode
+        Note over Bus: Copy data to DMA buffer
+        Note over Bus: DSB (flush write buffer)
+        Bus->>DWC2: DIEPnDMAADDR
+    else FIFO mode
+        Note over Bus: (data written to TX FIFO after EPENA)
+    end
+
+    Bus->>DWC2: DIEPnTSIZ + DIEPnCTL (USBACTEP, EPENA, CNAK)
+    Host->>DWC2: IN token
+    DWC2-->>Host: Data packet
+    DWC2->>Class: IEPINT.XFERCOMPL → in_complete(ep)
+```
+
+## OUT Transfer Flow (EPn)
+
+```mermaid
+sequenceDiagram
+    participant Class as UsbClass
+    participant Bus as UsbBus
+    participant DWC2
+    participant Host
+
+    Bus->>DWC2: DOEPnTSIZ + DOEPnCTL (EPENA, CNAK)
+    Note over DWC2: EP armed for reception
+
+    Host->>DWC2: OUT token + data
+
+    alt FIFO mode
+        DWC2->>Bus: RXFLVL (pktsts=0x2)
+        Bus->>Bus: Read data from RX FIFO
+        Bus->>Class: data_out(ep, data)
+        DWC2->>Bus: OEPINT.XFERCOMPL
+        Bus->>DWC2: Re-arm EP (ep_prepare_out)
+    else DMA mode
+        Note over DWC2: DMA writes to EPn OUT buffer
+        DWC2->>Bus: OEPINT.XFERCOMPL
+        Bus->>Bus: Read byte count from DOEPnTSIZ
+        Bus->>Class: data_out(ep, data)
+        Bus->>DWC2: Re-arm EP (ep_prepare_out)
+    end
 ```
 
 ## Architecture
 
-```
-UsbDevice<C: UsbClass>
-  +-- UsbBus           (FIFO read/write, EP control)
-  +-- C                (class driver: CDC, HID, MIDI, ...)
-  +-- ep0 state        (setup buffer, multi-packet IN pointer)
+```mermaid
+graph TD
+    subgraph "USB ISR (poll)"
+        VBUS["VBUSDETH / VBUSDETL<br/><i>wrapper interrupts</i>"]
+        GINTSTS["GINTSTS dispatch"]
+        RXFLVL["RXFLVL<br/><i>FIFO mode only</i>"]
+        OEPINT["OEPINT<br/>SETUP + OUT completion"]
+        IEPINT["IEPINT<br/>IN completion"]
+        RST["USBRST / ENUMDONE"]
+        SUSP["USBSUSP"]
+    end
 
-USB ISR -> poll():
-  1. Check USB->IF for VBUSDETH/VBUSDETL (wrapper interrupts)
-  2. Check GINTSTS for DWC2 core interrupts:
-     OEPINT  -> SETUP: read from DMA buffer, dispatch to class
-              -> XFERCOMPL: read OUT data from DMA buffer
-     IEPINT  -> handle IN completions, multi-packet EP0
-     USBRST  -> reset state, DATTRIM1, re-enumerate
-     ENUMDONE -> configure EP0, activate endpoints, set full GINTMSK
-     USBSUSP -> notify class
+    subgraph "UsbDevice&lt;C: UsbClass&gt;"
+        STATE["EP0 state<br/>(pending_data_out,<br/>ep0_in_ptr, ep0_in_remaining)"]
+        SETUP["handle_setup()"]
+    end
+
+    subgraph UsbBus
+        direction LR
+        EP0W["ep0_write_packet"]
+        EP0P["ep0_prepare_out"]
+        EPW["ep_write"]
+        EPP["ep_prepare_out"]
+    end
+
+    subgraph "UsbClass (trait)"
+        CDC["CdcAcmClass"]
+        CDCECM["CdcEcmClass"]
+        HID["HidKeyboardClass"]
+        VIDEO["VideoClass"]
+        MIDI["MidiClass"]
+        AUDIO["AudioClass"]
+        MSC["MscClass"]
+    end
+
+    VBUS --> GINTSTS
+    GINTSTS --> RXFLVL
+    GINTSTS --> OEPINT
+    GINTSTS --> IEPINT
+    GINTSTS --> RST
+    GINTSTS --> SUSP
+
+    OEPINT --> SETUP
+    SETUP --> EP0W
+    SETUP --> EP0P
+
+    OEPINT -->|"data_out()"| CDC
+    IEPINT -->|"in_complete()"| CDC
+
+    EP0W -->|"FIFO mode"| FIFO["write_fifo()"]
+    EP0W -->|"DMA mode"| DMA["DMA buffer + DSB"]
+    EPW -->|"FIFO mode"| FIFO
+    EPW -->|"DMA mode"| DMA
 ```

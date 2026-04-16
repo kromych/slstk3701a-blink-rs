@@ -502,22 +502,25 @@ impl<C: UsbClass> UsbDevice<C> {
         }
 
         if gintsts.enumdone().bit_is_set() {
-            let usb = self.bus.regs();
-            usb.gintsts().write(|w| w.enumdone().set_bit());
-            usb.gusbcfg()
-                .modify(|_, w| unsafe { w.usbtrdtim().bits(9) });
+            {
+                let usb = self.bus.regs();
+                usb.gintsts().write(|w| w.enumdone().set_bit());
+                usb.gusbcfg()
+                    .modify(|_, w| unsafe { w.usbtrdtim().bits(9) });
 
-            // Flush all FIFOs (deferred from reset handler).
-            usb.grstctl()
-                .write(|w| w.txfflsh().set_bit().txfnum().fall().rxfflsh().set_bit());
-            while usb.grstctl().read().txfflsh().bit_is_set()
-                || usb.grstctl().read().rxfflsh().bit_is_set()
-            {}
+                // Flush all FIFOs (deferred from reset handler).
+                usb.grstctl()
+                    .write(|w| w.txfflsh().set_bit().txfnum().fall().rxfflsh().set_bit());
+                while usb.grstctl().read().txfflsh().bit_is_set()
+                    || usb.grstctl().read().rxfflsh().bit_is_set()
+                {}
 
-            // Configure EP0.
-            usb.diep0ctl().write(|w| w.mps()._64b().snak().set_bit());
-            usb.doep0ctl().write(|w| w.snak().set_bit());
+                // Configure EP0.
+                usb.diep0ctl().write(|w| w.mps()._64b().snak().set_bit());
+                usb.doep0ctl().write(|w| w.snak().set_bit());
+            }
             self.activate_endpoints();
+            let usb = self.bus.regs();
             usb.doep0tsiz().write(|w| unsafe { w.supcnt().bits(3) });
 
             usb.dctl().modify(|_, w| w.cgnpinnak().set_bit());
@@ -583,34 +586,37 @@ impl<C: UsbClass> UsbDevice<C> {
 
     fn handle_usb_reset(&mut self) {
         defmt::info!("USB reset");
-        let usb = self.bus.regs();
+        {
+            let usb = self.bus.regs();
 
-        // Clear Remote Wakeup Signalling.
-        usb.dctl().modify(|_, w| w.rmtwkupsig().clear_bit());
+            // Clear Remote Wakeup Signalling.
+            usb.dctl().modify(|_, w| w.rmtwkupsig().clear_bit());
 
-        // Flush TX FIFO 0.
-        usb.grstctl().write(|w| w.txfflsh().set_bit().txfnum().f0());
-        while usb.grstctl().read().txfflsh().bit_is_set() {}
+            // Flush TX FIFO 0.
+            usb.grstctl().write(|w| w.txfflsh().set_bit().txfnum().f0());
+            while usb.grstctl().read().txfflsh().bit_is_set() {}
 
-        // Clear EP interrupt flags.
-        usb.diep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
-        usb.doep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+            // Clear EP interrupt flags.
+            usb.diep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
+            usb.doep0int().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
 
-        // GG11B: re-assert D+ pull-up delay (per EMLIB).
-        usb.dattrim1().modify(|_, w| w.endlypullup().set_bit());
+            // GG11B: re-assert D+ pull-up delay (per EMLIB).
+            usb.dattrim1().modify(|_, w| w.endlypullup().set_bit());
 
-        // Clear device address.
-        usb.dcfg().modify(|_, w| unsafe { w.devaddr().bits(0) });
+            // Clear device address.
+            usb.dcfg().modify(|_, w| unsafe { w.devaddr().bits(0) });
 
-        // Set turnaround time for 19MHz AHB clock.
-        usb.gusbcfg()
-            .modify(|_, w| unsafe { w.usbtrdtim().bits(9) });
+            // Set turnaround time for 19MHz AHB clock.
+            usb.gusbcfg()
+                .modify(|_, w| unsafe { w.usbtrdtim().bits(9) });
 
-        // Configure EP0.
-        usb.diep0ctl().write(|w| w.mps()._64b().snak().set_bit());
-        usb.doep0ctl().write(|w| w.snak().set_bit());
+            // Configure EP0.
+            usb.diep0ctl().write(|w| w.mps()._64b().snak().set_bit());
+            usb.doep0ctl().write(|w| w.snak().set_bit());
+        }
         self.activate_endpoints();
 
+        let usb = self.bus.regs();
         // Prepare EP0 OUT for SETUP reception.
         usb.doep0tsiz().write(|w| unsafe { w.supcnt().bits(3) });
         usb.doep0dmaaddr()
@@ -652,7 +658,25 @@ impl<C: UsbClass> UsbDevice<C> {
         );
     }
 
-    fn activate_endpoints(&self) {
+    fn activate_endpoints(&mut self) {
+        // Latch OUT endpoint parameters before taking the register reference,
+        // since configure_out_ep needs &mut self.bus.
+        if let Some(ref ep) = self.config.ep1 {
+            if ep.has_out {
+                self.bus.configure_out_ep(1, ep.mps, ep.out_max_xfer);
+            }
+        }
+        if let Some(ref ep) = self.config.ep2 {
+            if ep.has_out {
+                self.bus.configure_out_ep(2, ep.mps, ep.out_max_xfer);
+            }
+        }
+        if let Some(ref ep) = self.config.ep3 {
+            if ep.has_out {
+                self.bus.configure_out_ep(3, ep.mps, ep.out_max_xfer);
+            }
+        }
+
         let usb = self.bus.regs();
         let mut daintmsk: u32 = 0x0001_0001; // EP0 IN + OUT
 
@@ -907,9 +931,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 .doep0_int()
                 .write(|w| unsafe { w.bits(int.bits()) });
             if int.xfercompl().bit_is_set() {
-                if let Some(ref ep) = self.config.ep1 {
-                    self.bus.ep_prepare_out(1, ep.mps, ep.out_max_xfer);
-                }
+                self.bus.ep_prepare_out(1);
             }
         }
 
@@ -921,9 +943,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 .doep1_int()
                 .write(|w| unsafe { w.bits(int.bits()) });
             if int.xfercompl().bit_is_set() {
-                if let Some(ref ep) = self.config.ep2 {
-                    self.bus.ep_prepare_out(2, ep.mps, ep.out_max_xfer);
-                }
+                self.bus.ep_prepare_out(2);
             }
         }
 
@@ -935,9 +955,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 .doep2_int()
                 .write(|w| unsafe { w.bits(int.bits()) });
             if int.xfercompl().bit_is_set() {
-                if let Some(ref ep) = self.config.ep3 {
-                    self.bus.ep_prepare_out(3, ep.mps, ep.out_max_xfer);
-                }
+                self.bus.ep_prepare_out(3);
             }
         }
     }
@@ -1027,7 +1045,7 @@ impl<C: UsbClass> UsbDevice<C> {
                     cortex_m::asm::dsb();
                     let data = bus::ep1_out_data(len);
                     self.class.data_out(1, data, &self.bus);
-                    self.bus.ep_prepare_out(1, ep.mps, ep.out_max_xfer);
+                    self.bus.ep_prepare_out(1);
                 }
             }
         }
@@ -1045,7 +1063,7 @@ impl<C: UsbClass> UsbDevice<C> {
                     let len = (ep.mps as usize).saturating_sub(remaining);
                     let data = bus::ep2_out_data(len);
                     self.class.data_out(2, data, &self.bus);
-                    self.bus.ep_prepare_out(2, ep.mps, ep.out_max_xfer);
+                    self.bus.ep_prepare_out(2);
                 }
             }
         }
@@ -1063,7 +1081,7 @@ impl<C: UsbClass> UsbDevice<C> {
                     let len = (ep.mps as usize).saturating_sub(remaining);
                     let data = bus::ep3_out_data(len);
                     self.class.data_out(3, data, &self.bus);
-                    self.bus.ep_prepare_out(3, ep.mps, ep.out_max_xfer);
+                    self.bus.ep_prepare_out(3);
                 }
             }
         }
@@ -1176,20 +1194,14 @@ impl<C: UsbClass> UsbDevice<C> {
             // SET_CONFIGURATION.
             (0x00, SET_CONFIGURATION) => {
                 defmt::info!("SET_CONFIGURATION {}", setup.w_value);
-                if let Some(ref ep) = self.config.ep1 {
-                    if ep.has_out {
-                        self.bus.ep_prepare_out(1, ep.mps, ep.out_max_xfer);
-                    }
+                if self.config.ep1.as_ref().is_some_and(|e| e.has_out) {
+                    self.bus.ep_prepare_out(1);
                 }
-                if let Some(ref ep) = self.config.ep2 {
-                    if ep.has_out {
-                        self.bus.ep_prepare_out(2, ep.mps, ep.out_max_xfer);
-                    }
+                if self.config.ep2.as_ref().is_some_and(|e| e.has_out) {
+                    self.bus.ep_prepare_out(2);
                 }
-                if let Some(ref ep) = self.config.ep3 {
-                    if ep.has_out {
-                        self.bus.ep_prepare_out(3, ep.mps, ep.out_max_xfer);
-                    }
+                if self.config.ep3.as_ref().is_some_and(|e| e.has_out) {
+                    self.bus.ep_prepare_out(3);
                 }
                 // Enable Low Energy Mode.
                 self.bus.regs().ctrl().modify(|_, w| {

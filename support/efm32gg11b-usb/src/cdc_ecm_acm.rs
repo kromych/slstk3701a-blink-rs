@@ -582,7 +582,7 @@ impl UsbClass for CdcEcmAcmClass {
     fn configured(&mut self, usb: &UsbBus) {
         CONFIGURED.store(true, Ordering::Release);
         // ACM data interface is always active (no alt-setting dance).
-        usb.ep_prepare_out(3, EP3_MPS, 0);
+        usb.ep_prepare_out(3);
         defmt::info!("Composite ECM+ACM configured");
     }
 
@@ -593,7 +593,7 @@ impl UsbClass for CdcEcmAcmClass {
             ECM_DATA_ACTIVE.store(active, Ordering::Release);
             defmt::info!("ECM data interface alt={}", alt);
             if active {
-                usb.ep_prepare_out(1, EP1_MPS, 1536);
+                usb.ep_prepare_out(1);
             }
         }
     }

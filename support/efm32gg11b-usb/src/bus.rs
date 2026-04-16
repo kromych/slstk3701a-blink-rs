@@ -149,8 +149,16 @@ pub fn ep3_out_data(len: usize) -> &'static [u8] {
 /// Without `dma`, the driver operates in slave (FIFO) mode: the CPU reads and
 /// writes the DWC2 FIFOs directly, which uses less static memory at the cost
 /// of higher ISR overhead.
+/// Per-endpoint OUT configuration latched during endpoint activation.
+#[derive(Copy, Clone, Default)]
+struct OutEpInfo {
+    mps: u16,
+    max_xfer: u16,
+}
+
 pub struct UsbBus {
     usb: &'static pac::usb::RegisterBlock,
+    out_ep: [OutEpInfo; 3], // EP1, EP2, EP3
 }
 
 // SAFETY: UsbBus holds a reference to a fixed MMIO register block.
@@ -168,6 +176,15 @@ impl UsbBus {
     pub fn new() -> Self {
         Self {
             usb: unsafe { &*pac::Usb::ptr() },
+            out_ep: [OutEpInfo::default(); 3],
+        }
+    }
+
+    /// Latch OUT endpoint parameters so that [`ep_prepare_out`] only needs
+    /// the endpoint number.  Called during endpoint activation.
+    pub fn configure_out_ep(&mut self, ep: u8, mps: u16, max_xfer: u16) {
+        if ep >= 1 && ep <= 3 {
+            self.out_ep[(ep - 1) as usize] = OutEpInfo { mps, max_xfer };
         }
     }
 
@@ -338,13 +355,19 @@ impl UsbBus {
 
     /// Prepare a bulk/interrupt OUT endpoint (1, 2, or 3) to receive data.
     ///
-    /// `max_xfer`: when non-zero (DMA mode only), the endpoint is armed
-    /// for **multi-packet** reception (`pktcnt = max_xfer / mps`) so
-    /// the host can send an entire payload without per-packet NAK.
-    /// XFERCOMPL fires once a short packet (or ZLP) terminates the
-    /// transfer.  When zero the endpoint receives a single packet.
-    #[allow(unused_variables)]
-    pub fn ep_prepare_out(&self, ep: u8, mps: u16, max_xfer: u16) {
+    /// Uses the MPS and `max_xfer` latched by [`configure_out_ep`].
+    /// When `max_xfer > 0` (DMA mode only), the endpoint is armed for
+    /// **multi-packet** reception (`pktcnt = max_xfer / mps`) so the host
+    /// can send an entire payload without per-packet NAK.  XFERCOMPL fires
+    /// once a short packet (or ZLP) terminates the transfer.  When
+    /// `max_xfer = 0` the endpoint receives a single packet.
+    pub fn ep_prepare_out(&self, ep: u8) {
+        let info = match ep {
+            1..=3 => self.out_ep[(ep - 1) as usize],
+            _ => return,
+        };
+        let mps = info.mps;
+        let _max_xfer = info.max_xfer;
         match ep {
             1 => {
                 #[cfg(feature = "dma")]
@@ -354,8 +377,8 @@ impl UsbBus {
                         .write(|w| w.bits(core::ptr::addr_of!(EP1_OUT_BUF) as u32));
                 }
                 #[cfg(feature = "dma")]
-                if max_xfer > 0 {
-                    let xfer = (max_xfer as usize).min(EP1_OUT_BUF_SIZE) as u32;
+                if _max_xfer > 0 {
+                    let xfer = (_max_xfer as usize).min(EP1_OUT_BUF_SIZE) as u32;
                     let pktcnt = ((xfer as usize + mps as usize - 1) / mps as usize) as u16;
                     self.usb
                         .doep0_tsiz()

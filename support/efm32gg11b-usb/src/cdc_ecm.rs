@@ -460,7 +460,7 @@ impl UsbClass for CdcEcmClass {
             defmt::info!("CDC-ECM data interface alt={}", alt);
             if active {
                 // Prepare EP1 OUT to receive frames from the host.
-                usb.ep_prepare_out(1, EP1_MPS, 1536);
+                usb.ep_prepare_out(1);
             }
         }
     }

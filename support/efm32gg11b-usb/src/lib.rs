@@ -14,12 +14,16 @@ pub mod audio;
 pub mod bus;
 pub mod cdc_acm;
 pub mod cdc_ecm;
+pub mod cdc_ecm_acm;
 pub mod hid_keyboard;
 pub mod midi;
 pub mod msc;
 pub mod video;
 
 pub use bus::UsbBus;
+
+/// `true` when the crate is compiled with DWC2 Buffer DMA mode.
+pub const DMA_MODE: bool = cfg!(feature = "dma");
 
 use efm32gg11b_pac as pac;
 use pac::interrupt;
@@ -54,7 +58,7 @@ pub enum SetupResult {
     Unhandled,
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq)]
 pub enum EpType {
     Bulk,
     Interrupt,
@@ -74,8 +78,10 @@ pub struct UsbConfig {
     pub tx0_fifo_words: u16,
     pub tx1_fifo_words: u16,
     pub tx2_fifo_words: u16,
+    pub tx3_fifo_words: u16,
     pub ep1: Option<EpConfig>,
     pub ep2: Option<EpConfig>,
+    pub ep3: Option<EpConfig>,
 }
 
 // ---------------------------------------------------------------------------
@@ -196,9 +202,20 @@ macro_rules! usb_device {
 // DMA buffer for EP0 SETUP packets (required when GAHBCFG.DMAEN is set)
 // ---------------------------------------------------------------------------
 
-/// 3 SETUP packets × 8 bytes, 4-byte aligned.
+/// EP0 OUT DMA buffer — receives SETUP packets (8 bytes each, up to 3
+/// back-to-back) as well as status-stage ZLPs.  Sized to 64 bytes in DMA
+/// mode so that an unexpected DATA OUT packet never overflows.
+#[cfg(feature = "dma")]
+#[repr(C, align(4))]
+pub(crate) struct SetupBuf(pub(crate) [u8; 64]);
+#[cfg(feature = "dma")]
+static mut EP0_SETUP_DMA_BUF: SetupBuf = SetupBuf([0u8; 64]);
+
+/// 3 SETUP packets × 8 bytes, 4-byte aligned (slave mode).
+#[cfg(not(feature = "dma"))]
 #[repr(C, align(4))]
 struct SetupBuf([u8; 24]);
+#[cfg(not(feature = "dma"))]
 static mut EP0_SETUP_DMA_BUF: SetupBuf = SetupBuf([0u8; 24]);
 
 // ---------------------------------------------------------------------------
@@ -216,7 +233,9 @@ pub struct UsbDevice<C: UsbClass> {
     bus: UsbBus,
     pub class: C,
     config: UsbConfig,
+    #[cfg(not(feature = "dma"))]
     ep0_out_buf: [u8; 64],
+    #[cfg(not(feature = "dma"))]
     ep0_out_len: usize,
     pending_data_out: bool,
     ep0_in_ptr: *const u8,
@@ -297,7 +316,17 @@ impl<C: UsbClass> UsbDevice<C> {
         usb.dcfg()
             .modify(|_, w| w.devspd().fs().nzstsouthshk().set_bit());
 
-        // AHB config: slave (FIFO) mode + global interrupt mask.
+        // AHB config: global interrupt mask + transfer mode.
+        #[cfg(feature = "dma")]
+        usb.gahbcfg().write(|w| {
+            w.glblintrmsk()
+                .set_bit()
+                .dmaen()
+                .set_bit()
+                .hbstlen()
+                .incr4()
+        });
+        #[cfg(not(feature = "dma"))]
         usb.gahbcfg().write(|w| w.glblintrmsk().set_bit());
 
         // Ignore frame number on isochronous endpoints.
@@ -327,6 +356,15 @@ impl<C: UsbClass> UsbDevice<C> {
                 .inepntxfdep()
                 .bits(config.tx2_fifo_words)
         });
+        if config.tx3_fifo_words > 0 {
+            let tx3_start = tx2_start + config.tx2_fifo_words;
+            usb.dieptxf3().write(|w| unsafe {
+                w.inepntxfstaddr()
+                    .bits(tx3_start)
+                    .inepntxfdep()
+                    .bits(config.tx3_fifo_words)
+            });
+        }
 
         // Flush all FIFOs.
         usb.grstctl()
@@ -377,7 +415,9 @@ impl<C: UsbClass> UsbDevice<C> {
             bus: UsbBus::new(),
             class,
             config,
+            #[cfg(not(feature = "dma"))]
             ep0_out_buf: [0u8; 64],
+            #[cfg(not(feature = "dma"))]
             ep0_out_len: 0,
             pending_data_out: false,
             ep0_in_ptr: core::ptr::null(),
@@ -477,12 +517,13 @@ impl<C: UsbClass> UsbDevice<C> {
 
             usb.dctl().modify(|_, w| w.cgnpinnak().set_bit());
 
-            // Enable endpoint and RXFLVL interrupts, plus EP masks.
+            // Enable endpoint interrupts, plus EP masks.
             usb.diepmsk().write(|w| w.xfercomplmsk().set_bit());
             usb.doepmsk()
                 .write(|w| w.xfercomplmsk().set_bit().setupmsk().set_bit());
             usb.gintmsk().write(|w| {
-                w.usbrstmsk()
+                let w = w
+                    .usbrstmsk()
                     .set_bit()
                     .enumdonemsk()
                     .set_bit()
@@ -493,9 +534,10 @@ impl<C: UsbClass> UsbDevice<C> {
                     .iepintmsk()
                     .set_bit()
                     .oepintmsk()
-                    .set_bit()
-                    .rxflvlmsk()
-                    .set_bit()
+                    .set_bit();
+                #[cfg(not(feature = "dma"))]
+                let w = w.rxflvlmsk().set_bit();
+                w
             });
 
             self.bus.ep0_prepare_out();
@@ -516,6 +558,7 @@ impl<C: UsbClass> UsbDevice<C> {
             defmt::info!("USB wakeup");
         }
 
+        #[cfg(not(feature = "dma"))]
         if gintsts.rxflvl().bit_is_set() {
             self.handle_rxflvl();
         }
@@ -577,7 +620,8 @@ impl<C: UsbClass> UsbDevice<C> {
         usb.gintmsk().write(|w| unsafe { w.bits(0) });
         usb.gintsts().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
         usb.gintmsk().write(|w| {
-            w.usbrstmsk()
+            let w = w
+                .usbrstmsk()
                 .set_bit()
                 .enumdonemsk()
                 .set_bit()
@@ -588,9 +632,10 @@ impl<C: UsbClass> UsbDevice<C> {
                 .iepintmsk()
                 .set_bit()
                 .oepintmsk()
-                .set_bit()
-                .rxflvlmsk()
-                .set_bit()
+                .set_bit();
+            #[cfg(not(feature = "dma"))]
+            let w = w.rxflvlmsk().set_bit();
+            w
         });
 
         self.bus.ep0_prepare_out();
@@ -610,15 +655,17 @@ impl<C: UsbClass> UsbDevice<C> {
             if ep.has_in {
                 daintmsk |= 1 << 1;
                 usb.diep0_ctl().write(|w| unsafe {
-                    let w = w
-                        .mps()
-                        .bits(ep.mps)
-                        .usbactep()
-                        .set_bit()
-                        .txfnum()
-                        .bits(1)
-                        .snak()
-                        .set_bit();
+                    let w = w.mps().bits(ep.mps).txfnum().bits(1).snak().set_bit();
+                    // Defer usbactep for isochronous IN endpoints until
+                    // the first ep_write.  Setting it here lets the DWC2
+                    // respond to IN tokens with stale data from the
+                    // uninitialised TX FIFO / DMA buffer, causing a
+                    // green flicker in YUY2 video.
+                    let w = if ep.ep_type != EpType::Isochronous {
+                        w.usbactep().set_bit()
+                    } else {
+                        w
+                    };
                     match ep.ep_type {
                         EpType::Bulk => w.eptype().bulk(),
                         EpType::Interrupt => w.eptype().int(),
@@ -643,15 +690,12 @@ impl<C: UsbClass> UsbDevice<C> {
             if ep.has_in {
                 daintmsk |= 1 << 2;
                 usb.diep1_ctl().write(|w| unsafe {
-                    let w = w
-                        .mps()
-                        .bits(ep.mps)
-                        .usbactep()
-                        .set_bit()
-                        .txfnum()
-                        .bits(2)
-                        .snak()
-                        .set_bit();
+                    let w = w.mps().bits(ep.mps).txfnum().bits(2).snak().set_bit();
+                    let w = if ep.ep_type != EpType::Isochronous {
+                        w.usbactep().set_bit()
+                    } else {
+                        w
+                    };
                     match ep.ep_type {
                         EpType::Bulk => w.eptype().bulk(),
                         EpType::Interrupt => w.eptype().int(),
@@ -672,12 +716,103 @@ impl<C: UsbClass> UsbDevice<C> {
             }
         }
 
+        if let Some(ref ep) = self.config.ep3 {
+            if ep.has_in {
+                daintmsk |= 1 << 3;
+                usb.diep2_ctl().write(|w| unsafe {
+                    let w = w.mps().bits(ep.mps).txfnum().bits(3).snak().set_bit();
+                    let w = if ep.ep_type != EpType::Isochronous {
+                        w.usbactep().set_bit()
+                    } else {
+                        w
+                    };
+                    match ep.ep_type {
+                        EpType::Bulk => w.eptype().bulk(),
+                        EpType::Interrupt => w.eptype().int(),
+                        EpType::Isochronous => w.eptype().iso(),
+                    }
+                });
+            }
+            if ep.has_out {
+                daintmsk |= 1 << 19;
+                usb.doep2_ctl().write(|w| unsafe {
+                    let w = w.mps().bits(ep.mps).usbactep().set_bit().snak().set_bit();
+                    match ep.ep_type {
+                        EpType::Bulk => w.eptype().bulk(),
+                        EpType::Interrupt => w.eptype().int(),
+                        EpType::Isochronous => w.eptype().iso(),
+                    }
+                });
+            }
+        }
+
         usb.daintmsk().write(|w| unsafe { w.bits(daintmsk) });
         usb.diepmsk().write(|w| w.xfercomplmsk().set_bit());
         usb.doepmsk()
             .write(|w| w.xfercomplmsk().set_bit().setupmsk().set_bit());
     }
 
+    fn handle_iepint(&mut self) {
+        // EP0 IN.
+        let diep0int = self.bus.regs().diep0int().read();
+        self.bus
+            .regs()
+            .diep0int()
+            .write(|w| unsafe { w.bits(diep0int.bits()) });
+        if diep0int.xfercompl().bit_is_set() {
+            if self.ep0_in_remaining > 0 {
+                self.ep0_continue_in();
+            } else {
+                // Re-arm EP0 OUT and clear NAK so the host can send
+                // the status-stage ZLP OUT.
+                self.bus.ep0_prepare_out();
+                #[cfg(feature = "dma")]
+                self.bus.ep0_clear_out_nak();
+            }
+        }
+
+        // EP1 IN.
+        if self.config.ep1.as_ref().is_some_and(|e| e.has_in) {
+            let int = self.bus.regs().diep0_int().read();
+            self.bus
+                .regs()
+                .diep0_int()
+                .write(|w| unsafe { w.bits(int.bits()) });
+            if int.xfercompl().bit_is_set() {
+                self.class.in_complete(1, &self.bus);
+            }
+        }
+
+        // EP2 IN.
+        if self.config.ep2.as_ref().is_some_and(|e| e.has_in) {
+            let int = self.bus.regs().diep1_int().read();
+            self.bus
+                .regs()
+                .diep1_int()
+                .write(|w| unsafe { w.bits(int.bits()) });
+            if int.xfercompl().bit_is_set() {
+                self.class.in_complete(2, &self.bus);
+            }
+        }
+
+        // EP3 IN.
+        if self.config.ep3.as_ref().is_some_and(|e| e.has_in) {
+            let int = self.bus.regs().diep2_int().read();
+            self.bus
+                .regs()
+                .diep2_int()
+                .write(|w| unsafe { w.bits(int.bits()) });
+            if int.xfercompl().bit_is_set() {
+                self.class.in_complete(3, &self.bus);
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------
+    // Slave (FIFO) mode — RXFLVL + OEPINT handlers
+    // -----------------------------------------------------------------------
+
+    #[cfg(not(feature = "dma"))]
     fn handle_rxflvl(&mut self) {
         loop {
             if !self.bus.regs().gintsts().read().rxflvl().bit_is_set() {
@@ -738,46 +873,7 @@ impl<C: UsbClass> UsbDevice<C> {
         }
     }
 
-    fn handle_iepint(&mut self) {
-        // EP0 IN.
-        let diep0int = self.bus.regs().diep0int().read();
-        self.bus
-            .regs()
-            .diep0int()
-            .write(|w| unsafe { w.bits(diep0int.bits()) });
-        if diep0int.xfercompl().bit_is_set() {
-            if self.ep0_in_remaining > 0 {
-                self.ep0_continue_in();
-            } else {
-                self.bus.ep0_prepare_out();
-            }
-        }
-
-        // EP1 IN.
-        if self.config.ep1.as_ref().is_some_and(|e| e.has_in) {
-            let int = self.bus.regs().diep0_int().read();
-            self.bus
-                .regs()
-                .diep0_int()
-                .write(|w| unsafe { w.bits(int.bits()) });
-            if int.xfercompl().bit_is_set() {
-                self.class.in_complete(1, &self.bus);
-            }
-        }
-
-        // EP2 IN.
-        if self.config.ep2.as_ref().is_some_and(|e| e.has_in) {
-            let int = self.bus.regs().diep1_int().read();
-            self.bus
-                .regs()
-                .diep1_int()
-                .write(|w| unsafe { w.bits(int.bits()) });
-            if int.xfercompl().bit_is_set() {
-                self.class.in_complete(2, &self.bus);
-            }
-        }
-    }
-
+    #[cfg(not(feature = "dma"))]
     fn handle_oepint(&mut self) {
         // EP0 OUT.
         let doep0int = self.bus.regs().doep0int().read();
@@ -822,6 +918,141 @@ impl<C: UsbClass> UsbDevice<C> {
             if int.xfercompl().bit_is_set() {
                 if let Some(ref ep) = self.config.ep2 {
                     self.bus.ep_prepare_out(2, ep.mps);
+                }
+            }
+        }
+
+        // EP3 OUT.
+        if self.config.ep3.as_ref().is_some_and(|e| e.has_out) {
+            let int = self.bus.regs().doep2_int().read();
+            self.bus
+                .regs()
+                .doep2_int()
+                .write(|w| unsafe { w.bits(int.bits()) });
+            if int.xfercompl().bit_is_set() {
+                if let Some(ref ep) = self.config.ep3 {
+                    self.bus.ep_prepare_out(3, ep.mps);
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------
+    // Buffer DMA mode — OEPINT handler (RXFLVL not used)
+    // -----------------------------------------------------------------------
+
+    #[cfg(feature = "dma")]
+    fn handle_oepint(&mut self) {
+        // EP0 OUT — SETUP and DATA are distinguished by DOEP0INT bits.
+        let doep0int = self.bus.regs().doep0int().read();
+        self.bus
+            .regs()
+            .doep0int()
+            .write(|w| unsafe { w.bits(doep0int.bits()) });
+
+        if doep0int.setup().bit_is_set() {
+            // ---- SETUP packet received via DMA ----
+            self.bus.flush_ep0_tx_if_pending();
+            self.ep0_in_remaining = 0;
+
+            // Determine which SETUP packet is the latest (for back-to-back).
+            let supcnt = self.bus.regs().doep0tsiz().read().supcnt().bits() as usize;
+            let num_received = 3usize.saturating_sub(supcnt);
+            let offset = num_received.saturating_sub(1) * 8;
+
+            let buf = unsafe { &*core::ptr::addr_of!(EP0_SETUP_DMA_BUF).cast::<SetupBuf>() };
+            let buf = &buf.0;
+            let setup = SetupPacket {
+                bm_request_type: buf[offset],
+                b_request: buf[offset + 1],
+                w_value: u16::from_le_bytes([buf[offset + 2], buf[offset + 3]]),
+                w_index: u16::from_le_bytes([buf[offset + 4], buf[offset + 5]]),
+                w_length: u16::from_le_bytes([buf[offset + 6], buf[offset + 7]]),
+            };
+
+            self.handle_setup(setup);
+        }
+
+        // EP0 DATA OUT handling.
+        //
+        // After SETUP, the endpoint is re-armed with SNAK (NAK set) so
+        // that only SETUP packets (which bypass NAK) can arrive.  When
+        // handle_setup returns DataOut, NAK is cleared to allow the DATA
+        // OUT packet through.  This prevents the DMA race where DATA OUT
+        // overwrites SETUP data in the shared buffer before the ISR reads
+        // it.
+        if doep0int.xfercompl().bit_is_set() && self.pending_data_out {
+            let remaining = self.bus.regs().doep0tsiz().read().xfersize().bits() as usize;
+            let len = 64usize.saturating_sub(remaining);
+            if len > 0 {
+                self.pending_data_out = false;
+                let data = bus::ep0_out_data(len);
+                self.class.ep0_data_out(data, &self.bus);
+                self.bus.ep0_write_packet(&[]); // Status-stage ZLP IN.
+            } else {
+                // Spurious XFERCOMPL (e.g. SETUP DMA completion).
+                // Re-arm and clear NAK so the real DATA OUT can arrive.
+                self.bus.ep0_prepare_out();
+                self.bus.ep0_clear_out_nak();
+            }
+        } else if doep0int.xfercompl().bit_is_set() || doep0int.setup().bit_is_set() {
+            self.bus.ep0_prepare_out();
+            #[cfg(feature = "dma")]
+            if self.pending_data_out {
+                self.bus.ep0_clear_out_nak();
+            }
+        }
+
+        // EP1 OUT.
+        if self.config.ep1.as_ref().is_some_and(|e| e.has_out) {
+            let int = self.bus.regs().doep0_int().read();
+            self.bus
+                .regs()
+                .doep0_int()
+                .write(|w| unsafe { w.bits(int.bits()) });
+            if int.xfercompl().bit_is_set() {
+                if let Some(ref ep) = self.config.ep1 {
+                    let remaining = self.bus.regs().doep0_tsiz().read().xfersize().bits() as usize;
+                    let len = (ep.mps as usize).saturating_sub(remaining);
+                    let data = bus::ep1_out_data(len);
+                    self.class.data_out(1, data, &self.bus);
+                    self.bus.ep_prepare_out(1, ep.mps);
+                }
+            }
+        }
+
+        // EP2 OUT.
+        if self.config.ep2.as_ref().is_some_and(|e| e.has_out) {
+            let int = self.bus.regs().doep1_int().read();
+            self.bus
+                .regs()
+                .doep1_int()
+                .write(|w| unsafe { w.bits(int.bits()) });
+            if int.xfercompl().bit_is_set() {
+                if let Some(ref ep) = self.config.ep2 {
+                    let remaining = self.bus.regs().doep1_tsiz().read().xfersize().bits() as usize;
+                    let len = (ep.mps as usize).saturating_sub(remaining);
+                    let data = bus::ep2_out_data(len);
+                    self.class.data_out(2, data, &self.bus);
+                    self.bus.ep_prepare_out(2, ep.mps);
+                }
+            }
+        }
+
+        // EP3 OUT.
+        if self.config.ep3.as_ref().is_some_and(|e| e.has_out) {
+            let int = self.bus.regs().doep2_int().read();
+            self.bus
+                .regs()
+                .doep2_int()
+                .write(|w| unsafe { w.bits(int.bits()) });
+            if int.xfercompl().bit_is_set() {
+                if let Some(ref ep) = self.config.ep3 {
+                    let remaining = self.bus.regs().doep2_tsiz().read().xfersize().bits() as usize;
+                    let len = (ep.mps as usize).saturating_sub(remaining);
+                    let data = bus::ep3_out_data(len);
+                    self.class.data_out(3, data, &self.bus);
+                    self.bus.ep_prepare_out(3, ep.mps);
                 }
             }
         }
@@ -942,6 +1173,11 @@ impl<C: UsbClass> UsbDevice<C> {
                 if let Some(ref ep) = self.config.ep2 {
                     if ep.has_out {
                         self.bus.ep_prepare_out(2, ep.mps);
+                    }
+                }
+                if let Some(ref ep) = self.config.ep3 {
+                    if ep.has_out {
+                        self.bus.ep_prepare_out(3, ep.mps);
                     }
                 }
                 // Enable Low Energy Mode.

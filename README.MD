@@ -22,6 +22,8 @@ Demo | Description
 [`usb-msc`](./demos/usb-msc) | USB Mass Storage demo
 [`usb-video`](./demos/usb-video) | USB Video demo
 
+Adding `--features efm32gg11b-usb/dma` builds USB demos in the DMA mode.
+
 ## Prepare
 
 One-time tool installation:

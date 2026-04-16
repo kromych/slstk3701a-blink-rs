@@ -124,14 +124,7 @@ impl LcdState {
     }
 
     /// Redraw stats on the LCD at ~2 Hz.
-    fn draw_stats(
-        &mut self,
-        now_ms: u32,
-        link: bool,
-        usb_active: bool,
-        h2d: u32,
-        d2h: u32,
-    ) {
+    fn draw_stats(&mut self, now_ms: u32, link: bool, usb_active: bool, h2d: u32, d2h: u32) {
         if now_ms.wrapping_sub(self.last_draw_ms) < 500 {
             return;
         }
@@ -197,7 +190,6 @@ impl LcdState {
         let s = core::str::from_utf8(&line).unwrap_or("");
         display::draw_text_colored(8, 0, s, BLACK, WHITE, &mut self.vcom);
     }
-
 }
 
 // ---------- ETH interrupt handler ----------
@@ -265,7 +257,7 @@ fn main() -> ! {
     // ---- Initialize USB CDC-ECM ----
     let dev = UsbDevice::init(&p.cmu, &p.usb, CdcEcmClass::new(), cdc_ecm::usb_config());
 
-    defmt::info!("USB CDC-ECM initialized");
+    defmt::info!("USB CDC-ECM initialized (DMA={})", efm32gg11b_usb::DMA_MODE);
     defmt::info!("NOTE: Set power switch to USB and connect Micro-AB cable");
     usb_start(dev);
 

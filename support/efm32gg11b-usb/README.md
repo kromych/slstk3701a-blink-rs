@@ -1,7 +1,22 @@
 # efm32gg11b-usb — DWC2 USB Device Driver for EFM32GG11B
 
 Bare-metal USB device driver for the EFM32 Giant Gecko 11 (Cortex-M4F, EFM32GG11B820F2048GL192).
-Uses the on-chip DWC2 OTG core in slave (FIFO) mode. Ported from `efm32hg322_usb`.
+Uses the on-chip DWC2 OTG core. Ported from `efm32hg322_usb`.
+
+## Features
+
+| Feature | Default | Description |
+|---|---|---|
+| `dma` | **yes** | Buffer DMA mode — the DWC2 core moves data between RAM and FIFOs autonomously, freeing the CPU during transfers. Uses ~4 KB of static DMA buffers. |
+
+Without `dma`, the driver operates in slave (FIFO) mode: the CPU reads/writes
+the DWC2 FIFOs directly inside the ISR.  This saves the static buffer memory
+at the cost of higher interrupt overhead.
+
+```toml
+# Slave (FIFO) mode — saves ~4 KB of static RAM
+efm32gg11b-usb = { version = "0.0.1", default-features = false }
+```
 
 ## DWC2 on the EFM32GG11B
 
@@ -16,7 +31,7 @@ Uses the on-chip DWC2 OTG core in slave (FIFO) mode. Ported from `efm32hg322_usb
 | Max packet size (EP0) | 64 bytes |
 | PHY | Integrated FS-only |
 | USB clock | USHFRCO 48 MHz with SOF clock recovery |
-| DMA support | Yes (GAHBCFG.DMAEN) — not used by this driver |
+| DMA support | Yes — Buffer DMA mode via GAHBCFG.DMAEN |
 | VBUS detection | `USB->STATUS.VBUSDETH` + `EMU->R5VSTATUS.VBUSDET` |
 | OTG | Yes — OTG registers present (GOTGCTL), device-only use |
 | D+ pull-up | `DCTL.SFTDISCON` (clear to connect, set to disconnect) |
@@ -75,7 +90,7 @@ and connect a second cable to the **USB Micro-AB** connector.
 8. Set `DATTRIM1.ENDLYPULLUP` (GG11B-specific D+ timing)
 9. Force device mode: `GUSBCFG.FORCEDEVMODE`, `USBTRDTIM = 9`, wait 50 ms
 10. `DCFG.DEVSPD = FS`, `NZSTSOUTHSHK = 1`
-11. `GAHBCFG.GLBLINTRMSK = 1` (slave mode, no DMA)
+11. `GAHBCFG`: `GLBLINTRMSK = 1`, `DMAEN = 1`, `HBSTLEN = INCR4` (Buffer DMA mode)
 12. `DCTL.IGNRFRMNUM = 1`
 13. Allocate FIFOs (RX, TX0, TX1, TX2), flush all
 14. Clear EP interrupt masks and flags
@@ -88,47 +103,45 @@ Then in the VBUSDETH handler:
 - Toggle SFTDISCON to re-assert D+ pull-up
 - Enable `GINTMSK`: USBRST + USBSUSP
 
-## SETUP Packet Flow (Slave Mode)
-
-Identical to EFM32HG — the DWC2 core operates the same way in slave mode:
+## SETUP Packet Flow (Buffer DMA Mode)
 
 ```
 Host sends SETUP token + 8 data bytes
   |
   v
-GINTSTS.RXFLVL fires
-  +-- Read GRXSTSP: pktsts = SETUP_DATA_RECVD (0x6), bcnt = 8
-  +-- Read 2 words from RX FIFO -> parse SetupPacket
-  v
-GINTSTS.RXFLVL fires again
-  +-- Read GRXSTSP: pktsts = SETUP_COMPL (0x4)
+DWC2 DMA writes 8 bytes to DOEP0DMAADDR (EP0_SETUP_DMA_BUF)
   v
 GINTSTS.OEPINT fires -> DOEP0INT.SETUP set
+  +-- Read SETUP data from DMA buffer (last of up to 3 back-to-back)
   +-- Dispatch to UsbClass::handle_setup()
   +-- Handled  -> ZLP status     DataIn  -> class wrote response
-      DataOut  -> prepare OUT     Unhandled -> STALL
+      DataOut  -> arm EP0 OUT with data buffer, prepare OUT
+      Unhandled -> STALL
 ```
 
-## IN Transfer Flow
+## IN Transfer Flow (DMA)
 
 ```
+Copy data to DMA buffer
+Set DIEPnDMAADDR to buffer address
 Set DIEPnTSIZ (xfersize, pktcnt=1)
 Set DIEPnCTL: EPENA + CNAK [+ frame parity for ISO]
-Write data words to FIFO[ep]
-  --> DWC2 sends on next IN token
+  --> DWC2 DMA reads buffer, pushes to TX FIFO, sends on IN token
   --> GINTSTS.IEPINT -> DIEPnINT.XFERCOMPL
   --> For EP0: send next chunk if multi-packet
   --> For EPn: call UsbClass::in_complete(ep)
 ```
 
-## OUT Transfer Flow
+## OUT Transfer Flow (DMA)
 
 ```
+Set DOEPnDMAADDR to receive buffer
 Set DOEPnTSIZ (xfersize=MPS, pktcnt=1)
 Set DOEPnCTL: EPENA + CNAK
   --> Host sends OUT token + data
-  --> GINTSTS.RXFLVL -> read GRXSTSP (pktsts=0x2), read FIFO
+  --> DWC2 DMA reads RX FIFO, writes to buffer
   --> GINTSTS.OEPINT -> DOEPnINT.XFERCOMPL
+  --> Read received length from DOEPnTSIZ (MPS - remaining xfersize)
   --> Call UsbClass::data_out(ep, data)
 ```
 
@@ -143,8 +156,8 @@ UsbDevice<C: UsbClass>
 USB ISR -> poll():
   1. Check USB->IF for VBUSDETH/VBUSDETL (wrapper interrupts)
   2. Check GINTSTS for DWC2 core interrupts:
-     RXFLVL  -> read GRXSTSP, read FIFO, buffer SETUP/OUT data
-     OEPINT  -> process buffered SETUP, dispatch to class
+     OEPINT  -> SETUP: read from DMA buffer, dispatch to class
+              -> XFERCOMPL: read OUT data from DMA buffer
      IEPINT  -> handle IN completions, multi-packet EP0
      USBRST  -> reset state, DATTRIM1, re-enumerate
      ENUMDONE -> configure EP0, activate endpoints, set full GINTMSK

@@ -199,6 +199,8 @@ pub fn usb_config() -> UsbConfig {
             has_out: false,
         }),
         ep2: None,
+        tx3_fifo_words: 0,
+        ep3: None,
     }
 }
 

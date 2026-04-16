@@ -144,7 +144,7 @@ fn main() -> ! {
     let class = AudioClass::new(TwinkleSynth::new());
     let dev = UsbDevice::init(&p.cmu, &p.usb, class, audio::usb_config());
 
-    defmt::info!("USB Audio synth ready");
+    defmt::info!("USB Audio synth ready (DMA={})", efm32gg11b_usb::DMA_MODE);
     defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
     efm32gg11b_usb::idle();

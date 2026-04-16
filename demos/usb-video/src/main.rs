@@ -370,7 +370,10 @@ fn main() -> ! {
     let class = VideoClass::new(StarWarsCrawl::new());
     let dev = UsbDevice::init(&p.cmu, &p.usb, class, video::usb_config());
 
-    defmt::info!("USB Video device ready (320x240 @ 5fps)");
+    defmt::info!(
+        "USB Video device ready (320x240 @ 5fps, DMA={})",
+        efm32gg11b_usb::DMA_MODE
+    );
     defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
     efm32gg11b_usb::idle();

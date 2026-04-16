@@ -59,7 +59,7 @@ fn main() -> ! {
 
     let dev = UsbDevice::init(&p.cmu, &p.usb, MidiClass, midi::usb_config());
 
-    defmt::info!("USB MIDI device ready");
+    defmt::info!("USB MIDI device ready (DMA={})", efm32gg11b_usb::DMA_MODE);
     defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
     midi::run(&TwinkleTune, |pkt| {

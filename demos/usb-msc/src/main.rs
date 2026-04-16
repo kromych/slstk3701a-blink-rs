@@ -126,7 +126,7 @@ fn main() -> ! {
         msc::usb_config(),
     );
 
-    defmt::info!("USB Mass Storage ready");
+    defmt::info!("USB Mass Storage ready (DMA={})", efm32gg11b_usb::DMA_MODE);
     defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
     efm32gg11b_usb::idle();

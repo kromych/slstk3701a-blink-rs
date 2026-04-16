@@ -59,7 +59,10 @@ fn main() -> ! {
         cdc_acm::usb_config(),
     );
 
-    defmt::info!("USB CDC ACM serial port ready");
+    defmt::info!(
+        "USB CDC ACM serial port ready (DMA={})",
+        efm32gg11b_usb::DMA_MODE
+    );
     defmt::info!("NOTE: Set power switch to USB and connect cable to Micro-AB connector");
     usb_start(dev);
 

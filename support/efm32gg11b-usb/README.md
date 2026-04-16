@@ -280,6 +280,17 @@ sequenceDiagram
 
 ## OUT Transfer Flow (EPn)
 
+Each endpoint's `EpConfig.out_max_xfer` controls how the OUT side is armed:
+
+| `out_max_xfer` | Behaviour | Use case |
+|---|---|---|
+| `0` | Single-packet: `pktcnt=1, xfersize=MPS` | CDC-ACM, MSC, MIDI — one packet per XFERCOMPL |
+| `> 0` | Multi-packet: `pktcnt=max_xfer/MPS, xfersize=max_xfer` | CDC-ECM — receive a full Ethernet frame (up to 1536 B) in one DMA transfer |
+
+Multi-packet mode eliminates per-packet NAK/ISR round-trips that otherwise
+add ~1 ms latency per 64-byte packet at Full Speed (one USB frame per NAK).
+The transfer completes when the host sends a short packet or ZLP.
+
 ```mermaid
 sequenceDiagram
     participant Class as UsbClass
@@ -292,16 +303,30 @@ sequenceDiagram
 
     Host->>DWC2: OUT token + data
 
-    alt FIFO mode
+    alt FIFO mode (always single-packet)
         DWC2->>Bus: RXFLVL (pktsts=0x2)
         Bus->>Bus: Read data from RX FIFO
         Bus->>Class: data_out(ep, data)
         DWC2->>Bus: OEPINT.XFERCOMPL
         Bus->>DWC2: Re-arm EP (ep_prepare_out)
-    else DMA mode
+    else DMA mode — single-packet (out_max_xfer = 0)
+        Note over DWC2: pktcnt=1, xfersize=MPS
         Note over DWC2: DMA writes to EPn OUT buffer
         DWC2->>Bus: OEPINT.XFERCOMPL
-        Bus->>Bus: Read byte count from DOEPnTSIZ
+        Bus->>Bus: len = MPS − remaining
+        Bus->>Bus: DSB (flush DMA writes)
+        Bus->>Class: data_out(ep, data)
+        Bus->>DWC2: Re-arm EP (ep_prepare_out)
+    else DMA mode — multi-packet (out_max_xfer > 0)
+        Note over DWC2: pktcnt=N, xfersize=out_max_xfer
+        loop N packets (MPS each)
+            Host->>DWC2: OUT token + 64 B
+            Note over DWC2: DMA appends to buffer, pktcnt−−
+        end
+        Host->>DWC2: Short packet or ZLP (terminates transfer)
+        DWC2->>Bus: OEPINT.XFERCOMPL
+        Bus->>Bus: len = out_max_xfer − remaining
+        Bus->>Bus: DSB (flush DMA writes)
         Bus->>Class: data_out(ep, data)
         Bus->>DWC2: Re-arm EP (ep_prepare_out)
     end

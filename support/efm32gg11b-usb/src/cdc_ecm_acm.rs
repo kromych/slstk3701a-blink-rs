@@ -429,18 +429,21 @@ pub fn usb_config() -> UsbConfig {
             mps: EP1_MPS,
             has_in: true,
             has_out: true,
+            out_max_xfer: 1536, // Ethernet frame size
         }),
         ep2: Some(EpConfig {
             ep_type: EpType::Interrupt,
             mps: EP2_MPS,
             has_in: true,
             has_out: false,
+            out_max_xfer: 0,
         }),
         ep3: Some(EpConfig {
             ep_type: EpType::Bulk,
             mps: EP3_MPS,
             has_in: true,
             has_out: true,
+            out_max_xfer: 0,
         }),
     }
 }
@@ -508,7 +511,20 @@ impl UsbClass for CdcEcmAcmClass {
 
     fn data_out(&mut self, ep: u8, data: &[u8], _usb: &UsbBus) {
         if ep == 1 && ECM_DATA_ACTIVE.load(Ordering::Relaxed) {
-            // ECM: reassemble Ethernet frame from bulk OUT packets.
+            // ECM: DMA multi-packet delivers the complete frame at once.
+            #[cfg(feature = "dma")]
+            unsafe {
+                if H2D_LEN.load(Ordering::Relaxed) != 0 {
+                    return;
+                }
+                let len = data.len();
+                if len > 0 && len <= MAX_FRAME {
+                    H2D_FRAME[..len].copy_from_slice(data);
+                    H2D_LEN.store(len as u16, Ordering::Release);
+                }
+            }
+            // ECM FIFO mode: reassemble from 64-byte bulk OUT packets.
+            #[cfg(not(feature = "dma"))]
             unsafe {
                 let pos = H2D_POS;
                 if H2D_LEN.load(Ordering::Relaxed) != 0 {
@@ -566,7 +582,7 @@ impl UsbClass for CdcEcmAcmClass {
     fn configured(&mut self, usb: &UsbBus) {
         CONFIGURED.store(true, Ordering::Release);
         // ACM data interface is always active (no alt-setting dance).
-        usb.ep_prepare_out(3, EP3_MPS);
+        usb.ep_prepare_out(3, EP3_MPS, 0);
         defmt::info!("Composite ECM+ACM configured");
     }
 
@@ -577,7 +593,7 @@ impl UsbClass for CdcEcmAcmClass {
             ECM_DATA_ACTIVE.store(active, Ordering::Release);
             defmt::info!("ECM data interface alt={}", alt);
             if active {
-                usb.ep_prepare_out(1, EP1_MPS);
+                usb.ep_prepare_out(1, EP1_MPS, 1536);
             }
         }
     }

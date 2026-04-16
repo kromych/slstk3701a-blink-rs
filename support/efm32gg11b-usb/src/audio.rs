@@ -197,6 +197,7 @@ pub fn usb_config() -> UsbConfig {
             mps: FRAME_BYTES as u16,
             has_in: true,
             has_out: false,
+            out_max_xfer: 0,
         }),
         ep2: None,
         tx3_fifo_words: 0,

@@ -21,7 +21,7 @@ impl CdcAcmHandler for EchoHandler {
     }
 
     fn tx_complete(&mut self, usb: &UsbBus) {
-        usb.ep_prepare_out(1, 64);
+        usb.ep_prepare_out(1, 64, 0);
     }
 }
 

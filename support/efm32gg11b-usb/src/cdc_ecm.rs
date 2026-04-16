@@ -338,12 +338,14 @@ pub fn usb_config() -> UsbConfig {
             mps: EP1_MPS,
             has_in: true,
             has_out: true,
+            out_max_xfer: 1536,
         }),
         ep2: Some(EpConfig {
             ep_type: EpType::Interrupt,
             mps: EP2_MPS,
             has_in: true,
             has_out: false,
+            out_max_xfer: 0,
         }),
         tx3_fifo_words: 0,
         ep3: None,
@@ -386,10 +388,24 @@ impl UsbClass for CdcEcmClass {
         if ep != 1 || !DATA_ACTIVE.load(Ordering::Relaxed) {
             return;
         }
-        // Reassemble frame from 64-byte bulk OUT packets.
-        // A short packet (< 64 bytes) or ZLP marks the end of a frame.
-        // SAFETY: H2D_POS and H2D_FRAME are only accessed from ISR context
-        // (this callback runs in the USB ISR).
+
+        // In DMA mode, multi-packet transfers deliver the complete frame
+        // in one XFERCOMPL (short packet terminates the DMA transfer).
+        #[cfg(feature = "dma")]
+        unsafe {
+            if H2D_LEN.load(Ordering::Relaxed) != 0 {
+                return; // Previous frame not yet consumed.
+            }
+            let len = data.len();
+            if len > 0 && len <= MAX_FRAME {
+                H2D_FRAME[..len].copy_from_slice(data);
+                H2D_LEN.store(len as u16, Ordering::Release);
+            }
+        }
+
+        // In FIFO (slave) mode, reassemble frame from 64-byte bulk OUT
+        // packets. A short packet (< 64 bytes) or ZLP marks end of frame.
+        #[cfg(not(feature = "dma"))]
         unsafe {
             let pos = H2D_POS;
             if H2D_LEN.load(Ordering::Relaxed) != 0 {
@@ -444,7 +460,7 @@ impl UsbClass for CdcEcmClass {
             defmt::info!("CDC-ECM data interface alt={}", alt);
             if active {
                 // Prepare EP1 OUT to receive frames from the host.
-                usb.ep_prepare_out(1, EP1_MPS);
+                usb.ep_prepare_out(1, EP1_MPS, 1536);
             }
         }
     }

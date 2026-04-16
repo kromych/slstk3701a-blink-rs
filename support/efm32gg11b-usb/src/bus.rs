@@ -90,8 +90,13 @@ struct DmaBuf<const N: usize>([u8; N]);
 static mut EP0_IN_BUF: DmaBuf<64> = DmaBuf([0; 64]);
 #[cfg(feature = "dma")]
 static mut EP1_IN_BUF: DmaBuf<1024> = DmaBuf([0; 1024]);
+/// EP1 OUT DMA buffer — sized for a full Ethernet frame so the DWC2
+/// can receive an entire CDC-ECM transfer (multi-packet) in one shot.
 #[cfg(feature = "dma")]
-static mut EP1_OUT_BUF: DmaBuf<1024> = DmaBuf([0; 1024]);
+static mut EP1_OUT_BUF: DmaBuf<EP1_OUT_BUF_SIZE> = DmaBuf([0; EP1_OUT_BUF_SIZE]);
+/// EP1 OUT DMA buffer size (max Ethernet frame, rounded up).
+#[cfg(feature = "dma")]
+pub const EP1_OUT_BUF_SIZE: usize = 1536;
 #[cfg(feature = "dma")]
 static mut EP2_IN_BUF: DmaBuf<1024> = DmaBuf([0; 1024]);
 #[cfg(feature = "dma")]
@@ -115,7 +120,7 @@ pub fn ep0_out_data(len: usize) -> &'static [u8] {
 /// Read received EP1 OUT data from the DMA buffer.
 #[cfg(feature = "dma")]
 pub fn ep1_out_data(len: usize) -> &'static [u8] {
-    unsafe { &EP1_OUT_BUF.0[..len.min(1024)] }
+    unsafe { &EP1_OUT_BUF.0[..len.min(EP1_OUT_BUF_SIZE)] }
 }
 
 /// Read received EP2 OUT data from the DMA buffer.
@@ -332,7 +337,14 @@ impl UsbBus {
     }
 
     /// Prepare a bulk/interrupt OUT endpoint (1, 2, or 3) to receive data.
-    pub fn ep_prepare_out(&self, ep: u8, mps: u16) {
+    ///
+    /// `max_xfer`: when non-zero (DMA mode only), the endpoint is armed
+    /// for **multi-packet** reception (`pktcnt = max_xfer / mps`) so
+    /// the host can send an entire payload without per-packet NAK.
+    /// XFERCOMPL fires once a short packet (or ZLP) terminates the
+    /// transfer.  When zero the endpoint receives a single packet.
+    #[allow(unused_variables)]
+    pub fn ep_prepare_out(&self, ep: u8, mps: u16, max_xfer: u16) {
         match ep {
             1 => {
                 #[cfg(feature = "dma")]
@@ -341,6 +353,19 @@ impl UsbBus {
                         .doep0_dmaaddr()
                         .write(|w| w.bits(core::ptr::addr_of!(EP1_OUT_BUF) as u32));
                 }
+                #[cfg(feature = "dma")]
+                if max_xfer > 0 {
+                    let xfer = (max_xfer as usize).min(EP1_OUT_BUF_SIZE) as u32;
+                    let pktcnt = ((xfer as usize + mps as usize - 1) / mps as usize) as u16;
+                    self.usb
+                        .doep0_tsiz()
+                        .write(|w| unsafe { w.xfersize().bits(xfer).pktcnt().bits(pktcnt) });
+                } else {
+                    self.usb
+                        .doep0_tsiz()
+                        .write(|w| unsafe { w.xfersize().bits(mps as u32).pktcnt().bits(1) });
+                }
+                #[cfg(not(feature = "dma"))]
                 self.usb
                     .doep0_tsiz()
                     .write(|w| unsafe { w.xfersize().bits(mps as u32).pktcnt().bits(1) });

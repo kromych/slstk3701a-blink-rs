@@ -71,6 +71,11 @@ pub struct EpConfig {
     pub mps: u16,
     pub has_in: bool,
     pub has_out: bool,
+    /// Maximum OUT transfer size for DMA mode.  When non-zero the DWC2
+    /// is armed for multi-packet reception (`pktcnt = out_max_xfer / mps`)
+    /// so the host can send an entire payload without per-packet NAK.
+    /// Set to 0 (default) to use single-packet transfers (`pktcnt = 1`).
+    pub out_max_xfer: u16,
 }
 
 pub struct UsbConfig {
@@ -903,7 +908,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 .write(|w| unsafe { w.bits(int.bits()) });
             if int.xfercompl().bit_is_set() {
                 if let Some(ref ep) = self.config.ep1 {
-                    self.bus.ep_prepare_out(1, ep.mps);
+                    self.bus.ep_prepare_out(1, ep.mps, ep.out_max_xfer);
                 }
             }
         }
@@ -917,7 +922,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 .write(|w| unsafe { w.bits(int.bits()) });
             if int.xfercompl().bit_is_set() {
                 if let Some(ref ep) = self.config.ep2 {
-                    self.bus.ep_prepare_out(2, ep.mps);
+                    self.bus.ep_prepare_out(2, ep.mps, ep.out_max_xfer);
                 }
             }
         }
@@ -931,7 +936,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 .write(|w| unsafe { w.bits(int.bits()) });
             if int.xfercompl().bit_is_set() {
                 if let Some(ref ep) = self.config.ep3 {
-                    self.bus.ep_prepare_out(3, ep.mps);
+                    self.bus.ep_prepare_out(3, ep.mps, ep.out_max_xfer);
                 }
             }
         }
@@ -1003,7 +1008,7 @@ impl<C: UsbClass> UsbDevice<C> {
             }
         }
 
-        // EP1 OUT.
+        // EP1 OUT — multi-packet DMA: xfersize was set to EP1_OUT_BUF_SIZE.
         if self.config.ep1.as_ref().is_some_and(|e| e.has_out) {
             let int = self.bus.regs().doep0_int().read();
             self.bus
@@ -1013,10 +1018,16 @@ impl<C: UsbClass> UsbDevice<C> {
             if int.xfercompl().bit_is_set() {
                 if let Some(ref ep) = self.config.ep1 {
                     let remaining = self.bus.regs().doep0_tsiz().read().xfersize().bits() as usize;
-                    let len = (ep.mps as usize).saturating_sub(remaining);
+                    let xfer_size = if ep.out_max_xfer > 0 {
+                        bus::EP1_OUT_BUF_SIZE
+                    } else {
+                        ep.mps as usize
+                    };
+                    let len = xfer_size.saturating_sub(remaining);
+                    cortex_m::asm::dsb();
                     let data = bus::ep1_out_data(len);
                     self.class.data_out(1, data, &self.bus);
-                    self.bus.ep_prepare_out(1, ep.mps);
+                    self.bus.ep_prepare_out(1, ep.mps, ep.out_max_xfer);
                 }
             }
         }
@@ -1034,7 +1045,7 @@ impl<C: UsbClass> UsbDevice<C> {
                     let len = (ep.mps as usize).saturating_sub(remaining);
                     let data = bus::ep2_out_data(len);
                     self.class.data_out(2, data, &self.bus);
-                    self.bus.ep_prepare_out(2, ep.mps);
+                    self.bus.ep_prepare_out(2, ep.mps, ep.out_max_xfer);
                 }
             }
         }
@@ -1052,7 +1063,7 @@ impl<C: UsbClass> UsbDevice<C> {
                     let len = (ep.mps as usize).saturating_sub(remaining);
                     let data = bus::ep3_out_data(len);
                     self.class.data_out(3, data, &self.bus);
-                    self.bus.ep_prepare_out(3, ep.mps);
+                    self.bus.ep_prepare_out(3, ep.mps, ep.out_max_xfer);
                 }
             }
         }
@@ -1167,17 +1178,17 @@ impl<C: UsbClass> UsbDevice<C> {
                 defmt::info!("SET_CONFIGURATION {}", setup.w_value);
                 if let Some(ref ep) = self.config.ep1 {
                     if ep.has_out {
-                        self.bus.ep_prepare_out(1, ep.mps);
+                        self.bus.ep_prepare_out(1, ep.mps, ep.out_max_xfer);
                     }
                 }
                 if let Some(ref ep) = self.config.ep2 {
                     if ep.has_out {
-                        self.bus.ep_prepare_out(2, ep.mps);
+                        self.bus.ep_prepare_out(2, ep.mps, ep.out_max_xfer);
                     }
                 }
                 if let Some(ref ep) = self.config.ep3 {
                     if ep.has_out {
-                        self.bus.ep_prepare_out(3, ep.mps);
+                        self.bus.ep_prepare_out(3, ep.mps, ep.out_max_xfer);
                     }
                 }
                 // Enable Low Energy Mode.

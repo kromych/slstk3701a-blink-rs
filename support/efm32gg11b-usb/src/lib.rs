@@ -1061,6 +1061,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 if let Some(ref ep) = self.config.ep2 {
                     let remaining = self.bus.regs().doep1_tsiz().read().xfersize().bits() as usize;
                     let len = (ep.mps as usize).saturating_sub(remaining);
+                    cortex_m::asm::dsb();
                     let data = bus::ep2_out_data(len);
                     self.class.data_out(2, data, &self.bus);
                     self.bus.ep_prepare_out(2);
@@ -1079,6 +1080,7 @@ impl<C: UsbClass> UsbDevice<C> {
                 if let Some(ref ep) = self.config.ep3 {
                     let remaining = self.bus.regs().doep2_tsiz().read().xfersize().bits() as usize;
                     let len = (ep.mps as usize).saturating_sub(remaining);
+                    cortex_m::asm::dsb();
                     let data = bus::ep3_out_data(len);
                     self.class.data_out(3, data, &self.bus);
                     self.bus.ep_prepare_out(3);

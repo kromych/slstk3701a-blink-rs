@@ -18,6 +18,7 @@ members = [
     "demos/space-invaders",
     "demos/eth-http",
     "demos/usb-nic",
+    "demos/disco",
     "support/efm32gg11b-pac",
     "support/efm32gg11b-usb",
     "support/slstk3701a",

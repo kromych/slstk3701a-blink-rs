@@ -177,6 +177,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "disco"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "critical-section",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "efm32gg11b-usb",
+ "panic-halt",
+ "portable-atomic",
+ "slstk3701a",
+]
+
+[[package]]
 name = "efm32gg11b-pac"
 version = "0.2.0"
 dependencies = [
@@ -355,6 +371,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "138e3e0acb6c9fb258b19b67cb8abd63c00679d2851805ea151465464fe9030a"
 dependencies = [
  "semver",
+]
+
+[[package]]
+name = "sdcard"
+version = "0.0.1"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "defmt 1.0.1",
+ "defmt-rtt",
+ "efm32gg11b-pac",
+ "panic-halt",
+ "slstk3701a",
 ]
 
 [[package]]

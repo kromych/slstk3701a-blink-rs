@@ -19,6 +19,7 @@ members = [
     "demos/eth-http",
     "demos/usb-nic",
     "demos/disco",
+    "demos/sdcard",
     "support/efm32gg11b-pac",
     "support/efm32gg11b-usb",
     "support/slstk3701a",

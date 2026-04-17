@@ -581,7 +581,8 @@ pub fn enable_interrupts() {
     // Clear any pending flags first.
     e.ifcr().write(|w| unsafe { w.bits(0xFFFF_FFFF) });
     // Enable RXCMPLT (bit 1) and TXCMPLT (bit 7).
-    e.iens().write(|w| w.rxcmplt().set_bit().txcmplt().set_bit());
+    e.iens()
+        .write(|w| w.rxcmplt().set_bit().txcmplt().set_bit());
 }
 
 /// ETH interrupt handler.  Call this from the `#[interrupt] fn ETH()` ISR.
